@@ -41,9 +41,9 @@ with Marcelo Mendoza<br>
 
 </ol>
 
-<!-- Other Publications -->
+<!-- Public writing -->
 <br>
-<h2>Other Publications</h2>
+<h2>Public writing</h2>
 <ol>
 
 <li><a href="https://www.ciperchile.cl/2021/01/09/lo-que-revelan-los-apellidos-de-los-santiaguinos/">
