@@ -23,7 +23,7 @@
 Postdoctoral researcher at IMFD, 2019-<br>
 Ph.D. Sociology University of Cambridge, 2014-2020<br>
 Research areas: Historical sociology, computational social sciences <br>
-<a href="https://imfd.cl/en/investigador/naim-bro/">Institutional website</a>&nbsp;
+<a href="https://imfd.cl/en/investigador/naim-bro/">Institutional profile</a>&nbsp;
 <i class="fa fa-twitter"></i><a href="https://twitter.com/NaimBroKhomasi">@NaimBroKhomasi</a>
 
 
