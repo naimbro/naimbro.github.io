@@ -29,7 +29,7 @@ Research areas: Historical sociology, computational social sciences <br>
 <li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0244372">
 Surname affinity in Santiago, Chile: A network-based approach that uncovers urban segregation</a><br>
 with Marcelo Mendoza<br>
-<i>Plos One</i>, 2021.
+<i>Plos One</i> 2021.
 </li>
 
 </ol>
