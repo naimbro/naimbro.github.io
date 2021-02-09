@@ -10,35 +10,6 @@
 
 <body>
 
-<!-- Style -->
-<style>
-
-body{font-family: Georgia; 
-	font-size:16px; 
-	line-height: 1.4;}
-
-li{margin: 15px 0;}
-
-/* creates two boxes */
-#left {
-        float:left;
-        width:20%;
-        position:fixed;
-        background-color:#FFFFFF;
-}
-#center {
-        float:left;
-        width:100%;
-        max-width:initial; 
-        background-color:#FFFFFF;
-}
-#right {
-        float:right;
-        width:79%;
-        background-color:#FFFFFF;
-}
-</style>
-
 <!-- Header -->
 
 <div id="center">
@@ -82,16 +53,3 @@ with Marcelo Mendoza<br>
 Lo que revelan los apellidos de los santiaguinos</a><br>
 with Marcelo Mendoza<br>
 <i>Ciper Chile</i>, 2021
-
-</ol>
-
-
-</div>
-
-
-
-</div>
-
-
-</body>
-</html>
