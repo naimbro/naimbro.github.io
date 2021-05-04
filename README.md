@@ -1,1 +1,1 @@
-Codes for my website naimbro.github.io
+Code for my website naimbro.github.io
