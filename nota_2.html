@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+h1 {
+  color: blue;
+  margin-left: 0px;
+}
+
+/* basic positioning */
+.legend { list-style: none; }
+.legend li { float: left; margin-right: 10px; }
+.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
+/* your colors */
+.legend .INDEPS { background-color: #9ACD32; }
+.legend .VAMOS { background-color: blue; }
+.legend .APRUEBO { background-color: #DDA0DD; }
+.legend .DIGNIDAD { background-color: green; }
+.legend .TRABAJADORES { background-color: red; }
+
+</style>
+</head>
+
+<body>
+
+<h1>Red de Twitter de candidatxs convencionales</h1>
+
+<p style='width:700px; line-height:1.2' align='justify'>En esta nota mapeamos 
+las conexiones de Twitter entre 
+candidatxs a la Convención Constituyente. 
+De los 1278 candidatos, encontramos 529 con cuenta (usamos datos de 
+<a href='https://www.emol.com/especiales/2021/nacional/elecciones/guia_candidatos.asp' target='_blank'>EMOL</a>). 
+La Figura 1 muestra la red coloreada por las listas grandes,
+más independientes y otros.</p>
+
+<p style="width:700px" align="justify">Gráfico 1. Red de Twitter candidatxs CC.</p>
+
+<iframe src="red_cc_PACTO.html" height='610px' width='610px' name = 'Red tuitera CC'></iframe>
+
+<ul class="legend">
+  <li><span class="INDEPS "></span> Independientes y otros</li>
+  <li><span class="VAMOS"></span> Vamos por Chile</li>
+  <li><span class="APRUEBO"></span> Lista del Apruebo</li></br></br>
+  <li><span class="DIGNIDAD"></span> Apruebo Dignidad</li>
+  <li><span class="TRABAJADORES"></span> Partido de Trabajadores Revolucionarios</li></br>
+</ul>
+
+<p style='width:700px; line-height:1.2' align='justify'>Como es esperable, 
+las listas forman clusters.
+Lo que no es tan intuitivo es cómo se posicionan los independientes. 
+Son la novedad del período post-2019, pero no sabemos
+ubicarlos en nuestros mapas mentales.
+La visualización ayuda: la mayoría de lxs independientes 
+forman parte del entorno de Apruebo Dignidad (izquierda). 
+Vamos por Chile (derecha) y la Lista del Apruebo 
+(centro-izquierda, ex-Concertación) 
+tienen poco vínculo tuitero con el mundo independiente. 
+La izquierda dura (Partido de Trabajadores Revolucionarios) tampoco.</p>
+
+<p style='width:700px; line-height:1.2' align='justify'>
+El vínculo con lxs independientes
+no necesariamente favorece a Apruebo Dignidad. 
+Si lxs independientes y pactos menores irrumpen este 15 y 16 de mayo,
+va a ser con votos que le quitaron a Apruebo Dignidad, 
+no a Vamos por Chile ni al Partido de Trabajadores Revolucionarios.</p>
+
+<p style='width:700px; line-height:1.2' align='justify'>Es una hipótesis.</p>
+
+<p style='width:700px; line-height:1.2' align='justify'>Escribimos esta nota
+también para explorar la librería de visualización 
+<a href='https://pyvis.readthedocs.io/en/latest/documentation.html' target='_blank'>pyvis</a>.
+Pincha cualquier nodo y arrástralo; haz zoom para explorar nodos particulares <span>&#8212;</span>
+
+te vas a entretener por un par de minutos. 
+¿Te gusta cómo tiritan algunos nodos, o te estresa?
+Linkeamos el código para que tú mismx puedas visualizar la red a tu gusto: 
+[LINK GITHUB] 
+
+<body>
+</html>
