@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Análisis | Análisis portales de empleo</title>
+  <meta name="description" content="2 Análisis | Análisis portales de empleo" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Análisis | Análisis portales de empleo" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Análisis | Análisis portales de empleo" />
+  
+  
+  
+
+<meta name="author" content="Investigadores: Naim Bro, Jan Dimter y Nicolás Godoy." />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introducción.html"/>
+<link rel="next" href="conclusión.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="introducción.html"><a href="introducción.html"><i class="fa fa-check"></i><b>1</b> Introducción</a></li>
+<li class="chapter" data-level="2" data-path="análisis.html"><a href="análisis.html"><i class="fa fa-check"></i><b>2</b> Análisis</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="análisis.html"><a href="análisis.html#laborum"><i class="fa fa-check"></i><b>2.1</b> Laborum</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="análisis.html"><a href="análisis.html#horario"><i class="fa fa-check"></i><b>2.1.1</b> Horario</a></li>
+<li class="chapter" data-level="2.1.2" data-path="análisis.html"><a href="análisis.html#ubicación"><i class="fa fa-check"></i><b>2.1.2</b> Ubicación</a></li>
+<li class="chapter" data-level="2.1.3" data-path="análisis.html"><a href="análisis.html#área-profesional"><i class="fa fa-check"></i><b>2.1.3</b> Área profesional</a></li>
+<li class="chapter" data-level="2.1.4" data-path="análisis.html"><a href="análisis.html#sueldo"><i class="fa fa-check"></i><b>2.1.4</b> Sueldo</a></li>
+<li class="chapter" data-level="2.1.5" data-path="análisis.html"><a href="análisis.html#requisitos"><i class="fa fa-check"></i><b>2.1.5</b> Requisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="análisis.html"><a href="análisis.html#trabajando"><i class="fa fa-check"></i><b>2.2</b> Trabajando</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="análisis.html"><a href="análisis.html#jornada-y-modalidad"><i class="fa fa-check"></i><b>2.2.1</b> Jornada y modalidad</a></li>
+<li class="chapter" data-level="2.2.2" data-path="análisis.html"><a href="análisis.html#ubicación-1"><i class="fa fa-check"></i><b>2.2.2</b> Ubicación</a></li>
+<li class="chapter" data-level="2.2.3" data-path="análisis.html"><a href="análisis.html#área-profesional-o-clase-del-aviso"><i class="fa fa-check"></i><b>2.2.3</b> Área profesional o clase del aviso</a></li>
+<li class="chapter" data-level="2.2.4" data-path="análisis.html"><a href="análisis.html#estudios-mínimos"><i class="fa fa-check"></i><b>2.2.4</b> Estudios mínimos</a></li>
+<li class="chapter" data-level="2.2.5" data-path="análisis.html"><a href="análisis.html#requisitos-académicos"><i class="fa fa-check"></i><b>2.2.5</b> Requisitos académicos</a></li>
+<li class="chapter" data-level="2.2.6" data-path="análisis.html"><a href="análisis.html#tipo-de-cargo"><i class="fa fa-check"></i><b>2.2.6</b> Tipo de cargo</a></li>
+<li class="chapter" data-level="2.2.7" data-path="análisis.html"><a href="análisis.html#sueldo-1"><i class="fa fa-check"></i><b>2.2.7</b> Sueldo</a></li>
+<li class="chapter" data-level="2.2.8" data-path="análisis.html"><a href="análisis.html#requisitos-1"><i class="fa fa-check"></i><b>2.2.8</b> Requisitos</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="análisis.html"><a href="análisis.html#análisis-requisitos-general"><i class="fa fa-check"></i><b>2.3</b> Análisis requisitos general</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="análisis.html"><a href="análisis.html#detección-requisitos"><i class="fa fa-check"></i><b>2.3.1</b> Detección requisitos</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conclusión.html"><a href="conclusión.html"><i class="fa fa-check"></i><b>3</b> Conclusión</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis portales de empleo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="análisis" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Análisis</h1>
+<div id="laborum" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Laborum</h2>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div id="horario" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Horario</h3>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="ubicación" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Ubicación</h3>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-3-1.png" width="672" /><img src="Bookdown_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+</div>
+<div id="área-profesional" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Área profesional</h3>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="sueldo" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Sueldo</h3>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
+<div id="requisitos" class="section level3" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> Requisitos</h3>
+</div>
+</div>
+<div id="trabajando" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Trabajando</h2>
+<p>Esta sección presenta los datos del sitio <a href="https://www.trabajando.cl">trabajando.cl</a>. Eliminamos los avisos duplicados y aquéllos que requieren un nivel educacional menor al de técnico nivel medio. Quedaron 16.108 ofertas de empleo, entre las fechas de publicación 28 de julio y 27 de octubre de 2021.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div id="jornada-y-modalidad" class="section level3" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Jornada y modalidad</h3>
+<p>En lo que respecta a la duración de la jornada laboral, la mayor parte de los avisos ofrece una jornada laboral completa, seguidos por aquellos que ofrecen un trabajo por turnos. La proporción de trabajos Part Time supera, por poco, el 1% de los casos. Luego, respecto de la modalidad, destaca que un 14% de los avisos ofrece un trabajo en modalidad mixta, es decir, teletrabajo y presencial. Un 7.4% de los casos ofrecen, por su parte, un trabajo completamente telemático. Se asume que los trabajos restantes tienen una modalidad presencial.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="ubicación-1" class="section level3" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Ubicación</h3>
+<p>En relación con la región en que se oferta el puesto, más de dos tercios pertenecen a la región Metropolitana. Luego, la región de Antofagasta concentra casi el 9% de los avisos, mientras que las regiones de Valparaíso y Bío Bío representan el 3.8% y el 3.6% de los casos, respectivamente. En el resto de regiones, la concentración de ofertas no alcanza el 3%.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Asimismo, las comunas con mayores ofertas de trabajo son Santiago (16.2%), Las Condes (11%), y Providencia (7.6%), lo cual se condice con la alta concentración de ofertas en la región Metropolitana.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="área-profesional-o-clase-del-aviso" class="section level3" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Área profesional o clase del aviso</h3>
+<p>La clase de aviso con mayor frecuencia es la administración y finanzas, seguida por el comercio y la computación y redes. Asimismo, áreas de desempeño relevantes para DUOC UC, como enfermería, odontología, gastronomía, prevención de riesgos y maquinaria y automotriz destacan entre las diez clases de avisos con mayor frecuencia.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="estudios-mínimos" class="section level3" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Estudios mínimos</h3>
+<p>La mayor parte de los avisos solicita unos estudios mínimos de nivel universitario. Le sigue el nivel de técnico profesional superior, y luego el de técnico nivel medio. Niveles de postgrado no cuentan con mayor frecuencia. Hay que considerar que se eliminaron del análisis los niveles de Doctorado, así como aquellos niveles educacionales inferiores al técnico medio.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="requisitos-académicos" class="section level3" number="2.2.5">
+<h3><span class="header-section-number">2.2.5</span> Requisitos académicos</h3>
+<p>En la misma línea, la mayor parte de los avisos busca graduados o egresados.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="tipo-de-cargo" class="section level3" number="2.2.6">
+<h3><span class="header-section-number">2.2.6</span> Tipo de cargo</h3>
+<p>El cargo de analista destaca como aquel con mayor cantidad de ofertas. Sin considerar la heterogénea categoría de ‘Otros cargos’, le sigue el de Jefe de Área/Sección, Ingeniero, Administrativo y Técnico. En general, los cargos ofrecidos requieren de estudios superiores.</p>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="sueldo-1" class="section level3" number="2.2.7">
+<h3><span class="header-section-number">2.2.7</span> Sueldo</h3>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="requisitos-1" class="section level3" number="2.2.8">
+<h3><span class="header-section-number">2.2.8</span> Requisitos</h3>
+</div>
+</div>
+<div id="análisis-requisitos-general" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Análisis requisitos general</h2>
+<div id="detección-requisitos" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Detección requisitos</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="análisis.html#cb1-1" aria-hidden="true" tabindex="-1"></a>data_unificada <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;input/data_unificada.rds&quot;</span>)</span>
+<span id="cb1-2"><a href="análisis.html#cb1-2" aria-hidden="true" tabindex="-1"></a>data_unificada <span class="ot">&lt;-</span></span>
+<span id="cb1-3"><a href="análisis.html#cb1-3" aria-hidden="true" tabindex="-1"></a>  data_unificada[<span class="sc">-</span><span class="fu">which</span>(<span class="fu">duplicated</span>(data_unificada<span class="sc">$</span>contenido)), ]</span>
+<span id="cb1-4"><a href="análisis.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="análisis.html#cb1-5" aria-hidden="true" tabindex="-1"></a>detectar <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb1-6"><a href="análisis.html#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_detect</span>(x, <span class="fu">paste0</span>(<span class="st">&quot;(?&lt;![:alpha:])&quot;</span>, y, <span class="st">&quot;(?![:alpha:])&quot;</span>))</span>
+<span id="cb1-7"><a href="análisis.html#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="análisis.html#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="análisis.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Excel</span></span>
+<span id="cb1-10"><a href="análisis.html#cb1-10" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_excel <span class="ot">&lt;-</span></span>
+<span id="cb1-11"><a href="análisis.html#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(</span>
+<span id="cb1-12"><a href="análisis.html#cb1-12" aria-hidden="true" tabindex="-1"></a>    data_unificada<span class="sc">$</span>contenido,</span>
+<span id="cb1-13"><a href="análisis.html#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;(excel|office|hojas de cálculo|hoja de cálculo|hoja de calculo|hojas de cálculo)&quot;</span></span>
+<span id="cb1-14"><a href="análisis.html#cb1-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-15"><a href="análisis.html#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="análisis.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Cuarto medio</span></span>
+<span id="cb1-17"><a href="análisis.html#cb1-17" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_educamedia <span class="ot">&lt;-</span></span>
+<span id="cb1-18"><a href="análisis.html#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(</span>
+<span id="cb1-19"><a href="análisis.html#cb1-19" aria-hidden="true" tabindex="-1"></a>    data_unificada<span class="sc">$</span>contenido,</span>
+<span id="cb1-20"><a href="análisis.html#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;(enseñanza media|cuarto medio|educación media|educacion media)&quot;</span></span>
+<span id="cb1-21"><a href="análisis.html#cb1-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-22"><a href="análisis.html#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="análisis.html#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Mayor 18 años</span></span>
+<span id="cb1-24"><a href="análisis.html#cb1-24" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_dieciocho <span class="ot">&lt;-</span></span>
+<span id="cb1-25"><a href="análisis.html#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(18 años|mayor de edad)&quot;</span>)</span>
+<span id="cb1-26"><a href="análisis.html#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="análisis.html#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Inglés</span></span>
+<span id="cb1-28"><a href="análisis.html#cb1-28" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_ingles <span class="ot">&lt;-</span></span>
+<span id="cb1-29"><a href="análisis.html#cb1-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(inglés|ingles)&quot;</span>)</span>
+<span id="cb1-30"><a href="análisis.html#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="análisis.html#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Liderazgo</span></span>
+<span id="cb1-32"><a href="análisis.html#cb1-32" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_liderazgo <span class="ot">&lt;-</span></span>
+<span id="cb1-33"><a href="análisis.html#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(liderazgo|liderando)&quot;</span>)</span>
+<span id="cb1-34"><a href="análisis.html#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="análisis.html#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Años de experiencia</span></span>
+<span id="cb1-36"><a href="análisis.html#cb1-36" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_experiencia <span class="ot">&lt;-</span></span>
+<span id="cb1-37"><a href="análisis.html#cb1-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(</span>
+<span id="cb1-38"><a href="análisis.html#cb1-38" aria-hidden="true" tabindex="-1"></a>    data_unificada<span class="sc">$</span>requisitos,</span>
+<span id="cb1-39"><a href="análisis.html#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;(años de experiencia|experiencia mínima|experiencia de al menos)&quot;</span></span>
+<span id="cb1-40"><a href="análisis.html#cb1-40" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-41"><a href="análisis.html#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="análisis.html#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Licencia conducir (B o A4 profesional)</span></span>
+<span id="cb1-43"><a href="análisis.html#cb1-43" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_licenciaconducir <span class="ot">&lt;-</span></span>
+<span id="cb1-44"><a href="análisis.html#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(</span>
+<span id="cb1-45"><a href="análisis.html#cb1-45" aria-hidden="true" tabindex="-1"></a>    data_unificada<span class="sc">$</span>contenido,</span>
+<span id="cb1-46"><a href="análisis.html#cb1-46" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;(licencia conducir|licencia de conducir|clase b|a4|licencia d)&quot;</span></span>
+<span id="cb1-47"><a href="análisis.html#cb1-47" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-48"><a href="análisis.html#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="análisis.html#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Proactividad</span></span>
+<span id="cb1-50"><a href="análisis.html#cb1-50" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_proactividad <span class="ot">&lt;-</span></span>
+<span id="cb1-51"><a href="análisis.html#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido,</span>
+<span id="cb1-52"><a href="análisis.html#cb1-52" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;(proactiva|proactividad|proactivas)&quot;</span>)</span>
+<span id="cb1-53"><a href="análisis.html#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="análisis.html#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Responsable</span></span>
+<span id="cb1-55"><a href="análisis.html#cb1-55" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_responsabilidad <span class="ot">&lt;-</span></span>
+<span id="cb1-56"><a href="análisis.html#cb1-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(responsable|responsabilidad)&quot;</span>)</span>
+<span id="cb1-57"><a href="análisis.html#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="análisis.html#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Autocrítica</span></span>
+<span id="cb1-59"><a href="análisis.html#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co">#data_unificada$req_autocritica&lt;-detectar(data_unificada$requisitos,&quot;(autocrítica|autocritica)&quot;) #Bajo número y repetidos</span></span>
+<span id="cb1-60"><a href="análisis.html#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="análisis.html#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Paciencia</span></span>
+<span id="cb1-62"><a href="análisis.html#cb1-62" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_paciencia <span class="ot">&lt;-</span></span>
+<span id="cb1-63"><a href="análisis.html#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(paciencia)&quot;</span>) <span class="co">#Bajo número y repetidos</span></span>
+<span id="cb1-64"><a href="análisis.html#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-65"><a href="análisis.html#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Puntualidad</span></span>
+<span id="cb1-66"><a href="análisis.html#cb1-66" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_puntualidad <span class="ot">&lt;-</span></span>
+<span id="cb1-67"><a href="análisis.html#cb1-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(puntualidad)&quot;</span>) <span class="co">#Bajo número y repetidos</span></span>
+<span id="cb1-68"><a href="análisis.html#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="análisis.html#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Trabajo en equipo</span></span>
+<span id="cb1-70"><a href="análisis.html#cb1-70" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_trabajoequipo <span class="ot">&lt;-</span></span>
+<span id="cb1-71"><a href="análisis.html#cb1-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(trabajo en equipo)&quot;</span>)</span>
+<span id="cb1-72"><a href="análisis.html#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="análisis.html#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co"># Trabajo bajo presión</span></span>
+<span id="cb1-74"><a href="análisis.html#cb1-74" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_bajopresion <span class="ot">&lt;-</span></span>
+<span id="cb1-75"><a href="análisis.html#cb1-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(trabajo bajo presión)&quot;</span>)</span>
+<span id="cb1-76"><a href="análisis.html#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="análisis.html#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Título</span></span>
+<span id="cb1-78"><a href="análisis.html#cb1-78" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_titulado <span class="ot">&lt;-</span></span>
+<span id="cb1-79"><a href="análisis.html#cb1-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(título|titulo|titulado)&quot;</span>)</span>
+<span id="cb1-80"><a href="análisis.html#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="análisis.html#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Título</span></span>
+<span id="cb1-82"><a href="análisis.html#cb1-82" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_magister <span class="ot">&lt;-</span></span>
+<span id="cb1-83"><a href="análisis.html#cb1-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(magister|maestría|maestria)&quot;</span>)</span>
+<span id="cb1-84"><a href="análisis.html#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="análisis.html#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Dicción</span></span>
+<span id="cb1-86"><a href="análisis.html#cb1-86" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_diccion <span class="ot">&lt;-</span></span>
+<span id="cb1-87"><a href="análisis.html#cb1-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(diccion|dicción)&quot;</span>)</span>
+<span id="cb1-88"><a href="análisis.html#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="análisis.html#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Autocad</span></span>
+<span id="cb1-90"><a href="análisis.html#cb1-90" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_autocad <span class="ot">&lt;-</span></span>
+<span id="cb1-91"><a href="análisis.html#cb1-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(autocad)&quot;</span>)</span>
+<span id="cb1-92"><a href="análisis.html#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="análisis.html#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># SAP</span></span>
+<span id="cb1-94"><a href="análisis.html#cb1-94" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_sap <span class="ot">&lt;-</span> <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(sap)&quot;</span>)</span>
+<span id="cb1-95"><a href="análisis.html#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="análisis.html#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co"># ERP (incluye SAP)</span></span>
+<span id="cb1-97"><a href="análisis.html#cb1-97" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_erp <span class="ot">&lt;-</span></span>
+<span id="cb1-98"><a href="análisis.html#cb1-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(erp|sap)&quot;</span>)</span>
+<span id="cb1-99"><a href="análisis.html#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="análisis.html#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Certificación SEC</span></span>
+<span id="cb1-101"><a href="análisis.html#cb1-101" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_erp <span class="ot">&lt;-</span></span>
+<span id="cb1-102"><a href="análisis.html#cb1-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido,</span>
+<span id="cb1-103"><a href="análisis.html#cb1-103" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;(certificación sec|certificacion sec)&quot;</span>)</span>
+<span id="cb1-104"><a href="análisis.html#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="análisis.html#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="co"># BMS</span></span>
+<span id="cb1-106"><a href="análisis.html#cb1-106" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_pvsyst <span class="ot">&lt;-</span></span>
+<span id="cb1-107"><a href="análisis.html#cb1-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(bms)&quot;</span>)</span>
+<span id="cb1-108"><a href="análisis.html#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-109"><a href="análisis.html#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="do">## Enfermería</span></span>
+<span id="cb1-110"><a href="análisis.html#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Inscripción superintendencia de salud</span></span>
+<span id="cb1-111"><a href="análisis.html#cb1-111" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_inscripcion_superintendencia_salud <span class="ot">&lt;-</span></span>
+<span id="cb1-112"><a href="análisis.html#cb1-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(superintendencia de salud|sis)&quot;</span>)</span>
+<span id="cb1-113"><a href="análisis.html#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="análisis.html#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeros auxilios (incluye rcp)</span></span>
+<span id="cb1-115"><a href="análisis.html#cb1-115" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_primerosauxilios <span class="ot">&lt;-</span></span>
+<span id="cb1-116"><a href="análisis.html#cb1-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(primeros auxilios|rcp)&quot;</span>)</span>
+<span id="cb1-117"><a href="análisis.html#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="análisis.html#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="co"># UCI Urgencia</span></span>
+<span id="cb1-119"><a href="análisis.html#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="co">#data_unificada$req_uciurgencia&lt;-detectar(data_unificada$requisitos,&quot;(uci|urgencia)&quot;) #Revisar &quot;urgencia&quot;</span></span>
+<span id="cb1-120"><a href="análisis.html#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-121"><a href="análisis.html#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="co"># RCP</span></span>
+<span id="cb1-122"><a href="análisis.html#cb1-122" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_rcp <span class="ot">&lt;-</span> <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(rcp)&quot;</span>)</span>
+<span id="cb1-123"><a href="análisis.html#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="análisis.html#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="do">## Gastronomía</span></span>
+<span id="cb1-125"><a href="análisis.html#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="co"># Gramaje y porcionamiento</span></span>
+<span id="cb1-126"><a href="análisis.html#cb1-126" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_gramaje <span class="ot">&lt;-</span></span>
+<span id="cb1-127"><a href="análisis.html#cb1-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>contenido, <span class="st">&quot;(gramaje|porcionamiento)&quot;</span>)</span>
+<span id="cb1-128"><a href="análisis.html#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="co"># Repostería</span></span>
+<span id="cb1-129"><a href="análisis.html#cb1-129" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_reposteria <span class="ot">&lt;-</span></span>
+<span id="cb1-130"><a href="análisis.html#cb1-130" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(repostería|reposteria)&quot;</span>)</span>
+<span id="cb1-131"><a href="análisis.html#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Cocina fría</span></span>
+<span id="cb1-132"><a href="análisis.html#cb1-132" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_cocina_fria <span class="ot">&lt;-</span></span>
+<span id="cb1-133"><a href="análisis.html#cb1-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(cocina fría|cocina fria)&quot;</span>)</span>
+<span id="cb1-134"><a href="análisis.html#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="co"># Cocina caliente</span></span>
+<span id="cb1-135"><a href="análisis.html#cb1-135" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_cocina_caliente <span class="ot">&lt;-</span></span>
+<span id="cb1-136"><a href="análisis.html#cb1-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(cocina caliente)&quot;</span>)</span>
+<span id="cb1-137"><a href="análisis.html#cb1-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-138"><a href="análisis.html#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="co">#Microsoft Office</span></span>
+<span id="cb1-139"><a href="análisis.html#cb1-139" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_office <span class="ot">&lt;-</span></span>
+<span id="cb1-140"><a href="análisis.html#cb1-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(office|microsoft office)&quot;</span>)</span>
+<span id="cb1-141"><a href="análisis.html#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-142"><a href="análisis.html#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="co">#Excel </span></span>
+<span id="cb1-143"><a href="análisis.html#cb1-143" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_excel <span class="ot">&lt;-</span></span>
+<span id="cb1-144"><a href="análisis.html#cb1-144" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(excel)&quot;</span>)</span>
+<span id="cb1-145"><a href="análisis.html#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-146"><a href="análisis.html#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="co">#SQL</span></span>
+<span id="cb1-147"><a href="análisis.html#cb1-147" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_sql <span class="ot">&lt;-</span></span>
+<span id="cb1-148"><a href="análisis.html#cb1-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(sql)&quot;</span>)</span>
+<span id="cb1-149"><a href="análisis.html#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-150"><a href="análisis.html#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="co">#Adobe Analytics</span></span>
+<span id="cb1-151"><a href="análisis.html#cb1-151" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_analytics <span class="ot">&lt;-</span></span>
+<span id="cb1-152"><a href="análisis.html#cb1-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(analytics|adobe analytics)&quot;</span>)</span>
+<span id="cb1-153"><a href="análisis.html#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="análisis.html#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="co"># ISO 9001</span></span>
+<span id="cb1-155"><a href="análisis.html#cb1-155" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_iso_9001 <span class="ot">&lt;-</span></span>
+<span id="cb1-156"><a href="análisis.html#cb1-156" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(9001|iso 9001)&quot;</span>)</span>
+<span id="cb1-157"><a href="análisis.html#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-158"><a href="análisis.html#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="co">#Alimentación colectiva</span></span>
+<span id="cb1-159"><a href="análisis.html#cb1-159" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_al_colectiva <span class="ot">&lt;-</span></span>
+<span id="cb1-160"><a href="análisis.html#cb1-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(alimentación colectiva|alimentacion colectiva)&quot;</span>)</span>
+<span id="cb1-161"><a href="análisis.html#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-162"><a href="análisis.html#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="co">#Almacenamiento/bodegaje</span></span>
+<span id="cb1-163"><a href="análisis.html#cb1-163" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_bodega <span class="ot">&lt;-</span></span>
+<span id="cb1-164"><a href="análisis.html#cb1-164" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(almacenamiento|bodegaje|bodega)&quot;</span>)</span>
+<span id="cb1-165"><a href="análisis.html#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-166"><a href="análisis.html#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="co">#HACCP</span></span>
+<span id="cb1-167"><a href="análisis.html#cb1-167" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_haccp <span class="ot">&lt;-</span></span>
+<span id="cb1-168"><a href="análisis.html#cb1-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(haccp)&quot;</span>)</span>
+<span id="cb1-169"><a href="análisis.html#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-170"><a href="análisis.html#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="co">#Curso cajero bancario</span></span>
+<span id="cb1-171"><a href="análisis.html#cb1-171" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_cajero_banc <span class="ot">&lt;-</span></span>
+<span id="cb1-172"><a href="análisis.html#cb1-172" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(cajero bancario)&quot;</span>)</span>
+<span id="cb1-173"><a href="análisis.html#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="análisis.html#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="co">#SAP R3</span></span>
+<span id="cb1-175"><a href="análisis.html#cb1-175" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_r3 <span class="ot">&lt;-</span></span>
+<span id="cb1-176"><a href="análisis.html#cb1-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(r3|r/3|r 3)&quot;</span>)</span>
+<span id="cb1-177"><a href="análisis.html#cb1-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-178"><a href="análisis.html#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="co">#Softland</span></span>
+<span id="cb1-179"><a href="análisis.html#cb1-179" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_softland <span class="ot">&lt;-</span></span>
+<span id="cb1-180"><a href="análisis.html#cb1-180" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(softland|soft land)&quot;</span>)</span>
+<span id="cb1-181"><a href="análisis.html#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-182"><a href="análisis.html#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="co">#IFRS</span></span>
+<span id="cb1-183"><a href="análisis.html#cb1-183" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_ifrs <span class="ot">&lt;-</span></span>
+<span id="cb1-184"><a href="análisis.html#cb1-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(ifrs)&quot;</span>)</span>
+<span id="cb1-185"><a href="análisis.html#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-186"><a href="análisis.html#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="co">#Normativa/legislación</span></span>
+<span id="cb1-187"><a href="análisis.html#cb1-187" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_normativa <span class="ot">&lt;-</span></span>
+<span id="cb1-188"><a href="análisis.html#cb1-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(norma|normativa|legislacion|legislación)&quot;</span>)</span>
+<span id="cb1-189"><a href="análisis.html#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-190"><a href="análisis.html#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="co">#KPI</span></span>
+<span id="cb1-191"><a href="análisis.html#cb1-191" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_kpi <span class="ot">&lt;-</span></span>
+<span id="cb1-192"><a href="análisis.html#cb1-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(kpi)&quot;</span>)</span>
+<span id="cb1-193"><a href="análisis.html#cb1-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-194"><a href="análisis.html#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="do">## Auditoría y contabilidad</span></span>
+<span id="cb1-195"><a href="análisis.html#cb1-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-196"><a href="análisis.html#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="co">#Balances (cierres de)</span></span>
+<span id="cb1-197"><a href="análisis.html#cb1-197" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_balance <span class="ot">&lt;-</span></span>
+<span id="cb1-198"><a href="análisis.html#cb1-198" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(balance)&quot;</span>)</span>
+<span id="cb1-199"><a href="análisis.html#cb1-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-200"><a href="análisis.html#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="co">#Análisis cuentas contables</span></span>
+<span id="cb1-201"><a href="análisis.html#cb1-201" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_contable <span class="ot">&lt;-</span></span>
+<span id="cb1-202"><a href="análisis.html#cb1-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(cuenta contable|cuentas contables)&quot;</span>)</span>
+<span id="cb1-203"><a href="análisis.html#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="análisis.html#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="co">#Experiencia liquidación</span></span>
+<span id="cb1-205"><a href="análisis.html#cb1-205" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_liquidacion <span class="ot">&lt;-</span></span>
+<span id="cb1-206"><a href="análisis.html#cb1-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(liquidacion|liquidación)&quot;</span>)</span>
+<span id="cb1-207"><a href="análisis.html#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-208"><a href="análisis.html#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="co"># CRM</span></span>
+<span id="cb1-209"><a href="análisis.html#cb1-209" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_crm <span class="ot">&lt;-</span></span>
+<span id="cb1-210"><a href="análisis.html#cb1-210" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(crm)&quot;</span>)</span>
+<span id="cb1-211"><a href="análisis.html#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-212"><a href="análisis.html#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="co"># Portales B2B</span></span>
+<span id="cb1-213"><a href="análisis.html#cb1-213" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_b2b <span class="ot">&lt;-</span></span>
+<span id="cb1-214"><a href="análisis.html#cb1-214" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(b2b)&quot;</span>)</span>
+<span id="cb1-215"><a href="análisis.html#cb1-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-216"><a href="análisis.html#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="co"># Manejo redes sociales</span></span>
+<span id="cb1-217"><a href="análisis.html#cb1-217" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_rrss <span class="ot">&lt;-</span></span>
+<span id="cb1-218"><a href="análisis.html#cb1-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(rrss|redes sociales|red social)&quot;</span>)</span>
+<span id="cb1-219"><a href="análisis.html#cb1-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-220"><a href="análisis.html#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="co"># Bootstrap</span></span>
+<span id="cb1-221"><a href="análisis.html#cb1-221" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_bootstrap <span class="ot">&lt;-</span></span>
+<span id="cb1-222"><a href="análisis.html#cb1-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(bootstrap)&quot;</span>)</span>
+<span id="cb1-223"><a href="análisis.html#cb1-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-224"><a href="análisis.html#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="co">#JavaScript</span></span>
+<span id="cb1-225"><a href="análisis.html#cb1-225" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_js <span class="ot">&lt;-</span></span>
+<span id="cb1-226"><a href="análisis.html#cb1-226" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(js|javascript|java script)&quot;</span>)</span>
+<span id="cb1-227"><a href="análisis.html#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-228"><a href="análisis.html#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="co">#AWS</span></span>
+<span id="cb1-229"><a href="análisis.html#cb1-229" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_aws <span class="ot">&lt;-</span></span>
+<span id="cb1-230"><a href="análisis.html#cb1-230" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(aws)&quot;</span>)</span>
+<span id="cb1-231"><a href="análisis.html#cb1-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-232"><a href="análisis.html#cb1-232" aria-hidden="true" tabindex="-1"></a><span class="co">#Python</span></span>
+<span id="cb1-233"><a href="análisis.html#cb1-233" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_python <span class="ot">&lt;-</span></span>
+<span id="cb1-234"><a href="análisis.html#cb1-234" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(python)&quot;</span>)</span>
+<span id="cb1-235"><a href="análisis.html#cb1-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-236"><a href="análisis.html#cb1-236" aria-hidden="true" tabindex="-1"></a><span class="co">#MySQL</span></span>
+<span id="cb1-237"><a href="análisis.html#cb1-237" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_mysql <span class="ot">&lt;-</span></span>
+<span id="cb1-238"><a href="análisis.html#cb1-238" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(mysql)&quot;</span>)</span>
+<span id="cb1-239"><a href="análisis.html#cb1-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-240"><a href="análisis.html#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="co">#Linux</span></span>
+<span id="cb1-241"><a href="análisis.html#cb1-241" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_linux <span class="ot">&lt;-</span></span>
+<span id="cb1-242"><a href="análisis.html#cb1-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(linux)&quot;</span>)</span>
+<span id="cb1-243"><a href="análisis.html#cb1-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-244"><a href="análisis.html#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="co">#Visual Basic</span></span>
+<span id="cb1-245"><a href="análisis.html#cb1-245" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_visual_basic <span class="ot">&lt;-</span></span>
+<span id="cb1-246"><a href="análisis.html#cb1-246" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(visual basic|visualbasic)&quot;</span>)</span>
+<span id="cb1-247"><a href="análisis.html#cb1-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-248"><a href="análisis.html#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="co">#CSS</span></span>
+<span id="cb1-249"><a href="análisis.html#cb1-249" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_css <span class="ot">&lt;-</span></span>
+<span id="cb1-250"><a href="análisis.html#cb1-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(css)&quot;</span>)</span>
+<span id="cb1-251"><a href="análisis.html#cb1-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-252"><a href="análisis.html#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="co">#Docker</span></span>
+<span id="cb1-253"><a href="análisis.html#cb1-253" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_docker <span class="ot">&lt;-</span></span>
+<span id="cb1-254"><a href="análisis.html#cb1-254" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(docker)&quot;</span>)</span>
+<span id="cb1-255"><a href="análisis.html#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-256"><a href="análisis.html#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="co">#Frontend</span></span>
+<span id="cb1-257"><a href="análisis.html#cb1-257" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_frontend <span class="ot">&lt;-</span></span>
+<span id="cb1-258"><a href="análisis.html#cb1-258" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(frontend)&quot;</span>)</span>
+<span id="cb1-259"><a href="análisis.html#cb1-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-260"><a href="análisis.html#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="co">#React</span></span>
+<span id="cb1-261"><a href="análisis.html#cb1-261" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_react <span class="ot">&lt;-</span></span>
+<span id="cb1-262"><a href="análisis.html#cb1-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(react)&quot;</span>)</span>
+<span id="cb1-263"><a href="análisis.html#cb1-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-264"><a href="análisis.html#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="co">#Material-UI</span></span>
+<span id="cb1-265"><a href="análisis.html#cb1-265" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_mui <span class="ot">&lt;-</span></span>
+<span id="cb1-266"><a href="análisis.html#cb1-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(ui)&quot;</span>)</span>
+<span id="cb1-267"><a href="análisis.html#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="análisis.html#cb1-268" aria-hidden="true" tabindex="-1"></a><span class="co">#UX</span></span>
+<span id="cb1-269"><a href="análisis.html#cb1-269" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_ux <span class="ot">&lt;-</span></span>
+<span id="cb1-270"><a href="análisis.html#cb1-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(ux)&quot;</span>)</span>
+<span id="cb1-271"><a href="análisis.html#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-272"><a href="análisis.html#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="co">#Git</span></span>
+<span id="cb1-273"><a href="análisis.html#cb1-273" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_git <span class="ot">&lt;-</span></span>
+<span id="cb1-274"><a href="análisis.html#cb1-274" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(git)&quot;</span>)</span>
+<span id="cb1-275"><a href="análisis.html#cb1-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-276"><a href="análisis.html#cb1-276" aria-hidden="true" tabindex="-1"></a><span class="co">#MongoDB</span></span>
+<span id="cb1-277"><a href="análisis.html#cb1-277" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_mongodb <span class="ot">&lt;-</span></span>
+<span id="cb1-278"><a href="análisis.html#cb1-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(mongodb|mongo db)&quot;</span>)</span>
+<span id="cb1-279"><a href="análisis.html#cb1-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-280"><a href="análisis.html#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="co">#PHP</span></span>
+<span id="cb1-281"><a href="análisis.html#cb1-281" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_php <span class="ot">&lt;-</span></span>
+<span id="cb1-282"><a href="análisis.html#cb1-282" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(php)&quot;</span>)</span>
+<span id="cb1-283"><a href="análisis.html#cb1-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-284"><a href="análisis.html#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="co">#HTML</span></span>
+<span id="cb1-285"><a href="análisis.html#cb1-285" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_html <span class="ot">&lt;-</span></span>
+<span id="cb1-286"><a href="análisis.html#cb1-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(html)&quot;</span>)</span>
+<span id="cb1-287"><a href="análisis.html#cb1-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-288"><a href="análisis.html#cb1-288" aria-hidden="true" tabindex="-1"></a><span class="co">#C#</span></span>
+<span id="cb1-289"><a href="análisis.html#cb1-289" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_c <span class="ot">&lt;-</span></span>
+<span id="cb1-290"><a href="análisis.html#cb1-290" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(c#|visual c#|visualc#)&quot;</span>)</span>
+<span id="cb1-291"><a href="análisis.html#cb1-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-292"><a href="análisis.html#cb1-292" aria-hidden="true" tabindex="-1"></a><span class="co">#JQuery</span></span>
+<span id="cb1-293"><a href="análisis.html#cb1-293" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_jquery <span class="ot">&lt;-</span></span>
+<span id="cb1-294"><a href="análisis.html#cb1-294" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(jquery)&quot;</span>)</span>
+<span id="cb1-295"><a href="análisis.html#cb1-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-296"><a href="análisis.html#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="co">#API</span></span>
+<span id="cb1-297"><a href="análisis.html#cb1-297" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_api <span class="ot">&lt;-</span></span>
+<span id="cb1-298"><a href="análisis.html#cb1-298" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(api|apis|api&#39;s)&quot;</span>)</span>
+<span id="cb1-299"><a href="análisis.html#cb1-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-300"><a href="análisis.html#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="co">#Appium</span></span>
+<span id="cb1-301"><a href="análisis.html#cb1-301" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_oracledb <span class="ot">&lt;-</span></span>
+<span id="cb1-302"><a href="análisis.html#cb1-302" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(oracledb|oracle db)&quot;</span>)</span>
+<span id="cb1-303"><a href="análisis.html#cb1-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-304"><a href="análisis.html#cb1-304" aria-hidden="true" tabindex="-1"></a><span class="co">#Materiales</span></span>
+<span id="cb1-305"><a href="análisis.html#cb1-305" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_materiales <span class="ot">&lt;-</span></span>
+<span id="cb1-306"><a href="análisis.html#cb1-306" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(materiales)&quot;</span>)</span>
+<span id="cb1-307"><a href="análisis.html#cb1-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-308"><a href="análisis.html#cb1-308" aria-hidden="true" tabindex="-1"></a><span class="co">#Costos</span></span>
+<span id="cb1-309"><a href="análisis.html#cb1-309" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_costos <span class="ot">&lt;-</span></span>
+<span id="cb1-310"><a href="análisis.html#cb1-310" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(costo|costos)&quot;</span>)</span>
+<span id="cb1-311"><a href="análisis.html#cb1-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-312"><a href="análisis.html#cb1-312" aria-hidden="true" tabindex="-1"></a><span class="co">#Piping</span></span>
+<span id="cb1-313"><a href="análisis.html#cb1-313" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_piping <span class="ot">&lt;-</span></span>
+<span id="cb1-314"><a href="análisis.html#cb1-314" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(piping)&quot;</span>)</span>
+<span id="cb1-315"><a href="análisis.html#cb1-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-316"><a href="análisis.html#cb1-316" aria-hidden="true" tabindex="-1"></a><span class="co">#Adobe Suite</span></span>
+<span id="cb1-317"><a href="análisis.html#cb1-317" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_suite <span class="ot">&lt;-</span></span>
+<span id="cb1-318"><a href="análisis.html#cb1-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(adobe suite|adobesuite|suite)&quot;</span>)</span>
+<span id="cb1-319"><a href="análisis.html#cb1-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-320"><a href="análisis.html#cb1-320" aria-hidden="true" tabindex="-1"></a><span class="co">#E-Learning</span></span>
+<span id="cb1-321"><a href="análisis.html#cb1-321" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_elearning <span class="ot">&lt;-</span></span>
+<span id="cb1-322"><a href="análisis.html#cb1-322" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(e learning|e-learning|elearning)&quot;</span>)</span>
+<span id="cb1-323"><a href="análisis.html#cb1-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-324"><a href="análisis.html#cb1-324" aria-hidden="true" tabindex="-1"></a><span class="co">#Photoshop</span></span>
+<span id="cb1-325"><a href="análisis.html#cb1-325" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_photoshop <span class="ot">&lt;-</span></span>
+<span id="cb1-326"><a href="análisis.html#cb1-326" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(photoshop)&quot;</span>)</span>
+<span id="cb1-327"><a href="análisis.html#cb1-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-328"><a href="análisis.html#cb1-328" aria-hidden="true" tabindex="-1"></a><span class="co">#Ilustrator</span></span>
+<span id="cb1-329"><a href="análisis.html#cb1-329" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_ilustrator <span class="ot">&lt;-</span></span>
+<span id="cb1-330"><a href="análisis.html#cb1-330" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(ilustrator|illustrator)&quot;</span>)</span>
+<span id="cb1-331"><a href="análisis.html#cb1-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-332"><a href="análisis.html#cb1-332" aria-hidden="true" tabindex="-1"></a><span class="co">#InDesign</span></span>
+<span id="cb1-333"><a href="análisis.html#cb1-333" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_indesign <span class="ot">&lt;-</span></span>
+<span id="cb1-334"><a href="análisis.html#cb1-334" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(indesign|in design)&quot;</span>)</span>
+<span id="cb1-335"><a href="análisis.html#cb1-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-336"><a href="análisis.html#cb1-336" aria-hidden="true" tabindex="-1"></a><span class="co">#Lay out</span></span>
+<span id="cb1-337"><a href="análisis.html#cb1-337" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_layout <span class="ot">&lt;-</span></span>
+<span id="cb1-338"><a href="análisis.html#cb1-338" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(lay out|layout)&quot;</span>)</span>
+<span id="cb1-339"><a href="análisis.html#cb1-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-340"><a href="análisis.html#cb1-340" aria-hidden="true" tabindex="-1"></a><span class="co">#Curaciones</span></span>
+<span id="cb1-341"><a href="análisis.html#cb1-341" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_protec_radiologica <span class="ot">&lt;-</span></span>
+<span id="cb1-342"><a href="análisis.html#cb1-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(protección radiológica|proteccion radiologica|protección radiologica|proteccion ideológica)&quot;</span>)</span>
+<span id="cb1-343"><a href="análisis.html#cb1-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-344"><a href="análisis.html#cb1-344" aria-hidden="true" tabindex="-1"></a><span class="co">#Tronadura</span></span>
+<span id="cb1-345"><a href="análisis.html#cb1-345" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_inventario <span class="ot">&lt;-</span></span>
+<span id="cb1-346"><a href="análisis.html#cb1-346" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(inventario)&quot;</span>)</span>
+<span id="cb1-347"><a href="análisis.html#cb1-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-348"><a href="análisis.html#cb1-348" aria-hidden="true" tabindex="-1"></a><span class="co">#Komatsu 930 u 830</span></span>
+<span id="cb1-349"><a href="análisis.html#cb1-349" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_930 <span class="ot">&lt;-</span></span>
+<span id="cb1-350"><a href="análisis.html#cb1-350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(930|830|komatsu)&quot;</span>)</span>
+<span id="cb1-351"><a href="análisis.html#cb1-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-352"><a href="análisis.html#cb1-352" aria-hidden="true" tabindex="-1"></a><span class="co">#HVAC</span></span>
+<span id="cb1-353"><a href="análisis.html#cb1-353" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_hvac <span class="ot">&lt;-</span></span>
+<span id="cb1-354"><a href="análisis.html#cb1-354" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(hvac)&quot;</span>)</span>
+<span id="cb1-355"><a href="análisis.html#cb1-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-356"><a href="análisis.html#cb1-356" aria-hidden="true" tabindex="-1"></a><span class="co">#RRHH</span></span>
+<span id="cb1-357"><a href="análisis.html#cb1-357" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_rrhh <span class="ot">&lt;-</span></span>
+<span id="cb1-358"><a href="análisis.html#cb1-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(rrhh|recursos humanos)&quot;</span>)</span>
+<span id="cb1-359"><a href="análisis.html#cb1-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-360"><a href="análisis.html#cb1-360" aria-hidden="true" tabindex="-1"></a><span class="co">#Opera</span></span>
+<span id="cb1-361"><a href="análisis.html#cb1-361" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_supply_chain <span class="ot">&lt;-</span></span>
+<span id="cb1-362"><a href="análisis.html#cb1-362" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(supply chain|supply)&quot;</span>)</span>
+<span id="cb1-363"><a href="análisis.html#cb1-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-364"><a href="análisis.html#cb1-364" aria-hidden="true" tabindex="-1"></a><span class="co">#Mantenimiento</span></span>
+<span id="cb1-365"><a href="análisis.html#cb1-365" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_mantenimiento <span class="ot">&lt;-</span></span>
+<span id="cb1-366"><a href="análisis.html#cb1-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(mantenimiento|mantencion|mantención)&quot;</span>)</span>
+<span id="cb1-367"><a href="análisis.html#cb1-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-368"><a href="análisis.html#cb1-368" aria-hidden="true" tabindex="-1"></a><span class="co">#Conocimientos TPM</span></span>
+<span id="cb1-369"><a href="análisis.html#cb1-369" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_tpm <span class="ot">&lt;-</span></span>
+<span id="cb1-370"><a href="análisis.html#cb1-370" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(tpm)&quot;</span>)</span>
+<span id="cb1-371"><a href="análisis.html#cb1-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-372"><a href="análisis.html#cb1-372" aria-hidden="true" tabindex="-1"></a><span class="co">#5S</span></span>
+<span id="cb1-373"><a href="análisis.html#cb1-373" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_5s <span class="ot">&lt;-</span></span>
+<span id="cb1-374"><a href="análisis.html#cb1-374" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(5s)&quot;</span>)</span>
+<span id="cb1-375"><a href="análisis.html#cb1-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-376"><a href="análisis.html#cb1-376" aria-hidden="true" tabindex="-1"></a><span class="co">#ISO 45001</span></span>
+<span id="cb1-377"><a href="análisis.html#cb1-377" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_iso_45001 <span class="ot">&lt;-</span></span>
+<span id="cb1-378"><a href="análisis.html#cb1-378" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(45001|iso 45001)&quot;</span>)</span>
+<span id="cb1-379"><a href="análisis.html#cb1-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-380"><a href="análisis.html#cb1-380" aria-hidden="true" tabindex="-1"></a><span class="co">#OHSAS 18001</span></span>
+<span id="cb1-381"><a href="análisis.html#cb1-381" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_ohsas <span class="ot">&lt;-</span></span>
+<span id="cb1-382"><a href="análisis.html#cb1-382" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(ohsas|18001)&quot;</span>)</span>
+<span id="cb1-383"><a href="análisis.html#cb1-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-384"><a href="análisis.html#cb1-384" aria-hidden="true" tabindex="-1"></a><span class="co">#Power BI</span></span>
+<span id="cb1-385"><a href="análisis.html#cb1-385" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_power_bi <span class="ot">&lt;-</span></span>
+<span id="cb1-386"><a href="análisis.html#cb1-386" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(powerbi|power bi)&quot;</span>)</span>
+<span id="cb1-387"><a href="análisis.html#cb1-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-388"><a href="análisis.html#cb1-388" aria-hidden="true" tabindex="-1"></a><span class="co">#ADS</span></span>
+<span id="cb1-389"><a href="análisis.html#cb1-389" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_ads <span class="ot">&lt;-</span></span>
+<span id="cb1-390"><a href="análisis.html#cb1-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(ads)&quot;</span>)</span>
+<span id="cb1-391"><a href="análisis.html#cb1-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-392"><a href="análisis.html#cb1-392" aria-hidden="true" tabindex="-1"></a><span class="co">#E-Commerce</span></span>
+<span id="cb1-393"><a href="análisis.html#cb1-393" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_ecommerce <span class="ot">&lt;-</span></span>
+<span id="cb1-394"><a href="análisis.html#cb1-394" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(ecommerce|e-commerce|e commerce)&quot;</span>)</span>
+<span id="cb1-395"><a href="análisis.html#cb1-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-396"><a href="análisis.html#cb1-396" aria-hidden="true" tabindex="-1"></a><span class="co">#After Effects</span></span>
+<span id="cb1-397"><a href="análisis.html#cb1-397" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_aftereffects <span class="ot">&lt;-</span></span>
+<span id="cb1-398"><a href="análisis.html#cb1-398" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(aftereffects|after effects)&quot;</span>)</span>
+<span id="cb1-399"><a href="análisis.html#cb1-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-400"><a href="análisis.html#cb1-400" aria-hidden="true" tabindex="-1"></a><span class="co">#Indesign</span></span>
+<span id="cb1-401"><a href="análisis.html#cb1-401" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_indesign <span class="ot">&lt;-</span></span>
+<span id="cb1-402"><a href="análisis.html#cb1-402" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(indesign|in design)&quot;</span>)</span>
+<span id="cb1-403"><a href="análisis.html#cb1-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-404"><a href="análisis.html#cb1-404" aria-hidden="true" tabindex="-1"></a><span class="co">#Google Ads</span></span>
+<span id="cb1-405"><a href="análisis.html#cb1-405" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_googleads <span class="ot">&lt;-</span></span>
+<span id="cb1-406"><a href="análisis.html#cb1-406" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(googleads|google ads)&quot;</span>)</span>
+<span id="cb1-407"><a href="análisis.html#cb1-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-408"><a href="análisis.html#cb1-408" aria-hidden="true" tabindex="-1"></a><span class="co">#Google Analytics</span></span>
+<span id="cb1-409"><a href="análisis.html#cb1-409" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_googleanalytics <span class="ot">&lt;-</span></span>
+<span id="cb1-410"><a href="análisis.html#cb1-410" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(google analytics)&quot;</span>)</span>
+<span id="cb1-411"><a href="análisis.html#cb1-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-412"><a href="análisis.html#cb1-412" aria-hidden="true" tabindex="-1"></a><span class="co">#SEO</span></span>
+<span id="cb1-413"><a href="análisis.html#cb1-413" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_seo <span class="ot">&lt;-</span></span>
+<span id="cb1-414"><a href="análisis.html#cb1-414" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(seo)&quot;</span>)</span>
+<span id="cb1-415"><a href="análisis.html#cb1-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-416"><a href="análisis.html#cb1-416" aria-hidden="true" tabindex="-1"></a><span class="co">#SEM</span></span>
+<span id="cb1-417"><a href="análisis.html#cb1-417" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_sem <span class="ot">&lt;-</span></span>
+<span id="cb1-418"><a href="análisis.html#cb1-418" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(sem)&quot;</span>)</span>
+<span id="cb1-419"><a href="análisis.html#cb1-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-420"><a href="análisis.html#cb1-420" aria-hidden="true" tabindex="-1"></a><span class="co">#Adobe Creative</span></span>
+<span id="cb1-421"><a href="análisis.html#cb1-421" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_creative <span class="ot">&lt;-</span></span>
+<span id="cb1-422"><a href="análisis.html#cb1-422" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(adobe creative|creative)&quot;</span>)</span>
+<span id="cb1-423"><a href="análisis.html#cb1-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-424"><a href="análisis.html#cb1-424" aria-hidden="true" tabindex="-1"></a><span class="co">#HPLC</span></span>
+<span id="cb1-425"><a href="análisis.html#cb1-425" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_hplc <span class="ot">&lt;-</span></span>
+<span id="cb1-426"><a href="análisis.html#cb1-426" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(hplc)&quot;</span>)</span>
+<span id="cb1-427"><a href="análisis.html#cb1-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-428"><a href="análisis.html#cb1-428" aria-hidden="true" tabindex="-1"></a><span class="co">#Wordpress</span></span>
+<span id="cb1-429"><a href="análisis.html#cb1-429" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_wordpress <span class="ot">&lt;-</span></span>
+<span id="cb1-430"><a href="análisis.html#cb1-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(wordpress)&quot;</span>)</span>
+<span id="cb1-431"><a href="análisis.html#cb1-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-432"><a href="análisis.html#cb1-432" aria-hidden="true" tabindex="-1"></a><span class="co">#GMP</span></span>
+<span id="cb1-433"><a href="análisis.html#cb1-433" aria-hidden="true" tabindex="-1"></a>data_unificada<span class="sc">$</span>req_gmp <span class="ot">&lt;-</span></span>
+<span id="cb1-434"><a href="análisis.html#cb1-434" aria-hidden="true" tabindex="-1"></a>  <span class="fu">detectar</span>(data_unificada<span class="sc">$</span>requisitos, <span class="st">&quot;(gmp)&quot;</span>)</span></code></pre></div>
+<pre><code>## $Logística</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<pre><code>## 
+## $`Administración y Finanzas`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
+<pre><code>## 
+## $`Computación y redes`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-3.png" width="672" /></p>
+<pre><code>## 
+## $`Prevención riesgos`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-4.png" width="672" /></p>
+<pre><code>## 
+## $Comercio</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-5.png" width="672" /></p>
+<pre><code>## 
+## $Cultura</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-6.png" width="672" /></p>
+<pre><code>## 
+## $`Auditoría y contabilidad`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-7.png" width="672" /></p>
+<pre><code>## 
+## $`Química y farmacia`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-8.png" width="672" /></p>
+<pre><code>## 
+## $Enfermería</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-9.png" width="672" /></p>
+<pre><code>## 
+## $`Publicidad y RR.PP`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-10.png" width="672" /></p>
+<pre><code>## 
+## $Construcción</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-11.png" width="672" /></p>
+<pre><code>## 
+## $`Diseńo y Audiovisual`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-12.png" width="672" /></p>
+<pre><code>## 
+## $Geología</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-13.png" width="672" /></p>
+<pre><code>## 
+## $Gastronomía</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-14.png" width="672" /></p>
+<pre><code>## 
+## $`Hotelería y turismo`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-15.png" width="672" /></p>
+<pre><code>## 
+## $`Maquinaria y automotriz`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-16.png" width="672" /></p>
+<pre><code>## 
+## $Electricidad</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-17.png" width="672" /></p>
+<pre><code>## 
+## $Agrícola</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-18.png" width="672" /></p>
+<pre><code>## 
+## $Alimentación</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-19.png" width="672" /></p>
+<pre><code>## 
+## $`Tecnología médica`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-20.png" width="672" /></p>
+<pre><code>## 
+## $Medioambiente</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-21.png" width="672" /></p>
+<pre><code>## 
+## $Veterinario</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-22.png" width="672" /></p>
+<pre><code>## 
+## $Otros</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-23.png" width="672" /></p>
+<pre><code>## 
+## $Odontología</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-24.png" width="672" /></p>
+<pre><code>## 
+## $RRPP</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-25.png" width="672" /></p>
+<pre><code>## 
+## $`Diseño y Audiovisual`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-26.png" width="672" /></p>
+<pre><code>## 
+## $Publicidad</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-27.png" width="672" /></p>
+<pre><code>## 
+## $`Geografía y geomática`</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-28.png" width="672" /></p>
+<pre><code>## 
+## $Deporte</code></pre>
+<p><img src="Bookdown_files/figure-html/unnamed-chunk-19-29.png" width="672" /></p>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introducción.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusión.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": false,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
