@@ -10,7 +10,7 @@ async function sendMessage() {
     chatMessages.appendChild(userMessage);
     userInput.value = '';
     
-    const response = await fetchGPT4Response(message);
+    const response = await fetchGPT3Response(message);
     
     const botMessage = document.createElement('div');
     botMessage.className = 'botMessage';
