@@ -1,63 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavashak - Natural Dried Fruit Product</title>
-    <!-- Add a link to your CSS stylesheet here -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <title>Lavashak - Producto natural de frutas secas</title>
     <style>
         body {
+            background-color: green;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
         }
-        header {
-            background-color: darkgreen;
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
             color: white;
-            text-align: center;
-            padding: 1rem;
         }
-        main {
-            padding: 2rem;
-            text-align: center;
+
+        p {
+            color: white;
         }
-        img {
-            max-width: 100%;
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .fruit-image {
+            width: 200px;
             height: auto;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Welcome to Lavashak - Natural Dried Fruit Products</h1>
-    </header>
-
-    <main>
-        <h2>About Lavashak</h2>
+    <div class="container">
+        <h1>Lavashak - Producto natural de frutas secas</h1>
         <p>
-            Lavashak is a delicious and healthy snack made from all-natural dried fruit. Our fruit leather (lavashak) is packed with nutrients, fiber, and vitamins, making it the perfect choice for a guilt-free treat. Enjoy the authentic taste of various fruits without any added preservatives or chemicals.
+            Lavashak es un delicioso y saludable producto natural hecho a base de frutas secas. Es una alternativa perfecta para aquellos que buscan disfrutar de un snack nutritivo y sabroso. Algunos de los ingredientes que puedes encontrar en nuestros productos son manzanas, ciruelas, uvas, mangos y mucho más.
         </p>
-        <img src="imagenes_lavashak/recodo.jpg" alt="Assorted Lavashak">
-        <h2>Our Products</h2>
-        <ul>
-            <li>Apple Lavashak</li>
-            <li>Apricot Lavashak</li>
-            <li>Berry Lavashak</li>
-            <li>Cherry Lavashak</li>
-            <li>Peach Lavashak</li>
-            <li>Plum Lavashak</li>
-            <li>Pomegranate Lavashak</li>
-        </ul>
-
-        <h2>Contact Us</h2>
-        <p>Email: info@lavashak.com</p>
-        <p>Phone: (555) 123-4567</p>
-    </main>
-
-    <script>
-        // Add JavaScript functionality here (optional)
-    </script>
+        <div class="img-container">
+            <img class="fruit-image" src="apple.jpg" alt="Manzanas">
+            <img class="fruit-image" src="plum.jpg" alt="Ciruelas">
+            <img class="fruit-image" src="grape.jpg" alt="Uvas">
+            <img class="fruit-image" src="mango.jpg" alt="Mangos">
+        </div>
+    </div>
 </body>
 </html>
