@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js"></script>
-  <title>Lavashak - Producto natural hecho de frutas secas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavashak - Productos naturales a base de fruta seca</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
     <h1>Lavashak</h1>
-    <p>Producto natural hecho de frutas secas</p>
-  </header>
-  <main>
-    <img src="imagenes_lavashak/lavashak1.jpg" alt="Imágenes de frutas" id="fruitImage">
-    <h2>¿Qué es Lavashak?</h2>
-    <p>Lavashak es un producto natural elaborado a base de frutas secas. Es delicioso y nutritivo, ideal para todas las edades.</p>
-    <div id="chat">
-      <div id="chatMessages"></div>
-      <input type="text" id="messageInput" placeholder="Escribe tu pregunta aquí...">
-      <button onclick="sendMessage()">Enviar</button>
+    <p>Lavashak es un producto natural hecho a base de frutas secas.</p>
+    <img src="images/frutas.jpg" alt="Frutas" class="fruits-image">
+
+    <div class="chat-container">
+        <div id="chat-output"></div>
+        <input type="text" id="chat-input" placeholder="Escriba su mensaje aquí..." />
+        <button id="chat-submit">Enviar</button>
     </div>
-  </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,29 +1,32 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: green;
-  background-image: url('fruits-background.jpg');
-  background-size: cover;
+    background-color: green;
+    font-family: Arial, sans-serif;
 }
 
-header {
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.8);
+.fruits-image {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-h1 {
-  margin: 0;
+.chat-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: white;
+    border: 1px solid black;
+    width: 300px;
+    padding: 20px;
 }
 
-#fruitImage {
-  max-width: 100%;
+#chat-output {
+    height: 200px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
 }
 
-#chat {
-  max-width: 500px;
-  margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+#chat-input {
+    width: 100%;
+    margin-bottom: 10px;
 }

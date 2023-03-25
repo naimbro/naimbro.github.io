@@ -1,48 +1,31 @@
-async function sendMessage() {
-  const userInput = document.getElementById('messageInput');
-  const chatMessages = document.getElementById('chatMessages');
-  const message = userInput.value;
-  
-  if (message) {
-    const userMessage = document.createElement('div');
-    userMessage.className = 'userMessage';
-    userMessage.innerHTML = message;
-    chatMessages.appendChild(userMessage);
-    userInput.value = '';
-    
-    const response = await fetchGPT3Response(message);
-    
-    const botMessage = document.createElement('div');
-    botMessage.className = 'botMessage';
-    botMessage.innerHTML = response;
-    chatMessages.appendChild(botMessage);
-  }
-}
+$(document).ready(function () {
 
-async function fetchGPT3Response(message) {
-  // Replace with your API Key and endpoint
-  const apiKey = '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';
-  const apiEndpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions';
+    $('#chat-submit').click(function (e) {
+        const message = $('#chat-input').val().trim();
 
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + apiKey
-  };
+        if (message.length) {
+            $('<p>').text(message).appendTo('#chat-output');
+            sendToApi(message);
+        }
+        $('#chat-input').val('');
+        e.preventDefault();
+    });
 
-  const body = {
-    'prompt': 'Translate the following English text to Spanish: ' + message,
-    'max_tokens': 50,
-    'temperature': 0.7,
-    'top_p': 1,
-    'n': 1
-  };
+    function sendToApi(message) {
+        $.ajax({
+            type: "POST",
+            url: "api/chat.php",
+            data: { message: message }
+        }).done(function (response) {
+            try {
+                const jsonResponse = JSON.parse(response);
+                $('<p>').text(jsonResponse.text).appendTo('#chat-output');
+            } catch (err) {
+                console.error("Error parsing the response: ", err);
+            }
+        }).fail(function (jqXHR, textStatus) {
+            console.error("Error sending message to the API: ", textStatus);
+        });
+    }
 
-  const response = await fetch(apiEndpoint, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(body)
-  });
-
-  const json = await response.json();
-  return json.choices[0].text;
-}
+});
