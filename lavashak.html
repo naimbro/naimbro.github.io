@@ -1,55 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavashak - Producto natural de frutas secas</title>
-    <style>
-        body {
-            background-color: green;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: white;
-        }
-
-        p {
-            color: white;
-        }
-
-        .img-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .fruit-image {
-            width: 200px;
-            height: auto;
-            padding: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+  <title>Lavashak - Producto natural hecho de frutas secas</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Lavashak - Producto natural de frutas secas</h1>
-        <p>
-            Lavashak es un delicioso y saludable producto natural hecho a base de frutas secas. Es una alternativa perfecta para aquellos que buscan disfrutar de un snack nutritivo y sabroso. Algunos de los ingredientes que puedes encontrar en nuestros productos son manzanas, ciruelas, uvas, mangos y mucho más.
-        </p>
-        <div class="img-container">
-            <img class="fruit-image" src="imagenes_lavashak/apple.jpeg" alt="Manzanas">
-            <img class="fruit-image" src="imagenes_lavashak/ciruela.jpeg" alt="Ciruelas">
-            <img class="fruit-image" src="imagenes_lavashak/durazno.jpeg" alt="Uvas">
-            <img class="fruit-image" src="imagenes_lavashak/lavashak1.jpg" alt="Mangos">
-        </div>
+  <header>
+    <h1>Lavashak</h1>
+    <p>Producto natural hecho de frutas secas</p>
+  </header>
+  <main>
+    <img src="fruits.jpg" alt="Imágenes de frutas" id="fruitImage">
+    <h2>¿Qué es Lavashak?</h2>
+    <p>Lavashak es un producto natural elaborado a base de frutas secas. Es delicioso y nutritivo, ideal para todas las edades.</p>
+    <div id="chat">
+      <div id="chatMessages"></div>
+      <input type="text" id="messageInput" placeholder="Escribe tu pregunta aquí...">
+      <button onclick="sendMessage()">Enviar</button>
     </div>
+  </main>
 </body>
 </html>
