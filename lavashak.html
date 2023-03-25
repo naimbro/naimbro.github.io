@@ -3,95 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lavashak - Producto Natural de Frutas Secas</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@openai/assistant@1.1.1/build/assistant.js"></script>
+    <title>Producto Lavashak</title>
+    <style>
+        body {
+            background-color: green;
+        }
+    </style>
 </head>
-<style>
-    body {
-        background-color: green;
-    }
-    .container {
-        text-align: center;
-    }
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-    .chatbot-container {
-        width: 300px;
-        height: 500px;
-        border: 1px solid black;
-        margin: 0 auto;
-    }
-    .messages {
-        height: 430px;
-        overflow-y: scroll;
-    }
-</style>
 <body>
-    <div class="container">
-        <h1>Lavashak - Producto Natural de Frutas Secas</h1>
-        <img src="imagenes_lavashak/lavashak1.jpg" alt="Lavashak">
-        <div class="chatbot-container">
-            <div class="messages"></div>
-            <input type="text" id="user-input" placeholder="Escribe un mensaje">
-            <button id="send-button">Enviar</button>
-        </div>
+    <h1>Bienvenido a nuestra página de Lavashak</h1>
+    <p>El Lavashak es un producto natural hecho a base de frutas secas.</p>
+    <img src="imagenes_lavashak/lavashak1.jpg" alt="Imagen del Lavashak">
+
+    <h2>¿Tienes alguna pregunta? ¡Pregúntale a nuestro chatbot!</h2>
+    <div>
+        <input id="userMsg" type="text" placeholder="Escribe tu pregunta aquí...">
+        <button onclick="sendToChatbot();">Enviar</button>
     </div>
-<script>
-    let assistant;
+    <div id="chatDiv">
+    </div>
 
-    // Connect to OpenAI API
-    async function connectToOpenAI() {
-        try {
-            assistant = new Assistant({ tokenProvider: getAPIToken });
-        } catch (error) {
-            console.error('Error conectando con la API de OpenAI:', error);
+    <script>
+        async function sendToChatbot() {
+            const userMsg = document.getElementById("userMsg").value;
+            if(!userMsg) return;
+
+            const apiKey = "your_api_key_goes_here";
+            const apiURL = "your_api_endpoint_goes_here";
+
+            const responseMsg = await fetch(apiURL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    message: userMsg
+                })
+            });
+
+            const chatDiv = document.getElementById("chatDiv");
+            const userMsgElem = document.createElement("p");
+            userMsgElem.classList.add("user-msg");
+            userMsgElem.textContent = `Tú: ${userMsg}`;
+            chatDiv.appendChild(userMsgElem);
+
+            if(responseMsg.ok) {
+                const data = await responseMsg.json();
+                const botMsgElem = document.createElement("p");
+                botMsgElem.classList.add("bot-msg");
+                botMsgElem.textContent = `Bot: ${data.reply}`;
+                chatDiv.appendChild(botMsgElem);
+            } else {
+                const errMsgElem = document.createElement("p");
+                errMsgElem.classList.add("error");
+                errMsgElem.textContent = "Hubo un error. No pudimos obtener una respuesta del chatbot. Por favor, inténtalo de nuevo.";
+                chatDiv.appendChild(errMsgElem);
+            }
         }
-    };
-
-    // Make sure API key is not exposed
-    async function getAPIToken() {
-        const response = await fetch('/api-key', { method: 'GET' });
-        const json = await response.json();
-        return json.api_key;
-    }
-
-    // Add messages to chatbot
-    function addMessage(messageText, isUserMessage) {
-        const messagesDiv = document.querySelector('.messages');
-        const messageWrapper = document.createElement('div');
-        messageWrapper.className = isUserMessage ? 'user-message-wrapper' : 'assistant-message-wrapper';
-        const message = document.createElement('p');
-        message.textContent = messageText;
-        messageWrapper.appendChild(message);
-        messagesDiv.appendChild(messageWrapper);
-    }
-
-    // Send user message to OpenAI Assistant
-    async function sendUserMessage() {
-        const userInput = document.getElementById('user-input');
-        const messageText = userInput.value.trim();
-        if (!messageText) return;
-
-        userInput.value = '';
-
-        addMessage(messageText, true);
-
-        try {
-            const response = await assistant.message({ text: messageText });
-            const assistantResponse = response.choices[0].text;
-            addMessage(assistantResponse, false);
-        } catch (error) {
-            console.error('Error enviando mensaje al asistente:', error);
-        }
-    }
-
-    // Set up button event listener
-    document.getElementById('send-button').addEventListener('click', sendUserMessage);
-
-    connectToOpenAI();
-</script>
+    </script>
 </body>
 </html>
