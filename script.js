@@ -21,7 +21,7 @@ async function sendMessage() {
 
 async function fetchGPT4Response(message) {
   // Replace with your API Key and endpoint
-  const apiKey = 'yourapi-key';
+  const apiKey = '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';
   const apiEndpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions
 
   const headers = {
