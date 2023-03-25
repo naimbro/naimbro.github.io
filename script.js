@@ -19,10 +19,10 @@ async function sendMessage() {
   }
 }
 
-async function fetchGPT4Response(message) {
+async function fetchGPT3Response(message) {
   // Replace with your API Key and endpoint
   const apiKey = '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';
-  const apiEndpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions
+  const apiEndpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions';
 
   const headers = {
     'Content-Type': 'application/json',
@@ -31,7 +31,10 @@ async function fetchGPT4Response(message) {
 
   const body = {
     'prompt': 'Translate the following English text to Spanish: ' + message,
-    'max_tokens': 50
+    'max_tokens': 50,
+    'temperature': 0.7,
+    'top_p': 1,
+    'n': 1
   };
 
   const response = await fetch(apiEndpoint, {
