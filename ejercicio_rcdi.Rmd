@@ -1,0 +1,27 @@
+---
+title: "Untitled"
+author: "Naim Bro"
+date: "2023-05-16"
+output: html_document
+---
+
+
+Pregunta 1:</b> Carga Tidyverse
+
+```{r}
+
+```
+
+<b>Pregunta 2:</b> Carga la tabla que está en el link abajo, y asígnale el nombre "df".<br>
+https://raw.githubusercontent.com/rocarvaj/rcd1-uai/main/data/ejemplo-notas.csv
+* Tip: usa el argumento ```encoding = 'UTF-8'``` para evitar problemas con las tildes.
+
+```{r}
+
+```
+
+Pregunta 3: filtra la tabla df para quedarte con género masculino y personas entre 20 y 30 años.
+
+```{r}
+
+```

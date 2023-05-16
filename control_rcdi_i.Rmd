@@ -53,6 +53,8 @@ https://raw.githubusercontent.com/rocarvaj/rcd1-uai/main/data/ejemplo-notas.csv
 ```{r}
 # escribe tu respuesta aquí.
 
+``
+
 ```
 
 <b>Pregunta 7:</b> Filtra filas con asistencia mayor a 12.
