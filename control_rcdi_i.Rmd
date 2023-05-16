@@ -1,0 +1,62 @@
+---
+title: "control 16/05/2023"
+author: "Naim Bro"
+date: "2023-05-16"
+output: html_document
+---
+
+## R Markdown
+
+# Control 1
+Razonamiento con datos cuantitativos I, sección 10 <br>
+Profesor: Naim Bro <br>
+Ayudante: Martín Castillo <br>
+
+
+<b>Pregunta 1:</b> Carga Tidyverse.
+
+```{r}
+# escribe tu respuesta aquí.
+
+```
+
+<b>Pregunta 2:</b> Carga la tabla que está en el link abajo, y asígnale el nombre "df".<br>
+https://raw.githubusercontent.com/rocarvaj/rcd1-uai/main/data/ejemplo-notas.csv
+* Tip: usa el argumento ```encoding = 'UTF-8'``` para evitar problemas con las tildes.
+
+```{r}
+# escribe tu respuesta aquí.
+# link: https://raw.githubusercontent.com/rocarvaj/rcd1-uai/main/data/ejemplo-notas.csv
+
+```
+
+<b>Pregunta 3:</b> Imprime las primeras filas del dataframe.
+```{r}
+# escribe tu respuesta aquí.
+# link: https://raw.githubusercontent.com/rocarvaj/rcd1-uai/main/data/ejemplo-notas.csv
+
+```
+
+<b>Pregunta 4:</b> ¿Cuáles son los nombres de columna?
+```{r}
+# escribe tu respuesta aquí.
+
+```
+
+<b>Pregunta 5:</b> Filtra las filas que corresponden a país Chile.
+```{r}
+# escribe tu respuesta aquí.
+
+```
+
+<b>Pregunta 6:</b> Selecciona las columnas nombre y primera prueba.
+```{r}
+# escribe tu respuesta aquí.
+
+```
+
+<b>Pregunta 7:</b> Filtra filas con asistencia mayor a 12.
+```{r}
+# escribe tu respuesta aquí.
+
+```
