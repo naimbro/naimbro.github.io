@@ -1,475 +1,475 @@
-edad,estatura,num_familia,km_uai,nota_proceso,n_peliculas,horas_cel,seccion,sede_uai,sexo,zodiaco,formato_clases
-20,168,1,5,10.0,0,2,V5,Viña del Mar,Femenino,Virgo,Presencial
-18,175,2,390,10.0,0,2,V5,Viña del Mar,Masculino,Capricornio,Presencial
-18,167,2,4,10.0,0,3,V5,Viña del Mar,Femenino,Escorpio,Presencial
-18,164,1,20,9.4,2,3,V5,Viña del Mar,Femenino,Escorpio,Híbrido
-18,164,2,6,4.0,1,3,V5,Viña del Mar,Femenino,Piscis,Híbrido
-18,177,1,1016,10.0,1,3,V5,Viña del Mar,Masculino,Escorpio,Híbrido
-18,186,1,6,8.5,1,3,V5,Viña del Mar,Masculino,Leo,Presencial
-19,167,2,9,8.2,0,4,V5,Viña del Mar,Femenino,Leo,Presencial
-18,167,3,102,8.5,1,4,V5,Viña del Mar,Femenino,Escorpio,Presencial
-18,155,1,6,8.5,2,4,V5,Viña del Mar,Femenino,Leo,Online
-18,183,1,650,9.5,0,4,V5,Viña del Mar,Masculino,Libra,Híbrido
-18,178,4,420,8.1,2,4,V5,Viña del Mar,Masculino,Piscis,Híbrido
-19,180,2,18,3.0,2,4,V5,Viña del Mar,Masculino,Sagitario,Presencial
-17,177,1,16,8.5,0,4,V5,Viña del Mar,Masculino,Géminis,Presencial
-18,188,1,14,10.0,0,4,V5,Viña del Mar,Masculino,Aries,Presencial
-18,161,1,81,10.0,0,5,V5,Viña del Mar,Femenino,Libra,Presencial
-19,172,1,1018,9.3,0,5,V5,Viña del Mar,Masculino,Cáncer,Presencial
-18,182,2,623,8.8,2,5,V5,Viña del Mar,Masculino,Géminis,Híbrido
-18,179,4,10,8.8,2,5,V5,Viña del Mar,Masculino,Sagitario,Híbrido
-18,180,3,4,9.5,0,5,V5,Viña del Mar,Masculino,Libra,Presencial
-18,168,1,13,10.0,1,6,V5,Viña del Mar,Femenino,Cáncer,Híbrido
-18,180,1,20,7.0,2,6,V5,Viña del Mar,Femenino,Virgo,Presencial
-18,170,2,4,9.0,2,6,V5,Viña del Mar,Femenino,Acuario,Híbrido
-19,173,2,130,10.0,1,6,V5,Viña del Mar,Femenino,Virgo,Online
-18,161,1,7,8.7,0,6,V5,Viña del Mar,Femenino,Cáncer,Híbrido
-18,168,2,9,8.0,0,7,V5,Viña del Mar,Femenino,Virgo,Presencial
-18,154,1,15,10.0,5,7,V5,Viña del Mar,Femenino,Virgo,Presencial
-18,175,2,6,9.5,0,7,V5,Viña del Mar,Masculino,Sagitario,Presencial
-17,175,1,5,6.5,1,9,V5,Viña del Mar,Masculino,Aries,Presencial
-19,180,0,1144,9.4,1,1,V4,Viña del Mar,Masculino,Aries,Presencial
-19,177,3,143,9.2,1,2,V4,Viña del Mar,Masculino,Géminis,Online
-18,156,4,7,10.0,3,3,V4,Viña del Mar,Femenino,Cáncer,Presencial
-17,156,3,16,9.0,0,4,V4,Viña del Mar,Femenino,Cáncer,Híbrido
-18,157,3,40,10.0,0,4,V4,Viña del Mar,Femenino,Sagitario,Presencial
-18,164,2,135,10.0,2,4,V4,Viña del Mar,Femenino,Géminis,Híbrido
-18,176,0,14,8.8,0,4,V4,Viña del Mar,Masculino,Aries,Presencial
-18,173,1,3,8.1,0,4,V4,Viña del Mar,Masculino,Leo,Presencial
-18,170,1,760,9.5,2,5,V4,Viña del Mar,Masculino,Piscis,Presencial
-17,175,2,124,10.0,1,5,V4,Viña del Mar,Masculino,Géminis,Presencial
-18,170,1,23,8.0,1,5,V4,Viña del Mar,Masculino,Sagitario,Híbrido
-19,194,4,21,10.0,0,5,V4,Viña del Mar,Masculino,Capricornio,Presencial
-20,175,3,10,8.5,2,5,V4,Viña del Mar,Masculino,Piscis,Híbrido
-18,184,2,5,3.5,1,5,V4,Viña del Mar,Masculino,Cáncer,Híbrido
-18,165,5,13,10.0,3,6,V4,Viña del Mar,Femenino,Capricornio,Presencial
-18,170,1,26,10.0,1,6,V4,Viña del Mar,Femenino,Acuario,Presencial
-19,173,2,12,10.0,2,6,V4,Viña del Mar,Masculino,Cáncer,Presencial
-18,162,1,10,10.0,0,7,V4,Viña del Mar,Femenino,Géminis,Presencial
-19,161,2,1808,5.0,1,7,V4,Viña del Mar,Femenino,Capricornio,Presencial
-24,162,3,18,10.0,0,7,V4,Viña del Mar,Femenino,Capricornio,Presencial
-18,186,2,6,7.0,5,7,V4,Viña del Mar,Masculino,Libra,Presencial
-19,169,1,259,10.0,0,8,V4,Viña del Mar,Femenino,Virgo,Presencial
-19,170,1,623,10.0,2,8,V4,Viña del Mar,Masculino,Escorpio,Híbrido
-19,180,2,9,10.0,0,8,V4,Viña del Mar,Masculino,Piscis,Híbrido
-18,165,2,27,10.0,2,9,V4,Viña del Mar,Femenino,Aries,Presencial
-18,168,2,24,7.9,2,9,V4,Viña del Mar,Femenino,Capricornio,Presencial
-18,191,3,9,10.0,1,12,V4,Viña del Mar,Masculino,Libra,Online
-18,168,6,4,9.8,0,12,V4,Viña del Mar,Masculino,Cáncer,Presencial
-18,184,3,130,8.6,2,2,V3,Viña del Mar,Masculino,Leo,Híbrido
-19,161,1,3,8.5,1,3,V3,Viña del Mar,Femenino,Acuario,Híbrido
-18,181,2,104,10.0,0,3,V3,Viña del Mar,Masculino,Tauro,Híbrido
-19,151,4,15,6.0,0,4,V3,Viña del Mar,Femenino,Virgo,Híbrido
-19,168,2,82,10.0,2,4,V3,Viña del Mar,Femenino,Capricornio,Presencial
-19,160,1,4,10.0,2,4,V3,Viña del Mar,Femenino,Sagitario,Presencial
-19,167,3,144,10.0,2,4,V3,Viña del Mar,Femenino,Escorpio,Presencial
-18,191,2,135,10.0,5,4,V3,Viña del Mar,Masculino,Géminis,Presencial
-18,175,3,102,10.0,3,4,V3,Viña del Mar,Masculino,Libra,Online
-18,182,1,28,10.0,0,4,V3,Viña del Mar,Masculino,Escorpio,Presencial
-18,185,2,12,10.0,1,4,V3,Viña del Mar,Masculino,Leo,Híbrido
-18,188,3,7,7.5,1,4,V3,Viña del Mar,Masculino,Leo,Híbrido
-19,189,2,5,9.0,1,4,V3,Viña del Mar,Masculino,Escorpio,Presencial
-17,174,1,293,6.2,0,5,V3,Viña del Mar,Femenino,Aries,Online
-18,162,2,8,10.0,1,5,V3,Viña del Mar,Femenino,Acuario,Presencial
-18,174,2,129,8.8,0,5,V3,Viña del Mar,Masculino,Capricornio,Presencial
-18,150,2,43,7.0,0,6,V3,Viña del Mar,Femenino,Aries,Presencial
-18,166,2,8,10.0,1,6,V3,Viña del Mar,Femenino,Escorpio,Presencial
-18,175,2,201,10.0,4,6,V3,Viña del Mar,Masculino,Leo,Presencial
-18,183,4,16,7.8,0,6,V3,Viña del Mar,Masculino,Géminis,Híbrido
-18,162,2,3,9.9,1,7,V3,Viña del Mar,Femenino,Virgo,Presencial
-19,166,1,10,10.0,0,7,V3,Viña del Mar,Femenino,Acuario,Presencial
-18,170,4,136,9.5,1,7,V3,Viña del Mar,Masculino,Géminis,Presencial
-18,167,1,10,5.9,3,8,V3,Viña del Mar,Femenino,Cáncer,Híbrido
-19,172,2,131,10.0,0,8,V3,Viña del Mar,Masculino,Sagitario,Híbrido
-18,171,3,12,10.0,2,9,V3,Viña del Mar,Femenino,Escorpio,Presencial
-19,174,1,17,8.7,1,10,V3,Viña del Mar,Masculino,Acuario,Presencial
-18,174,1,47,8.5,1,12,V3,Viña del Mar,Femenino,Libra,Presencial
-18,170,4,185,8.2,2,1,V2,Viña del Mar,Masculino,Aries,Online
-18,175,4,14,8.1,0,2,V2,Viña del Mar,Femenino,Aries,Presencial
-19,158,1,12,10.0,0,3,V2,Viña del Mar,Femenino,Sagitario,Presencial
-18,162,2,16,9.5,0,3,V2,Viña del Mar,Femenino,Tauro,Híbrido
-19,163,3,10,10.0,2,3,V2,Viña del Mar,Femenino,Capricornio,Híbrido
-18,173,4,294,7.5,1,3,V2,Viña del Mar,Masculino,Capricornio,Online
-18,183,2,7,10.0,3,3,V2,Viña del Mar,Masculino,Capricornio,Presencial
-19,181,1,2,8.2,1,3,V2,Viña del Mar,Masculino,Virgo,Híbrido
-19,162,1,2,10.0,3,4,V2,Viña del Mar,Femenino,Piscis,Presencial
-19,168,2,37,10.0,2,4,V2,Viña del Mar,Femenino,Leo,Híbrido
-19,177,4,201,7.0,0,4,V2,Viña del Mar,Masculino,Sagitario,Presencial
-19,170,3,145,10.0,1,4,V2,Viña del Mar,Masculino,Capricornio,Presencial
-19,179,2,14,9.0,3,4,V2,Viña del Mar,Masculino,Sagitario,Híbrido
-19,180,1,10,8.0,1,4,V2,Viña del Mar,Masculino,Acuario,Presencial
-18,158,1,47,8.7,0,5,V2,Viña del Mar,Femenino,Sagitario,Híbrido
-18,155,3,2,9.0,0,5,V2,Viña del Mar,Femenino,Capricornio,Híbrido
-18,155,2,27,8.9,3,5,V2,Viña del Mar,Femenino,Virgo,Presencial
-19,173,2,12,7.0,2,5,V2,Viña del Mar,Masculino,Piscis,Presencial
-19,163,2,13,9.5,0,6,V2,Viña del Mar,Femenino,Capricornio,Presencial
-18,186,1,21,10.0,2,6,V2,Viña del Mar,Masculino,Escorpio,Presencial
-19,180,3,15,10.0,2,6,V2,Viña del Mar,Masculino,Capricornio,Híbrido
-18,157,2,13,8.0,0,6,V2,Viña del Mar,Masculino,Sagitario,Presencial
-19,177,1,5,10.0,0,6,V2,Viña del Mar,Masculino,Leo,Híbrido
-18,172,3,13,9.7,1,7,V2,Viña del Mar,Femenino,Cáncer,Híbrido
-20,177,1,4,10.0,2,7,V2,Viña del Mar,Femenino,Cáncer,Presencial
-18,160,1,8,10.0,2,7,V2,Viña del Mar,Femenino,Cáncer,Presencial
-19,162,1,11,5.0,3,10,V2,Viña del Mar,Femenino,Escorpio,Híbrido
-18,170,1,8,10.0,2,12,V2,Viña del Mar,Femenino,Piscis,Híbrido
-19,156,3,129,9.0,1,12,V2,Viña del Mar,Femenino,Piscis,Presencial
-18,167,1,10,9.0,1,1,V1,Viña del Mar,Masculino,Escorpio,Híbrido
-27,175,2,5,10.0,0,2,V1,Viña del Mar,Femenino,Sagitario,Presencial
-18,174,3,10,10.0,6,2,V1,Viña del Mar,Masculino,Cáncer,Híbrido
-18,180,3,11,10.0,0,3,V1,Viña del Mar,Masculino,Tauro,Híbrido
-21,178,2,10,10.0,0,3,V1,Viña del Mar,Masculino,Acuario,Híbrido
-19,157,4,20,1.6,3,4,V1,Viña del Mar,Femenino,Cáncer,Híbrido
-18,163,2,150,5.0,2,4,V1,Viña del Mar,Femenino,Sagitario,Presencial
-17,166,3,3,10.0,2,4,V1,Viña del Mar,Femenino,Tauro,Presencial
-18,160,1,9,9.0,2,5,V1,Viña del Mar,Femenino,Cáncer,Presencial
-20,165,1,3,10.0,0,5,V1,Viña del Mar,Femenino,Libra,Presencial
-18,164,1,1009,9.0,2,5,V1,Viña del Mar,Femenino,Escorpio,Online
-21,187,1,421,10.0,2,5,V1,Viña del Mar,Masculino,Cáncer,Híbrido
-22,176,2,139,9.0,3,5,V1,Viña del Mar,Masculino,Acuario,Híbrido
-18,181,2,14,10.0,1,5,V1,Viña del Mar,Masculino,Capricornio,Híbrido
-22,176,1,12,10.0,0,5,V1,Viña del Mar,Masculino,Capricornio,Híbrido
-19,176,2,10,9.0,2,5,V1,Viña del Mar,Masculino,Sagitario,Presencial
-18,184,3,3,8.5,4,5,V1,Viña del Mar,Masculino,Libra,Presencial
-18,176,1,3,9.5,2,5,V1,Viña del Mar,Masculino,Aries,Híbrido
-18,179,3,2,10.0,1,5,V1,Viña del Mar,Masculino,Capricornio,Híbrido
-18,167,1,8,10.0,1,6,V1,Viña del Mar,Femenino,Cáncer,Presencial
-19,164,2,50,10.0,0,6,V1,Viña del Mar,Femenino,Tauro,Híbrido
-18,187,3,1200,6.0,0,6,V1,Viña del Mar,Masculino,Sagitario,Presencial
-21,171,6,42,9.0,3,6,V1,Viña del Mar,Masculino,Escorpio,Presencial
-23,170,1,18,6.1,7,6,V1,Viña del Mar,Masculino,Aries,Presencial
-19,175,5,15,9.5,0,6,V1,Viña del Mar,Masculino,Tauro,Híbrido
-19,184,4,13,9.0,1,6,V1,Viña del Mar,Masculino,Piscis,Híbrido
-18,179,1,12,8.6,2,6,V1,Viña del Mar,Masculino,Acuario,Presencial
-21,184,2,12,10.0,0,7,V1,Viña del Mar,Masculino,Aries,Presencial
-18,165,2,10,9.7,4,7,V1,Viña del Mar,Masculino,Leo,Presencial
-18,180,2,5,8.0,6,7,V1,Viña del Mar,Masculino,Géminis,Presencial
-20,158,4,6,9.2,0,8,V1,Viña del Mar,Femenino,Escorpio,Presencial
-17,175,1,7,8.8,4,8,V1,Viña del Mar,Masculino,Tauro,Híbrido
-18,165,3,9,4.0,2,2,S9,Santiago,Femenino,Virgo,Híbrido
-17,183,3,5,6.5,1,2,S9,Santiago,Masculino,Tauro,Híbrido
-18,171,1,11,10.0,3,3,S9,Santiago,Femenino,Aries,Híbrido
-18,184,2,1346,9.0,0,3,S9,Santiago,Masculino,Géminis,Presencial
-18,180,3,14,9.0,2,3,S9,Santiago,Masculino,Sagitario,Presencial
-18,165,3,43,9.0,2,4,S9,Santiago,Femenino,Aries,Presencial
-18,176,3,10,8.0,3,4,S9,Santiago,Masculino,Capricornio,Online
-18,187,1,29,9.0,0,5,S9,Santiago,Masculino,Acuario,Híbrido
-18,188,2,25,8.9,1,5,S9,Santiago,Masculino,Virgo,Presencial
-18,175,3,7,8.7,0,5,S9,Santiago,Masculino,Aries,Híbrido
-18,165,1,12,10.0,0,6,S9,Santiago,Femenino,Leo,Híbrido
-20,180,5,35,9.5,1,6,S9,Santiago,Masculino,Acuario,Híbrido
-18,172,2,22,7.1,2,6,S9,Santiago,Masculino,Aries,Híbrido
-18,174,3,15,5.0,0,6,S9,Santiago,Masculino,Cáncer,Híbrido
-18,185,2,14,10.0,0,6,S9,Santiago,Masculino,Virgo,Híbrido
-18,153,2,37,10.0,1,7,S9,Santiago,Femenino,Libra,Híbrido
-18,180,2,22,8.0,0,7,S9,Santiago,Masculino,Libra,Presencial
-18,172,2,10,9.0,1,7,S9,Santiago,Masculino,Cáncer,Híbrido
-18,175,1,10,10.0,0,7,S9,Santiago,Masculino,Leo,Presencial
-18,164,2,25,9.4,0,8,S9,Santiago,Femenino,Escorpio,Híbrido
-18,180,2,15,7.0,1,9,S9,Santiago,Masculino,Cáncer,Híbrido
-18,170,2,6,7.0,2,4,S9,Santiago,Masculino,Tauro,Híbrido
-18,161,1,7,7.5,0,2,S8,Santiago,Femenino,Géminis,Híbrido
-18,185,1,27,7.5,1,2,S8,Santiago,Masculino,Capricornio,Híbrido
-19,160,1,34,9.2,0,3,S8,Santiago,Femenino,Libra,Híbrido
-18,180,1,101,7.1,1,3,S8,Santiago,Masculino,Leo,Híbrido
-19,173,1,21,7.0,0,3,S8,Santiago,Masculino,Piscis,Online
-19,174,2,15,7.0,0,3,S8,Santiago,Masculino,Piscis,Presencial
-19,178,0,13,10.0,2,3,S8,Santiago,Masculino,Leo,Presencial
-18,185,2,7,8.0,0,3,S8,Santiago,Masculino,Capricornio,Presencial
-20,160,3,6,9.5,4,3,S8,Santiago,Masculino,Leo,Híbrido
-18,175,0,28,8.6,2,4,S8,Santiago,Masculino,Libra,Híbrido
-18,178,2,22,8.0,3,4,S8,Santiago,Masculino,Capricornio,Presencial
-23,188,1,15,3.5,2,4,S8,Santiago,Masculino,Escorpio,Online
-18,184,5,13,9.3,3,4,S8,Santiago,Masculino,Géminis,Presencial
-18,170,3,9,8.5,1,4,S8,Santiago,Masculino,Aries,Presencial
-18,182,4,7,8.1,2,4,S8,Santiago,Masculino,Virgo,Presencial
-18,174,2,14,8.3,0,5,S8,Santiago,Masculino,Géminis,Híbrido
-18,196,6,13,8.0,2,5,S8,Santiago,Masculino,Sagitario,Presencial
-18,169,0,11,10.0,0,5,S8,Santiago,Masculino,Virgo,Presencial
-17,176,0,420,9.0,4,6,S8,Santiago,Masculino,Tauro,Presencial
-19,173,2,11,9.5,0,6,S8,Santiago,Masculino,Sagitario,Presencial
-18,180,2,6,7.0,0,6,S8,Santiago,Masculino,Escorpio,Presencial
-18,164,3,11,9.5,2,8,S8,Santiago,Femenino,Sagitario,Presencial
-19,188,1,14,6.5,2,8,S8,Santiago,Masculino,Acuario,Híbrido
-20,170,2,7,10.0,1,8,S8,Santiago,Masculino,Acuario,Presencial
-19,174,2,4,8.3,2,9,S8,Santiago,Masculino,Leo,Híbrido
-18,185,3,15,10.0,2,12,S8,Santiago,Masculino,Libra,Híbrido
-19,174,1,35,10.0,10,2,S7,Santiago,Masculino,Tauro,Online
-18,176,1,14,9.0,1,2,S7,Santiago,Masculino,Sagitario,Híbrido
-19,176,3,11,6.0,1,2,S7,Santiago,Masculino,Capricornio,Híbrido
-18,179,1,9,10.0,3,2,S7,Santiago,Masculino,Escorpio,Híbrido
-19,172,1,13,9.5,1,3,S7,Santiago,Femenino,Libra,Híbrido
-18,183,4,50,8.5,3,3,S7,Santiago,Masculino,Libra,Presencial
-19,160,0,23,9.6,3,4,S7,Santiago,Femenino,Piscis,Presencial
-18,180,6,1350,10.0,0,4,S7,Santiago,Masculino,Libra,Presencial
-18,169,4,16,8.0,5,4,S7,Santiago,Masculino,Sagitario,Presencial
-18,163,1,6,10.0,1,4,S7,Santiago,Masculino,Sagitario,Presencial
-18,162,6,11,7.6,0,5,S7,Santiago,Femenino,Cáncer,Híbrido
-18,169,4,13,10.0,3,5,S7,Santiago,Femenino,Virgo,Presencial
-18,173,1,12,8.0,1,5,S7,Santiago,Masculino,Libra,Híbrido
-19,169,5,37,10.0,3,6,S7,Santiago,Masculino,Libra,Híbrido
-19,182,4,18,10.0,2,6,S7,Santiago,Masculino,Escorpio,Híbrido
-19,192,2,16,10.0,0,7,S7,Santiago,Masculino,Piscis,Presencial
-18,179,3,14,8.1,1,7,S7,Santiago,Masculino,Géminis,Híbrido
-19,168,1,1044,6.0,2,10,S7,Santiago,Masculino,Escorpio,Presencial
-21,160,2,12,5.0,3,2,S6,Santiago,Femenino,Capricornio,Híbrido
-18,186,3,20,6.9,2,2,S6,Santiago,Masculino,Libra,Online
-18,175,1,10,10.0,1,2,S6,Santiago,Masculino,Géminis,Presencial
-18,156,2,34,7.5,1,3,S6,Santiago,Femenino,Capricornio,Presencial
-18,161,2,42,9.0,2,3,S6,Santiago,Femenino,Géminis,Presencial
-19,184,3,35,6.4,2,3,S6,Santiago,Masculino,Acuario,Presencial
-18,190,3,16,8.8,0,3,S6,Santiago,Masculino,Virgo,Híbrido
-21,179,2,12,10.0,0,3,S6,Santiago,Masculino,Cáncer,Híbrido
-19,168,1,10,10.0,4,4,S6,Santiago,Femenino,Escorpio,Presencial
-20,186,3,21,9.5,0,4,S6,Santiago,Masculino,Piscis,Híbrido
-18,172,2,21,10.0,0,5,S6,Santiago,Femenino,Leo,Híbrido
-18,160,1,6,9.5,1,5,S6,Santiago,Femenino,Capricornio,Híbrido
-18,180,2,33,10.0,2,5,S6,Santiago,Masculino,Libra,Presencial
-19,170,2,20,9.0,1,5,S6,Santiago,Masculino,Acuario,Presencial
-18,174,3,18,10.0,3,5,S6,Santiago,Masculino,Aries,Híbrido
-19,174,2,5,10.0,1,5,S6,Santiago,Masculino,Acuario,Presencial
-18,163,1,3012,10.0,1,6,S6,Santiago,Femenino,Géminis,Online
-18,165,1,9,9.0,3,6,S6,Santiago,Femenino,Piscis,Presencial
-18,162,2,12,10.0,1,6,S6,Santiago,Femenino,Sagitario,Presencial
-18,158,3,10,10.0,4,6,S6,Santiago,Femenino,Aries,Híbrido
-18,187,3,20,10.0,0,6,S6,Santiago,Masculino,Géminis,Presencial
-18,187,2,20,10.0,0,6,S6,Santiago,Masculino,Libra,Presencial
-18,180,2,11,5.5,1,6,S6,Santiago,Masculino,Sagitario,Híbrido
-18,165,1,35,5.0,0,7,S6,Santiago,Femenino,Piscis,Híbrido
-18,152,2,1041,9.2,5,7,S6,Santiago,Femenino,Tauro,Híbrido
-18,158,1,4,10.0,0,7,S6,Santiago,Femenino,Sagitario,Presencial
-18,190,1,7,8.0,4,7,S6,Santiago,Masculino,Leo,Presencial
-19,160,1,45,9.1,0,8,S6,Santiago,Femenino,Libra,Híbrido
-18,161,2,16,10.0,1,8,S6,Santiago,Femenino,Cáncer,Híbrido
-18,169,1,31,9.5,2,9,S6,Santiago,Masculino,Géminis,Online
-19,160,1,4,10.0,1,10,S6,Santiago,Femenino,Acuario,Híbrido
-18,176,3,50,10.0,7,12,S6,Santiago,Masculino,Leo,Híbrido
-18,170,1,411,10.0,1,2,S5,Santiago,Masculino,Cáncer,Presencial
-19,180,1,69,9.0,2,2,S5,Santiago,Masculino,Sagitario,Presencial
-18,175,3,40,10.0,1,2,S5,Santiago,Masculino,Acuario,Híbrido
-18,187,3,12,8.0,1,2,S5,Santiago,Masculino,Cáncer,Presencial
-19,176,2,13,7.0,1,3,S5,Santiago,Masculino,Sagitario,Presencial
-18,157,3,38,8.0,0,4,S5,Santiago,Femenino,Libra,Híbrido
-18,163,2,40,10.0,0,4,S5,Santiago,Femenino,Libra,Presencial
-18,160,0,104,9.2,0,4,S5,Santiago,Femenino,Virgo,Presencial
-18,163,3,11,9.0,3,4,S5,Santiago,Femenino,Virgo,Híbrido
-18,177,2,58,10.0,2,4,S5,Santiago,Masculino,Capricornio,Híbrido
-18,170,4,13,7.9,0,4,S5,Santiago,Masculino,Leo,Presencial
-18,176,1,4,9.1,0,4,S5,Santiago,Masculino,Tauro,Híbrido
-18,180,2,2,10.0,2,4,S5,Santiago,Masculino,Libra,Presencial
-18,164,1,27,8.0,2,5,S5,Santiago,Femenino,Géminis,Híbrido
-18,156,1,20,10.0,0,5,S5,Santiago,Femenino,Virgo,Híbrido
-18,173,2,7,6.0,6,5,S5,Santiago,Femenino,Escorpio,Híbrido
-18,165,2,13,8.5,2,5,S5,Santiago,Femenino,Aries,Híbrido
-18,162,4,55,7.0,0,5,S5,Santiago,Femenino,Tauro,Online
-18,193,2,40,8.6,3,5,S5,Santiago,Masculino,Virgo,Híbrido
-19,176,4,24,10.0,2,5,S5,Santiago,Masculino,Leo,Presencial
-18,179,4,16,6.8,4,5,S5,Santiago,Masculino,Virgo,Híbrido
-18,174,0,8,8.2,3,5,S5,Santiago,Masculino,Cáncer,Presencial
-17,171,2,16,9.1,0,6,S5,Santiago,Femenino,Aries,Híbrido
-17,170,1,98,8.2,0,6,S5,Santiago,Femenino,Aries,Híbrido
-19,176,5,20,10.0,2,6,S5,Santiago,Masculino,Sagitario,Presencial
-18,169,4,10,9.5,0,6,S5,Santiago,Masculino,Acuario,Presencial
-17,162,2,4,10.0,1,7,S5,Santiago,Femenino,Géminis,Presencial
-18,165,3,10,10.0,0,7,S5,Santiago,Femenino,Leo,Presencial
-18,158,1,26,10.0,0,7,S5,Santiago,Femenino,Cáncer,Presencial
-17,176,2,25,10.0,1,7,S5,Santiago,Masculino,Cáncer,Híbrido
-18,180,1,11,4.4,1,7,S5,Santiago,Masculino,Tauro,Presencial
-19,159,3,24,7.0,0,8,S5,Santiago,Femenino,Capricornio,Presencial
-18,181,0,14,6.5,2,8,S5,Santiago,Femenino,Cáncer,Presencial
-19,184,4,26,4.0,0,8,S5,Santiago,Masculino,Tauro,Híbrido
-18,178,4,18,7.7,2,2,S4,Santiago,Masculino,Tauro,Híbrido
-19,167,4,17,10.0,4,3,S4,Santiago,Femenino,Géminis,Híbrido
-19,162,1,47,10.0,1,3,S4,Santiago,Femenino,Sagitario,Híbrido
-17,170,1,12,8.1,0,3,S4,Santiago,Femenino,Aries,Híbrido
-18,181,3,690,5.0,1,3,S4,Santiago,Masculino,Libra,Presencial
-18,167,1,526,10.0,4,3,S4,Santiago,Masculino,Escorpio,Online
-21,178,2,20,3.5,2,3,S4,Santiago,Masculino,Sagitario,Híbrido
-18,180,1,10,9.5,0,3,S4,Santiago,Masculino,Leo,Presencial
-18,176,2,36,8.1,1,4,S4,Santiago,Masculino,Aries,Presencial
-19,174,3,18,7.0,2,4,S4,Santiago,Masculino,Sagitario,Presencial
-18,175,1,16,8.1,0,4,S4,Santiago,Masculino,Leo,Presencial
-19,188,2,13,9.5,1,4,S4,Santiago,Masculino,Escorpio,Híbrido
-19,177,1,11,5.3,0,4,S4,Santiago,Masculino,Piscis,Presencial
-18,169,3,10,10.0,0,5,S4,Santiago,Femenino,Piscis,Híbrido
-18,165,1,701,7.5,1,5,S4,Santiago,Femenino,Sagitario,Híbrido
-22,175,3,3,9.0,1,5,S4,Santiago,Femenino,Aries,Presencial
-18,165,4,23,6.0,0,5,S4,Santiago,Femenino,Tauro,Presencial
-18,169,4,4,9.0,3,5,S4,Santiago,Femenino,Piscis,Presencial
-18,163,2,14,9.0,2,5,S4,Santiago,Femenino,Libra,Presencial
-18,186,2,25,10.0,0,5,S4,Santiago,Masculino,Libra,Presencial
-18,178,1,14,7.0,0,5,S4,Santiago,Masculino,Leo,Híbrido
-17,174,1,3,8.0,1,5,S4,Santiago,Masculino,Aries,Presencial
-18,165,1,11,10.0,0,6,S4,Santiago,Femenino,Leo,Híbrido
-20,154,3,18,8.0,3,6,S4,Santiago,Femenino,Libra,Híbrido
-18,166,5,23,10.0,1,6,S4,Santiago,Femenino,Leo,Presencial
-18,171,2,39,10.0,4,6,S4,Santiago,Femenino,Tauro,Presencial
-20,166,1,19,10.0,2,6,S4,Santiago,Femenino,Piscis,Presencial
-20,172,1,80,9.0,0,6,S4,Santiago,Masculino,Libra,Online
-18,161,2,10,8.0,1,7,S4,Santiago,Femenino,Capricornio,Online
-18,173,5,16,9.0,0,7,S4,Santiago,Masculino,Sagitario,Presencial
-18,178,2,15,8.4,2,7,S4,Santiago,Masculino,Leo,Presencial
-18,157,1,12,10.0,0,8,S4,Santiago,Femenino,Leo,Presencial
-19,157,4,22,7.6,2,9,S4,Santiago,Femenino,Tauro,Híbrido
-18,163,1,5,10.0,2,10,S4,Santiago,Femenino,Cáncer,Híbrido
-19,191,2,6,8.1,1,11,S4,Santiago,Masculino,Piscis,Híbrido
-18,171,0,12,4.4,2,2,S3,Santiago,Femenino,Leo,Online
-18,168,2,9,7.0,0,2,S3,Santiago,Femenino,Cáncer,Presencial
-19,176,5,25,9.0,1,2,S3,Santiago,Masculino,Leo,Híbrido
-18,184,2,22,6.0,1,2,S3,Santiago,Masculino,Sagitario,Híbrido
-19,157,4,13,9.1,0,3,S3,Santiago,Femenino,Sagitario,Presencial
-18,181,1,49,9.0,1,3,S3,Santiago,Masculino,Libra,Presencial
-18,183,2,36,9.4,1,3,S3,Santiago,Masculino,Tauro,Híbrido
-18,191,1,32,9.5,1,3,S3,Santiago,Masculino,Sagitario,Presencial
-18,176,0,23,10.0,4,3,S3,Santiago,Masculino,Tauro,Presencial
-19,180,5,15,9.1,2,3,S3,Santiago,Masculino,Sagitario,Presencial
-19,153,1,36,9.0,0,4,S3,Santiago,Femenino,Piscis,Híbrido
-20,160,0,5,8.0,2,4,S3,Santiago,Femenino,Sagitario,Híbrido
-19,175,2,34,10.0,3,4,S3,Santiago,Masculino,Escorpio,Híbrido
-18,171,2,21,8.3,2,4,S3,Santiago,Masculino,Sagitario,Presencial
-19,175,2,12,9.5,1,5,S3,Santiago,Femenino,Capricornio,Presencial
-18,164,4,10,8.7,1,5,S3,Santiago,Femenino,Leo,Presencial
-18,173,4,16,9.0,1,5,S3,Santiago,Masculino,Leo,Presencial
-19,168,2,17,10.0,0,6,S3,Santiago,Femenino,Acuario,Híbrido
-18,160,1,4,10.0,0,6,S3,Santiago,Femenino,Piscis,Presencial
-18,178,1,16,9.0,2,6,S3,Santiago,Masculino,Aries,Presencial
-18,188,1,12,10.0,0,6,S3,Santiago,Masculino,Libra,Híbrido
-18,159,3,9,9.5,1,7,S3,Santiago,Femenino,Cáncer,Presencial
-18,155,2,5,9.9,0,7,S3,Santiago,Femenino,Virgo,Presencial
-18,149,2,12,5.0,3,7,S3,Santiago,Femenino,Leo,Online
-18,149,1,2,10.0,1,8,S3,Santiago,Femenino,Escorpio,Híbrido
-19,166,2,15,10.0,2,8,S3,Santiago,Femenino,Virgo,Híbrido
-19,175,2,13,10.0,2,8,S3,Santiago,Femenino,Acuario,Presencial
-19,152,1,196,7.1,2,3,S2,Santiago,Femenino,Escorpio,Presencial
-18,170,2,42,9.0,1,3,S2,Santiago,Femenino,Aries,Híbrido
-18,186,5,40,9.3,1,3,S2,Santiago,Masculino,Escorpio,Presencial
-19,173,2,25,8.2,0,3,S2,Santiago,Masculino,Géminis,Presencial
-18,182,2,11,9.1,2,3,S2,Santiago,Masculino,Libra,Presencial
-18,173,1,22,8.1,1,4,S2,Santiago,Femenino,Virgo,Presencial
-18,181,2,3289,9.0,2,4,S2,Santiago,Masculino,Libra,Presencial
-18,173,2,2448,9.5,4,4,S2,Santiago,Masculino,Géminis,Presencial
-19,173,2,18,10.0,1,4,S2,Santiago,Masculino,Acuario,Presencial
-19,182,2,9,6.6,2,4,S2,Santiago,Masculino,Piscis,Presencial
-18,161,2,40,10.0,1,5,S2,Santiago,Femenino,Tauro,Presencial
-18,170,1,11,8.0,0,5,S2,Santiago,Femenino,Sagitario,Híbrido
-18,169,0,77,9.0,1,5,S2,Santiago,Masculino,Sagitario,Híbrido
-18,170,1,37,8.0,0,5,S2,Santiago,Masculino,Cáncer,Híbrido
-18,175,1,35,10.0,1,5,S2,Santiago,Masculino,Leo,Híbrido
-19,180,3,21,10.0,3,5,S2,Santiago,Masculino,Aries,Presencial
-18,183,5,21,9.0,5,5,S2,Santiago,Masculino,Sagitario,Online
-19,189,1,20,9.0,0,5,S2,Santiago,Masculino,Acuario,Online
-20,180,2,15,1.0,1,5,S2,Santiago,Masculino,Escorpio,Híbrido
-18,174,1,12,8.5,2,7,S2,Santiago,Femenino,Escorpio,Presencial
-18,185,4,5,9.4,2,7,S2,Santiago,Masculino,Acuario,Presencial
-19,177,2,6,10.0,2,8,S2,Santiago,Masculino,Escorpio,Presencial
-18,171,2,12,6.0,0,9,S2,Santiago,Femenino,Sagitario,Presencial
-20,185,2,14,9.0,4,10,S2,Santiago,Masculino,Acuario,Híbrido
-18,173,3,41,10.0,1,2,S12,Santiago,Masculino,Aries,Híbrido
-19,168,2,11,8.5,2,3,S12,Santiago,Femenino,Sagitario,Híbrido
-19,166,2,15,10.0,3,3,S12,Santiago,Femenino,Acuario,Presencial
-18,173,1,522,9.5,3,3,S12,Santiago,Masculino,Virgo,Híbrido
-18,153,1,34,9.0,1,4,S12,Santiago,Femenino,Libra,Híbrido
-18,161,2,34,9.1,2,4,S12,Santiago,Femenino,Escorpio,Online
-18,178,1,1032,9.5,3,4,S12,Santiago,Masculino,Capricornio,Híbrido
-19,176,3,50,9.0,3,4,S12,Santiago,Masculino,Acuario,Presencial
-18,185,3,35,6.7,0,4,S12,Santiago,Masculino,Leo,Presencial
-20,176,2,25,9.6,0,4,S12,Santiago,Masculino,Leo,Híbrido
-18,170,3,12,8.0,0,4,S12,Santiago,Masculino,Tauro,Presencial
-23,173,3,16,8.0,0,5,S12,Santiago,Femenino,Sagitario,Híbrido
-18,191,2,127,10.0,0,5,S12,Santiago,Masculino,Sagitario,Híbrido
-19,176,2,103,7.0,4,5,S12,Santiago,Masculino,Piscis,Presencial
-18,165,2,22,8.2,0,5,S12,Santiago,Masculino,Libra,Online
-22,180,2,15,10.0,2,5,S12,Santiago,Masculino,Leo,Presencial
-18,168,4,14,7.5,1,6,S12,Santiago,Femenino,Cáncer,Híbrido
-19,179,3,13,7.9,2,6,S12,Santiago,Masculino,Sagitario,Online
-18,190,2,10,3.9,1,6,S12,Santiago,Masculino,Piscis,Presencial
-18,176,0,9,8.6,5,6,S12,Santiago,Masculino,Tauro,Híbrido
-19,164,3,17,5.0,7,7,S12,Santiago,Femenino,Acuario,Presencial
-18,181,2,70,8.1,2,7,S12,Santiago,Masculino,Cáncer,Presencial
-20,181,1,9,6.6,1,7,S12,Santiago,Masculino,Sagitario,Híbrido
-18,180,3,15,8.0,1,9,S12,Santiago,Masculino,Virgo,Presencial
-24,171,3,99,3.2,0,10,S12,Santiago,Masculino,Piscis,Híbrido
-18,160,2,14,10.0,2,12,S12,Santiago,Femenino,Libra,Presencial
-19,178,1,22,7.4,3,1,S11,Santiago,Masculino,Capricornio,Híbrido
-18,176,2,11,6.0,0,2,S11,Santiago,Masculino,Virgo,Híbrido
-22,187,2,9,10.0,0,2,S11,Santiago,Masculino,Virgo,Presencial
-21,181,1,16,8.0,2,3,S11,Santiago,Masculino,Virgo,Híbrido
-19,180,2,12,10.0,0,3,S11,Santiago,Masculino,Piscis,Presencial
-18,185,6,7,10.0,0,3,S11,Santiago,Masculino,Capricornio,Presencial
-19,180,2,4,8.1,1,3,S11,Santiago,Masculino,Escorpio,Híbrido
-18,173,2,15,7.7,1,4,S11,Santiago,Femenino,Virgo,Híbrido
-18,177,6,38,10.0,1,4,S11,Santiago,Masculino,Leo,Híbrido
-21,182,2,22,8.0,6,4,S11,Santiago,Masculino,Sagitario,Presencial
-18,175,4,16,8.9,2,4,S11,Santiago,Masculino,Virgo,Presencial
-17,164,2,5,7.0,3,5,S11,Santiago,Femenino,Aries,Híbrido
-22,167,2,14,4.0,3,5,S11,Santiago,Femenino,Sagitario,Híbrido
-18,178,1,17,9.0,2,5,S11,Santiago,Masculino,Leo,Híbrido
-19,183,3,13,7.5,4,5,S11,Santiago,Masculino,Virgo,Presencial
-18,183,2,12,7.0,1,5,S11,Santiago,Masculino,Libra,Híbrido
-18,171,1,12,7.7,0,5,S11,Santiago,Masculino,Cáncer,Híbrido
-18,174,2,49,8.0,1,6,S11,Santiago,Femenino,Leo,Presencial
-18,177,2,20,7.9,3,6,S11,Santiago,Masculino,Cáncer,Presencial
-18,174,2,13,8.5,0,6,S11,Santiago,Masculino,Aries,Presencial
-17,170,2,12,10.0,0,6,S11,Santiago,Masculino,Aries,Presencial
-19,169,3,98,10.0,5,7,S11,Santiago,Masculino,Libra,Híbrido
-18,160,1,10,8.5,1,8,S11,Santiago,Femenino,Leo,Presencial
-19,165,1,8,7.0,0,8,S11,Santiago,Femenino,Acuario,Presencial
-18,174,1,4,8.0,0,8,S11,Santiago,Masculino,Piscis,Híbrido
-18,170,1,8,7.9,4,9,S11,Santiago,Femenino,Sagitario,Presencial
-18,164,3,188,7.7,7,9,S11,Santiago,Femenino,Piscis,Híbrido
-18,180,1,12,8.0,3,9,S11,Santiago,Masculino,Escorpio,Presencial
-18,174,3,8,10.0,3,10,S11,Santiago,Masculino,Aries,Presencial
-20,186,7,21,7.5,2,12,S11,Santiago,Masculino,Acuario,Híbrido
-18,178,2,14,10.0,0,2,S10,Santiago,Masculino,Leo,Híbrido
-18,169,4,15,7.0,0,3,S10,Santiago,Femenino,Escorpio,Híbrido
-18,165,0,11,8.2,1,3,S10,Santiago,Femenino,Géminis,Híbrido
-18,170,2,24,9.0,0,3,S10,Santiago,Femenino,Cáncer,Online
-18,173,3,33,10.0,3,3,S10,Santiago,Masculino,Cáncer,Presencial
-18,173,2,22,9.0,0,3,S10,Santiago,Masculino,Tauro,Híbrido
-21,194,1,9,8.0,1,4,S10,Santiago,Masculino,Acuario,Presencial
-18,175,2,6,8.7,0,4,S10,Santiago,Masculino,Leo,Presencial
-18,181,2,6,10.0,3,4,S10,Santiago,Masculino,Tauro,Híbrido
-18,173,1,6,7.5,1,5,S10,Santiago,Femenino,Leo,Presencial
-18,158,0,8,9.6,3,5,S10,Santiago,Femenino,Aries,Híbrido
-18,164,2,39,8.7,0,5,S10,Santiago,Femenino,Cáncer,Híbrido
-19,174,3,61,10.0,3,5,S10,Santiago,Masculino,Cáncer,Presencial
-18,176,3,43,10.0,1,5,S10,Santiago,Masculino,Sagitario,Presencial
-18,178,0,7,6.0,0,5,S10,Santiago,Masculino,Capricornio,Presencial
-26,170,2,2,5.4,0,6,S10,Santiago,Femenino,Libra,Híbrido
-18,179,1,10,10.0,0,6,S10,Santiago,Masculino,Sagitario,Híbrido
-18,175,2,11,9.0,2,7,S10,Santiago,Femenino,Sagitario,Híbrido
-18,183,2,1026,9.0,8,7,S10,Santiago,Masculino,Sagitario,Híbrido
-18,174,3,130,9.0,0,7,S10,Santiago,Masculino,Sagitario,Presencial
-19,164,1,35,9.7,3,8,S10,Santiago,Femenino,Leo,Presencial
-18,165,2,26,8.1,3,8,S10,Santiago,Femenino,Escorpio,Híbrido
-20,188,3,42,8.6,0,8,S10,Santiago,Masculino,Sagitario,Híbrido
-19,174,2,25,8.5,2,8,S10,Santiago,Masculino,Leo,Híbrido
-18,168,2,12,9.8,9,9,S10,Santiago,Masculino,Capricornio,Presencial
-19,182,4,18,5.0,1,10,S10,Santiago,Masculino,Acuario,Presencial
-18,172,2,12,9.0,0,2,S1,Santiago,Masculino,Acuario,Híbrido
-18,163,2,4,1.2,0,3,S1,Santiago,Femenino,Piscis,Online
-18,166,0,10,4.1,0,3,S1,Santiago,Femenino,Cáncer,Presencial
-19,165,0,13,10.0,2,3,S1,Santiago,Femenino,Leo,Híbrido
-20,182,2,17,10.0,2,3,S1,Santiago,Masculino,Escorpio,Híbrido
-18,181,5,14,8.5,1,3,S1,Santiago,Masculino,Géminis,Presencial
-19,170,4,8,4.0,0,3,S1,Santiago,Masculino,Piscis,Presencial
-22,181,1,5,9.0,0,3,S1,Santiago,Masculino,Leo,Híbrido
-18,163,1,14,10.0,1,4,S1,Santiago,Femenino,Virgo,Presencial
-18,162,2,11,7.0,4,4,S1,Santiago,Femenino,Cáncer,Presencial
-18,170,4,15,6.0,2,4,S1,Santiago,Femenino,Leo,Presencial
-20,191,1,30,8.0,1,4,S1,Santiago,Masculino,Aries,Presencial
-18,168,1,13,8.5,1,4,S1,Santiago,Masculino,Capricornio,Híbrido
-18,169,2,18,9.5,0,5,S1,Santiago,Femenino,Acuario,Presencial
-18,168,3,10,5.0,0,5,S1,Santiago,Femenino,Leo,Híbrido
-18,171,2,22,9.4,2,5,S1,Santiago,Femenino,Libra,Híbrido
-18,169,3,22,8.6,0,6,S1,Santiago,Femenino,Libra,Presencial
-19,160,1,11,10.0,2,6,S1,Santiago,Femenino,Leo,Online
-19,173,1,20,9.0,0,6,S1,Santiago,Femenino,Acuario,Presencial
-18,173,1,16,8.0,2,6,S1,Santiago,Femenino,Leo,Presencial
-20,180,1,14,9.1,7,6,S1,Santiago,Masculino,Piscis,Híbrido
-17,177,4,12,10.0,1,6,S1,Santiago,Masculino,Escorpio,Presencial
-18,162,4,9,9.5,0,7,S1,Santiago,Femenino,Libra,Presencial
-18,180,2,25,7.0,2,7,S1,Santiago,Masculino,Libra,Presencial
-18,178,2,20,4.2,0,7,S1,Santiago,Masculino,Leo,Presencial
-18,184,2,19,10.0,2,7,S1,Santiago,Masculino,Leo,Presencial
-18,175,1,11,10.0,4,7,S1,Santiago,Masculino,Virgo,Presencial
-19,168,1,18,8.0,0,10,S1,Santiago,Femenino,Cáncer,Online
+"","edad","estatura","num_familia","km_uai","nota_proceso","n_peliculas","horas_cel","seccion","sede_uai","sexo","zodiaco","formato_clases"
+"1",20,168,1,5,10,0,2,"V5","Vina del Mar","Femenino","Virgo","Virgo"
+"2",18,175,2,390,10,0,2,"V5","Vina del Mar","Masculino","Capricornio","Capricornio"
+"3",18,167,2,4,10,0,3,"V5","Vina del Mar","Femenino","Escorpio","Escorpio"
+"4",18,164,1,20,9.4,2,3,"V5","Vina del Mar","Femenino","Escorpio","Escorpio"
+"5",18,164,2,6,4,1,3,"V5","Vina del Mar","Femenino","Piscis","Piscis"
+"6",18,177,1,1016,10,1,3,"V5","Vina del Mar","Masculino","Escorpio","Escorpio"
+"7",18,186,1,6,8.5,1,3,"V5","Vina del Mar","Masculino","Leo","Leo"
+"8",19,167,2,9,8.2,0,4,"V5","Vina del Mar","Femenino","Leo","Leo"
+"9",18,167,3,102,8.5,1,4,"V5","Vina del Mar","Femenino","Escorpio","Escorpio"
+"10",18,155,1,6,8.5,2,4,"V5","Vina del Mar","Femenino","Leo","Leo"
+"11",18,183,1,650,9.5,0,4,"V5","Vina del Mar","Masculino","Libra","Libra"
+"12",18,178,4,420,8.1,2,4,"V5","Vina del Mar","Masculino","Piscis","Piscis"
+"13",19,180,2,18,3,2,4,"V5","Vina del Mar","Masculino","Sagitario","Sagitario"
+"14",17,177,1,16,8.5,0,4,"V5","Vina del Mar","Masculino","Geminis","Geminis"
+"15",18,188,1,14,10,0,4,"V5","Vina del Mar","Masculino","Aries","Aries"
+"16",18,161,1,81,10,0,5,"V5","Vina del Mar","Femenino","Libra","Libra"
+"17",19,172,1,1018,9.3,0,5,"V5","Vina del Mar","Masculino","Cancer","Cancer"
+"18",18,182,2,623,8.8,2,5,"V5","Vina del Mar","Masculino","Geminis","Geminis"
+"19",18,179,4,10,8.8,2,5,"V5","Vina del Mar","Masculino","Sagitario","Sagitario"
+"20",18,180,3,4,9.5,0,5,"V5","Vina del Mar","Masculino","Libra","Libra"
+"21",18,168,1,13,10,1,6,"V5","Vina del Mar","Femenino","Cancer","Cancer"
+"22",18,180,1,20,7,2,6,"V5","Vina del Mar","Femenino","Virgo","Virgo"
+"23",18,170,2,4,9,2,6,"V5","Vina del Mar","Femenino","Acuario","Acuario"
+"24",19,173,2,130,10,1,6,"V5","Vina del Mar","Femenino","Virgo","Virgo"
+"25",18,161,1,7,8.7,0,6,"V5","Vina del Mar","Femenino","Cancer","Cancer"
+"26",18,168,2,9,8,0,7,"V5","Vina del Mar","Femenino","Virgo","Virgo"
+"27",18,154,1,15,10,5,7,"V5","Vina del Mar","Femenino","Virgo","Virgo"
+"28",18,175,2,6,9.5,0,7,"V5","Vina del Mar","Masculino","Sagitario","Sagitario"
+"29",17,175,1,5,6.5,1,9,"V5","Vina del Mar","Masculino","Aries","Aries"
+"30",19,180,0,1144,9.4,1,1,"V4","Vina del Mar","Masculino","Aries","Aries"
+"31",19,177,3,143,9.2,1,2,"V4","Vina del Mar","Masculino","Geminis","Geminis"
+"32",18,156,4,7,10,3,3,"V4","Vina del Mar","Femenino","Cancer","Cancer"
+"33",17,156,3,16,9,0,4,"V4","Vina del Mar","Femenino","Cancer","Cancer"
+"34",18,157,3,40,10,0,4,"V4","Vina del Mar","Femenino","Sagitario","Sagitario"
+"35",18,164,2,135,10,2,4,"V4","Vina del Mar","Femenino","Geminis","Geminis"
+"36",18,176,0,14,8.8,0,4,"V4","Vina del Mar","Masculino","Aries","Aries"
+"37",18,173,1,3,8.1,0,4,"V4","Vina del Mar","Masculino","Leo","Leo"
+"38",18,170,1,760,9.5,2,5,"V4","Vina del Mar","Masculino","Piscis","Piscis"
+"39",17,175,2,124,10,1,5,"V4","Vina del Mar","Masculino","Geminis","Geminis"
+"40",18,170,1,23,8,1,5,"V4","Vina del Mar","Masculino","Sagitario","Sagitario"
+"41",19,194,4,21,10,0,5,"V4","Vina del Mar","Masculino","Capricornio","Capricornio"
+"42",20,175,3,10,8.5,2,5,"V4","Vina del Mar","Masculino","Piscis","Piscis"
+"43",18,184,2,5,3.5,1,5,"V4","Vina del Mar","Masculino","Cancer","Cancer"
+"44",18,165,5,13,10,3,6,"V4","Vina del Mar","Femenino","Capricornio","Capricornio"
+"45",18,170,1,26,10,1,6,"V4","Vina del Mar","Femenino","Acuario","Acuario"
+"46",19,173,2,12,10,2,6,"V4","Vina del Mar","Masculino","Cancer","Cancer"
+"47",18,162,1,10,10,0,7,"V4","Vina del Mar","Femenino","Geminis","Geminis"
+"48",19,161,2,1808,5,1,7,"V4","Vina del Mar","Femenino","Capricornio","Capricornio"
+"49",24,162,3,18,10,0,7,"V4","Vina del Mar","Femenino","Capricornio","Capricornio"
+"50",18,186,2,6,7,5,7,"V4","Vina del Mar","Masculino","Libra","Libra"
+"51",19,169,1,259,10,0,8,"V4","Vina del Mar","Femenino","Virgo","Virgo"
+"52",19,170,1,623,10,2,8,"V4","Vina del Mar","Masculino","Escorpio","Escorpio"
+"53",19,180,2,9,10,0,8,"V4","Vina del Mar","Masculino","Piscis","Piscis"
+"54",18,165,2,27,10,2,9,"V4","Vina del Mar","Femenino","Aries","Aries"
+"55",18,168,2,24,7.9,2,9,"V4","Vina del Mar","Femenino","Capricornio","Capricornio"
+"56",18,191,3,9,10,1,12,"V4","Vina del Mar","Masculino","Libra","Libra"
+"57",18,168,6,4,9.8,0,12,"V4","Vina del Mar","Masculino","Cancer","Cancer"
+"58",18,184,3,130,8.6,2,2,"V3","Vina del Mar","Masculino","Leo","Leo"
+"59",19,161,1,3,8.5,1,3,"V3","Vina del Mar","Femenino","Acuario","Acuario"
+"60",18,181,2,104,10,0,3,"V3","Vina del Mar","Masculino","Tauro","Tauro"
+"61",19,151,4,15,6,0,4,"V3","Vina del Mar","Femenino","Virgo","Virgo"
+"62",19,168,2,82,10,2,4,"V3","Vina del Mar","Femenino","Capricornio","Capricornio"
+"63",19,160,1,4,10,2,4,"V3","Vina del Mar","Femenino","Sagitario","Sagitario"
+"64",19,167,3,144,10,2,4,"V3","Vina del Mar","Femenino","Escorpio","Escorpio"
+"65",18,191,2,135,10,5,4,"V3","Vina del Mar","Masculino","Geminis","Geminis"
+"66",18,175,3,102,10,3,4,"V3","Vina del Mar","Masculino","Libra","Libra"
+"67",18,182,1,28,10,0,4,"V3","Vina del Mar","Masculino","Escorpio","Escorpio"
+"68",18,185,2,12,10,1,4,"V3","Vina del Mar","Masculino","Leo","Leo"
+"69",18,188,3,7,7.5,1,4,"V3","Vina del Mar","Masculino","Leo","Leo"
+"70",19,189,2,5,9,1,4,"V3","Vina del Mar","Masculino","Escorpio","Escorpio"
+"71",17,174,1,293,6.2,0,5,"V3","Vina del Mar","Femenino","Aries","Aries"
+"72",18,162,2,8,10,1,5,"V3","Vina del Mar","Femenino","Acuario","Acuario"
+"73",18,174,2,129,8.8,0,5,"V3","Vina del Mar","Masculino","Capricornio","Capricornio"
+"74",18,150,2,43,7,0,6,"V3","Vina del Mar","Femenino","Aries","Aries"
+"75",18,166,2,8,10,1,6,"V3","Vina del Mar","Femenino","Escorpio","Escorpio"
+"76",18,175,2,201,10,4,6,"V3","Vina del Mar","Masculino","Leo","Leo"
+"77",18,183,4,16,7.8,0,6,"V3","Vina del Mar","Masculino","Geminis","Geminis"
+"78",18,162,2,3,9.9,1,7,"V3","Vina del Mar","Femenino","Virgo","Virgo"
+"79",19,166,1,10,10,0,7,"V3","Vina del Mar","Femenino","Acuario","Acuario"
+"80",18,170,4,136,9.5,1,7,"V3","Vina del Mar","Masculino","Geminis","Geminis"
+"81",18,167,1,10,5.9,3,8,"V3","Vina del Mar","Femenino","Cancer","Cancer"
+"82",19,172,2,131,10,0,8,"V3","Vina del Mar","Masculino","Sagitario","Sagitario"
+"83",18,171,3,12,10,2,9,"V3","Vina del Mar","Femenino","Escorpio","Escorpio"
+"84",19,174,1,17,8.7,1,10,"V3","Vina del Mar","Masculino","Acuario","Acuario"
+"85",18,174,1,47,8.5,1,12,"V3","Vina del Mar","Femenino","Libra","Libra"
+"86",18,170,4,185,8.2,2,1,"V2","Vina del Mar","Masculino","Aries","Aries"
+"87",18,175,4,14,8.1,0,2,"V2","Vina del Mar","Femenino","Aries","Aries"
+"88",19,158,1,12,10,0,3,"V2","Vina del Mar","Femenino","Sagitario","Sagitario"
+"89",18,162,2,16,9.5,0,3,"V2","Vina del Mar","Femenino","Tauro","Tauro"
+"90",19,163,3,10,10,2,3,"V2","Vina del Mar","Femenino","Capricornio","Capricornio"
+"91",18,173,4,294,7.5,1,3,"V2","Vina del Mar","Masculino","Capricornio","Capricornio"
+"92",18,183,2,7,10,3,3,"V2","Vina del Mar","Masculino","Capricornio","Capricornio"
+"93",19,181,1,2,8.2,1,3,"V2","Vina del Mar","Masculino","Virgo","Virgo"
+"94",19,162,1,2,10,3,4,"V2","Vina del Mar","Femenino","Piscis","Piscis"
+"95",19,168,2,37,10,2,4,"V2","Vina del Mar","Femenino","Leo","Leo"
+"96",19,177,4,201,7,0,4,"V2","Vina del Mar","Masculino","Sagitario","Sagitario"
+"97",19,170,3,145,10,1,4,"V2","Vina del Mar","Masculino","Capricornio","Capricornio"
+"98",19,179,2,14,9,3,4,"V2","Vina del Mar","Masculino","Sagitario","Sagitario"
+"99",19,180,1,10,8,1,4,"V2","Vina del Mar","Masculino","Acuario","Acuario"
+"100",18,158,1,47,8.7,0,5,"V2","Vina del Mar","Femenino","Sagitario","Sagitario"
+"101",18,155,3,2,9,0,5,"V2","Vina del Mar","Femenino","Capricornio","Capricornio"
+"102",18,155,2,27,8.9,3,5,"V2","Vina del Mar","Femenino","Virgo","Virgo"
+"103",19,173,2,12,7,2,5,"V2","Vina del Mar","Masculino","Piscis","Piscis"
+"104",19,163,2,13,9.5,0,6,"V2","Vina del Mar","Femenino","Capricornio","Capricornio"
+"105",18,186,1,21,10,2,6,"V2","Vina del Mar","Masculino","Escorpio","Escorpio"
+"106",19,180,3,15,10,2,6,"V2","Vina del Mar","Masculino","Capricornio","Capricornio"
+"107",18,157,2,13,8,0,6,"V2","Vina del Mar","Masculino","Sagitario","Sagitario"
+"108",19,177,1,5,10,0,6,"V2","Vina del Mar","Masculino","Leo","Leo"
+"109",18,172,3,13,9.7,1,7,"V2","Vina del Mar","Femenino","Cancer","Cancer"
+"110",20,177,1,4,10,2,7,"V2","Vina del Mar","Femenino","Cancer","Cancer"
+"111",18,160,1,8,10,2,7,"V2","Vina del Mar","Femenino","Cancer","Cancer"
+"112",19,162,1,11,5,3,10,"V2","Vina del Mar","Femenino","Escorpio","Escorpio"
+"113",18,170,1,8,10,2,12,"V2","Vina del Mar","Femenino","Piscis","Piscis"
+"114",19,156,3,129,9,1,12,"V2","Vina del Mar","Femenino","Piscis","Piscis"
+"115",18,167,1,10,9,1,1,"V1","Vina del Mar","Masculino","Escorpio","Escorpio"
+"116",27,175,2,5,10,0,2,"V1","Vina del Mar","Femenino","Sagitario","Sagitario"
+"117",18,174,3,10,10,6,2,"V1","Vina del Mar","Masculino","Cancer","Cancer"
+"118",18,180,3,11,10,0,3,"V1","Vina del Mar","Masculino","Tauro","Tauro"
+"119",21,178,2,10,10,0,3,"V1","Vina del Mar","Masculino","Acuario","Acuario"
+"120",19,157,4,20,1.6,3,4,"V1","Vina del Mar","Femenino","Cancer","Cancer"
+"121",18,163,2,150,5,2,4,"V1","Vina del Mar","Femenino","Sagitario","Sagitario"
+"122",17,166,3,3,10,2,4,"V1","Vina del Mar","Femenino","Tauro","Tauro"
+"123",18,160,1,9,9,2,5,"V1","Vina del Mar","Femenino","Cancer","Cancer"
+"124",20,165,1,3,10,0,5,"V1","Vina del Mar","Femenino","Libra","Libra"
+"125",18,164,1,1009,9,2,5,"V1","Vina del Mar","Femenino","Escorpio","Escorpio"
+"126",21,187,1,421,10,2,5,"V1","Vina del Mar","Masculino","Cancer","Cancer"
+"127",22,176,2,139,9,3,5,"V1","Vina del Mar","Masculino","Acuario","Acuario"
+"128",18,181,2,14,10,1,5,"V1","Vina del Mar","Masculino","Capricornio","Capricornio"
+"129",22,176,1,12,10,0,5,"V1","Vina del Mar","Masculino","Capricornio","Capricornio"
+"130",19,176,2,10,9,2,5,"V1","Vina del Mar","Masculino","Sagitario","Sagitario"
+"131",18,184,3,3,8.5,4,5,"V1","Vina del Mar","Masculino","Libra","Libra"
+"132",18,176,1,3,9.5,2,5,"V1","Vina del Mar","Masculino","Aries","Aries"
+"133",18,179,3,2,10,1,5,"V1","Vina del Mar","Masculino","Capricornio","Capricornio"
+"134",18,167,1,8,10,1,6,"V1","Vina del Mar","Femenino","Cancer","Cancer"
+"135",19,164,2,50,10,0,6,"V1","Vina del Mar","Femenino","Tauro","Tauro"
+"136",18,187,3,1200,6,0,6,"V1","Vina del Mar","Masculino","Sagitario","Sagitario"
+"137",21,171,6,42,9,3,6,"V1","Vina del Mar","Masculino","Escorpio","Escorpio"
+"138",23,170,1,18,6.1,7,6,"V1","Vina del Mar","Masculino","Aries","Aries"
+"139",19,175,5,15,9.5,0,6,"V1","Vina del Mar","Masculino","Tauro","Tauro"
+"140",19,184,4,13,9,1,6,"V1","Vina del Mar","Masculino","Piscis","Piscis"
+"141",18,179,1,12,8.6,2,6,"V1","Vina del Mar","Masculino","Acuario","Acuario"
+"142",21,184,2,12,10,0,7,"V1","Vina del Mar","Masculino","Aries","Aries"
+"143",18,165,2,10,9.7,4,7,"V1","Vina del Mar","Masculino","Leo","Leo"
+"144",18,180,2,5,8,6,7,"V1","Vina del Mar","Masculino","Geminis","Geminis"
+"145",20,158,4,6,9.2,0,8,"V1","Vina del Mar","Femenino","Escorpio","Escorpio"
+"146",17,175,1,7,8.8,4,8,"V1","Vina del Mar","Masculino","Tauro","Tauro"
+"147",18,165,3,9,4,2,2,"S9","Santiago","Femenino","Virgo","Virgo"
+"148",17,183,3,5,6.5,1,2,"S9","Santiago","Masculino","Tauro","Tauro"
+"149",18,171,1,11,10,3,3,"S9","Santiago","Femenino","Aries","Aries"
+"150",18,184,2,1346,9,0,3,"S9","Santiago","Masculino","Geminis","Geminis"
+"151",18,180,3,14,9,2,3,"S9","Santiago","Masculino","Sagitario","Sagitario"
+"152",18,165,3,43,9,2,4,"S9","Santiago","Femenino","Aries","Aries"
+"153",18,176,3,10,8,3,4,"S9","Santiago","Masculino","Capricornio","Capricornio"
+"154",18,187,1,29,9,0,5,"S9","Santiago","Masculino","Acuario","Acuario"
+"155",18,188,2,25,8.9,1,5,"S9","Santiago","Masculino","Virgo","Virgo"
+"156",18,175,3,7,8.7,0,5,"S9","Santiago","Masculino","Aries","Aries"
+"157",18,165,1,12,10,0,6,"S9","Santiago","Femenino","Leo","Leo"
+"158",20,180,5,35,9.5,1,6,"S9","Santiago","Masculino","Acuario","Acuario"
+"159",18,172,2,22,7.1,2,6,"S9","Santiago","Masculino","Aries","Aries"
+"160",18,174,3,15,5,0,6,"S9","Santiago","Masculino","Cancer","Cancer"
+"161",18,185,2,14,10,0,6,"S9","Santiago","Masculino","Virgo","Virgo"
+"162",18,153,2,37,10,1,7,"S9","Santiago","Femenino","Libra","Libra"
+"163",18,180,2,22,8,0,7,"S9","Santiago","Masculino","Libra","Libra"
+"164",18,172,2,10,9,1,7,"S9","Santiago","Masculino","Cancer","Cancer"
+"165",18,175,1,10,10,0,7,"S9","Santiago","Masculino","Leo","Leo"
+"166",18,164,2,25,9.4,0,8,"S9","Santiago","Femenino","Escorpio","Escorpio"
+"167",18,180,2,15,7,1,9,"S9","Santiago","Masculino","Cancer","Cancer"
+"168",18,170,2,6,7,2,4,"S9","Santiago","Masculino","Tauro","Tauro"
+"169",18,161,1,7,7.5,0,2,"S8","Santiago","Femenino","Geminis","Geminis"
+"170",18,185,1,27,7.5,1,2,"S8","Santiago","Masculino","Capricornio","Capricornio"
+"171",19,160,1,34,9.2,0,3,"S8","Santiago","Femenino","Libra","Libra"
+"172",18,180,1,101,7.1,1,3,"S8","Santiago","Masculino","Leo","Leo"
+"173",19,173,1,21,7,0,3,"S8","Santiago","Masculino","Piscis","Piscis"
+"174",19,174,2,15,7,0,3,"S8","Santiago","Masculino","Piscis","Piscis"
+"175",19,178,0,13,10,2,3,"S8","Santiago","Masculino","Leo","Leo"
+"176",18,185,2,7,8,0,3,"S8","Santiago","Masculino","Capricornio","Capricornio"
+"177",20,160,3,6,9.5,4,3,"S8","Santiago","Masculino","Leo","Leo"
+"178",18,175,0,28,8.6,2,4,"S8","Santiago","Masculino","Libra","Libra"
+"179",18,178,2,22,8,3,4,"S8","Santiago","Masculino","Capricornio","Capricornio"
+"180",23,188,1,15,3.5,2,4,"S8","Santiago","Masculino","Escorpio","Escorpio"
+"181",18,184,5,13,9.3,3,4,"S8","Santiago","Masculino","Geminis","Geminis"
+"182",18,170,3,9,8.5,1,4,"S8","Santiago","Masculino","Aries","Aries"
+"183",18,182,4,7,8.1,2,4,"S8","Santiago","Masculino","Virgo","Virgo"
+"184",18,174,2,14,8.3,0,5,"S8","Santiago","Masculino","Geminis","Geminis"
+"185",18,196,6,13,8,2,5,"S8","Santiago","Masculino","Sagitario","Sagitario"
+"186",18,169,0,11,10,0,5,"S8","Santiago","Masculino","Virgo","Virgo"
+"187",17,176,0,420,9,4,6,"S8","Santiago","Masculino","Tauro","Tauro"
+"188",19,173,2,11,9.5,0,6,"S8","Santiago","Masculino","Sagitario","Sagitario"
+"189",18,180,2,6,7,0,6,"S8","Santiago","Masculino","Escorpio","Escorpio"
+"190",18,164,3,11,9.5,2,8,"S8","Santiago","Femenino","Sagitario","Sagitario"
+"191",19,188,1,14,6.5,2,8,"S8","Santiago","Masculino","Acuario","Acuario"
+"192",20,170,2,7,10,1,8,"S8","Santiago","Masculino","Acuario","Acuario"
+"193",19,174,2,4,8.3,2,9,"S8","Santiago","Masculino","Leo","Leo"
+"194",18,185,3,15,10,2,12,"S8","Santiago","Masculino","Libra","Libra"
+"195",19,174,1,35,10,10,2,"S7","Santiago","Masculino","Tauro","Tauro"
+"196",18,176,1,14,9,1,2,"S7","Santiago","Masculino","Sagitario","Sagitario"
+"197",19,176,3,11,6,1,2,"S7","Santiago","Masculino","Capricornio","Capricornio"
+"198",18,179,1,9,10,3,2,"S7","Santiago","Masculino","Escorpio","Escorpio"
+"199",19,172,1,13,9.5,1,3,"S7","Santiago","Femenino","Libra","Libra"
+"200",18,183,4,50,8.5,3,3,"S7","Santiago","Masculino","Libra","Libra"
+"201",19,160,0,23,9.6,3,4,"S7","Santiago","Femenino","Piscis","Piscis"
+"202",18,180,6,1350,10,0,4,"S7","Santiago","Masculino","Libra","Libra"
+"203",18,169,4,16,8,5,4,"S7","Santiago","Masculino","Sagitario","Sagitario"
+"204",18,163,1,6,10,1,4,"S7","Santiago","Masculino","Sagitario","Sagitario"
+"205",18,162,6,11,7.6,0,5,"S7","Santiago","Femenino","Cancer","Cancer"
+"206",18,169,4,13,10,3,5,"S7","Santiago","Femenino","Virgo","Virgo"
+"207",18,173,1,12,8,1,5,"S7","Santiago","Masculino","Libra","Libra"
+"208",19,169,5,37,10,3,6,"S7","Santiago","Masculino","Libra","Libra"
+"209",19,182,4,18,10,2,6,"S7","Santiago","Masculino","Escorpio","Escorpio"
+"210",19,192,2,16,10,0,7,"S7","Santiago","Masculino","Piscis","Piscis"
+"211",18,179,3,14,8.1,1,7,"S7","Santiago","Masculino","Geminis","Geminis"
+"212",19,168,1,1044,6,2,10,"S7","Santiago","Masculino","Escorpio","Escorpio"
+"213",21,160,2,12,5,3,2,"S6","Santiago","Femenino","Capricornio","Capricornio"
+"214",18,186,3,20,6.9,2,2,"S6","Santiago","Masculino","Libra","Libra"
+"215",18,175,1,10,10,1,2,"S6","Santiago","Masculino","Geminis","Geminis"
+"216",18,156,2,34,7.5,1,3,"S6","Santiago","Femenino","Capricornio","Capricornio"
+"217",18,161,2,42,9,2,3,"S6","Santiago","Femenino","Geminis","Geminis"
+"218",19,184,3,35,6.4,2,3,"S6","Santiago","Masculino","Acuario","Acuario"
+"219",18,190,3,16,8.8,0,3,"S6","Santiago","Masculino","Virgo","Virgo"
+"220",21,179,2,12,10,0,3,"S6","Santiago","Masculino","Cancer","Cancer"
+"221",19,168,1,10,10,4,4,"S6","Santiago","Femenino","Escorpio","Escorpio"
+"222",20,186,3,21,9.5,0,4,"S6","Santiago","Masculino","Piscis","Piscis"
+"223",18,172,2,21,10,0,5,"S6","Santiago","Femenino","Leo","Leo"
+"224",18,160,1,6,9.5,1,5,"S6","Santiago","Femenino","Capricornio","Capricornio"
+"225",18,180,2,33,10,2,5,"S6","Santiago","Masculino","Libra","Libra"
+"226",19,170,2,20,9,1,5,"S6","Santiago","Masculino","Acuario","Acuario"
+"227",18,174,3,18,10,3,5,"S6","Santiago","Masculino","Aries","Aries"
+"228",19,174,2,5,10,1,5,"S6","Santiago","Masculino","Acuario","Acuario"
+"229",18,163,1,3012,10,1,6,"S6","Santiago","Femenino","Geminis","Geminis"
+"230",18,165,1,9,9,3,6,"S6","Santiago","Femenino","Piscis","Piscis"
+"231",18,162,2,12,10,1,6,"S6","Santiago","Femenino","Sagitario","Sagitario"
+"232",18,158,3,10,10,4,6,"S6","Santiago","Femenino","Aries","Aries"
+"233",18,187,3,20,10,0,6,"S6","Santiago","Masculino","Geminis","Geminis"
+"234",18,187,2,20,10,0,6,"S6","Santiago","Masculino","Libra","Libra"
+"235",18,180,2,11,5.5,1,6,"S6","Santiago","Masculino","Sagitario","Sagitario"
+"236",18,165,1,35,5,0,7,"S6","Santiago","Femenino","Piscis","Piscis"
+"237",18,152,2,1041,9.2,5,7,"S6","Santiago","Femenino","Tauro","Tauro"
+"238",18,158,1,4,10,0,7,"S6","Santiago","Femenino","Sagitario","Sagitario"
+"239",18,190,1,7,8,4,7,"S6","Santiago","Masculino","Leo","Leo"
+"240",19,160,1,45,9.1,0,8,"S6","Santiago","Femenino","Libra","Libra"
+"241",18,161,2,16,10,1,8,"S6","Santiago","Femenino","Cancer","Cancer"
+"242",18,169,1,31,9.5,2,9,"S6","Santiago","Masculino","Geminis","Geminis"
+"243",19,160,1,4,10,1,10,"S6","Santiago","Femenino","Acuario","Acuario"
+"244",18,176,3,50,10,7,12,"S6","Santiago","Masculino","Leo","Leo"
+"245",18,170,1,411,10,1,2,"S5","Santiago","Masculino","Cancer","Cancer"
+"246",19,180,1,69,9,2,2,"S5","Santiago","Masculino","Sagitario","Sagitario"
+"247",18,175,3,40,10,1,2,"S5","Santiago","Masculino","Acuario","Acuario"
+"248",18,187,3,12,8,1,2,"S5","Santiago","Masculino","Cancer","Cancer"
+"249",19,176,2,13,7,1,3,"S5","Santiago","Masculino","Sagitario","Sagitario"
+"250",18,157,3,38,8,0,4,"S5","Santiago","Femenino","Libra","Libra"
+"251",18,163,2,40,10,0,4,"S5","Santiago","Femenino","Libra","Libra"
+"252",18,160,0,104,9.2,0,4,"S5","Santiago","Femenino","Virgo","Virgo"
+"253",18,163,3,11,9,3,4,"S5","Santiago","Femenino","Virgo","Virgo"
+"254",18,177,2,58,10,2,4,"S5","Santiago","Masculino","Capricornio","Capricornio"
+"255",18,170,4,13,7.9,0,4,"S5","Santiago","Masculino","Leo","Leo"
+"256",18,176,1,4,9.1,0,4,"S5","Santiago","Masculino","Tauro","Tauro"
+"257",18,180,2,2,10,2,4,"S5","Santiago","Masculino","Libra","Libra"
+"258",18,164,1,27,8,2,5,"S5","Santiago","Femenino","Geminis","Geminis"
+"259",18,156,1,20,10,0,5,"S5","Santiago","Femenino","Virgo","Virgo"
+"260",18,173,2,7,6,6,5,"S5","Santiago","Femenino","Escorpio","Escorpio"
+"261",18,165,2,13,8.5,2,5,"S5","Santiago","Femenino","Aries","Aries"
+"262",18,162,4,55,7,0,5,"S5","Santiago","Femenino","Tauro","Tauro"
+"263",18,193,2,40,8.6,3,5,"S5","Santiago","Masculino","Virgo","Virgo"
+"264",19,176,4,24,10,2,5,"S5","Santiago","Masculino","Leo","Leo"
+"265",18,179,4,16,6.8,4,5,"S5","Santiago","Masculino","Virgo","Virgo"
+"266",18,174,0,8,8.2,3,5,"S5","Santiago","Masculino","Cancer","Cancer"
+"267",17,171,2,16,9.1,0,6,"S5","Santiago","Femenino","Aries","Aries"
+"268",17,170,1,98,8.2,0,6,"S5","Santiago","Femenino","Aries","Aries"
+"269",19,176,5,20,10,2,6,"S5","Santiago","Masculino","Sagitario","Sagitario"
+"270",18,169,4,10,9.5,0,6,"S5","Santiago","Masculino","Acuario","Acuario"
+"271",17,162,2,4,10,1,7,"S5","Santiago","Femenino","Geminis","Geminis"
+"272",18,165,3,10,10,0,7,"S5","Santiago","Femenino","Leo","Leo"
+"273",18,158,1,26,10,0,7,"S5","Santiago","Femenino","Cancer","Cancer"
+"274",17,176,2,25,10,1,7,"S5","Santiago","Masculino","Cancer","Cancer"
+"275",18,180,1,11,4.4,1,7,"S5","Santiago","Masculino","Tauro","Tauro"
+"276",19,159,3,24,7,0,8,"S5","Santiago","Femenino","Capricornio","Capricornio"
+"277",18,181,0,14,6.5,2,8,"S5","Santiago","Femenino","Cancer","Cancer"
+"278",19,184,4,26,4,0,8,"S5","Santiago","Masculino","Tauro","Tauro"
+"279",18,178,4,18,7.7,2,2,"S4","Santiago","Masculino","Tauro","Tauro"
+"280",19,167,4,17,10,4,3,"S4","Santiago","Femenino","Geminis","Geminis"
+"281",19,162,1,47,10,1,3,"S4","Santiago","Femenino","Sagitario","Sagitario"
+"282",17,170,1,12,8.1,0,3,"S4","Santiago","Femenino","Aries","Aries"
+"283",18,181,3,690,5,1,3,"S4","Santiago","Masculino","Libra","Libra"
+"284",18,167,1,526,10,4,3,"S4","Santiago","Masculino","Escorpio","Escorpio"
+"285",21,178,2,20,3.5,2,3,"S4","Santiago","Masculino","Sagitario","Sagitario"
+"286",18,180,1,10,9.5,0,3,"S4","Santiago","Masculino","Leo","Leo"
+"287",18,176,2,36,8.1,1,4,"S4","Santiago","Masculino","Aries","Aries"
+"288",19,174,3,18,7,2,4,"S4","Santiago","Masculino","Sagitario","Sagitario"
+"289",18,175,1,16,8.1,0,4,"S4","Santiago","Masculino","Leo","Leo"
+"290",19,188,2,13,9.5,1,4,"S4","Santiago","Masculino","Escorpio","Escorpio"
+"291",19,177,1,11,5.3,0,4,"S4","Santiago","Masculino","Piscis","Piscis"
+"292",18,169,3,10,10,0,5,"S4","Santiago","Femenino","Piscis","Piscis"
+"293",18,165,1,701,7.5,1,5,"S4","Santiago","Femenino","Sagitario","Sagitario"
+"294",22,175,3,3,9,1,5,"S4","Santiago","Femenino","Aries","Aries"
+"295",18,165,4,23,6,0,5,"S4","Santiago","Femenino","Tauro","Tauro"
+"296",18,169,4,4,9,3,5,"S4","Santiago","Femenino","Piscis","Piscis"
+"297",18,163,2,14,9,2,5,"S4","Santiago","Femenino","Libra","Libra"
+"298",18,186,2,25,10,0,5,"S4","Santiago","Masculino","Libra","Libra"
+"299",18,178,1,14,7,0,5,"S4","Santiago","Masculino","Leo","Leo"
+"300",17,174,1,3,8,1,5,"S4","Santiago","Masculino","Aries","Aries"
+"301",18,165,1,11,10,0,6,"S4","Santiago","Femenino","Leo","Leo"
+"302",20,154,3,18,8,3,6,"S4","Santiago","Femenino","Libra","Libra"
+"303",18,166,5,23,10,1,6,"S4","Santiago","Femenino","Leo","Leo"
+"304",18,171,2,39,10,4,6,"S4","Santiago","Femenino","Tauro","Tauro"
+"305",20,166,1,19,10,2,6,"S4","Santiago","Femenino","Piscis","Piscis"
+"306",20,172,1,80,9,0,6,"S4","Santiago","Masculino","Libra","Libra"
+"307",18,161,2,10,8,1,7,"S4","Santiago","Femenino","Capricornio","Capricornio"
+"308",18,173,5,16,9,0,7,"S4","Santiago","Masculino","Sagitario","Sagitario"
+"309",18,178,2,15,8.4,2,7,"S4","Santiago","Masculino","Leo","Leo"
+"310",18,157,1,12,10,0,8,"S4","Santiago","Femenino","Leo","Leo"
+"311",19,157,4,22,7.6,2,9,"S4","Santiago","Femenino","Tauro","Tauro"
+"312",18,163,1,5,10,2,10,"S4","Santiago","Femenino","Cancer","Cancer"
+"313",19,191,2,6,8.1,1,11,"S4","Santiago","Masculino","Piscis","Piscis"
+"314",18,171,0,12,4.4,2,2,"S3","Santiago","Femenino","Leo","Leo"
+"315",18,168,2,9,7,0,2,"S3","Santiago","Femenino","Cancer","Cancer"
+"316",19,176,5,25,9,1,2,"S3","Santiago","Masculino","Leo","Leo"
+"317",18,184,2,22,6,1,2,"S3","Santiago","Masculino","Sagitario","Sagitario"
+"318",19,157,4,13,9.1,0,3,"S3","Santiago","Femenino","Sagitario","Sagitario"
+"319",18,181,1,49,9,1,3,"S3","Santiago","Masculino","Libra","Libra"
+"320",18,183,2,36,9.4,1,3,"S3","Santiago","Masculino","Tauro","Tauro"
+"321",18,191,1,32,9.5,1,3,"S3","Santiago","Masculino","Sagitario","Sagitario"
+"322",18,176,0,23,10,4,3,"S3","Santiago","Masculino","Tauro","Tauro"
+"323",19,180,5,15,9.1,2,3,"S3","Santiago","Masculino","Sagitario","Sagitario"
+"324",19,153,1,36,9,0,4,"S3","Santiago","Femenino","Piscis","Piscis"
+"325",20,160,0,5,8,2,4,"S3","Santiago","Femenino","Sagitario","Sagitario"
+"326",19,175,2,34,10,3,4,"S3","Santiago","Masculino","Escorpio","Escorpio"
+"327",18,171,2,21,8.3,2,4,"S3","Santiago","Masculino","Sagitario","Sagitario"
+"328",19,175,2,12,9.5,1,5,"S3","Santiago","Femenino","Capricornio","Capricornio"
+"329",18,164,4,10,8.7,1,5,"S3","Santiago","Femenino","Leo","Leo"
+"330",18,173,4,16,9,1,5,"S3","Santiago","Masculino","Leo","Leo"
+"331",19,168,2,17,10,0,6,"S3","Santiago","Femenino","Acuario","Acuario"
+"332",18,160,1,4,10,0,6,"S3","Santiago","Femenino","Piscis","Piscis"
+"333",18,178,1,16,9,2,6,"S3","Santiago","Masculino","Aries","Aries"
+"334",18,188,1,12,10,0,6,"S3","Santiago","Masculino","Libra","Libra"
+"335",18,159,3,9,9.5,1,7,"S3","Santiago","Femenino","Cancer","Cancer"
+"336",18,155,2,5,9.9,0,7,"S3","Santiago","Femenino","Virgo","Virgo"
+"337",18,149,2,12,5,3,7,"S3","Santiago","Femenino","Leo","Leo"
+"338",18,149,1,2,10,1,8,"S3","Santiago","Femenino","Escorpio","Escorpio"
+"339",19,166,2,15,10,2,8,"S3","Santiago","Femenino","Virgo","Virgo"
+"340",19,175,2,13,10,2,8,"S3","Santiago","Femenino","Acuario","Acuario"
+"341",19,152,1,196,7.1,2,3,"S2","Santiago","Femenino","Escorpio","Escorpio"
+"342",18,170,2,42,9,1,3,"S2","Santiago","Femenino","Aries","Aries"
+"343",18,186,5,40,9.3,1,3,"S2","Santiago","Masculino","Escorpio","Escorpio"
+"344",19,173,2,25,8.2,0,3,"S2","Santiago","Masculino","Geminis","Geminis"
+"345",18,182,2,11,9.1,2,3,"S2","Santiago","Masculino","Libra","Libra"
+"346",18,173,1,22,8.1,1,4,"S2","Santiago","Femenino","Virgo","Virgo"
+"347",18,181,2,3289,9,2,4,"S2","Santiago","Masculino","Libra","Libra"
+"348",18,173,2,2448,9.5,4,4,"S2","Santiago","Masculino","Geminis","Geminis"
+"349",19,173,2,18,10,1,4,"S2","Santiago","Masculino","Acuario","Acuario"
+"350",19,182,2,9,6.6,2,4,"S2","Santiago","Masculino","Piscis","Piscis"
+"351",18,161,2,40,10,1,5,"S2","Santiago","Femenino","Tauro","Tauro"
+"352",18,170,1,11,8,0,5,"S2","Santiago","Femenino","Sagitario","Sagitario"
+"353",18,169,0,77,9,1,5,"S2","Santiago","Masculino","Sagitario","Sagitario"
+"354",18,170,1,37,8,0,5,"S2","Santiago","Masculino","Cancer","Cancer"
+"355",18,175,1,35,10,1,5,"S2","Santiago","Masculino","Leo","Leo"
+"356",19,180,3,21,10,3,5,"S2","Santiago","Masculino","Aries","Aries"
+"357",18,183,5,21,9,5,5,"S2","Santiago","Masculino","Sagitario","Sagitario"
+"358",19,189,1,20,9,0,5,"S2","Santiago","Masculino","Acuario","Acuario"
+"359",20,180,2,15,1,1,5,"S2","Santiago","Masculino","Escorpio","Escorpio"
+"360",18,174,1,12,8.5,2,7,"S2","Santiago","Femenino","Escorpio","Escorpio"
+"361",18,185,4,5,9.4,2,7,"S2","Santiago","Masculino","Acuario","Acuario"
+"362",19,177,2,6,10,2,8,"S2","Santiago","Masculino","Escorpio","Escorpio"
+"363",18,171,2,12,6,0,9,"S2","Santiago","Femenino","Sagitario","Sagitario"
+"364",20,185,2,14,9,4,10,"S2","Santiago","Masculino","Acuario","Acuario"
+"365",18,173,3,41,10,1,2,"S12","Santiago","Masculino","Aries","Aries"
+"366",19,168,2,11,8.5,2,3,"S12","Santiago","Femenino","Sagitario","Sagitario"
+"367",19,166,2,15,10,3,3,"S12","Santiago","Femenino","Acuario","Acuario"
+"368",18,173,1,522,9.5,3,3,"S12","Santiago","Masculino","Virgo","Virgo"
+"369",18,153,1,34,9,1,4,"S12","Santiago","Femenino","Libra","Libra"
+"370",18,161,2,34,9.1,2,4,"S12","Santiago","Femenino","Escorpio","Escorpio"
+"371",18,178,1,1032,9.5,3,4,"S12","Santiago","Masculino","Capricornio","Capricornio"
+"372",19,176,3,50,9,3,4,"S12","Santiago","Masculino","Acuario","Acuario"
+"373",18,185,3,35,6.7,0,4,"S12","Santiago","Masculino","Leo","Leo"
+"374",20,176,2,25,9.6,0,4,"S12","Santiago","Masculino","Leo","Leo"
+"375",18,170,3,12,8,0,4,"S12","Santiago","Masculino","Tauro","Tauro"
+"376",23,173,3,16,8,0,5,"S12","Santiago","Femenino","Sagitario","Sagitario"
+"377",18,191,2,127,10,0,5,"S12","Santiago","Masculino","Sagitario","Sagitario"
+"378",19,176,2,103,7,4,5,"S12","Santiago","Masculino","Piscis","Piscis"
+"379",18,165,2,22,8.2,0,5,"S12","Santiago","Masculino","Libra","Libra"
+"380",22,180,2,15,10,2,5,"S12","Santiago","Masculino","Leo","Leo"
+"381",18,168,4,14,7.5,1,6,"S12","Santiago","Femenino","Cancer","Cancer"
+"382",19,179,3,13,7.9,2,6,"S12","Santiago","Masculino","Sagitario","Sagitario"
+"383",18,190,2,10,3.9,1,6,"S12","Santiago","Masculino","Piscis","Piscis"
+"384",18,176,0,9,8.6,5,6,"S12","Santiago","Masculino","Tauro","Tauro"
+"385",19,164,3,17,5,7,7,"S12","Santiago","Femenino","Acuario","Acuario"
+"386",18,181,2,70,8.1,2,7,"S12","Santiago","Masculino","Cancer","Cancer"
+"387",20,181,1,9,6.6,1,7,"S12","Santiago","Masculino","Sagitario","Sagitario"
+"388",18,180,3,15,8,1,9,"S12","Santiago","Masculino","Virgo","Virgo"
+"389",24,171,3,99,3.2,0,10,"S12","Santiago","Masculino","Piscis","Piscis"
+"390",18,160,2,14,10,2,12,"S12","Santiago","Femenino","Libra","Libra"
+"391",19,178,1,22,7.4,3,1,"S11","Santiago","Masculino","Capricornio","Capricornio"
+"392",18,176,2,11,6,0,2,"S11","Santiago","Masculino","Virgo","Virgo"
+"393",22,187,2,9,10,0,2,"S11","Santiago","Masculino","Virgo","Virgo"
+"394",21,181,1,16,8,2,3,"S11","Santiago","Masculino","Virgo","Virgo"
+"395",19,180,2,12,10,0,3,"S11","Santiago","Masculino","Piscis","Piscis"
+"396",18,185,6,7,10,0,3,"S11","Santiago","Masculino","Capricornio","Capricornio"
+"397",19,180,2,4,8.1,1,3,"S11","Santiago","Masculino","Escorpio","Escorpio"
+"398",18,173,2,15,7.7,1,4,"S11","Santiago","Femenino","Virgo","Virgo"
+"399",18,177,6,38,10,1,4,"S11","Santiago","Masculino","Leo","Leo"
+"400",21,182,2,22,8,6,4,"S11","Santiago","Masculino","Sagitario","Sagitario"
+"401",18,175,4,16,8.9,2,4,"S11","Santiago","Masculino","Virgo","Virgo"
+"402",17,164,2,5,7,3,5,"S11","Santiago","Femenino","Aries","Aries"
+"403",22,167,2,14,4,3,5,"S11","Santiago","Femenino","Sagitario","Sagitario"
+"404",18,178,1,17,9,2,5,"S11","Santiago","Masculino","Leo","Leo"
+"405",19,183,3,13,7.5,4,5,"S11","Santiago","Masculino","Virgo","Virgo"
+"406",18,183,2,12,7,1,5,"S11","Santiago","Masculino","Libra","Libra"
+"407",18,171,1,12,7.7,0,5,"S11","Santiago","Masculino","Cancer","Cancer"
+"408",18,174,2,49,8,1,6,"S11","Santiago","Femenino","Leo","Leo"
+"409",18,177,2,20,7.9,3,6,"S11","Santiago","Masculino","Cancer","Cancer"
+"410",18,174,2,13,8.5,0,6,"S11","Santiago","Masculino","Aries","Aries"
+"411",17,170,2,12,10,0,6,"S11","Santiago","Masculino","Aries","Aries"
+"412",19,169,3,98,10,5,7,"S11","Santiago","Masculino","Libra","Libra"
+"413",18,160,1,10,8.5,1,8,"S11","Santiago","Femenino","Leo","Leo"
+"414",19,165,1,8,7,0,8,"S11","Santiago","Femenino","Acuario","Acuario"
+"415",18,174,1,4,8,0,8,"S11","Santiago","Masculino","Piscis","Piscis"
+"416",18,170,1,8,7.9,4,9,"S11","Santiago","Femenino","Sagitario","Sagitario"
+"417",18,164,3,188,7.7,7,9,"S11","Santiago","Femenino","Piscis","Piscis"
+"418",18,180,1,12,8,3,9,"S11","Santiago","Masculino","Escorpio","Escorpio"
+"419",18,174,3,8,10,3,10,"S11","Santiago","Masculino","Aries","Aries"
+"420",20,186,7,21,7.5,2,12,"S11","Santiago","Masculino","Acuario","Acuario"
+"421",18,178,2,14,10,0,2,"S10","Santiago","Masculino","Leo","Leo"
+"422",18,169,4,15,7,0,3,"S10","Santiago","Femenino","Escorpio","Escorpio"
+"423",18,165,0,11,8.2,1,3,"S10","Santiago","Femenino","Geminis","Geminis"
+"424",18,170,2,24,9,0,3,"S10","Santiago","Femenino","Cancer","Cancer"
+"425",18,173,3,33,10,3,3,"S10","Santiago","Masculino","Cancer","Cancer"
+"426",18,173,2,22,9,0,3,"S10","Santiago","Masculino","Tauro","Tauro"
+"427",21,194,1,9,8,1,4,"S10","Santiago","Masculino","Acuario","Acuario"
+"428",18,175,2,6,8.7,0,4,"S10","Santiago","Masculino","Leo","Leo"
+"429",18,181,2,6,10,3,4,"S10","Santiago","Masculino","Tauro","Tauro"
+"430",18,173,1,6,7.5,1,5,"S10","Santiago","Femenino","Leo","Leo"
+"431",18,158,0,8,9.6,3,5,"S10","Santiago","Femenino","Aries","Aries"
+"432",18,164,2,39,8.7,0,5,"S10","Santiago","Femenino","Cancer","Cancer"
+"433",19,174,3,61,10,3,5,"S10","Santiago","Masculino","Cancer","Cancer"
+"434",18,176,3,43,10,1,5,"S10","Santiago","Masculino","Sagitario","Sagitario"
+"435",18,178,0,7,6,0,5,"S10","Santiago","Masculino","Capricornio","Capricornio"
+"436",26,170,2,2,5.4,0,6,"S10","Santiago","Femenino","Libra","Libra"
+"437",18,179,1,10,10,0,6,"S10","Santiago","Masculino","Sagitario","Sagitario"
+"438",18,175,2,11,9,2,7,"S10","Santiago","Femenino","Sagitario","Sagitario"
+"439",18,183,2,1026,9,8,7,"S10","Santiago","Masculino","Sagitario","Sagitario"
+"440",18,174,3,130,9,0,7,"S10","Santiago","Masculino","Sagitario","Sagitario"
+"441",19,164,1,35,9.7,3,8,"S10","Santiago","Femenino","Leo","Leo"
+"442",18,165,2,26,8.1,3,8,"S10","Santiago","Femenino","Escorpio","Escorpio"
+"443",20,188,3,42,8.6,0,8,"S10","Santiago","Masculino","Sagitario","Sagitario"
+"444",19,174,2,25,8.5,2,8,"S10","Santiago","Masculino","Leo","Leo"
+"445",18,168,2,12,9.8,9,9,"S10","Santiago","Masculino","Capricornio","Capricornio"
+"446",19,182,4,18,5,1,10,"S10","Santiago","Masculino","Acuario","Acuario"
+"447",18,172,2,12,9,0,2,"S1","Santiago","Masculino","Acuario","Acuario"
+"448",18,163,2,4,1.2,0,3,"S1","Santiago","Femenino","Piscis","Piscis"
+"449",18,166,0,10,4.1,0,3,"S1","Santiago","Femenino","Cancer","Cancer"
+"450",19,165,0,13,10,2,3,"S1","Santiago","Femenino","Leo","Leo"
+"451",20,182,2,17,10,2,3,"S1","Santiago","Masculino","Escorpio","Escorpio"
+"452",18,181,5,14,8.5,1,3,"S1","Santiago","Masculino","Geminis","Geminis"
+"453",19,170,4,8,4,0,3,"S1","Santiago","Masculino","Piscis","Piscis"
+"454",22,181,1,5,9,0,3,"S1","Santiago","Masculino","Leo","Leo"
+"455",18,163,1,14,10,1,4,"S1","Santiago","Femenino","Virgo","Virgo"
+"456",18,162,2,11,7,4,4,"S1","Santiago","Femenino","Cancer","Cancer"
+"457",18,170,4,15,6,2,4,"S1","Santiago","Femenino","Leo","Leo"
+"458",20,191,1,30,8,1,4,"S1","Santiago","Masculino","Aries","Aries"
+"459",18,168,1,13,8.5,1,4,"S1","Santiago","Masculino","Capricornio","Capricornio"
+"460",18,169,2,18,9.5,0,5,"S1","Santiago","Femenino","Acuario","Acuario"
+"461",18,168,3,10,5,0,5,"S1","Santiago","Femenino","Leo","Leo"
+"462",18,171,2,22,9.4,2,5,"S1","Santiago","Femenino","Libra","Libra"
+"463",18,169,3,22,8.6,0,6,"S1","Santiago","Femenino","Libra","Libra"
+"464",19,160,1,11,10,2,6,"S1","Santiago","Femenino","Leo","Leo"
+"465",19,173,1,20,9,0,6,"S1","Santiago","Femenino","Acuario","Acuario"
+"466",18,173,1,16,8,2,6,"S1","Santiago","Femenino","Leo","Leo"
+"467",20,180,1,14,9.1,7,6,"S1","Santiago","Masculino","Piscis","Piscis"
+"468",17,177,4,12,10,1,6,"S1","Santiago","Masculino","Escorpio","Escorpio"
+"469",18,162,4,9,9.5,0,7,"S1","Santiago","Femenino","Libra","Libra"
+"470",18,180,2,25,7,2,7,"S1","Santiago","Masculino","Libra","Libra"
+"471",18,178,2,20,4.2,0,7,"S1","Santiago","Masculino","Leo","Leo"
+"472",18,184,2,19,10,2,7,"S1","Santiago","Masculino","Leo","Leo"
+"473",18,175,1,11,10,4,7,"S1","Santiago","Masculino","Virgo","Virgo"
+"474",19,168,1,18,8,0,10,"S1","Santiago","Femenino","Cancer","Cancer"
