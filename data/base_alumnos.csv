@@ -1,4 +1,4 @@
-edad,estatura,num_familia,km_uai,nota_proceso,n_peliculas,horas_cel,Sección,sede_uai,sexo,zodiaco,formato_clases
+edad,estatura,num_familia,km_uai,nota_proceso,n_peliculas,horas_cel,seccion,sede_uai,sexo,zodiaco,formato_clases
 20,168,1,5,10.0,0,2,V5,Viña del Mar,Femenino,Virgo,Presencial
 18,175,2,390,10.0,0,2,V5,Viña del Mar,Masculino,Capricornio,Presencial
 18,167,2,4,10.0,0,3,V5,Viña del Mar,Femenino,Escorpio,Presencial
