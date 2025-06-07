@@ -3,6 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Descripción y Visualización de Datos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 0 20px;
+            background-color: #fdfdfd;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #004080;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 0.2em;
+        }
+
+        h2 {
+            margin-top: 2em;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.2em;
+        }
+
+        ul {
+            margin-bottom: 1em;
+        }
+
+        li {
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        ol > li {
+            margin-bottom: 1.5em;
+        }
+    </style>
 </head>
 <body>
     <h1>Curso: Descripción y Visualización de Datos</h1>
@@ -15,104 +57,85 @@
         <li><b>Introducción al curso y a los datos</b>
             <ul>
                 <li>Importancia de los datos en la vida cotidiana y la investigación social</li>
-                <li>Revisión del programa, objetivos del curso, y dinámica de trabajo</li>
+                <li>Revisión del programa y dinámica de trabajo</li>
                 <li>Ética de los datos y alfabetización digital</li>
             </ul>
         </li>
-
         <li><b>Explorando datos con Excel</b>
             <ul>
                 <li>Tipos de variables y estructuras de datos tabulares</li>
-                <li>Operaciones básicas en Excel: filtros, formatos y fórmulas</li>
-                <li>Representaciones simples de datos en Excel</li>
+                <li>Operaciones básicas: filtros, formatos y fórmulas</li>
+                <li>Representaciones simples en Excel</li>
             </ul>
         </li>
-
         <li><b>Estadística descriptiva en Excel</b>
             <ul>
-                <li>Medidas de tendencia central y de dispersión</li>
-                <li>Tablas dinámicas para resumen de información</li>
-                <li>Gráficos simples (barras, tortas, líneas)</li>
+                <li>Medidas de tendencia central y dispersión</li>
+                <li>Tablas dinámicas y gráficos básicos</li>
             </ul>
         </li>
-
         <li><b>Introducción a R y RStudio</b>
             <ul>
                 <li>Interfaz de RStudio y flujo de trabajo en Tidyverse</li>
-                <li>Importación de datos y estructura de los dataframes</li>
-                <li>Tipos de variables y primeros pasos con dplyr</li>
+                <li>Importación de datos y primeros pasos con dplyr</li>
             </ul>
         </li>
-
         <li><b>Manipulación de datos con dplyr</b>
             <ul>
-                <li>Operaciones básicas: filter(), select(), mutate(), arrange()</li>
-                <li>group_by() y summarise() para resumen de datos</li>
-                <li>Casos prácticos de análisis descriptivo en R</li>
+                <li>filter(), select(), mutate(), arrange()</li>
+                <li>group_by() y summarise()</li>
             </ul>
         </li>
-
         <li><b>Primer trabajo práctico: descripción con R</b>
             <ul>
-                <li>Entrega y resolución guiada de caso de análisis simple</li>
-                <li>Evaluación del uso de dplyr y comprensión de datos</li>
+                <li>Entrega guiada de un caso de análisis simple</li>
             </ul>
         </li>
-
-        <li><b>Introducción a la visualización con ggplot2</b>
+        <li><b>Visualización con ggplot2 (1)</b>
             <ul>
-                <li>Gramática de los gráficos: estética, geometría, escalas</li>
+                <li>Gramática de los gráficos</li>
                 <li>Gráficos univariados: barras, histogramas, boxplots</li>
-                <li>Primeros gráficos en R: exploración con ejemplos</li>
             </ul>
         </li>
-
-        <li><b>Visualizaciones bivariadas y multivariadas</b>
+        <li><b>Visualización con ggplot2 (2)</b>
             <ul>
-                <li>Gráficos de dispersión, líneas, áreas y facetas</li>
-                <li>Uso de color, forma y tamaño para múltiples variables</li>
-                <li>Buenas prácticas de visualización</li>
+                <li>Gráficos bivariados y multivariados</li>
+                <li>Uso de estética visual para representar múltiples variables</li>
             </ul>
         </li>
-
         <li><b>Diseño de visualizaciones efectivas</b>
             <ul>
-                <li>Principios de claridad, contraste y narrativa visual</li>
-                <li>Casos de visualización engañosa</li>
-                <li>Edición de títulos, leyendas, etiquetas y temas</li>
+                <li>Claridad, contraste y narrativa visual</li>
+                <li>Errores comunes en visualización</li>
             </ul>
         </li>
-
         <li><b>Informe exploratorio de datos (EDA)</b>
             <ul>
-                <li>Cómo estructurar un análisis descriptivo</li>
-                <li>Elementos clave: preguntas, gráficos, interpretación</li>
+                <li>Estructura de un análisis exploratorio</li>
                 <li>Uso de RMarkdown para informes reproducibles</li>
             </ul>
         </li>
-
         <li><b>Sesión aplicada: análisis de base real</b>
             <ul>
-                <li>Los estudiantes trabajan con una base de datos propia o provista</li>
-                <li>Elaboración de visualizaciones y tablas para un informe</li>
-                <li>Retroalimentación grupal</li>
+                <li>Trabajo guiado con base de datos asignada</li>
+                <li>Elaboración de visualizaciones e interpretación</li>
             </ul>
         </li>
-
         <li><b>Presentación de informes finales</b>
             <ul>
-                <li>Entrega del informe final de análisis</li>
+                <li>Entrega del informe final</li>
                 <li>Presentaciones orales breves</li>
-                <li>Discusión sobre desafíos, aprendizajes y próximos pasos</li>
+                <li>Discusión colectiva</li>
             </ul>
         </li>
     </ol>
-   <h2>Evaluación</h2>
+
+    <h2>Evaluación</h2>
     <p>La evaluación del curso se compone de los siguientes elementos:</p>
     <ul>
-        <li><strong>Prueba 1 de contenidos (30%)</strong>: Evaluación individual que cubre los contenidos teóricos y prácticos de la primera mitad del curso, con énfasis en el uso de Excel y primeros pasos con R.</li>
-        <li><strong>Prueba 2 de contenidos (30%)</strong>: Evaluación individual centrada en el análisis y visualización de datos en R, incluyendo interpretación de resultados y generación de gráficos.</li>
-        <li><strong>Trabajo final grupal (40%)</strong>: Proyecto aplicado en grupos pequeños. Consiste en realizar un análisis exploratorio y visualización de una base de datos real, presentando los resultados en un informe reproducible en RMarkdown y una breve exposición oral.</li>
+        <li><strong>Prueba 1 de contenidos (30%)</strong>: Evaluación individual sobre uso de Excel y conceptos básicos de datos.</li>
+        <li><strong>Prueba 2 de contenidos (30%)</strong>: Evaluación individual sobre manipulación y visualización de datos en R.</li>
+        <li><strong>Trabajo final grupal (40%)</strong>: Análisis exploratorio y visual de una base de datos, presentado como informe en RMarkdown y exposición breve.</li>
     </ul>
 </body>
 </html>
