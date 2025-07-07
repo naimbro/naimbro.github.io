@@ -2,99 +2,97 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Análisis Computacional de Texto para las Ciencias Sociales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    .session {
+      background: #ffffff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #2980b9;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    ul {
+      margin-top: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Análisis Computacional de Texto para las Ciencias Sociales</h1>
-    <p>Naim Bro, Profesor Asistente, Universidad Adolfo Ibáñez</p>
-    Escuela de Invierno en Métodos <br>
-    Universidad Católica del Uruguay <br>
-    Modalidad: Presencial <br>
-  </header>
+  <h1>Análisis Computacional de Texto para las Ciencias Sociales</h1>
+  <p><strong>Escuela de Invierno en Métodos – Universidad Católica del Uruguay</strong></p>
+  <p><strong>Docente:</strong> Naim Bro, Universidad Adolfo Ibáñez</p>
+  <p><strong>Modalidad:</strong> Presencial</p>
 
-  <main>
-    <section>
-      <h2>Descripción del Curso</h2>
-      <p>Este curso explora herramientas y metodologías computacionales para el análisis de texto en ciencias sociales.
-      A través de sesiones prácticas y discusiones teóricas, abordaremos el uso de modelado de tópicos, embeddings, redes,
-      y modelos de lenguaje avanzados para interpretar grandes volúmenes de texto en contextos sociales.</p>
-    </section>
+  <h2>Descripción</h2>
+  <p>Este curso explora herramientas y metodologías computacionales para el análisis de texto en ciencias sociales. A través de sesiones prácticas y discusiones teóricas, abordaremos modelado de tópicos, embeddings, redes, y modelos generativos, con énfasis en su aplicación a fenómenos sociales.</p>
 
-    <section>
-      <h2>Objetivos del Curso</h2>
-      <ul>
-        <li>Aplicar herramientas computacionales para el análisis de grandes corpus textuales.</li>
-        <li>Utilizar modelos estadísticos y de aprendizaje automático para representar contenido textual.</li>
-        <li>Interpretar fenómenos sociales a partir de representaciones textuales.</li>
-      </ul>
-    </section>
+  <h2>Objetivos</h2>
+  <ul>
+    <li>Aplicar herramientas computacionales para analizar grandes corpus textuales.</li>
+    <li>Utilizar modelos estadísticos y de machine learning para representar contenido textual.</li>
+    <li>Interpretar fenómenos sociales a partir de datos textuales.</li>
+  </ul>
 
-    <section>
-      <h2>Público Objetivo</h2>
-      <p>Estudiantes, investigadores y profesionales interesados en aplicar el análisis computacional de texto en el ámbito de las ciencias sociales.</p>
-      <p><strong>Prerrequisitos:</strong> No hay prerrequisitos técnicos, aunque conocimientos básicos de Python son recomendables.</p>
-    </section>
+  <h2>Módulos</h2>
 
-    <section>
-      <h2>Estructura del Curso</h2>
-      <ol>
-        <li>
-          <strong>Módulo 1: Modelado de Tópicos y Puntos Ideales Basados en Texto</strong>
-          <ul>
-            <li>Descubrimiento de temas latentes y posicionamientos ideológicos a partir de corpus textuales.</li>
-            <li>Técnicas: TF-IDF, LDA, CTM, text-based ideal points.</li>
-            <li>Lecturas: Grimmer et al. (2022); Sarmiento et al. (2022).</li>
-          </ul>
-        </li>
+  <div class="session">
+    <p><strong>Módulo 1: Modelado de Tópicos y Puntos Ideales Basados en Texto</strong></p>
+    <ul>
+      <li>Técnicas: TF-IDF, LDA, CTM, text-based ideal points.</li>
+      <li>Lecturas: Grimmer et al. (2022), Sarmiento et al. (2022).</li>
+    </ul>
+  </div>
 
-        <li>
-          <strong>Módulo 2: Representaciones Distribuidas y Word Embeddings</strong>
-          <ul>
-            <li>Representar palabras y textos en espacios vectoriales para analizar semántica y contexto.</li>
-            <li>Técnicas: Word2Vec, Doc2Vec, GloVe, similitud y analogías vectoriales.</li>
-            <li>Lecturas: Mikolov et al. (2013); textos de aplicación en ciencias sociales.</li>
-          </ul>
-        </li>
+  <div class="session">
+    <p><strong>Módulo 2: Word Embeddings y Representaciones Distribuidas</strong></p>
+    <ul>
+      <li>Técnicas: Word2Vec, Doc2Vec, GloVe, análisis semántico y analogías.</li>
+      <li>Lecturas: Mikolov et al. (2013), aplicaciones recientes.</li>
+    </ul>
+  </div>
 
-        <li>
-          <strong>Módulo 3: Extracción de Redes desde Texto</strong>
-          <ul>
-            <li>Cómo construir y analizar redes de actores, conceptos o entidades desde texto.</li>
-            <li>Técnicas: NER, coocurrencias, extracción de relaciones, análisis de sentimientos, centralidad.</li>
-            <li>Lecturas: Bro (2025), “A Frustratingly Easy Way of Extracting Political Networks from Text”.</li>
-          </ul>
-        </li>
+  <div class="session">
+    <p><strong>Módulo 3: Extracción de Redes desde Texto</strong></p>
+    <ul>
+      <li>Técnicas: NER, coocurrencias, extracción de relaciones, análisis de sentimientos.</li>
+      <li>Lecturas: Bro (2025), "A Frustratingly Easy Way of Extracting Political Networks from Text".</li>
+    </ul>
+  </div>
 
-        <li>
-          <strong>Módulo 4: LLMs para el Análisis Cualitativo</strong>
-          <ul>
-            <li>Aplicaciones de modelos generativos (como GPT) para análisis cualitativo y exploratorio.</li>
-            <li>Técnicas: prompts analíticos, codificación asistida, sujetos sintéticos, análisis temático automatizado.</li>
-            <li>Lecturas: Bosley (2025); documentación OpenAI.</li>
-          </ul>
-        </li>
+  <div class="session">
+    <p><strong>Módulo 4: LLMs para el Análisis Cualitativo</strong></p>
+    <ul>
+      <li>Técnicas: prompts analíticos, codificación asistida, sujetos sintéticos.</li>
+      <li>Lecturas: Bosley (2025), documentación de modelos generativos.</li>
+    </ul>
+  </div>
 
-        <li>
-          <strong>Módulo 5: Taller Final de Proyecto</strong>
-          <ul>
-            <li>Diseño y desarrollo de un mini-proyecto de análisis textual aplicado.</li>
-            <li>Actividades: formulación de preguntas, construcción de corpus, análisis guiado, presentación breve.</li>
-            <li>Técnicas: repaso libre de técnicas anteriores según elección del participante.</li>
-          </ul>
-        </li>
-      </ol>
-    </section>
+  <div class="session">
+    <p><strong>Módulo 5: Taller de Proyecto Aplicado</strong></p>
+    <ul>
+      <li>Actividades: diseño de pregunta de investigación, análisis textual guiado, presentación de resultados.</li>
+      <li>Técnicas: libres, según elección del participante.</li>
+    </ul>
+  </div>
 
-    <section>
-      <h2>Bibliografía</h2>
-      <ul>
-        <li>Grimmer, J., Roberts, M. E., & Stewart, B. M. (2022). <em>Text as Data: A New Framework for Machine Learning and the Social Sciences</em>.</li>
-        <li>Bro (2025), "A Frustratingly Easy Way of Extracting Political Networks from Text".</li>
-        <li>Bosley (2025), "Improving Probabilistic Models in Text Classification via Active Learning".</li>
-        <li>Sarmiento et al. (2022), "Identifying and Characterizing New Expressions of Community Framing during Polarization".</li>
-      </ul>
-    </section>
-  </main>
+  <h2>Bibliografía principal</h2>
+  <ul>
+    <li>Grimmer, Roberts & Stewart (2022). <em>Text as Data</em>.</li>
+    <li>Bro (2025). <em>A Frustratingly Easy Way of Extracting Political Networks from Text</em>.</li>
+    <li>Bosley (2025). <em>Improving Probabilistic Models in Text Classification via Active Learning</em>.</li>
+    <li>Sarmiento et al. (2022). <em>New Expressions of Community Framing during Polarization</em>.</li>
+  </ul>
+
+  <p><em>No se requieren conocimientos previos en programación, aunque familiaridad básica con Python puede ser útil.</em></p>
 </body>
 </html>
