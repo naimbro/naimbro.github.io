@@ -1,156 +1,380 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Descripción y Visualización de Datos</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 40px auto;
-            max-width: 800px;
-            padding: 0 20px;
-            background-color: #fdfdfd;
-            color: #333;
-        }
-        h1, h2 {
-            color: #004080;
-        }
-        h1 {
-            font-size: 2em;
-            margin-bottom: 0.2em;
-        }
-        h2 {
-            margin-top: 2em;
-            border-bottom: 2px solid #ddd;
-            padding-bottom: 0.2em;
-        }
-        ul {
-            margin-bottom: 1em;
-        }
-        li {
-            margin-bottom: 0.5em;
-        }
-        p {
-            margin-bottom: 1em;
-        }
-        ol > li {
-            margin-bottom: 1.5em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Descripción y Visualización de Datos</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a3d62;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.2em;
+    }
+    ol {
+      padding-left: 1.2em;
+    }
+    li {
+      margin-bottom: 0.2em;
+    }
+    ul {
+      margin-top: 0.5em;
+      margin-bottom: 1.2em;
+    }
+    a {
+      color: #1e3799;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .info {
+      background-color: #eaf2f8;
+      padding: 1em;
+      border-left: 5px solid #0a3d62;
+      margin-bottom: 2em;
+    }
+    .class-block {
+      margin-bottom: 2em;
+    }
+  </style>
 </head>
 <body>
-    <h1>Curso: Descripción y Visualización de Datos</h1>
-    <p><strong>Profesor:</strong> Naim Bro (naim.bro.k [at] uai.cl)<br>
-    <strong>Ayudante:</strong> Martín Castillo (martincastillo [at] alumnos.uai.cl)<br>
-    <strong>Escuela:</strong> Escuela de Gobierno, Universidad Adolfo Ibáñez<br>
-    <strong>Año:</strong> 2025</p>
 
-<h2>Clases</h2>
-<ol>
-    <li><b>Introducción: el valor de visualizar datos</b>
-        <ul>
-            <li>Presentación del curso y de los desafíos actuales de la visualización</li>
-            <li>Diferencias entre describir y visualizar datos</li>
-            <li>Contexto ético de la visualización (transparencia, sesgo, manipulación visual)</li>
-        </ul>
-    </li>
-    <li><b>Repaso de Excel: visualización básica</b>
-        <ul>
-            <li>Cómo importar datos, generar tablas y crear gráficos simples en Excel</li>
-            <li>Ejercicios de traducción de gráficos de Excel a R</li>
-        </ul>
-    </li>
-    <li><b>Primeros pasos en R y RStudio</b>
-        <ul>
-            <li>Instalación, interfaz y flujo de trabajo en Tidyverse</li>
-            <li>Importar datos en R y limpieza básica</li>
-        </ul>
-    </li>
-    <li><b>Manipulación de datos en R con dplyr I</b>
-        <ul>
-            <li>Exploración y selección de variables</li>
-            <li>Creación de nuevas variables, filtrado y ordenamiento</li>
-        </ul>
-    </li>
-    <li><b>Manipulación de datos en R con dplyr II</b>
-        <ul>
-            <li>group_by(), summarise() y tablas de resumen</li>
-            <li>Construcción de tablas "tidy" para visualización</li>
-        </ul>
-    </li>
-    <li><b>Trabajo aplicado: exploración y resumen de una base en R</b>
-        <ul>
-            <li>Aplicación práctica con un dataset real</li>
-            <li>Construcción de datasets preparados para visualización</li>
-        </ul>
-    </li>
-    <li><b>Visualización con ggplot2 I: fundamentos y gráficos univariados</b>
-        <ul>
-            <li>Gramática de los gráficos: estética, mapeos y escalas</li>
-            <li>Gráficos de barra, histograma y boxplot</li>
-            <li>Buenas prácticas para gráficos claros y honestos</li>
-        </ul>
-    </li>
-    <li><b>Visualización con ggplot2 II: gráficos bivariados y multivariados</b>
-        <ul>
-            <li>Gráficos de dispersión, columna, línea y violín</li>
-            <li>Facetado y visualización por subgrupos</li>
-        </ul>
-    </li>
-    <li><b>Visualización avanzada en R</b>
-        <ul>
-            <li>Uso de color, forma, tamaño y transparencia</li>
-            <li>Anotaciones, leyendas y edición de etiquetas</li>
-            <li>Temas, estilos y personalización estética</li>
-        </ul>
-    </li>
-    <li><b>Visualización multivariada y exploración interactiva</b>
-        <ul>
-            <li>Visualización de más de dos variables</li>
-            <li>Introducción a visualización interactiva (plotly o shiny básico)</li>
-        </ul>
-    </li>
-    <li><b>Errores, trampas y ética en la visualización</b>
-        <ul>
-            <li>Errores comunes en gráficos y cómo evitarlos</li>
-            <li>Casos de manipulación visual y sus consecuencias</li>
-            <li>Ética de la comunicación visual</li>
-        </ul>
-    </li>
-    <li><b>Del análisis a la narrativa visual</b>
-        <ul>
-            <li>Cómo construir una historia usando datos y visualizaciones</li>
-            <li>Elaboración de dashboards simples y reportes para audiencias no técnicas</li>
-        </ul>
-    </li>
-    <li><b>RMarkdown y reportes reproducibles</b>
-        <ul>
-            <li>Integrar código, texto y gráficos en informes automáticos</li>
-            <li>Buenas prácticas de documentación visual</li>
-        </ul>
-    </li>
-    <li><b>Proyecto aplicado: análisis exploratorio y visualización</b>
-        <ul>
-            <li>Trabajo práctico guiado: análisis exploratorio completo de un caso real</li>
-            <li>Construcción del informe visual final</li>
-        </ul>
-    </li>
-    <li><b>Presentación de proyectos y feedback colectivo</b>
-        <ul>
-            <li>Exposición y discusión de informes visuales grupales</li>
-            <li>Retroalimentación de pares y cierre de aprendizajes</li>
-        </ul>
-    </li>
-    <li><b>Cierre y proyección: buenas prácticas y tendencias</b>
-        <ul>
-            <li>Revisión final de buenas prácticas de visualización</li>
-            <li>Tendencias actuales: visualización interactiva, AI y nuevos formatos</li>
-            <li>Recursos y caminos para seguir aprendiendo</li>
-        </ul>
-    </li>
-</ol>
+  <div class="info">
+    <h1>Curso: Descripción y Visualización de Datos</h1>
+    <p><strong>Profesor:</strong> Naim Bro (<code>naim.bro.k [at] uai.cl</code>)<br>
+    <strong>Ayudante:</strong> Martín Castillo (<code>martincastillo [at] alumnos.uai.cl</code>)<br>
+    <strong>Escuela:</strong> Universidad Adolfo Ibáñez, 2025<br>
+    <strong>Horario de oficina:</strong> Oficina 260-A (coordinar por mail previamente)<br>
+    <em>(Recursos actualizados semanalmente)</em></p>
+  </div>
+
+  <h2>Clases</h2>
+
+  <!-- CLASES -->
+  <ol>
+<li>
+  <b>Introducción a la visualización de datos</b> (04-08-2025)
+  <p><strong>Objetivos de aprendizaje:</strong> El alumno debe ser capaz de argumentar la importancia de los datos en el contexto actual, los principales efectos en el desarrollo de los negocios y cómo la tecnología ha ayudado en su aplicación. Además, debe entender los desafíos éticos, técnicos y estratégicos que la era de los datos impone y la importancia de poder leer, entender y argumentar con datos.</p>
+  <p><strong>Contenidos específicos:</strong></p>
+  <ul>
+    <li>Introducción al curso e información administrativa</li>
+    <li>Evolución tecnológica y datos</li>
+    <li>Cadena de valor de los datos</li>
+    <li>Los datos en un contexto de negocios</li>
+    <li>Razonamiento cuantitativo</li>
+    <li><a href="https://docs.google.com/presentation/d/1aPPmnRhdjhZodJLBRwh-_LFAIMaEqcQsbCjx5xrZXGw/edit?usp=sharing" target="_blank">Slides</a></li>
+    <li>Quizz para conocernos: <a href="https://forms.gle/yT32TwfkBvyjrWzAA" target="_blank">Google form</a> (<a href="https://docs.google.com/forms/d/16zhgLcsTfxA3YJ8JCP_qeNEQwtRq0FmyPZgyPyLe8yo/edit" target="_blank">respuestas</a>)</li>
+  </ul>
+</li>
+
+<li>
+  <b>Caso: Describiendo a mis compañeros de clase</b> (11-08-2025)
+  <p><strong>Objetivos de aprendizaje:</strong> En esta sesión el alumno debe ser capaz de describir los datos de una base de datos (tabla) utilizando estadísticos descriptivos básicos (medidas de posición) y gráficos simples. El alumno debe familiarizarse con Microsoft Excel y aplicar los estadísticos básicos y tabla dinámica para describir a los compañeros de clase usando los datos de la encuesta aplicada en la primera clase del curso.</p>
+  <p><strong>Contenidos específicos:</strong> Caso “Describiendo a mis compañeros de clase”</p>
+  <ul>
+    <li>Contexto: Cómo describir características de una población</li>
+    <li>Medidas de tendencia central: Media, mediana, moda</li>
+    <li>Medidas de dispersión: Varianza, desviación estándar, coeficiente de variación y rango</li>
+    <li>Representación de datos y fórmulas: tipos, funciones, filtros y ordenamientos</li>
+    <li>Medidas de posición: cuartiles, quintiles, deciles y percentilas</li>
+    <li>Análisis de datos mediante gráficos: Boxplot, Torta, Barra y Línea</li>
+    <li>Uso de tabla dinámica</li>
+    <li><a href="https://forms.gle/tsbVVUEedRe6zAtc9" target="_blank">Quiz</a></li>
+    <li><a href="https://docs.google.com/presentation/d/1lR4zlGen2zr1irdtiBHrVjgpn_tYuUcaoTvxsrMy7vs/edit?usp=sharing" target="_blank">Slides</a></li>
+    <li><a href="https://forms.gle/XShX9Qw2vqJsckND7" target="_blank">Resumen</a></li>
+    <li><a href="https://docs.google.com/spreadsheets/d/1zejmpH_mMpFfjFDrQfmOrGZKl5aN_JQZtDl7QlfdcuE/edit?usp=sharing" target="_blank">Datos</a></li>
+    <li><a href="https://forms.gle/QFHk3JdTW4Fw56CD6" target="_blank">Quiz</a></li>
+    <li><a href="https://docs.google.com/presentation/d/1CwvN9_tyRS1WZdbFV33NW66HMk5dNbniAyKliOLUobE/edit?usp=sharing" target="_blank">Slides</a></li>
+    <li><a href="https://forms.gle/C54ayDUq5yrgAWFA9" target="_blank">Resumen</a></li>
+  </ul>
+</li>
+
+<li>
+  <b>Introducción al razonamiento algorítmico para análisis de datos</b> (18-08-2025)
+  <p><strong>Objetivos de aprendizaje:</strong> Se espera que al final de la sesión, el alumno pueda utilizar Google Colab para R para cargar una base de datos, describir las variables que la comprenden y usar <code>dplyr</code> para hacer un análisis exploratorio básico sin gráficos. Esto incluye aplicar <code>filter</code>, <code>select</code>, <code>mutate</code>, <code>group_by</code> y <code>summarise</code> para aislar variables de interés y crear tablas de resumen. Esta sesión cubre los contenidos del Capítulo 2 del apunte de R del curso.</p>
+
+  <p><strong>Contenido de ayudantía 1:</strong></p>
+  <ul>
+    <li>Ingresar a Google Colab con credenciales Gmail</li>
+    <li>Identificar ventanas de la interfaz de Google Colab y saber para qué se usan</li>
+    <li>Cargar una base de datos (formato CSV) en R</li>
+    <li>Identificar tipos de variables</li>
+    <li>Observar la base de datos a través de la interfaz gráfica de Google Colab</li>
+    <li>Introducción a dplyr: <code>filter</code>, <code>arrange</code>, <code>select</code> y <code>mutate</code></li>
+    <li><a href="https://docs.google.com/presentation/d/1DILR69yTFPWkreiprTshdo6HdC9Eh_ALocUiopRYX18/edit?usp=sharing" target="_blank">Slides</a></li>
+    <li><a href="https://docs.google.com/spreadsheets/d/1lzh3Tv6DLAS6DD2NsTFuQMEzLAef4OgTHWZvko5TTts/edit?usp=sharing" target="_blank">Preguntas de análisis (trabajo grupal)</a></li>
+    <li><a href="https://forms.gle/fgp1TxLK5YHxwc7v9" target="_blank">Encuesta, mejor pregunta</a></li>
+    <li><a href="https://docs.google.com/spreadsheets/d/1zejmpH_mMpFfjFDrQfmOrGZKl5aN_JQZtDl7QlfdcuE/edit?usp=sharing" target="_blank">Datos</a></li>
+    <li><a href="https://www.bookdown.org/rodolfo_carvajal/apunte/" target="_blank">Tutorial de R</a></li>
+  </ul>
+  <p><strong>Contenidos específicos clase (formato cátedra):</strong></p>
+  <ul>
+    <li>¿Qué es un lenguaje de programación?</li>
+    <li>Introducción a R / Tidyverse como lenguaje y plataforma para análisis de datos</li>
+    <li>El concepto de datos en formato <em>tidy</em></li>
+    <li>Tipos básicos de variables en R: <code>character</code>, <code>numeric</code> (real/decimal), <code>integer</code>, <code>logical</code></li>
+    <li>La librería <code>dplyr</code></li>
+    <li>El <code>data frame</code> o <code>tibble</code> como contenedor de variables</li>
+    <li>Flujo de trabajo en R / Tidyverse: <code>%>%</code> + funciones</li>
+    <li>Exploración rápida de un tibble: <code>glimpse()</code>, <code>dim()</code>, <code>distinct()</code>, <code>count()</code></li>
+    <li>Métodos <code>filter()</code> y <code>select()</code> con operaciones lógicas</li>
+    <li>Cómo leer <code>help</code> en R</li>
+    <li>Introducción a <code>mutate()</code> con operaciones numéricas y funciones básicas</li>
+    <li>Introducción a <code>summarise()</code> y <code>group_by()</code> con métodos de resumen</li>
+    <li>Ejemplos de uso de R para analizar la base de datos <code>mpg</code></li>
+    <li><a href="" target="_blank">Slides</a></li>
+  </ul>
+</li>
+
+<li>
+  <b>Análisis bivariado y caso Fuga de clientes</b> (25-08-2025)
+  <p><strong>Objetivos de aprendizaje:</strong> En esta sesión el alumno debe ser capaz de resolver un problema de negocios utilizando estadísticos simples y gráficos.</p>
+  <p><strong>Contenido de ayudantía:</strong> Tabla dinámica, gráficos y análisis bivariado.</p>
+  <p><strong>Contenidos específicos:</strong> Caso “Análisis de fuga de clientes”</p>
+  <ul>
+    <li>Contexto: Fuga de clientes y el uso de datos para identificarlos.</li>
+    <li>Efectuar un análisis comparativo que permita identificar si existen diferencias en el comportamiento de las variables para clientes que permanecen versus los que se fugaron del banco.</li>
+    <ul>
+      <li>Frecuencia absoluta y frecuencia relativa</li>
+      <li>Análisis descriptivo univariado (min, max, promedio, mediana, varianza, desviación estándar)</li>
+      <li>Análisis descriptivo bivariado (correlación)</li>
+      <li>Coeficiente de variación</li>
+    </ul>
+    <li>Gráficos: Torta, Barra, Histograma, Boxplot, Dispersión y Ojiva (opcional)</li>
+    <li><a href="https://forms.gle/ynhrXFwsEy8BJcBL6" target="_blank">Quiz</a></li>
+    <li><a href="https://docs.google.com/spreadsheets/d/1XUauJdnALiOHTViz1byyZMUojDVQzoEc/edit?usp=sharing&ouid=117869771428022044076&rtpof=true&sd=true" target="_blank">Datos</a></li>
+    <li><a href="https://docs.google.com/presentation/d/1FrBBN3PZzV34rABGPIPomCE7K1rKrxY2NaIEjIyk_z4/edit?usp=sharing" target="_blank">Slides</a></li>
+    <li><a href="https://forms.gle/DecabbTLwZ2PCGz87" target="_blank">Resumen</a></li>
+  </ul>
+</li>
+
+<li>
+  <b>Placeholder</b> (01-09-2025)
+</li>
+
+<li>
+  <b>Trabajo Práctico (Prueba 1)</b> (08-09-2025)
+  <p>En esta prueba los alumnos deberán demostrar dominio de los contenidos vistos en las sesiones 1 a 6.</p>
+</li>
+
+<li>
+  <b>Caso: Análisis de ventas de retail multicanal</b> (22-09-2025)
+  <p><strong>Objetivos de aprendizaje:</strong> El alumno debe ser capaz de realizar análisis multivariado usando la tabla pivote como herramienta de selección y agrupación de datos. Además, debe realizar análisis descriptivo y comparativo de variables mediante el uso de tablas de resumen y gráficos.</p>
+  <p><strong>Contenido de ayudantía:</strong> Taller de tabla pivote</p>
+  <p><strong>Contenidos específicos:</strong> Caso “Análisis de ventas de retail multicanal”</p>
+  <ul>
+    <li>Contexto: Análisis de ventas en retail</li>
+    <li>Identificar el tipo de producto con mayor cantidad de ventas por región y/o país (comparar revenue y profit)</li>
+    <li>Comparar las utilidades por tipo de artículo de la compañía</li>
+    <li>Identificar el tipo de producto con mayor cantidad de ventas por canal (offline/online)</li>
+    <li>Contenido a repasar:</li>
+    <ul>
+      <li>Tipo de variable</li>
+      <li>Resumen de estadísticos (medidas de tendencia central)</li>
+      <li>Gráficos: Barra, Columna, Línea y Pie</li>
+    </ul>
+    <li><a href="https://docs.google.com/presentation/d/1R8gWVOPt54xiciXv9Xn7YcXSIEbXYRif/edit?usp=sharing&ouid=117869771428022044076&rtpof=true&sd=true" target="_blank">Slides</a></li>
+  </ul>
+</li>
+
+<li>
+  <b>Placeholder</b> (29-09-2025)
+</li>
+
+    <li>
+
+  <b>Caso, ¿Cómo se comparan los vinos Chilenos y Argentinos? (1)</b> (06-10-2025)
+  <ul>
+    <li><a href="https://forms.gle/6ji4hXEAuR4AvTTt6" target="_blank">Quiz</a></li>
+    <li><a href="https://raw.githubusercontent.com/naimbro/naimbro.github.io/main/data/winemag-data-130k-v2.csv" target="_blank">Datos</a></li>
+    <li><a href="https://drive.google.com/file/d/1TZnd7RIdSJpUyhdH57VSzv3iiOn6aZMW/view?usp=sharing" target="_blank">RMarkdown</a></li>
+    <li><a href="https://www.bookdown.org/rodolfo_carvajal/apunte/" target="_blank">Tutorial de R (hasta punto 2.6)</a></li>
+  </ul>
+
+  <p><strong>Objetivos de aprendizaje:</strong> Generar tablas de resumen en R para abordar un problema de negocios utilizando una base de datos de gran escala. Esta sesión usa los contenidos descritos en el Capítulo 2 del apunte de R del curso.</p>
+
+  <p><strong>Contenidos específicos:</strong> Caso: ¿Cómo se comparan los vinos Chilenos y Argentinos?</p>
+  <ul>
+    <li>Contexto: análisis de mercado, diferenciación de productos, análisis de percepción</li>
+    <li>Identificar en qué se diferencian los vinos Chilenos de los Argentinos: precio, calidad, ratio precio-calidad, variedad y composición</li>
+    <li>Análisis agrupado por variedad y país</li>
+    <li>Uso de <code>dplyr</code> con <code>filter</code>, <code>select</code>, <code>arrange</code>, <code>summarize</code>, <code>mutate</code> y <code>group_by</code></li>
+  </ul>
+
+  <p><strong>Contenido de ayudantía 1:</strong></p>
+  <ul>
+    <li>Reforzar uso de métodos <code>filter</code>, <code>select</code> y <code>arrange</code> con base <code>mpg</code></li>
+    <li>Introducción al uso de RMarkdown como alternativa a la consola</li>
+  </ul>
+
+  <p><strong>Contenido de ayudantía 2:</strong></p>
+  <ul>
+    <li>Reforzar uso de métodos <code>mutate</code>, <code>group_by</code> y <code>summarize</code> con base <code>mpg</code></li>
+    <li>Introducción al uso de RMarkdown como alternativa a la consola</li>
+  </ul>
+</li>
+
+<li>
+  <b>Caso, ¿Cómo se comparan los vinos Chilenos y Argentinos? (2)</b> (13-10-2025)
+  <ul>
+    <li><a href="https://colab.research.google.com/drive/12mpYN01BOX3ZndTgvszI3Cc2qeIpYtO9?usp=sharing" target="_blank">Control 1</a></li>
+    <li><a href="control_rcdi_i.Rmd" target="_blank">Control 1 (versión RMarkdown)</a></li>
+    <li><a href="https://raw.githubusercontent.com/rocarvaj/rcd1-uai/main/data/ejemplo-notas.csv" target="_blank">Datos</a></li>
+    <li><a href="https://www.bookdown.org/rodolfo_carvajal/apunte/" target="_blank">Tutorial de R (hasta punto 2.5.1)</a></li>
+    <li><a href="https://docs.google.com/presentation/d/1sd7jhpgWrdnbgeLaWt8E3AHATkVKdo1O3chUGF6mq4k/edit?usp=sharing" target="_blank">Temario prueba 2</a></li>
+    <li><a href="https://docs.google.com/presentation/d/1xrVC68_tXnAYJDKNswbZf49qDjkByxHjmutSOAG1-ug/edit?usp=sharing" target="_blank">Interpretando gráficos</a></li>
+    <li><a href="ejercicio_rcdi.Rmd" target="_blank">Ejercicio RMarkdown</a></li>
+  </ul>
+
+  <p><strong>Objetivos de aprendizaje:</strong> Generar tablas de resumen en R para abordar un problema de negocios utilizando una base de datos de gran escala. Esta sesión usa los contenidos descritos en el Capítulo 2 del apunte de R del curso.</p>
+
+  <p><strong>Contenidos específicos:</strong> Caso: ¿Cómo se comparan los vinos Chilenos y Argentinos?</p>
+  <ul>
+    <li>Contexto: análisis de mercado, diferenciación de productos, análisis de percepción</li>
+    <li>Identificar en qué se diferencian los vinos Chilenos de los Argentinos: precio, calidad, ratio precio-calidad, variedad y composición</li>
+    <li>Análisis agrupado por variedad y país</li>
+    <li>Uso de <code>dplyr</code> con <code>filter</code>, <code>select</code>, <code>arrange</code>, <code>summarize</code>, <code>mutate</code> y <code>group_by</code></li>
+  </ul>
+
+  <p><strong>Contenido de ayudantía 1:</strong></p>
+  <ul>
+    <li>Reforzar uso de métodos <code>filter</code>, <code>select</code> y <code>arrange</code> con base <code>mpg</code></li>
+    <li>Introducción al uso de RMarkdown como alternativa a la consola</li>
+  </ul>
+
+  <p><strong>Contenido de ayudantía 2:</strong></p>
+  <ul>
+    <li>Reforzar uso de métodos <code>mutate</code>, <code>group_by</code> y <code>summarize</code> con base <code>mpg</code></li>
+    <li>Introducción al uso de RMarkdown como alternativa a la consola</li>
+  </ul>
+</li>
+<li>
+  <b>Trabajo Práctico</b> (20-10-2025)
+  <ul>
+    <li><a href="https://colab.research.google.com/drive/1gedoPIvAMlT9tWg5Vkcl0KhQCvgkfncT?usp=sharing" target="_blank">Control</a></li>
+    <li><a href="https://www.bookdown.org/rodolfo_carvajal/apunte/" target="_blank">Tutorial de R (hasta punto 2.12)</a></li>
+    <li><a href="https://colab.research.google.com/drive/1RGd96GLKrbxr6F0hEDnvx02pEbW4HOAe?usp=sharing" target="_blank">Ejercicios segundo bloque</a></li>
+  </ul>
+</li>
+
+<li>
+  <b>Introducción a la gramática de grafos</b> (27-10-2025)
+  <ul>
+    <li><a href="https://colab.research.google.com/drive/1gk0LGBzS2-h7vAVwmDib9zArZprsVw6N?usp=sharing" target="_blank">Control</a></li>
+    <li><a href="https://www.bookdown.org/rodolfo_carvajal/apunte/" target="_blank">Tutorial de R (hasta punto 3)</a></li>
+    <li><a href="https://colab.research.google.com/drive/1SpGRHrjCYN5Cketr3tZa-K1gI2T7fAnT?usp=sharing" target="_blank">Demo lluvias</a></li>
+    <li><a href="https://colab.research.google.com/drive/1xP3dxrEeoOsN-_JcPN7R2-wfW6gO3R5M?usp=sharing" target="_blank">Ejercicios segundo bloque</a></li>
+  </ul>
+
+  <p><strong>Objetivos de aprendizaje:</strong> Construir gráficos de tipo histograma, boxplot, barra, línea y scatter usando la gramática de grafos de ggplot2. Identificar los formatos en que deben estar las tablas de datos para generar los gráficos que corresponden, y saber ajustar los formatos para poder hacerlo. Esta sesión cubre los contenidos del Capítulo 3 del apunte de R del curso.</p>
+
+  <p><strong>Contenido de ayudantía:</strong></p>
+  <ul>
+    <li>Utilizar ggplot2 para elaborar gráficos que describan una variable: histograma (caso variable continua y discreta), boxplot, densidad, ojiva y violín.</li>
+  </ul>
+
+  <p><strong>Contenidos específicos:</strong> Clase formato cátedra.</p>
+  <ul>
+    <li>Taxonomía de gráficos y elementos básicos: mapeos, estética y escala</li>
+    <li>Introducción a ggplot2: codificación de un grafo</li>
+    <li>Gráficos para analizar una o dos variables:</li>
+    <ul>
+      <li>Boxplot e histograma</li>
+      <li>Columna, línea y scatter</li>
+    </ul>
+  </ul>
+</li>
+
+<li>
+  <b>Caso, explorando la industria de los videojuegos (1)</b> (03-11-2025)
+  <ul>
+    <li><a href="https://colab.research.google.com/drive/1lFj-FAzT9HV6BMX8VMYltasEvneO5uCH?usp=sharing" target="_blank">Control</a></li>
+    <li><a href="https://colab.research.google.com/drive/1gHVFquuNbN5r_6RPEEBXa-nnOKnqxWs0?usp=sharing" target="_blank">Demo gráficos</a></li>
+    <li><a href="https://drive.google.com/file/d/11GCDCV2t3afzcwF5icfZ40T2DxSODtfC/view?usp=sharing" target="_blank">Ejercicios segundo bloque</a></li>
+    <li><a href="https://www.bookdown.org/rodolfo_carvajal/apunte/" target="_blank">Tutorial de R (hasta punto 3)</a></li>
+  </ul>
+
+  <p><strong>Objetivos de aprendizaje:</strong> Generar gráficos que resuman estadísticos simples en R para responder un problema de negocios en una base de datos grande. Esta sesión usa los contenidos descritos en el Capítulo 3 del apunte de R del curso.</p>
+
+  <p><strong>Contenidos específicos:</strong> Caso: Explorando la industria de los videojuegos</p>
+  <ul>
+    <li>Contexto: análisis de mercado, market-share y tendencias en el tiempo</li>
+    <li>Identificar participación de mercado por género, zona geográfica, consola y variación temporal</li>
+    <li>Analizar atomización del mercado: líderes de ventas y vendedores pequeños</li>
+    <li>Análisis estandarizados por categoría usando tablas de resumen y gráficos</li>
+  </ul>
+
+  <p>En esta clase se desarrollará un análisis exploratorio de la base de datos <code>vgsales</code> usando R/Tidyverse para responder una pregunta de negocios. Se espera que el alumno pueda usar <code>geom_histogram</code>, <code>geom_col</code>, <code>geom_scatter</code>, y <code>geom_line</code> para generar gráficos que resuman información relevante.</p>
+
+  <p><strong>Contenido de ayudantía 1:</strong></p>
+  <ul>
+    <li>Gráficos con más de dos variables: barras apiladas, barras agrupadas, barras proporcionales, líneas múltiples y áreas, scatter con color, tamaño y forma</li>
+  </ul>
+
+  <p><strong>Contenido de ayudantía 2:</strong></p>
+  <ul>
+    <li>Edición de gráficos con ggplot2: anotaciones, leyendas, títulos y ejes</li>
+  </ul>
+</li>
+<li>
+  <b>Caso, explorando la industria de los videojuegos (2)</b> (10-11-2025)
+  <ul>
+    <li><a href="https://colab.research.google.com/drive/1A51gAXvfY8D8HHkavGSuDuo_Nlydr_DZ?usp=sharing" target="_blank">Control</a></li>
+    <li><a href="https://colab.research.google.com/drive/1oO0bfQbOkYuoz248p-OxPxdclAuQTBE0?usp=sharing" target="_blank">Control (solución)</a></li>
+    <li><a href="https://colab.research.google.com/drive/1t0BHVKNkRVZQvLp2bX_Pm4kPR_stdj-Z?usp=sharing" target="_blank">Demo</a></li>
+    <li><a href="https://www.bookdown.org/rodolfo_carvajal/apunte/" target="_blank">Tutorial de R (hasta punto 3)</a></li>
+  </ul>
+
+  <p><strong>Objetivos de aprendizaje:</strong> Generar gráficos que resuman estadísticos simples en R para responder un problema de negocios en una base de datos grande. Esta sesión usa los contenidos descritos en el Capítulo 3 del apunte de R del curso.</p>
+
+  <p><strong>Contenidos específicos:</strong> Caso: Explorando la industria de los videojuegos</p>
+  <ul>
+    <li>Contexto: análisis del mercado, market-share y tendencias en el tiempo</li>
+    <li>Participación de mercado por género de videojuego, según zona geográfica, consola y tiempo</li>
+    <li>Atomización del mercado: líderes de ventas vs. vendedores pequeños</li>
+    <li>Análisis estandarizados dentro de categorías con tablas de resumen y gráficos</li>
+  </ul>
+
+  <p>Se realizará un análisis exploratorio de la base de datos <code>vgsales</code> usando R/Tidyverse para responder una pregunta de negocios. Se espera que el alumno utilice <code>geom_histogram</code>, <code>geom_col</code>, <code>geom_scatter</code> y <code>geom_line</code> para resumir información.</p>
+
+  <p><strong>Contenido de ayudantía 1:</strong></p>
+  <ul>
+    <li>Gráficos con más de dos variables: barras (stack, dodge, fill), líneas múltiples y área, scatter con color, tamaño y forma</li>
+  </ul>
+
+  <p><strong>Contenido de ayudantía 2:</strong></p>
+  <ul>
+    <li>Anotaciones y edición de gráficos con ggplot2: leyendas, títulos y ejes</li>
+  </ul>
+</li>
+
+<li>
+  <b>Trabajo Práctico</b> (17-11-2025)
+  <p>En esta prueba los alumnos deberán demostrar dominio de los contenidos vistos en las sesiones 12, 13 y 14.</p>
+  <ul>
+    <li><a href="https://colab.research.google.com/drive/1bIeb-1Rb3knv393ZseD4lxfUtneGXpSb?usp=sharing" target="_blank">Control</a></li>
+    <li><a href="https://colab.research.google.com/drive/1IcgFEk3uOHCoCpB10gy_VfqBZy7mD9Yz?usp=sharing" target="_blank">Control (solución)</a></li>
+  </ul>
+</li>
+
+<li>
+  <b>Ayudantía + recuperativas</b> (24-11-2025)
+  <ul>
+    <li><a href="https://colab.research.google.com/drive/12qyqHrXE8bEcaeAeAJHcV4zrLzESGfJh?usp=sharing" target="_blank">Control recuperativo</a></li>
+    <li><a href="https://colab.research.google.com/drive/1q_5B7o7tNQ8Rk9FmA2YGgX3lWk8Xwmtz?usp=sharing" target="_blank">Control recuperativo (solución)</a></li>
+    <li><a href="https://colab.research.google.com/drive/1SPXH7Uh_CXN_T1O0Elv80NMPKFsGTIxg?usp=sharing" target="_blank">Control recuperativo 2</a></li>
+    <li><a href="https://colab.research.google.com/drive/1_qVBDupXb5WjT2o1wDczgDUAgpsZWeFu?usp=sharing" target="_blank">Control recuperativo 2 (solución)</a></li>
+  </ul>
+</li>
+  </ol>
 
 <h2>Evaluación</h2>
 <p>La evaluación del curso se compone de los siguientes elementos:</p>
