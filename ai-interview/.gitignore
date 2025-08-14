@@ -1,0 +1,29 @@
+# Environment variables
+.env
+.env.local
+
+# API keys
+*.key
+apikey.txt
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if you add any later)
+node_modules/
+
+# Build output
+dist/
+build/

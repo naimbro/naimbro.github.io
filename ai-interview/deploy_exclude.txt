@@ -1,0 +1,9 @@
+deploy_github.bat
+deploy_exclude.txt
+start_server.py
+start_server.bat
+deploy.bat
+.env
+.git
+server.crt
+server.key
