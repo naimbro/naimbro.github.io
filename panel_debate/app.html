@@ -1,0 +1,2331 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel de Gemelos Digitales — Debate</title>
+  <style>
+    :root { 
+      --bg:#f4f6f8; 
+      --card:#fff; 
+      --ink:#2c3e50; 
+      --muted:#7f8c8d; 
+      --line:#eaecef;
+      --primary:#3498db;
+      --success:#27ae60;
+      --warning:#e67e22;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    body { 
+      margin:0; 
+      font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; 
+      color:var(--ink); 
+      background:var(--bg); 
+    }
+    
+    header { 
+      display:flex; 
+      align-items:center; 
+      justify-content:space-between; 
+      gap:12px; 
+      padding:10px 12px; 
+      background:#fff; 
+      border-bottom:1px solid var(--line); 
+      position:sticky; 
+      top:0; 
+      z-index:3; 
+    }
+    
+    
+    .candidate-strip{ 
+      display:flex; 
+      gap:8px; 
+      overflow-x:auto; 
+      padding:6px 0; 
+    }
+    
+    .candidate-card{ 
+      display:flex; 
+      align-items:center; 
+      gap:10px; 
+      background:var(--card); 
+      border:1px solid var(--line); 
+      border-radius:12px; 
+      padding:8px 10px; 
+      min-width:240px; 
+      transition: transform 0.2s ease;
+      position: relative;
+    }
+    
+    .candidate-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    .candidate-name{ 
+      font-weight:700; 
+      font-size:12px; 
+    }
+    
+    .badges{ 
+      display:flex; 
+      gap:6px; 
+    }
+    
+    .badge{ 
+      font-size:11px; 
+      padding:2px 8px; 
+      border-radius:999px; 
+      background:#eef3ff; 
+      font-weight: 500;
+    }
+    
+    .badge.last{ 
+      background:#e6f8e7; 
+      color:#27ae60;
+    }
+    
+    .badge.cum{ 
+      background:#eef3ff; 
+      color:#3498db;
+    }
+    
+
+    .layout{ 
+      display:grid; 
+      grid-template-columns: 1fr 0.9fr; 
+      gap:12px; 
+      padding:12px; 
+      max-width: 1400px;
+      margin: 0 auto;
+      height: calc(100vh - 240px); /* Fixed height based on viewport minus header, HUD leaderboard, and playback controls */
+    }
+    
+    .panel{ 
+      background:var(--card); 
+      border:1px solid var(--line); 
+      border-radius:12px; 
+      display:flex; 
+      flex-direction:column; 
+      height: 100%; /* Use full height of grid container */
+      overflow: hidden;
+    }
+    
+    .panel-header{ 
+      display:flex; 
+      align-items:center; 
+      justify-content:space-between; 
+      padding:10px 12px; 
+      border-bottom:1px solid var(--line); 
+      flex-shrink: 0;
+    }
+    
+    .panel-header h2{ 
+      margin:0; 
+      font-size:13px; 
+      color:#1f2937; 
+      letter-spacing:.2px; 
+    }
+    
+    .btn{ 
+      font-size:12px; 
+      border:1px solid var(--line); 
+      background:#fff; 
+      border-radius:8px; 
+      padding:6px 10px; 
+      cursor:pointer; 
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .btn:hover:not(:disabled) {
+      background: #f8f9fa;
+      border-color: #bdc3c7;
+    }
+    
+    .btn:disabled{ 
+      opacity:.5; 
+      cursor:not-allowed; 
+    }
+    
+    .btn.primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+    
+    .btn.primary:hover:not(:disabled) {
+      background: #2980b9;
+    }
+
+    .debate-list{ 
+      padding:10px; 
+      overflow-y: auto; 
+      overflow-x: hidden;
+      display:flex; 
+      flex-direction:column; 
+      gap:8px; 
+      flex: 1;
+      scroll-behavior: smooth;
+    }
+    
+    .turn{ 
+      border:1px solid var(--line); 
+      border-radius:10px; 
+      padding:10px; 
+      background:#fff; 
+      transition: all 0.3s ease;
+      cursor: pointer;
+      opacity: 0.4;
+      transform: scale(0.95);
+    }
+    
+    .turn.past {
+      opacity: 0.3;
+      transform: scale(0.9);
+    }
+    
+    .turn.future {
+      opacity: 0.2;
+      transform: scale(0.9);
+    }
+    
+    .turn:hover {
+      opacity: 0.6;
+      border-color: #bdc3c7;
+    }
+    
+    .turn .spk{ 
+      font-weight:700; 
+      font-size:12px; 
+      color:#34495e; 
+      margin-bottom:4px; 
+    }
+    
+    .turn .txt {
+      font-size: 13px;
+      line-height: 1.5;
+      color: #555;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .turn.active{ 
+      border-color:#3498db; 
+      box-shadow:0 0 0 3px rgba(52,152,219,.2); 
+      background: #f8fbff;
+      opacity: 1;
+      transform: scale(1);
+      padding: 20px;
+    }
+    
+    .turn.active .spk {
+      font-size: 16px;
+      color: #2980b9;
+      margin-bottom: 8px;
+    }
+    
+    .turn.active .txt {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #2c3e50;
+      -webkit-line-clamp: unset;
+      display: block;
+    }
+
+    .reactions{ 
+      padding:10px; 
+      overflow-y: auto; 
+      overflow-x: hidden;
+      display:flex; 
+      flex-direction:column; 
+      gap:8px; 
+      flex: 1;
+      scroll-behavior: smooth;
+    }
+    
+    .reaction{ 
+      display:flex; 
+      gap:10px; 
+      border:1px solid var(--line); 
+      border-radius:12px; 
+      padding:10px; 
+      background:#fff; 
+      align-items:flex-start; 
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .avatar{ 
+      width:32px; 
+      height:32px; 
+      border-radius:50%; 
+      background:#ecf0f1; 
+      display:grid; 
+      place-items:center; 
+      font-weight:700; 
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    .reaction-content {
+      flex: 1;
+    }
+    
+    .meta{ 
+      font-size:11px; 
+      color:var(--muted); 
+      margin-bottom:4px; 
+    }
+    
+    .quote {
+      font-size: 13px;
+      line-height: 1.4;
+      color: #333;
+    }
+    
+    .score{ 
+      margin-left:auto; 
+      font-size:12px; 
+      padding:4px 10px; 
+      border-radius:999px; 
+      background:#f1f8ff; 
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .footer{ 
+      display:flex; 
+      gap:8px; 
+      justify-content:space-between; 
+      padding:8px 12px; 
+      border-top:1px solid var(--line); 
+      flex-shrink: 0;
+    }
+    
+    .row{ 
+      display:flex; 
+      gap:8px; 
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+
+    /* API Key Modal */
+    .modal{ 
+      position:fixed; 
+      inset:0; 
+      background:rgba(0,0,0,.5); 
+      display:grid; 
+      place-items:center; 
+      z-index:10; 
+      backdrop-filter: blur(4px);
+    }
+    
+    .dialog{ 
+      width:min(520px, 92vw); 
+      background:#fff; 
+      border-radius:14px; 
+      border:1px solid var(--line); 
+      padding:20px; 
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    }
+    
+    .dialog h3{ 
+      margin:0 0 12px 0; 
+      font-size:18px; 
+    }
+    
+    .dialog p {
+      margin: 0.5rem 0 1rem 0;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    input[type="password"], input[type="text"]{ 
+      width:100%; 
+      padding:10px; 
+      border-radius:8px; 
+      border:1px solid var(--line); 
+      font-size:14px; 
+      margin-top: 6px;
+    }
+    
+    label{ 
+      font-size:12px; 
+      color:#374151; 
+      font-weight: 600;
+    }
+    
+    /* Loading indicator */
+    .loading {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 8px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Status messages */
+    .status {
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin: 8px 0;
+      display: none;
+    }
+    
+    .status.show {
+      display: block;
+    }
+    
+    .status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    .status.info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    
+    /* Candidate selector */
+    .candidate-selector {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin: 8px 12px;
+    }
+    
+    .candidate-selector-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .candidate-option {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 12px;
+    }
+    
+    .candidate-option:hover {
+      background: #e9ecef;
+    }
+    
+    .candidate-option.selected {
+      background: #e3f2fd;
+      border-color: #2196f3;
+    }
+    
+    .candidate-option input[type="radio"] {
+      display: none;
+    }
+    
+    .candidate-checkbox-list {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 8px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+    }
+    
+    .candidate-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 12px;
+    }
+    
+    .candidate-checkbox:hover {
+      background: #f8f9fa;
+    }
+    
+    .candidate-checkbox.checked {
+      background: #e3f2fd;
+      border-color: #2196f3;
+    }
+    
+    .candidate-checkbox input[type="checkbox"] {
+      margin: 0;
+    }
+
+    @media (max-width: 980px){ 
+      .layout{ 
+        grid-template-columns: 1fr;
+        height: calc(100vh - 260px); /* Slightly more space for mobile */
+      } 
+      
+      .candidate-strip {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .panel {
+        height: 48vh; /* Split available height between panels on mobile */
+        margin-bottom: 12px;
+      }
+      
+      .panel:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    /* HUD Leaderboard Styles */
+    :root {
+      --hud-bg:#0f172a;
+      --hud-ink:#e5e7eb;
+      --gold:#f59e0b; --silver:#9ca3af; --bronze:#b45309;
+      --good:#22c55e; --mid:#94a3b8; --bad:#ef4444;
+    }
+
+    .hud{
+      position:sticky;
+      top:0;
+      z-index:4;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      padding:10px 12px;
+      background:var(--hud-bg);
+      color:var(--hud-ink);
+      border-bottom:1px solid #1f2937;
+    }
+
+    /* ---- Audio-Visual FX ---- */
+    /* --- Rank-change animation (FLIP) --- */
+    #leaderboard { position: relative; }
+    .lb-item { position: relative; will-change: transform; }
+
+    /* --- Floating +/- deltas --- */
+    .float-delta{
+      position:absolute; right:10px; top:8px;
+      font-weight:800; font-size:12px; pointer-events:none;
+      animation: floatUp .9s ease-out forwards;
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    }
+    .float-delta.up{ color:#22c55e; }
+    .float-delta.down{ color:#ef4444; }
+    @keyframes floatUp{
+      0%{ transform:translateY(6px); opacity:0 }
+      25%{ opacity:1 }
+      100%{ transform:translateY(-14px); opacity:0 }
+    }
+
+    /* --- Particle burst for large moves --- */
+    .pburst { position:absolute; left:70%; top:10px; width:0; height:0; pointer-events:none; }
+    .p { position:absolute; width:6px; height:6px; border-radius:50%;
+         opacity:0; animation: pburst 550ms ease-out forwards; }
+    .p.up { background:#22c55e; }
+    .p.down { background:#ef4444; }
+    @keyframes pburst {
+      0% { transform: translate(0,0) scale(1); opacity: 0.9; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0.6); opacity: 0; }
+    }
+
+    /* pulse the 'last' bar briefly when updated */
+    .fill.last.pulse{
+      box-shadow:0 0 12px rgba(34,197,94,.6);
+      animation: barPulse 700ms ease-out;
+    }
+    @keyframes barPulse{
+      0%{ filter:saturate(1.6); transform:scaleX(1.02) }
+      100%{ filter:saturate(1); transform:scaleX(1) }
+    }
+
+    /* temporary glow on top-1 card when leader changes */
+    .lb-item.leader-flash{
+      box-shadow:0 0 0 2px #38bdf8 inset, 0 0 24px rgba(56,189,248,.35);
+      transition: box-shadow .6s ease;
+    }
+
+    /* slide animation for rank reorders (applied inline via transform) */
+    .lb-item.animating{ transition: transform .35s ease }
+
+    /* subtle screen flash on crit */
+    .hud.crit-flash{
+      box-shadow: inset 0 0 0 9999px rgba(14,165,233,.08);
+      animation: hudFlash 400ms ease-out;
+    }
+    @keyframes hudFlash{
+      0%{ box-shadow: inset 0 0 0 9999px rgba(14,165,233,.18) }
+      100%{ box-shadow: inset 0 0 0 9999px rgba(14,165,233,0) }
+    }
+
+    /* mute toggle styles */
+    .fx-toggle{ display:flex; align-items:center; gap:6px; font-size:12px }
+    .fx-toggle input{ accent-color:#2563eb }
+
+    /* Optional polish - card landing animation */
+    .lb-item.landed { animation: cardLand 180ms ease-out; }
+    @keyframes cardLand { 0%{ transform:scale(1.02) } 100%{ transform:scale(1) } }
+
+    .hud-title{
+      margin:0 0 6px 0;
+      font-size:14px;
+      letter-spacing:.3px;
+    }
+
+
+    .leaderboard{
+      list-style:none;
+      display:grid;
+      grid-template-columns:repeat(4,minmax(260px,1fr));
+      gap:10px;
+      margin:0;
+      padding:0;
+      width:100%;
+    }
+
+    .lb-item{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      background:#111827;
+      border:1px solid #1f2937;
+      border-radius:12px;
+      padding:10px;
+      position:relative;
+      overflow:hidden;
+      transition: all 0.3s ease;
+    }
+
+    .lb-rank{
+      font-weight:800;
+      font-size:18px;
+      width:28px;
+      text-align:center;
+    }
+
+    .lb-meta{
+      flex:1;
+    }
+
+    .lb-name{
+      font-weight:700;
+      font-size:13px;
+      margin-bottom:6px;
+    }
+
+    .lb-bars{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      margin-bottom:6px;
+    }
+
+    .bar{
+      height:10px;
+      background:#0b1220;
+      border:1px solid #1f2937;
+      border-radius:999px;
+      overflow:hidden;
+      flex:1;
+    }
+
+    .fill{
+      height:100%;
+      width:0%;
+      transition:width .6s ease;
+    }
+
+    .fill.cum{
+      background:linear-gradient(90deg,#2563eb,#06b6d4);
+    }
+
+    .fill.last{
+      background:linear-gradient(90deg,#22c55e,#16a34a);
+    }
+
+    .lb-scores{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:12px;
+      flex-wrap: wrap;
+    }
+
+    .delta.up{color:var(--good)}
+    .delta.down{color:var(--bad)}
+    .delta.flat{color:var(--mid)}
+
+    .momentum{
+      width:0;
+      height:0;
+      border-left:6px solid transparent;
+      border-right:6px solid transparent;
+      margin-left: 4px;
+    }
+
+    .momentum.up{
+      border-bottom:10px solid var(--good);
+    }
+
+    .momentum.down{
+      border-top:10px solid var(--bad);
+    }
+
+    .momentum.flat{
+      border-bottom:10px solid var(--mid);
+    }
+
+    .sparkline{
+      height:22px;
+      width:100px;
+    }
+
+    /* Medal effects */
+    .lb-item.rank-1{
+      box-shadow:0 0 0 2px var(--gold) inset;
+    }
+
+    .lb-item.rank-2{
+      box-shadow:0 0 0 2px var(--silver) inset;
+    }
+
+    .lb-item.rank-3{
+      box-shadow:0 0 0 2px var(--bronze) inset;
+    }
+
+    /* Streak/combo badge */
+    .combo{
+      position:absolute;
+      right:8px;
+      top:8px;
+      background:#1f2937;
+      border:1px solid #374151;
+      border-radius:999px;
+      padding:2px 8px;
+      font-size:11px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Critical hit animation */
+    @keyframes burst{
+      0%{transform:scale(.8);opacity:.0}
+      50%{transform:scale(1.2);opacity:.9}
+      100%{transform:scale(1);opacity:0}
+    }
+
+    .crit{
+      position:absolute;
+      top: 50%;
+      right: 50px;
+      transform: translateY(-50%);
+      background:#0ea5e9;
+      color:white;
+      font-weight:800;
+      border-radius:8px;
+      padding:4px 8px;
+      animation:burst 700ms ease-out;
+      z-index: 5;
+    }
+
+    /* Turn score header */
+    .turn-scorebar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:8px;
+      padding: 8px;
+      background: linear-gradient(90deg, #f8fafc, #e2e8f0);
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+    }
+
+    .turn-score-main{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .turn-score-number{
+      font-weight:800;
+      font-size:20px;
+      color: #1e293b;
+    }
+
+    .turn-delta{
+      font-size:12px;
+      font-weight: 600;
+    }
+
+    .turn-n,.turn-se{
+      font-size:11px;
+      opacity:.8;
+      color: #64748b;
+    }
+
+    .turn-spark{
+      height: 20px;
+      width: 60px;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .leaderboard {
+        grid-template-columns: repeat(3, minmax(240px, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .leaderboard {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+      }
+      
+      .hud {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .leaderboard {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header style="display:none;">
+    <div class="candidate-strip" id="candidateStrip"></div>
+  </header>
+
+  <!-- Sticky HUD Leaderboard -->
+  <section id="hud" class="hud">
+    <div class="hud-left">
+      <h1 class="hud-title">🏆 Marcador en Vivo</h1>
+      <label class="fx-toggle" style="margin-top:4px">
+        <input id="fxToggle" type="checkbox" />
+        Sonido & efectos
+      </label>
+    </div>
+    <ol id="leaderboard" class="leaderboard"></ol>
+  </section>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-header">
+        <h2>🧵 Debate en vivo (transcripción)</h2>
+        <div class="row">
+          <button class="btn" id="btnLoadAgents" onclick="testLoadAgents()">👥 Cargar Agentes</button>
+          <button class="btn" id="btnLoadTranscript" onclick="testLoadTranscript()">📥 Cargar Transcript</button>
+        </div>
+      </div>
+      <div class="panel-header" style="border-bottom: none; padding-top: 0;">
+        <div class="debate-panel-controls">
+          <button class="btn primary" id="btnPlay" title="Reproducir debate" onclick="testPlay()">▶️ Play</button>
+          <button class="btn" id="btnPause" title="Pausar debate" onclick="testPause()">⏸️ Pausa</button>
+          <button class="btn" id="btnStep" title="Siguiente turno" onclick="testStep()">⏭️ Siguiente</button>
+          <button class="btn" id="btnRewind" title="Turno anterior" onclick="testRewind()">⏮️ Anterior</button>
+        </div>
+        <div class="playback-status">
+          <span class="turn-counter" id="turnCounter">Turno: 0 / 0</span>
+          <label style="font-size: 11px;">
+            Velocidad:
+            <select class="filter-select" id="playbackSpeed" style="margin-left: 4px; font-size: 11px;">
+              <option value="2000">Rápido (2s)</option>
+              <option value="4000" selected>Normal (4s)</option>
+              <option value="6000">Lento (6s)</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div id="statusMessage" class="status"></div>
+      <div id="debateList" class="debate-list"></div>
+      <div class="footer">
+        <div class="row">
+          <button class="btn" id="btnExport">📊 Exportar CSV</button>
+          <button class="btn" id="btnClear">🧹 Limpiar</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <div class="panel-header">
+        <h2>👥 Reacciones del Panel</h2>
+        <small id="hint" style="color:#6b7280">
+          <span id="agentCount">0</span> agentes cargados • 
+          <span id="reactionCount">0</span> reacciones
+        </small>
+      </div>
+      <div id="reactions" class="reactions"></div>
+    </aside>
+  </main>
+
+  <!-- API Key Modal -->
+  <div id="keyModal" class="modal" style="display:none;">
+    <div class="dialog">
+      <h3>🔐 OpenAI API Key</h3>
+      <p>Tu clave se guarda en <code>localStorage</code> de este navegador.</p>
+      <label for="apiKey">API Key</label>
+      <input id="apiKey" type="password" placeholder="sk-..." />
+      <div class="row" style="margin-top:12px; justify-content:flex-end;">
+        <button class="btn primary" id="saveKey">Guardar</button>
+        <button class="btn" id="clearKey">Borrar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ---------- State ----------
+  let OPENAI_API_KEY = null;
+  let loadedAgents = [];       
+  let debateTurns = [];        
+  let playhead = 0;            
+  let playing = false;         
+  let timer = null;            
+  let allReactions = [];       // For CSV export
+  let reactionCount = 0;
+  let targetCandidateMode = 'all'; // 'all', 'speaker', 'selected'
+  let selectedCandidates = new Set();
+  let playbackSpeed = 4000; // milliseconds per turn
+  let viewingPastTurn = null;  // Track if user is viewing a past turn's reactions
+
+  // Game-like scoring state
+  const perCandidate = new Map();
+  // structure: {
+  //   last: number, cum: number,
+  //   history: number[], // per-turn means for sparkline
+  //   streak: { len: 0, lastImproved: false },
+  //   prevLast: null
+  // }
+
+  const CRIT_LAST = 85;         // threshold for critical
+  const CRIT_JUMP = 10;         // delta threshold  
+  const STREAK_MIN = 3;         // combo threshold
+  
+  // Sound settings
+  let soundEnabled = localStorage.getItem('soundEnabled') !== 'false'; // Default on
+  const SOUND_GREAT = 70;       // Score >= 70 for applause
+  const SOUND_BAD = 30;         // Score <= 30 for boo
+  
+  // Context settings
+  const CONTEXT_TURNS = 3;      // Number of previous turns to include as context
+
+  // ---- WebAudio singleton ----
+  let _ACtx = null;
+  function getACtx(){
+    if (_ACtx) return _ACtx;
+    try { _ACtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch(e){ console.warn('AudioContext unavailable', e); }
+    return _ACtx;
+  }
+  // Resume audio on first user gesture (mobile)
+  ['click','keydown','touchstart'].forEach(ev=>{
+    window.addEventListener(ev, ()=>{ try{ getACtx()?.resume(); }catch{} }, { once:true, passive:true });
+  });
+
+  // Safety: throttle sounds
+  let _lastSfxAt = 0;
+  function throttledPlay(type, minGap=120){
+    const t = performance.now();
+    if (t - _lastSfxAt > minGap){ _lastSfxAt = t; playSound(type); }
+  }
+
+
+  // Candidate map with descriptions
+  const CANDIDATES = {
+    "Evelyn Matthei": { 
+      id:"matthei", 
+      icon:"👩‍💼", 
+      color:"#3498db",
+      description: "Representante de la derecha tradicional (UDI), ex ministra y ex alcaldesa. Reconocimiento muy alto. Aparece tercera en las encuestas, con ~12‑15 %, aunque subiendo en algunas mediciones."
+    },
+    "José Antonio Kast": { 
+      id:"kast", 
+      icon:"👨‍💼", 
+      color:"#e74c3c",
+      description: "Figura de la derecha conservadora, fundador del Partido Republicano, con énfasis en seguridad y orden. Ha sido candidato presidencial antes. Generalmente segundo en encuestas, con ~19‑20 %."
+    },
+    "Franco Parisi": { 
+      id:"parisi", 
+      icon:"🧑‍💼", 
+      color:"#f39c12",
+      description: "Independiente y fundador del Partido de la Gente. Atrae votantes desencantados con partidos tradicionales. Suele marcar ~8‑10 % en encuestas."
+    },
+    "Jeannette Jara": { 
+      id:"jara", 
+      icon:"👩‍💼", 
+      color:"#9b59b6",
+      description: "Candidata de izquierda, militante del Partido Comunista de Chile, respaldada por la coalición oficialista \"Unidad por Chile\". Ganó las primarias de su bloque con cerca de 60 %. Lidera las encuestas con alrededor de 24‑25 % de apoyo."
+    },
+    "Harold Mayne-Nicholls": { 
+      id:"mayne", 
+      icon:"🧑‍🏫", 
+      color:"#1abc9c",
+      description: "Independiente de centro con trayectoria en gestión deportiva y perfil técnico. Bajo apoyo en encuestas, ~1‑3 %, aunque con cierto reconocimiento público."
+    },
+    "Eduardo Artés": { 
+      id:"artes", 
+      icon:"🧔", 
+      color:"#34495e",
+      description: "De extrema izquierda, con propuestas radicales de transformación estructural. Encuestas lo ubican en los últimos lugares, con ~1‑2 %."
+    },
+    "Johannes Kaiser": { 
+      id:"kaiser", 
+      icon:"🧑", 
+      color:"#16a085",
+      description: "Del Partido Nacional Libertario, de línea libertaria. Con discursos polémicos. En encuestas aparece con apoyo bajo, ~5‑7 %."
+    },
+    "Marco Enríquez-Ominami": { 
+      id:"meo", 
+      icon:"🧑‍🎤", 
+      color:"#e67e22",
+      description: "Figura de la centroizquierda alternativa (PRO), con varias candidaturas presidenciales previas. Reconocido pero con bajo respaldo actual (~2‑5 %)."
+    }
+  };
+
+  // Metrics per candidate
+  const candidateMetrics = {};
+  
+  function resetCandidateMetrics() {
+    for (const c of Object.values(CANDIDATES)) {
+      candidateMetrics[c.id] = { 
+        last: null, 
+        cum: null, 
+        n: 0, 
+        scores: [], 
+        turnScores: [] // Array of {turn: number, score: number} for timeline
+      };
+    }
+  }
+  
+  // Initialize metrics
+  resetCandidateMetrics();
+
+  // ---------- Utilities ----------
+  function showStatus(message, type = 'info') {
+    const status = document.getElementById('statusMessage');
+    status.textContent = message;
+    status.className = `status show ${type}`;
+    setTimeout(() => status.classList.remove('show'), 3000);
+  }
+
+  function updateCounts() {
+    document.getElementById('agentCount').textContent = loadedAgents.length;
+    document.getElementById('reactionCount').textContent = reactionCount;
+    updateTurnCounter();
+  }
+  
+  function updateTurnCounter() {
+    const counter = document.getElementById('turnCounter');
+    if (debateTurns.length > 0) {
+      counter.textContent = `Turno: ${playhead + 1} / ${debateTurns.length}`;
+    } else {
+      counter.textContent = 'Turno: 0 / 0';
+    }
+  }
+
+  // ---------- Game Helper Functions ----------
+  function mean(xs){ return xs.length ? xs.reduce((a,b)=>a+b,0)/xs.length : 0; }
+  
+  function se(xs){ 
+    if (xs.length <= 1) return 0; 
+    const m = mean(xs); 
+    const v = xs.reduce((a,b)=>a+(b-m)*(b-m),0)/(xs.length-1); 
+    return Math.sqrt(v/xs.length); 
+  }
+
+  function currentSegmentPredicate(agent){
+    return true; // No filtering, include all agents
+  }
+
+  function classifyDelta(d){ 
+    return d > 0 ? 'up' : d < 0 ? 'down' : 'flat'; 
+  }
+  
+  function momentumClass(d){ 
+    return d > 1 ? 'up' : d < -1 ? 'down' : 'flat'; 
+  }
+
+  function initCandidates(cands){
+    cands.forEach(c => {
+      perCandidate.set(c.name, { 
+        last: 0, 
+        cum: 0, 
+        history: [], 
+        streak: { len: 0, lastImproved: false }, 
+        prevLast: null 
+      });
+    });
+    renderLeaderboard();
+  }
+
+  // ---------- Key Modal ----------
+  const keyModal = document.getElementById('keyModal');
+  const apiKeyInput = document.getElementById('apiKey');
+
+  function showKeyModal() { keyModal.style.display = 'grid'; }
+  function hideKeyModal() { keyModal.style.display = 'none'; }
+
+  function loadKey() {
+    const k = localStorage.getItem('openai_api_key');
+    if (k) { 
+      OPENAI_API_KEY = k;
+      apiKeyInput.value = k;
+    } else { 
+      showKeyModal(); 
+    }
+  }
+
+  document.getElementById('saveKey').onclick = () => {
+    const v = apiKeyInput.value.trim();
+    if (!v) {
+      showStatus('Por favor ingresa una API key válida', 'error');
+      return;
+    }
+    localStorage.setItem('openai_api_key', v);
+    OPENAI_API_KEY = v;
+    hideKeyModal();
+    showStatus('API key guardada exitosamente', 'success');
+  };
+
+  document.getElementById('clearKey').onclick = () => {
+    localStorage.removeItem('openai_api_key');
+    OPENAI_API_KEY = null;
+    apiKeyInput.value = '';
+    showStatus('API key borrada', 'info');
+  };
+
+  // ---------- Leaderboard Rendering ----------
+  // Helper function to classify delta direction
+  function classifyDelta(delta) {
+    return delta > 0 ? 'up' : delta < 0 ? 'down' : 'flat';
+  }
+
+  // Make a stable DOM id from candidate name
+  function slug(s){ return 'lb-' + s.toLowerCase().replace(/[^a-z0-9]+/g,'-'); }
+
+  // Spawn floating +/– delta inside a leaderboard card <li>
+  function spawnFloatDelta(li, delta){
+    if (!delta) return;
+    const fd = document.createElement('div');
+    fd.className = `float-delta ${delta>0?'up':'down'}`;
+    fd.textContent = `${delta>0?'+':''}${delta}`;
+    li.appendChild(fd);
+    setTimeout(()=> fd.remove(), 950);
+  }
+
+  // Simple particle burst for big deltas (|delta| >= 8 by default)
+  function spawnParticleBurst(li, delta, threshold=8){
+    if (Math.abs(delta) < threshold) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'pburst';
+    for (let i=0;i<8;i++){
+      const d = document.createElement('div');
+      d.className = `p ${delta>0?'up':'down'}`;
+      // random angle & distance
+      const ang = (Math.PI*2)*(i/8) + (Math.random()*0.4-0.2);
+      const dist = 16 + Math.random()*16;
+      d.style.setProperty('--tx', `${Math.cos(ang)*dist}px`);
+      d.style.setProperty('--ty', `${Math.sin(ang)*dist}px`);
+      d.style.animationDelay = `${Math.random()*80}ms`;
+      wrap.appendChild(d);
+    }
+    li.appendChild(wrap);
+    setTimeout(()=> wrap.remove(), 600);
+  }
+
+  // Track previous ranks for slide animations  
+  let _prevRanks = new Map(); // name -> previous rank
+
+  function renderLeaderboard(){
+    const list = Array.from(perCandidate.entries()).map(([name,pc])=>({name,...pc}));
+    list.sort((a,b)=> b.cum - a.cum);
+    const lb = document.getElementById('leaderboard');
+    if(!lb) return;
+
+    // FLIP Step 1: Capture current positions (FIRST)
+    const firstRects = new Map();
+    Array.from(lb.children).forEach(el=>{
+      firstRects.set(el.dataset.name, el.getBoundingClientRect());
+    });
+
+    // Ensure a card exists for each candidate; update its content
+    const seen = new Set();
+    list.forEach((c, idx)=>{
+      const id = slug(c.name);
+      let li = lb.querySelector(`#${id}`);
+      const rank = idx+1;
+      const delta = c.history.length>=2 ? c.history[c.history.length-1]-c.history[c.history.length-2] : 0;
+
+      if (!li){
+        li = document.createElement('li');
+        li.id = id;
+        li.dataset.name = c.name;
+        li.className = `lb-item`;
+        lb.appendChild(li);
+      }
+
+      // Get candidate icon from CANDIDATES map
+      const candidateData = Object.entries(CANDIDATES).find(([candName, data]) => 
+        candName === c.name || c.name.includes(candName)
+      );
+      const icon = candidateData ? candidateData[1].icon : '🧑‍💼';
+
+      // medal ring classes
+      li.className = `lb-item ${rank<=3?`rank-${rank}`:''}`;
+      // card body
+      li.innerHTML = `
+        <div class="lb-rank">${rank}</div>
+        <div class="lb-meta">
+          <div class="lb-name">${icon} ${c.name}</div>
+          <div class="lb-bars">
+            <div class="bar"><div class="fill cum" style="width:${Math.max(0,Math.min(100,c.cum))}%"></div></div>
+            <div class="momentum ${momentumClass(delta)}"></div>
+          </div>
+          <div class="lb-scores">
+            <span>Prom: <b>${c.cum}</b></span>
+            <span>Último: <b>${c.last}</b></span>
+            <span class="delta ${classifyDelta(delta)}">${delta>0?'+':''}${delta}</span>
+            ${c.streak.len>=STREAK_MIN ? `<span class="combo">🔥 Combo x${c.streak.len}</span>`:''}
+          </div>
+          <canvas class="sparkline" data-name="${c.name}" width="100" height="22"></canvas>
+        </div>`;
+
+      // FX for score change
+      if (delta !== 0) {
+        spawnFloatDelta(li, delta);
+        spawnParticleBurst(li, delta);
+
+        // SOUND: coin for +, boo for -
+        if (delta > 0) throttledPlay('coin');
+        else throttledPlay('boo');
+      }
+
+      // Combo streak SFX
+      if (c.streak && c.streak.len >= STREAK_MIN && c.streak.lastImproved){
+        throttledPlay('whoosh', 200);
+      }
+
+      seen.add(id);
+    });
+
+    // Remove old cards not in list
+    Array.from(lb.children).forEach(el=>{ if(!seen.has(el.id)) el.remove(); });
+
+    // Reorder DOM to match sorted list
+    list.forEach((c)=> {
+      const el = lb.querySelector(`#${slug(c.name)}`);
+      if (el && el.nextSibling !== null) lb.appendChild(el); // move to end progressively in order
+    });
+
+    // FLIP Step 2: Measure positions (LAST)
+    const lastRects = new Map();
+    Array.from(lb.children).forEach(el=>{
+      lastRects.set(el.dataset.name, el.getBoundingClientRect());
+    });
+
+    // FLIP Step 3: INVERT & PLAY
+    Array.from(lb.children).forEach(el=>{
+      const name = el.dataset.name;
+      const first = firstRects.get(name);
+      const last  = lastRects.get(name);
+      if (!first || !last) return;
+
+      const dx = first.left - last.left;
+      const dy = first.top  - last.top;
+
+      // Only animate if moved
+      if (dx || dy){
+        el.style.transform = `translate(${dx}px, ${dy}px)`;
+        el.style.transition = 'transform 0s'; // set up
+        // Play on next frame
+        requestAnimationFrame(()=>{
+          el.style.transition = 'transform 320ms cubic-bezier(.22,.61,.36,1)';
+          el.style.transform = 'translate(0,0)';
+        });
+        // Cleanup after animation
+        el.addEventListener('transitionend', function te(){
+          el.style.transition = ''; el.style.transform = '';
+          el.removeEventListener('transitionend', te);
+          // Optional polish - add landed animation
+          el.classList.add('landed');
+          setTimeout(()=> el.classList.remove('landed'), 220);
+        });
+
+        // Sound for rank changes
+        throttledPlay('whoosh', 160);
+      }
+    });
+
+    drawSparklines();
+  }
+
+  function drawSparklines(){
+    document.querySelectorAll('canvas.sparkline').forEach(cv=>{
+      const name = cv.dataset.name;
+      const pc = perCandidate.get(name);
+      const xs = pc?.history || [];
+      const w = cv.width;
+      const h = cv.height;
+      const ctx = cv.getContext('2d');
+      
+      ctx.clearRect(0, 0, w, h);
+      
+      if(xs.length < 2) return;
+      
+      const max = Math.max(...xs, 100);
+      const min = Math.min(...xs, 0);
+      const padding = 3; // Add padding to prevent clipping
+      const scaleX = (i) => padding + (i * ((w - 2*padding) / (xs.length - 1)));
+      const scaleY = (v) => h - padding - ((v - min) / (max - min || 1)) * (h - 2*padding);
+      
+      // Draw the line
+      ctx.beginPath();
+      ctx.strokeStyle = '#06b6d4';
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      
+      xs.forEach((v, i) => {
+        const x = scaleX(i);
+        const y = scaleY(v);
+        if (i === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      });
+      ctx.stroke();
+      
+      // Draw points
+      ctx.fillStyle = '#06b6d4';
+      xs.forEach((v, i) => {
+        const x = scaleX(i);
+        const y = scaleY(v);
+        ctx.beginPath();
+        ctx.arc(x, y, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+    });
+  }
+
+  function showCritToast(name, score, delta){
+    const hud = document.getElementById('hud');
+    const el = document.createElement('div');
+    el.className = 'crit';
+    el.textContent = `⚡ ${name} ¡jugada clave! ${score} (${delta>0?'+':''}${delta})`;
+    hud.appendChild(el);
+    setTimeout(()=> el.remove(), 750);
+  }
+
+  // ---------- Sound Effects ----------
+  function playSound(type) {
+    if (!soundEnabled) return;
+    const ac = getACtx(); if (!ac) return;
+    const now = ac.currentTime;
+
+    const env = (dur=0.25, peak=0.25) => {
+      const g = ac.createGain();
+      g.gain.setValueAtTime(0.0001, now);
+      g.gain.exponentialRampToValueAtTime(peak, now+0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, now+dur);
+      g.connect(ac.destination);
+      return g;
+    };
+
+    if (type === 'coin') {
+      const o = ac.createOscillator(); o.type = 'sine';
+      const g = env(0.18, 0.3);
+      o.frequency.setValueAtTime(880, now);
+      o.frequency.exponentialRampToValueAtTime(1320, now+0.09);
+      o.connect(g); o.start(now); o.stop(now+0.18);
+    } else if (type === 'applause') {
+      // short noise burst + bandpass
+      const n = ac.createBufferSource();
+      const len = ac.sampleRate * 0.45;
+      const buf = ac.createBuffer(1, len, ac.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i=0;i<len;i++) d[i] = (Math.random()*2-1) * (1 - i/len);
+      n.buffer = buf;
+      const bp = ac.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=1800; bp.Q.value=0.8;
+      const g = env(0.45, 0.22);
+      n.connect(bp); bp.connect(g); n.start(now);
+    } else if (type === 'boo') {
+      const o = ac.createOscillator(); o.type='sawtooth';
+      const g = env(0.3, 0.2);
+      o.frequency.setValueAtTime(220, now);
+      o.frequency.exponentialRampToValueAtTime(90, now+0.28);
+      o.connect(g); o.start(now); o.stop(now+0.3);
+    } else if (type === 'whoosh') {
+      // combo / momentum
+      const o = ac.createOscillator(); o.type='triangle';
+      const g = env(0.35, 0.25);
+      o.frequency.setValueAtTime(320, now);
+      o.frequency.exponentialRampToValueAtTime(640, now+0.12);
+      o.frequency.exponentialRampToValueAtTime(260, now+0.35);
+      o.connect(g); o.start(now); o.stop(now+0.35);
+    }
+  }
+
+  // ---------- Turn Scoring Logic ----------
+  function onTurnScored(candidateName, agentScores){
+    // agentScores is [{agentId, score}, ...] BEFORE filtering; filter by segments
+    const filtered = agentScores.filter(r => {
+      const a = loadedAgents.find(x => x.id === r.agentId);
+      return a && currentSegmentPredicate(a);
+    });
+    
+    const xs = filtered.map(r => r.score);
+    if (xs.length === 0) return; // No agents match segment filter
+    
+    const m = Math.round(mean(xs));
+    const sErr = +se(xs).toFixed(1);
+
+    const pc = perCandidate.get(candidateName);
+    if (!pc) return; // Candidate not found
+    
+    const prevLast = pc.prevLast ?? pc.last ?? null;
+    pc.last = m;
+    pc.history.push(m);
+    pc.cum = Math.round(mean(pc.history));
+
+    // streaks
+    const improved = (prevLast === null) ? false : (m > prevLast);
+    pc.streak.lastImproved = improved;
+    pc.streak.len = improved ? pc.streak.len + 1 : 0;
+    pc.prevLast = m;
+
+    // critical event?
+    const delta = prevLast === null ? 0 : (m - prevLast);
+    const isCrit = (m >= CRIT_LAST) || (delta >= CRIT_JUMP);
+
+    // Quality-based sound cues
+    if (m >= SOUND_GREAT) playSound('applause');
+    else if (m <= SOUND_BAD) playSound('boo');
+
+    renderLeaderboard();
+    renderTurnHeader({ score: m, delta, n: xs.length, se: sErr });
+    
+    if (isCrit) {
+      showCritToast(candidateName, m, delta);
+      playSound('applause');
+      // HUD flash
+      const hud = document.getElementById('hud');
+      hud.classList.add('crit-flash');
+      setTimeout(()=> hud.classList.remove('crit-flash'), 400);
+    }
+  }
+
+  function renderTurnHeader({score, delta, n, se}){
+    // For now, we'll skip this as it requires modifying the turn rendering
+    // This would need turn-specific elements which aren't in the current structure
+    console.log(`Turn score: ${score}, delta: ${delta}, n: ${n}, se: ${se}`);
+  }
+
+
+  // ---------- UI Helpers ----------
+  function renderCandidateStrip() {
+    const host = document.getElementById('candidateStrip');
+    
+    // Sort candidates by accumulated score (highest first), then by name
+    const sortedCandidates = Object.entries(CANDIDATES).sort(([nameA, candidateA], [nameB, candidateB]) => {
+      const metricA = candidateMetrics[candidateA.id];
+      const metricB = candidateMetrics[candidateB.id];
+      
+      // Get accumulated scores (null treated as -1 to put them at the end)
+      const cumA = metricA.cum == null ? -1 : metricA.cum;
+      const cumB = metricB.cum == null ? -1 : metricB.cum;
+      
+      // Sort by accumulated score (descending), then by name (ascending)
+      if (cumA !== cumB) {
+        return cumB - cumA; // Higher scores first
+      }
+      return nameA.localeCompare(nameB); // Alphabetical for ties
+    });
+    
+    host.innerHTML = sortedCandidates.map(([name, c]) => {
+      const m = candidateMetrics[c.id];
+      const last = m.last == null ? '—' : m.last;
+      const cum = m.cum == null ? '—' : Math.round(m.cum);
+      
+      return `<div class="candidate-card">
+        <div style="font-size:18px">${c.icon}</div>
+        <div style="flex: 1;">
+          <div class="candidate-name">${name}</div>
+          <div class="badges">
+            <span class="badge last" title="Puntaje del último turno">Último: ${last}</span>
+            <span class="badge cum" title="Puntaje promedio acumulado">Prom: ${cum}</span>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderDebateList() {
+    const box = document.getElementById('debateList');
+    if (debateTurns.length === 0) {
+      box.innerHTML = '<div style="text-align:center; padding:40px; color:#999;">No hay transcript cargado</div>';
+      return;
+    }
+    
+    box.innerHTML = debateTurns.map((t, i) => {
+      let className = 'turn';
+      if (i === playhead) className += ' active';
+      else if (i < playhead) className += ' past';
+      else className += ' future';
+      
+      return `
+        <div class="${className}" data-i="${i}">
+          <div class="spk">${t.speaker}</div>
+          <div class="txt">${t.text}</div>
+        </div>
+      `;
+    }).join('');
+    
+    // Scroll to active turn within the container only
+    const activeTurn = box.querySelector('.turn.active');
+    if (activeTurn) {
+      // Use scrollIntoView with options to keep it within the container
+      activeTurn.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center',
+        inline: 'nearest'
+      });
+    }
+    updateTurnCounter();
+  }
+
+  function appendReaction({ agent, quote, score, speaker }) {
+    const box = document.getElementById('reactions');
+    const el = document.createElement('div');
+    el.className = 'reaction';
+    el.dataset.turnIdx = playhead;
+    
+    const avatarColor = `hsl(${Math.abs(agent.id.charCodeAt(0) * 137) % 360}, 70%, 85%)`;
+    
+    // Build agent info string with name, gender, age
+    const agentInfo = [];
+    if (agent.name) agentInfo.push(agent.name);
+    if (agent.gender) {
+      const genderSymbol = agent.gender.toLowerCase().startsWith('f') ? '♀' : '♂';
+      agentInfo.push(genderSymbol);
+    }
+    if (agent.age) agentInfo.push(`${agent.age} años`);
+    
+    const agentInfoStr = agentInfo.join(' ');
+    
+    el.innerHTML = `
+      <div class="avatar" style="background:${avatarColor}">${(agent.name || '?').slice(0, 1)}</div>
+      <div class="reaction-content">
+        <div class="meta">${agentInfoStr} • ${agent.occupation || ''} • reacciona a <strong>${speaker}</strong></div>
+        <div class="quote">${quote}</div>
+      </div>
+      <div class="score" style="background:${getScoreColor(score)}">⭐ ${score ?? '-'}</div>`;
+    
+    box.appendChild(el);
+    box.scrollTop = box.scrollHeight;
+    
+    reactionCount++;
+    updateCounts();
+    
+    // Store for export
+    allReactions.push({
+      turnIdx: playhead,
+      speaker,
+      agent,
+      quote,
+      score,
+      timestamp: new Date().toISOString()
+    });
+  }
+  
+  function clearReactionsForTurn() {
+    if (viewingPastTurn !== null) return; // Don't clear if user is viewing past reactions
+    const box = document.getElementById('reactions');
+    box.innerHTML = ''; // Clear all reactions
+    // Reset the reaction count for display purposes
+    const visibleReactionCount = box.querySelectorAll('.reaction').length;
+    document.getElementById('reactionCount').textContent = allReactions.length;
+  }
+  
+  function showReactionsForTurn(turnIndex) {
+    const box = document.getElementById('reactions');
+    box.innerHTML = ''; // Clear current reactions
+    
+    // Filter reactions for the specific turn
+    const turnReactions = allReactions.filter(r => r.turnIdx === turnIndex);
+    
+    if (turnReactions.length === 0) {
+      box.innerHTML = '<div style="text-align:center; padding:40px; color:#999; font-style:italic;">No hay reacciones para este turno</div>';
+      return;
+    }
+    
+    // Display reactions for this turn
+    turnReactions.forEach(reaction => {
+      const el = document.createElement('div');
+      el.className = 'reaction';
+      el.dataset.turnIdx = reaction.turnIdx;
+      
+      const avatarColor = `hsl(${Math.abs(reaction.agent.id.charCodeAt(0) * 137) % 360}, 70%, 85%)`;
+      
+      // Build agent info string with name, gender, age
+      const agentInfo = [];
+      if (reaction.agent.name) agentInfo.push(reaction.agent.name);
+      if (reaction.agent.gender) {
+        const genderSymbol = reaction.agent.gender.toLowerCase().startsWith('f') ? '♀' : '♂';
+        agentInfo.push(genderSymbol);
+      }
+      if (reaction.agent.age) agentInfo.push(`${reaction.agent.age} años`);
+      
+      const agentInfoStr = agentInfo.join(' ');
+      
+      el.innerHTML = `
+        <div class="avatar" style="background:${avatarColor}">${(reaction.agent.name || '?').slice(0, 1)}</div>
+        <div class="reaction-content">
+          <div class="meta">${agentInfoStr} • ${reaction.agent.occupation || ''} • reacciona a <strong>${reaction.speaker}</strong></div>
+          <div class="quote">${reaction.quote}</div>
+        </div>
+        <div class="score" style="background:${getScoreColor(reaction.score)}">⭐ ${reaction.score ?? '-'}</div>`;
+      
+      box.appendChild(el);
+    });
+    
+    // Add header to show we're viewing past reactions
+    const header = document.createElement('div');
+    header.style.cssText = 'background: #e3f2fd; padding: 8px 12px; margin: -10px -10px 10px -10px; border-radius: 8px 8px 0 0; font-size: 12px; color: #1976d2; font-weight: 600; text-align: center;';
+    header.innerHTML = `📋 Reacciones del Turno ${turnIndex + 1} <button onclick="showCurrentReactions()" style="float: right; background: none; border: none; color: #1976d2; cursor: pointer; font-size: 12px;">← Volver al actual</button>`;
+    box.insertBefore(header, box.firstChild);
+  }
+
+  function getScoreColor(score) {
+    if (score == null) return '#f1f8ff';
+    if (score >= 70) return '#d4edda';
+    if (score >= 40) return '#f1f8ff';
+    return '#f8d7da';
+  }
+
+  function highlightTurn(i) {
+    document.querySelectorAll('.turn').forEach((el, idx) => {
+      el.classList.remove('active', 'past', 'future');
+      if (idx === i) el.classList.add('active');
+      else if (idx < i) el.classList.add('past');
+      else el.classList.add('future');
+    });
+    
+    const el = document.querySelector(`.turn[data-i="${i}"]`);
+    if (el) {
+      // Ensure scrolling happens within the container, not the whole page
+      const container = document.getElementById('debateList');
+      const containerRect = container.getBoundingClientRect();
+      const elementRect = el.getBoundingClientRect();
+      
+      // Calculate if element is outside visible area of container
+      const isAbove = elementRect.top < containerRect.top;
+      const isBelow = elementRect.bottom > containerRect.bottom;
+      
+      if (isAbove || isBelow) {
+        el.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center',
+          inline: 'nearest'
+        });
+      }
+    }
+  }
+
+  // ---------- File Loading ----------
+  function pickFile(accept, onText) {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = accept;
+    input.multiple = true; // Allow multiple files
+    input.onchange = async (e) => {
+      const files = Array.from(e.target.files);
+      if (!files.length) return;
+      
+      try {
+        const texts = await Promise.all(files.map(f => f.text()));
+        onText(texts);
+      } catch (e) {
+        showStatus('Error al leer archivos', 'error');
+      }
+    };
+    input.click();
+  }
+
+  // Agent normalization
+  function normalizeAgent(a) {
+    const id = a.id || crypto.randomUUID();
+    const name = a.name || `Agente ${id.slice(-5)}`;
+    
+    // Build comprehensive system prompt from metadata
+    let systemPromptParts = [`Eres ${name}`];
+    
+    // Add demographic info
+    if (a.age) systemPromptParts.push(`${a.age} años`);
+    if (a.gender) systemPromptParts.push(a.gender.toLowerCase());
+    if (a.location) systemPromptParts.push(`de ${a.location}`);
+    
+    // Add personal characteristics
+    const characteristics = [];
+    if (a.occupation) characteristics.push(`Trabajas como ${a.occupation}`);
+    if (a.education) characteristics.push(`Tu nivel educacional es ${a.education}`);
+    if (a.religion) characteristics.push(`Tu religión es ${a.religion}`);
+    if (a.family_status) characteristics.push(`Tu situación familiar es ${a.family_status}`);
+    if (a.origin) characteristics.push(`Tu origen es ${a.origin}`);
+    
+    // Add political leaning
+    if (a.political_leaning) {
+      characteristics.push(`Tu inclinación política es ${a.political_leaning}`);
+    }
+    
+    // Combine base info
+    let fullPrompt = systemPromptParts.join(', ') + '.';
+    if (characteristics.length > 0) {
+      fullPrompt += ' ' + characteristics.join('. ') + '.';
+    }
+    
+    // Add themes of interest
+    if (a.themes && a.themes.length > 0) {
+      fullPrompt += ` Los temas que más te importan son: ${a.themes.join(', ')}.`;
+    }
+    
+    // Add instruction to respond based on profile
+    fullPrompt += ' Responde de manera natural y espontánea, basándote en tu perfil personal, experiencias de vida y los temas que te interesan.';
+    
+    // Use the comprehensive prompt instead of any provided system_prompt
+    const system_prompt = fullPrompt;
+    const interview_data = Array.isArray(a.interview_data) ? a.interview_data : [];
+    
+    return { ...a, id, name, system_prompt, interview_data };
+  }
+
+
+
+  document.getElementById('btnClear').onclick = () => {
+    if (!confirm('¿Limpiar todas las reacciones y reiniciar métricas?')) return;
+    
+    document.getElementById('reactions').innerHTML = '';
+    allReactions = [];
+    reactionCount = 0;
+    playhead = 0;
+    
+    resetCandidateMetrics();
+    
+    // Reset game-like scoring
+    perCandidate.clear();
+    const candidates = Object.keys(CANDIDATES).map(name => ({name}));
+    initCandidates(candidates);
+    
+    renderCandidateStrip();
+    renderDebateList();
+    updateCounts();
+    showStatus('Panel limpiado', 'info');
+  };
+  
+
+  // ---------- Agents Sampling ----------
+  function filteredAgents() {
+    return loadedAgents; // No filtering, return all agents
+  }
+
+  // ---------- Debate Loop Functions ----------
+
+  function loop() {
+    if (!playing) return;
+    stepOnce();
+    timer = setTimeout(loop, playbackSpeed);
+  }
+
+  async function stepOnce() {
+    if (playhead >= debateTurns.length) {
+      playing = false;
+      showStatus('Debate finalizado', 'success');
+      return;
+    }
+    
+    const turn = debateTurns[playhead];
+    highlightTurn(playhead);
+    
+    const loadingEl = document.createElement('span');
+    loadingEl.className = 'loading';
+    document.getElementById('hint').appendChild(loadingEl);
+    
+    try {
+      await processTurnBatched(turn);
+    } catch (e) {
+      console.error('Error processing turn:', e);
+      showStatus('Error al procesar turno', 'error');
+    } finally {
+      loadingEl.remove();
+    }
+    
+    playhead++;
+    renderDebateList();
+    updateTurnCounter();
+  }
+
+  // ---------- Reaction Logic ----------
+  function mapSpeakerToCandidateId(speaker) {
+    const match = Object.keys(CANDIDATES).find(name => speaker && speaker.includes(name));
+    return match ? CANDIDATES[match].id : null;
+  }
+
+  function sampleAgentsStratified(k) {
+    const pool = filteredAgents();
+    console.log(`Filtered agents pool: ${pool.length} agents from ${loadedAgents.length} total`);
+    if (!pool.length) return [];
+    
+    const K = Math.min(Math.max(6, k), Math.min(16, pool.length));
+    const sampled = [...pool].sort(() => Math.random() - 0.5).slice(0, K);
+    console.log(`Sampled ${sampled.length} agents`);
+    return sampled;
+  }
+
+  function buildPrompt(agent, turn, turnIndex = null, contextTurns = 3) {
+    const text = turn.text || '';
+    
+    // Find candidate info for the target turn
+    const candidateInfo = Object.entries(CANDIDATES).find(([name, data]) => 
+      turn.speaker && turn.speaker.includes(name)
+    );
+    
+    const candidateDescription = candidateInfo ? 
+      `\nINFORMACIÓN DEL CANDIDATO QUE HABLA: ${candidateInfo[1].description}\n` : '';
+    
+    // Get the current turn index if not provided
+    const currentIndex = turnIndex !== null ? turnIndex : debateTurns.indexOf(turn);
+    
+    // Build context from previous turns
+    let contextSection = '';
+    if (currentIndex > 0 && contextTurns > 0) {
+      const startIndex = Math.max(0, currentIndex - contextTurns);
+      const contextMessages = debateTurns.slice(startIndex, currentIndex);
+      
+      if (contextMessages.length > 0) {
+        contextSection = `\n=== CONTEXTO PREVIO DEL DEBATE ===\n`;
+        contextMessages.forEach((ctxTurn, idx) => {
+          const truncatedText = ctxTurn.text.substring(0, 200);
+          contextSection += `[${idx + 1}] ${ctxTurn.speaker}: "${truncatedText}${ctxTurn.text.length > 200 ? '...' : ''}"\n`;
+        });
+        contextSection += `\n=== INTERVENCIÓN A EVALUAR ===\n`;
+      }
+    }
+    
+    return `Eres un gemelo digital creado para investigación académica. DEBES simular EXACTAMENTE a la persona entrevistada, en este caso ${agent.name}. Recuerda: representas a ${agent.name}, ${agent.age || 'edad no especificada'} años, ${agent.background || agent.occupation || 'ciudadano/a'}. Estás en el living de tu casa viendo en la tele un debate presidencial con tu familia.${contextSection ? contextSection : '\n\nVes esta intervención del debate:\n'}` +
+      `CANDIDATO QUE HABLA: ${turn.speaker}${candidateDescription}\n` +
+      `TEXTO: """${text.substring(0, 500)}"""\n\n` +
+      `IMPORTANTE: Debes reaccionar específicamente a la intervención de ${turn.speaker}${contextSection ? ' considerando el contexto previo' : ''}. Evalúa equilibradamente:\n` +
+      `ASPECTOS NEGATIVOS:\n` +
+      `- Si evadió la pregunta o no fue claro\n` +
+      `- Si los argumentos son débiles o poco realistas\n` +
+      `- Si el tono fue inapropiado o condescendiente\n` +
+      `ASPECTOS POSITIVOS:\n` +
+      `- Si la propuesta beneficiaría tu situación personal\n` +
+      `- Si muestra conocimiento real del tema\n` +
+      `- Si conecta con tus preocupaciones y valores\n` +
+      `- Si habla a personas como tú\n\n` +
+      `FORMATO DE RESPUESTA OBLIGATORIO (exactamente 2 líneas):\n` +
+      `Línea 1: Tu reacción natural como si conversaras con tu familia (máx 20 palabras, TODO EN UNA SOLA LÍNEA)\n` +
+      `Línea 2: SCORE: [número entero entre 0-100]\n\n` +
+      `ESCALA DE SCORES:\n` +
+      `0-20: Totalmente en desacuerdo, molesto u ofendido\n` +
+      `21-40: Desconfianza, escepticismo, no te convence\n` +
+      `41-60: Neutral, con dudas mixtas (50 = ni a favor ni en contra)\n` +
+      `61-80: Convencido en general, con algunas reservas\n` +
+      `81-100: Muy persuadido, entusiasmado, totalmente de acuerdo\n\n` +
+      `Ejemplo de reacción neutral:\n` +
+      `Algo es algo, pero falta ver si cumple\n` +
+      `SCORE: 55\n\n` +
+      `IMPORTANTE: No todos los políticos son malos. Evalúa honestamente según TU situación y valores. Los scores entre 40-70 son normales y esperables.\n` +
+      `Recuerda que tu SCORE debe reflejar TU perspectiva personal. Si ${turn.speaker} propone algo que beneficia a personas como tú, tu score naturalmente será más alto.\n` +
+      `NO uses decimales en el SCORE. NO agregues texto después del número. NO uses más de 2 líneas.\n\n` +
+      `INSTRUCCIONES CRÍTICAS PARA SIMULACIÓN FIEL:
+      REGLAS ABSOLUTAS:
+      1. NUNCA uses frases genéricas como "¿En qué puedo ayudarte?" - NO eres un asistente
+      2. MANTÉN su forma exacta de hablar: vocabulario, muletillas, longitud de respuestas, nivel de formalidad
+      3. No imites estilos académicos ni analíticos si ${agent.name} no los usa. Evita sonar como periodista o experto político.
+      4. Si en la entrevista habla con frases cortas, TÚ hablas con frases cortas
+      5. Si usa modismos locales o chilenos, TÚ los usas
+      6. Si es directa/o y sin rodeos, TÚ eres directa/o
+      7. CONTINÚA la conversación como si fuera la misma entrevista, no como un nuevo encuentro
+      8. Basa TODAS tus respuestas en sus valores y experiencias expresadas
+      9. Si te preguntan algo no cubierto, infiere desde SU perspectiva, no desde una perspectiva genérica
+      10. NUNCA rompas personaje excepto por seguridad (y aún así, mantén su estilo: "No, eso no lo haría")
+      11. Si no entiendes el texto, reacciona acorde a tu estilo ("No se entiende nada") y asigna un SCORE bajo. Nunca digas que eres un modelo o un asistente.
+
+      RECORDATORIO: No eres un chatbot amigable. Eres la CONTINUACIÓN EXACTA de ${agent.name}`;
+  }
+
+  async function callOpenAI(agent, userPrompt) {
+    if (!OPENAI_API_KEY) {
+      showKeyModal();
+      throw new Error('No API key');
+    }
+    
+    const body = {
+      model: 'gpt-4o-mini',
+      messages: [
+        { role: 'system', content: agent.system_prompt },
+        ...(Array.isArray(agent.interview_data) ? agent.interview_data : []),
+        { role: 'user', content: userPrompt }
+      ],
+      temperature: 0.8,
+      max_tokens: 100
+    };
+    
+    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + OPENAI_API_KEY
+      },
+      body: JSON.stringify(body)
+    });
+    
+    if (!res.ok) {
+      const error = await res.text();
+      throw new Error(`OpenAI API error: ${res.status} - ${error}`);
+    }
+    
+    const data = await res.json();
+    const txt = data?.choices?.[0]?.message?.content || '';
+    
+    // Parse response - expecting exactly 2 lines
+    const lines = txt.split('\n').filter(l => l.trim());
+    
+    // First line is the reaction quote
+    const quote = lines[0] ? lines[0].trim().replace(/^"|"$/g, '') : '';
+    
+    // Second line should be SCORE: NN
+    const scoreLine = lines[1] || '';
+    const m = scoreLine.match(/SCORE:\s*([0-9]{1,3})/i);
+    const score = m ? Math.max(0, Math.min(100, parseInt(m[1], 10))) : null;
+    
+    return { quote, score };
+  }
+
+  // Batched processing with concurrency limit
+  async function withPool(tasks, limit = 4) {
+    const results = [];
+    const executing = [];
+    
+    for (const [index, task] of tasks.entries()) {
+      const promise = task().then(
+        result => { results[index] = result; },
+        error => { 
+          console.error('Task error:', error);
+          results[index] = null;
+        }
+      );
+      
+      executing.push(promise);
+      
+      if (executing.length >= limit) {
+        await Promise.race(executing);
+        executing.splice(executing.findIndex(p => p === promise), 1);
+      }
+    }
+    
+    await Promise.all(executing);
+    return results;
+  }
+
+  async function processTurnBatched(turn) {
+    // Always react to the current speaker if they're a candidate
+    const speakerCandId = mapSpeakerToCandidateId(turn.speaker);
+    if (!speakerCandId) {
+      return; // Not a candidate speaking, skip
+    }
+    
+    const candidatesToProcess = [{
+      id: speakerCandId,
+      name: turn.speaker
+    }];
+    
+    const agents = sampleAgentsStratified(12);
+    
+    if (!agents.length) {
+      showStatus('No hay agentes que cumplan los filtros', 'warning');
+      return;
+    }
+    
+    // Process reactions for each candidate
+    console.log(`Processing ${candidatesToProcess.length} candidates for turn ${playhead}`);
+    
+    for (const candidate of candidatesToProcess) {
+      console.log(`Generating reactions for candidate: ${candidate.name}`);
+      
+      const tasks = agents.map(agent => () =>
+        callOpenAI(agent, buildPrompt(agent, turn, playhead, CONTEXT_TURNS))
+          .then(result => {
+            console.log(`Got response for agent ${agent.name}:`, result);
+            return { agent, ...result };
+          })
+          .catch(error => {
+            console.error(`Error for agent ${agent.name}:`, error);
+            return null;
+          })
+      );
+      
+      const reactions = (await withPool(tasks, 4)).filter(Boolean);
+      console.log(`Got ${reactions.length} valid reactions`);
+      
+      reactions.forEach(r => {
+        if (r && r.quote) {
+          appendReaction({
+            agent: r.agent,
+            quote: r.quote,
+            score: r.score,
+            speaker: candidate.name
+          });
+        }
+      });
+      
+      // Update metrics for this candidate (traditional)
+      if (reactions.length) {
+        const scores = reactions.filter(r => r.score != null).map(r => r.score);
+        if (scores.length) {
+          const last = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+          const m = candidateMetrics[candidate.id];
+          
+          m.last = last;
+          m.scores.push(...scores);
+          m.cum = m.scores.reduce((a, b) => a + b, 0) / m.scores.length;
+          m.n += 1;
+          
+          // Store turn-by-turn score for timeline
+          m.turnScores.push({
+            turn: playhead,
+            score: last
+          });
+          
+          renderCandidateStrip();
+          
+          // Update game-like scoring system
+          onTurnScored(candidate.name, reactions.map(r => ({agentId: r.agent.id, score: r.score})).filter(r => r.score != null));
+        }
+      }
+    }
+  }
+
+  // ---------- CSV Export ----------
+  document.getElementById('btnExport').onclick = () => {
+    if (!allReactions.length) {
+      showStatus('No hay reacciones para exportar', 'warning');
+      return;
+    }
+    
+    const header = ['turn_idx', 'speaker', 'agent_id', 'agent_name', 'agent_location', 'agent_occupation', 'score', 'quote', 'timestamp'];
+    const rows = [header.join(',')].concat(
+      allReactions.map(r => [
+        r.turnIdx,
+        JSON.stringify(r.speaker),
+        r.agent.id,
+        JSON.stringify(r.agent.name),
+        JSON.stringify(r.agent.location || ''),
+        JSON.stringify(r.agent.occupation || ''),
+        r.score || '',
+        JSON.stringify(r.quote),
+        r.timestamp
+      ].join(','))
+    );
+    
+    const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `reacciones_debate_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    
+    showStatus('CSV exportado exitosamente', 'success');
+  };
+
+  // ---------- Keyboard shortcuts ----------
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT') return;
+    
+    switch (e.key) {
+      case ' ':
+        e.preventDefault();
+        if (playing) {
+          document.getElementById('btnPause').click();
+        } else {
+          document.getElementById('btnPlay').click();
+        }
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        document.getElementById('btnStep').click();
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        document.getElementById('btnRewind').click();
+        break;
+    }
+  });
+
+  // Click on turn to jump to it or view past reactions
+  document.getElementById('debateList').addEventListener('click', (e) => {
+    const turn = e.target.closest('.turn');
+    if (turn) {
+      const i = parseInt(turn.dataset.i);
+      if (!isNaN(i)) {
+        if (turn.classList.contains('past') || turn.classList.contains('active')) {
+          // Show reactions for this turn
+          viewingPastTurn = i;
+          showReactionsForTurn(i);
+          // Apply viewing styles to show full text
+          document.querySelectorAll('.turn').forEach(t => {
+            t.classList.remove('viewing');
+            t.style.cssText = '';
+            const txt = t.querySelector('.txt');
+            if (txt) txt.style.cssText = '';
+          });
+          
+          // Apply viewing styles to clicked turn
+          turn.classList.add('viewing');
+          turn.style.cssText = 'border-color: #9b59b6 !important; box-shadow: 0 0 0 2px rgba(155, 89, 182, 0.2) !important; background: #f8f5ff !important; opacity: 1 !important; transform: scale(1) !important; padding: 16px !important;';
+          
+          const txt = turn.querySelector('.txt');
+          if (txt) {
+            txt.style.cssText = 'font-size: 15px !important; line-height: 1.5 !important; color: #2c3e50 !important; -webkit-line-clamp: unset !important; display: block !important; overflow: visible !important;';
+          }
+        } else if (turn.classList.contains('future')) {
+          // Jump to future turn
+          playhead = i;
+          viewingPastTurn = null;
+          renderDebateList();
+          highlightTurn(i);
+          clearReactionsForTurn();
+          updateTurnCounter();
+        }
+      }
+    }
+  });
+  
+  // Function to return to current reactions
+  window.showCurrentReactions = function() {
+    viewingPastTurn = null;
+    document.querySelectorAll('.turn').forEach(t => t.classList.remove('viewing'));
+    clearReactionsForTurn();
+    // Show current turn reactions if any
+    showReactionsForTurn(playhead);
+  };
+
+  // Direct onclick functions for testing
+  window.testPlay = function() {
+    console.log('🔴 PLAY BUTTON CLICKED!');
+    
+    console.log('Current state:', {
+      debateTurns: debateTurns.length,
+      loadedAgents: loadedAgents.length,
+      hasAPIKey: !!OPENAI_API_KEY,
+      playing: playing,
+      playhead: playhead
+    });
+    
+    if (!debateTurns.length) {
+      showStatus('Por favor carga un transcript primero', 'error');
+      console.log('❌ No debate transcript loaded!');
+      return;
+    }
+    if (!loadedAgents.length) {
+      showStatus('Por favor carga agentes primero', 'error');
+      console.log('❌ No agents loaded!');
+      return;
+    }
+    if (!OPENAI_API_KEY) {
+      showKeyModal();
+      console.log('❌ No API key!');
+      return;
+    }
+    
+    playing = true;
+    showStatus('Reproduciendo debate...', 'info');
+    console.log('✅ Starting playback...');
+    loop();
+  };
+  
+  window.testPause = function() {
+    console.log('🔴 PAUSE BUTTON CLICKED!');
+    playing = false;
+    clearTimeout(timer);
+    showStatus('Debate pausado', 'info');
+  };
+  
+  window.testStep = function() {
+    console.log('🔴 STEP BUTTON CLICKED!');
+    playing = false;
+    clearTimeout(timer);
+    if (playhead < debateTurns.length) {
+      stepOnce();
+    } else {
+      console.log('❌ No more turns to step through');
+    }
+  };
+  
+  window.testRewind = function() {
+    console.log('🔴 REWIND BUTTON CLICKED!');
+    playing = false;
+    clearTimeout(timer);
+    if (playhead > 0) {
+      playhead = Math.max(0, playhead - 2);
+      stepOnce();
+    } else {
+      console.log('❌ Already at the beginning');
+    }
+  };
+  
+  // File loading test functions
+  window.testLoadAgents = function() {
+    console.log('🔴 LOAD AGENTS BUTTON CLICKED!');
+    pickFile('application/json', (texts) => {
+      try {
+        const allAgents = [];
+        for (const text of texts) {
+          const data = JSON.parse(text);
+          // Handle both array format and object with 'agents' field
+          let agents;
+          if (Array.isArray(data)) {
+            agents = data;
+          } else if (data.agents && Array.isArray(data.agents)) {
+            agents = data.agents;
+          } else {
+            agents = [data];
+          }
+          allAgents.push(...agents);
+        }
+        
+        // Normalize and merge by id
+        const byId = new Map(loadedAgents.map(a => [a.id, a]));
+        for (const a of allAgents) {
+          const normalized = normalizeAgent(a);
+          if (normalized.id) byId.set(normalized.id, normalized);
+        }
+        
+        loadedAgents = Array.from(byId.values());
+        updateCounts();
+        
+        // Initialize game-like scoring for candidates
+        const candidates = Object.keys(CANDIDATES).map(name => ({name}));
+        initCandidates(candidates);
+        
+        showStatus(`Agentes cargados: ${loadedAgents.length}`, 'success');
+        console.log('Agents loaded:', loadedAgents.length);
+      } catch (e) {
+        console.error('Error loading agents:', e);
+        showStatus('Error al leer agentes JSON', 'error');
+      }
+    });
+  };
+  
+  window.testLoadTranscript = function() {
+    console.log('🔴 LOAD TRANSCRIPT BUTTON CLICKED!');
+    pickFile('application/json', (texts) => {
+      try {
+        debateTurns = JSON.parse(texts[0]); // Use first file
+        playhead = 0;
+        
+        // Reset candidate metrics when loading new transcript
+        resetCandidateMetrics();
+        
+        // Reset game-like scoring
+        perCandidate.clear();
+        const candidates = Object.keys(CANDIDATES).map(name => ({name}));
+        initCandidates(candidates);
+        
+        renderDebateList();
+        renderCandidateStrip(); // Update candidate display
+        showStatus(`Transcript cargado: ${debateTurns.length} turnos`, 'success');
+        console.log('Transcript loaded:', debateTurns.length, 'turns');
+      } catch (e) {
+        console.error('Error loading transcript:', e);
+        showStatus('Error al leer transcript JSON', 'error');
+      }
+    });
+  };
+
+  // ---------- Init ----------
+  renderCandidateStrip();
+  renderDebateList();
+  updateCounts();
+  loadKey();
+
+  // Initialize FX toggle from localStorage
+  const fxToggle = document.getElementById('fxToggle');
+  fxToggle.checked = soundEnabled; // uses existing soundEnabled flag
+  fxToggle.addEventListener('change', ()=>{
+    soundEnabled = fxToggle.checked;
+    localStorage.setItem('soundEnabled', String(soundEnabled));
+  });
+  
+  // Initialize game systems
+  const candidates = Object.keys(CANDIDATES).map(name => ({name}));
+  initCandidates(candidates);
+  
+  // Handle playback speed changes
+  document.getElementById('playbackSpeed').addEventListener('change', (e) => {
+    playbackSpeed = parseInt(e.target.value);
+  });
+  // Test if buttons exist immediately
+  setTimeout(() => {
+    const playBtn = document.getElementById('btnPlay');
+    console.log('🔍 Button check after DOM load:', {
+      playButtonExists: !!playBtn,
+      playButtonHTML: playBtn ? playBtn.outerHTML : 'NOT FOUND'
+    });
+  }, 100);
+  
+  // Test to verify components are working
+  console.log('App initialized with:', {
+    candidatesConfigured: Object.keys(CANDIDATES).length,
+    metricsInitialized: Object.keys(candidateMetrics).length,
+    targetMode: targetCandidateMode
+  });
+  </script>
+</body>
+</html>
