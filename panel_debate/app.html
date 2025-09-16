@@ -609,6 +609,55 @@
     .lb-item.landed { animation: cardLand 180ms ease-out; }
     @keyframes cardLand { 0%{ transform:scale(1.02) } 100%{ transform:scale(1) } }
 
+    /* Cost tracker styles */
+    .cost-tracker {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      font-size: 13px;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      min-width: 180px;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .cost-tracker:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .cost-tracker-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      opacity: 0.9;
+      margin-bottom: 4px;
+    }
+    .cost-amount {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .cost-details {
+      font-size: 10px;
+      opacity: 0.8;
+      line-height: 1.3;
+    }
+    .cost-tracker.pulse {
+      animation: costPulse 0.6s ease-out;
+    }
+    @keyframes costPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3); }
+      100% { transform: scale(1); }
+    }
+
     .hud-title{
       margin:0 0 6px 0;
       font-size:14px;
@@ -904,6 +953,19 @@
     </aside>
   </main>
 
+  <!-- Cost Tracker -->
+  <div id="costTracker" class="cost-tracker" style="display: none;">
+    <div class="cost-tracker-title">
+      💰 Costo estimado de API
+    </div>
+    <div class="cost-amount">$0.00</div>
+    <div class="cost-details">
+      <div>Modelo: <span style="color: #e0e0ff; font-weight: 600;">gpt-4o-mini</span></div>
+      <div>Llamadas: <span id="apiCalls">0</span></div>
+      <div>Tokens: ~<span id="totalTokens">0</span></div>
+    </div>
+  </div>
+
   <!-- API Key Modal -->
   <div id="keyModal" class="modal" style="display:none;">
     <div class="dialog">
@@ -954,6 +1016,14 @@
   // Context settings
   const CONTEXT_TURNS = 3;      // Number of previous turns to include as context
 
+  // Cost tracking
+  let totalApiCalls = 0;
+  let totalTokensEstimate = 0;
+  let sessionTotalCost = 0;
+  // GPT-4o-mini pricing: $0.15 per 1M input, $0.60 per 1M output
+  const COST_PER_1K_INPUT_TOKENS = 0.00015;   // $0.15 per 1M
+  const COST_PER_1K_OUTPUT_TOKENS = 0.0006;   // $0.60 per 1M
+
   // ---- WebAudio singleton ----
   let _ACtx = null;
   function getACtx(){
@@ -972,6 +1042,56 @@
   function throttledPlay(type, minGap=120){
     const t = performance.now();
     if (t - _lastSfxAt > minGap){ _lastSfxAt = t; playSound(type); }
+  }
+
+  // Cost tracking functions
+  function estimateTokens(text) {
+    // Rough estimate: ~4 characters per token for Spanish
+    return Math.ceil(text.length / 4);
+  }
+
+  function updateCostTracker(promptTokens, completionTokens = 50) {
+    totalApiCalls++;
+    totalTokensEstimate += promptTokens + completionTokens;
+    
+    // Calculate cost with separate input/output pricing
+    const inputCost = (promptTokens / 1000) * COST_PER_1K_INPUT_TOKENS;
+    const outputCost = (completionTokens / 1000) * COST_PER_1K_OUTPUT_TOKENS;
+    const callCost = inputCost + outputCost;
+    
+    // Add to session total
+    sessionTotalCost += callCost;
+    
+    // Update UI
+    document.getElementById('costTracker').style.display = 'block';
+    document.querySelector('.cost-amount').textContent = `$${sessionTotalCost.toFixed(4)}`;
+    document.getElementById('apiCalls').textContent = totalApiCalls;
+    document.getElementById('totalTokens').textContent = totalTokensEstimate.toLocaleString();
+    
+    // Pulse animation for new cost
+    const tracker = document.getElementById('costTracker');
+    tracker.classList.remove('pulse');
+    void tracker.offsetWidth;
+    tracker.classList.add('pulse');
+    
+    // Only save the cumulative cost, not the session counts
+  }
+
+  function loadCostData() {
+    // Reset everything on page load - fresh session
+    totalApiCalls = 0;
+    totalTokensEstimate = 0;
+    sessionTotalCost = 0;
+    
+    // Cost tracker starts hidden and will show when first API call is made
+    document.getElementById('costTracker').style.display = 'none';
+  }
+
+  function resetCostTracker() {
+    totalApiCalls = 0;
+    totalTokensEstimate = 0;
+    sessionTotalCost = 0;
+    document.getElementById('costTracker').style.display = 'none';
   }
 
 
@@ -1859,16 +1979,18 @@
     return `Eres un gemelo digital creado para investigación académica. DEBES simular EXACTAMENTE a la persona entrevistada, en este caso ${agent.name}. Recuerda: representas a ${agent.name}, ${agent.age || 'edad no especificada'} años, ${agent.background || agent.occupation || 'ciudadano/a'}. Estás en el living de tu casa viendo en la tele un debate presidencial con tu familia. El ambiente está cargado, todos opinan, nadie es neutral.${contextSection ? contextSection : '\n\nVes esta intervención del debate:\n'}` +
       `CANDIDATO QUE HABLA: ${turn.speaker}${candidateDescription}\n` +
       `TEXTO: """${text.substring(0, 500)}"""\n\n` +
-      `IMPORTANTE: Debes reaccionar específicamente a la intervención de ${turn.speaker}${contextSection ? ' considerando el contexto previo' : ''}. Evalúa equilibradamente:\n` +
-      `ASPECTOS NEGATIVOS:\n` +
-      `- Si evadió la pregunta o no fue claro\n` +
-      `- Si los argumentos son débiles o poco realistas\n` +
-      `- Si el tono fue inapropiado o condescendiente\n` +
-      `ASPECTOS POSITIVOS:\n` +
-      `- Si la propuesta beneficiaría tu situación personal\n` +
-      `- Si muestra conocimiento real del tema\n` +
-      `- Si conecta con tus preocupaciones y valores\n` +
-      `- Si habla a personas como tú\n\n` +
+      `IMPORTANTE: Debes reaccionar específicamente a la intervención de ${turn.speaker}${contextSection ? ' considerando el contexto previo' : ''}. Busca tanto lo bueno como lo malo:\n` +
+      `ASPECTOS POSITIVOS (búscalos activamente):\n` +
+      `- ¿La propuesta te beneficiaría directamente?\n` +
+      `- ¿Muestra que entiende tus problemas?\n` +
+      `- ¿Habla claro y directo?\n` +
+      `- ¿Se nota preparado/a y con experiencia?\n` +
+      `- ¿Sus ideas son realizables?\n` +
+      `ASPECTOS NEGATIVOS (si los hay):\n` +
+      `- ¿Evadió la pregunta?\n` +
+      `- ¿Puras promesas vacías?\n` +
+      `- ¿Tono soberbio o distante?\n\n` +
+      `RECUERDA: A veces los candidatos SÍ dicen cosas buenas. Si ${turn.speaker} propone algo que genuinamente te ayudaría, reconócelo con un score alto.\n\n` +
       `FORMATO DE RESPUESTA OBLIGATORIO (exactamente 2 líneas):\n` +
       `Línea 1: Tu reacción natural como si conversaras con tu familia (máx 20 palabras, TODO EN UNA SOLA LÍNEA)\n` +
       `Línea 2: SCORE: [número entero entre 0-100]\n\n` +
@@ -1882,7 +2004,7 @@
       `41-60: Ni fu ni fa, algunas cosas sí otras no (50 = dudoso/sospechoso)\n` +
       `61-80: Te convenció bastante, suena bien, puede que vote por él/ella\n` +
       `81-100: ¡Excelente! Totalmente de acuerdo, ojalá gane, esto es lo que necesitamos\n\n` +
-      `IMPORTANTE: Evita scores tibios. Si algo te gusta, dale 70+. Si no te convence, dale 30-. Los políticos generan reacciones fuertes, no seas diplomático.\n` +
+      `IMPORTANTE: Sé genuino con tus emociones. Si realmente te gustó algo, dale 70+. Si no te convenció, dale 30-. Pero si de verdad conectó contigo, no tengas miedo de dar 80+ o hasta 90+.\n` +
       `Tu SCORE debe reflejar cómo esto afecta TU vida directamente. Si te beneficia mucho: 80+. Si te perjudica: 20-.\n` +
       `Imagina que estás viendo esto con tu familia que también opina. Las reacciones en casa suelen ser fuertes, no tibias.\n` +
       `NO uses decimales en el SCORE. NO agregues texto después del número. NO uses más de 2 líneas.\n\n` +
@@ -1936,6 +2058,12 @@
     
     const data = await res.json();
     const txt = data?.choices?.[0]?.message?.content || '';
+    
+    // Track API cost
+    const promptTokens = estimateTokens(userPrompt);
+    const completionTokens = estimateTokens(txt);
+    console.log('API call successful, tracking cost:', { promptTokens, completionTokens });
+    updateCostTracker(promptTokens, completionTokens);
     
     // Parse response - expecting exactly 2 lines
     const lines = txt.split('\n').filter(l => l.trim());
@@ -2296,6 +2424,9 @@
   renderDebateList();
   updateCounts();
   loadKey();
+  
+  // Initialize cost tracker
+  loadCostData();
 
   // Initialize FX toggle from localStorage
   const fxToggle = document.getElementById('fxToggle');
