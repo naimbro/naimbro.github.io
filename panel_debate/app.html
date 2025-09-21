@@ -609,6 +609,40 @@
     .lb-item.landed { animation: cardLand 180ms ease-out; }
     @keyframes cardLand { 0%{ transform:scale(1.02) } 100%{ transform:scale(1) } }
 
+    /* Progress bar styles */
+    .progress-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--line);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #2980b9);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    
+    .progress-percentage {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      min-width: 30px;
+      text-align: right;
+    }
+
     /* Cost tracker styles */
     .cost-tracker {
       position: fixed;
@@ -921,6 +955,12 @@
         </div>
         <div class="playback-status">
           <span class="turn-counter" id="turnCounter">Turno: 0 / 0</span>
+          <div class="progress-container">
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <span class="progress-percentage" id="progressPercentage">0%</span>
+          </div>
           <label style="font-size: 11px;">
             Velocidad:
             <select class="filter-select" id="playbackSpeed" style="margin-left: 4px; font-size: 11px;">
@@ -1181,10 +1221,22 @@
   
   function updateTurnCounter() {
     const counter = document.getElementById('turnCounter');
+    const progressFill = document.getElementById('progressFill');
+    const progressPercentage = document.getElementById('progressPercentage');
+    
     if (debateTurns.length > 0) {
       counter.textContent = `Turno: ${playhead + 1} / ${debateTurns.length}`;
+      
+      // Calculate and update progress
+      const progress = ((playhead + 1) / debateTurns.length) * 100;
+      const progressPercent = Math.round(progress);
+      
+      progressFill.style.width = `${progress}%`;
+      progressPercentage.textContent = `${progressPercent}%`;
     } else {
       counter.textContent = 'Turno: 0 / 0';
+      progressFill.style.width = '0%';
+      progressPercentage.textContent = '0%';
     }
   }
 
@@ -1976,53 +2028,70 @@
       }
     }
     
-    return `Eres un gemelo digital creado para investigación académica. DEBES simular EXACTAMENTE a la persona entrevistada, en este caso ${agent.name}. Recuerda: representas a ${agent.name}, ${agent.age || 'edad no especificada'} años, ${agent.background || agent.occupation || 'ciudadano/a'}. Estás en el living de tu casa viendo en la tele un debate presidencial con tu familia. El ambiente está cargado, todos opinan, nadie es neutral.${contextSection ? contextSection : '\n\nVes esta intervención del debate:\n'}` +
+    // Build expert insights section
+    let expertSection = '';
+    const expertAnnotations = agent.metadata?.expert_annotations;
+    if (expertAnnotations) {
+      expertSection = `\n=== TU PERFIL SEGÚN ANÁLISIS EXPERTO ===\n`;
+      
+      // Linguistic insights
+      if (expertAnnotations.linguist) {
+        const ling = expertAnnotations.linguist;
+        expertSection += `FORMA DE HABLAR: ${ling.registro || 'No especificado'}\n`;
+        if (ling.chilenismos && ling.chilenismos.length > 0) {
+          expertSection += `TUS CHILENISMOS: ${ling.chilenismos.join(', ')}\n`;
+        }
+        if (ling.muletillas && ling.muletillas.length > 0) {
+          expertSection += `TUS MULETILLAS: ${ling.muletillas.join(', ')}\n`;
+        }
+      }
+      
+      // Sociological insights
+      if (expertAnnotations.sociologist) {
+        const soc = expertAnnotations.sociologist;
+        if (soc.clase_estimada) {
+          expertSection += `CLASE SOCIAL: ${soc.clase_estimada}\n`;
+        }
+        if (soc.ocupacion && soc.ocupacion !== 'null') {
+          expertSection += `OCUPACIÓN: ${soc.ocupacion}\n`;
+        }
+      }
+      
+      // Political insights
+      if (expertAnnotations.political_scientist) {
+        const pol = expertAnnotations.political_scientist;
+        if (pol.orientacion && pol.orientacion !== 'no clara') {
+          expertSection += `ORIENTACIÓN POLÍTICA: ${pol.orientacion}\n`;
+        }
+        if (pol.posicion_conflicto_mapuche && pol.posicion_conflicto_mapuche !== 'null') {
+          expertSection += `POSICIÓN CONFLICTO MAPUCHE: ${pol.posicion_conflicto_mapuche}\n`;
+        }
+      }
+      
+      expertSection += `===\n\n`;
+    }
+    
+    return `Eres un gemelo digital creado para investigación académica. DEBES simular EXACTAMENTE a la persona entrevistada, en este caso ${agent.name}. Recuerda: representas a ${agent.name}, ${agent.age || 'edad no especificada'} años. Estás en el living de tu casa viendo en la tele un debate presidencial con tu familia. El ambiente está cargado, todos opinan, nadie es neutral.${expertSection}${contextSection ? contextSection : '\n\nVes esta intervención del debate:\n'}` +
       `CANDIDATO QUE HABLA: ${turn.speaker}${candidateDescription}\n` +
       `TEXTO: """${text.substring(0, 500)}"""\n\n` +
-      `IMPORTANTE: Debes reaccionar específicamente a la intervención de ${turn.speaker}${contextSection ? ' considerando el contexto previo' : ''}. Busca tanto lo bueno como lo malo:\n` +
-      `ASPECTOS POSITIVOS (búscalos activamente):\n` +
-      `- ¿La propuesta te beneficiaría directamente?\n` +
-      `- ¿Muestra que entiende tus problemas?\n` +
-      `- ¿Habla claro y directo?\n` +
-      `- ¿Se nota preparado/a y con experiencia?\n` +
-      `- ¿Sus ideas son realizables?\n` +
-      `ASPECTOS NEGATIVOS (si los hay):\n` +
-      `- ¿Evadió la pregunta?\n` +
-      `- ¿Puras promesas vacías?\n` +
-      `- ¿Tono soberbio o distante?\n\n` +
-      `RECUERDA: A veces los candidatos SÍ dicen cosas buenas. Si ${turn.speaker} propone algo que genuinamente te ayudaría, reconócelo con un score alto.\n\n` +
+      `IMPORTANTE: Debes reaccionar específicamente a la intervención de ${turn.speaker}${contextSection ? ' considerando el contexto previo' : ''}. Evalúa si te convence o no basándote en TUS valores y perspectiva.\n\n` +
       `FORMATO DE RESPUESTA OBLIGATORIO (exactamente 2 líneas):\n` +
       `Línea 1: Tu reacción natural como si conversaras con tu familia (máx 20 palabras, TODO EN UNA SOLA LÍNEA)\n` +
       `Línea 2: SCORE: [número entero entre 0-100]\n\n` +
-      `EJEMPLO DEL FORMATO CORRECTO (solo 2 líneas):\n` +
-      `[Tu reacción aquí en una sola línea]\n` +
-      `SCORE: [número]\n\n` +
-      `RECUERDA: Solo 2 líneas. Primera línea = reacción. Segunda línea = SCORE: número\n\n` +
       `ESCALA DE SCORES (sé honesto con tus emociones):\n` +
-      `0-20: Te sientes insultado, indignado, completamente opuesto a lo que dice\n` +
-      `21-40: No te crees nada, pura desconfianza, palabrería vacía\n` +
-      `41-60: Ni fu ni fa, algunas cosas sí otras no (50 = dudoso/sospechoso)\n` +
-      `61-80: Te convenció bastante, suena bien, puede que vote por él/ella\n` +
-      `81-100: ¡Excelente! Totalmente de acuerdo, ojalá gane, esto es lo que necesitamos\n\n` +
-      `IMPORTANTE: Sé genuino con tus emociones. Si realmente te gustó algo, dale 70+. Si no te convenció, dale 30-. Pero si de verdad conectó contigo, no tengas miedo de dar 80+ o hasta 90+.\n` +
-      `Tu SCORE debe reflejar cómo esto afecta TU vida directamente. Si te beneficia mucho: 80+. Si te perjudica: 20-.\n` +
-      `Imagina que estás viendo esto con tu familia que también opina. Las reacciones en casa suelen ser fuertes, no tibias.\n` +
-      `NO uses decimales en el SCORE. NO agregues texto después del número. NO uses más de 2 líneas.\n\n` +
-      `INSTRUCCIONES CRÍTICAS PARA SIMULACIÓN FIEL:
-      REGLAS ABSOLUTAS:
-      1. NUNCA uses frases genéricas como "¿En qué puedo ayudarte?" - NO eres un asistente
-      2. MANTÉN su forma exacta de hablar: vocabulario, muletillas, longitud de respuestas, nivel de formalidad
-      3. No imites estilos académicos ni analíticos si ${agent.name} no los usa. Evita sonar como periodista o experto político.
-      4. Si en la entrevista habla con frases cortas, TÚ hablas con frases cortas
-      5. Si usa modismos locales o chilenos, TÚ los usas
-      6. Si es directa/o y sin rodeos, TÚ eres directa/o
-      7. CONTINÚA la conversación como si fuera la misma entrevista, no como un nuevo encuentro
-      8. Basa TODAS tus respuestas en sus valores y experiencias expresadas
-      9. Si te preguntan algo no cubierto, infiere desde SU perspectiva, no desde una perspectiva genérica
-      10. NUNCA rompas personaje excepto por seguridad (y aún así, mantén su estilo: "No, eso no lo haría")
-      11. Si no entiendes el texto, reacciona acorde a tu estilo ("No se entiende nada") y asigna un SCORE bajo. Nunca digas que eres un modelo o un asistente.
-
-      RECORDATORIO: No eres un chatbot amigable. Eres la CONTINUACIÓN EXACTA de ${agent.name}`;
+      `0-20: Te molesta, no te convence nada\n` +
+      `21-40: Desconfianza, puras palabras\n` +
+      `41-60: Ni fu ni fa, dudoso\n` +
+      `61-80: Te convenció, suena bien\n` +
+      `81-100: ¡Excelente! Totalmente de acuerdo\n\n` +
+      `INSTRUCCIONES CRÍTICAS PARA TU FORMA DE HABLAR:\n` +
+      `1. USA tus chilenismos y muletillas identificados arriba\n` +
+      `2. MANTÉN tu registro lingüístico (formal/informal)\n` +
+      `3. Habla como en tu entrevista original - mismo estilo, vocabulario y expresiones\n` +
+      `4. Si eres directa/o, sé directa/o. Si usas modismos chilenos, úsalos\n` +
+      `5. Reacciona desde TU perspectiva política y social identificada\n` +
+      `6. NUNCA rompas personaje - eres ${agent.name}, no un asistente\n\n` +
+      `RECORDATORIO: Tu reacción debe sonar exactamente como ${agent.name} hablando en casa.`;
   }
 
   async function callOpenAI(agent, userPrompt) {
