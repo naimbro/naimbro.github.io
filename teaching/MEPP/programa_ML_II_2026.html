@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Machine Learning II</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a3d62;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.2em;
+    }
+    h1 {
+      margin-bottom: 0.3em;
+    }
+    ol {
+      padding-left: 1.2em;
+    }
+    li {
+      margin-bottom: 0.4em;
+    }
+    ul {
+      margin-top: 0.5em;
+      margin-bottom: 1.2em;
+    }
+    a {
+      color: #1e3799;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .info {
+      background-color: #eaf2f8;
+      padding: 1em;
+      border-left: 5px solid #0a3d62;
+      margin-bottom: 2em;
+    }
+    .class-block {
+      margin-bottom: 2em;
+    }
+    .meta {
+      margin-bottom: 1.5em;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Machine Learning II</h1>
+<div class="meta">
+  Profesor: Naim Bro (naim.bro.k [at] uai.cl)<br>
+  Ayudante: Benjamín Palacios (bpalacios [at] alumnos.uai.cl)<br>
+  Magíster en Economía y Políticas Públicas<br>
+  Escuela de Gobierno, Universidad Adolfo Ibáñez, 2025
+</div>
+
+<div class="info">
+  <p><strong>Descripción general del curso:</strong> En Machine Learning II profundizamos en el uso de modelos de aprendizaje automático para problemas aplicados en ciencias sociales, negocios y política pública. Trabajaremos con Python y Google Colab, poniendo especial énfasis en:</p>
+  <ul>
+    <li>Evaluación rigurosa de modelos y selección de hiperparámetros.</li>
+    <li>Manejo de datos del mundo real (ruidosos, desbalanceados, con texto, etc.).</li>
+    <li>Documentación reproducible de los proyectos y buenas prácticas con IA generativa como apoyo.</li>
+  </ul>
+  <p>Durante el bimestre, los equipos desarrollarán un proyecto aplicado que combine datos reales, técnicas de ML intermedio/avanzado y una pregunta de investigación clara.</p>
+</div>
+
+<ol>
+
+  <li>
+    <div class="class-block">
+      <h2>1. Introducción al curso y repaso de Machine Learning I (05-03-2025)</h2>
+      <p>
+        Presentación del curso, del método de evaluación y de los proyectos grupales. Breve repaso de los conceptos
+        centrales de Machine Learning I: datos tabulares, división train/test, modelos lineales básicos y pipelines
+        simples en Python. Configuramos el entorno de trabajo en Google Colab y revisamos el uso de repositorios
+        compartidos (GitHub/Drive) y de IA generativa como copiloto técnico.
+      </p>
+      <ul>
+        <li><a href="#" target="_blank">Formulario inicial para conocernos y elegir temas de proyecto</a></li>
+        <li><a href="#" target="_blank">Presentación: visión general de Machine Learning II</a></li>
+        <li><a href="https://colab.research.google.com/" target="_blank">Google Colab</a></li>
+        <li><strong>Notebooks de repaso (placeholders):</strong></li>
+        <ul>
+          <li><a href="#" target="_blank">Repaso: regresión lineal en Python</a></li>
+          <li><a href="#" target="_blank">Repaso: clasificación binaria simple</a></li>
+          <li><a href="#" target="_blank">Cargar datos desde CSV/Google Sheets</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>2. Modelos supervisados I: regresión, regularización y evaluación (12-03-2025)</h2>
+      <p>
+        Profundizamos en modelos supervisados de regresión (ridge, lasso, elastic net), revisando cómo la
+        regularización controla el sobreajuste. Introducimos validación cruzada, curvas de aprendizaje y el uso
+        sistemático de métricas (RMSE, MAE, R²). Trabajamos con un caso aplicado de predicción de resultados
+        socioeconómicos a partir de encuestas y datos administrativos.
+      </p>
+      <ul>
+        <li><a href="#" target="_blank">Slides: regularización y evaluación de modelos</a></li>
+        <li><a href="#" target="_blank">Notebook: regresión regularizada con scikit-learn</a></li>
+        <li><a href="#" target="_blank">Notebook: validación cruzada y curvas de aprendizaje</a></li>
+        <li><strong>Lecturas sugeridas:</strong></li>
+        <ul>
+          <li><a href="https://scikit-learn.org/stable/modules/linear_model.html" target="_blank">Modelos lineales en scikit-learn (doc)</a></li>
+          <li><a href="https://doi.org/10.1111/j.1467-9868.2005.00503.x" target="_blank">Least Angle Regression (LARS)</a></li>
+        </ul>
+        <li><strong>Tarea:</strong></li>
+        <ul>
+          <li>Ajustar y comparar un modelo lineal simple vs. ridge vs. lasso en un dataset de su elección. Entregar notebook con:</li>
+          <ul>
+            <li>Descripción del problema y del dataset.</li>
+            <li>Comparación de métricas y gráficos de error.</li>
+            <li>Reflexión breve sobre sobreajuste y complejidad del modelo.</li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>3. Modelos supervisados II: clasificación y métricas avanzadas (19-03-2025)</h2>
+      <p>
+        Revisamos problemas de clasificación binaria y multiclase en contextos típicos de ciencias sociales
+        (predicción de voto, abandono de programas, deserción estudiantil, etc.). Introducimos métricas más allá
+        de la exactitud: precisión, recall, F1, AUC-ROC, curvas PR y manejo de clases desbalanceadas
+        (reponderación, undersampling/oversampling).
+      </p>
+      <ul>
+        <li><a href="#" target="_blank">Presentación: métricas para clasificación y clases desbalanceadas</a></li>
+        <li><a href="#" target="_blank">Notebook: clasificación logística y curvas ROC/PR</a></li>
+        <li><a href="#" target="_blank">Notebook: manejo de desbalance con reponderación y SMOTE</a></li>
+        <li><strong>Ejercicios:</strong></li>
+        <ul>
+          <li><a href="#" target="_blank">Ejercicio guiado: predicción de deserción estudiantil</a></li>
+          <li><a href="#" target="_blank">Ejercicio corto: matriz de confusión y métricas F1 macro/micro</a></li>
+        </ul>
+        <li><strong>Tarea:</strong></li>
+        <ul>
+          <li>Elegir un problema de clasificación con clases desbalanceadas y documentar:</li>
+          <ul>
+            <li>Qué métrica es más adecuada y por qué.</li>
+            <li>Impacto de elegir distintos umbrales de decisión.</li>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>4. Árboles de decisión y métodos de ensamble (26-03-2025)</h2>
+      <p>
+        Introducimos árboles de decisión para regresión y clasificación, y avanzamos hacia métodos de ensamble:
+        Random Forests y Gradient Boosting (p. ej. XGBoost, LightGBM). Enfatizamos la interpretación de variables
+        importantes, la comparación con modelos lineales y el uso de validación cruzada para tuning de
+        hiperparámetros.
+      </p>
+      <ul>
+        <li><a href="#" target="_blank">Slides: árboles, bagging y boosting</a></li>
+        <li><a href="#" target="_blank">Notebook: árboles de decisión y overfitting</a></li>
+        <li><a href="#" target="_blank">Notebook: Random Forests y feature importance</a></li>
+        <li><a href="#" target="_blank">Notebook: introducción a Gradient Boosting/XGBoost</a></li>
+        <li><strong>Lecturas:</strong></li>
+        <ul>
+          <li><a href="https://doi.org/10.1023/A:1010933404324" target="_blank">Random Forests (Breiman)</a></li>
+          <li><a href="https://doi.org/10.1214/aos/1013203451" target="_blank">Greedy Function Approximation: A Gradient Boosting Machine</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>5. Aprendizaje no supervisado: clustering y reducción de dimensionalidad (02-04-2025)</h2>
+      <p>
+        Vemos cómo describir la estructura de los datos cuando no tenemos etiquetas. Trabajamos con algoritmos de
+        clustering (k-means, clustering jerárquico, DBSCAN) y técnicas de reducción de dimensionalidad
+        (PCA, t-SNE, UMAP) para visualización y exploración. Aplicamos estas herramientas a encuestas, datos
+        de consumidores y registros administrativos.
+      </p>
+      <ul>
+        <li><a href="#" target="_blank">Presentación: clustering y PCA</a></li>
+        <li><a href="#" target="_blank">Notebook: k-means y elección de k</a></li>
+        <li><a href="#" target="_blank">Notebook: PCA y visualización de componentes principales</a></li>
+        <li><a href="#" target="_blank">Notebook: t-SNE/UMAP para visualizar grupos</a></li>
+        <li><strong>Tarea:</strong></li>
+        <ul>
+          <li>Aplicar un método de clustering y PCA a un dataset elegido por el equipo para explorar posibles
+            segmentos o “tipos” de unidades (personas, comunas, organizaciones, etc.).</li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>6. Texto y representaciones distribuidas (09-04-2025)</h2>
+      <p>
+        Introducimos el trabajo con texto en Machine Learning: limpieza básica, bolsas de palabras (bag-of-words),
+        TF-IDF y embeddings de palabras (word2vec, GloVe) y de documentos. Vemos cómo usar estas representaciones
+        como input para modelos supervisados y no supervisados, y discutimos buenas prácticas para combinar texto
+        con variables tabulares.
+      </p>
+      <ul>
+        <li><a href="#" target="_blank">Slides: texto, TF-IDF y embeddings</a></li>
+        <li><a href="#" target="_blank">Notebook: preprocesamiento de texto y TF-IDF</a></li>
+        <li><a href="#" target="_blank">Notebook: clasificación de textos con regresión logística / SVM</a></li>
+        <li><a href="#" target="_blank">Notebook: introducción práctica a word2vec</a></li>
+        <li><strong>Lecturas sugeridas:</strong></li>
+        <ul>
+          <li><a href="https://arxiv.org/abs/1301.3781" target="_blank">Efficient Estimation of Word Representations in Vector Space</a></li>
+          <li><a href="https://doi.org/10.1162/COLI_a_00225" target="_blank">A systematic comparison of bag-of-words and word embeddings</a></li>
+        </ul>
+        <li><strong>Ejercicio corto:</strong> construir un pequeño clasificador de textos (p. ej. noticias políticas vs. económicas) usando TF-IDF.</li>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>7. Tema a elección del curso y Taller de proyectos (16-04-2025)</h2>
+      <p>
+        En la sesión anterior, los alumnos votan por un tema que quisieran profundizar (por ejemplo:
+        interpretabilidad de modelos, fairness, redes neuronales profundas, series de tiempo, recomendadores, etc.).
+        Esta clase la dedicamos a ese tema y a avanzar en los proyectos grupales: cada equipo presenta brevemente
+        su progreso, recibe feedback y aclara dudas técnicas y metodológicas.
+      </p>
+      <ul>
+        <li><strong>Posibles mini-módulos:</strong></li>
+        <ul>
+          <li><a href="#" target="_blank">Presentación: interpretabilidad y SHAP/LIME</a></li>
+          <li><a href="#" target="_blank">Presentación: fairness y sesgos algorítmicos</a></li>
+          <li><a href="#" target="_blank">Presentación: introducción breve a redes neuronales</a></li>
+        </ul>
+        <li><strong>Recursos para proyectos:</strong></li>
+        <ul>
+          <li><a href="#" target="_blank">Guía de proyectos (estructura, entregables y rúbrica)</a></li>
+          <li><a href="#" target="_blank">Ejemplos de proyectos de años anteriores</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>8. Presentaciones finales de proyectos (23-04-2025)</h2>
+      <p>
+        Cada grupo presenta su proyecto final, incluyendo la pregunta de investigación, la construcción del dataset,
+        las decisiones de modelamiento, los resultados principales y las limitaciones. Discutimos los enfoques
+        aplicados, la calidad de la documentación y el potencial de escalamiento de los proyectos.
+      </p>
+      <ul>
+        <li><span style="background-color: #fff3cd;">Presentaciones finales</span></li>
+        <li><a href="#" target="_blank">Guía de entrega del informe y del repositorio</a></li>
+      </ul>
+    </div>
+  </li>
+
+</ol>
+
+<h2>Otras lecturas y recursos</h2>
+<ul>
+  <li><strong>Lecturas generales sobre ML aplicado:</strong></li>
+  <ul>
+    <li><a href="https://hastie.su.domains/ElemStatLearn/" target="_blank">The Elements of Statistical Learning (Hastie, Tibshirani, Friedman)</a></li>
+    <li><a href="https://www.cs.ubc.ca/~murphyk/MLbook/" target="_blank">Machine Learning: A Probabilistic Perspective (Murphy)</a></li>
+    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</a></li>
+  </ul>
+
+  <li><strong>ML y ciencias sociales / política pública:</strong></li>
+  <ul>
+    <li><a href="https://www.cambridge.org/core/books/automated-experiments-in-machine-learning/" target="_blank">Automated Experiments in Machine Learning (aplicaciones y diseño experimental)</a></li>
+    <li><a href="https://www.annualreviews.org/doi/10.1146/annurev-polisci-051017-050904" target="_blank">Text as Data (Grimmer, Roberts, Stewart)</a></li>
+    <li><a href="https://www.pnas.org/doi/10.1073/pnas.2017226118" target="_blank">Machine learning for social science (PNAS)</a></li>
+  </ul>
+
+  <li><strong>Buenas prácticas, reproducibilidad y ética:</strong></li>
+  <ul>
+    <li><a href="https://doi.org/10.1145/3287560.3287591" target="_blank">Datasheets for Datasets</a></li>
+    <li><a href="https://dl.acm.org/doi/10.1145/3287324" target="_blank">Model Cards for Model Reporting</a></li>
+    <li><a href="https://proceedings.mlr.press/v97/mitchell19a.html" target="_blank">Prediction, fairness and bias in machine learning</a></li>
+  </ul>
+</ul>
+
+<h2>Evaluación</h2>
+<ul>
+  <li>Diagnósticos y ejercicios semanales (25%) – pequeños notebooks o cuestionarios para afianzar cada tema.</li>
+  <li>Entregable intermedio de proyecto grupal (25%) – propuesta de proyecto, dataset preliminar y primeros resultados.</li>
+  <li>Proyecto grupal final (40%) – informe escrito, repositorio reproducible y presentación final.</li>
+  <li>Realización de tareas cortas y participación (10%) – preparación para la clase, discusiones y peer feedback.</li>
+</ul>
+
+</body>
+</html>
