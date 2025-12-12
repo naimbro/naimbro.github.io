@@ -78,7 +78,7 @@
 
   <li>
     <div class="class-block">
-      <h2>Introducción al curso y repaso de Machine Learning I (05-03-2025)</h2>
+      <h2>Introducción al curso(05-03-2025)</h2>
       <p>
         Presentación del curso, del método de evaluación y de los proyectos grupales. Breve repaso de los conceptos
         centrales de Machine Learning I: datos tabulares, división train/test, modelos lineales básicos y pipelines
@@ -101,12 +101,34 @@
 
   <li>
     <div class="class-block">
-      <h2>Modelos supervisados I: regresión, regularización y evaluación (12-03-2025)</h2>
+      <h2>Word Embeddings (09-04-2025)</h2>
       <p>
-        Profundizamos en modelos supervisados de regresión (ridge, lasso, elastic net), revisando cómo la
-        regularización controla el sobreajuste. Introducimos validación cruzada, curvas de aprendizaje y el uso
-        sistemático de métricas (RMSE, MAE, R²). Trabajamos con un caso aplicado de predicción de resultados
-        socioeconómicos a partir de encuestas y datos administrativos.
+        Introducimos el trabajo con texto en Machine Learning: limpieza básica, bolsas de palabras (bag-of-words),
+        TF-IDF y embeddings de palabras (word2vec, GloVe) y de documentos. Vemos cómo usar estas representaciones
+        como input para modelos supervisados y no supervisados, y discutimos buenas prácticas para combinar texto
+        con variables tabulares.
+      </p>
+      <ul>
+        <li><a href="#" target="_blank">Slides: texto, TF-IDF y embeddings</a></li>
+        <li><a href="#" target="_blank">Notebook: preprocesamiento de texto y TF-IDF</a></li>
+        <li><a href="#" target="_blank">Notebook: clasificación de textos con regresión logística / SVM</a></li>
+        <li><a href="#" target="_blank">Notebook: introducción práctica a word2vec</a></li>
+        <li><strong>Lecturas sugeridas:</strong></li>
+        <ul>
+          <li><a href="https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/comment-page-1/#the-concept-of-embeddings" target="_blank">Intro a word embeddings (Stephen Wolfram)</a></li>
+          <li><a href="https://arxiv.org/abs/1301.3781" target="_blank">Efficient Estimation of Word Representations in Vector Space</a></li>
+          <li><a href="https://doi.org/10.1162/COLI_a_00225" target="_blank">A systematic comparison of bag-of-words and word embeddings</a></li>
+        </ul>
+        <li><strong>Ejercicio corto:</strong> construir un pequeño clasificador de textos (p. ej. noticias políticas vs. económicas) usando TF-IDF.</li>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Prompting con DSPy (12-03-2025)</h2>
+      <p>
+        DSPy
       </p>
       <ul>
         <li><a href="#" target="_blank">Slides: regularización y evaluación de modelos</a></li>
@@ -202,31 +224,6 @@
           <li>Aplicar un método de clustering y PCA a un dataset elegido por el equipo para explorar posibles
             segmentos o “tipos” de unidades (personas, comunas, organizaciones, etc.).</li>
         </ul>
-      </ul>
-    </div>
-  </li>
-
-  <li>
-    <div class="class-block">
-      <h2>Word Embeddings (09-04-2025)</h2>
-      <p>
-        Introducimos el trabajo con texto en Machine Learning: limpieza básica, bolsas de palabras (bag-of-words),
-        TF-IDF y embeddings de palabras (word2vec, GloVe) y de documentos. Vemos cómo usar estas representaciones
-        como input para modelos supervisados y no supervisados, y discutimos buenas prácticas para combinar texto
-        con variables tabulares.
-      </p>
-      <ul>
-        <li><a href="#" target="_blank">Slides: texto, TF-IDF y embeddings</a></li>
-        <li><a href="#" target="_blank">Notebook: preprocesamiento de texto y TF-IDF</a></li>
-        <li><a href="#" target="_blank">Notebook: clasificación de textos con regresión logística / SVM</a></li>
-        <li><a href="#" target="_blank">Notebook: introducción práctica a word2vec</a></li>
-        <li><strong>Lecturas sugeridas:</strong></li>
-        <ul>
-          <li><a href="https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/comment-page-1/#the-concept-of-embeddings" target="_blank">Intro a word embeddings (Stephen Wolfram)</a></li>
-          <li><a href="https://arxiv.org/abs/1301.3781" target="_blank">Efficient Estimation of Word Representations in Vector Space</a></li>
-          <li><a href="https://doi.org/10.1162/COLI_a_00225" target="_blank">A systematic comparison of bag-of-words and word embeddings</a></li>
-        </ul>
-        <li><strong>Ejercicio corto:</strong> construir un pequeño clasificador de textos (p. ej. noticias políticas vs. económicas) usando TF-IDF.</li>
       </ul>
     </div>
   </li>
