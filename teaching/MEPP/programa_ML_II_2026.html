@@ -66,7 +66,7 @@
 <div class="info">
   <p><strong>Descripción general del curso:</strong> Machine Learning II es un curso aplicado cuyo objetivo central es
   <strong>integrar inteligencia artificial —en particular IA generativa— en procesos reales del sector público</strong>.
-  El foco no está en entrenar modelos por entrenarlos, sino en aprender a:</p>
+  El foco está en aprender a:</p>
 
   <ul>
     <li>Identificar cuellos de botella, ineficiencias o decisiones repetitivas en procesos públicos.</li>
@@ -121,13 +121,11 @@
       <h2>Breve historia y fundamentos de la IA generativa (13-03-2026)</h2>
       <p>
         De sistemas expertos a modelos fundacionales. Qué problemas resuelven los LLMs, qué no,
-        y por qué funcionan razonablemente bien a pesar de no “entender” nada (spoiler: estadística + escala).
+        y por qué funcionan bien.
       </p>
       <ul>
-        <li>Paradigmas históricos de la IA</li>
         <li>Qué son embeddings, transformers y modelos fundacionales</li>
         <li>Riesgos: alucinaciones, dependencia cognitiva, automatización acrítica</li>
-        <li><strong>Discusión guiada:</strong> IA como infraestructura, no como oráculo</li>
       </ul>
     </div>
   </li>
@@ -150,7 +148,7 @@
 
   <li>
     <div class="class-block">
-      <h2>Prompting estructurado y DSPy (27-03-2026)</h2>
+      <h2>Técnicas de prompting y DSPy (27-03-2026)</h2>
       <p>
         Pasamos del “prompt artesanal” a prompting evaluable y reproducible.
         Introducción a DSPy como framework para diseñar, optimizar y testear prompts.
@@ -186,54 +184,6 @@
         <strong>arquitectura de búsqueda → reducción → síntesis</strong> que sea trazable y escale.
       </p>
 
-      <h3>Objetivos de aprendizaje</h3>
-      <ul>
-        <li>Entender por qué el cuello de botella suele ser <strong>datos + estructura</strong>, no el modelo.</li>
-        <li>Diseñar una <strong>estrategia progresiva</strong> que escale: keywords → tags/jerarquías → embeddings → agentes.</li>
-        <li>Distinguir cuándo <strong>NO</strong> conviene usar embeddings (spoiler: cuando una buena taxonomía ya resuelve).</li>
-        <li>Producir un pipeline de reportes <strong>auditable</strong>: qué evidencia respalda cada afirmación.</li>
-      </ul>
-
-      <h3>Idea-fuerza (la escalera de búsqueda)</h3>
-      <ul>
-        <li><strong>Nivel 0 — Orden y metadatos:</strong> qué extraer, cómo almacenar, naming, fechas, tipos de documento.</li>
-        <li><strong>Nivel 1 — Búsqueda clásica:</strong> keywords, filtros, tags; sorprendentemente efectiva.</li>
-        <li><strong>Nivel 2 — Jerarquías:</strong> navegación top-down (tema → subtema → institución → período).</li>
-        <li><strong>Nivel 3 — Embeddings:</strong> similaridad semántica cuando lo anterior no basta (con cautela).</li>
-        <li><strong>Nivel 4 — Contextual retrieval:</strong> recuperar pasajes con su contexto (evitar “chunks huérfanos”).</li>
-        <li><strong>Nivel 5 — Agentes:</strong> sub-agentes exploran segmentos del corpus y un “editor” arma el reporte final.</li>
-      </ul>
-
-      <h3>Bloques de la clase</h3>
-      <ul>
-        <li>
-          <strong>Bloque 1 (30 min):</strong> ¿qué es un “reporte” en el sector público?
-          Estructura, trazabilidad, riesgos (alucinaciones, afirmaciones sin evidencia, sesgos).
-        </li>
-        <li>
-          <strong>Bloque 2 (45 min):</strong> arquitectura para escalar: de búsqueda simple a retrieval semántico
-          y luego a agentic search. Discusión guiada: “¿qué harías antes de embeddings?”
-        </li>
-        <li>
-          <strong>Bloque 3 (45 min):</strong> taller en grupos: diseñar un pipeline de reportes para un corpus que crece
-          de 50 a 5.000 documentos en 12 meses.
-        </li>
-      </ul>
-
-      <h3>Actividad aplicada (taller)</h3>
-      <p>
-        En grupos, diseñen un sistema de reportes mensuales para una institución pública.
-        Deben entregar un esquema breve (máx. 1 página) con:
-      </p>
-      <ul>
-        <li><strong>Qué extraen</strong> de cada documento (metadatos + campos clave).</li>
-        <li><strong>Cómo almacenan</strong> (estructura, jerarquía de carpetas / base / índice).</li>
-        <li><strong>Estrategia de búsqueda</strong> por niveles (qué se hace primero, y cuándo se “sube” de nivel).</li>
-        <li><strong>Dónde entra el LLM</strong> (resumen, extracción estructurada, redacción del reporte).</li>
-        <li><strong>Cómo garantizan trazabilidad</strong> (citas, links, evidencias, “claims ↔ sources”).</li>
-        <li><strong>Plan mínimo de evaluación</strong> (métricas simples + chequeos humanos).</li>
-      </ul>
-
       <h3>Recursos para preparar y trabajar en clase</h3>
       <ul>
         <li>
@@ -263,13 +213,6 @@
             Antídoto contra el impulso de “meter embeddings a todo”.
           </span>
         </li>
-      </ul>
-
-      <h3>Salida de la clase</h3>
-      <ul>
-        <li><strong>Entregable:</strong> diagrama + checklist del pipeline de reportes del grupo (subido al repo).</li>
-        <li><strong>Mini-evaluación:</strong> cada grupo explica (en 2 min) qué haría primero y por qué.</li>
-        <li><strong>Pregunta final (incómoda pero útil):</strong> ¿qué parte del pipeline confiarías menos… y cómo lo mitigas?</li>
       </ul>
     </div>
   </li>
