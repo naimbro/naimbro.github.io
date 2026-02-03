@@ -22,16 +22,20 @@
       margin-bottom: 0.3em;
     }
     ol {
-      padding-left: 1.2em;
-      list-style-position: outside;
+    counter-reset: unidades;
+    list-style: none;
+    padding-left: 0;
     }
 
-    ol li::marker {
-    color: #0a3d62;
-    font-size: 1.2em;
-    font-weight: 600;
+    ol > li {
+    counter-increment: unidades;
     }
-    
+
+    ol > li h2::before {
+    content: counter(unidades) ". ";
+    color: #0a3d62;
+    }
+
     li {
       margin-bottom: 0.4em;
     }
