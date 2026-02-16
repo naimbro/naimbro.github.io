@@ -21,9 +21,23 @@
     h1 {
       margin-bottom: 0.3em;
     }
+
+    /* ✅ Fix: make the lesson number match the h2 style */
     ol {
-      padding-left: 1.2em;
+      counter-reset: lessons;
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
     }
+    ol > li {
+      counter-increment: lessons;
+    }
+    ol > li h2::before {
+      content: counter(lessons) ". ";
+      color: inherit;
+      font-weight: inherit;
+    }
+
     li {
       margin-bottom: 0.4em;
     }
@@ -38,10 +52,10 @@
       text-decoration: underline;
     }
     .description {
-    margin-bottom: 2em;
-    font-size: 1em;
-    line-height: 1.6;
-    color: #333;
+      margin-bottom: 2em;
+      font-size: 1em;
+      line-height: 1.6;
+      color: #333;
     }
 
     .description strong {
