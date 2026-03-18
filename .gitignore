@@ -3,3 +3,6 @@ drive_credentials.json
 create_slides*.py
 slide_template.py
 logo-escuela-gobierno.png
+teaching/MEPP/*.ipynb
+teaching/MEPP/config_gemini.json
+teaching/MEPP/rag_txt_corpus_semana3.zip
