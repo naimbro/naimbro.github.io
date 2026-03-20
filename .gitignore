@@ -6,3 +6,7 @@ logo-escuela-gobierno.png
 teaching/MEPP/*.ipynb
 teaching/MEPP/config_gemini.json
 teaching/MEPP/rag_txt_corpus_semana3.zip
+teaching/MEPP/rag_txt_corpus_semana3/
+teaching/MEPP/generate_rag_notebooks.py
+teaching/MEPP/word2vec.pdf
+teaching/MEPP/notas_modularizacion_presentaciones.md
