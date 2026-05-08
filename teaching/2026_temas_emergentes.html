@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Temas Emergentes: IA y Democracia (versión intensiva)</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a3d62;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.2em;
+    }
+    h1 {
+      margin-bottom: 0.2em;
+    }
+    h3 {
+      color: #0a3d62;
+      margin-top: 1.4em;
+      margin-bottom: 0.4em;
+    }
+    h4 {
+      color: #1e3799;
+      margin-top: 1em;
+      margin-bottom: 0.3em;
+    }
+    .subtitle {
+      color: #555;
+      font-style: italic;
+      margin-top: 0;
+      margin-bottom: 1.2em;
+    }
+    ol {
+      counter-reset: unidades;
+      list-style: none;
+      padding-left: 0;
+    }
+    ol > li {
+      counter-increment: unidades;
+    }
+    ol.numbered, ol.numbered > li {
+      list-style: decimal;
+      padding-left: 0;
+      counter-reset: none;
+      counter-increment: list-item;
+    }
+    ol.numbered {
+      padding-left: 1.5em;
+    }
+    li {
+      margin-bottom: 0.4em;
+    }
+    ul {
+      margin-top: 0.5em;
+      margin-bottom: 1.2em;
+    }
+    a {
+      color: #1e3799;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .info {
+      background-color: #eaf2f8;
+      padding: 1em;
+      border-left: 5px solid #0a3d62;
+      margin-bottom: 2em;
+    }
+    .note {
+      background-color: #fdf5e6;
+      padding: 0.8em 1em;
+      border-left: 4px solid #d4a017;
+      margin: 1em 0;
+      font-size: 0.95em;
+    }
+    .syllabus-warning {
+      display: inline-block;
+      background-color: #fff3b0;
+      color: #5c4a00;
+      font-size: 0.85em;
+      font-weight: 600;
+      padding: 0.25em 0.6em;
+      margin-bottom: 0.4em;
+      border-radius: 4px;
+    }
+    .meta {
+      margin-bottom: 1.5em;
+      font-size: 0.95em;
+    }
+    .description {
+      margin-bottom: 2em;
+      font-size: 1em;
+      line-height: 1.6;
+      color: #333;
+    }
+    .description strong {
+      color: #0a3d62;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0 2em 0;
+      font-size: 0.92em;
+    }
+    th, td {
+      border: 1px solid #d0d7de;
+      padding: 0.55em 0.7em;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background-color: #eaf2f8;
+      color: #0a3d62;
+      font-weight: 600;
+    }
+    td.time {
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      color: #555;
+    }
+    code {
+      background-color: #f1f3f5;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+      font-size: 0.92em;
+    }
+    pre {
+      background-color: #f1f3f5;
+      padding: 0.8em 1em;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 0.9em;
+    }
+    .class-block {
+      margin-bottom: 2em;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="syllabus-warning">Syllabus en construcción</div>
+<h1>Temas Emergentes: IA y Democracia</h1>
+<p class="subtitle">Versión intensiva de tres clases largas</p>
+
+<div class="meta">
+  Profesor: Naim Bro (naim.bro.k [at] uai.cl)<br>
+  Minor en Inteligencia Artificial<br>
+  Escuela de Gobierno, Universidad Adolfo Ibáñez, 2026
+</div>
+
+<div class="description">
+  <p><strong>Descripción:</strong> Este curso ofrece una versión intensiva del curso largo <a href="2026_AI_democracy.html" target="_blank">"IA y Democracia"</a>, condensada en tres clases largas (≈3 horas cada una). El foco está en entender el impacto de la IA sobre los procesos democráticos a través de un arco de tres movimientos: <strong>diagnóstico de poder</strong>, <strong>amenazas democráticas</strong> y <strong>respuestas institucionales</strong>. La experiencia pedagógica se organiza en torno a un juego con juez IA que sirve como diagnóstico, entrenamiento y diseño institucional.</p>
+</div>
+
+<div class="info">
+  <p><strong>Propósito de la versión comprimida:</strong></p>
+  <ul>
+    <li>Cubrir el arco completo del curso largo (siete unidades) en tres clases sin reducirlo a una lista de "riesgos de la IA".</li>
+    <li>Privilegiar metodologías activas: discusión estructurada, dilemas, role-play, simulaciones, trabajo en grupos y dinámicas post-juego.</li>
+    <li>Enseñar a pensar trade-offs democráticos: eficiencia vs. legitimidad, innovación vs. derechos, seguridad vs. libertad, automatización vs. accountability, legalidad vs. legitimidad.</li>
+    <li>Producir, en cada clase, un artefacto colectivo concreto que permita evaluar el aprendizaje y volver sobre él.</li>
+  </ul>
+</div>
+
+<h2>Resultados de aprendizaje</h2>
+<p>Al finalizar el curso, los estudiantes serán capaces de:</p>
+<ol class="numbered">
+  <li>Identificar dilemas democráticos en sistemas de IA, distinguiendo problemas técnicos de problemas de poder.</li>
+  <li>Mapear actores afectados, asimetrías de poder y derechos en tensión en casos concretos.</li>
+  <li>Distinguir entre legalidad y legitimidad democrática.</li>
+  <li>Evaluar críticamente propuestas de "transparencia", "auditoría" o "regulación" según si especifican mecanismos concretos de rendición de cuentas.</li>
+  <li>Diseñar protocolos democráticos mínimos para sistemas de IA pública o política.</li>
+  <li>Desarrollar una postura crítica frente a evaluaciones automatizadas (incluido el juez IA del propio curso).</li>
+</ol>
+
+<h2>Metodología</h2>
+<p>El curso se basa en tres principios pedagógicos:</p>
+<ul>
+  <li><strong>Bloques de máximo 25 minutos de exposición del profesor.</strong> Todo lo demás es discusión, juego, role-play o trabajo en grupos.</li>
+  <li><strong>Estructura de 3 bloques por clase.</strong> Cada clase de ≈3 horas se divide en bloque de apertura/juego, bloque conceptual + actividad, y bloque post-juego + producto colectivo.</li>
+  <li><strong>El juego como espina dorsal.</strong> El juego no es Kahoot ni evaluación: es diagnóstico (clase 1), entrenamiento bajo presión (clase 2) y diseño institucional (clase 3).</li>
+</ul>
+
+<h2>Rol del juego con juez IA</h2>
+<p>El juego cumple <strong>tres funciones distintas</strong> a lo largo del curso:</p>
+<ul>
+  <li><strong>Clase 1 — Diagnóstico de la cohorte:</strong> rondas no rankeadas. Objetivo: mapear intuiciones normativas iniciales (eficiencia, derechos, innovación, regulación, poder corporativo, libertad individual). Generar insumos para discusión posterior.</li>
+  <li><strong>Clase 2 — Entrenamiento bajo presión:</strong> rondas rankeadas individuales. Objetivo: entrenar claridad conceptual y detección de dilemas. El leaderboard se usa para abrir discusión, no para cerrarla. Se incorpora autopsia de respuestas anonimizadas.</li>
+  <li><strong>Clase 3 — Diseño institucional:</strong> rondas grupales. Mezcla de no-rankeado deliberativo y rankeado final por equipos. Objetivo: diseñar mecanismos democráticos concretos. Producto: protocolo democrático mínimo para un sistema IA público o político.</li>
+</ul>
+
+<h2>Reglas pedagógicas del juego</h2>
+<ul>
+  <li>El juez IA <strong>no es oráculo</strong>. Sus rankings son insumos para discusión.</li>
+  <li>Toda ronda rankeada incluye una fase de <strong>apelación</strong>: estudiantes o equipos pueden impugnar el puntaje (formato en Apéndice 4).</li>
+  <li>Las respuestas se discuten <strong>anonimizadas</strong> en plenario para evitar exponer a los estudiantes peor evaluados.</li>
+  <li>Toda ronda termina con al menos <strong>una dinámica post-juego</strong> obligatoria (Apéndice 4).</li>
+  <li>Las penalizaciones globales del juez IA (Apéndice 3) se explican explícitamente al inicio de la clase 1.</li>
+</ul>
+
+<h2>Estructura general de las tres clases</h2>
+<ol class="numbered">
+  <li><strong>Clase 1 — Diagnóstico y poder.</strong> Backlash contra la IA, concentración de poder tecnológico, populismo de IA. Primera introducción al juego como diagnóstico de posiciones normativas.</li>
+  <li><strong>Clase 2 — Amenazas democráticas.</strong> Sociedad de bots IA, deepfakes y esfera pública sintética, IA orwelliana (vigilancia, seguridad, accountability) y geopolítica de la IA como concentración de poder entre Estados y plataformas. Juego rankeado individual + dinámicas post-juego.</li>
+  <li><strong>Clase 3 — Respuestas democráticas.</strong> Democracia deliberativa aumentada por IA, avatares/agentes ciudadanos, regulación, diseño institucional, mecanismos de rendición de cuentas y condiciones de legitimidad. Juego final por equipos.</li>
+</ol>
+
+<h2>Plan detallado por clase</h2>
+
+<div class="class-block">
+  <h3>Clase 1 — Diagnóstico y poder</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Tiempo</th>
+        <th>Bloque</th>
+        <th>Objetivo</th>
+        <th>Actividad</th>
+        <th>Materiales</th>
+        <th>Rol del juego</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">0–15 min</td>
+        <td>Apertura</td>
+        <td>Encuadre del curso y de las reglas pedagógicas del juego.</td>
+        <td>Presentación profesor + estudiantes. Pregunta detonante: <em>"¿Hay algo que te dé miedo de la IA? ¿Y algo que te dé esperanza?"</em>. Explicación de penalizaciones globales del juez (Apéndice 3).</td>
+        <td>Pizarra/pantalla.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">15–60 min</td>
+        <td>Bloque 1 — Juego diagnóstico</td>
+        <td>Mapear intuiciones iniciales de la cohorte.</td>
+        <td>Ronda <strong>no rankeada</strong>: 3 escenarios cortos (backlash laboral, "los 5 hombres", populismo IA). Tags obligatorios: <code>[ACTOR_AFECTADO]</code>, <code>[DERECHO_EN_TENSIÓN]</code>, <code>[ASIMETRÍA_DE_PODER]</code>.</td>
+        <td>Plataforma del juego, escenarios precargados.</td>
+        <td>Diagnóstico — sin ranking.</td>
+      </tr>
+      <tr>
+        <td class="time">60–75 min</td>
+        <td>Recreo</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">75–95 min</td>
+        <td>Bloque 2 — Concentración de poder (input)</td>
+        <td>Entregar marco conceptual sobre poder tecnológico y populismo IA.</td>
+        <td>Exposición breve (máx. 20 min): "los 5 hombres", populismo IA, asimetrías estructurales.</td>
+        <td>Slides.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">95–125 min</td>
+        <td>Bloque 2 — Trabajo en grupos</td>
+        <td>Aplicar el marco a casos.</td>
+        <td>Grupos de 4. Cada grupo trabaja sobre un fragmento de "Five men control AI" o "Warning Shots". Pregunta guía: <em>¿qué actor está ausente del marco propuesto por el texto?</em></td>
+        <td>Lecturas impresas o link.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">125–150 min</td>
+        <td>Bloque 3 — Dinámica post-juego</td>
+        <td>Procesar el diagnóstico de la cohorte.</td>
+        <td>Dinámica <strong>"El actor fantasma"</strong> sobre las respuestas de la ronda 1: ¿qué actor afectado casi nadie mencionó? Patrones detectados por el juez (anonimizados).</td>
+        <td>Respuestas anonimizadas.</td>
+        <td>Reapertura del juego.</td>
+      </tr>
+      <tr>
+        <td class="time">150–175 min</td>
+        <td>Bloque 3 — Producto</td>
+        <td>Construir el mapa normativo de la cohorte.</td>
+        <td>Producto colectivo: <strong>matriz 2×2</strong> (optimista/precautorio × libertario/regulatorio) + lista de ansiedades democráticas + supuestos iniciales.</td>
+        <td>Pizarra grande / Miro / papel kraft.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">175–180 min</td>
+        <td>Cierre</td>
+        <td>Síntesis y preparación para clase 2.</td>
+        <td>Profesor entrega lectura corta para clase 2 (≤ 15 páginas).</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="class-block">
+  <h3>Clase 2 — Amenazas democráticas</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Tiempo</th>
+        <th>Bloque</th>
+        <th>Objetivo</th>
+        <th>Actividad</th>
+        <th>Materiales</th>
+        <th>Rol del juego</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">0–15 min</td>
+        <td>Apertura</td>
+        <td>Recuperar el mapa normativo de la cohorte.</td>
+        <td>Profesor entrega versión limpia del mapa de clase 1. Estudiantes identifican dónde se ubican y qué les sorprende.</td>
+        <td>Mapa impreso o proyectado.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">15–35 min</td>
+        <td>Bloque 1 — Esfera pública sintética</td>
+        <td>Comprender bots IA, deepfakes y manipulación.</td>
+        <td>Microcaso Moltbook (5 min). Discusión guiada: <em>¿qué cambia cuando los bots dejan de imitar humanos y empiezan a hablar entre sí?</em></td>
+        <td>Capturas Moltbook, video corto.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">35–70 min</td>
+        <td>Bloque 1 — Juego rankeado individual</td>
+        <td>Entrenar claridad conceptual bajo presión.</td>
+        <td>Ronda <strong>rankeada individual</strong>. 3 escenarios: deepfake en campaña, bot ejército en plataforma, vigilancia automatizada. Tags obligatorios: <code>[ASIMETRÍA_DE_PODER]</code>, <code>[DAÑO_DEMOCRÁTICO]</code>, <code>[REVERSIBILIDAD]</code>.</td>
+        <td>Plataforma del juego.</td>
+        <td>Entrenamiento + leaderboard.</td>
+      </tr>
+      <tr>
+        <td class="time">70–85 min</td>
+        <td>Recreo</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">85–115 min</td>
+        <td>Bloque 2 — IA orwelliana + geopolítica</td>
+        <td>Conectar vigilancia interna con concentración de poder global.</td>
+        <td>Role-play breve (20 min): <em>"Consejo de Seguridad evalúa adoptar un sistema IA de vigilancia urbana"</em>. Roles: gobierno, proveedor IA, ONG de DDHH, oposición política. Cierre con input de 10 min sobre el dilema Cold War-style entre EE.UU. y China.</td>
+        <td>Tarjetas de rol.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">115–135 min</td>
+        <td>Bloque 3 — Autopsia + "Legal pero ilegítimo"</td>
+        <td>Cuestionar respuestas que confunden legalidad con legitimidad.</td>
+        <td>Profesor proyecta 4–5 respuestas anonimizadas de la ronda rankeada. Dinámicas <strong>"Legal pero ilegítimo"</strong> y <strong>"La solución demasiado limpia"</strong>. Espacio formal de <strong>apelación</strong> al juez IA.</td>
+        <td>Respuestas anonimizadas.</td>
+        <td>Crítica al juez.</td>
+      </tr>
+      <tr>
+        <td class="time">135–175 min</td>
+        <td>Bloque 3 — Producto</td>
+        <td>Sistematizar amenazas democráticas detectadas.</td>
+        <td>Trabajo en grupos: completar la <strong>Matriz de amenazas democráticas</strong> (formato en sección "Productos").</td>
+        <td>Plantilla impresa.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">175–180 min</td>
+        <td>Cierre</td>
+        <td>Preparar clase 3.</td>
+        <td>Lectura para clase 3: paper de Hidalgo et al. (2024) o Ezra Klein Show (audio).</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="class-block">
+  <h3>Clase 3 — Respuestas democráticas</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Tiempo</th>
+        <th>Bloque</th>
+        <th>Objetivo</th>
+        <th>Actividad</th>
+        <th>Materiales</th>
+        <th>Rol del juego</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time">0–15 min</td>
+        <td>Apertura</td>
+        <td>Recuperar matriz de amenazas.</td>
+        <td>Cada grupo presenta una amenaza en 90 segundos.</td>
+        <td>Matrices de clase 2.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">15–35 min</td>
+        <td>Bloque 1 — Democracia deliberativa con IA</td>
+        <td>Introducir avatares/agentes ciudadanos.</td>
+        <td>Input breve (15 min): propuesta de Hidalgo + caso Diella (Albania). Pregunta detonante: <em>¿qué se gana y qué se pierde si tu avatar IA vota por ti?</em></td>
+        <td>TED Talk fragmento, slide Diella.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">35–65 min</td>
+        <td>Bloque 1 — Juego deliberativo</td>
+        <td>Diseñar un agente ciudadano.</td>
+        <td>Ronda <strong>no rankeada deliberativa</strong> en parejas: <em>"Diseña tu agente ciudadano: ¿qué decisiones puede tomar por ti, cuáles no, y bajo qué condiciones lo desactivas?"</em></td>
+        <td>Plataforma del juego.</td>
+        <td>Deliberación.</td>
+      </tr>
+      <tr>
+        <td class="time">65–80 min</td>
+        <td>Recreo</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">80–110 min</td>
+        <td>Bloque 2 — Comisión Reguladora</td>
+        <td>Diseñar instrumentos regulatorios concretos.</td>
+        <td>Simulación: la cohorte se divide en 4 "comisiones reguladoras" con casos asignados (sistema IA escolar, sistema IA judicial, sistema IA de bienestar social, sistema IA electoral). Cada comisión propone 3 reglas y 1 mecanismo de apelación.</td>
+        <td>Casos impresos.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">110–125 min</td>
+        <td>Bloque 2 — Dinámica</td>
+        <td>Cuestionar accountability decorativa.</td>
+        <td>Dinámica <strong>"La solución demasiado limpia"</strong> aplicada a las propuestas regulatorias: <em>¿quién audita? ¿con qué poder? ¿qué pasa si encuentra daño? ¿quién responde políticamente?</em></td>
+        <td>Propuestas de las comisiones.</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td class="time">125–160 min</td>
+        <td>Bloque 3 — Juego final por equipos</td>
+        <td>Producir el protocolo democrático mínimo.</td>
+        <td>Ronda final <strong>rankeada por equipos</strong>. Cada equipo recibe un sistema IA público (mismo de la simulación) y debe entregar el protocolo democrático mínimo (formato en sección "Productos"). Tags obligatorios: <code>[CONDICIÓN_DE_LEGITIMIDAD]</code>, <code>[MECANISMO_RENDICIÓN_DE_CUENTAS]</code>, <code>[DECISIÓN_PÚBLICA]</code>.</td>
+        <td>Plataforma del juego, plantilla.</td>
+        <td>Diseño institucional rankeado.</td>
+      </tr>
+      <tr>
+        <td class="time">160–175 min</td>
+        <td>Bloque 3 — Presentación + apelación</td>
+        <td>Confrontar protocolos y juez IA.</td>
+        <td>Ranking publicado. Cada equipo tiene derecho a <strong>apelar</strong> al juez con la estructura del Apéndice 4D. Profesor cierra con síntesis.</td>
+        <td>Leaderboard.</td>
+        <td>Cierre del juego + crítica al juez.</td>
+      </tr>
+      <tr>
+        <td class="time">175–180 min</td>
+        <td>Cierre del curso</td>
+        <td>—</td>
+        <td>Vuelta sobre el mapa normativo de la clase 1: <em>¿qué cambió en tu posición?</em></td>
+        <td>Mapa de clase 1.</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Productos esperados por clase</h2>
+
+<h3>Clase 1 — Mapa normativo de la cohorte</h3>
+<ul>
+  <li>Matriz 2×2: <em>optimista / precautorio</em> × <em>libertario / regulatorio</em>.</li>
+  <li>Lista de ansiedades democráticas detectadas.</li>
+  <li>Lista de supuestos iniciales de los estudiantes (qué dan por sentado).</li>
+</ul>
+
+<h3>Clase 2 — Matriz de amenazas democráticas</h3>
+<pre>Amenaza:
+Sistema o práctica IA:
+Actor afectado:
+Derecho en tensión:
+Asimetría de poder:
+Daño democrático:
+Mecanismo defensivo posible:</pre>
+
+<h3>Clase 3 — Protocolo democrático mínimo</h3>
+<pre>1. Sistema IA propuesto:
+2. Decisión que afecta:
+3. Actores afectados:
+4. Derechos en tensión:
+5. Condiciones mínimas de legitimidad:
+6. Mecanismo de apelación:
+7. Mecanismo de auditoría:
+8. Qué datos NO deberían usarse:
+9. Cuándo debe suspenderse el sistema:
+10. Qué actor responde políticamente si falla:</pre>
+
+<h2>Lecturas y recursos por clase</h2>
+
+<h3>Clase 1</h3>
+<ul>
+  <li><strong>Obligatoria:</strong> The National (2025). <a href="https://www.thenationalnews.com/opinion/2025/11/19/why-is-no-one-talking-of-the-backlash-that-ai-could-unleash/" target="_blank">Why is no one talking of the backlash that AI could unleash?</a></li>
+  <li><strong>Complementaria:</strong> The Economist (2026). <a href="https://www.economist.com/insider/the-insider/five-men-control-ai-who-should-control-them" target="_blank">Five men control AI. Who should control them?</a> <em>(paywall — alternativa abierta: Jasmi (2026), <a href="https://jasmi.news/p/warning-shots" target="_blank">Warning Shots</a>)</em></li>
+  <li><strong>Audiovisual:</strong> New York Times (2026). <a href="https://www.nytimes.com/2026/03/05/opinion/ai-jobs-white-collar-apocalpyse.html" target="_blank">Mass Hysteria. Thousands of Jobs Lost. Just How Bad Is It Going to Get?</a> <em>(paywall — leer fragmento en clase si es necesario)</em></li>
+</ul>
+
+<h3>Clase 2</h3>
+<ul>
+  <li><strong>Obligatoria:</strong> The Economist (2026). <a href="https://www.economist.com/business/2026/02/02/a-social-network-for-ai-agents-is-full-of-introspection-and-threats?giftId=M2EwMTQyNzctYTIyNS00NmMxLTgyYWQtNDRkNThlZWM3MGM2&utm_campaign=gifted_article" target="_blank">A social network for AI agents is full of introspection—and threats</a> <em>(gift link disponible)</em></li>
+  <li><strong>Complementaria:</strong> The Economist (2026). <a href="https://www.economist.com/china/2026/05/07/artificial-intelligence-revives-a-cold-war-style-dilemma" target="_blank">Artificial intelligence revives a Cold War-style dilemma</a></li>
+  <li><strong>Audiovisual:</strong> Al Jazeera (2025). <a href="https://www.youtube.com/watch?v=ZFBFlVxtyjQ" target="_blank">The End of Accountability? Matt Mahmoudi on AI and War</a> (video, abierto)</li>
+</ul>
+
+<h3>Clase 3</h3>
+<ul>
+  <li><strong>Obligatoria:</strong> Gudiño et al. (2024). <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsta.2024.0100" target="_blank">Large language models (LLMs) as agents for augmented democracy</a> <em>(open access)</em></li>
+  <li><strong>Complementaria:</strong> Wikipedia. <a href="https://en.wikipedia.org/wiki/Diella_(AI_system)" target="_blank">Diella (AI system)</a> — primera "ministra" IA en Albania.</li>
+  <li><strong>Audiovisual:</strong> TED Talk (15 min), César Hidalgo. <a href="https://www.youtube.com/watch?v=UUp39T3fPAo" target="_blank">¿IA para reemplazar a políticos?</a></li>
+</ul>
+
+<div class="note"><strong>Política de paywall:</strong> cuando una lectura está detrás de paywall, el profesor proyecta el fragmento clave en clase o entrega un alternativo abierto. Ningún producto evaluado depende de acceder a contenido cerrado.</div>
+
+<h2>Evaluación y productos de aprendizaje</h2>
+<ul>
+  <li><strong>Participación en el juego (30%):</strong> participación efectiva en las tres clases (no es ranking; es haber jugado y haber apelado al menos una vez en el curso).</li>
+  <li><strong>Productos colectivos (30%):</strong> calidad del mapa normativo (clase 1), matriz de amenazas (clase 2) y protocolo democrático mínimo (clase 3).</li>
+  <li><strong>Bitácora individual (40%):</strong> 2–3 páginas al cierre del curso. Pregunta guía: <em>¿qué supuesto inicial tuyo se rompió, y qué evidencia lo rompió?</em></li>
+</ul>
+<p class="note"><strong>Nota:</strong> el ranking del juego no entra en la nota. La rúbrica del juez sirve para discusión, no para evaluación final.</p>
+
+<h2>Política de uso de IA por estudiantes</h2>
+<ul>
+  <li><strong>Permitido y fomentado</strong> en preparación de clase, lecturas y borradores de la bitácora.</li>
+  <li><strong>Obligatorio declararlo</strong> en la bitácora final: qué herramientas se usaron, para qué, y qué edición humana se hizo después.</li>
+  <li><strong>No permitido</strong> usar IA para responder dentro del juego: el juego es justamente el espacio donde el pensamiento del estudiante debe expresarse sin mediación. El juez IA detecta patrones de respuesta puramente generativa y los penaliza.</li>
+</ul>
+
+<h2>Apéndice 1 — Tags del juego</h2>
+<p>Los tags son herramientas de pensamiento, no burocracia. Cada clase o escenario define cuáles son obligatorios; no todos se usan en todas las rondas.</p>
+<pre>[ACTOR_AFECTADO]
+[DERECHO_EN_TENSIÓN]
+[ASIMETRÍA_DE_PODER]
+[DAÑO_DEMOCRÁTICO]
+[MECANISMO_RENDICIÓN_DE_CUENTAS]
+[REVERSIBILIDAD]
+[LEGITIMIDAD_vs_LEGALIDAD]
+[RIESGO_DE_CAPTURA]
+[SUPUESTO_CRÍTICO]
+[CONDICIÓN_DE_LEGITIMIDAD]
+[DECISIÓN_PÚBLICA]</pre>
+
+<h2>Apéndice 2 — Rúbrica base del juez IA</h2>
+<table>
+  <thead>
+    <tr><th>Criterio</th><th>Peso</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Identificación del dilema democrático</td><td>25%</td></tr>
+    <tr><td>Mapeo de actores y asimetrías de poder</td><td>20%</td></tr>
+    <tr><td>Calidad del trade-off institucional</td><td>20%</td></tr>
+    <tr><td>Mecanismo de rendición de cuentas (concreto, no decorativo)</td><td>20%</td></tr>
+    <tr><td>Claridad, estructura y uso correcto de tags</td><td>15%</td></tr>
+  </tbody>
+</table>
+<p class="note"><strong>Nota pedagógica:</strong> el juez LLM puede sesgarse hacia respuestas bien escritas, tecnocráticas o excesivamente ordenadas. Por eso los rankings se usan como insumos para discusión, no como verdad final. Los pesos pueden variar por clase, pero esta es la base.</p>
+
+<h2>Apéndice 3 — Penalizaciones globales del juez IA</h2>
+<ol class="numbered">
+  <li><strong>Solucionismo tecnológico:</strong> asumir que una herramienta IA resuelve por sí sola un problema político o institucional.</li>
+  <li><strong>Neutralidad técnica ingenua:</strong> tratar sistemas IA como si no incorporaran valores, datos sesgados o relaciones de poder.</li>
+  <li><strong>Legalidad = legitimidad:</strong> asumir que algo es democráticamente legítimo solo porque es legal.</li>
+  <li><strong>Ignorar afectados no presentes:</strong> no considerar grupos vulnerables, minorías, ciudadanía no organizada o actores sin voz.</li>
+  <li><strong>Falsa precisión:</strong> inventar datos, porcentajes, capacidades técnicas o efectos empíricos no entregados en el escenario.</li>
+  <li><strong>Autoritarismo eficiente:</strong> justificar vigilancia, censura o automatización coercitiva solo porque "funciona".</li>
+  <li><strong>Accountability decorativa:</strong> mencionar transparencia, auditoría o supervisión sin mecanismo concreto.</li>
+</ol>
+
+<h2>Apéndice 4 — Dinámicas post-juego</h2>
+
+<h4>A. El actor fantasma</h4>
+<p>Después de una ronda, el profesor pregunta: <em>¿qué actor afectado casi nadie mencionó?</em> Ejemplos típicos: minorías, personas pobres, funcionarios públicos, personas sin alfabetización digital, opositores políticos, niños/adolescentes, ciudadanía futura.</p>
+
+<h4>B. Legal pero ilegítimo</h4>
+<p>Tomar respuestas que asumen "si es legal, está bien" y discutir: <em>¿qué podría hacer que esta medida sea legal pero democráticamente inaceptable?</em></p>
+
+<h4>C. La solución demasiado limpia</h4>
+<p>Tomar respuestas que dicen "hacer auditoría", "ser transparente", "regular bien", pero sin mecanismo concreto. Preguntar:</p>
+<ul>
+  <li>¿Quién audita?</li>
+  <li>¿Con qué poder?</li>
+  <li>¿Qué pasa si encuentra daño?</li>
+  <li>¿Quién puede apelar?</li>
+  <li>¿Quién responde políticamente?</li>
+</ul>
+
+<h4>D. Apelar el puntaje</h4>
+<p>Estudiantes o equipos pueden impugnar el puntaje del juez IA usando esta estructura:</p>
+<pre>Creemos que el juez subvaloró nuestra respuesta porque...
+El criterio específico de la rúbrica es...
+La evidencia en nuestra respuesta está en...
+El riesgo de la evaluación del juez es...</pre>
+<p>Esto no es un trámite: es la forma en que el curso enseña que el juez IA también debe ser objeto de crítica.</p>
+
+</body>
+</html>
