@@ -78,6 +78,60 @@
     .class-block {
       margin-bottom: 1.5em;
     }
+    .class-subtitle {
+      font-style: italic;
+      color: #555;
+      margin-top: -0.2em;
+      margin-bottom: 1em;
+    }
+    .mod-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1em 0 1.6em;
+      font-size: 0.9em;
+    }
+    .mod-table th, .mod-table td {
+      border: 1px solid #d6dee6;
+      padding: 0.5em 0.7em;
+      text-align: left;
+      vertical-align: top;
+    }
+    .mod-table th {
+      background-color: #eaf2f8;
+      color: #0a3d62;
+    }
+    .modulo {
+      margin-top: 1.6em;
+    }
+    .modulo h3 {
+      color: #0a3d62;
+      margin-bottom: 0.3em;
+      font-size: 1.05em;
+    }
+    .activity {
+      background-color: #f7f7f2;
+      border-left: 3px solid #b3a37a;
+      padding: 0.6em 0.95em;
+      margin: 0.8em 0;
+    }
+    .activity strong {
+      color: #6b3a17;
+    }
+    .tags {
+      font-family: monospace;
+      font-size: 0.8em;
+      color: #555;
+      background: #f0f0f0;
+      padding: 0.45em 0.65em;
+      display: block;
+      margin-top: 0.6em;
+      border-radius: 4px;
+    }
+    .note {
+      font-size: 0.9em;
+      color: #777;
+      font-style: italic;
+    }
   </style>
 </head>
 
@@ -156,25 +210,82 @@
 
   <li>
     <div class="class-block">
-      <h2>Amenazas y respuestas democráticas (4 junio 2026)</h2>
-      <ul>
-        <li>Sociedad de bots IA, deepfakes y manipulación electoral en una esfera pública sintética.</li>
-        <li>IA orwelliana: vigilancia, seguridad y accountability.</li>
-        <li>Geopolítica de la IA: el dilema EE.UU.–China.</li>
-        <li>Democracia deliberativa aumentada por IA: propuesta de Hidalgo y caso Diella (Albania).</li>
-        <li>Regulación, auditoría y rendición de cuentas en sistemas IA públicos.</li>
-        <li>Juego final por equipos: cada equipo entrega un protocolo democrático mínimo para un sistema IA público.</li>
-      </ul>
-      <p><strong>Materiales:</strong></p>
-      <ul>
-        <li>The Economist (2026). <a href="https://www.economist.com/business/2026/02/02/a-social-network-for-ai-agents-is-full-of-introspection-and-threats?giftId=M2EwMTQyNzctYTIyNS00NmMxLTgyYWQtNDRkNThlZWM3MGM2&utm_campaign=gifted_article" target="_blank">A social network for AI agents is full of introspection—and threats</a> (gift link).</li>
-        <li>The Economist (2026). <a href="https://www.economist.com/china/2026/05/07/artificial-intelligence-revives-a-cold-war-style-dilemma" target="_blank">Artificial intelligence revives a Cold War-style dilemma</a>.</li>
-        <li>Al Jazeera (2025). <a href="https://www.youtube.com/watch?v=ZFBFlVxtyjQ" target="_blank">The End of Accountability? Matt Mahmoudi on AI and War</a>.</li>
-        <li>Gudiño et al. (2024). <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsta.2024.0100" target="_blank">Large language models (LLMs) as agents for augmented democracy</a> (open access).</li>
-        <li>Wikipedia. <a href="https://en.wikipedia.org/wiki/Diella_(AI_system)" target="_blank">Diella (AI system)</a> &mdash; primera "ministra" IA en Albania.</li>
-        <li>TED Talk, César Hidalgo (15 min). <a href="https://www.youtube.com/watch?v=UUp39T3fPAo" target="_blank">¿IA para reemplazar a políticos?</a></li>
-        <li>The New York Times (2026). <a href="https://www.nytimes.com/2026/06/02/technology/trump-executive-order-ai.html?smid=nytcore-android-share" target="_blank">Trump Signs Executive Order Seeking Oversight of A.I. Models</a> &mdash; Trump firma una orden ejecutiva que busca establecer supervisión federal sobre los modelos de IA: caso concreto y reciente para discutir quién regula la IA, con qué instrumentos (orden ejecutiva vs. ley) y el riesgo de que el control estatal sirva tanto para proteger como para capturar la tecnología.</li>
-      </ul>
+      <h2>Congreso de avatares y gobernanza de modelos de IA (4 junio 2026)</h2>
+      <p class="class-subtitle">¿Puede una IA representarnos políticamente? ¿Y quién supervisa los modelos que podrían hacerlo?</p>
+      <p>Clase de cierre. Conecta dos preguntas que el curso venía preparando: si los LLMs pueden representar nuestras preferencias como <strong>avatares políticos</strong> (democracia aumentada / democracia sintética), y quién <strong>supervisa, audita o controla</strong> esos modelos antes de que entren a la vida pública (gobernanza de modelos frontier). El arco de la clase va <em>de "mi avatar me representa" a "quién regula los modelos que podrían representarnos o gobernarnos"</em>.</p>
+
+      <table class="mod-table">
+        <thead>
+          <tr><th>Módulo</th><th>Tema</th><th>Dinámica</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Democracia aumentada</td>
+            <td>Presentación breve sobre avatares políticos, representación individual y democracia sintética.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Congreso de avatares</td>
+            <td>Experimento en aula: cada estudiante entrena un avatar anónimo, responde una encuesta y se compara con las respuestas de su avatar.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Gobernanza de modelos de IA</td>
+            <td>Juego/quiz "Regulador por 30 días", basado en el caso Trump y la supervisión estatal de modelos avanzados.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ── Módulo 1 ───────────────────────────────────────── -->
+      <div class="modulo">
+        <h3>Módulo 1 &mdash; Democracia aumentada</h3>
+        <p>La democracia representativa nos obliga a elegir paquetes completos: candidatos, partidos, programas. Pero nuestras preferencias son más granulares que las opciones disponibles en la papeleta. El módulo presenta la propuesta radical de usar LLMs como avatares o gemelos digitales capaces de representar preferencias individuales tema por tema, su promesa (más granularidad, participación y deliberación escalable) y sus riesgos (error de representación, opacidad, sesgos, falsa legitimidad, dependencia de proveedores).</p>
+        <p><strong>Presentación:</strong> <a href="https://docs.google.com/presentation/d/1S8EhIQ_AV2bhsBfoqbBzL1bcxinBUB3-r1KbjT3nbX4/edit" target="_blank">Democracia aumentada y Congreso de avatares</a>.</p>
+        <p><strong>Materiales:</strong></p>
+        <ul>
+          <li>Gudiño et al. (2024). <a href="https://royalsocietypublishing.org/doi/full/10.1098/rsta.2024.0100" target="_blank">Large language models (LLMs) as agents for augmented democracy</a> (open access).</li>
+          <li>TED Talk, César Hidalgo (15 min). <a href="https://www.youtube.com/watch?v=UUp39T3fPAo" target="_blank">¿IA para reemplazar a políticos?</a></li>
+          <li>Wikipedia. <a href="https://en.wikipedia.org/wiki/Diella_(AI_system)" target="_blank">Diella (AI system)</a> &mdash; primera "ministra" IA en Albania.</li>
+        </ul>
+      </div>
+
+      <!-- ── Módulo 2 ───────────────────────────────────────── -->
+      <div class="modulo">
+        <h3>Módulo 2 &mdash; Congreso de avatares (experimento en aula)</h3>
+        <p>En esta actividad, cada estudiante entrenará un avatar político anónimo usando una ficha breve de preferencias, valores y prioridades. Luego, tanto el estudiante como su avatar responderán una misma encuesta sobre dilemas políticos y tecnológicos. La app comparará las respuestas humano/avatar usando una llave anónima, permitiendo medir qué tan bien el avatar representa a la persona sin identificar públicamente a nadie.</p>
+        <div class="activity">
+          <p><strong>App: Congreso de avatares.</strong> Detalles de la dinámica:</p>
+          <ul>
+            <li>Cada estudiante usa una <strong>llave anónima</strong> para hacer match entre sus respuestas humanas y las de su avatar.</li>
+            <li>No se recolecta nombre, RUT ni correo en la dinámica pública; la comparación es agregada y anónima.</li>
+            <li>Métricas: coincidencia exacta; distancia promedio en preguntas tipo Likert; preguntas donde los avatares fallan más; sesgos sistemáticos del avatar.</li>
+            <li><strong>Pregunta de discusión:</strong> ¿qué nivel de error aceptaríamos antes de dejar que un avatar delibere, recomiende o vote por nosotros?</li>
+          </ul>
+          <p class="note">Actividad experimental, no una defensa ingenua de reemplazar representantes por IA. La app <strong>Congreso de avatares</strong> se construirá más adelante; la dinámica ya queda definida aquí.</p>
+        </div>
+      </div>
+
+      <!-- ── Módulo 3 ───────────────────────────────────────── -->
+      <div class="modulo">
+        <h3>Módulo 3 &mdash; Gobernanza de modelos de IA</h3>
+        <p>Si estos modelos pueden representar, recomendar o incluso decidir, ¿quién los audita y bajo qué reglas? El módulo aterriza el debate vivo sobre la supervisión estatal de modelos avanzados: instrumentos (orden ejecutiva, ley, revisión voluntaria, auditoría obligatoria) y el riesgo de que el control estatal sirva tanto para proteger como para capturar la tecnología.</p>
+        <p><strong>Recurso central:</strong></p>
+        <ul>
+          <li>The New York Times (2026). <a href="https://www.nytimes.com/2026/06/02/technology/trump-executive-order-ai.html?smid=nytcore-android-share" target="_blank">Trump Signs Executive Order Seeking Oversight of A.I. Models</a> &mdash; caso reciente para discutir quién regula la IA, con qué instrumentos (orden ejecutiva, ley, revisión voluntaria, auditoría obligatoria) y el riesgo de que el control estatal sirva tanto para proteger como para capturar la tecnología.</li>
+        </ul>
+        <div class="activity">
+          <p><strong>Juego/quiz: Regulador por 30 días.</strong> Los estudiantes trabajan en equipos y deben tomar decisiones regulatorias frente a dilemas inspirados en la supervisión estatal de modelos avanzados de IA. El objetivo es distinguir entre seguridad, innovación, legitimidad democrática, captura estatal y captura corporativa.</p>
+          <ol>
+            <li><strong>Revisión voluntaria u obligatoria:</strong> una empresa quiere lanzar un modelo avanzado capaz de automatizar tareas de ciberseguridad. El gobierno pide revisarlo 30 días antes. ¿Debe ser voluntario, obligatorio o híbrido?</li>
+            <li><strong>Orden ejecutiva vs. ley:</strong> el Ejecutivo quiere regular modelos frontier por decreto. El Congreso reclama que debe ser por ley. ¿Qué instrumento es más legítimo?</li>
+            <li><strong>Transparencia vs. seguridad:</strong> una auditoría detecta una vulnerabilidad grave. ¿Debe publicarse el informe completo, parcial o mantenerse reservado?</li>
+            <li><strong>Captura estatal vs. captura corporativa:</strong> las empresas ofrecen financiar parte de las pruebas porque el Estado no tiene capacidades técnicas. ¿Cómo evitar la captura regulatoria?</li>
+            <li><strong>Modelos extranjeros en Chile:</strong> un ministerio chileno quiere contratar un modelo extranjero para procesar reclamos ciudadanos, pero el proveedor se niega a entregar detalles técnicos. ¿Debe exigirse auditoría local?</li>
+          </ol>
+          <span class="tags">Tags sugeridos para respuestas: [DECISIÓN] [ACTOR_AFECTADO] [RIESGO] [TRADE_OFF] [INSTRUMENTO_REGULATORIO] [MECANISMO_DE_CONTROL] [QUIÉN_RESPONDE]</span>
+        </div>
+      </div>
     </div>
   </li>
 
