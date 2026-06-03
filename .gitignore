@@ -10,3 +10,16 @@ teaching/MEPP/rag_txt_corpus_semana3/
 teaching/MEPP/generate_rag_notebooks.py
 teaching/MEPP/word2vec.pdf
 teaching/MEPP/notas_modularizacion_presentaciones.md
+
+# ── Secrets ──────────────────────────────────────────────
+.env
+
+# ── Avatar Congress: private data & local config ─────────
+avatar_congress/config/config.local.yaml
+avatar_congress/data_private/
+avatar_congress/data_runtime/
+avatar_congress/exports_private/
+avatar_congress/*.sqlite
+avatar_congress/*.db
+__pycache__/
+*.pyc

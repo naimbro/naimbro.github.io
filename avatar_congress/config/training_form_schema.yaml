@@ -1,0 +1,284 @@
+# Congreso de avatares — Ficha de entrenamiento del avatar
+#
+# Estructura del Google Form de entrenamiento. El script 02 lo construye
+# con la Forms API y guarda el mapeo questionId -> field en
+# data_private/training_form_map.json, que el script 03 usa para ingerir.
+#
+# NO se pregunta nombre, correo ni RUT (privacidad).
+#
+# Tipos soportados (Forms API):
+#   short_text   -> TextQuestion (1 línea)
+#   paragraph    -> TextQuestion (párrafo)
+#   choice       -> ChoiceQuestion RADIO
+#   checkbox     -> ChoiceQuestion CHECKBOX
+#   scale        -> ScaleQuestion 1..5
+#   section      -> PageBreakItem (separador de sección)
+
+form_title: "Congreso de avatares — Entrenamiento de avatar"
+form_description: >
+  Esta ficha entrena un avatar político seudónimo que te representará en una
+  encuesta. No se pide nombre, correo ni RUT. Usa exactamente la llave anónima
+  que recibiste: la necesitarás para reconocer tu avatar y ver tus resultados.
+
+items:
+  - type: section
+    title: "1 · Tu llave"
+    description: "Identifícate solo con tu llave anónima."
+
+  - type: short_text
+    field: key
+    required: true
+    title: "Llave anónima asignada"
+    description: "Escribe exactamente la llave que recibiste (ej: CONDOR-47). Guárdala: la necesitarás para reconocer tu avatar y ver tus resultados."
+
+  - type: section
+    title: "2 · Contexto mínimo"
+
+  - type: choice
+    field: age
+    required: true
+    title: "Edad aproximada"
+    options: ["18–22", "23–29", "30–39", "40+", "Prefiero no decir"]
+
+  - type: choice
+    field: field_of_study
+    required: true
+    title: "Área de formación o interés principal"
+    options:
+      - "Políticas públicas / gobierno"
+      - "Economía / negocios"
+      - "Ingeniería / computación / datos"
+      - "Ciencias sociales / humanidades"
+      - "Derecho"
+      - "Otra"
+      - "Prefiero no decir"
+
+  - type: scale
+    field: ai_relation
+    required: true
+    title: "Relación general con la IA"
+    low: 1
+    high: 5
+    low_label: "Muy escéptica"
+    high_label: "Muy optimista"
+
+  - type: section
+    title: "3 · Valores políticos generales"
+
+  - type: choice
+    field: economy
+    required: true
+    title: "En economía, tiendo a priorizar:"
+    options:
+      - "Redistribución y protección social"
+      - "Equilibrio entre mercado y Estado"
+      - "Libertad económica y emprendimiento"
+      - "Depende del caso"
+      - "No sé / prefiero no responder"
+
+  - type: choice
+    field: state_role
+    required: true
+    title: "Frente al rol del Estado, prefiero:"
+    options:
+      - "Estado mínimo"
+      - "Estado regulador"
+      - "Estado proveedor activo"
+      - "Estado emprendedor / estratégico"
+      - "Depende del área"
+
+  - type: choice
+    field: social_culture
+    required: true
+    title: "En temas sociales/culturales, tiendo a ser:"
+    options:
+      - "Más progresista"
+      - "Más conservador/a"
+      - "Libertario/a"
+      - "Mixto / depende del tema"
+      - "Prefiero no responder"
+
+  - type: choice
+    field: liberty_vs_collective
+    required: true
+    title: "Entre libertad individual y coordinación colectiva, tiendo a priorizar:"
+    options:
+      - "Libertad individual"
+      - "Coordinación colectiva"
+      - "Equilibrio caso a caso"
+      - "No tengo posición clara"
+
+  - type: choice
+    field: innovation_vs_regulation
+    required: true
+    title: "Entre innovación y regulación, tiendo a priorizar:"
+    options:
+      - "Innovar primero, regular después"
+      - "Regular preventivamente"
+      - "Regulación flexible y experimental"
+      - "Depende del riesgo"
+
+  - type: choice
+    field: security_vs_privacy
+    required: true
+    title: "Entre seguridad y privacidad, tiendo a priorizar:"
+    options:
+      - "Seguridad"
+      - "Privacidad"
+      - "Equilibrio según controles institucionales"
+      - "Depende del caso"
+
+  - type: section
+    title: "4 · Prioridades políticas"
+
+  - type: checkbox
+    field: priorities
+    required: true
+    title: "Elige tus tres prioridades públicas principales"
+    description: "Marca hasta tres."
+    options:
+      - "Seguridad ciudadana"
+      - "Crecimiento económico"
+      - "Desigualdad"
+      - "Educación"
+      - "Salud"
+      - "Medio ambiente"
+      - "Vivienda"
+      - "Corrupción"
+      - "Derechos digitales"
+      - "Empleo y automatización"
+      - "Democracia y participación"
+      - "Migración"
+      - "Otra"
+
+  - type: paragraph
+    field: priorities_why
+    required: false
+    title: "Explica brevemente por qué esas prioridades son importantes para ti"
+    description: "Máximo recomendado: 500 caracteres."
+
+  - type: section
+    title: "5 · Confianza institucional"
+    description: "1 = nada de confianza, 5 = mucha confianza."
+
+  - type: scale
+    field: trust_congress
+    required: true
+    title: "Confianza en el Congreso"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: scale
+    field: trust_government
+    required: true
+    title: "Confianza en el Gobierno / Ejecutivo"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: scale
+    field: trust_parties
+    required: true
+    title: "Confianza en los partidos políticos"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: scale
+    field: trust_courts
+    required: true
+    title: "Confianza en los tribunales / la justicia"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: scale
+    field: trust_universities
+    required: true
+    title: "Confianza en las universidades / los expertos"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: scale
+    field: trust_tech_companies
+    required: true
+    title: "Confianza en las empresas tecnológicas"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: scale
+    field: trust_intl_orgs
+    required: true
+    title: "Confianza en los organismos internacionales"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: scale
+    field: trust_media
+    required: true
+    title: "Confianza en los medios de comunicación"
+    low: 1
+    high: 5
+    low_label: "Nada"
+    high_label: "Mucha"
+
+  - type: section
+    title: "6 · Estilo de decisión"
+
+  - type: choice
+    field: decision_incomplete_info
+    required: true
+    title: "Cuando no tengo información completa, prefiero:"
+    options:
+      - "Decidir rápido con criterios generales"
+      - "Esperar más evidencia"
+      - "Consultar expertos"
+      - "Escuchar a los afectados"
+      - "Depende del costo de equivocarse"
+
+  - type: choice
+    field: evidence_vs_citizens
+    required: true
+    title: "Cuando hay conflicto entre evidencia técnica y opinión ciudadana, tiendo a:"
+    options:
+      - "Priorizar la evidencia técnica"
+      - "Priorizar la legitimidad ciudadana"
+      - "Buscar deliberación informada"
+      - "Depende del caso"
+
+  - type: choice
+    field: avatar_when_unsure
+    required: true
+    title: "¿Qué debería hacer tu avatar si no está seguro de tu posición?"
+    options:
+      - "Elegir la opción más consistente con mis valores generales"
+      - "Elegir una opción moderada"
+      - "Declarar incertidumbre"
+      - "Priorizar derechos individuales"
+      - "Priorizar bienestar colectivo"
+
+  - type: section
+    title: "7 · Texto para tu avatar"
+
+  - type: paragraph
+    field: avatar_free_text
+    required: true
+    title: "Escribe 5–8 frases que ayuden a tu avatar a representarte políticamente"
+    description: "Puedes incluir valores, intuiciones, límites, contradicciones o temas que te importan. No incluyas información personal identificable."
+
+  - type: paragraph
+    field: avatar_avoid
+    required: false
+    title: "¿Hay alguna posición que NO quieres que tu avatar asuma en tu nombre?"
+    description: "Opcional."

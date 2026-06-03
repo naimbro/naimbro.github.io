@@ -1,0 +1,41 @@
+# Congreso de avatares — configuración de ejemplo
+#
+# Copia este archivo a config.local.yaml y complétalo. config.local.yaml
+# está en .gitignore (NO se commitea). Los IDs de formularios los rellenan
+# automáticamente los scripts 02 y 05; no necesitas escribirlos a mano.
+
+class:
+  name: "Temas Emergentes — Minor en IA, UAI 2026"
+  n_students: 23          # estudiantes esperados
+  n_keys: 30              # llaves a generar (margen para errores/invitados)
+
+# Credenciales (rutas relativas a la raíz del repo)
+credentials:
+  service_account_file: "drive_credentials.json"
+  share_with_email: "naim.bro@gmail.com"   # se comparten los forms con esta cuenta
+  dotenv_file: ".env"                        # contiene ANTHROPIC_API_KEY / OPENAI_API_KEY
+
+# Selección de modelo LLM (ver tabla en README)
+llm:
+  provider: "openai"          # "openai" | "anthropic"
+  model: "gpt-4o-mini"        # alternativa anthropic: "claude-haiku-4-5-20251001"
+  temperature: 0.4
+  max_tokens: 1500
+  request_timeout_s: 60
+  retries: 1                  # reintentos extra ante JSON inválido
+  event_delay_s: 0.35         # pausa entre eventos "en vivo" para animar el dashboard
+
+run:
+  mode: "batch"               # "batch" (1 request/estudiante) | "per-question"
+
+# Rellenado automáticamente por los scripts (déjalo vacío al inicio)
+google:
+  training_form_id: ""
+  training_form_url: ""
+  human_survey_form_id: ""
+  human_survey_form_url: ""
+
+# Links que el script 10 inyecta en el syllabus (se completan solos)
+syllabus:
+  file: "teaching/2026_temas_emergentes.html"
+  dashboard_url: "http://localhost:8000"   # local durante la clase

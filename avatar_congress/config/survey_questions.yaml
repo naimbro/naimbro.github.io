@@ -1,0 +1,167 @@
+# Congreso de avatares — Encuesta de evaluación (humano vs. avatar)
+#
+# Esta encuesta NO se solapa con la ficha de entrenamiento: pregunta por
+# DILEMAS CONCRETOS de política pública, no por autoidentificación ideológica.
+#
+# 16 preguntas se usan para métricas (10 Likert + 6 forced-choice).
+# Q17 es texto libre y NO se usa en accuracy (solo discusión).
+#
+# Campos por pregunta:
+#   id          identificador estable (Q01..Q17)
+#   type        likert_1_5 | forced_choice | free_text
+#   theme       agrupador temático (para el dashboard)
+#   text        enunciado
+#   scale       (likert) etiquetas 1..5
+#   options     (forced_choice) opciones A/B con etiqueta y texto
+#   compare_as  ordinal | nominal | none  (cómo comparar humano vs avatar)
+#   indices     (opcional) índices exploratorios a los que contribuye
+
+likert_scale: &likert
+  1: "Muy en desacuerdo"
+  2: "En desacuerdo"
+  3: "Ni de acuerdo ni en desacuerdo"
+  4: "De acuerdo"
+  5: "Muy de acuerdo"
+
+questions:
+  # ── Likert 1–5 ────────────────────────────────────────────────
+  - id: Q01
+    type: likert_1_5
+    theme: "IA y Estado"
+    text: "El Estado debería poder usar IA para priorizar fiscalizaciones de corrupción, aunque el modelo no sea completamente explicable."
+    scale: *likert
+    compare_as: ordinal
+    indices: [technocratic]
+
+  - id: Q02
+    type: likert_1_5
+    theme: "Explicabilidad"
+    text: "Los sistemas de IA usados por organismos públicos deberían estar prohibidos si no pueden explicar sus decisiones en lenguaje comprensible para los ciudadanos afectados."
+    scale: *likert
+    compare_as: ordinal
+    indices: [pro_regulation]
+
+  - id: Q03
+    type: likert_1_5
+    theme: "Elecciones e IA"
+    text: "Las campañas políticas deberían estar obligadas a declarar públicamente cuándo usan contenido generado por IA, incluso si el contenido no es falso."
+    scale: *likert
+    compare_as: ordinal
+    indices: [pro_regulation]
+
+  - id: Q04
+    type: likert_1_5
+    theme: "Desinformación"
+    text: "Si un deepfake político circula durante una elección, las plataformas deberían bajarlo rápidamente aunque todavía no exista una resolución judicial."
+    scale: *likert
+    compare_as: ordinal
+
+  - id: Q05
+    type: likert_1_5
+    theme: "Gobernanza de modelos"
+    text: "Los modelos de IA más avanzados deberían someterse a revisión estatal antes de ser desplegados en sectores críticos como salud, banca, educación o seguridad."
+    scale: *likert
+    compare_as: ordinal
+    indices: [technocratic, pro_regulation]
+
+  - id: Q06
+    type: likert_1_5
+    theme: "Soberanía tecnológica"
+    text: "Chile debería exigir auditorías locales a modelos extranjeros antes de que sean contratados por el Estado, aunque eso reduzca el acceso a tecnologías de punta."
+    scale: *likert
+    compare_as: ordinal
+    indices: [pro_regulation]
+
+  - id: Q07
+    type: likert_1_5
+    theme: "Empleo y automatización"
+    text: "Las ganancias extraordinarias generadas por IA deberían pagar impuestos especiales para financiar reconversión laboral."
+    scale: *likert
+    compare_as: ordinal
+    indices: [pro_regulation]
+
+  - id: Q08
+    type: likert_1_5
+    theme: "Tecnocracia vs. ciudadanía"
+    text: "En decisiones públicas complejas, las recomendaciones de expertos técnicos deberían pesar más que las consultas ciudadanas masivas."
+    scale: *likert
+    compare_as: ordinal
+    indices: [technocratic]
+
+  - id: Q09
+    type: likert_1_5
+    theme: "IA en la legislatura"
+    text: "Una IA podría participar como asesor en procesos legislativos, siempre que nunca tenga voto formal."
+    scale: *likert
+    compare_as: ordinal
+    indices: [technocratic]
+
+  - id: Q10
+    type: likert_1_5
+    theme: "Eficiencia vs. debido proceso"
+    text: "Si un sistema de IA público reduce costos y tiempos, aceptaría cierto nivel de error siempre que exista una apelación humana efectiva."
+    scale: *likert
+    compare_as: ordinal
+    indices: [technocratic]
+
+  # ── Forced choice A/B ─────────────────────────────────────────
+  - id: Q11
+    type: forced_choice
+    theme: "Riesgo frontier"
+    text: "Frente a modelos frontier, ¿qué riesgo es más grave?"
+    options:
+      A: "Que empresas privadas desplieguen modelos peligrosos sin supervisión suficiente."
+      B: "Que el Estado use la supervisión como excusa para controlar o capturar la tecnología."
+    compare_as: nominal
+
+  - id: Q12
+    type: forced_choice
+    theme: "Automatización del empleo público"
+    text: "En la automatización del empleo público, ¿qué principio debería pesar más?"
+    options:
+      A: "Aumentar la eficiencia y reducir los tiempos de espera para los ciudadanos."
+      B: "Proteger el debido proceso, los empleos y las capacidades institucionales humanas."
+    compare_as: nominal
+
+  - id: Q13
+    type: forced_choice
+    theme: "Avatares políticos"
+    text: "Sobre los avatares políticos, ¿qué uso te parece más aceptable?"
+    options:
+      A: "Que recomienden posiciones a los ciudadanos, sin decidir por ellos."
+      B: "Que participen directamente en deliberaciones o votaciones consultivas bajo autorización explícita."
+    compare_as: nominal
+
+  - id: Q14
+    type: forced_choice
+    theme: "Crisis electoral"
+    text: "En una crisis electoral con deepfakes, ¿qué institución debería tener más poder inmediato?"
+    options:
+      A: "La autoridad electoral / el Estado."
+      B: "Las plataformas y verificadores independientes, con supervisión posterior."
+    compare_as: nominal
+
+  - id: Q15
+    type: forced_choice
+    theme: "Datos para avatares"
+    text: "Sobre los datos para entrenar avatares ciudadanos, ¿qué prefieres?"
+    options:
+      A: "Usar pocos datos explícitamente entregados por la persona, aunque el avatar sea menos preciso."
+      B: "Usar más datos personales para aumentar la precisión, siempre que haya consentimiento."
+    compare_as: nominal
+
+  - id: Q16
+    type: forced_choice
+    theme: "Discriminación algorítmica"
+    text: "Si una IA estatal discrimina indirectamente a un grupo vulnerable, ¿qué respuesta priorizas?"
+    options:
+      A: "Suspender el sistema hasta auditarlo completamente."
+      B: "Mantenerlo funcionando con correcciones graduales si produce beneficios generales."
+    compare_as: nominal
+
+  # ── Texto libre (NO usado en métricas) ────────────────────────
+  - id: Q17
+    type: free_text
+    theme: "Criterio general"
+    text: "En una frase, explica cuál fue tu criterio general al responder esta encuesta."
+    compare_as: none

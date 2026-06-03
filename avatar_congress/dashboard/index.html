@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Congreso de avatares</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <h1>Congreso de avatares</h1>
+    </div>
+    <nav class="tabs" role="tablist">
+      <button class="tab is-active" data-tab="live" role="tab" aria-selected="true">En vivo</button>
+      <button class="tab" data-tab="analysis" role="tab" aria-selected="false">Análisis agregado</button>
+      <button class="tab" data-tab="explore" role="tab" aria-selected="false">Explorar por llave</button>
+    </nav>
+    <div class="status">
+      <span id="reconnecting" class="reconnecting" hidden>reconectando…</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ TAB A — EN VIVO ============ -->
+    <section id="tab-live" class="tabpanel is-active" role="tabpanel">
+      <div class="live-grid">
+        <div class="live-left">
+          <div class="progress-card card">
+            <div class="progress-head">
+              <span class="progress-label">Respuestas de avatares</span>
+              <span class="progress-count"><span id="ar-recv">0</span> / <span id="ar-total">0</span></span>
+            </div>
+            <div class="progress-bar"><div id="ar-bar" class="progress-fill" style="width:0%"></div></div>
+          </div>
+
+          <div class="counters">
+            <div class="counter card">
+              <div class="counter-num"><span id="c-training">0</span> / <span class="c-students">0</span></div>
+              <div class="counter-lbl">Fichas de entrenamiento</div>
+            </div>
+            <div class="counter card">
+              <div class="counter-num"><span id="c-built">0</span> / <span class="c-students">0</span></div>
+              <div class="counter-lbl">Avatares construidos</div>
+            </div>
+            <div class="counter card">
+              <div class="counter-num"><span id="c-human">0</span> / <span class="c-students">0</span></div>
+              <div class="counter-lbl">Respuestas humanas</div>
+            </div>
+          </div>
+
+          <div class="active-keys card">
+            <div class="section-title">Llaves activas</div>
+            <div id="active-keys" class="keychips">
+              <span class="empty-hint">Esperando avatares…</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="live-right">
+          <div class="feed-head">
+            <div class="section-title">Feed en vivo</div>
+            <div class="audio-controls">
+              <button id="enable-sound" class="btn btn-ghost">Activar sonido</button>
+              <button id="mute-toggle" class="btn btn-ghost" hidden>Silenciar</button>
+            </div>
+          </div>
+          <div id="feed" class="feed">
+            <div class="empty-hint feed-empty">Las respuestas aparecerán aquí en cuanto los avatares empiecen a votar.</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="celebration" class="celebration" hidden>
+        <canvas id="confetti" class="confetti"></canvas>
+        <div class="celebration-inner">
+          <div class="celebration-pulse"></div>
+          <div class="celebration-title">CONGRESO COMPLETO</div>
+          <div id="celebration-sub" class="celebration-sub"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TAB B — ANÁLISIS AGREGADO ============ -->
+    <section id="tab-analysis" class="tabpanel" role="tabpanel">
+      <div id="analysis-empty" class="empty-state card">
+        Aún no hay análisis. Corre el script de análisis.
+      </div>
+
+      <div id="analysis-content" hidden>
+        <div class="headline-metrics">
+          <div class="metric card">
+            <div id="m-agree" class="metric-num">–</div>
+            <div class="metric-lbl">Match promedio</div>
+          </div>
+          <div class="metric card">
+            <div id="m-mae" class="metric-num">–</div>
+            <div class="metric-lbl">Error Likert promedio</div>
+          </div>
+          <div class="metric card">
+            <div id="m-repr" class="metric-num">–</div>
+            <div class="metric-lbl">Representatividad promedio</div>
+          </div>
+          <div class="metric card">
+            <div id="m-r2" class="metric-num">–</div>
+            <div class="metric-lbl">R² agregado (Likert)</div>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="section-title">Acuerdo direccional por pregunta</div>
+          <div id="chart-bars" class="chart-wrap"></div>
+        </div>
+
+        <div class="card chart-card">
+          <div class="section-title">Likert: humano vs. avatar</div>
+          <div id="chart-scatter" class="chart-wrap"></div>
+        </div>
+
+        <div class="callouts">
+          <div class="card callout callout-good">
+            <div class="callout-tag">Pregunta mejor representada</div>
+            <div id="callout-best-text" class="callout-text">–</div>
+            <div id="callout-best-val" class="callout-val"></div>
+          </div>
+          <div class="card callout callout-far">
+            <div class="callout-tag">Pregunta con mayor distancia</div>
+            <div id="callout-worst-text" class="callout-text">–</div>
+            <div id="callout-worst-val" class="callout-val"></div>
+          </div>
+        </div>
+
+        <div class="key-lists">
+          <div class="card">
+            <div class="section-title">Avatares más representativos</div>
+            <ol id="list-top" class="key-list"></ol>
+          </div>
+          <div class="card">
+            <div class="section-title">Avatares con mayor distancia</div>
+            <ol id="list-least" class="key-list"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TAB C — EXPLORAR POR LLAVE ============ -->
+    <section id="tab-explore" class="tabpanel" role="tabpanel">
+      <div id="explore-public" class="empty-state card" hidden>
+        Modo público: solo se muestran resultados agregados para proteger la privacidad.
+      </div>
+
+      <div id="explore-private">
+        <div class="card lookup-card">
+          <label for="key-input" class="lookup-label">Ingresa tu llave</label>
+          <div class="lookup-row">
+            <input id="key-input" class="lookup-input" type="text" placeholder="CONDOR-47" autocomplete="off" spellcheck="false">
+            <button id="key-go" class="btn btn-accent">Ver</button>
+          </div>
+        </div>
+
+        <div id="student-msg" class="empty-state card" hidden></div>
+
+        <div id="student-result" class="student-result" hidden>
+          <div class="card student-head">
+            <div class="student-score">
+              <div id="s-score" class="student-score-num">–</div>
+              <div class="student-score-lbl">Representatividad</div>
+            </div>
+            <div class="student-meta">
+              <div id="s-key" class="student-key"></div>
+              <p id="s-summary" class="student-summary"></p>
+              <div class="student-stats">
+                <span>Match exacto: <b id="s-exact">–</b></span>
+                <span>Error Likert: <b id="s-mae">–</b></span>
+                <span>Acuerdo direccional: <b id="s-dir">–</b></span>
+                <span>Confianza media: <b id="s-conf">–</b></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card table-card">
+            <table class="qtable">
+              <thead>
+                <tr>
+                  <th class="qt-text">Pregunta</th>
+                  <th>Tu respuesta</th>
+                  <th>Tu avatar</th>
+                  <th>Acuerdo</th>
+                  <th>Confianza</th>
+                </tr>
+              </thead>
+              <tbody id="s-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

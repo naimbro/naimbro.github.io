@@ -1,0 +1,8 @@
+# Avatar Congress pipeline dependencies
+google-api-python-client>=2.100
+google-auth>=2.20
+PyYAML>=6.0
+python-dotenv>=1.0
+openai>=1.40
+anthropic>=0.40
+Flask>=3.0
