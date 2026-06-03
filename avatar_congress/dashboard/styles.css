@@ -349,3 +349,10 @@ main { padding: 28px 32px 64px; max-width: 1600px; margin: 0 auto; }
 .dist-scale { font-size: .82rem; color: var(--ink-3); margin: 4px 0 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
 .dist-scale .ds-cap { font-weight: 700; color: var(--ink-2); margin-right: 2px; }
 .dist-scale .ds-seg { display: inline-block; width: 13px; height: 13px; border-radius: 3px; vertical-align: middle; margin-left: 6px; }
+
+/* Badge resumen por pregunta (acuerdo) */
+.dist-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.dist-badge { font-weight: 800; font-size: .9rem; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.dist-badge.ok  { background: #e3f3ea; color: #1f9d6b; }
+.dist-badge.mid { background: #fde7d6; color: #b3691a; }
+.dist-badge.low { background: #fde8eb; color: #c4283f; }

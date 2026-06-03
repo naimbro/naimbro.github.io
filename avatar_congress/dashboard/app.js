@@ -627,21 +627,26 @@
     const ready = dists.length > 0;
     if (empty) empty.hidden = ready;
     if (content) content.hidden = !ready;
-    if (ready) renderDistributions(dists);
+    if (ready) {
+      // mapa question_id -> acuerdo direccional (de per_question, misma variante de referencia)
+      const agree = {};
+      (a.per_question || []).forEach((q) => { agree[q.question_id] = q.directional_agreement; });
+      renderDistributions(dists, agree);
+    }
   }
 
-  function renderDistributions(dists) {
+  function renderDistributions(dists, agree) {
     const grid = $("#dist-grid");
     if (!grid) return;
     if (!dists.length) { grid.innerHTML = '<span class="empty-hint">Sin datos.</span>'; return; }
-    grid.innerHTML = dists.map(distMiniChart).join("");
+    grid.innerHTML = dists.map((d) => distMiniChart(d, agree || {})).join("");
   }
 
   // Diverging red→green for Likert 1-5; A/B for forced choice.
   const LIKERT_COLORS = { "1": "#d1495b", "2": "#ea9085", "3": "#cfd4db", "4": "#7fb89a", "5": "#1f9d6b" };
   const FORCED_COLORS = { "A": "#e8485f", "B": "#5b8def" };
 
-  function distMiniChart(d) {
+  function distMiniChart(d, agree) {
     const values = Array.isArray(d.values) ? d.values : [];
     const isLik = d.type === "likert_1_5";
     const colors = isLik ? LIKERT_COLORS : FORCED_COLORS;
@@ -680,7 +685,15 @@
     });
     svg += "</svg>";
     const title = escapeHTML(d.question_id || "") + " · " + escapeHTML(d.theme || "");
-    return '<div class="dist-item"><div class="dist-title">' + title + "</div>" + svg + "</div>";
+    // Badge resumen: acuerdo direccional humano/avatar (verde alto, rojo bajo).
+    const av = (agree && isNum(agree[d.question_id])) ? agree[d.question_id] : null;
+    let badge = "";
+    if (av != null) {
+      const cls = av >= 0.7 ? "ok" : (av >= 0.45 ? "mid" : "low");
+      badge = '<span class="dist-badge ' + cls + '" title="Acuerdo humano/avatar">' + pct(av) + "</span>";
+    }
+    return '<div class="dist-item"><div class="dist-head"><div class="dist-title">' + title +
+      "</div>" + badge + "</div>" + svg + "</div>";
   }
 
   // ---------------------------------------------------------------
