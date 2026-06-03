@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Congreso de avatares</title>
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <header class="topbar">
@@ -15,6 +15,7 @@
     <nav class="tabs" role="tablist">
       <button class="tab is-active" data-tab="live" role="tab" aria-selected="true">En vivo</button>
       <button class="tab" data-tab="analysis" role="tab" aria-selected="false">Análisis agregado</button>
+      <button class="tab" data-tab="dist" role="tab" aria-selected="false">Pregunta por pregunta</button>
       <button class="tab" data-tab="explore" role="tab" aria-selected="false">Explorar por llave</button>
     </nav>
     <div class="status">
@@ -129,15 +130,6 @@
           <div id="chart-scatter" class="chart-wrap"></div>
         </div>
 
-        <div class="card chart-card">
-          <div class="section-title">Distribución por pregunta: humanos vs. avatares</div>
-          <p class="variant-sub">Cómo se reparten las respuestas en cada pregunta.
-            <span class="dist-legend"><span class="dl-h"></span> humanos</span>
-            <span class="dist-legend"><span class="dl-a"></span> avatares</span>
-          </p>
-          <div id="dist-grid" class="dist-grid"></div>
-        </div>
-
         <div class="callouts">
           <div class="card callout callout-good">
             <div class="callout-tag">Pregunta mejor representada</div>
@@ -161,6 +153,21 @@
             <ol id="list-least" class="key-list"></ol>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ TAB — PREGUNTA POR PREGUNTA ============ -->
+    <section id="tab-dist" class="tabpanel" role="tabpanel">
+      <div id="dist-empty" class="empty-state card">
+        Aún no hay análisis. Corre el script de análisis.
+      </div>
+      <div id="dist-content" class="card chart-card" hidden>
+        <div class="section-title">Distribución por pregunta: humanos vs. avatares</div>
+        <p class="variant-sub">Cómo se reparten las respuestas en cada pregunta.
+          <span class="dist-legend"><span class="dl-h"></span> humanos</span>
+          <span class="dist-legend"><span class="dl-a"></span> avatares</span>
+        </p>
+        <div id="dist-grid" class="dist-grid"></div>
       </div>
     </section>
 
@@ -211,6 +218,6 @@
     </section>
   </main>
 
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

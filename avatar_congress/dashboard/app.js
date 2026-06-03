@@ -82,6 +82,7 @@
       p.classList.toggle("is-active", p.id === "tab-" + name);
     });
     if (name === "analysis") loadAnalysis();
+    if (name === "dist") loadDistributions();
     if (name === "explore") { refreshExploreMode(); populateKeys(); }
   }
 
@@ -471,7 +472,6 @@
 
     renderBarChart(Array.isArray(a.per_question) ? a.per_question : []);
     renderScatter(Array.isArray(a.scatter_likert) ? a.scatter_likert : []);
-    renderDistributions(Array.isArray(a.per_question_distributions) ? a.per_question_distributions : []);
 
     fillCallout("#callout-best-text", "#callout-best-val", a.most_represented_question);
     fillCallout("#callout-worst-text", "#callout-worst-val", a.least_represented_question);
@@ -618,6 +618,18 @@
   }
 
   // ---- Per-question distributions: human vs avatar ----
+  async function loadDistributions() {
+    let a;
+    try { a = await getJSON("/api/analysis"); } catch (e) { a = null; }
+    const empty = $("#dist-empty");
+    const content = $("#dist-content");
+    const dists = a && Array.isArray(a.per_question_distributions) ? a.per_question_distributions : [];
+    const ready = dists.length > 0;
+    if (empty) empty.hidden = ready;
+    if (content) content.hidden = !ready;
+    if (ready) renderDistributions(dists);
+  }
+
   function renderDistributions(dists) {
     const grid = $("#dist-grid");
     if (!grid) return;
