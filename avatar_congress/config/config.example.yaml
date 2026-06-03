@@ -17,16 +17,17 @@ credentials:
 
 # Selección de modelo LLM (ver tabla en README)
 llm:
-  provider: "openai"          # "openai" | "anthropic"
-  model: "gpt-4o-mini"        # alternativa anthropic: "claude-haiku-4-5-20251001"
+  provider: "anthropic"       # "openai" | "anthropic"
+  model: "claude-haiku-4-5-20251001"   # barato/rápido. openai: "gpt-4o-mini" · potente: "claude-opus-4-8"
   temperature: 0.4
-  max_tokens: 1500
+  max_tokens: 400             # per-question necesita poco
   request_timeout_s: 60
   retries: 1                  # reintentos extra ante JSON inválido
-  event_delay_s: 0.35         # pausa entre eventos "en vivo" para animar el dashboard
+  event_delay_s: 0            # pausa entre eventos (0 en per-question: la concurrencia da el ritmo)
+  concurrency: 6              # avatares en paralelo en modo per-question
 
 run:
-  mode: "batch"               # "batch" (1 request/estudiante) | "per-question"
+  mode: "per-question"        # "per-question" (streaming real) | "batch" (1 request/estudiante)
 
 # Rellenado automáticamente por los scripts (déjalo vacío al inicio)
 google:

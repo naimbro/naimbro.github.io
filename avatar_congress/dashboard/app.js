@@ -82,7 +82,7 @@
       p.classList.toggle("is-active", p.id === "tab-" + name);
     });
     if (name === "analysis") loadAnalysis();
-    if (name === "explore") refreshExploreMode();
+    if (name === "explore") { refreshExploreMode(); populateKeys(); }
   }
 
   // ---------------------------------------------------------------
@@ -190,10 +190,10 @@
     if (!ev || typeof ev !== "object") return;
     switch (ev.type) {
       case "avatar_start":
-        if (ev.key) { state.activeKeys.add(ev.key); renderActiveKeys(); }
+        if (ev.key) { state.activeKeys.add(comboLabel(ev)); renderActiveKeys(); }
         break;
       case "avatar_done":
-        if (ev.key) { state.activeKeys.delete(ev.key); renderActiveKeys(); }
+        if (ev.key) { state.activeKeys.delete(comboLabel(ev)); renderActiveKeys(); }
         break;
       case "avatar_answer":
         addFeedCard(ev);
@@ -205,6 +205,10 @@
       default:
         break;
     }
+  }
+
+  function comboLabel(ev) {
+    return ev.variant ? ev.key + " · " + ev.variant : ev.key;
   }
 
   function renderActiveKeys() {
@@ -225,7 +229,7 @@
     const empty = feed.querySelector(".feed-empty");
     if (empty) empty.remove();
 
-    const key = ev.key || "?";
+    const key = comboLabel(ev) || "?";
     const qid = ev.question_id || "";
     const label = ev.answer_label != null ? ev.answer_label
       : (ev.answer_value != null ? String(ev.answer_value) : "");
@@ -263,6 +267,19 @@
     }
   }
 
+  function resetLiveUI() {
+    // Limpia el feed y las llaves activas al detectar una corrida nueva.
+    state.activeKeys.clear();
+    renderActiveKeys();
+    const feed = $("#feed");
+    if (feed) {
+      feed.innerHTML = '<div class="empty-hint feed-empty">Las respuestas aparecerán aquí en cuanto los avatares empiecen a votar.</div>';
+    }
+    const cel = $("#celebration");
+    if (cel) cel.hidden = true;
+    stopConfetti();
+  }
+
   // ---------------------------------------------------------------
   // Celebration
   // ---------------------------------------------------------------
@@ -277,8 +294,17 @@
     setText("#celebration-sub", sub);
     el.hidden = false;
     if (!REDUCED_MOTION) startConfetti();
-    // auto-dismiss on click
-    el.addEventListener("click", () => { el.hidden = true; stopConfetti(); }, { once: true });
+    // Dismiss: click anywhere on the overlay, the "Cerrar" button, or
+    // "Ver análisis" (which also jumps to the analysis tab). Without this
+    // the full-screen overlay would block all navigation after a run.
+    function dismiss() { el.hidden = true; stopConfetti(); }
+    const closeBtn = $("#celebration-close");
+    const anBtn = $("#celebration-analysis");
+    if (closeBtn) closeBtn.onclick = function (e) { e.stopPropagation(); dismiss(); };
+    if (anBtn) anBtn.onclick = function (e) {
+      e.stopPropagation(); dismiss(); switchTab("analysis"); loadAnalysis();
+    };
+    el.addEventListener("click", dismiss, { once: true });
   }
 
   let confettiRAF = null;
@@ -345,13 +371,37 @@
       applyProgress(p);
     } catch (e) { ok = false; }
     try {
-      const ev = await getJSON("/api/events?since=" + state.eventsCursor);
+      let ev = await getJSON("/api/events?since=" + state.eventsCursor);
+      // Si el total de eventos es menor que nuestro cursor, el log se
+      // reinició (nueva corrida de 06): reiniciamos y mostramos desde cero.
+      if (ev && typeof ev.next === "number" && ev.next < state.eventsCursor) {
+        state.eventsCursor = 0;
+        state.celebrated = false;
+        resetLiveUI();
+        ev = await getJSON("/api/events?since=0");
+      }
       applyEvents(ev);
     } catch (e) { ok = false; }
     showReconnecting(!ok);
   }
-  function startPolling() {
-    tick();
+  async function startPolling() {
+    // Initial sync: skip events that already exist so a stale "complete"
+    // from a previous run doesn't replay (and re-trigger the celebration)
+    // every time the page is opened or refreshed.
+    try {
+      const ev = await getJSON("/api/events?since=0");
+      if (ev && typeof ev.next === "number") state.eventsCursor = ev.next;
+      else if (ev && Array.isArray(ev.events)) state.eventsCursor = ev.events.length;
+    } catch (e) { /* keep cursor at 0; tick() will retry */ }
+    try {
+      const p = await getJSON("/api/progress");
+      // If the run was already complete before opening, suppress the overlay
+      // (still show counters) — only celebrate a completion that happens live.
+      const recv = num(p && p.avatar_responses_received, 0);
+      const total = num(p && p.avatar_responses_total, 0);
+      if (total > 0 && recv >= total) state.celebrated = true;
+      applyProgress(p);
+    } catch (e) { /* tick() will retry */ }
     setInterval(tick, POLL_MS);
   }
 
@@ -379,7 +429,40 @@
     renderAnalysis(a);
   }
 
+  const VARIANT_LABELS = { cerrado: "Cerrado (cuanti)", abierto: "Abierto (cuali)", ambos: "Ambos" };
+
+  function renderVariantComparison(vc, best) {
+    const box = $("#variant-comparison");
+    const verdict = $("#variant-verdict");
+    if (!box) return;
+    if (!vc || typeof vc !== "object") { box.innerHTML = ""; return; }
+    const order = ["cerrado", "abierto", "ambos"];
+    box.innerHTML = order.map((v) => {
+      const d = vc[v] || {};
+      const repr = isNum(d.mean_representativeness_score) ? pct(d.mean_representativeness_score) : "–";
+      const dir = isNum(d.mean_directional_agreement) ? pct(d.mean_directional_agreement) : "–";
+      const mae = isNum(d.mean_likert_mae) ? fmt(d.mean_likert_mae, 2) : "–";
+      const isBest = v === best;
+      return '<div class="variant-box' + (isBest ? " is-best" : "") + '">' +
+        (isBest ? '<div class="variant-crown">mejor</div>' : "") +
+        '<div class="variant-name">' + escapeHTML(VARIANT_LABELS[v] || v) + "</div>" +
+        '<div class="variant-num">' + repr + "</div>" +
+        '<div class="variant-lbl">representatividad</div>' +
+        '<div class="variant-extra">acuerdo ' + dir + " · MAE " + mae +
+        " · n=" + num(d.n, 0) + "</div></div>";
+    }).join("");
+    if (verdict) {
+      if (best && VARIANT_LABELS[best]) {
+        verdict.textContent = "La versión “" + VARIANT_LABELS[best] +
+          "” representa mejor a los estudiantes en promedio.";
+      } else {
+        verdict.textContent = "";
+      }
+    }
+  }
+
   function renderAnalysis(a) {
+    renderVariantComparison(a.variant_comparison, a.best_variant_overall);
     const o = a.overall || {};
     setText("#m-agree", isNum(o.mean_directional_agreement) ? pct(o.mean_directional_agreement) : "–");
     setText("#m-mae", isNum(o.mean_likert_mae) ? fmt(o.mean_likert_mae, 2) : "–");
@@ -545,24 +628,40 @@
 
   function initExplore() {
     const btn = $("#key-go");
-    const input = $("#key-input");
+    const select = $("#key-select");
     if (btn) btn.addEventListener("click", doLookup);
-    if (input) {
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") doLookup();
-      });
-    }
+    if (select) select.addEventListener("change", doLookup);
+    populateKeys();
+  }
+
+  async function populateKeys() {
+    if (PUBLIC_MODE) return;
+    const select = $("#key-select");
+    if (!select) return;
+    let data;
+    try {
+      data = await getJSON("/api/keys");
+    } catch (e) { return; }
+    if (data && data.public_mode) { PUBLIC_MODE = true; refreshExploreMode(); return; }
+    const keys = (data && Array.isArray(data.keys)) ? data.keys : [];
+    const current = select.value;
+    // Reconstruye solo si cambió el set de llaves (evita resetear la selección).
+    const existing = $$("#key-select option").map((o) => o.value).filter(Boolean);
+    if (existing.join("|") === keys.join("|")) return;
+    select.innerHTML = '<option value="">— Selecciona una llave —</option>' +
+      keys.map((k) => '<option value="' + escapeHTML(k) + '">' + escapeHTML(k) + "</option>").join("");
+    if (current && keys.indexOf(current) >= 0) select.value = current;
   }
 
   async function doLookup() {
     if (PUBLIC_MODE) return;
-    const input = $("#key-input");
+    const select = $("#key-select");
     const msg = $("#student-msg");
     const result = $("#student-result");
-    if (!input) return;
-    const key = String(input.value || "").trim().toUpperCase();
+    if (!select) return;
+    const key = String(select.value || "").trim().toUpperCase();
     if (!key) {
-      showStudentMsg("Ingresa una llave para buscar.");
+      showStudentMsg("Elige una llave de la lista.");
       return;
     }
     showStudentMsg("Buscando…");
@@ -597,39 +696,61 @@
 
   function renderStudent(d) {
     const result = $("#student-result");
-    setText("#s-score", isNum(d.score) ? pct(d.score) : "–");
     setText("#s-key", d.key || "");
-    setText("#s-summary", d.summary || "");
-    setText("#s-exact", isNum(d.exact_match_rate) ? pct(d.exact_match_rate) : "–");
-    setText("#s-mae", isNum(d.likert_mae) ? fmt(d.likert_mae, 2) : "–");
-    setText("#s-dir", isNum(d.directional_agreement) ? pct(d.directional_agreement) : "–");
-    setText("#s-conf", isNum(d.avatar_confidence_mean) ? pct(d.avatar_confidence_mean) : "–");
+    const variants = (d && d.variants) ? d.variants : {};
+    const order = ["cerrado", "abierto", "ambos"].filter((v) => variants[v]);
+    const best = d.best_variant && variants[d.best_variant] ? d.best_variant : (order[0] || null);
 
-    const tbody = $("#s-tbody");
-    if (tbody) {
-      const rows = Array.isArray(d.per_question) ? d.per_question : [];
-      if (!rows.length) {
-        tbody.innerHTML = '<tr><td colspan="5" class="qt-text empty-hint">Sin detalle por pregunta.</td></tr>';
-      } else {
-        tbody.innerHTML = rows.map((q) => {
-          const text = escapeHTML(q.text || q.question_id || "");
-          const human = q.human != null ? escapeHTML(q.human) : "–";
-          const avatar = q.avatar != null ? escapeHTML(q.avatar) : "–";
-          const agree = q.agree
-            ? '<span class="agree-yes">✓</span>'
-            : '<span class="agree-no">✗</span>';
-          const conf = isNum(q.confidence) ? pct(q.confidence) : "–";
-          return "<tr>" +
-            '<td class="qt-text">' + text + "</td>" +
-            "<td>" + human + "</td>" +
-            "<td>" + avatar + "</td>" +
-            "<td>" + agree + "</td>" +
-            "<td>" + conf + "</td>" +
-            "</tr>";
-        }).join("");
-      }
+    // Score chips per variant
+    const scoresBox = $("#s-variant-scores");
+    if (scoresBox) {
+      scoresBox.innerHTML = order.map((v) => {
+        const sv = variants[v] || {};
+        const s = isNum(sv.score) ? pct(sv.score) : "–";
+        return '<div class="vscore' + (v === best ? " is-best" : "") + '">' +
+          '<div class="vscore-num">' + s + "</div>" +
+          '<div class="vscore-lbl">' + escapeHTML(VARIANT_LABELS[v] || v) +
+          (v === best ? " ★" : "") + "</div></div>";
+      }).join("");
     }
+
+    // Toggle buttons
+    const toggle = $("#s-variant-toggle");
+    if (toggle) {
+      toggle.innerHTML = order.map((v) =>
+        '<button type="button" class="vbtn" data-variant="' + v + '">' +
+        escapeHTML(VARIANT_LABELS[v] || v) + "</button>").join("");
+      $$("#s-variant-toggle .vbtn").forEach((btn) => {
+        btn.addEventListener("click", () => showStudentVariant(variants, btn.getAttribute("data-variant")));
+      });
+    }
+
+    if (best) showStudentVariant(variants, best);
     if (result) result.hidden = false;
+  }
+
+  function showStudentVariant(variants, v) {
+    const sv = variants[v];
+    $$("#s-variant-toggle .vbtn").forEach((b) =>
+      b.classList.toggle("is-active", b.getAttribute("data-variant") === v));
+    setText("#s-summary", sv && sv.summary ? sv.summary : "");
+    const tbody = $("#s-tbody");
+    if (!tbody) return;
+    const rows = (sv && Array.isArray(sv.per_question)) ? sv.per_question : [];
+    if (!rows.length) {
+      tbody.innerHTML = '<tr><td colspan="5" class="qt-text empty-hint">Sin detalle por pregunta.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = rows.map((q) => {
+      const text = escapeHTML(q.text || q.question_id || "");
+      const human = q.human != null ? escapeHTML(q.human) : "–";
+      const avatar = q.avatar != null ? escapeHTML(q.avatar) : "–";
+      const agree = q.agree ? '<span class="agree-yes">✓</span>' : '<span class="agree-no">✗</span>';
+      const conf = isNum(q.confidence) ? pct(q.confidence) : "–";
+      return "<tr>" +
+        '<td class="qt-text">' + text + "</td><td>" + human + "</td><td>" + avatar +
+        "</td><td>" + agree + "</td><td>" + conf + "</td></tr>";
+    }).join("");
   }
 
   // ---------------------------------------------------------------

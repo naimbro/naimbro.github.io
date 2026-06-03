@@ -26,6 +26,14 @@ app = Flask(__name__, static_folder=None)
 PUBLIC_MODE = False
 
 
+@app.after_request
+def no_cache(resp):
+    # Evita que el navegador sirva versiones viejas del dashboard o datos en caché.
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    return resp
+
+
 @app.route("/")
 def index():
     return send_from_directory(str(C.DASHBOARD_DIR), "index.html")
@@ -66,6 +74,19 @@ def api_events():
 @app.route("/api/analysis")
 def api_analysis():
     return jsonify(C.read_json(C.ANALYSIS_PUBLIC, default={}) or {})
+
+
+@app.route("/api/keys")
+def api_keys():
+    # Lista de llaves para el dropdown de "Explorar". Oculto en modo público.
+    if PUBLIC_MODE:
+        return jsonify({"keys": [], "public_mode": True})
+    # Preferimos las llaves con resultados; si no hay análisis aún, usamos keys_master.
+    per_student = C.read_json(C.PER_STUDENT_PRIVATE, default={}) or {}
+    keys = sorted(per_student.keys())
+    if not keys:
+        keys = sorted(r["key"] for r in C.read_csv(C.KEYS_MASTER) if r.get("key"))
+    return jsonify({"keys": keys})
 
 
 @app.route("/api/student/<key>")

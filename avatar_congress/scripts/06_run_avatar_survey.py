@@ -16,11 +16,17 @@ Uso:
 
 import argparse
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C
+
+# Serializa las escrituras a disco (respuestas, eventos, progreso) cuando
+# los avatares corren en paralelo.
+_WRITE_LOCK = threading.Lock()
 
 
 def scored_questions(questions):
@@ -89,10 +95,11 @@ def clamp_conf(c):
     return max(0.0, min(1.0, c))
 
 
-def record_answer(key, q, value, confidence, rationale, model, delay):
+def record_answer(key, variant, q, value, confidence, rationale, model, delay):
     _, label_map = allowed_for(q)
     rec = {
         "key": key,
+        "variant": variant,
         "question_id": q["id"],
         "question_text": q["text"],
         "answer_value": value,
@@ -103,9 +110,10 @@ def record_answer(key, q, value, confidence, rationale, model, delay):
         "timestamp": C.now_iso(),
     }
     C.append_jsonl(C.AVATAR_RESPONSES, rec)
-    C.emit_event({"type": "avatar_answer", "key": key, "question_id": q["id"],
-                  "question_text": q["text"], "answer_value": value,
-                  "answer_label": rec["answer_label"], "confidence": rec["confidence"]})
+    C.emit_event({"type": "avatar_answer", "key": key, "variant": variant,
+                  "question_id": q["id"], "question_text": q["text"],
+                  "answer_value": value, "answer_label": rec["answer_label"],
+                  "confidence": rec["confidence"]})
     if delay:
         time.sleep(delay)
     return rec
@@ -117,8 +125,9 @@ def run_batch(llm, avatars, questions, delay, retries):
     qmap = {q["id"]: q for q in questions}
     total_answers = 0
     for av in avatars:
-        key = av["key"]
-        C.emit_event({"type": "avatar_start", "key": key})
+        key, variant = av["key"], av.get("variant", "ambos")
+        tag = f"{key}·{variant}"
+        C.emit_event({"type": "avatar_start", "key": key, "variant": variant})
         user = BATCH_INSTR.format(key=key, last=last_id, block=block)
         answers = None
         for attempt in range(retries + 1):
@@ -126,7 +135,7 @@ def run_batch(llm, avatars, questions, delay, retries):
                 parsed, raw = llm.complete_json(av["system_prompt"],
                                                 user + (FIX_SUFFIX if attempt else ""))
             except Exception as e:  # noqa
-                C.log(f"  {key}: error de transporte ({str(e)[:80]}), reintento…")
+                C.log(f"  {tag}: error de transporte ({str(e)[:80]}), reintento…")
                 time.sleep(2)
                 continue
             if parsed and isinstance(parsed.get("answers"), list):
@@ -134,10 +143,10 @@ def run_batch(llm, avatars, questions, delay, retries):
                 if all(qid in got for qid in qmap):
                     answers = got
                     break
-            C.log(f"  {key}: respuesta inválida o incompleta (intento {attempt+1})")
+            C.log(f"  {tag}: respuesta inválida o incompleta (intento {attempt+1})")
         if not answers:
-            C.log(f"  {key}: SALTADO tras reintentos (se registra error).")
-            C.emit_event({"type": "avatar_error", "key": key})
+            C.log(f"  {tag}: SALTADO tras reintentos (se registra error).")
+            C.emit_event({"type": "avatar_error", "key": key, "variant": variant})
             continue
         n_ok = 0
         for qid, q in qmap.items():
@@ -147,49 +156,67 @@ def run_batch(llm, avatars, questions, delay, retries):
                 # valor inválido: marcar neutral/baja confianza para no romper el flujo
                 val = 3 if q["type"] == "likert_1_5" else "A"
                 a["confidence"] = min(clamp_conf(a.get("confidence", 0.3)), 0.3)
-            record_answer(key, q, val, a.get("confidence", 0.5),
+            record_answer(key, variant, q, val, a.get("confidence", 0.5),
                           a.get("rationale_short", ""), llm.model, delay)
             n_ok += 1
             total_answers += 1
-        C.emit_event({"type": "avatar_done", "key": key})
+        C.emit_event({"type": "avatar_done", "key": key, "variant": variant})
         C.update_progress(avatar_responses_received=total_answers)
-        C.log(f"  {key}: {n_ok} respuestas")
+        C.log(f"  {tag}: {n_ok} respuestas")
     return total_answers
 
 
-def run_per_question(llm, avatars, questions, delay, retries):
-    total_answers = 0
-    for av in avatars:
-        key = av["key"]
-        C.emit_event({"type": "avatar_start", "key": key})
+def run_per_question(llm, avatars, questions, retries, concurrency=1):
+    """Streaming real: una llamada al LLM por pregunta. Los avatares se
+    procesan en paralelo (concurrency) para que sea rápido; dentro de cada
+    avatar las preguntas van en orden. Las escrituras van bajo lock."""
+    counter = {"n": 0}
+
+    def answer_one(av, q):
+        key, variant = av["key"], av.get("variant", "ambos")
+        if q["type"] == "likert_1_5":
+            qtext = (f"{q['text']}\nEscala 1-5: " +
+                     "; ".join(f"{i}={q['scale'][i]}" for i in range(1, 6)))
+        else:
+            qtext = f"{q['text']}\nA) {q['options']['A']}\nB) {q['options']['B']}"
+        user = PERQ_INSTR.format(q=qtext)
+        val, conf, rat = None, 0.5, ""
+        for attempt in range(retries + 1):
+            try:  # la llamada al LLM va FUERA del lock (corre en paralelo)
+                parsed, raw = llm.complete_json(av["system_prompt"],
+                                                user + (FIX_SUFFIX if attempt else ""))
+            except Exception as e:  # noqa
+                time.sleep(2); continue
+            if parsed:
+                val = coerce_value(q, parsed.get("answer_value"))
+                conf, rat = parsed.get("confidence", 0.5), parsed.get("rationale_short", "")
+                if val is not None:
+                    break
+        if val is None:
+            val = 3 if q["type"] == "likert_1_5" else "A"
+            conf = min(clamp_conf(conf), 0.3)
+        with _WRITE_LOCK:
+            record_answer(key, variant, q, val, conf, rat, llm.model, 0)
+            counter["n"] += 1
+            C.update_progress(avatar_responses_received=counter["n"])
+
+    def worker(av):
+        key, variant = av["key"], av.get("variant", "ambos")
+        with _WRITE_LOCK:
+            C.emit_event({"type": "avatar_start", "key": key, "variant": variant})
         for q in questions:
-            if q["type"] == "likert_1_5":
-                qtext = (f"{q['text']}\nEscala 1-5: " +
-                         "; ".join(f"{i}={q['scale'][i]}" for i in range(1, 6)))
-            else:
-                qtext = f"{q['text']}\nA) {q['options']['A']}\nB) {q['options']['B']}"
-            user = PERQ_INSTR.format(q=qtext)
-            val, conf, rat = None, 0.5, ""
-            for attempt in range(retries + 1):
-                try:
-                    parsed, raw = llm.complete_json(av["system_prompt"],
-                                                    user + (FIX_SUFFIX if attempt else ""))
-                except Exception as e:  # noqa
-                    time.sleep(2); continue
-                if parsed:
-                    val = coerce_value(q, parsed.get("answer_value"))
-                    conf, rat = parsed.get("confidence", 0.5), parsed.get("rationale_short", "")
-                    if val is not None:
-                        break
-            if val is None:
-                val = 3 if q["type"] == "likert_1_5" else "A"
-                conf = min(clamp_conf(conf), 0.3)
-            record_answer(key, q, val, conf, rat, llm.model, delay)
-            total_answers += 1
-            C.update_progress(avatar_responses_received=total_answers)
-        C.emit_event({"type": "avatar_done", "key": key})
-        C.log(f"  {key}: listo")
-    return total_answers
+            answer_one(av, q)
+        with _WRITE_LOCK:
+            C.emit_event({"type": "avatar_done", "key": key, "variant": variant})
+        C.log(f"  {key}·{variant}: listo ({counter['n']} respuestas acumuladas)")
+
+    if concurrency <= 1:
+        for av in avatars:
+            worker(av)
+    else:
+        with ThreadPoolExecutor(max_workers=concurrency) as ex:
+            list(ex.map(worker, avatars))
+    return counter["n"]
 
 
 def main():
@@ -204,34 +231,46 @@ def main():
     mode = args.mode or cfg.get("run", {}).get("mode", "batch")
     delay = float(cfg.get("llm", {}).get("event_delay_s", 0.35))
     retries = int(cfg.get("llm", {}).get("retries", 1))
+    concurrency = int(cfg.get("llm", {}).get("concurrency", 5))
 
     avatars = C.read_jsonl(C.AVATAR_PROMPTS)
     if not avatars:
         C.die(f"No hay avatares en {C.AVATAR_PROMPTS}. Corre 04_build_avatar_prompts.py primero.")
     if args.limit:
-        avatars = avatars[:args.limit]
+        # Limita por alumno (llave), conservando sus 3 variantes.
+        keep = []
+        seen = []
+        for av in avatars:
+            if av["key"] not in seen:
+                if len(seen) >= args.limit:
+                    continue
+                seen.append(av["key"])
+            keep.append(av)
+        avatars = keep
     questions = scored_questions(C.load_survey_questions())
+    n_keys = len({av["key"] for av in avatars})
 
     # Reset runtime para un stream limpio
     C.reset_runtime()
     if C.AVATAR_RESPONSES.exists():
         C.AVATAR_RESPONSES.unlink()
-    total_expected = len(avatars) * len(questions)
+    total_expected = len(avatars) * len(questions)   # incluye las 3 variantes
     C.update_progress(avatar_responses_received=0,
                       avatar_responses_total=total_expected,
-                      avatars_built=len(avatars),
+                      avatars_built=n_keys,
                       totals={"students": cfg.get("class", {}).get("n_students", 23),
                               "questions": len(questions)})
 
     llm = C.LLMClient(cfg)
-    C.log(f"Modo: {mode} · proveedor: {llm.provider} · modelo: {llm.model} · "
-          f"{len(avatars)} avatares × {len(questions)} preguntas = {total_expected} respuestas")
+    conc_note = f" · concurrencia {concurrency}" if mode == "per-question" else ""
+    C.log(f"Modo: {mode} · proveedor: {llm.provider} · modelo: {llm.model}{conc_note} · "
+          f"{n_keys} alumnos × 3 variantes × {len(questions)} preguntas = {total_expected} respuestas")
 
     t0 = time.time()
     if mode == "batch":
         total = run_batch(llm, avatars, questions, delay, retries)
     else:
-        total = run_per_question(llm, avatars, questions, delay, retries)
+        total = run_per_question(llm, avatars, questions, retries, concurrency=concurrency)
 
     C.emit_event({"type": "complete"})
     C.update_progress(avatar_responses_received=total)

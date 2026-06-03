@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Congreso de avatares</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <header class="topbar">
@@ -78,6 +78,10 @@
           <div class="celebration-pulse"></div>
           <div class="celebration-title">CONGRESO COMPLETO</div>
           <div id="celebration-sub" class="celebration-sub"></div>
+          <div class="celebration-actions">
+            <button id="celebration-analysis" class="btn btn-accent" type="button">Ver análisis &rarr;</button>
+            <button id="celebration-close" class="btn btn-ghost" type="button">Cerrar</button>
+          </div>
         </div>
       </div>
     </section>
@@ -89,6 +93,13 @@
       </div>
 
       <div id="analysis-content" hidden>
+        <div class="card variant-card">
+          <div class="section-title">¿Qué versión del avatar representa mejor?</div>
+          <p class="variant-sub">Cerrado (solo cuanti) vs. abierto (solo cuali) vs. ambos. Réplica de Park et al. (2024).</p>
+          <div id="variant-comparison" class="variant-grid"></div>
+          <div id="variant-verdict" class="variant-verdict"></div>
+        </div>
+
         <div class="headline-metrics">
           <div class="metric card">
             <div id="m-agree" class="metric-num">–</div>
@@ -152,9 +163,11 @@
 
       <div id="explore-private">
         <div class="card lookup-card">
-          <label for="key-input" class="lookup-label">Ingresa tu llave</label>
+          <label for="key-select" class="lookup-label">Elige tu llave</label>
           <div class="lookup-row">
-            <input id="key-input" class="lookup-input" type="text" placeholder="CONDOR-47" autocomplete="off" spellcheck="false">
+            <select id="key-select" class="lookup-input">
+              <option value="">— Selecciona una llave —</option>
+            </select>
             <button id="key-go" class="btn btn-accent">Ver</button>
           </div>
         </div>
@@ -163,23 +176,14 @@
 
         <div id="student-result" class="student-result" hidden>
           <div class="card student-head">
-            <div class="student-score">
-              <div id="s-score" class="student-score-num">–</div>
-              <div class="student-score-lbl">Representatividad</div>
-            </div>
-            <div class="student-meta">
-              <div id="s-key" class="student-key"></div>
-              <p id="s-summary" class="student-summary"></p>
-              <div class="student-stats">
-                <span>Match exacto: <b id="s-exact">–</b></span>
-                <span>Error Likert: <b id="s-mae">–</b></span>
-                <span>Acuerdo direccional: <b id="s-dir">–</b></span>
-                <span>Confianza media: <b id="s-conf">–</b></span>
-              </div>
-            </div>
+            <div id="s-key" class="student-key"></div>
+            <div class="student-score-lbl">Representatividad por versión del avatar</div>
+            <div id="s-variant-scores" class="variant-scores"></div>
+            <p id="s-summary" class="student-summary"></p>
           </div>
 
           <div class="card table-card">
+            <div class="variant-toggle" id="s-variant-toggle"></div>
             <table class="qtable">
               <thead>
                 <tr>
@@ -198,6 +202,6 @@
     </section>
   </main>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

@@ -59,25 +59,42 @@ modelo o modo).
 
 ---
 
+## Tres avatares por estudiante (el experimento)
+
+Inspirado en **Park et al. (2024), "Generative Agent Simulations of 1,000 People"**:
+las entrevistas cualitativas predicen a la persona mejor (0.85 normalizado en GSS)
+que los datos demográficos (0.71) o una descripción tipo "persona" (0.70).
+
+La ficha de entrenamiento mezcla preguntas **cerradas** (cuanti) y **abiertas**
+(cuali) emparejadas por tema. Con ellas se construyen **tres avatares por alumno**:
+
+- `cerrado` — solo respuestas cerradas (cuanti)
+- `abierto` — solo respuestas abiertas (cuali)
+- `ambos`   — todo
+
+Los tres responden la encuesta y se comparan contra la persona real. La hipótesis
+(replicando el paper): **abierto/ambos representan mejor que cerrado**. El dashboard
+muestra el resultado (pestaña "Análisis agregado" → "¿Qué versión representa mejor?").
+
 ## Selección de modelo LLM
 
-23 estudiantes × 16 preguntas. En **modo batch** son 23 requests (~1.3k tokens
-in / ~0.7k out cada uno): costo total de **centavos**, muy por debajo de los
-USD 10 de presupuesto.
+25 estudiantes × **3 variantes** × 16 preguntas = 1.200 llamadas en **per-question**.
 
-| Proveedor | Modelo | Costo estimado total | Velocidad | Pros | Contras | Decisión |
-|---|---|---:|---|---|---|---|
-| OpenAI | `gpt-4o-mini` | ~US$0.02 | Rápido | Barato, buen español, JSON mode nativo | Menos "razonador" que modelos grandes | **Elegido (default)** |
-| Anthropic | `claude-haiku-4-5` | ~US$0.10 | Rápido | Excelente español, sólido siguiendo instrucciones | Un poco más caro | Alternativa |
-| OpenAI | `gpt-4o` / `gpt-5` | ~US$0.30–1 | Medio | Mejor matiz | Innecesario para esta tarea | No |
+| Proveedor | Modelo | Costo estimado (25 alumnos) | Velocidad | Decisión |
+|---|---|---:|---|---|
+| Anthropic | `claude-haiku-4-5` | ~US$1.3 | Rápido | **Elegido (default)** |
+| OpenAI | `gpt-4o-mini` | ~US$0.06 | Muy rápido | Alternativa más barata |
+| Anthropic | `claude-opus-4-8` | ~US$18 (¡sobre presupuesto!) | Lento | Solo con prompt caching |
 
 Cambiar de modelo: edita `llm.provider` y `llm.model` en `config.local.yaml`.
+Todo está muy por debajo de US$10 salvo Opus en per-question.
 
-**Batch vs per-question** (en `run.mode` o con `--mode`):
-- `batch` (default): 1 request por estudiante (todas las preguntas juntas).
-  Más barato y rápido. El dashboard igual anima las respuestas una a una.
-- `per-question`: 1 request por estudiante-pregunta (368 requests). Más lento;
-  úsalo solo si quieres aislar cada respuesta.
+**Streaming vs batch** (en `run.mode` o con `--mode`):
+- `per-question` (default): 1 request por avatar-pregunta — **streaming real**, cada
+  respuesta llega al dashboard apenas se genera. Los avatares corren en paralelo
+  (`llm.concurrency`, default 6) para que sea rápido y el dashboard se vea vivo.
+- `batch`: 1 request por avatar (todas las preguntas juntas). Más barato pero las
+  respuestas se animan después, no en vivo.
 
 ---
 
@@ -134,14 +151,17 @@ python avatar_congress/scripts/serve_dashboard.py
 En **otra** terminal, lanza a los avatares a responder:
 
 ```bash
-python avatar_congress/scripts/06_run_avatar_survey.py --mode batch
+python avatar_congress/scripts/06_run_avatar_survey.py
+#    (usa per-question/streaming + concurrencia desde config.local.yaml)
 ```
 
 Proyecta `http://localhost:8000`. Verás las respuestas llegar en vivo
-(con sonido si activas el botón "Activar sonido"). Mientras tanto, los humanos
-responden la encuesta.
+(varios avatares a la vez, con sonido si activas "Activar sonido"). Cada alumno
+genera 3 avatares (cerrado/abierto/ambos). Mientras tanto, los humanos responden
+la encuesta.
 
-> Prueba en seco (sin gastar mucho): `... 06_run_avatar_survey.py --limit 3`.
+> Prueba en seco (sin gastar mucho): `... 06_run_avatar_survey.py --limit 3`
+> (procesa solo 3 alumnos, con sus 3 variantes).
 
 ## Cuando todos respondan la encuesta humana
 

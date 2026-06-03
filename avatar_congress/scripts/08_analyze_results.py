@@ -2,22 +2,36 @@
 08_analyze_results.py — Congreso de avatares.
 
 Compares each student's own survey answers ("human") against the answers
-produced by their trained LLM "avatar", and computes per-student and aggregate
-representativeness metrics.
+produced by their trained LLM "avatar". The pipeline now builds THREE avatar
+variants per student:
+  - cerrado : trained on the closed/quantitative training answers only.
+  - abierto : trained on the open/qualitative training answers only.
+  - ambos   : trained on both.
+Each variant answers the SAME 16-question survey. We compare each variant
+against the single ("human") answer set for that key to see which
+representation is most faithful — replicating Park et al. (2024), which found
+that qualitative interviews predict people better than closed surveys.
+
+There is exactly ONE human answer set per key, compared against ALL THREE
+variants.
 
 Inputs (via common.py path constants):
   - C.HUMAN_RAW         : wide CSV, one row per student key, columns Q01..Q17.
-  - C.AVATAR_RESPONSES  : JSONL, one record per (key, question_id).
+  - C.AVATAR_RESPONSES  : JSONL, one record per (key, variant, question_id).
+                          Each record carries a "variant" field.
   - survey questions    : C.load_survey_questions().
 
 Outputs:
-  - C.ANALYSIS_PRIVATE   (CSV)  : one row per student key, scalar metrics.
-  - C.PER_STUDENT_PRIVATE (JSON): dict keyed by student key, with per-question
-                                  detail and a short Spanish summary.
-  - C.ANALYSIS_PUBLIC    (JSON) : aggregate object for the dashboard. Contains
-                                  NO individual human answers — only aggregates
-                                  plus key->score lists (scores only).
-  - C.MATCHED_PRIVATE    (CSV)  : long format (key, question_id, ...) for debug.
+  - C.ANALYSIS_PRIVATE    (CSV) : one row per (key, variant), scalar metrics.
+  - C.PER_STUDENT_PRIVATE (JSON): dict keyed by student key, with each variant's
+                                  per-question detail and a short Spanish
+                                  summary, plus the best_variant for that key.
+  - C.ANALYSIS_PUBLIC     (JSON): aggregate object for the dashboard. Contains
+                                  NO individual human answers — only aggregates,
+                                  the headline variant_comparison, and key->score
+                                  lists (scores only). Detailed charts are
+                                  computed on a single REFERENCE variant.
+  - C.MATCHED_PRIVATE     (CSV) : long format (key, variant, question_id, ...).
 
 Privacy: only the public aggregate is safe to publish. It never includes any
 individual human answer or free text — just aggregate stats and pseudonymous
@@ -32,6 +46,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import common as C  # noqa: E402
+
+
+# Avatar variants, in display order. "ambos" is the default reference variant
+# used for the detailed (per-question / scatter / bias) charts.
+VARIANTS = ["cerrado", "abierto", "ambos"]
+REFERENCE_VARIANT = "ambos"
 
 
 # ── Small stdlib stats helpers ─────────────────────────────────
@@ -125,7 +145,8 @@ def _load_questions():
 
 def _avatar_lookup(avatar_rows):
     """
-    Build {key: {question_id: record}} from the avatar responses JSONL.
+    Build {key: {variant: {question_id: record}}} from the avatar responses JSONL.
+    Records carry a "variant" field; unknown/missing variants are skipped.
     Ignores malformed records (logs a warning).
     """
     by_key = {}
@@ -133,11 +154,12 @@ def _avatar_lookup(avatar_rows):
     for rec in avatar_rows:
         try:
             key = rec.get("key")
+            variant = rec.get("variant")
             qid = rec.get("question_id")
-            if not key or not qid:
+            if not key or not qid or variant not in VARIANTS:
                 bad += 1
                 continue
-            by_key.setdefault(key, {})[qid] = rec
+            by_key.setdefault(key, {}).setdefault(variant, {})[qid] = rec
         except Exception as e:  # noqa: BLE001
             bad += 1
             C.log(f"AVISO: registro de avatar inválido omitido ({e}).")
@@ -175,14 +197,25 @@ def _avatar_value(question, rec):
     return None, conf
 
 
-# ── Per-student analysis ───────────────────────────────────────
+# ── Per-(student, variant) analysis ────────────────────────────
 
-def _summary_text(score, dir_agree, likert_mae):
+# Spanish labels for each variant (for the summary template).
+_VARIANT_LABEL = {
+    "cerrado": "entrenado solo con tus respuestas cerradas (cuantitativas)",
+    "abierto": "entrenado solo con tus respuestas abiertas (cualitativas)",
+    "ambos": "entrenado con tus respuestas cerradas y abiertas",
+}
+
+
+def _summary_text(variant, score, dir_agree, likert_mae):
     """
     Spanish 1-2 sentence summary built from the numbers (no LLM call).
+    Mentions which variant this is.
     """
+    label = _VARIANT_LABEL.get(variant, f"variante {variant}")
     if score is None:
-        return "No hubo suficientes respuestas comparables para evaluar tu avatar."
+        return (f"El avatar {label} no tuvo suficientes respuestas comparables "
+                f"para evaluarlo.")
     pct = round(score * 100)
     if score >= 0.8:
         quality = "representó muy bien tus posiciones"
@@ -192,10 +225,11 @@ def _summary_text(score, dir_agree, likert_mae):
         quality = "representó parcialmente tus posiciones"
     else:
         quality = "se distanció bastante de tus posiciones"
-    parts = [f"Tu avatar {quality} (puntaje de representatividad {pct}%)."]
+    parts = [f"El avatar {label} {quality} "
+             f"(puntaje de representatividad {pct}%)."]
     if dir_agree is not None:
         da = round(dir_agree * 100)
-        parts.append(f"Coincidió en la dirección de tu respuesta en {da}% de las preguntas")
+        parts.append(f" Coincidió en la dirección de tu respuesta en {da}% de las preguntas")
         if likert_mae is not None:
             parts.append(f", con un error promedio de {round(likert_mae, 2)} puntos en las escalas Likert.")
         else:
@@ -203,10 +237,12 @@ def _summary_text(score, dir_agree, likert_mae):
     return "".join(parts)
 
 
-def analyze_student(key, human_row, avatar_q, scored_questions):
+def analyze_variant(key, variant, human_row, avatar_q, scored_questions):
     """
-    Compute all per-student metrics for one matched key.
-    Returns (scalar_row, per_student_obj, matched_long_rows).
+    Compute all metrics for one (key, variant) pair.
+    `avatar_q` is {question_id: record} for THIS variant.
+    Returns (scalar_row, variant_obj, long_rows, extra) or None if the variant
+    has no comparable answers at all.
     """
     fc_exact = []          # forced-choice exact matches (bool)
     likert_abs_err = []    # |human - avatar| per likert
@@ -229,7 +265,7 @@ def analyze_student(key, human_row, avatar_q, scored_questions):
         av, conf = _avatar_value(q, rec)
 
         if hv is None or av is None:
-            # one side missing: skip this question for this student
+            # one side missing: skip this question for this (key, variant)
             continue
 
         n_compared += 1
@@ -268,6 +304,7 @@ def analyze_student(key, human_row, avatar_q, scored_questions):
         })
         long_rows.append({
             "key": key,
+            "variant": variant,
             "question_id": qid,
             "type": q["type"],
             "human": hv,
@@ -275,6 +312,10 @@ def analyze_student(key, human_row, avatar_q, scored_questions):
             "agree": bool(agree),
             "confidence": "" if conf is None else conf,
         })
+
+    if n_compared == 0:
+        # No comparable answers for this variant: skip gracefully.
+        return None
 
     exact_match_rate = _mean(fc_exact)
     likert_mae = _mean(likert_abs_err)
@@ -302,6 +343,7 @@ def analyze_student(key, human_row, avatar_q, scored_questions):
 
     scalar_row = {
         "key": key,
+        "variant": variant,
         "n_questions_compared": n_compared,
         "exact_match_rate": _round(exact_match_rate),
         "likert_mae": _round(likert_mae),
@@ -309,50 +351,97 @@ def analyze_student(key, human_row, avatar_q, scored_questions):
         "directional_agreement": _round(directional_agreement),
         "avatar_confidence_mean": _round(avatar_confidence_mean),
         "representativeness_score": rep_score,
-        "moderation_bias": _round(moderation_bias),
-        "technocratic_human": _round(_mean(tech_h)),
-        "technocratic_avatar": _round(_mean(tech_a)),
-        "pro_regulation_human": _round(_mean(proreg_h)),
-        "pro_regulation_avatar": _round(_mean(proreg_a)),
     }
 
-    per_student_obj = {
+    variant_obj = {
         "score": rep_score,
         "exact_match_rate": _round(exact_match_rate),
         "likert_mae": _round(likert_mae),
         "directional_agreement": _round(directional_agreement),
         "avatar_confidence_mean": _round(avatar_confidence_mean),
-        "summary": _summary_text(rep_score, directional_agreement, likert_mae),
+        "summary": _summary_text(variant, rep_score, directional_agreement, likert_mae),
         "per_question": per_q,
     }
 
-    return scalar_row, per_student_obj, long_rows, {
+    extra = {
         "tech_h": tech_h, "tech_a": tech_a,
         "proreg_h": proreg_h, "proreg_a": proreg_a,
         "moderation_bias": moderation_bias,
     }
 
+    return scalar_row, variant_obj, long_rows, extra
+
 
 # ── Aggregate analysis ─────────────────────────────────────────
 
-def build_aggregate(scored_questions, scalar_rows, matched, avatar_lookup,
-                    human_by_key):
+def _variant_comparison(scalar_rows):
+    """
+    Headline experiment result: for each variant, mean of the key scalars over
+    the students that have that variant (nulls ignored). This is what tells us
+    which representation (cerrado / abierto / ambos) predicts people best.
+    """
+    out = {}
+    for variant in VARIANTS:
+        rows = [r for r in scalar_rows if r["variant"] == variant]
+        out[variant] = {
+            "n": len(rows),
+            "mean_directional_agreement":
+                _round(_mean([r["directional_agreement"] for r in rows])),
+            "mean_likert_mae":
+                _round(_mean([r["likert_mae"] for r in rows])),
+            "mean_representativeness_score":
+                _round(_mean([r["representativeness_score"] for r in rows])),
+            "mean_exact_match_rate":
+                _round(_mean([r["exact_match_rate"] for r in rows])),
+        }
+    return out
+
+
+def _best_variant_overall(variant_comparison):
+    """Variant with the highest mean_representativeness_score (None-safe)."""
+    best = None
+    best_score = None
+    for variant in VARIANTS:
+        s = variant_comparison.get(variant, {}).get("mean_representativeness_score")
+        if s is None:
+            continue
+        if best_score is None or s > best_score:
+            best_score = s
+            best = variant
+    return best
+
+
+def build_aggregate(scored_questions, scalar_rows, ref_variant, ref_keys,
+                    avatar_lookup, human_by_key, n_students_matched):
     """
     Build the public aggregate object. Uses only per-question pooled stats and
-    per-student scalars — no individual answers leak into the output.
+    per-(key,variant) scalars — no individual answers leak into the output.
+
+    Detailed per-question / scatter / bias / confidence charts are computed on a
+    single REFERENCE variant (`ref_variant`, over `ref_keys`) so the dashboard
+    has one coherent set of figures. The headline variant_comparison covers all
+    three variants.
     """
-    n_students = len(scalar_rows)
     n_scored = len(scored_questions)
 
+    variant_comparison = _variant_comparison(scalar_rows)
+    best_variant = _best_variant_overall(variant_comparison)
+
+    # Scalars restricted to the reference variant (for "overall" and key lists).
+    ref_scalars = [r for r in scalar_rows if r["variant"] == ref_variant]
+
     overall = {
-        "mean_exact_match_rate": _round(_mean([r["exact_match_rate"] for r in scalar_rows])),
-        "mean_likert_mae": _round(_mean([r["likert_mae"] for r in scalar_rows])),
-        "mean_likert_rmse": _round(_mean([r["likert_rmse"] for r in scalar_rows])),
-        "mean_directional_agreement": _round(_mean([r["directional_agreement"] for r in scalar_rows])),
-        "mean_representativeness_score": _round(_mean([r["representativeness_score"] for r in scalar_rows])),
+        "mean_exact_match_rate": _round(_mean([r["exact_match_rate"] for r in ref_scalars])),
+        "mean_likert_mae": _round(_mean([r["likert_mae"] for r in ref_scalars])),
+        "mean_likert_rmse": _round(_mean([r["likert_rmse"] for r in ref_scalars])),
+        "mean_directional_agreement": _round(_mean([r["directional_agreement"] for r in ref_scalars])),
+        "mean_representativeness_score": _round(_mean([r["representativeness_score"] for r in ref_scalars])),
     }
 
-    # Per-question pooled stats across all matched students.
+    def _ref_rec(key, qid):
+        return avatar_lookup.get(key, {}).get(ref_variant, {}).get(qid)
+
+    # Per-question pooled stats across reference-variant students.
     per_question = []
     scatter_likert = []
     forced_support = []
@@ -361,9 +450,9 @@ def build_aggregate(scored_questions, scalar_rows, matched, avatar_lookup,
         humans, avatars = [], []
         exact_hits = []
         dir_hits = []
-        for key in matched:
+        for key in ref_keys:
             hv = _human_value(q, human_by_key[key])
-            av, _ = _avatar_value(q, avatar_lookup.get(key, {}).get(qid))
+            av, _ = _avatar_value(q, _ref_rec(key, qid))
             if hv is None or av is None:
                 continue
             humans.append(hv)
@@ -429,22 +518,56 @@ def build_aggregate(scored_questions, scalar_rows, matched, avatar_lookup,
         [s["human_support_A"] for s in forced_support],
     )
 
-    # Biases averaged across students.
+    # Biases averaged across reference-variant students. Recomputed per-student
+    # from the reference variant's answers (technocratic / pro_regulation indices
+    # and moderation bias).
+    mod_biases, tech_h_means, tech_a_means = [], [], []
+    proreg_h_means, proreg_a_means = [], []
+    for key in ref_keys:
+        h_lik, a_lik = [], []
+        th, ta, ph, pa = [], [], [], []
+        for q in scored_questions:
+            if q["type"] != "likert_1_5":
+                continue
+            qid = q["id"]
+            hv = _human_value(q, human_by_key[key])
+            av, _ = _avatar_value(q, _ref_rec(key, qid))
+            if hv is None or av is None:
+                continue
+            h_lik.append(hv)
+            a_lik.append(av)
+            idx = q.get("indices") or []
+            if "technocratic" in idx:
+                th.append(hv)
+                ta.append(av)
+            if "pro_regulation" in idx:
+                ph.append(hv)
+                pa.append(av)
+        if h_lik:
+            mb_h = _mean([abs(v - 3) for v in h_lik])
+            mb_a = _mean([abs(v - 3) for v in a_lik])
+            mod_biases.append(mb_h - mb_a)
+        tech_h_means.append(_mean(th))
+        tech_a_means.append(_mean(ta))
+        proreg_h_means.append(_mean(ph))
+        proreg_a_means.append(_mean(pa))
+
     biases = {
-        "moderation_bias_mean": _round(_mean([r["moderation_bias"] for r in scalar_rows])),
+        "moderation_bias_mean": _round(_mean(mod_biases)),
         "technocratic": {
-            "human": _round(_mean([r["technocratic_human"] for r in scalar_rows])),
-            "avatar": _round(_mean([r["technocratic_avatar"] for r in scalar_rows])),
+            "human": _round(_mean(tech_h_means)),
+            "avatar": _round(_mean(tech_a_means)),
         },
         "pro_regulation": {
-            "human": _round(_mean([r["pro_regulation_human"] for r in scalar_rows])),
-            "avatar": _round(_mean([r["pro_regulation_avatar"] for r in scalar_rows])),
+            "human": _round(_mean(proreg_h_means)),
+            "avatar": _round(_mean(proreg_a_means)),
         },
     }
 
-    # confidence_vs_accuracy: bucket every scored avatar answer by confidence,
-    # report accuracy per bucket. Accuracy = exact match (integer for likert,
-    # A/B for forced). This checks calibration: are confident answers righter?
+    # confidence_vs_accuracy: bucket every scored reference-variant avatar answer
+    # by confidence, report accuracy per bucket. Accuracy = exact match (integer
+    # for likert, A/B for forced). This checks calibration: are confident answers
+    # righter?
     #
     # F1 note: for forced-choice we deliberately use accuracy, not F1. With two
     # mutually exclusive, jointly exhaustive binary categories (A vs B), the
@@ -456,10 +579,10 @@ def build_aggregate(scored_questions, scalar_rows, matched, avatar_lookup,
         "mid": {"n": 0, "hits": 0},
         "high": {"n": 0, "hits": 0},
     }
-    for key in matched:
+    for key in ref_keys:
         for q in scored_questions:
             qid = q["id"]
-            rec = avatar_lookup.get(key, {}).get(qid)
+            rec = _ref_rec(key, qid)
             hv = _human_value(q, human_by_key[key])
             av, conf = _avatar_value(q, rec)
             if hv is None or av is None or conf is None:
@@ -478,16 +601,19 @@ def build_aggregate(scored_questions, scalar_rows, matched, avatar_lookup,
         acc = (d["hits"] / d["n"]) if d["n"] else None
         confidence_vs_accuracy[name] = {"n": d["n"], "accuracy": _round(acc)}
 
-    # key -> score lists (scores only; pseudonymous keys are OK to publish).
+    # key -> score lists (reference variant; scores only; pseudonymous keys OK).
     scored_keys = [{"key": r["key"], "score": r["representativeness_score"]}
-                   for r in scalar_rows if r["representativeness_score"] is not None]
+                   for r in ref_scalars if r["representativeness_score"] is not None]
     scored_keys_sorted = sorted(scored_keys, key=lambda x: x["score"], reverse=True)
     top_keys = scored_keys_sorted[:5]
     least_keys = sorted(scored_keys, key=lambda x: x["score"])[:5]
 
     agg = {
-        "n_students_matched": n_students,
+        "n_students_matched": n_students_matched,
         "n_questions_scored": n_scored,
+        "reference_variant": ref_variant,
+        "variant_comparison": variant_comparison,
+        "best_variant_overall": best_variant,
         "overall": overall,
         "per_question": per_question,
         "most_represented_question": most_rep,
@@ -505,6 +631,30 @@ def build_aggregate(scored_questions, scalar_rows, matched, avatar_lookup,
     return agg
 
 
+# ── Output field definitions ───────────────────────────────────
+
+ANALYSIS_PRIVATE_FIELDS = [
+    "key", "variant", "n_questions_compared", "exact_match_rate", "likert_mae",
+    "likert_rmse", "directional_agreement", "avatar_confidence_mean",
+    "representativeness_score",
+]
+
+MATCHED_PRIVATE_FIELDS = [
+    "key", "variant", "question_id", "type", "human", "avatar", "agree",
+    "confidence",
+]
+
+
+def _empty_variant_comparison():
+    return {v: {
+        "n": 0,
+        "mean_directional_agreement": None,
+        "mean_likert_mae": None,
+        "mean_representativeness_score": None,
+        "mean_exact_match_rate": None,
+    } for v in VARIANTS}
+
+
 # ── Empty / placeholder output ─────────────────────────────────
 
 def write_empty_outputs(scored_questions):
@@ -513,6 +663,9 @@ def write_empty_outputs(scored_questions):
     agg = {
         "n_students_matched": 0,
         "n_questions_scored": n_scored,
+        "reference_variant": REFERENCE_VARIANT,
+        "variant_comparison": _empty_variant_comparison(),
+        "best_variant_overall": None,
         "overall": {
             "mean_exact_match_rate": None,
             "mean_likert_mae": None,
@@ -541,17 +694,10 @@ def write_empty_outputs(scored_questions):
         "least_representative_keys": [],
         "updated_at": C.now_iso(),
     }
-    fieldnames = [
-        "key", "n_questions_compared", "exact_match_rate", "likert_mae",
-        "likert_rmse", "directional_agreement", "avatar_confidence_mean",
-        "representativeness_score", "moderation_bias", "technocratic_human",
-        "technocratic_avatar", "pro_regulation_human", "pro_regulation_avatar",
-    ]
-    C.write_csv(C.ANALYSIS_PRIVATE, [], fieldnames)
+    C.write_csv(C.ANALYSIS_PRIVATE, [], ANALYSIS_PRIVATE_FIELDS)
     C.write_json(C.PER_STUDENT_PRIVATE, {})
     C.write_json(C.ANALYSIS_PUBLIC, agg)
-    C.write_csv(C.MATCHED_PRIVATE, [],
-                ["key", "question_id", "type", "human", "avatar", "agree", "confidence"])
+    C.write_csv(C.MATCHED_PRIVATE, [], MATCHED_PRIVATE_FIELDS)
     C.update_progress(matches_complete=0)
 
 
@@ -561,6 +707,7 @@ def main():
     C.ensure_dirs()
     scored_questions, _q_by_id = _load_questions()
     C.log(f"Preguntas evaluables (scored): {len(scored_questions)}")
+    C.log(f"Variantes de avatar: {', '.join(VARIANTS)}")
 
     human_rows = C.read_csv(C.HUMAN_RAW)
     avatar_rows = C.read_jsonl(C.AVATAR_RESPONSES)
@@ -575,11 +722,12 @@ def main():
             continue
         human_by_key[key] = row
 
+    # {key: {variant: {qid: record}}}
     avatar_lookup = _avatar_lookup(avatar_rows)
 
-    # Matched = keys present in BOTH human and avatar data.
+    # Matched keys = present in human data AND with at least one avatar variant.
     matched_keys = sorted(set(human_by_key) & set(avatar_lookup))
-    C.log(f"Estudiantes con datos en ambos lados (matched): {len(matched_keys)}")
+    C.log(f"Estudiantes con datos humanos + al menos una variante: {len(matched_keys)}")
 
     if not matched_keys:
         C.log("No hay datos emparejados (humano + avatar). Escribiendo salidas vacías.")
@@ -587,60 +735,107 @@ def main():
         C.log("Listo (sin datos). Salida exitosa.")
         return
 
-    scalar_rows = []
-    per_student = {}
+    scalar_rows = []        # one per (key, variant) with valid metrics
+    per_student = {}        # key -> {best_variant, variants:{...}}
     long_rows = []
-    # `matched` mirrors matched_keys but as a dict so build_aggregate can iterate.
-    matched = {}
+    matched_keys_with_data = set()  # keys that produced >=1 valid variant
 
     for key in matched_keys:
-        try:
-            scalar, obj, longs, _extra = analyze_student(
-                key, human_by_key[key], avatar_lookup.get(key, {}), scored_questions)
-        except Exception as e:  # noqa: BLE001
-            C.log(f"AVISO: fallo al analizar a {key} ({e}); se omite.")
+        human_row = human_by_key[key]
+        variant_objs = {}
+        variant_scores = {}
+        for variant in VARIANTS:
+            avatar_q = avatar_lookup.get(key, {}).get(variant)
+            if not avatar_q:
+                # This variant has no data for this key: skip gracefully.
+                continue
+            try:
+                result = analyze_variant(
+                    key, variant, human_row, avatar_q, scored_questions)
+            except Exception as e:  # noqa: BLE001
+                C.log(f"AVISO: fallo al analizar {key}/{variant} ({e}); se omite.")
+                continue
+            if result is None:
+                # No comparable answers for this variant.
+                continue
+            scalar, vobj, longs, _extra = result
+            scalar_rows.append(scalar)
+            long_rows.extend(longs)
+            variant_objs[variant] = vobj
+            variant_scores[variant] = scalar["representativeness_score"]
+
+        if not variant_objs:
+            # No variant produced valid metrics for this key.
             continue
-        scalar_rows.append(scalar)
-        per_student[key] = obj
-        long_rows.extend(longs)
-        matched[key] = True
+
+        matched_keys_with_data.add(key)
+
+        # best_variant: highest representativeness_score among variants that have
+        # a non-null score; fall back to first available variant if all null.
+        scored_variants = {v: s for v, s in variant_scores.items() if s is not None}
+        if scored_variants:
+            best_variant = max(scored_variants, key=scored_variants.get)
+        else:
+            best_variant = next(iter(variant_objs))
+        per_student[key] = {
+            "best_variant": best_variant,
+            "variants": variant_objs,
+        }
+
+    n_students_matched = len(matched_keys_with_data)
 
     if not scalar_rows:
-        C.log("Ningún estudiante produjo métricas válidas. Escribiendo salidas vacías.")
+        C.log("Ningún (estudiante, variante) produjo métricas válidas. "
+              "Escribiendo salidas vacías.")
         write_empty_outputs(scored_questions)
         return
 
-    agg = build_aggregate(scored_questions, scalar_rows, matched,
-                          avatar_lookup, human_by_key)
+    # Reference variant for the detailed charts: prefer REFERENCE_VARIANT
+    # ("ambos"); fall back to whichever variant actually has data.
+    ref_variant = REFERENCE_VARIANT
+    ref_keys = sorted(k for k in matched_keys_with_data
+                      if ref_variant in avatar_lookup.get(k, {})
+                      and any(r["key"] == k and r["variant"] == ref_variant
+                              for r in scalar_rows))
+    if not ref_keys:
+        # Fall back to the variant with the most students.
+        counts = {}
+        for r in scalar_rows:
+            counts[r["variant"]] = counts.get(r["variant"], 0) + 1
+        ref_variant = max(counts, key=counts.get)
+        ref_keys = sorted(r["key"] for r in scalar_rows if r["variant"] == ref_variant)
+        C.log(f"AVISO: '{REFERENCE_VARIANT}' sin datos; usando variante de "
+              f"referencia '{ref_variant}'.")
+
+    agg = build_aggregate(scored_questions, scalar_rows, ref_variant, ref_keys,
+                          avatar_lookup, human_by_key, n_students_matched)
 
     # ── Write outputs ──
-    fieldnames = [
-        "key", "n_questions_compared", "exact_match_rate", "likert_mae",
-        "likert_rmse", "directional_agreement", "avatar_confidence_mean",
-        "representativeness_score", "moderation_bias", "technocratic_human",
-        "technocratic_avatar", "pro_regulation_human", "pro_regulation_avatar",
-    ]
-    C.write_csv(C.ANALYSIS_PRIVATE, scalar_rows, fieldnames)
+    C.write_csv(C.ANALYSIS_PRIVATE, scalar_rows, ANALYSIS_PRIVATE_FIELDS)
     C.write_json(C.PER_STUDENT_PRIVATE, per_student)
     C.write_json(C.ANALYSIS_PUBLIC, agg)
-    C.write_csv(C.MATCHED_PRIVATE, long_rows,
-                ["key", "question_id", "type", "human", "avatar", "agree", "confidence"])
-    C.update_progress(matches_complete=len(scalar_rows))
+    C.write_csv(C.MATCHED_PRIVATE, long_rows, MATCHED_PRIVATE_FIELDS)
+    C.update_progress(matches_complete=n_students_matched)
 
     # ── Human-readable summary (aggregates only; no individual answers) ──
-    o = agg["overall"]
+    vc = agg["variant_comparison"]
     C.log("── Resumen agregado ──")
     C.log(f"Estudiantes emparejados: {agg['n_students_matched']}")
     C.log(f"Preguntas evaluadas: {agg['n_questions_scored']}")
-    C.log(f"Representatividad media: {o['mean_representativeness_score']}")
-    C.log(f"Acuerdo direccional medio: {o['mean_directional_agreement']}")
-    C.log(f"MAE Likert medio: {o['mean_likert_mae']} | RMSE: {o['mean_likert_rmse']}")
-    C.log(f"R² Likert (avatar->humano): {agg['aggregate_r2_likert']} | "
-          f"R² forced: {agg['aggregate_r2_forced']}")
-    if agg["most_represented_question"]:
-        C.log(f"Pregunta mejor representada: {agg['most_represented_question']['question_id']}")
-    if agg["least_represented_question"]:
-        C.log(f"Pregunta con mayor distancia: {agg['least_represented_question']['question_id']}")
+    C.log(f"Variante de referencia (gráficos): {agg['reference_variant']}")
+    C.log("Comparación de variantes (representatividad media | acuerdo "
+          "direccional | MAE Likert | exact-match | n):")
+    for variant in VARIANTS:
+        d = vc[variant]
+        C.log(f"  {variant:8s}: rep={d['mean_representativeness_score']} | "
+              f"dir={d['mean_directional_agreement']} | "
+              f"mae={d['mean_likert_mae']} | "
+              f"exact={d['mean_exact_match_rate']} | n={d['n']}")
+    C.log(f"Mejor variante (representatividad media): {agg['best_variant_overall']}")
+    o = agg["overall"]
+    C.log(f"[ref={ref_variant}] R² Likert: {agg['aggregate_r2_likert']} | "
+          f"R² forced: {agg['aggregate_r2_forced']} | "
+          f"rep media: {o['mean_representativeness_score']}")
     C.log("Listo.")
 
 
