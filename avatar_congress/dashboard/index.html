@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Congreso de avatares</title>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <header class="topbar">
@@ -129,6 +129,15 @@
           <div id="chart-scatter" class="chart-wrap"></div>
         </div>
 
+        <div class="card chart-card">
+          <div class="section-title">Distribución por pregunta: humanos vs. avatares</div>
+          <p class="variant-sub">Cómo se reparten las respuestas en cada pregunta.
+            <span class="dist-legend"><span class="dl-h"></span> humanos</span>
+            <span class="dist-legend"><span class="dl-a"></span> avatares</span>
+          </p>
+          <div id="dist-grid" class="dist-grid"></div>
+        </div>
+
         <div class="callouts">
           <div class="card callout callout-good">
             <div class="callout-tag">Pregunta mejor representada</div>
@@ -202,6 +211,6 @@
     </section>
   </main>
 
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

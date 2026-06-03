@@ -51,8 +51,8 @@ questions:
 
   - id: Q04
     type: likert_1_5
-    theme: "Desinformación"
-    text: "Si un deepfake político circula durante una elección, las plataformas deberían bajarlo rápidamente aunque todavía no exista una resolución judicial."
+    theme: "Shock laboral"
+    text: "La IA terminará destruyendo más empleos de los que crea en la próxima década."
     scale: *likert
     compare_as: ordinal
 
@@ -107,10 +107,10 @@ questions:
   # ── Forced choice A/B ─────────────────────────────────────────
   - id: Q11
     type: forced_choice
-    theme: "Riesgo frontier"
-    text: "Frente a modelos frontier, ¿qué riesgo es más grave?"
+    theme: "Concentración de poder"
+    text: "Hoy un puñado de empresas controla los modelos de IA más potentes. ¿Qué riesgo es más grave?"
     options:
-      A: "Que empresas privadas desplieguen modelos peligrosos sin supervisión suficiente."
+      A: "Que esas empresas desplieguen modelos peligrosos sin supervisión suficiente."
       B: "Que el Estado use la supervisión como excusa para controlar o capturar la tecnología."
     compare_as: nominal
 
@@ -143,11 +143,11 @@ questions:
 
   - id: Q15
     type: forced_choice
-    theme: "Datos para avatares"
-    text: "Sobre los datos para entrenar avatares ciudadanos, ¿qué prefieres?"
+    theme: "Populismo de IA"
+    text: "Frente al avance de la IA, ¿qué postura te representa más?"
     options:
-      A: "Usar pocos datos explícitamente entregados por la persona, aunque el avatar sea menos preciso."
-      B: "Usar más datos personales para aumentar la precisión, siempre que haya consentimiento."
+      A: "Es sobre todo una oportunidad: hay que adoptarla rápido y adaptarse."
+      B: "Es en buena parte un proyecto impuesto por las élites tecnológicas: hay que resistir y poner límites."
     compare_as: nominal
 
   - id: Q16
@@ -159,8 +159,16 @@ questions:
       B: "Mantenerlo funcionando con correcciones graduales si produce beneficios generales."
     compare_as: nominal
 
-  # ── Texto libre (NO usado en métricas) ────────────────────────
+  # ── Ansiedad / actitud ante la IA (Likert) ────────────────────
   - id: Q17
+    type: likert_1_5
+    theme: "Ansiedad ante la IA"
+    text: "El avance de la IA me genera más preocupación que entusiasmo."
+    scale: *likert
+    compare_as: ordinal
+
+  # ── Texto libre (NO usado en métricas) ────────────────────────
+  - id: Q18
     type: free_text
     theme: "Criterio general"
     text: "En una frase, explica cuál fue tu criterio general al responder esta encuesta."

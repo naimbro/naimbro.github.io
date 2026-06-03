@@ -374,6 +374,22 @@ def analyze_variant(key, variant, human_row, avatar_q, scored_questions):
 
 # ── Aggregate analysis ─────────────────────────────────────────
 
+def _question_values(question):
+    """
+    The ordered list of possible value-strings for a scored question.
+    Likert -> ["1".."5"]; forced_choice -> ["A", "B"].
+    """
+    if question["type"] == "likert_1_5":
+        return ["1", "2", "3", "4", "5"]
+    if question["type"] == "forced_choice":
+        return ["A", "B"]
+    return []
+
+
+def _empty_counts(values):
+    return {v: 0 for v in values}
+
+
 def _variant_comparison(scalar_rows):
     """
     Headline experiment result: for each variant, mean of the key scalars over
@@ -601,6 +617,42 @@ def build_aggregate(scored_questions, scalar_rows, ref_variant, ref_keys,
         acc = (d["hits"] / d["n"]) if d["n"] else None
         confidence_vs_accuracy[name] = {"n": d["n"], "accuracy": _round(acc)}
 
+    # per_question_distributions: for each scored question, the DISTRIBUTION of
+    # human answers vs avatar answers (reference variant only), as aggregate
+    # counts. Keys are strings; every possible value is present even at count 0.
+    # Aggregate counts only — no individual answers leak.
+    per_question_distributions = []
+    for q in scored_questions:
+        qid = q["id"]
+        values = _question_values(q)
+        if not values:
+            continue
+        human_counts = _empty_counts(values)
+        avatar_counts = _empty_counts(values)
+        h_n = a_n = 0
+        for key in ref_keys:
+            hv = _human_value(q, human_by_key[key])
+            av, _ = _avatar_value(q, _ref_rec(key, qid))
+            if hv is not None:
+                hk = str(hv)
+                if hk in human_counts:
+                    human_counts[hk] += 1
+                    h_n += 1
+            if av is not None:
+                ak = str(av)
+                if ak in avatar_counts:
+                    avatar_counts[ak] += 1
+                    a_n += 1
+        per_question_distributions.append({
+            "question_id": qid,
+            "type": q["type"],
+            "theme": q.get("theme"),
+            "text": q.get("text"),
+            "values": values,
+            "human": {"counts": human_counts, "n": h_n},
+            "avatar": {"counts": avatar_counts, "n": a_n},
+        })
+
     # key -> score lists (reference variant; scores only; pseudonymous keys OK).
     scored_keys = [{"key": r["key"], "score": r["representativeness_score"]}
                    for r in ref_scalars if r["representativeness_score"] is not None]
@@ -616,6 +668,7 @@ def build_aggregate(scored_questions, scalar_rows, ref_variant, ref_keys,
         "best_variant_overall": best_variant,
         "overall": overall,
         "per_question": per_question,
+        "per_question_distributions": per_question_distributions,
         "most_represented_question": most_rep,
         "least_represented_question": least_rep,
         "scatter_likert": scatter_likert,
@@ -674,6 +727,7 @@ def write_empty_outputs(scored_questions):
             "mean_representativeness_score": None,
         },
         "per_question": [],
+        "per_question_distributions": [],
         "most_represented_question": None,
         "least_represented_question": None,
         "scatter_likert": [],

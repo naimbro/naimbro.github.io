@@ -65,15 +65,10 @@ items:
       - "Otra"
       - "Prefiero no decir"
 
-  - type: scale
-    field: ai_relation
-    modality: context
-    required: true
-    title: "Relación general con la IA"
-    low: 1
-    high: 5
-    low_label: "Muy escéptica"
-    high_label: "Muy optimista"
+  # NOTA: se quitó "Relación general con la IA (escéptica–optimista)" porque
+  # solapaba directamente con la pregunta de ansiedad de la encuesta (Q17) —
+  # habría sido hacer trampa. El avatar infiere la actitud desde tech_open,
+  # avatar_free_text y las prioridades.
 
   - type: section
     title: "3 · Economía y Estado"
@@ -270,16 +265,9 @@ items:
       - "Escuchar a los afectados"
       - "Depende del costo de equivocarse"
 
-  - type: choice
-    field: evidence_vs_citizens
-    modality: closed
-    required: true
-    title: "Cuando hay conflicto entre evidencia técnica y opinión ciudadana, tiendo a:"
-    options:
-      - "Priorizar la evidencia técnica"
-      - "Priorizar la legitimidad ciudadana"
-      - "Buscar deliberación informada"
-      - "Depende del caso"
+  # NOTA: se quitó "evidencia técnica vs. opinión ciudadana" porque solapaba
+  # directamente con Q08 de la encuesta — el avatar "cerrado" habría hecho
+  # trampa. Lo infiere desde decision_open y decision_incomplete_info.
 
   - type: paragraph
     field: decision_open

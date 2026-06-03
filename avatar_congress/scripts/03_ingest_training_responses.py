@@ -65,9 +65,11 @@ def main():
     out_fields = ["key", "timestamp"] + [f for f in field_order if f not in ("key", "_submitted_at")]
     C.write_csv(C.TRAINING_RAW, rows, out_fields)
 
+    n_scored = sum(1 for q in C.load_survey_questions()
+                   if q.get("compare_as") in ("ordinal", "nominal"))
     C.update_progress(training_received=len(deduped),
                       totals={"students": cfg.get("class", {}).get("n_students", 23),
-                              "questions": 16})
+                              "questions": n_scored})
 
     # Reporte (sin datos sensibles)
     print("\n=== Reporte de ingesta (entrenamiento) ===")

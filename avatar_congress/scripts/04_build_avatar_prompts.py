@@ -29,7 +29,6 @@ FIELD_LABELS = {
     # context
     "age": "Edad aproximada",
     "field_of_study": "Área de formación/interés",
-    "ai_relation": "Relación con la IA (1 escéptica – 5 optimista)",
     "avatar_when_unsure": "Qué hacer si el avatar no está seguro",
     "avatar_avoid": "Posiciones que NO debe asumir",
     # closed
@@ -44,7 +43,6 @@ FIELD_LABELS = {
     "trust_tech_companies": "Confianza empresas tecnológicas (1-5)",
     "trust_media": "Confianza medios (1-5)",
     "decision_incomplete_info": "Con información incompleta",
-    "evidence_vs_citizens": "Evidencia técnica vs. opinión ciudadana",
     # open
     "econ_open": "Sobre el rol del Estado en la economía (en sus palabras)",
     "social_open": "Tema social/cultural que le importa",
@@ -116,7 +114,6 @@ def summarize(row):
         return round(sum(vals) / len(vals), 2) if vals else None
     prio = [p for p in str(row.get("priorities", "")).split(";") if p.strip()]
     return {
-        "ai_orientation": row.get("ai_relation", ""),
         "priorities": prio[:3],
         "trust_profile": f"promedio {avg_trust()}" if avg_trust() is not None else "n/d",
         "decision_style": row.get("decision_incomplete_info", ""),

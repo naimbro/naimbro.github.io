@@ -332,3 +332,15 @@ main { padding: 28px 32px 64px; max-width: 1600px; margin: 0 auto; }
 }
 .vbtn:hover { background: var(--line-2); }
 .vbtn.is-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* Distribuciones por pregunta (humanos vs avatares) */
+.dist-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+.dist-item { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.dist-title { font-size: .9rem; font-weight: 700; color: var(--ink-2); margin-bottom: 4px; }
+.dist-item svg { width: 100%; height: auto; display: block; }
+.dist-legend { font-size: .85rem; color: var(--ink-3); margin-left: 14px; }
+.dist-legend .dl-h, .dist-legend .dl-a {
+  display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 4px; vertical-align: middle;
+}
+.dist-legend .dl-h { background: #8a9099; }
+.dist-legend .dl-a { background: var(--accent); }

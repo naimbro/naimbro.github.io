@@ -471,6 +471,7 @@
 
     renderBarChart(Array.isArray(a.per_question) ? a.per_question : []);
     renderScatter(Array.isArray(a.scatter_likert) ? a.scatter_likert : []);
+    renderDistributions(Array.isArray(a.per_question_distributions) ? a.per_question_distributions : []);
 
     fillCallout("#callout-best-text", "#callout-best-val", a.most_represented_question);
     fillCallout("#callout-worst-text", "#callout-worst-val", a.least_represented_question);
@@ -614,6 +615,48 @@
     });
     svg += "</svg>";
     wrap.innerHTML = svg;
+  }
+
+  // ---- Per-question distributions: human vs avatar ----
+  function renderDistributions(dists) {
+    const grid = $("#dist-grid");
+    if (!grid) return;
+    if (!dists.length) { grid.innerHTML = '<span class="empty-hint">Sin datos.</span>'; return; }
+    grid.innerHTML = dists.map(distMiniChart).join("");
+  }
+
+  function distMiniChart(d) {
+    const values = Array.isArray(d.values) ? d.values : [];
+    const hC = (d.human && d.human.counts) || {};
+    const aC = (d.avatar && d.avatar.counts) || {};
+    const hN = (d.human && d.human.n) || 0;
+    const aN = (d.avatar && d.avatar.n) || 0;
+    const W = 300, H = 150, padL = 24, padR = 8, padT = 10, padB = 28;
+    const plotW = W - padL - padR, plotH = H - padT - padB;
+    const n = values.length || 1;
+    const group = plotW / n;
+    const bw = Math.min(26, group / 2 - 4);
+    let svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img">';
+    // y gridline at 100%
+    svg += '<line x1="' + padL + '" y1="' + padT + '" x2="' + (W - padR) + '" y2="' + padT +
+      '" stroke="#eef0f3" stroke-width="1"/>';
+    values.forEach((v, i) => {
+      const hp = hN ? (num(hC[v], 0) / hN) : 0;
+      const ap = aN ? (num(aC[v], 0) / aN) : 0;
+      const cx = padL + i * group + group / 2;
+      const hh = hp * plotH, ah = ap * plotH;
+      const hx = cx - bw - 1, ax = cx + 1;
+      svg += '<rect x="' + hx + '" y="' + (padT + plotH - hh) + '" width="' + bw + '" height="' + hh +
+        '" rx="2" fill="#8a9099"><title>humanos ' + Math.round(hp * 100) + '%</title></rect>';
+      svg += '<rect x="' + ax + '" y="' + (padT + plotH - ah) + '" width="' + bw + '" height="' + ah +
+        '" rx="2" fill="#e8485f"><title>avatares ' + Math.round(ap * 100) + '%</title></rect>';
+      svg += '<text x="' + cx + '" y="' + (H - padB + 18) + '" text-anchor="middle" font-size="11" fill="#4a4f57">' +
+        escapeHTML(String(v)) + "</text>";
+    });
+    svg += '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (W - padR) + '" y2="' + (padT + plotH) +
+      '" stroke="#d5d9df" stroke-width="1.2"/></svg>';
+    const title = escapeHTML(d.question_id || "") + " · " + escapeHTML(d.theme || "");
+    return '<div class="dist-item"><div class="dist-title">' + title + "</div>" + svg + "</div>";
   }
 
   // ---------------------------------------------------------------
