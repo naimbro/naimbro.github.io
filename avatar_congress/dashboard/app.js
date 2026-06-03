@@ -637,36 +637,48 @@
     grid.innerHTML = dists.map(distMiniChart).join("");
   }
 
+  // Diverging red→green for Likert 1-5; A/B for forced choice.
+  const LIKERT_COLORS = { "1": "#d1495b", "2": "#ea9085", "3": "#cfd4db", "4": "#7fb89a", "5": "#1f9d6b" };
+  const FORCED_COLORS = { "A": "#e8485f", "B": "#5b8def" };
+
   function distMiniChart(d) {
     const values = Array.isArray(d.values) ? d.values : [];
-    const hC = (d.human && d.human.counts) || {};
-    const aC = (d.avatar && d.avatar.counts) || {};
-    const hN = (d.human && d.human.n) || 0;
-    const aN = (d.avatar && d.avatar.n) || 0;
-    const W = 300, H = 150, padL = 24, padR = 8, padT = 10, padB = 28;
-    const plotW = W - padL - padR, plotH = H - padT - padB;
-    const n = values.length || 1;
-    const group = plotW / n;
-    const bw = Math.min(26, group / 2 - 4);
+    const isLik = d.type === "likert_1_5";
+    const colors = isLik ? LIKERT_COLORS : FORCED_COLORS;
+    const rows = [["Humanos", d.human || {}], ["Avatares", d.avatar || {}]];
+    const W = 360, rowH = 30, gap = 12, top = 4, labelW = 74, padR = 10;
+    const barW = W - labelW - padR;
+    const H = top + rows.length * (rowH + gap);
     let svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img">';
-    // y gridline at 100%
-    svg += '<line x1="' + padL + '" y1="' + padT + '" x2="' + (W - padR) + '" y2="' + padT +
-      '" stroke="#eef0f3" stroke-width="1"/>';
-    values.forEach((v, i) => {
-      const hp = hN ? (num(hC[v], 0) / hN) : 0;
-      const ap = aN ? (num(aC[v], 0) / aN) : 0;
-      const cx = padL + i * group + group / 2;
-      const hh = hp * plotH, ah = ap * plotH;
-      const hx = cx - bw - 1, ax = cx + 1;
-      svg += '<rect x="' + hx + '" y="' + (padT + plotH - hh) + '" width="' + bw + '" height="' + hh +
-        '" rx="2" fill="#8a9099"><title>humanos ' + Math.round(hp * 100) + '%</title></rect>';
-      svg += '<rect x="' + ax + '" y="' + (padT + plotH - ah) + '" width="' + bw + '" height="' + ah +
-        '" rx="2" fill="#e8485f"><title>avatares ' + Math.round(ap * 100) + '%</title></rect>';
-      svg += '<text x="' + cx + '" y="' + (H - padB + 18) + '" text-anchor="middle" font-size="11" fill="#4a4f57">' +
-        escapeHTML(String(v)) + "</text>";
+    rows.forEach((row, ri) => {
+      const name = row[0], side = row[1];
+      const counts = side.counts || {}, nn = side.n || 0;
+      const y = top + ri * (rowH + gap);
+      svg += '<text x="0" y="' + (y + rowH / 2 + 4) + '" font-size="12" fill="#4a4f57">' + name + "</text>";
+      if (!nn) {
+        svg += '<rect x="' + labelW + '" y="' + y + '" width="' + barW + '" height="' + rowH +
+          '" rx="5" fill="#f1f3f6"/>';
+        return;
+      }
+      let x = labelW;
+      values.forEach((v) => {
+        const p = num(counts[v], 0) / nn;
+        const w = p * barW;
+        if (w <= 0.5) return;
+        svg += '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + rowH +
+          '" fill="' + (colors[v] || "#ccc") + '"><title>' + escapeHTML(name) + " — " +
+          escapeHTML(String(v)) + ": " + Math.round(p * 100) + '%</title></rect>';
+        if (p >= 0.13) {
+          svg += '<text x="' + (x + w / 2) + '" y="' + (y + rowH / 2 + 4) +
+            '" text-anchor="middle" font-size="11" fill="#23262b">' + escapeHTML(String(v)) + "</text>";
+        }
+        x += w;
+      });
+      // borde sutil del riel
+      svg += '<rect x="' + labelW + '" y="' + y + '" width="' + barW + '" height="' + rowH +
+        '" rx="5" fill="none" stroke="#e7e9ee" stroke-width="1"/>';
     });
-    svg += '<line x1="' + padL + '" y1="' + (padT + plotH) + '" x2="' + (W - padR) + '" y2="' + (padT + plotH) +
-      '" stroke="#d5d9df" stroke-width="1.2"/></svg>';
+    svg += "</svg>";
     const title = escapeHTML(d.question_id || "") + " · " + escapeHTML(d.theme || "");
     return '<div class="dist-item"><div class="dist-title">' + title + "</div>" + svg + "</div>";
   }

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Congreso de avatares</title>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
   <header class="topbar">
@@ -163,10 +163,19 @@
       </div>
       <div id="dist-content" class="card chart-card" hidden>
         <div class="section-title">Distribución por pregunta: humanos vs. avatares</div>
-        <p class="variant-sub">Cómo se reparten las respuestas en cada pregunta.
-          <span class="dist-legend"><span class="dl-h"></span> humanos</span>
-          <span class="dist-legend"><span class="dl-a"></span> avatares</span>
-        </p>
+        <p class="variant-sub">Cada pregunta muestra dos barras 100% apiladas (humanos y avatares).
+          Mientras más se parecen, mejor representa el avatar al curso.</p>
+        <div class="dist-scale">
+          <span class="ds-cap">Likert:</span>
+          <span class="ds-seg" style="background:#d1495b"></span>1 muy en desacuerdo
+          <span class="ds-seg" style="background:#ea9085"></span>2
+          <span class="ds-seg" style="background:#cfd4db"></span>3
+          <span class="ds-seg" style="background:#7fb89a"></span>4
+          <span class="ds-seg" style="background:#1f9d6b"></span>5 muy de acuerdo
+          <span class="ds-cap" style="margin-left:18px">A/B:</span>
+          <span class="ds-seg" style="background:#e8485f"></span>A
+          <span class="ds-seg" style="background:#5b8def"></span>B
+        </div>
         <div id="dist-grid" class="dist-grid"></div>
       </div>
     </section>
@@ -218,6 +227,6 @@
     </section>
   </main>
 
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>
