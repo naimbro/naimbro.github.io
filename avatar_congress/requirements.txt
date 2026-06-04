@@ -6,3 +6,4 @@ python-dotenv>=1.0
 openai>=1.40
 anthropic>=0.40
 Flask>=3.0
+segno>=1.6   # códigos QR (generate_qr.py)
