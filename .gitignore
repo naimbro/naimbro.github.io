@@ -1,6 +1,10 @@
 CLAUDE.md
 drive_credentials.json
 create_slides*.py
+create_voting_form.py
+create_amendment_forms.py
+create_amendment_dashboard.py
+congreso_enmiendas_dashboard.html
 slide_template.py
 logo-escuela-gobierno.png
 teaching/MEPP/*.ipynb
