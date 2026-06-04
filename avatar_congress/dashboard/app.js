@@ -708,40 +708,35 @@
 
   function initExplore() {
     const btn = $("#key-go");
-    const select = $("#key-select");
+    const input = $("#key-input");
     if (btn) btn.addEventListener("click", doLookup);
-    if (select) select.addEventListener("change", doLookup);
+    if (input) input.addEventListener("keydown", (e) => { if (e.key === "Enter") doLookup(); });
     populateKeys();
   }
 
   async function populateKeys() {
     if (PUBLIC_MODE) return;
-    const select = $("#key-select");
-    if (!select) return;
+    const dl = $("#key-options");
+    if (!dl) return;
     let data;
     try {
       data = await getJSON("/api/keys");
     } catch (e) { return; }
     if (data && data.public_mode) { PUBLIC_MODE = true; refreshExploreMode(); return; }
     const keys = (data && Array.isArray(data.keys)) ? data.keys : [];
-    const current = select.value;
-    // Reconstruye solo si cambió el set de llaves (evita resetear la selección).
-    const existing = $$("#key-select option").map((o) => o.value).filter(Boolean);
-    if (existing.join("|") === keys.join("|")) return;
-    select.innerHTML = '<option value="">— Selecciona una llave —</option>' +
-      keys.map((k) => '<option value="' + escapeHTML(k) + '">' + escapeHTML(k) + "</option>").join("");
-    if (current && keys.indexOf(current) >= 0) select.value = current;
+    // En modo compartido la lista viene vacía: el alumno escribe su llave.
+    dl.innerHTML = keys.map((k) => '<option value="' + escapeHTML(k) + '"></option>').join("");
   }
 
   async function doLookup() {
     if (PUBLIC_MODE) return;
-    const select = $("#key-select");
+    const input = $("#key-input");
     const msg = $("#student-msg");
     const result = $("#student-result");
-    if (!select) return;
-    const key = String(select.value || "").trim().toUpperCase();
+    if (!input) return;
+    const key = String(input.value || "").trim().toUpperCase();
     if (!key) {
-      showStudentMsg("Elige una llave de la lista.");
+      showStudentMsg("Escribe tu llave (ej. CONDOR-47).");
       return;
     }
     showStudentMsg("Buscando…");

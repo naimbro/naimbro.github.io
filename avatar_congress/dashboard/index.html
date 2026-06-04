@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Congreso de avatares</title>
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
   <header class="topbar">
@@ -188,11 +188,11 @@
 
       <div id="explore-private">
         <div class="card lookup-card">
-          <label for="key-select" class="lookup-label">Elige tu llave</label>
+          <label for="key-input" class="lookup-label">Escribe tu llave</label>
           <div class="lookup-row">
-            <select id="key-select" class="lookup-input">
-              <option value="">— Selecciona una llave —</option>
-            </select>
+            <input id="key-input" class="lookup-input" list="key-options" type="text"
+                   placeholder="CONDOR-47" autocomplete="off" spellcheck="false">
+            <datalist id="key-options"></datalist>
             <button id="key-go" class="btn btn-accent">Ver</button>
           </div>
         </div>
@@ -227,6 +227,6 @@
     </section>
   </main>
 
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

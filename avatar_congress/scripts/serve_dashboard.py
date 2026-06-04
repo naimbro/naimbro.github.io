@@ -24,6 +24,7 @@ from flask import Flask, jsonify, request, send_from_directory
 
 app = Flask(__name__, static_folder=None)
 PUBLIC_MODE = False
+SHARED_MODE = False  # como local (permite ver por llave) pero SIN listar las llaves
 
 
 @app.after_request
@@ -78,9 +79,12 @@ def api_analysis():
 
 @app.route("/api/keys")
 def api_keys():
-    # Lista de llaves para el dropdown de "Explorar". Oculto en modo público.
+    # Lista de llaves para el autocompletado de "Explorar".
+    # En modo público o compartido NO se listan (cada alumno escribe su propia llave).
     if PUBLIC_MODE:
         return jsonify({"keys": [], "public_mode": True})
+    if SHARED_MODE:
+        return jsonify({"keys": []})
     # Preferimos las llaves con resultados; si no hay análisis aún, usamos keys_master.
     per_student = C.read_json(C.PER_STUDENT_PRIVATE, default={}) or {}
     keys = sorted(per_student.keys())
@@ -102,21 +106,27 @@ def api_student(key):
 
 
 def main():
-    global PUBLIC_MODE
+    global PUBLIC_MODE, SHARED_MODE
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8000)
     ap.add_argument("--public", action="store_true", help="modo público (oculta datos individuales)")
+    ap.add_argument("--shared", action="store_true",
+                    help="modo compartido: por-llave sí, pero sin listar las llaves (cada alumno escribe la suya)")
+    ap.add_argument("--host", default="127.0.0.1", help="usa 0.0.0.0 para exponer vía túnel")
     args = ap.parse_args()
     PUBLIC_MODE = args.public
+    SHARED_MODE = args.shared
 
     C.ensure_dirs()
     if not C.PROGRESS.exists():
         C.update_progress(avatar_responses_received=0, avatar_responses_total=0)
 
-    mode = "PÚBLICO (solo agregados)" if PUBLIC_MODE else "CLASE LOCAL (incluye por-llave)"
+    mode = ("PÚBLICO (solo agregados)" if PUBLIC_MODE
+            else "COMPARTIDO (por-llave, sin listar)" if SHARED_MODE
+            else "CLASE LOCAL (incluye por-llave)")
     print(f"\n  Dashboard: http://localhost:{args.port}   [modo {mode}]")
     print("  Ctrl+C para detener.\n")
-    app.run(host="127.0.0.1", port=args.port, debug=False, threaded=True)
+    app.run(host=args.host, port=args.port, debug=False, threaded=True)
 
 
 if __name__ == "__main__":
