@@ -69,7 +69,26 @@
     text-align: center;
     gap: 0;
   }
-  .cover::before { inset: 15px; border-color: rgba(212,184,124,.45); }
+  .cover::before { inset: 15px; border-color: rgba(212,184,124,.45); z-index: 2; }
+
+  /* portada con fotografia de fondo + velo para legibilidad */
+  .cover { padding: 0; }
+  .cover-photo-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .cover-overlay {
+    position: relative; z-index: 1;
+    width: 100%; flex: 1;
+    display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+    padding: clamp(2.6rem, 6vw, 4rem) clamp(1.6rem, 4.5vw, 3rem);
+    background: linear-gradient(180deg,
+      rgba(17,34,7,.66) 0%, rgba(17,34,7,.20) 36%,
+      rgba(17,34,7,.28) 66%, rgba(17,34,7,.78) 100%);
+  }
+  .cover .subtitle, .cover .author { text-shadow: 0 1px 9px rgba(0,0,0,.6); }
 
   .cover .kicker {
     font-family: 'Quicksand', sans-serif;
@@ -269,26 +288,18 @@
 </head>
 <body>
 
-<!-- COVER -->
+<!-- COVER (portada: la casa de El Recodo) -->
 <div class="page cover">
-  <div class="kicker">Libro &aacute;lbum</div>
-  <h1>Kuchulu<br>en El Recodo</h1>
-  <div class="subtitle">Un d&iacute;a en el campo con Masbaba y Mastana</div>
-  <div class="rule"></div>
-  <div class="author">Naim Bro Khomasi</div>
-</div>
-
-<!-- INTRO: EL RECODO -->
-<div class="page spread intro">
-  <div class="spread-inner">
-    <div class="spread-img-wrap">
-      <img class="spread-img" src="ilustraciones/00_recodo_intro.png" alt="La casa de El Recodo vista desde el camino, con el muro de enredaderas en otono" loading="eager">
+  <img class="cover-photo-img" src="ilustraciones/00_recodo_intro.png" alt="La casa de El Recodo al final del camino, con el muro de enredaderas en otono">
+  <div class="cover-overlay">
+    <div class="cover-top">
+      <div class="kicker">Libro &aacute;lbum</div>
+      <h1>Kuchulu<br>en El Recodo</h1>
     </div>
-    <div class="spread-text-box">
-      <div class="spread-text">
-        Al final de un camino de tierra,<br>
-        está El Recodo.
-      </div>
+    <div class="cover-bottom">
+      <div class="subtitle">Al final de un camino de tierra, est&aacute; El Recodo.</div>
+      <div class="rule"></div>
+      <div class="author">Naim Bro Khomasi</div>
     </div>
   </div>
 </div>
@@ -310,11 +321,29 @@
   </div>
 </div>
 
+<!-- BIENVENIDA EN LA TERRAZA -->
+<div class="page spread">
+  <div class="spread-inner">
+    <div class="spread-img-wrap">
+      <img class="spread-img" src="ilustraciones/15_bienvenida_terraza.png" alt="Masbaba y Mastana reciben a Kuchulu en la terraza, lo abrazan" loading="eager">
+    </div>
+    <div class="spread-text-box">
+      <div class="spread-text">
+        Masbaba y Mastana<br>
+        lo esperan en la terraza.<br><br>
+        Lo toman en brazos.<br>
+        Le dan un beso.<br><br>
+        Kuchulu ya llegó.
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- FESENJAN (almuerzo) -->
 <div class="page spread">
   <div class="spread-inner">
     <div class="spread-img-wrap">
-      <img class="spread-img" src="ilustraciones/02_fesenjan.png" alt="Mastana sirve fesenjan en la mesa grande de la casa" loading="eager">
+      <img class="spread-img" src="ilustraciones/02_fesenjan.png" alt="Mastana sirve fesenjan en la cocina; Masbaba cocina al fondo" loading="eager">
     </div>
     <div class="spread-text-box">
       <div class="spread-text">
@@ -324,6 +353,24 @@
         Nueces y granada,<br>
         comida de Persia.<br><br>
         A Kuchulu le brillan los ojos.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CAMINANDO AL CAMPO -->
+<div class="page spread">
+  <div class="spread-inner">
+    <div class="spread-img-wrap">
+      <img class="spread-img" src="ilustraciones/16_caminando_campo.png" alt="Masbaba y Kuchulu caminan de la mano hacia el campo, vista de la parcela" loading="eager">
+    </div>
+    <div class="spread-text-box">
+      <div class="spread-text">
+        Hay trabajo en el campo.<br>
+        Masbaba necesita una ayuda.<br><br>
+        Y allá van,<br>
+        de la mano,<br>
+        los dos.
       </div>
     </div>
   </div>
@@ -383,6 +430,24 @@
   </div>
 </div>
 
+<!-- KUCHULU CORRE / SALA DE LAVASHAK -->
+<div class="page spread">
+  <div class="spread-inner">
+    <div class="spread-img-wrap">
+      <img class="spread-img" src="ilustraciones/17_kuchulu_corre.png" alt="Kuchulu corre por el camino hacia su mama; la casa grande y la sala del lavashak al fondo" loading="eager">
+    </div>
+    <div class="spread-text-box">
+      <div class="spread-text">
+        Kuchulu corre<br>
+        por el camino de tierra.<br><br>
+        Lo espera su mamá.<br><br>
+        Detrás, la casa grande<br>
+        y la salita del lavashak.
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 5. MASTANA Y EL LAVASHAK -->
 <div class="page spread">
   <div class="spread-inner">
@@ -433,6 +498,42 @@
         Un sauce se enciende.<br>
         El agua se hace de oro.<br><br>
         Kuchulu se queda mirando.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TERRAZA DE NOCHE -->
+<div class="page spread">
+  <div class="spread-inner">
+    <div class="spread-img-wrap">
+      <img class="spread-img" src="ilustraciones/18_terraza_noche.png" alt="De noche en la terraza, con la luna y las lucecitas; Masbaba, Mastana y Kuchulu" loading="eager">
+    </div>
+    <div class="spread-text-box">
+      <div class="spread-text">
+        De noche, en la terraza,<br>
+        se prenden las lucecitas<br>
+        y aparece la luna.<br><br>
+        Kuchulu la mira<br>
+        con Masbaba y Mastana.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEÑA Y ESTUFA -->
+<div class="page spread">
+  <div class="spread-inner">
+    <div class="spread-img-wrap">
+      <img class="spread-img" src="ilustraciones/19_lena_estufa.png" alt="Masbaba enciende la estufa a leña; la lena apilada al lado" loading="eager">
+    </div>
+    <div class="spread-text-box">
+      <div class="spread-text">
+        Cuando llega el frío,<br>
+        Masbaba busca leña.<br><br>
+        La pone en la estufa.<br>
+        El fuego se enciende.<br><br>
+        Y la casa se pone tibia.
       </div>
     </div>
   </div>
