@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Machine Learning II</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a3d62;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.2em;
+    }
+    h1 {
+      margin-bottom: 0.3em;
+    }
+
+    /* ✅ Fix: make the lesson number match the h2 style */
+    ol {
+      counter-reset: lessons;
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+    }
+    ol > li {
+      counter-increment: lessons;
+    }
+    ol > li h2::before {
+      content: counter(lessons) ". ";
+      color: inherit;
+      font-weight: inherit;
+    }
+
+    li {
+      margin-bottom: 0.4em;
+    }
+    ul {
+      margin-top: 0.5em;
+      margin-bottom: 1.2em;
+    }
+    a {
+      color: #1e3799;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .description {
+      margin-bottom: 2em;
+      font-size: 1em;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .description strong {
+      color: #0a3d62;
+    }
+
+    .info {
+      background-color: #eaf2f8;
+      padding: 1em;
+      border-left: 5px solid #0a3d62;
+      margin-bottom: 2em;
+    }
+    .class-block {
+      margin-bottom: 2em;
+    }
+    .meta {
+      margin-bottom: 1.5em;
+      font-size: 0.95em;
+    }
+    .syllabus-warning {
+    display: inline-block;
+    background-color: #fff3b0; /* amarillo suave */
+    color: #5c4a00;
+    font-size: 0.85em;
+    font-weight: 600;
+    padding: 0.25em 0.6em;
+    margin-bottom: 0.4em;
+    border-radius: 4px;
+    }
+  .game-box {
+      background-color: #f0f7ee;
+      border: 2px solid #4a8c3f;
+      border-radius: 8px;
+      padding: 1em 1.2em;
+      margin-bottom: 2em;
+    }
+    .game-box strong {
+      color: #2d6a23;
+    }
+    .game-box a {
+      color: #2d6a23;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+<h1>Machine Learning II: IA Generativa y Procesos Públicos</h1>
+<div class="meta">
+  Profesor: Naim Bro (naim.bro.k [at] uai.cl)<br>
+  Ayudante: Benjamín Palacios (bpalacios [at] alumnos.uai.cl)<br>
+  Magíster en Economía y Políticas Públicas<br>
+  Escuela de Gobierno, Universidad Adolfo Ibáñez, 2027
+</div>
+
+<div class="description">
+  <p><strong>Descripción general del curso:</strong> Machine Learning II es un curso aplicado cuyo objetivo central es
+  <strong>integrar inteligencia artificial —en particular IA generativa— en procesos del sector público</strong>.
+  El foco está en aprender a:</p>
+
+  <ul>
+    <li>Identificar cuellos de botella, ineficiencias o decisiones repetitivas en procesos públicos.</li>
+    <li>Formular soluciones basadas en ML e IA generativa con un <strong>nivel de madurez tecnológica (TRL) ≥ 4</strong>.</li>
+    <li>Diseñar sistemas socio-técnicos donde humanos, datos y modelos interactúan de forma responsable.</li>
+    <li>Usar LLMs como herramientas para análisis, documentación, prototipado y evaluación.</li>
+    <li>Producir proyectos presentables a desafíos públicos (p. ej. Laboratorio de Gobierno).</li>
+  </ul>
+
+  <p>El curso combina tres dimensiones:</p>
+  <ul>
+    <li><strong>Fundamentos:</strong> historia, límites y supuestos de la IA generativa.</li>
+    <li><strong>Herramientas:</strong> APIs de LLMs, embeddings, prompting estructurado y evaluación.</li>
+    <li><strong>Aplicación:</strong> proyectos que integran IA en procesos concretos del Estado.</li>
+  </ul>
+  </div>
+
+<div class="game-box">
+    <strong>ML2 Master Game:</strong> En varias clases utilizaremos
+    <a href="https://naimbro.github.io/ml2-master-game/" target="_blank">ML2 Master</a>,
+    un juego interactivo en tiempo real donde cada estudiante responde a escenarios
+    sobre IA y procesos públicos. Las respuestas son evaluadas por tres jueces de IA
+    con retroalimentación inmediata.
+  </div>
+
+<div class="game-box">
+  <p><strong>Filosofía sobre el uso de IA en el proceso pedagógico</strong>:
+  <ul>
+    <li>La IA, ¿nos está volviendo tontos?: <a href="https://www.forbes.com/sites/robertbtucker/2025/06/20/is-chatgpt-making-us-stupid/" target="_blank">link</a></li>
+    <li>IA y pensamiento crítico: <a href="https://bigthink.com/thinking/artificial-intelligence-critical-thinking/" target="_blank">link</a>, <a href="https://www.jff.org/idea/skills-and-talent-development-in-the-age-of-ai/" target="_blank">demanda en mercado laboral</a></li>
+    <li>Piensa primero, IA después: <a href="https://every.to/p/think-first-ai-second" target="_blank">link</a>, <a href="https://every.to/source-code/stop-coding-and-start-planning" target="_blank">link</a></li>
+    <li>Mientras más sofisticado tu conocimiento, más te sirve la IA: <a href="https://www-cdn.anthropic.com/096d94c1a91c6480806d8f24b2344c7e2a4bc666.pdf" target="_blank">link (ver figura 4.1)</a></li>
+  </ul>
+  </p>
+</div>
+
+<ol>
+
+  <li>
+    <div class="class-block">
+      <h2>IA, procesos y sector público: marco del curso (06-03-2027)</h2>
+      <p>
+        Introducción al curso y a su lógica central: pasar de “modelos” a <strong>sistemas de decisión y gestión</strong>.
+      </p>
+      <ul>
+        <li>Estructura del curso y método de evaluación</li>
+        <li>Presentación: IA en proceso pedagógico: <a href="https://docs.google.com/presentation/d/13iRbTvLedagZHuo1-k90_E7HcEtjzt5tzjd5u4iDouI/edit?usp=sharing" target="_blank">link</a></li>
+        <li>Presentación: proyectos de ML en el sector público: <a href="https://docs.google.com/presentation/d/1W-0r8Daei6QGeHWNDstZy128BhEC_tXgParNQ4-RzG8/edit?usp=sharing" target="_blank">link</a></li>
+        <li>Presentación: proyectos de curso — formación de equipos: <a href="https://docs.google.com/presentation/d/1vderUzWZOhBM-8gfQnoP2MymoK3nVV0g9C2q0rPQeHI/edit?usp=sharing" target="_blank">link</a></li>
+
+        <li><strong>Entregable próxima semana:</strong> ficha preliminar de problema, siguiendo los seis pasos de la fase 1 de la Guía de Referencia para Proyectos de Innovación Pública.
+        </li>
+
+        <li>Lecturas:</li>
+        <ul>
+          <li>Guía de referencia para proyectos de innovación pública: <a href="https://www.lab.gob.cl/guia-pi-4" target="_blank">Laboratorio de Gobierno – Proyectos de Innovación</a></li>
+          <li>Technology Readiness Levels for Machine Learning Systems: <a href="https://arxiv.org/abs/2101.03989" target="_blank">link</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+
+  <li>
+    <div class="class-block">
+      <h2>LLMs vía API: del texto al sistema (13-03-2027)</h2>
+      <p>Uso práctico de APIs de LLMs (Gemini) para tareas estructuradas: clasificación, extracción, resumen, scoring y generación controlada.</p>
+      <ul>
+        <li>Charla de María Paz Hermosilla, directora de GobLab UAI: "IA en el sector público"</li>
+        <li>Herramientas algoritmos públicos, GobLab UAI:</li>
+        <ul>
+          <li>Evaluación de Impacto Algorítmico: <a href="https://herramienta-evaluacion-impacto.vercel.app/" target="_blank">link</a></li>
+          <li>Medición de Sesgo y Equidad: <a href="https://herramienta-sesgos-equidad.vercel.app/" target="_blank">link</a></li>
+          <li>Ficha de Transparencia Algorítmica: <a href="https://herramienta-transparencia-modelo.vercel.app/" target="_blank">link</a></li>
+        </ul>
+        <li>Presentación: IA en el aparato de seguridad: <a href="https://docs.google.com/presentation/d/1Wp3wqMHulsyYCbCLLsEooj-oXvXgB0h5Trj2ackzYxQ/edit?usp=sharing" target="_blank">link</a></li>
+        <li>Demo LLM vía API: <a href="https://colab.research.google.com/drive/1MfU4eysoGcSEIfM0dcRiY5BV5L2BveUc?usp=sharing" target="_blank">La API de Gemini</a></li>
+        <li><strong>ML2 master game:</strong> basado en lecturas de la semana pasada.</li>
+        <li><strong>Ejercicio técnico:</strong> construir un pipeline simple basado en LLM.</li>
+        <li>Lecturas:</li>
+        <ul>
+          <li>Guía de referencia para proyectos de innovación pública: <a href="https://www.lab.gob.cl/guia-pi-4" target="_blank">fase 1</a></li>
+          <li><a href="https://arxiv.org/abs/2601.01126" target="_blank">RoboPhD: Self-Improving Text-to-SQL Through Autonomous Agent Evolution (Borthwick &amp; Ash, 2026)</a> &mdash; un agente que se auto-mejora iterativamente (de 70 a 1500 líneas en 18 iteraciones) para traducir lenguaje natural a consultas SQL, mediante una dinámica evolutiva con selección tipo ELO.</li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>RAG 1 (20-03-2027)</h2>
+      <p>
+        Cómo aumentar el contexto con documentos locales.
+      </p>
+      <ul>
+        <li>Embeddings como representación semántica</li>
+        <li>RAG clásico</li>
+        <li>Presentación módulo 1: Del corpus a documentos consultables: <a href="https://docs.google.com/presentation/d/1hI3MMk6RYqDlRA5MFb4H7OFQYakQFPubXyhpMcCOmAM/edit?usp=sharing" target="_blank">link</a></li>
+        <li>Presentación módulo 2: Chunking, embeddings y retrieval: <a href="https://docs.google.com/presentation/d/14ahTO424A1cpYGNsLdaWMg2V-D9zqGJ4Su-4VHsPhnM/edit?usp=sharing" target="_blank">link</a></li>
+        <li>Notebook 1: Del corpus a documentos consultables (Colab): <a href="https://colab.research.google.com/drive/15Grj8J5PfQeMuut8HMljwgI6k4GZgY39" target="_blank">link</a></li>
+        <li>Notebook 2: De documentos a retrieval semántico (Colab): <a href="https://colab.research.google.com/drive/1N4iLPVtYb4qvNfh-H3wHmyfL8_SQJK_p" target="_blank">link</a></li>
+        <li>Lecturas:</li>
+        <ul>
+          <li>Enhancing Function-Calling Capabilities in LLMs: <a href="https://arxiv.org/html/2412.01130v2" target="_blank">link</a></li>
+          <li>Survey de técnicas en RAG: <a href="https://arxiv.org/html/2506.00054v1" target="_blank">link</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>RAG 2 (27-03-2027)</h2>
+      <p>
+        La idea central: un reporte con IA no es "preguntarle cosas a un LLM", sino diseñar una arquitectura de búsqueda → reducción → síntesis que sea trazable y escalable.
+      </p>
+      <ul>
+        <li>Presentación módulo 3: Del retrieval a RAG clásico: <a href="https://docs.google.com/presentation/d/1lV8hJ1K8yg7DnaJWQFDWnxNCB53npOByHKkEbv4qaZc/edit?usp=sharing" target="_blank">link</a></li>
+        <li>Notebook 3: Del retrieval a RAG (Colab): <a href="https://colab.research.google.com/drive/1bsE7LRlalmmRvptGFX2F0LWO3q3yZSyi" target="_blank">link</a></li>
+        <li>Lecturas:</li>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2401.18059" target="_blank">RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval</a> (<a href="https://arxiv.org/abs/2410.01736" target="_blank">con corpus dinámica</a>)</li>
+          <li><a href="https://arxiv.org/abs/2506.05939" target="_blank">Entity-Event Knowledge Graphs for Retrieval-Augmented Generation</a> (<a href="https://aclanthology.org/2025.knowledgenlp-1.1.pdf" target="_blank">Entity Retrieval for Answering Entity-Centric Questions</a>)</li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Feriado (03-04-2027)</h2>
+      <p>no hay clases</p>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Presentaciones de avance (14-04-2027)</h2>
+      <p>
+        Presentaciones parciales de los proyectos: <a href="https://docs.google.com/document/d/1VjoNHHZeqRJ5HrATtXRbOql1v6wa3xNPKfuWS6UohoI/edit?usp=sharing" target="_blank">guía</a>
+      </p>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Crear un chatbot con IA (17-04-2027)</h2>
+      <p>
+        En esta clase, combinaremos las técnicas utilizadas en clases anteriores para crear un chatbot.
+      </p>
+      <ul>
+        <li>Charla de Klaus Lehmann, director de Data Science en INE: "Ciencia de datos en IA para la producción de estadísticas oficiales"</li>
+        <li>Notebook 4: De RAG a chatbot (Colab): <a href="https://colab.research.google.com/drive/1mRwJMLl6CIxI89UOU-FHDdWBLR1xbjr5" target="_blank">link</a></li>
+        <li>Presentaciones de avance de proyectos</li>
+        <li>Lecturas:</li>
+        <ul>
+          <li>Engineering Retrieval Augmented Generation-based Virtual Assistants in Practice: <a href="https://www.arxiv.org/pdf/2502.14930" target="_blank">link</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Presentaciones finales de proyectos (24-04-2027)</h2>
+      <p>
+        Presentación final de proyectos como propuestas de innovación pública:
+        problema, solución, arquitectura, evaluación y escalabilidad.
+        Guía: <a href="https://docs.google.com/document/d/1FkmvhBuQnS1ySKGMsXnQy8XTkolewsseUCWJaXhorYo/edit?usp=sharing" target="_blank">link</a>
+      </p>
+    </div>
+  </li>
+
+</ol>
+
+<h2>Evaluación</h2>
+<ul>
+  <li>Entrega intermedia de proyecto (40%)</li>
+  <li>Proyecto final grupal (60%)</li>
+  <li>Además, habrá incentivos en décimas según performance en juego ml2 master game</li>
+</ul>
+
+</body>
+</html>
