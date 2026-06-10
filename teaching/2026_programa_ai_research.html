@@ -117,13 +117,22 @@
         </li>
 
         <li class="class-block">
-          <h3>Agentes de programación en la práctica: Claude Code y Codex (fecha por confirmar)</h3>
+          <h3>Agentes de programación y pipelines de investigación: Claude Code, Codex y Clo-Author (fecha por confirmar)</h3>
           <p><strong>Herramientas:</strong></p>
           <ul>
             <li><a href="https://www.anthropic.com/claude-code" target="_blank">Claude Code</a> (Anthropic)</li>
             <li><a href="https://openai.com/codex/" target="_blank">Codex</a> (OpenAI)</li>
+            <li><a href="https://github.com/hugosantanna/clo-author" target="_blank">Clo-Author</a>, scaffold de código abierto para investigación empírica, creado por Hugo Sant'Anna (UAB). <a href="https://hsantanna.org/clo-author/" target="_blank">Guía de uso</a>.</li>
           </ul>
-          <p><strong>Actividad:</strong> Todos los alumnos exploran las herramientas. Un alumno asignado prepara una demostración práctica y la presenta al resto para motivar la discusión.</p>
+          <p><strong>Contenidos:</strong></p>
+          <ul>
+            <li><strong>Pares adversariales worker-critic:</strong> cada agente creador es evaluado por un crítico independiente que asigna un puntaje, pero no puede editar archivos; el creador no puede evaluarse a sí mismo y los desacuerdos persistentes escalan al investigador.</li>
+            <li><strong>Quality gates con puntuación ponderada:</strong> la estrategia de identificación, la teoría, el código, la literatura, los datos y la revisión reciben pesos y umbrales explícitos antes de permitir commits, pull requests o una entrega final.</li>
+            <li><strong>Orquestación mediante grafos de dependencias:</strong> cada agente declara los insumos que requiere y los productos que genera. El orquestador valida dependencias, ejecuta tareas independientes en paralelo y permite reingresar en una etapa específica sin reiniciar todo el proceso.</li>
+            <li><strong>Peer review simulado:</strong> un editor realiza una revisión inicial y asigna árbitros ciegos con distintas disposiciones intelectuales. Los comentarios se clasifican según sean fatales, abordables o cuestiones de gusto y se dirigen al agente correspondiente.</li>
+          </ul>
+          <p><strong>Actividad:</strong> A partir de una idea de paper, los alumnos diseñan un pipeline mínimo con cuatro productos —mapa de literatura, memo de identificación, script de análisis y borrador—, asignan un creador y un crítico a cada producto, especifican sus dependencias y definen reglas de escalamiento humano. Luego simulan un comentario de árbitro y lo enrutan únicamente al agente responsable.</p>
+          <p><strong>Discusión de cierre:</strong> Clo-Author es un scaffold, no un autor. Su interés es incorporar al flujo de trabajo con LLM parte de la estructura social de la ciencia —separación entre creación y crítica, revisión ciega, umbrales de calidad, trazabilidad y veto humano—. El investigador conserva la responsabilidad por la evidencia, la interpretación, la divulgación del uso de IA y la decisión sobre qué se entrega o publica.</p>
         </li>
 
         <li class="class-block">
