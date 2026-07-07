@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descripción y Visualización de Datos</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 1em;
+      background-color: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #0a3d62;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.2em;
+    }
+    h1 {
+      margin-bottom: 0.3em;
+    }
+    ol {
+      padding-left: 1.2em;
+    }
+    li {
+      margin-bottom: 0.35em;
+    }
+    ul {
+      margin-top: 0.5em;
+      margin-bottom: 1.2em;
+    }
+    a {
+      color: #1e3799;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .info {
+      background-color: #eaf2f8;
+      padding: 1em;
+      border-left: 5px solid #0a3d62;
+      margin-bottom: 2em;
+    }
+    .box {
+      background-color: #f7f7f2;
+      border-left: 4px solid #b3a37a;
+      padding: 0.8em 1em;
+      margin: 1em 0 1.6em;
+    }
+    .class-block {
+      margin-bottom: 2em;
+    }
+    .highlight {
+      background-color: #fff3b0;
+      padding: 0.1em 0.35em;
+    }
+    .deliverable {
+      color: #6b3a17;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="info">
+    <h1>Curso: Descripción y Visualización de Datos</h1>
+    <p><strong>Profesor:</strong> Naim Bro (<code>naim.bro.k [at] uai.cl</code>)<br>
+    <strong>Ayudante:</strong> Martín Castillo (<code>martincastillo [at] alumnos.uai.cl</code>)<br>
+    <strong>Carrera/Programa:</strong> Doble título Sociología - Ingeniería Comercial<br>
+    <strong>Escuela:</strong> Universidad Adolfo Ibáñez, 2026<br>
+    <strong>Horario de oficina:</strong> Oficina 260-A (coordinar por mail previamente)<br>
+    <em>(Recursos actualizados semanalmente)</em></p>
+  </div>
+
+  <h2>Descripción general</h2>
+  <p>Este curso introduce herramientas para describir, procesar, visualizar y comunicar datos. En 2026, el curso forma parte del Proyecto de Metodologías de Aprendizaje Transformadoras (MAT), por lo que se organiza como un proyecto semestral de aprendizaje activo. En lugar de trabajar solamente con ejercicios aislados, los estudiantes formarán grupos y construirán una plataforma web de datos sobre un dominio de interés: vivienda, educación, salud, seguridad, empleo, transporte, cultura, deporte, medioambiente, inteligencia artificial u otro tema aprobado por el profesor.</p>
+
+  <p>La misión de cada grupo será convertirse en un pequeño observatorio de datos sobre su tema. Para ello deberán identificar preguntas relevantes, buscar y evaluar fuentes de datos, limpiar y sistematizar información, producir visualizaciones claras, explicar sus decisiones y comunicar sus resultados a una audiencia real o potencial.</p>
+
+  <div class="box">
+    <strong>Pregunta guía del curso:</strong> ¿Cómo podemos transformar datos dispersos en una plataforma visual que ayude a entender un problema, industria o fenómeno social?
+  </div>
+
+  <h2>Metodología de aprendizaje</h2>
+  <p>El curso combina cápsulas técnicas breves, trabajo guiado en sala, revisión entre pares, uso reflexivo de IA y entregas incrementales. Cada bloque técnico se conecta con una necesidad concreta del proyecto grupal: describir el dominio, construir indicadores, elegir visualizaciones, diseñar una narrativa y publicar los resultados.</p>
+
+  <ul>
+    <li><strong>Aprendizaje basado en proyectos:</strong> el producto central del semestre será una plataforma web de datos construida por grupos.</li>
+    <li><strong>Sprints de avance:</strong> el proyecto se desarrollará en entregas acumulativas: propuesta, prototipo de datos, prototipo visual y plataforma final.</li>
+    <li><strong>Aprendizaje activo en aula:</strong> las clases incluirán ejercicios prácticos, clínicas de proyecto, revisión entre pares y mini-presentaciones.</li>
+    <li><strong>Uso de IA como apoyo:</strong> la IA podrá usarse para explorar preguntas, depurar código, generar alternativas visuales y revisar comunicación, pero las decisiones analíticas y narrativas deberán ser justificadas por los estudiantes.</li>
+    <li><strong>Comunicación pública:</strong> los grupos deberán pensar su plataforma para una audiencia definida, no solo para el profesor.</li>
+  </ul>
+
+  <h2>Contraparte o destinatario real</h2>
+  <p>Todos los proyectos deberán definir una audiencia clara. Además, se incentivará que los grupos identifiquen una contraparte externa o destinatario real para su plataforma de datos. Esta contraparte puede ser una organización pública, privada, social, académica o comunitaria vinculada al dominio del proyecto.</p>
+
+  <p>La contraparte no será obligatoria ni deberá supervisar formalmente el trabajo. Su rol puede ser ayudar a definir una pregunta relevante, sugerir fuentes de datos, entregar contexto sobre el dominio o comentar la utilidad de los resultados. Esta vinculación será considerada positivamente en la evaluación del proyecto final cuando esté bien justificada y documentada.</p>
+
+  <ul>
+    <li><strong>Nivel mínimo:</strong> el grupo define un público objetivo claro.</li>
+    <li><strong>Nivel recomendado:</strong> el grupo conversa con una contraparte consultiva durante el semestre.</li>
+    <li><strong>Nivel avanzado:</strong> el grupo presenta o comparte su plataforma final con una contraparte receptora.</li>
+  </ul>
+
+  <h2>Clases</h2>
+  <p>Las fechas son referenciales y podrán ajustarse según el calendario académico, feriados y el avance de los proyectos.</p>
+
+  <ol>
+    <li>
+      <div class="class-block">
+        <b>Introducción a la visualización de datos y al proyecto MAT</b> (03-08-2026)
+        <ul>
+          <li>Presentación del curso e información administrativa.</li>
+          <li>La cadena de valor de los datos: desde una fuente desordenada hasta una decisión informada.</li>
+          <li>¿Qué es una plataforma u observatorio de datos?</li>
+          <li>Discusión inicial de dominios posibles y audiencias.</li>
+          <li>Actividad: mapa de intereses y problemas que podrían convertirse en proyectos.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Caso: describiendo a mis compañeros de clase</b> (10-08-2026)
+        <ul>
+          <li>Cómo describir características de una población.</li>
+          <li>Medidas de tendencia central: media, mediana, moda.</li>
+          <li>Medidas de dispersión: rango, varianza, desviación estándar.</li>
+          <li>Ejercicios prácticos en Excel o Google Sheets.</li>
+          <li>Puente al proyecto: ¿qué indicadores básicos necesita mi dominio?</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Dominios, preguntas y fuentes de datos</b> (17-08-2026)
+        <ul>
+          <li>De un tema amplio a una pregunta descriptiva investigable.</li>
+          <li>Tipos de fuentes: datos públicos, APIs, encuestas, registros administrativos, scraping liviano y datos entregados por organizaciones.</li>
+          <li>Evaluación inicial de calidad: cobertura, granularidad, periodicidad, sesgos y límites.</li>
+          <li>Mapa de actores: audiencia, usuarios potenciales y contraparte opcional.</li>
+          <li class="deliverable">Inicio Sprint 1: propuesta de dominio, pregunta, fuentes y audiencia.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Introducción a R para análisis de datos</b> (24-08-2026)
+        <ul>
+          <li>¿Qué es un lenguaje de programación y por qué usar R para análisis reproducible?</li>
+          <li>Tipos básicos de variables: <code>character</code>, <code>numeric</code>, <code>integer</code>, <code>logical</code>.</li>
+          <li>El <code>data frame</code> como contenedor de variables.</li>
+          <li>Importar archivos <code>.csv</code> y revisar estructura básica de una base.</li>
+          <li>Uso responsable de IA para explicar errores, sugerir código y documentar pasos.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Introducción a dplyr (1): seleccionar, filtrar y transformar</b> (31-08-2026)
+        <ul>
+          <li>Funciones <code>%&gt;%</code>, <code>filter()</code>, <code>select()</code> y <code>mutate()</code>.</li>
+          <li>Construcción de variables derivadas e indicadores simples.</li>
+          <li>Ejercicios guiados con datos de ejemplo.</li>
+          <li>Clínica de proyecto: primeros problemas de importación y limpieza.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Introducción a dplyr (2): agrupar, resumir y comparar</b> (07-09-2026)
+        <ul>
+          <li>Métodos <code>group_by()</code> y <code>summarise()</code>.</li>
+          <li>Comparaciones por año, territorio, grupo, categoría o institución.</li>
+          <li>Tablas resumen como base de una plataforma de datos.</li>
+          <li class="deliverable">Entrega Sprint 1: propuesta de proyecto y plan de datos.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Calidad de datos, diccionarios y criterios de interpretación</b> (14-09-2026)
+        <ul>
+          <li>Datos faltantes, valores extremos, errores de codificación y cambios metodológicos.</li>
+          <li>Diccionario de variables y trazabilidad de decisiones.</li>
+          <li>Ética mínima de datos: privacidad, representación y límites de inferencia.</li>
+          <li>Actividad: ficha de calidad de datos para el proyecto grupal.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Taller de prototipo de datos</b> (21-09-2026)
+        <ul>
+          <li>Semana de trabajo guiado en grupos.</li>
+          <li>Revisión de bases limpias, diccionarios de variables e indicadores preliminares.</li>
+          <li>Feedback cruzado entre grupos: ¿se entiende qué mide cada indicador?</li>
+          <li>Preparación del prototipo de datos.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Introducción a la gramática de gráficos con ggplot2</b> (28-09-2026)
+        <ul>
+          <li>La lógica de <code>ggplot2</code>: datos, estética, geometrías, escalas y temas.</li>
+          <li>Gráficos de distribución, comparación y relación.</li>
+          <li>Buenas prácticas: títulos, ejes, etiquetas, unidades y fuentes.</li>
+          <li class="deliverable">Entrega Sprint 2: prototipo de datos y primeros indicadores.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Elegir el gráfico correcto</b> (05-10-2026)
+        <ul>
+          <li>Qué gráfico usar según la pregunta: ranking, tendencia, distribución, composición, correlación o mapa.</li>
+          <li>Errores comunes de visualización y cómo evitarlos.</li>
+          <li>Color, contraste, jerarquía visual y anotaciones.</li>
+          <li>Actividad: rediseño de una visualización confusa.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <span class="highlight"><b>Feriado legal</b> (12-10-2026)</span>
+        <ul>
+          <li>No hay clase.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Visualizaciones multivariadas y narrativas</b> (19-10-2026)
+        <ul>
+          <li>Incorporar más de una variable sin perder claridad.</li>
+          <li>Faceting, capas secundarias y comparaciones múltiples.</li>
+          <li>Del gráfico aislado a la historia visual.</li>
+          <li>Clínica de proyecto: seleccionar las visualizaciones centrales de la plataforma.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Diseño de plataformas web de datos</b> (26-10-2026)
+        <ul>
+          <li>Estructura mínima de una plataforma: portada, contexto, datos, visualizaciones, metodología y conclusiones.</li>
+          <li>Opciones de publicación: GitHub Pages, Quarto, Google Sites, Flourish, Datawrapper u otras herramientas aprobadas.</li>
+          <li>Principios de navegación y lectura en pantalla.</li>
+          <li class="deliverable">Entrega Sprint 3: prototipo visual y arquitectura de la plataforma.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Contraparte, usuario y prueba de comprensión</b> (02-11-2026)
+        <ul>
+          <li>Cómo pedir feedback útil a una audiencia no experta.</li>
+          <li>Preparación de una conversación breve con contraparte consultiva o usuario potencial.</li>
+          <li>Prueba de comprensión: ¿qué entiende una persona externa al mirar la plataforma?</li>
+          <li>Actividad: test de cinco minutos entre grupos.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Comunicación oral de datos</b> (09-11-2026)
+        <ul>
+          <li>Cómo presentar un hallazgo descriptivo sin sobrerreclamar causalidad.</li>
+          <li>Orden narrativo: problema, datos, método, hallazgos, límites e implicancias.</li>
+          <li>Uso de visualizaciones en presentaciones orales.</li>
+          <li>Ensayo breve de pitch por grupo.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <b>Taller final de plataforma</b> (16-11-2026)
+        <ul>
+          <li>Trabajo guiado en sala.</li>
+          <li>Revisión final de claridad visual, coherencia narrativa y trazabilidad de datos.</li>
+          <li>Preparación de presentación final: máximo 10 minutos + 5 minutos de preguntas.</li>
+          <li>Entrega de bitácora individual de aprendizaje.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <span class="highlight"><b>Presentaciones finales: demo day de plataformas de datos</b> (23-11-2026)</span>
+        <ul>
+          <li>Presentación de plataformas grupales.</li>
+          <li>Preguntas del curso, profesor, ayudante y eventuales contrapartes invitadas.</li>
+          <li>Entrega de enlace final publicado y breve memoria metodológica.</li>
+        </ul>
+      </div>
+    </li>
+
+    <li>
+      <div class="class-block">
+        <span class="highlight"><b>Instancia recuperativa o cierre administrativo</b> (30-11-2026)</span>
+        <ul>
+          <li>Fecha reservada para recuperaciones, ajustes administrativos o cierre de notas, según corresponda.</li>
+        </ul>
+      </div>
+    </li>
+  </ol>
+
+  <h2>Evaluación</h2>
+  <p>La evaluación del curso se compone de los siguientes elementos:</p>
+  <ul>
+    <li><strong>Bitácora individual de aprendizaje (15%)</strong>: registro breve y periódico de decisiones, problemas encontrados, aprendizajes técnicos, uso de IA y contribución personal al proyecto.</li>
+    <li><strong>Sprint 1 - Propuesta de dominio, pregunta, fuentes y audiencia (15%)</strong>: definición del tema, pregunta guía, fuentes de datos, público objetivo, posible contraparte y plan de trabajo.</li>
+    <li><strong>Sprint 2 - Prototipo de datos (20%)</strong>: base limpia o sistematizada, diccionario de variables, indicadores preliminares y justificación de decisiones de limpieza.</li>
+    <li><strong>Sprint 3 - Prototipo visual (20%)</strong>: conjunto inicial de visualizaciones, criterios de selección gráfica, narrativa preliminar y retroalimentación incorporada.</li>
+    <li><strong>Plataforma final y presentación oral (30%)</strong>: sitio publicado, claridad de la narrativa visual, calidad técnica de los datos y gráficos, dominio del tema, límites del análisis y presentación oral.</li>
+  </ul>
+
+  <h2>Criterios transversales</h2>
+  <ul>
+    <li><strong>Claridad:</strong> la plataforma debe ser comprensible para una audiencia no especializada.</li>
+    <li><strong>Rigor descriptivo:</strong> los indicadores y visualizaciones deben medir lo que dicen medir.</li>
+    <li><strong>Trazabilidad:</strong> las fuentes, transformaciones y decisiones metodológicas deben quedar documentadas.</li>
+    <li><strong>Diseño visual:</strong> los gráficos deben ser legibles, informativos y adecuados a la pregunta.</li>
+    <li><strong>Trabajo grupal:</strong> todos los integrantes deben poder explicar el proyecto y sus decisiones principales.</li>
+    <li><strong>Vinculación opcional:</strong> la interacción con contraparte o destinatario real puede fortalecer la evaluación del proyecto final cuando mejora la pertinencia, interpretación o utilidad pública de la plataforma.</li>
+  </ul>
+
+</body>
+</html>
