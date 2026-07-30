@@ -505,6 +505,345 @@
                 display: none;
             }
         }
+
+        /*
+         * Visual language shared by the 2026 syllabi:
+         * compact reading column, navy headings, light-blue information
+         * blocks and simple class entries without cards or shadows.
+         */
+        body {
+            max-width: 900px;
+            margin: 2em auto;
+            padding: 1em;
+            color: #333333;
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        main,
+        footer {
+            width: 100%;
+        }
+
+        header,
+        section,
+        .unit {
+            color: #333333;
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        header {
+            margin-bottom: 2em;
+            overflow: visible;
+        }
+
+        .hero {
+            padding: 0;
+            color: #333333;
+            background: transparent;
+        }
+
+        h1,
+        h2 {
+            color: #0a3d62;
+            border-bottom: 2px solid #dddddd;
+            padding-bottom: 0.2em;
+        }
+
+        h1 {
+            margin: 0 0 0.25em;
+            font-size: 2.15rem;
+            letter-spacing: normal;
+        }
+
+        h2 {
+            font-size: 1.55rem;
+        }
+
+        h3,
+        .session-content h3 {
+            color: #1e3799;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: #555555;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            opacity: 1;
+        }
+
+        .subtitle {
+            max-width: none;
+            margin: 0 0 1.2em;
+            color: #555555;
+            font-size: 1rem;
+            font-style: italic;
+            opacity: 1;
+        }
+
+        .course-meta {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.55em 1.5em;
+            padding: 1em;
+            border-left: 5px solid #0a3d62;
+            background: #eaf2f8;
+        }
+
+        .course-meta li {
+            min-height: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .course-meta strong {
+            margin-bottom: 0.05em;
+            color: #0a3d62;
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+        }
+
+        .resource-bar {
+            gap: 0.55em 1.2em;
+            margin-top: 1em;
+            padding: 0.8em 1em;
+            border: 0;
+            border-left: 4px solid #b3a37a;
+            background: #f7f7f2;
+        }
+
+        a {
+            color: #1e3799;
+        }
+
+        a:hover,
+        a:focus {
+            color: #0a3d62;
+        }
+
+        .button-link {
+            padding: 0;
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            font-size: 0.92rem;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        section {
+            margin: 0 0 2.4em;
+            padding: 0;
+        }
+
+        section h2,
+        .unit h2 {
+            margin: 0 0 0.75em;
+        }
+
+        .lede {
+            font-size: 1rem;
+        }
+
+        .callout,
+        .axis {
+            border: 0;
+            border-left: 4px solid #b3a37a;
+            border-radius: 0;
+            background: #f7f7f2;
+        }
+
+        .callout {
+            padding: 0.8em 1em;
+        }
+
+        .two-column {
+            gap: 2.25em;
+        }
+
+        .axes {
+            gap: 0.85em;
+            margin-top: 1.5em;
+        }
+
+        .axis {
+            padding: 0.75em 0.9em;
+        }
+
+        .axis strong {
+            color: #0a3d62;
+        }
+
+        .unit {
+            margin: 0 0 3em;
+            padding: 0;
+            overflow: visible;
+        }
+
+        .unit-header,
+        .unit-1 .unit-header,
+        .unit-2 .unit-header,
+        .unit-3 .unit-header {
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+
+        .unit-header .eyebrow {
+            display: inline-block;
+            margin-bottom: 0.45em;
+            padding: 0.15em 0.55em;
+            color: #0a3d62;
+            border-radius: 4px;
+            background: #eaf2f8;
+            font-weight: 700;
+        }
+
+        .unit-header p {
+            max-width: none;
+            margin: 0 0 1.6em;
+        }
+
+        .schedule {
+            margin: 0;
+            padding: 0;
+        }
+
+        .class-session {
+            display: block;
+            margin-bottom: 2em;
+            padding: 0;
+            border: 0;
+        }
+
+        .session-date {
+            margin-bottom: 0.25em;
+            color: #555555;
+            font-size: 0.9rem;
+        }
+
+        .session-date strong,
+        .session-date time {
+            display: inline;
+        }
+
+        .session-date strong {
+            color: #333333;
+        }
+
+        .session-date strong::after,
+        .session-date time::after {
+            content: " · ";
+            color: #777777;
+            font-weight: 400;
+        }
+
+        .session-content h3 {
+            margin: 0 0 0.35em;
+            font-size: 1.08rem;
+        }
+
+        .session-content ul {
+            margin: 0.5em 0 1.2em;
+        }
+
+        .label {
+            border-radius: 4px;
+            color: #0a3d62;
+            background: #eaf2f8;
+        }
+
+        .assessment {
+            color: #6b3a17;
+            background: #fff3b0;
+        }
+
+        .no-class {
+            margin: 0 0 1.5em;
+            padding: 0.65em 0.9em;
+            border: 0;
+            border-left: 4px solid #b3a37a;
+            background: #f7f7f2;
+        }
+
+        .evaluation-table {
+            font-size: 0.94rem;
+        }
+
+        .evaluation-table th,
+        .evaluation-table td {
+            padding: 0.55em 0.7em;
+            border: 1px solid #d6dee6;
+        }
+
+        .evaluation-table th {
+            color: #0a3d62;
+            background: #eaf2f8;
+        }
+
+        details {
+            padding: 0.75em 0;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        footer {
+            margin: 3em auto 0;
+            color: #555555;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                margin: 0;
+                padding: 1em;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .course-meta,
+            .two-column,
+            .axes {
+                grid-template-columns: 1fr;
+            }
+
+            .course-meta {
+                gap: 0.8em;
+            }
+
+            .course-meta li,
+            .course-meta li:nth-child(2),
+            .course-meta li:nth-child(-n+2) {
+                border: 0;
+            }
+
+            .hero,
+            section,
+            .unit-header,
+            .class-session {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        @media print {
+            body {
+                max-width: none;
+                margin: 0;
+                padding: 0;
+                color: #000000;
+                background: #ffffff;
+            }
+
+            .resource-bar {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
