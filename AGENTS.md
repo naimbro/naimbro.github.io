@@ -46,6 +46,7 @@ Academic personal website for **Naim Bro**, Assistant Professor at the School of
 | `teaching/2026_programa_ai_research.html` | AI in Research (PhD, UAI) |
 | `teaching/2026_descripcion_visualizacion_datos.html` | Data Description and Visualization (Sociology-Business Engineering double degree, UAI) |
 | `teaching/MEPP/2026_programa_ML_II.html` | Machine Learning II (MEPP, UAI) |
+| `teaching/2026_mgt300.html` | Society, Culture, and Politics (Business School, UAI) |
 
 ### Naming convention
 

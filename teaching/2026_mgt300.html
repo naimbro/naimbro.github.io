@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Programa 2026 de Sociedad, Cultura y Política (MGT300), Universidad Adolfo Ibáñez.">
+    <title>Sociedad, Cultura y Política (MGT300) - 2026</title>
+    <style>
+        :root {
+            --ink: #263746;
+            --muted: #63717c;
+            --paper: #ffffff;
+            --background: #f3f5f6;
+            --line: #d7dee2;
+            --accent: #19706d;
+            --accent-dark: #105653;
+            --accent-soft: #e7f2f1;
+            --warm: #f4ead9;
+            --warm-dark: #8b5c20;
+            --blue-soft: #e8eef6;
+            --blue-dark: #315a84;
+            --shadow: 0 12px 30px rgba(38, 55, 70, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 32px 18px 64px;
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.58;
+            color: var(--ink);
+            background: var(--background);
+        }
+
+        main {
+            width: min(1080px, 100%);
+            margin: 0 auto;
+        }
+
+        header,
+        section,
+        .unit {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+        }
+
+        header {
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .hero {
+            padding: 34px 38px 30px;
+            color: #ffffff;
+            background: linear-gradient(120deg, #243746 0%, #19706d 100%);
+        }
+
+        .eyebrow {
+            margin: 0 0 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.82;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            letter-spacing: -0.035em;
+        }
+
+        .subtitle {
+            max-width: 760px;
+            margin: 12px 0 0;
+            font-size: 1.08rem;
+            opacity: 0.9;
+        }
+
+        .course-meta {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .course-meta li {
+            min-height: 90px;
+            padding: 20px 22px;
+            border-right: 1px solid var(--line);
+        }
+
+        .course-meta li:last-child {
+            border-right: 0;
+        }
+
+        .course-meta strong,
+        .course-meta span {
+            display: block;
+        }
+
+        .course-meta strong {
+            margin-bottom: 4px;
+            color: var(--muted);
+            font-size: 0.76rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .resource-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 18px 22px;
+            border-top: 1px solid var(--line);
+            background: #fbfcfc;
+        }
+
+        a {
+            color: #176b89;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        a:hover,
+        a:focus {
+            color: #0b4f69;
+        }
+
+        .button-link {
+            display: inline-block;
+            padding: 8px 12px;
+            border: 1px solid #b9ced6;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: #ffffff;
+        }
+
+        section {
+            margin: 24px 0;
+            padding: 30px 34px;
+        }
+
+        section h2,
+        .unit h2 {
+            margin: 0 0 18px;
+            font-size: 1.65rem;
+        }
+
+        section h3 {
+            margin: 28px 0 10px;
+            font-size: 1.12rem;
+        }
+
+        .lede {
+            margin: 0;
+            font-size: 1.05rem;
+        }
+
+        .callout {
+            margin-top: 20px;
+            padding: 16px 18px;
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            background: var(--accent-soft);
+        }
+
+        .callout p {
+            margin: 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .compact-list {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .compact-list li {
+            margin-bottom: 7px;
+        }
+
+        .axes {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .axis {
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fbfcfc;
+        }
+
+        .axis strong {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--accent-dark);
+        }
+
+        .unit {
+            margin: 26px 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .unit-header {
+            padding: 27px 32px 23px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .unit-header p {
+            max-width: 850px;
+            margin: 8px 0 0;
+        }
+
+        .unit-1 .unit-header {
+            background: var(--accent-soft);
+            border-top: 7px solid var(--accent);
+        }
+
+        .unit-2 .unit-header {
+            background: var(--blue-soft);
+            border-top: 7px solid var(--blue-dark);
+        }
+
+        .unit-3 .unit-header {
+            background: var(--warm);
+            border-top: 7px solid var(--warm-dark);
+        }
+
+        .schedule {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .class-session {
+            display: grid;
+            grid-template-columns: 165px minmax(0, 1fr);
+            gap: 24px;
+            padding: 26px 32px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .class-session:last-child {
+            border-bottom: 0;
+        }
+
+        .session-date {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .session-date strong,
+        .session-date time {
+            display: block;
+        }
+
+        .session-date strong {
+            margin-bottom: 3px;
+            color: var(--ink);
+            font-size: 1rem;
+        }
+
+        .session-content h3 {
+            margin: 0 0 9px;
+            font-size: 1.18rem;
+        }
+
+        .session-content p {
+            margin: 0 0 8px;
+        }
+
+        .session-content ul {
+            margin: 8px 0 0;
+            padding-left: 20px;
+        }
+
+        .session-content li {
+            margin-bottom: 5px;
+        }
+
+        .label {
+            display: inline-block;
+            margin-right: 5px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            color: var(--accent-dark);
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            background: var(--accent-soft);
+        }
+
+        .assessment {
+            color: #7a3c12;
+            background: #f8e9dc;
+        }
+
+        .no-class {
+            margin: 0;
+            padding: 16px 32px;
+            color: #645226;
+            border-bottom: 1px solid #eadcb8;
+            background: #fff8e6;
+        }
+
+        .evaluation-table {
+            width: 100%;
+            margin: 18px 0;
+            border-collapse: collapse;
+        }
+
+        .evaluation-table th,
+        .evaluation-table td {
+            padding: 13px 14px;
+            text-align: left;
+            vertical-align: top;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .evaluation-table th {
+            color: #ffffff;
+            background: var(--ink);
+        }
+
+        .evaluation-table td:first-child {
+            width: 29%;
+            font-weight: 700;
+        }
+
+        .evaluation-table td:nth-child(2) {
+            width: 11%;
+            white-space: nowrap;
+        }
+
+        details {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        details:last-child {
+            border-bottom: 0;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p,
+        details ul {
+            margin-bottom: 0;
+        }
+
+        .bibliography {
+            columns: 2 360px;
+            column-gap: 40px;
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .bibliography li {
+            margin: 0 0 10px;
+            break-inside: avoid;
+        }
+
+        footer {
+            width: min(1080px, 100%);
+            margin: 26px auto 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            body {
+                padding: 14px 10px 42px;
+            }
+
+            .hero,
+            section,
+            .unit-header,
+            .class-session {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .course-meta {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .course-meta li:nth-child(2) {
+                border-right: 0;
+            }
+
+            .course-meta li:nth-child(-n+2) {
+                border-bottom: 1px solid var(--line);
+            }
+
+            .two-column,
+            .axes {
+                grid-template-columns: 1fr;
+            }
+
+            .class-session {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .evaluation-table,
+            .evaluation-table tbody,
+            .evaluation-table tr,
+            .evaluation-table td {
+                display: block;
+                width: 100%;
+            }
+
+            .evaluation-table thead {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            .evaluation-table tr {
+                padding: 14px 0;
+                border-bottom: 1px solid var(--line);
+            }
+
+            .evaluation-table td {
+                padding: 3px 0;
+                border-bottom: 0;
+            }
+
+            .evaluation-table td:first-child,
+            .evaluation-table td:nth-child(2) {
+                width: 100%;
+            }
+
+            .evaluation-table td:nth-child(2) {
+                color: var(--accent-dark);
+                white-space: normal;
+                font-weight: 700;
+            }
+
+            .evaluation-table td:nth-child(2)::before {
+                content: "Ponderación: ";
+                color: var(--muted);
+                font-weight: 600;
+            }
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                color: #000000;
+                background: #ffffff;
+            }
+
+            header,
+            section,
+            .unit {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .class-session {
+                break-inside: avoid;
+            }
+
+            .resource-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <header>
+        <div class="hero">
+            <p class="eyebrow">Ingeniería Comercial · Escuela de Negocios · UAI</p>
+            <h1>Sociedad, Cultura y Política</h1>
+            <p class="subtitle">MGT300 · Programa y calendario de clases · Segundo semestre 2026</p>
+        </div>
+        <ul class="course-meta">
+            <li><strong>Profesor</strong><span>Naim Bro</span><a href="mailto:naim.bro.k@uai.cl">naim.bro.k@uai.cl</a></li>
+            <li><strong>Sección</strong><span>6 · Pregrado Santiago</span></li>
+            <li><strong>Horario</strong><span>Martes · 11:30-14:10</span></li>
+            <li><strong>Créditos y dedicación</strong><span>3 · 90 horas totales</span><span>22,5 presenciales · 67,5 autónomas</span></li>
+        </ul>
+        <nav class="resource-bar" aria-label="Recursos del curso">
+            <a class="button-link" href="https://drive.google.com/drive/folders/1SWMi02aM_SG6-r17JLyIcqnq_m8q3T7e?usp=sharing" target="_blank" rel="noopener">Lecturas del curso</a>
+            <a class="button-link" href="https://docs.google.com/document/d/1uFyy_ye09QH6S6G_1D6KAL-Vs0BdofY2UENm_VZglg4/edit?usp=sharing" target="_blank" rel="noopener">Guía de presentaciones</a>
+            <a class="button-link" href="#calendario">Calendario</a>
+            <a class="button-link" href="#evaluacion">Evaluación</a>
+            <a class="button-link" href="#bibliografia">Bibliografía</a>
+        </nav>
+    </header>
+
+    <section id="descripcion">
+        <h2>Descripción de la asignatura</h2>
+        <p class="lede">Los problemas de negocios ya no pueden comprenderse desde una sola disciplina. Este curso desarrolla una mirada interdisciplinaria sobre un entorno cambiante, conectando management y economía con sociología, filosofía, historia, ecología y ciencia política.</p>
+        <p>El punto de entrada es la identidad: cómo el capitalismo contemporáneo, la comunicación y las tecnologías digitales transforman nuestra relación con nosotros mismos, con otras personas, con la esfera pública y con las organizaciones. Desde allí, el curso avanza hacia las condiciones sociales, institucionales y tecnológicas del desarrollo, examinando sus tensiones con la desigualdad, la sostenibilidad y la cuarta revolución industrial.</p>
+        <div class="callout">
+            <p><strong>Pregunta transversal:</strong> ¿cómo integrar factores políticos, sociales, culturales, tecnológicos, económicos y regulatorios para comprender problemas complejos y tomar mejores decisiones en empresas y organizaciones?</p>
+        </div>
+    </section>
+
+    <section id="aprendizajes">
+        <div class="two-column">
+            <div>
+                <h2>Resultados de aprendizaje</h2>
+                <ul class="compact-list">
+                    <li>Resolver desafíos de negocios de forma innovadora, usando conocimientos de management y economía junto con evidencia proveniente de otras disciplinas.</li>
+                    <li>Considerar factores del entorno político, social, económico y regulatorio para competir y decidir en un mundo globalizado.</li>
+                    <li>Elaborar interpretaciones y argumentos sólidos a partir de una lectura atenta, evidencia pertinente y discusión crítica.</li>
+                    <li>Comunicar ideas complejas de manera clara, oralmente y por escrito.</li>
+                </ul>
+            </div>
+            <div>
+                <h2>Estrategia de aprendizaje</h2>
+                <ul class="compact-list">
+                    <li>Exposiciones breves del profesor y discusión guiada de lecturas.</li>
+                    <li>Presentaciones grupales orientadas a analizar, aplicar y debatir argumentos.</li>
+                    <li>Aprendizaje basado en problemas y casos de actualidad empresarial, política y tecnológica.</li>
+                    <li>Análisis de datos, artículos académicos, reportes técnicos y evidencia empírica.</li>
+                    <li>Actividades que conectan investigación, docencia y toma de decisiones.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="axes" aria-label="Ejes de análisis del curso">
+            <div class="axis"><strong>Espacio</strong>La tensión entre lo local y lo global.</div>
+            <div class="axis"><strong>Tiempo</strong>La tensión entre presente y futuro.</div>
+            <div class="axis"><strong>Ser</strong>La tensión entre lo individual y lo colectivo.</div>
+        </div>
+    </section>
+
+    <div id="calendario" class="unit unit-1">
+        <div class="unit-header">
+            <p class="eyebrow">Unidad 1</p>
+            <h2>Identidad, capitalismo y redes sociales</h2>
+            <p>Libertad, rendimiento, autoexplotación e identidad en una sociedad atravesada por plataformas, imágenes, datos e inteligencia artificial.</p>
+        </div>
+        <ol class="schedule">
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 1</strong><time datetime="2026-08-04">Martes 4 de agosto</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Presentación del curso e introducción a la Unidad 1</h3>
+                    <ul>
+                        <li>Objetivos, metodología, evaluaciones, normas de trabajo y organización de las presentaciones.</li>
+                        <li>Identidad, capitalismo y redes sociales como problema interdisciplinario.</li>
+                        <li>Actividad diagnóstica: conectar experiencias personales, entorno social y desafíos de negocios.</li>
+                        <li><a href="https://docs.google.com/presentation/d/18Oe0amNPfHwo0P2SFsoBAoihHKMohyU6gJpmqSbkOC8/edit?usp=sharing" target="_blank" rel="noopener">Presentación introductoria</a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 2</strong><time datetime="2026-08-11">Martes 11 de agosto</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>La autoexplotación del individuo en el capitalismo tardío</h3>
+                    <ul>
+                        <li>Libertad negativa y positiva; del sujeto disciplinado al sujeto de rendimiento.</li>
+                        <li>Productividad, éxito y autoexigencia: ¿libertad o una nueva forma de coerción?</li>
+                        <li><strong>Lectura:</strong> Byung-Chul Han, <i>La sociedad del cansancio</i>.</li>
+                        <li><a href="https://docs.google.com/presentation/d/19Fmo1zm5JGBAYVX4CwqUzDixdOIRZrHgzDyp4HlIxyU/edit?usp=sharing" target="_blank" rel="noopener">Presentación: sociedad del rendimiento</a> y <a href="https://www.youtube.com/watch?v=e9dZQelULDk" target="_blank" rel="noopener">cortometraje <i>Happiness</i></a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 3</strong><time datetime="2026-08-18">Martes 18 de agosto</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>La sociedad del cansancio y sus malestares</h3>
+                    <ul>
+                        <li>Agotamiento, depresión, relaciones humanas y el reverso de la sociedad de consumo.</li>
+                        <li>Aprender a mirar y a sentir: contemplación, descanso y resistencia a la lógica del rendimiento.</li>
+                        <li><span class="label">Presentaciones</span> Inicio de presentaciones grupales y preguntas de otro grupo.</li>
+                        <li><strong>Lectura:</strong> Han, <i>La sociedad del cansancio</i>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 4</strong><time datetime="2026-08-25">Martes 25 de agosto</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>¿Identidad o identidades? Interacción en la sociedad digital I</h3>
+                    <ul>
+                        <li>Autopresentación, visibilidad, autenticidad, hiperrealidad y comparación social.</li>
+                        <li>Del espacio público de masas al enjambre digital: fragmentación e individualización.</li>
+                        <li><strong>Lecturas:</strong> Han, <i>En el enjambre</i>; selección de ensayos de Yuval Noah Harari.</li>
+                        <li><a href="https://docs.google.com/presentation/d/1Rv_c4o2Vx3Jy7Ma8LuH5zqLgztkAXBJvEpuchBYArWg/edit?usp=sharing" target="_blank" rel="noopener">Presentación: <i>En el enjambre</i></a>. Actividad aplicada: fuentes, sesgo y calidad de información.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 5</strong><time datetime="2026-09-01">Martes 1 de septiembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>¿Identidad o identidades? Interacción en la sociedad digital II</h3>
+                    <ul>
+                        <li>Identidad algorítmica, datos, avatares y vínculos afectivos con agentes de IA.</li>
+                        <li>Discusión inicial: <i>Her</i> y <i>Be Right Back</i>. ¿Es posible delegar intimidad, representación o deliberación a una máquina?</li>
+                        <li><strong>Lectura:</strong> Harari, “Los macrodatos están observándote” y “AI has hacked the operating system of human civilisation”.</li>
+                        <li><a href="https://www.economist.com/by-invitation/2023/04/28/yuval-noah-harari-argues-that-ai-has-hacked-the-operating-system-of-human-civilisation" target="_blank" rel="noopener">Texto de Harari</a> y <a href="https://docs.google.com/presentation/d/1J_m7J81FkiHNB8K2nUvsIgfRXGGp3Ai9mrri0-WLo7g/edit?usp=sharing" target="_blank" rel="noopener">presentación sobre IA y vínculos afectivos</a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 6</strong><time datetime="2026-09-08">Martes 8 de septiembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3><span class="label assessment">Evaluación</span> Prueba de análisis 1 e introducción a la Unidad 2</h3>
+                    <ul>
+                        <li>La prueba evalúa comprensión, relación entre lecturas y aplicación de conceptos de la Unidad 1.</li>
+                        <li>Introducción: del lenguaje oral y escrito a la comunicación digital.</li>
+                    </ul>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="unit unit-2">
+        <div class="unit-header">
+            <p class="eyebrow">Unidad 2</p>
+            <h2>Comunicación, cultura e irrupción digital</h2>
+            <p>Cómo la oralidad, la escritura y las plataformas digitales transforman la conciencia individual, la producción de conocimiento, la verdad, la democracia y nuestra experiencia del tiempo y el espacio.</p>
+        </div>
+        <p class="no-class"><strong>Martes 15 de septiembre:</strong> no hay sesión programada, de acuerdo con el calendario docente y la pausa de Fiestas Patrias.</p>
+        <ol class="schedule">
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 7</strong><time datetime="2026-09-22">Martes 22 de septiembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Comunicación digital, individuo y sociedad</h3>
+                    <ul>
+                        <li>El surgimiento histórico del individuo, la lectura y la conciencia personal.</li>
+                        <li>¿Redescubrimiento del individuo o nueva dependencia de métricas, perfiles y avatares?</li>
+                        <li><strong>Lectura:</strong> Richard van Dülmen, <i>El descubrimiento del individuo 1500-1800</i>, pp. 123-164.</li>
+                        <li><a href="https://www.youtube.com/watch?v=boypZ8g2Yo8" target="_blank" rel="noopener">Moby &amp; The Void Pacific Choir, “Are You Lost in the World Like Me?”</a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 8</strong><time datetime="2026-09-29">Martes 29 de septiembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>¿Cultura digital? El sonido de la palabra y la grafía de la voz</h3>
+                    <ul>
+                        <li>Oralidad, escritura y pantalla como tecnologías del pensamiento.</li>
+                        <li>Lectura profunda, atención y producción de conocimiento en entornos digitales y generativos.</li>
+                        <li><strong>Lectura:</strong> Walter Ong, <i>Oralidad y escritura</i> (Introducción; caps. 1, 4 y 6).</li>
+                        <li><a href="https://docs.google.com/presentation/d/10QJwiQnL65avk9Nt32B6b4lnhSR6WpnMQi6kbck9TvI/edit?usp=sharing" target="_blank" rel="noopener">Presentación: declive de la lectura</a> y <a href="https://theconversation.com/roger-chartier-el-universo-digital-abre-nuevos-horizontes-a-la-escritura-que-parecia-caduca-190557" target="_blank" rel="noopener">entrevista a Roger Chartier</a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 9</strong><time datetime="2026-10-06">Martes 6 de octubre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Desafíos de la irrupción digital: verdad, descentramiento y globalización</h3>
+                    <ul>
+                        <li>Hechos, interpretaciones y narrativas; experiencia local de lo global y virtualidad del mundo.</li>
+                        <li>Infocracia, filtros burbuja, polarización y alfabetización informacional.</li>
+                        <li>IA generativa, desinformación y campañas electorales: usos democráticos y riesgos de manipulación.</li>
+                        <li><strong>Lecturas:</strong> Lynn Hunt, <i>¿La historia, por qué importa?</i>; Han, <i>Infocracia</i>, cap. 2; Eli Pariser, <i>El filtro burbuja</i>, introducción.</li>
+                        <li><a href="https://docs.google.com/presentation/d/1t1dBmZ94BUiAdl47Lw_4r7VPWPNZZaQpFgD9Bcxuq94/edit?usp=sharing" target="_blank" rel="noopener">Presentación: filtros burbuja e infocracia</a>. Actividad: rastrear una burbuja informativa y diseñar una estrategia de salida.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 10</strong><time datetime="2026-10-13">Martes 13 de octubre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3><span class="label assessment">Evaluación</span> Prueba de análisis 2 e introducción a la Unidad 3</h3>
+                    <ul>
+                        <li>La prueba integra comunicación, cultura escrita, verdad, plataformas y democracia.</li>
+                        <li>Introducción: desarrollo como expansión de libertades y capacidades, no solo como crecimiento económico.</li>
+                        <li><strong>Lectura sugerida:</strong> Amartya Sen, <i>Desarrollo y libertad</i> (Introducción y cap. 2).</li>
+                    </ul>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="unit unit-3">
+        <div class="unit-header">
+            <p class="eyebrow">Unidad 3</p>
+            <h2>El concepto de desarrollo y sus dimensiones en un mundo digital</h2>
+            <p>Sostenibilidad, innovación, desigualdad, instituciones y trabajo en una economía atravesada por transformaciones tecnológicas y geopolíticas.</p>
+        </div>
+        <ol class="schedule">
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 11</strong><time datetime="2026-10-20">Martes 20 de octubre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Hacia un desarrollo sostenible y sustentable</h3>
+                    <ul>
+                        <li>Desarrollo, capacidades y bienestar; diferencias entre PIB per cápita e IDH.</li>
+                        <li>¿Es compatible el crecimiento económico con la preservación del entorno?</li>
+                        <li>Innovación verde, transición energética y responsabilidad de estados, empresas e individuos.</li>
+                        <li><strong>Lecturas:</strong> Sen, <i>Desarrollo y libertad</i>; Galor, <i>El viaje de la humanidad</i>, cap. 6; Aghion, Antonin y Bunel, <i>The Power of Creative Destruction</i>, cap. 9.</li>
+                        <li><a href="https://docs.google.com/presentation/d/1b44W8CKuOaN2DNJ5X1b5jJFodUg1-n0inLvQwAdTSSs/edit?usp=sharing" target="_blank" rel="noopener">Presentación: desarrollo y libertad</a> y actividad comparativa PIB/IDH.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 12</strong><time datetime="2026-10-27">Martes 27 de octubre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Innovación, desigualdad y (sub)desarrollo</h3>
+                    <ul>
+                        <li>Destrucción creativa, movilidad social y distribución de costos y beneficios.</li>
+                        <li>¿Qué papel juegan el Estado, la competencia y las brechas de acceso en la economía digital?</li>
+                        <li><strong>Lectura:</strong> Aghion, Antonin y Bunel, <i>The Power of Creative Destruction</i>, cap. 5.</li>
+                        <li><a href="https://docs.google.com/presentation/d/1KLJeJszCQzh1ECbR4EA4xeVKLzxCIpg9EsfmBm8x0As/edit?usp=sharing" target="_blank" rel="noopener">Presentación: innovación y desigualdad</a> y <a href="https://unctad.org/news/how-unlock-womens-potential-digital-economy" target="_blank" rel="noopener">caso UNCTAD sobre brechas en la economía digital</a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 13</strong><time datetime="2026-11-03">Martes 3 de noviembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Instituciones, información y entorno de negocios</h3>
+                    <ul>
+                        <li>Instituciones inclusivas y extractivas; reglas, incentivos y prosperidad.</li>
+                        <li>Brechas informativas, libertad efectiva y desarrollo.</li>
+                        <li>Aplicación: riesgo político y decisiones empresariales bajo volatilidad geopolítica.</li>
+                        <li><strong>Lecturas:</strong> Acemoglu y Robinson, <i>Por qué fracasan los países</i>, cap. 3; Sen, <i>Desarrollo y libertad</i>, cap. 6.</li>
+                        <li><a href="https://docs.google.com/presentation/d/1k5yTCQTFW2mJRBfwSzFmoy8RdG9coSxKNL9dQm6CWY8/edit?usp=sharing" target="_blank" rel="noopener">Presentación: instituciones y prosperidad</a>; <a href="https://www.economist.com/briefing/2026/01/15/geopolitics-is-warping-multinationals-commercial-decisions" target="_blank" rel="noopener">caso actualizado sobre multinacionales y geopolítica</a>; <a href="https://naimbro.github.io/mgt300-risk-game/join" target="_blank" rel="noopener">Simulador de Inversión Global</a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 14</strong><time datetime="2026-11-10">Martes 10 de noviembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Trabajo y empresa en la cuarta revolución industrial</h3>
+                    <ul>
+                        <li>Revoluciones tecnológicas, productividad y transformación del trabajo.</li>
+                        <li>IA, metaverso y nuevos alcances de la destrucción creativa.</li>
+                        <li>Crecimiento acelerado, concentración, seguridad y responsabilidad empresarial.</li>
+                        <li><strong>Lecturas:</strong> Galor, <i>El viaje de la humanidad</i>, cap. 4; Aghion, Antonin y Bunel, <i>The Power of Creative Destruction</i>, cap. 3.</li>
+                        <li><a href="https://docs.google.com/presentation/d/1rMKQ1HGV-Apz-4pflyax267nMnjqRiWCcamr3YhBPHM/edit?usp=sharing" target="_blank" rel="noopener">Presentación: revoluciones tecnológicas</a> y <a href="https://naimbro.github.io/revision_mgt300/" target="_blank" rel="noopener">juego de revisión</a>.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 15</strong><time datetime="2026-11-17">Martes 17 de noviembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3>Presentaciones finales y síntesis integradora</h3>
+                    <ul>
+                        <li><span class="label">Presentaciones</span> Última jornada de presentaciones grupales y discusión.</li>
+                        <li>Integración de las tres unidades mediante los ejes local/global, presente/futuro e individual/colectivo.</li>
+                        <li>Revisión guiada para la Prueba de análisis 3.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="class-session">
+                <div class="session-date"><strong>Clase 16</strong><time datetime="2026-11-24">Martes 24 de noviembre</time>11:30-14:10</div>
+                <div class="session-content">
+                    <h3><span class="label assessment">Evaluación</span> Prueba de análisis 3 y cierre del curso</h3>
+                    <ul>
+                        <li>Evaluación de sostenibilidad, innovación, desigualdad, instituciones y transformación tecnológica.</li>
+                        <li>Cierre, retroalimentación general e información sobre examen y eximición.</li>
+                    </ul>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <section id="evaluacion">
+        <h2>Evaluación</h2>
+        <p>Las evaluaciones miden preparación, comprensión conceptual, capacidad de relacionar lecturas y discusiones, argumentación basada en evidencia y aplicación a problemas contemporáneos.</p>
+        <table class="evaluation-table">
+            <thead>
+                <tr>
+                    <th>Instrumento</th>
+                    <th>Ponderación</th>
+                    <th>Propósito y formato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Controles de lectura</td>
+                    <td>20%</td>
+                    <td>Tres controles, uno por unidad, realizados sin aviso previo para verificar la preparación de las lecturas asignadas.</td>
+                </tr>
+                <tr>
+                    <td>Presentaciones grupales</td>
+                    <td>40%</td>
+                    <td>Comprensión y análisis de una lectura, aplicación a un problema y conducción de discusión. La ponderación se divide en 30% por la presentación y 10% por preguntas y comentarios a otro grupo.</td>
+                </tr>
+                <tr>
+                    <td>Pruebas de análisis</td>
+                    <td>40%</td>
+                    <td>Tres pruebas: 8 de septiembre, 13 de octubre y 24 de noviembre. Combinan respuestas breves y análisis aplicado de un caso.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="callout">
+            <p><strong>Nota de presentación y examen:</strong> la nota de presentación equivale al 75% de la nota final. El examen equivale al 25% y abarca el curso completo. Se eximen quienes obtengan una nota de presentación igual o superior a 5,0.</p>
+        </div>
+    </section>
+
+    <section id="politicas">
+        <h2>Políticas y condiciones del curso</h2>
+        <details open>
+            <summary>Asistencia, puntualidad y comunicaciones</summary>
+            <p>Se exige una asistencia mínima de 75%. Las justificaciones se tramitan exclusivamente mediante Secretaría Académica de Pregrado. El estudiantado debe revisar regularmente su correo UAI y WebC/Omega. El ingreso tardío o las salidas durante la clase deben acordarse previamente con el profesor.</p>
+        </details>
+        <details>
+            <summary>Entrega, inasistencias y re-corrección de evaluaciones</summary>
+            <p>Las evaluaciones serán corregidas y entregadas dentro de las dos semanas siguientes a su rendición, salvo fuerza mayor. Una inasistencia no justificada implica nota 1,0. En una inasistencia justificada a una prueba, su nota será reemplazada por la del examen, según el programa oficial. Las solicitudes de re-corrección deben presentarse por escrito dentro de los cinco días siguientes a la entrega; la revisión puede subir, mantener o bajar la calificación.</p>
+        </details>
+        <details>
+            <summary>Redondeo y requisito de aprobación</summary>
+            <p>Las notas se expresan con un decimal. Una centésima igual o superior a 5 se aproxima a la décima superior; en caso contrario, a la décima inferior. Para aprobar se requiere una nota final igual o superior a 4,0. No hay pruebas recuperativas ni trabajos adicionales para modificar la nota final.</p>
+        </details>
+        <details>
+            <summary>Uso de inteligencia artificial</summary>
+            <p>El uso de IA debe ser responsable, transparente, ético y consistente con la Política Institucional de Inteligencia Artificial de la UAI. Cada evaluación o actividad indicará qué usos están autorizados. El uso no autorizado, la falta de declaración o la presentación de contenido generado como propio constituyen infracciones al Código de Honor.</p>
+        </details>
+        <details>
+            <summary>Honestidad académica y derechos de autor</summary>
+            <p>El plagio, la copia y cualquier presentación de trabajo ajeno como propio implican la invalidación del instrumento y el procedimiento institucional correspondiente. Los materiales del curso están protegidos por derechos de autor y no pueden compartirse con terceros externos ni utilizarse para fines no académicos.</p>
+        </details>
+        <details>
+            <summary>Dispositivos y plan de contingencia</summary>
+            <p>Los dispositivos electrónicos se usarán solo cuando la actividad lo requiera. Si una clase o evaluación debe suspenderse por fuerza mayor, podrá reprogramarse, realizarse en modalidad remota o reemplazarse por una actividad equivalente, preservando los resultados de aprendizaje.</p>
+        </details>
+    </section>
+
+    <section id="bibliografia">
+        <h2>Bibliografía principal</h2>
+        <ol class="bibliography">
+            <li>Aghion, P., C. Antonin y S. Bunel (2021). <i>The Power of Creative Destruction</i>. Harvard University Press.</li>
+            <li>Acemoglu, D. y J. A. Robinson (2012). <i>Por qué fracasan los países</i>, cap. 3.</li>
+            <li>Deaton, A. (2013). <i>El gran escape: salud, riqueza y los orígenes de la desigualdad</i>. FCE.</li>
+            <li>Galor, O. (2022). <i>El viaje de la humanidad</i>. Planeta.</li>
+            <li>Han, B.-C. (2010). <i>La sociedad del cansancio</i>. Herder.</li>
+            <li>Han, B.-C. (2013). <i>En el enjambre</i>. Herder.</li>
+            <li>Han, B.-C. (2022). <i>Infocracia. La digitalización y la crisis de la democracia</i>. Taurus.</li>
+            <li>Harari, Y. N. (2018). “Los macrodatos están observándote”, en <i>21 lecciones para el siglo XXI</i>, pp. 65-95.</li>
+            <li>Harari, Y. N. (2023). <a href="https://www.economist.com/by-invitation/2023/04/28/yuval-noah-harari-argues-that-ai-has-hacked-the-operating-system-of-human-civilisation" target="_blank" rel="noopener">“AI has hacked the operating system of human civilisation”</a>. <i>The Economist</i>.</li>
+            <li>Hunt, L. (2019). <i>¿La historia, por qué importa?</i>. Alianza Editorial.</li>
+            <li>Ong, W. (1982). <i>Oralidad y escritura. Tecnologías de la palabra</i>. FCE.</li>
+            <li>Pariser, E. (2011). <i>El filtro burbuja</i>, introducción.</li>
+            <li>Sen, A. (2000). <i>Desarrollo y libertad</i>. Planeta.</li>
+            <li>Van Dülmen, R. (2016). <i>El descubrimiento del individuo 1500-1800</i>. Siglo XXI.</li>
+            <li><i>The Economist</i> (2025). “Will AI make you stupid?”, “What if AI made the world’s economic growth explode?” y “Could AI tilt the outcome of elections?”.</li>
+            <li><i>The Economist</i> (2026). <a href="https://www.economist.com/briefing/2026/01/15/geopolitics-is-warping-multinationals-commercial-decisions" target="_blank" rel="noopener">“Geopolitics is warping multinationals’ commercial decisions”</a>.</li>
+        </ol>
+        <p>Las lecturas evaluadas y los materiales complementarios estarán disponibles en WebC/Omega, Biblioteca UAI y la carpeta del curso. El profesor podrá agregar artículos, reportes o casos de actualidad durante el semestre.</p>
+    </section>
+</main>
+
+<footer>
+    Sociedad, Cultura y Política (MGT300) · Universidad Adolfo Ibáñez · Segundo semestre 2026
+</footer>
+</body>
+</html>
