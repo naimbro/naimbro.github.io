@@ -40,6 +40,16 @@ function crearEncuestaDelCurso() {
   form.setProgressBar(true);
   form.setConfirmationMessage('¡Listo! Tus respuestas ya son parte de la base de datos del curso.');
 
+  // Si el script se ejecuta con una cuenta Workspace (por ejemplo @uai.cl), Google
+  // restringe el formulario al dominio por defecto. Esto lo abre a cualquiera con el
+  // link. En cuentas personales (@gmail.com) el método no existe y lanza excepción,
+  // por eso va dentro de un try.
+  try {
+    form.setRequireLogin(false);
+  } catch (e) {
+    // cuenta personal: el formulario ya es accesible con el link, no hay nada que hacer
+  }
+
   // --- Preguntas numéricas (van como texto corto, igual que en una encuesta real:
   //     eso obliga a limpiar los datos después, que es justamente lo que enseñamos).
   form.addTextItem()
