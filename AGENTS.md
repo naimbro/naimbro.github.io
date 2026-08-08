@@ -56,6 +56,31 @@ New syllabi must use the format: **`YEAR_coursename.html`** (e.g. `2027_network_
 
 Whenever a syllabus file is renamed or moved, check `index.html` for links pointing to the old path (search for the old filename) and update them. The teaching list starts at `<!-- Teaching-->` (around line 103).
 
+## Development environment (remote containers)
+
+### Installing R
+
+R is **not** preinstalled in Claude Code remote containers, but it installs fine from apt. Run
+`apt-get update` first &mdash; without it the install dies with a `404 Not Found` on a stale
+package index (`libegl-mesa0`), which looks like "R is unavailable" but is not:
+
+```bash
+apt-get update -qq
+apt-get install -y --no-install-recommends r-base-core   # ~1 min, gives R 4.3.3
+Rscript -e 'cat(R.version.string)'
+```
+
+Use `--no-install-recommends` to skip the X11/TeX dependency tree. Extra CRAN packages
+(`install.packages()`) work but are slow to compile; base R covers most teaching material.
+
+### Network policy caveat
+
+The sandbox proxy blocks `docs.google.com`, so Google Sheets CSV export URLs
+(`.../export?format=csv&gid=...`) **cannot be fetched or tested from the container**, even when
+the sheet is public. `raw.githubusercontent.com` is allowed. To test R code that reads a Google
+Sheet, mirror the CSV into the repo (via the Google Drive MCP tools) and point the test run at
+the local copy or the raw GitHub URL.
+
 ## Common tasks
 
 ### Add a publication to the homepage
