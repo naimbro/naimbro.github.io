@@ -45,7 +45,9 @@ DESCRIPTION = (
     "clínica del lunes, así que es también la vía más rápida para avisar que algo "
     "se está trabando.\n\n"
     "Toma unos tres minutos. Forma parte de la Bitácora individual de aprendizaje "
-    "(15% de la nota del curso)."
+    "(15% de la nota del curso): 10% por estas entradas semanales, de las que se "
+    "cuentan las ocho mejores de nueve, y 5% por la síntesis final del 23 de "
+    "noviembre."
 )
 
 # Las nueve semanas con bitácora. Se excluyen las clases introductorias (3 y 10 de
