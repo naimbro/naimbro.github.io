@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Guía y rúbrica de las presentaciones grupales de MGT300 (Sociedad, Cultura y Política), Universidad Adolfo Ibáñez, segundo semestre 2026.">
+    <title>Guía de presentaciones grupales — MGT300 (2026)</title>
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+            --rule: #d6dee6;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            max-width: 860px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 2.4em 0 0.3em; font-size: 1.4rem; }
+
+        h3 {
+            margin: 1.8em 0 0.2em;
+            color: #1e3799;
+            font-size: 1.05rem;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin: 0 0 1.4em;
+            color: var(--muted);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        a { color: #1e3799; text-underline-offset: 2px; }
+        a:hover, a:focus { color: var(--navy); }
+
+        .frame {
+            margin: 0 0 2em;
+            padding: 1em 1.2em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+        }
+
+        .frame p { margin: 0.5em 0; }
+        .frame p:first-child { margin-top: 0; }
+        .frame p:last-child { margin-bottom: 0; }
+
+        .note {
+            margin: 1.3em 0;
+            padding: 0.7em 1em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.95rem;
+        }
+
+        .note p { margin: 0.4em 0; }
+        .note p:first-child { margin-top: 0; }
+        .note p:last-child { margin-bottom: 0; }
+
+        ul, ol { padding-left: 1.3em; }
+        li { margin-bottom: 0.4em; }
+
+        table {
+            width: 100%;
+            margin: 1.2em 0;
+            border-collapse: collapse;
+            font-size: 0.94rem;
+        }
+
+        th, td {
+            padding: 0.55em 0.7em;
+            text-align: left;
+            vertical-align: top;
+            border: 1px solid var(--rule);
+        }
+
+        th { color: var(--navy); background: var(--info); }
+
+        /* The rubric needs five columns; let it scroll instead of squeezing. */
+        .scroll { margin: 1.2em 0; overflow-x: auto; }
+        .scroll table { margin: 0; min-width: 720px; font-size: 0.82rem; }
+        .scroll td:first-child { width: 17%; font-weight: 700; color: var(--navy); }
+
+        .clock {
+            display: inline-block;
+            margin-left: 0.5em;
+            padding: 0.1em 0.6em;
+            border-radius: 999px;
+            color: #6b3a17;
+            background: #fff3b0;
+            font-size: 0.78rem;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+
+        .yes-no { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2em; margin: 1.2em 0; }
+        .yes-no > div { padding: 0.8em 1em; border: 1px solid var(--rule); background: #ffffff; }
+        .yes-no h4 { margin: 0 0 0.4em; font-size: 0.95rem; color: var(--navy); }
+        .yes-no ul { margin: 0; font-size: 0.93rem; }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        @media (max-width: 700px) {
+            body { margin: 0; padding: 1em; }
+            h1 { font-size: 1.7rem; }
+            .yes-no { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { max-width: none; margin: 0; padding: 0; background: #ffffff; }
+            h2 { break-after: avoid; }
+            table, .frame, .note { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<p class="eyebrow">Ingeniería Comercial · Escuela de Negocios · UAI</p>
+<h1>Guía para las presentaciones grupales</h1>
+<p class="subtitle">MGT300 · Sociedad, Cultura y Política · Segundo semestre 2026</p>
+
+<div class="frame">
+    <p><strong>La regla que ordena todo lo demás.</strong> La presentación no expone la lectura: la usa. Cada grupo trae una empresa, una decisión, un mercado o un fenómeno económico documentado, y lo problematiza con un concepto del texto de la sesión.</p>
+    <p>El resumen del texto no se evalúa. El criterio de fondo es uno solo: <strong>el concepto tiene que decir algo del caso que sin él no se vería.</strong></p>
+</div>
+
+<h2>1. Formato, calendario y ponderación</h2>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Grupos</th>
+            <td>Idealmente cuatro integrantes; cinco solo en casos excepcionales.</td>
+        </tr>
+        <tr>
+            <th>Duración</th>
+            <td>20 minutos por grupo: 10 de presentación, 5 de contrapunto y 5 de discusión abierta.</td>
+        </tr>
+        <tr>
+            <th>Sesiones</th>
+            <td>Once: clases 3, 4 y 5; 7, 8 y 9; y 11 a 15. Cada grupo presenta una vez y actúa como contrapunto de otro grupo en una sesión distinta.</td>
+        </tr>
+        <tr>
+            <th>Ponderación</th>
+            <td>40% de la nota del curso: <strong>30%</strong> por la presentación propia y <strong>10%</strong> por las preguntas y comentarios al otro grupo.</td>
+        </tr>
+        <tr>
+            <th>Coordinación</th>
+            <td>La conformación de los grupos y la asignación de sesiones y contrapuntos las llevan los ayudantes Sofía Fuentes (<a href="mailto:sofiagfuentes@alumnos.uai.cl">sofiagfuentes@alumnos.uai.cl</a>) y Martín Castillo (<a href="mailto:martincastillo@alumnos.uai.cl">martincastillo@alumnos.uai.cl</a>).</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>2. Estructura de los 20 minutos</h2>
+
+<table>
+    <thead>
+        <tr><th>Bloque</th><th>Tiempo</th><th>Qué ocurre</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Concepto-ancla</td><td>3 min</td><td>El grupo presenta el concepto del texto con el que va a leer su caso, y justifica esa elección.</td></tr>
+        <tr><td>El caso</td><td>5 min</td><td>Presentación y análisis del caso empresarial o del fenómeno económico. Es la parte más importante.</td></tr>
+        <tr><td>Pregunta de discusión</td><td>2 min</td><td>El grupo plantea al curso una pregunta surgida del choque entre el texto y el caso.</td></tr>
+        <tr><td>Contrapunto</td><td>5 min</td><td>El grupo asignado interpela; el grupo presentador responde.</td></tr>
+        <tr><td>Discusión abierta</td><td>5 min</td><td>Preguntas y comentarios del resto del curso.</td></tr>
+    </tbody>
+</table>
+
+<h2>3. Parte 1 · El concepto-ancla <span class="clock">3 min</span></h2>
+
+<p>Esta sección <strong>no</strong> es un resumen del texto. Es una exposición selectiva: qué del texto les sirvió para elegir y leer su caso.</p>
+
+<ul>
+    <li><strong>Elijan uno.</strong> Un concepto, un pasaje o un argumento. No la lectura completa.</li>
+    <li><strong>Justifíquenlo.</strong> Por qué ese concepto, y no otro, permite leer el caso que van a presentar. Un vínculo arbitrario entre concepto y caso se penaliza aunque ambos estén bien expuestos.</li>
+    <li><strong>Definan la terminología</strong> que el curso necesita para seguir el análisis, y solo esa.</li>
+</ul>
+
+<div class="note">
+    <p><strong>No se evalúan</strong> —y consumen el tiempo que necesita el caso—: el resumen del texto, la biografía del autor, el contexto histórico general y la enumeración de todos los conceptos de la lectura.</p>
+</div>
+
+<h2>4. Parte 2 · El caso <span class="clock">5 min</span></h2>
+
+<h3>4.1 Presentación del caso</h3>
+<ul>
+    <li>Una empresa, una decisión, un mercado, una regulación o un fenómeno económico <strong>acotado</strong>: no «la IA en el retail», sino una decisión concreta de una organización concreta en un período concreto.</li>
+    <li>Describan el contexto específico en que se manifestó el fenómeno.</li>
+    <li>Documenten con cronología, cifras, actores identificados y fuentes verificables.</li>
+</ul>
+
+<h3>4.2 Análisis con el concepto</h3>
+<ul>
+    <li>Apliquen el concepto para mostrar del caso algo que la cobertura de prensa no dice. El marco del texto debe hacer resaltar la particularidad del caso o iluminar un aspecto poco discutido.</li>
+    <li><strong>Si analizan una empresa:</strong> planteen rutas de acción a la luz de lo abordado en el texto.</li>
+    <li><strong>Si analizan un fenómeno más general:</strong> elaboren una crítica fundada y propongan modos alternativos de abordarlo.</li>
+</ul>
+
+<h3>4.3 Qué hace que un caso funcione</h3>
+<ol>
+    <li><strong>Acotado y documentado</strong>, con fuentes verificables, en lugar de un tema amplio.</li>
+    <li><strong>Concepto-ancla explícito</strong>, escogido y justificado antes de entrar al caso, de modo que se entienda por qué ese concepto y no otro.</li>
+    <li><strong>Un movimiento analítico</strong> que va más allá de la ilustración: contrastar dos casos con lógicas distintas, poner dos autores en tensión, o mostrar un límite del marco teórico.</li>
+</ol>
+
+<div class="note">
+    <p><strong>El error más frecuente.</strong> El caso ilustra correctamente el concepto, pero el concepto no dice nada nuevo sobre el caso.</p>
+    <p><em>Versión pobre:</em> «Klarna reemplazó a sus agentes de atención con IA; esto muestra la destrucción creativa de Aghion». El concepto decora.</p>
+    <p><em>Versión sólida:</em> Klarna revirtió parte de esa automatización y volvió a contratar. Ese límite muestra qué dimensión del trabajo —la que sostiene la relación con el cliente— el marco de la destrucción creativa no modela.</p>
+</div>
+
+<h3>4.4 Tres ejemplos, no un menú</h3>
+<p>Son tipos de caso, con la razón por la que funcionarían. No son temas asignados: repetirlos no otorga ninguna ventaja.</p>
+
+<table>
+    <thead>
+        <tr><th>Sesión y lectura</th><th>Tipo de caso</th><th>Por qué funcionaría</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Clase 3 — <i>En el enjambre</i> (Han)</td>
+            <td>La caída de la reputación de una marca en 48 horas</td>
+            <td>Porque el texto explica dos cosas distintas: por qué el patrón era predecible y por qué la reacción resultó incontrolable. Los datos de alcance se usan como argumento, no como decoración.</td>
+        </tr>
+        <tr>
+            <td>Clase 11 — Sen y la Gran Aceleración</td>
+            <td>Un centro de datos en Chile y el uso de agua y energía</td>
+            <td>Porque el conflicto se lee como una disputa por capacidades entre actores concretos, y no como un «impacto ambiental» genérico. Caso local, contemporáneo y con datos públicos verificables.</td>
+        </tr>
+        <tr>
+            <td>Clase 13 — Aghion y oligarquía de la IA</td>
+            <td>La dependencia de un proveedor de nube o de chips</td>
+            <td>Porque permite mostrar quién captura la renta de la innovación, con cifras de concentración de mercado, en lugar de afirmar que «hay concentración».</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>5. Parte 3 · La pregunta de discusión <span class="clock">2 min</span></h2>
+
+<ul>
+    <li><strong>Abierta:</strong> no puede tener una respuesta correcta que ustedes ya conozcan.</li>
+    <li><strong>Emergente:</strong> sale del choque entre el texto y el caso, no del tema general de la sesión.</li>
+    <li><strong>Capaz de generar debate no trivial</strong> en un curso que leyó el mismo texto.</li>
+</ul>
+
+<p>Una pregunta como «¿es buena o mala la IA para el empleo?» no cumple ninguna de las tres: no emerge de ningún caso y puede responderse sin haber leído.</p>
+
+<h2>6. El grupo contrapunto <span class="clock">5 min · 10%</span></h2>
+
+<ul>
+    <li><strong>Antes de la clase</strong>, el grupo asignado envía al profesor al menos dos preguntas escritas sobre la lectura y sobre el caso. Deben reflejar una lectura crítica previa del texto.</li>
+    <li><strong>En la sesión</strong>, dispone de cinco minutos para evaluar la claridad y la profundidad del análisis, señalar lo que quedó sin desarrollar y desafiar los argumentos.</li>
+    <li><strong>Se evalúa la precisión de la objeción.</strong> Un elogio general vale menos que una pregunta incómoda y fundada. También cuenta la pertinencia: una objeción que ignora lo que el grupo efectivamente dijo se evalúa a la baja.</li>
+</ul>
+
+<h2>7. Fuentes y citación</h2>
+
+<div class="yes-no">
+    <div>
+        <h4>Fuentes aceptadas</h4>
+        <ul>
+            <li>Prensa especializada.</li>
+            <li>Reportes corporativos e institucionales, memorias anuales.</li>
+            <li>Estudios de caso académicos y artículos revisados por pares.</li>
+            <li>Fuentes primarias y datos públicos.</li>
+        </ul>
+    </div>
+    <div>
+        <h4>Fuentes que no se aceptan</h4>
+        <ul>
+            <li>Blogs y vlogs.</li>
+            <li>Hilos y publicaciones de redes sociales.</li>
+            <li>Sitios sin autoría ni fecha identificables.</li>
+            <li>Resúmenes generados por IA sin verificar contra la fuente original.</li>
+        </ul>
+    </div>
+</div>
+
+<p><strong>Dónde buscar.</strong> Google Scholar y las <a href="https://bibliotecas.uai.cl/recursos-de-la-biblioteca/bases-de-datos/" target="_blank" rel="noopener">bases de datos de la Biblioteca UAI</a> (Bloomberg, Emerald Insight, Euromonitor, JSTOR, OECD Data, entre otras).</p>
+
+<p><strong>Citación en APA 7.ª edición (obligatorio).</strong> Todas las fuentes se citan en formato APA 7, tanto en la lámina final de referencias como <em>dentro</em> de la lámina en que se usa un dato, un concepto o una cita textual. La bibliografía se evalúa en dos dimensiones:</p>
+
+<ul>
+    <li><strong>Formato:</strong> corrección y consistencia del estilo APA 7.</li>
+    <li><strong>Pertinencia:</strong> si las fuentes tienen sentido respecto del tema de la sesión y del caso. Una bibliografía impecablemente formateada pero compuesta solo de prensa general, sin fuentes institucionales ni académicas, se evalúa como insuficiente en este aspecto.</li>
+</ul>
+
+<h2>8. Láminas, dominio del caso y entrega</h2>
+
+<ul>
+    <li><strong>Láminas.</strong> Imágenes, gráficos, tablas y palabras clave. No se aceptan láminas con párrafos o frases completas que inviten a leer en voz alta. La última lámina reúne todas las fuentes utilizadas.</li>
+    <li><strong>Dominio del caso.</strong> El grupo debe hacerse experto en el caso, más allá de lo que alcance a incluir en las láminas. Al término de la presentación se podrán formular preguntas sobre antecedentes, cifras, actores, cronología o consecuencias que no aparezcan en el ppt. Las preguntas pueden dirigirse a cualquier integrante, de modo que todos manejan el caso completo y no solo la sección que les tocó exponer.</li>
+    <li><strong>Entrega.</strong> El archivo se sube al buzón correspondiente en WebC/Omega a más tardar antes del inicio de la clase en que se presenta.</li>
+</ul>
+
+<h2>9. Uso de inteligencia artificial</h2>
+
+<p>El uso de IA debe ser responsable, transparente y consistente con la Política Institucional de Inteligencia Artificial de la UAI, según se detalla en el <a href="2026_mgt300.html#politicas" target="_blank" rel="noopener">programa del curso</a>. Para esta evaluación:</p>
+
+<ul>
+    <li><strong>Permitido, declarándolo:</strong> búsqueda y localización de fuentes, traducción, organización del material y revisión de estilo. Indiquen qué hicieron con qué herramienta.</li>
+    <li><strong>No sustituye el análisis:</strong> la elección del concepto-ancla, la lectura del caso y la formulación de la pregunta de discusión son trabajo del grupo.</li>
+    <li><strong>Verifiquen siempre.</strong> Un caso armado con datos no verificados no resiste tres preguntas sobre cifras y cronología, y esa parte de la evaluación es presencial.</li>
+</ul>
+
+<h2>10. Rúbrica de la presentación (30%)</h2>
+
+<p>Escala de 1 a 7; bajo 4,0 es reprobado. El tramo Bueno (5,0–5,9) corresponde a un desempeño intermedio entre las columnas Excelente y Suficiente.</p>
+
+<div class="scroll">
+<table>
+    <thead>
+        <tr>
+            <th>Criterio</th>
+            <th>Excelente (6,0–7,0)</th>
+            <th>Suficiente (4,0–4,9)</th>
+            <th>Insuficiente (1,0–3,9)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Concepto-ancla<br>20%</td>
+            <td>Selecciona con criterio claro y explícito el concepto más pertinente para iluminar el caso, y justifica con precisión por qué ese y no otro. El vínculo entre concepto y caso es coherente y no arbitrario.</td>
+            <td>Identifica elementos del texto pertinentes, pero la justificación es mínima o implícita. El vínculo con el caso existe y no se articula con claridad.</td>
+            <td>Presenta un resumen general del texto sin criterio selectivo, o el vínculo con el caso está ausente o forzado.</td>
+        </tr>
+        <tr>
+            <td>Caso: investigación, fuentes y análisis<br>40%</td>
+            <td>Fuentes de alta confiabilidad, correctamente citadas en APA 7 y pertinentes. Investiga el caso con profundidad excepcional y aplica el concepto de manera precisa. Ruta de acción o crítica fundamentada y con aportes originales. El grupo domina el caso más allá de las láminas.</td>
+            <td>Fuentes mayoritariamente confiables, con citas incompletas o errores de formato. Investigación básica pero apropiada. Aplicación correcta del concepto, limitada en su alcance. Una sola línea de acción o reflexión. Las respuestas no van más allá de lo expuesto.</td>
+            <td>Fuentes poco confiables, inexistentes o inadecuadas. Sin investigación adecuada del caso. No se aplica el concepto en el análisis. Sin lámina de referencias o sin APA 7. El grupo no responde preguntas fuera de las láminas.</td>
+        </tr>
+        <tr>
+            <td>Análisis crítico<br>20%</td>
+            <td>Análisis original con contribuciones propias. Establece conexiones complejas e identifica fortalezas y debilidades de los argumentos. Va más allá de la ilustración: contrasta, pone autores en tensión o muestra un límite del marco.</td>
+            <td>Análisis básico con contribuciones propias mínimas. Conexiones simples. Identificación limitada de fortalezas y debilidades.</td>
+            <td>Sin análisis, solo descripción. No establece conexiones ni evalúa argumentos.</td>
+        </tr>
+        <tr>
+            <td>Comunicación y pregunta de discusión<br>20%</td>
+            <td>Estructura clara y lógica, recursos visuales efectivos, distribución equitativa del tiempo entre integrantes. La pregunta es abierta, surge de la convergencia entre texto y caso, y genera debate no trivial.</td>
+            <td>Estructura comprensible, uso limitado pero atingente de recursos, tiempo aceptable, participación desigual. La pregunta existe y se relaciona con el tema, pero es básica o no emerge del análisis.</td>
+            <td>Sin estructura aparente, sin recursos visuales, participación muy desigual. No hay pregunta de discusión, o no guarda relación con el caso ni con el texto.</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<h2>11. Rúbrica del contrapunto (10%)</h2>
+
+<div class="scroll">
+<table>
+    <thead>
+        <tr>
+            <th>Criterio</th>
+            <th>Excelente (6,0–7,0)</th>
+            <th>Suficiente (4,0–4,9)</th>
+            <th>Insuficiente (1,0–3,9)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Preguntas escritas<br>40%</td>
+            <td>Entrega a tiempo al menos dos preguntas que demuestran lectura crítica del texto y conocimiento del caso presentado.</td>
+            <td>Entrega las preguntas, pero son generales o se responden con la sola lectura del resumen.</td>
+            <td>No entrega las preguntas, o no guardan relación con el texto ni con el caso.</td>
+        </tr>
+        <tr>
+            <td>Intervención en la sesión<br>60%</td>
+            <td>Objeciones precisas y fundadas que identifican vacíos reales del análisis y obligan al grupo presentador a desarrollar su argumento. Escucha lo efectivamente expuesto.</td>
+            <td>Comentarios pertinentes pero descriptivos o elogiosos, que no ponen a prueba el argumento.</td>
+            <td>No interviene, o la intervención ignora lo que el grupo presentó.</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<footer>
+    Sociedad, Cultura y Política (MGT300) · Universidad Adolfo Ibáñez · Segundo semestre 2026 ·
+    <a href="2026_mgt300.html">Volver al programa</a>
+</footer>
+
+</body>
+</html>
