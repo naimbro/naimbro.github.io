@@ -24,10 +24,11 @@ basado **exclusivamente** en lo que se enseña en esta clase.
   mezcladas con centímetros, un `"Ñuñoa"` en una pregunta de kilómetros).
 - Son estudiantes de **ciencias sociales y negocios**. El gancho es interpretativo, no algorítmico.
 
-**Implicancia para el juego:** esta clase es **conceptualmente pesada y sintácticamente liviana**.
-No introduce funciones nuevas casi. Lo evaluable es **el criterio de fuentes y preguntas**: si una
-pregunta se puede responder con los datos que existen, qué mide realmente una fuente, quién decidió
-qué se mide, y qué queda fuera. Ningún escenario debe requerir escribir código.
+**Implicancia para el juego:** el peso conceptual está en el Bloque B (fuentes y preguntas); el
+Bloque A es entrenamiento de dedos con **una sola función**, `count()`. Lo evaluable es **el
+criterio de fuentes y preguntas**: si una pregunta se puede responder con los datos que existen, qué
+mide realmente una fuente, quién decidió qué se mide, y qué queda fuera. **Ningún escenario debe
+requerir escribir código**; a lo más, leer una salida de `count()` y decir qué muestra y qué no.
 
 ---
 
@@ -49,7 +50,7 @@ limpiadas quedan así:
 | Política | 1 |
 | Transporte | 1 |
 
-**Ojo: esa tabla no sale sola de `table()`.** La columna cruda tiene 10 categorías, no 9, y hay que
+**Ojo: esa tabla no sale sola de `count()`.** La columna cruda tiene 10 categorías, no 9, y hay que
 tomar tres decisiones para llegar a la tabla de arriba: alguien escribió `politica` en minúscula y
 sin tilde (R lo cuenta aparte de `Política`), alguien escribió `Medioambiente` en una palabra, y
 alguien no eligió del menú y escribió `tecnologia y salud`, que acá se contó como Salud. **Son
@@ -67,28 +68,29 @@ chilena es más débil, y son los tres que la fuente más prestigiosa del país 
 | # | Bloque | Duración | Qué cubre |
 |---|---|---|---|
 | 0 | Administrativo | ~10 min | Lista de organizaciones para la visita de vinculación profesional |
-| A | Colab: cuando tus datos se acaban | ~55 min | Cruzar dos variables en la encuesta del curso |
+| A | Colab: contar con dplyr | ~55 min | `count()` repetido sobre la encuesta del curso |
 | B | Taller de dominios, preguntas y fuentes | ~65 min | La CEP proyectada + catálogo + formulación de la pregunta |
 | C | Juego ML2 | ~20 min | Repaso y discusión |
 
-### Bloque A — "Cuando tus datos se acaban" (cuaderno de Colab, en R)
+### Bloque A — "Contar con dplyr" (cuaderno de Colab, en R)
 
 Los alumnos trabajan sobre **sus propias respuestas** a la encuesta del curso, ya completa.
 
-El bloque tiene un arco deliberado, y **termina en un fracaso**:
+**El bloque enseña UNA sola cosa y la repite hasta que salga sin pensar: contar cuántos hay de cada
+tipo.** Son estudiantes que llevan una clase programando en su vida; el objetivo es fluidez, no
+cobertura.
 
-1. **Recordatorio:** la clase pasada describimos variables de a una. Promedio de edad, tabla de
-   comunas, histograma de estaturas.
-2. **Hoy cruzamos dos:** `table(x, y)`, `prop.table(tabla, margin = 1)`, `tapply()`,
-   `boxplot(y ~ x)`. Por ejemplo: horas de sueño según medio de transporte; sistema operativo del
-   celular según experiencia previa programando.
-3. **El muro:** el curso tiene **33 personas**. Al cruzar dos variables las celdas se desploman a
-   1 o 2 casos. Ejemplo real de la base: en sistema operativo del celular hay **27 iOS, 5 Android y
-   1 "Otro"**. Cualquier porcentaje sobre esa última categoría es un porcentaje sobre **una
-   persona**. La base no da para más, y **eso no se arregla con más código**.
-4. **La consecuencia:** para responder preguntas sobre un dominio hay que salir a buscar datos de
-   otra persona. Ahí empieza el Bloque B.
-5. **Cierre-puente:** `table()` de la pregunta 14 (los dominios elegidos) y de la pregunta 17
+1. **`library(dplyr)`** — qué es un paquete y por qué hay que abrirlo.
+2. **`read.csv()`** desde una URL, sobre una versión de la encuesta con los nombres de columna ya
+   limpios, para que cargar la base sean dos líneas.
+3. **`glimpse()`** para ver la base de un vistazo.
+4. **`count(curso, columna)`** — la función del día, repetida en **siete ejercicios** de la misma
+   forma: sistema operativo, transporte, experiencia, hermanos, café, horas de sueño, dominio.
+   Después `sort = TRUE`, después dos columnas a la vez, y `select()` al final.
+5. **La observación, no el muro:** al contar aparecen categorías con **`n = 1`** — una persona. Un
+   "100%" sobre una persona no describe a nadie. De ahí sale, sin dramatismo, que 33 casos no
+   alcanzan para el proyecto y hay que salir a buscar datos de otro. Ahí empieza el Bloque B.
+6. **Cierre-puente:** `count()` de la pregunta 14 (los dominios elegidos) y de la pregunta 17
    (*"Los datos públicos en Chile son fáciles de encontrar"*), que queda anotada como **el
    pronóstico del curso**, a contrastar al final de la clase.
 
@@ -99,24 +101,19 @@ verificados sobre la planilla):
 - **Sistema operativo del celular:** iOS 27, Android 5, Otro 1.
 - **Experiencia previa programando:** "sé usar Excel o Sheets" 16, "ninguna, primera vez" 9,
   "he programado un poco" 7, "bastante experiencia" 1.
-- **Una sola persona escribió `"3 horas"`** en vez de `3` en las horas de sueño. Eso convierte
-  **toda la columna en texto**, y `tapply(horas_sueno, transporte, mean)` devuelve `NA` en los tres
-  grupos, con advertencia pero **sin error**. Una persona de 33 arruina el cálculo para las 33. El
-  mismo problema está en `minutos_viaje` (alguien puso `"10 min"`) y en `horas_redes` (`"5 horas"`).
-  Es el hecho más citable de la clase y está verificado ejecutando el código.
-- **La columna de comuna está sucia en tres capas.** Capa 1, mayúsculas: `Las condes` y
-  `las condes` son la misma comuna y `table()` las cuenta aparte; igual `ñuñoa`/`Ñuñoa` y
-  `providencia`/`Providencia`. Capa 2, **espacios invisibles al final**: cuatro respuestas
-  (`"la reina "`, `"peñalolen "`, `"Peñalolen "`, `"las condes "`) siguen contándose aparte aun
-  después de pasar todo a minúscula. Capa 3, **tildes y eñes**: quedan `ñuñoa` vs `nunoa` y
-  `peñalolen` vs `peñalolén`. **Peñalolén aparece escrita de cuatro formas distintas.** La moraleja
-  es que limpiar es por capas y en algún momento hay que decidir dónde parar y dejarlo escrito.
-  **Es exactamente la misma enfermedad que tiene la columna de dominios que decide sus grupos.**
-- **El cruce que sostiene la lección del muro:** `table(transporte, sistema_operativo)` con
-  porcentajes **por columna** deja la categoría `Otro` en **100% "Micro o bus"** — un 100% que es
-  **una sola persona**. Titular perfecto y completamente vacío.
-- **Estatura:** 4 de 33 contestaron en metros (`1.58`, `1.76`, `1,60`, `1,69`) y el resto en
-  centímetros. Sirve de repaso rápido de la limpieza de la clase 2.
+- **Categorías de una sola persona.** En sistema operativo, `Otro` tiene **n = 1**. En dominio,
+  `Medioambiente`, `politica`, `Transporte` y `tecnologia y salud` tienen **n = 1** cada una.
+  Cualquier "100%" sobre una de esas categorías **es una sola persona**. Éste es el hecho que
+  sostiene la lección de que 33 casos no alcanzan.
+- **Datos sucios que el cuaderno hace VER pero no arreglar.** Al contar las horas de sueño aparecen
+  `3` y `3 horas` como **dos categorías distintas**, porque una persona escribió la palabra. Al
+  contar la comuna aparecen `Las condes` y `las condes` como **dos comunas distintas**, igual que
+  `Ñuñoa` y `ñuñoa`. El cuaderno dice explícitamente que **arreglar eso es tema de las próximas
+  clases**: hoy sólo se nota. *(No preguntar en el juego CÓMO se arregla — no se enseñó.)*
+- **La columna de dominio tiene 10 categorías pero el curso no eligió 10 temas:** alguien escribió
+  `politica` en minúscula y sin tilde, alguien `Medioambiente` en una palabra, y alguien no eligió
+  del menú y escribió `tecnologia y salud`. **Eso no lo resuelve R sola: es una decisión, y se
+  documenta.**
 - **La pregunta 17 es el gancho de toda la clase:** ante *"Los datos públicos en Chile son fáciles
   de encontrar"*, **21 de 33 respondieron "De acuerdo" o "Muy de acuerdo"** (20 + 1), 10 quedaron
   neutros y sólo 2 en desacuerdo. **Casi dos tercios del curso cree que va a ser fácil.** El
@@ -302,19 +299,22 @@ funciones nuevas): `<-`, `c()`, `read.csv()`, `head()`, `str()`, `names()`, `nro
 `factor(levels = )`, `tapply()`, corchetes `[ ]`, `~` como "según", `hist()`, `barplot()`,
 `plot()`, `boxplot()`, y `NA`.
 
-**Se refuerza (no se introduce):** `table(x, y)` de dos variables, `prop.table(tabla, margin = 1)`
-y `tapply()`. Ya aparecieron en el cuaderno 3 de la clase 2. Se agrega `margin = 2` (porcentajes
-por columna), que es la misma idea.
+**ESTA CLASE INTRODUCE `dplyr`, antes de lo que decía el programa original.** Lo nuevo es, en
+total, cinco cosas: `library(dplyr)`, `glimpse()`, `count()`, el argumento `sort = TRUE` y
+`select()`. Nada más.
 
-**Las dos únicas funciones nuevas de la clase**, ambas triviales y presentadas como tales:
-`tolower()` (pasar texto a minúscula) y `trimws()` (sacar espacios sobrantes). Se pueden usar en
-escenarios del juego, pero **nunca pidiendo escribirlas de memoria**: lo evaluable es entender que
-`"Las condes"`, `"las condes"` y `"las condes "` son la misma comuna para una persona y tres
-categorías distintas para R.
+`count()` **reemplaza** a `table()` como la forma de contar en este curso. Los alumnos vieron
+`table()` la clase 2 y ahora ven la versión de dplyr, que devuelve una tabla con una fila por
+categoría y una columna `n`.
+
+**No se usó** `prop.table()`, ni `tapply()`, ni porcentajes calculados, ni gráficos, ni limpieza de
+datos con `gsub()`/`tolower()`/`trimws()`. Los datos sucios **se observan** (que `3` y `3 horas`
+sean categorías distintas; que `Las condes` y `las condes` también) pero **no se arreglan**: el
+cuaderno dice explícitamente que eso es tema de las próximas clases.
 
 **NO usar, porque todavía no lo han visto:**
-- `dplyr` y el pipe (`%>%`, `filter()`, `select()`, `mutate()`, `group_by()`, `summarise()`) →
-  clases 5 y 6.
+- Del resto de `dplyr`: el pipe (`%>%`), `filter()`, `mutate()`, `group_by()` y `summarise()` →
+  clases 5 y 6. **Sólo se vieron `count()` y `select()`.**
 - `ggplot2` → clase 8.
 - Inferencia estadística, tests de hipótesis, valores-p, intervalos de confianza, regresión,
   márgenes de error, representatividad muestral formal, ponderadores → **fuera del curso**. El
