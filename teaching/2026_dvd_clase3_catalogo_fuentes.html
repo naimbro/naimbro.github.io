@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Catálogo de fuentes de datos, Clase 3 de Descripción y Visualización de Datos 2026: dominios, preguntas y fuentes para el Sprint 1.">
+    <title>Catálogo de fuentes — Descripción y Visualización de Datos, Clase 3 (2026)</title>
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+            --warn: #fff3b0;
+            --warn-ink: #6b3a17;
+            --code-bg: #f4f6f8;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            max-width: 900px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 2.4em 0 0.5em; font-size: 1.4rem; }
+        h3 { margin: 1.8em 0 0.2em; color: var(--navy); font-size: 1.05rem; }
+
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin: 0 0 1.4em;
+            color: var(--muted);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .frame {
+            margin: 0 0 2em;
+            padding: 1em 1.2em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+        }
+
+        .frame p { margin: 0.5em 0; }
+        .frame p:first-child { margin-top: 0; }
+        .frame p:last-child { margin-bottom: 0; }
+
+        .warn {
+            margin: 1.4em 0;
+            padding: 0.8em 1.1em;
+            border-left: 5px solid var(--sand-edge);
+            background: var(--sand);
+        }
+
+        .warn p { margin: 0.4em 0; }
+        .warn p:first-child { margin-top: 0; }
+        .warn p:last-child { margin-bottom: 0; }
+
+        .tag {
+            display: inline-block;
+            padding: 0.1em 0.6em;
+            border-radius: 999px;
+            background: var(--warn);
+            color: var(--warn-ink);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.2em 0;
+            font-size: 0.92rem;
+        }
+
+        th, td {
+            padding: 0.5em 0.7em;
+            border-bottom: 1px solid var(--line);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th { color: var(--navy); border-bottom: 2px solid var(--line); }
+
+        .scroll { overflow-x: auto; }
+
+        code, pre {
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.88rem;
+        }
+
+        code { background: var(--code-bg); padding: 0.1em 0.3em; border-radius: 3px; }
+
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            padding: 0.8em 1em;
+            overflow-x: auto;
+            line-height: 1.45;
+        }
+
+        pre code { background: none; padding: 0; }
+
+        /* Source cards */
+        .source {
+            margin: 1.6em 0;
+            padding: 1em 1.2em;
+            border: 1px solid #d6dee6;
+            border-radius: 4px;
+            background: #ffffff;
+        }
+
+        .source h3 { margin-top: 0; }
+
+        .source .who {
+            margin: 0 0 0.8em;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .specs {
+            margin: 0.8em 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .specs li { margin-bottom: 0.25em; }
+        .specs b { color: var(--navy); }
+
+        .asks {
+            margin: 0.8em 0 0;
+            padding: 0.6em 1em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.9rem;
+        }
+
+        .asks ul { margin: 0.3em 0 0; padding-left: 1.2em; }
+        .asks li { margin-bottom: 0.2em; }
+
+        .limits { font-size: 0.9rem; color: var(--muted); margin: 0.8em 0 0; }
+        .limits b { color: var(--warn-ink); }
+
+        .domain-head {
+            margin: 2.6em 0 0.4em;
+            padding-bottom: 0.2em;
+            border-bottom: 2px solid var(--line);
+            color: var(--navy);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .count {
+            display: inline-block;
+            margin-left: 0.5em;
+            padding: 0.05em 0.55em;
+            border-radius: 999px;
+            background: var(--info);
+            color: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        ol.steps { padding-left: 1.3em; }
+        ol.steps li { margin-bottom: 0.5em; }
+
+        a { color: #1e3799; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<p class="eyebrow">Descripción y Visualización de Datos · UAI 2026 · Clase 3</p>
+<h1>Catálogo de fuentes de datos</h1>
+<p class="subtitle">Dominios, preguntas y fuentes — material del taller e insumo del Sprint 1.</p>
+
+<div class="frame">
+    <p><b>Para qué sirve este documento.</b> Cada grupo va a elegir un dominio y formular una
+    pregunta descriptiva. Una pregunta sólo es investigable si existen datos que puedan
+    responderla. Acá están las fuentes que revisamos una por una: qué traen, a quiénes dejan fuera
+    y cómo se cargan.</p>
+    <p><b>Todas fueron verificadas.</b> Se comprobó que el enlace responde y que el archivo existe.
+    Cuando una fuente promete algo que no cumple, está dicho.</p>
+</div>
+
+<h2>Antes de mirar el catálogo: las cuatro preguntas</h2>
+
+<p>Nunca se elige una fuente porque exista, ni porque sea oficial. Se elige después de
+responder estas cuatro preguntas, que son las mismas para cualquier base de datos del mundo:</p>
+
+<div class="scroll">
+<table>
+    <tr><th>Pregunta</th><th>Qué estás averiguando</th><th>Ejemplo de respuesta que importa</th></tr>
+    <tr>
+        <td><b>Cobertura</b></td>
+        <td>¿A quiénes incluye y a quiénes deja fuera?</td>
+        <td>La CEP sólo entrevista a personas de 18 años o más: los adolescentes no existen ahí.</td>
+    </tr>
+    <tr>
+        <td><b>Granularidad</b></td>
+        <td>¿Cuál es la unidad de observación: persona, comuna, región, país, año?</td>
+        <td>Si tu pregunta es por comuna y la base sólo llega a región, tu pregunta no se puede responder.</td>
+    </tr>
+    <tr>
+        <td><b>Periodicidad</b></td>
+        <td>¿Cada cuánto se levanta, y falta algún período?</td>
+        <td>La CEP dice ser periódica y aun así <b>no existe 2020</b>.</td>
+    </tr>
+    <tr>
+        <td><b>Sesgos y límites</b></td>
+        <td>¿Quién la produce, para qué, y qué decidió no medir?</td>
+        <td>Lo que la fuente no mide, no aparece; y lo que no aparece, tiende a no discutirse.</td>
+    </tr>
+</table>
+</div>
+
+<div class="warn">
+    <p><span class="tag">La idea central de la clase</span></p>
+    <p>Toda base de datos es el resultado de que <b>alguien decidió qué valía la pena contar</b>.
+    Cuando tu tema no está en una fuente, eso no es una falla tuya: <b>es un dato sobre la
+    fuente</b>, y merece decirse en voz alta en tu plataforma.</p>
+</div>
+
+<h2>Qué eligió el curso</h2>
+
+<p>En la encuesta de la clase 2, las 33 respuestas del curso se repartieron en estos dominios.
+El número ordena este catálogo:</p>
+
+<div class="scroll">
+<table>
+    <tr><th>Dominio</th><th>Alumnos</th><th>¿Cómo está la disponibilidad de datos?</th></tr>
+    <tr><td>Deporte</td><td>7</td><td>Difícil en Chile. Buenas fuentes internacionales.</td></tr>
+    <tr><td>Salud</td><td>7</td><td>Muy buena.</td></tr>
+    <tr><td>Inteligencia artificial</td><td>6</td><td>Sin datos chilenos. Buenas fuentes internacionales.</td></tr>
+    <tr><td>Educación</td><td>4</td><td>Excelente, la mejor del catálogo.</td></tr>
+    <tr><td>Cultura</td><td>4</td><td>Buena, con una encuesta nacional dedicada.</td></tr>
+    <tr><td>Vivienda</td><td>2</td><td>Buena.</td></tr>
+    <tr><td>Medio ambiente</td><td>1</td><td>Buena para calidad del aire.</td></tr>
+    <tr><td>Política</td><td>1</td><td>Muy buena.</td></tr>
+    <tr><td>Transporte</td><td>1</td><td>Aceptable.</td></tr>
+</table>
+</div>
+
+<div class="warn">
+    <p><span class="tag">Aviso honesto, hoy y no en octubre</span></p>
+    <p><b>Deporte e inteligencia artificial son los dos dominios peor cubiertos por la estadística
+    pública chilena</b>, y entre los dos suman 13 de ustedes. El Ministerio del Deporte publica su
+    encuesta nacional <b>sólo como informe en PDF</b>, sin base de datos descargable. Y en la
+    principal base mundial de modelos de IA, los modelos atribuidos a Chile son <b>cero</b>.</p>
+    <p>Esto no los deja fuera del curso: los obliga a trabajar con fuentes internacionales o a
+    construir su propio dato, y a explicar esa decisión. Es un proyecto perfectamente válido y, bien
+    hecho, más interesante que uno con la base servida.</p>
+</div>
+
+<h2>La fuente que vamos a mirar juntos: la Encuesta CEP</h2>
+
+<div class="source">
+    <h3>CEP — Base consolidada 1994–2026</h3>
+    <p class="who">Centro de Estudios Públicos. La encuesta de opinión pública más antigua y citada
+    de Chile.</p>
+
+    <ul class="specs">
+        <li><b>Qué trae:</b> qué opinan los chilenos sobre los problemas del país, la economía, la
+        política, la religión y decenas de temas más.</li>
+        <li><b>Cobertura:</b> 96.122 personas encuestadas, desde la encuesta N°29
+        (noviembre-diciembre 1994) hasta la N°96 (abril-mayo 2026). <b>Sólo personas de 18 años o
+        más</b> (en la base hay edades de 18 a 99).</li>
+        <li><b>Granularidad:</b> una fila por persona encuestada. Tiene región (16), zona urbana o
+        rural y grupo socioeconómico. <b>No tiene comuna.</b></li>
+        <li><b>Periodicidad:</b> 32 años de datos, pero <b>falta 2020</b>: ese año no se hizo la
+        encuesta. Y el tamaño de la muestra cambia todos los años, entre 1.402 casos (2018) y 4.560
+        (2012).</li>
+        <li><b>Formato:</b> el CEP la publica en Stata, R, SPSS y CSV. Para el curso preparamos una
+        versión reducida y con etiquetas en texto: 25 columnas en vez de más de 4.600.</li>
+    </ul>
+
+<pre><code>cep &lt;- read.csv("https://raw.githubusercontent.com/naimbro/naimbro.github.io/main/materiales/2026_descripcion_visualizacion_datos/datos/cep_consolidada_1994_2026.csv")
+
+# Versión chica y ya resumida, si sólo quieres los problemas del país por año:
+problemas &lt;- read.csv("https://raw.githubusercontent.com/naimbro/naimbro.github.io/main/materiales/2026_descripcion_visualizacion_datos/datos/cep_problemas_por_anio.csv")</code></pre>
+
+    <div class="asks">
+        <b>Preguntas que sí se pueden responder con ella:</b>
+        <ul>
+            <li>¿Cómo cambió entre 1994 y 2026 la proporción de personas que menciona la vivienda
+            como principal problema del país?</li>
+            <li>¿Mencionan la salud como problema en la misma proporción los distintos grupos
+            socioeconómicos?</li>
+            <li>¿Se parecen las prioridades de la Región Metropolitana y las del resto del país?</li>
+        </ul>
+    </div>
+
+    <p class="limits"><b>Límites:</b> es una encuesta de <b>opiniones</b>, no de hechos. Dice cuánta
+    gente <i>cree</i> que la delincuencia es el principal problema, no cuántos delitos hubo. Son dos
+    preguntas distintas y se responden con fuentes distintas. Tampoco llega a nivel de comuna, ni
+    incluye a menores de edad.</p>
+</div>
+
+<div class="warn">
+    <p><span class="tag">Lo que la CEP no pregunta</span></p>
+    <p>La variable de problemas del país tiene 27 alternativas: pensiones, corrupción, delincuencia,
+    derechos humanos, educación, empleo, pobreza, medio ambiente, narcotráfico, salud, sueldos,
+    transporte público, vivienda, inmigración, desigualdad, inflación, energía, la Constitución y
+    varias más.</p>
+    <p><b>No están el deporte, ni la cultura, ni la inteligencia artificial.</b> En 32 años, nunca
+    fueron una alternativa. Alguien decidió alrededor de 1994 qué contaba como "problema del país",
+    y esa decisión sigue mandando en 2026. Eso deja fuera de esta fuente a 17 de los 33 alumnos del
+    curso — y es, en sí mismo, un hallazgo publicable.</p>
+</div>
+
+<h2>El catálogo, por dominio</h2>
+
+<p class="domain-head">Deporte <span class="count">7 alumnos</span></p>
+
+<div class="source">
+    <h3>footballcsv — Partidos internacionales, 1872 a hoy</h3>
+    <p class="who">Proyecto de datos abiertos en GitHub, licencia de dominio público.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> todos los partidos entre selecciones nacionales. Columnas:
+        <code>Date</code>, <code>Team 1</code>, <code>Score</code>, <code>Team 2</code>,
+        <code>Tournament</code>, <code>City</code>.</li>
+        <li><b>Cobertura:</b> mundial, desde 1872. Chile incluido: por ejemplo, en 2015 aparecen 34
+        partidos de Chile, el año que ganó la Copa América de local.</li>
+        <li><b>Granularidad:</b> una fila por partido.</li>
+        <li><b>Periodicidad:</b> un archivo CSV por año.</li>
+        <li><b>Formato:</b> CSV que se carga directo por URL, sin descargar nada.</li>
+    </ul>
+<pre><code>partidos &lt;- read.csv("https://raw.githubusercontent.com/footballcsv/cache.internationals/master/2000s/2015.csv")
+head(partidos)</code></pre>
+    <div class="asks">
+        <b>Preguntas que sí se pueden responder:</b>
+        <ul>
+            <li>¿Contra qué países ha jugado más veces la selección chilena, y desde cuándo?</li>
+            <li>¿Cuántos partidos por año juega Chile de local y cuántos de visita?</li>
+            <li>¿En qué ciudades del mundo ha jugado Chile?</li>
+        </ul>
+    </div>
+    <p class="limits"><b>Límites:</b> es sólo fútbol y sólo selecciones nacionales. No tiene ligas
+    chilenas, ni otros deportes, ni asistencia de público, ni datos económicos.</p>
+</div>
+
+<div class="source">
+    <h3>Encuesta Nacional de Actividad Física y Deporte (ENAFyD)</h3>
+    <p class="who">Ministerio del Deporte de Chile.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> niveles de actividad física y práctica deportiva de la población
+        chilena, y las brechas entre grupos.</li>
+        <li><b>Formato:</b> <b>informe ejecutivo en PDF y una presentación</b>.</li>
+    </ul>
+    <p class="limits"><b>Límite grave, y por eso está acá:</b> el Ministerio <b>no publica la base
+    de datos</b>. Sólo los resultados ya procesados, en PDF. Se pueden citar sus cifras como
+    contexto, pero no se puede analizar nada por cuenta propia. Es el ejemplo perfecto de que
+    <b>"el dato existe" y "el dato está disponible" son dos cosas distintas</b>.</p>
+    <p class="limits">Si su proyecto necesita actividad física con microdatos, la alternativa es la
+    <b>Encuesta Nacional de Salud (ENS)</b> de Minsal, que sí publica base — pero el último
+    microdato disponible es de 2016-2017. Ver la sección de Salud.</p>
+</div>
+
+<p class="domain-head">Salud <span class="count">7 alumnos</span></p>
+
+<div class="source">
+    <h3>DEIS — Departamento de Estadísticas e Información de Salud</h3>
+    <p class="who">Ministerio de Salud de Chile.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> defunciones por causa, egresos hospitalarios, atenciones de urgencia y
+        otras estadísticas vitales.</li>
+        <li><b>Granularidad:</b> depende del archivo; varios llegan a comuna, y las defunciones
+        traen sexo, grupo de edad y región.</li>
+        <li><b>Periodicidad:</b> anual, con los últimos dos años en calidad preliminar.</li>
+        <li><b>Formato:</b> CSV.</li>
+        <li><b>Dónde:</b> <a href="https://deis.minsal.cl/" target="_blank">deis.minsal.cl</a>,
+        sección de datos abiertos.</li>
+    </ul>
+    <div class="asks">
+        <b>Preguntas que sí se pueden responder:</b>
+        <ul>
+            <li>¿Cómo cambiaron las principales causas de muerte en Chile en los últimos 20 años?</li>
+            <li>¿Se mueren de lo mismo las distintas regiones del país?</li>
+        </ul>
+    </div>
+    <p class="limits"><b>Límites:</b> los archivos son grandes y las causas vienen codificadas en
+    CIE-10, un catálogo de miles de códigos. Hay que traducirlos antes de poder decir nada.
+    <b>Cuidado especial:</b> son datos sobre muertes de personas reales. La ética de datos del curso
+    aplica con fuerza acá.</p>
+</div>
+
+<div class="source">
+    <h3>Encuesta Nacional de Salud (ENS)</h3>
+    <p class="who">Departamento de Epidemiología, Ministerio de Salud.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> enfermedades, tratamientos, hábitos, actividad física y sedentarismo de
+        personas de 15 años y más.</li>
+        <li><b>Periodicidad:</b> irregular. El microdato más reciente disponible es <b>2016-2017</b>.</li>
+        <li><b>Dónde:</b> <a href="https://epi.minsal.cl/bases-de-datos/" target="_blank">epi.minsal.cl/bases-de-datos</a></li>
+    </ul>
+    <p class="limits"><b>Límites:</b> el dato tiene casi diez años. Si su pregunta es sobre el
+    presente, hay que decirlo explícitamente. Es también <b>el puente entre deporte y salud</b>: si
+    su tema es actividad física, ésta es la fuente con microdato.</p>
+</div>
+
+<div class="source">
+    <h3>CASEN 2024</h3>
+    <p class="who">Observatorio Social, Ministerio de Desarrollo Social y Familia.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> la encuesta socioeconómica de referencia del país: ingresos, pobreza,
+        vivienda, salud, educación, trabajo.</li>
+        <li><b>Granularidad:</b> personas y hogares, con una base separada de comunas y provincias.</li>
+        <li><b>Formato:</b> Stata (<code>.dta</code>), R (<code>.RData</code>) y SPSS
+        (<code>.sav</code>). <b>No publica CSV.</b></li>
+        <li><b>Dónde:</b> <a href="https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2024" target="_blank">Observatorio Social — CASEN 2024</a></li>
+    </ul>
+    <p class="limits"><b>Límites:</b> es grande y compleja, con cientos de variables y un manual que
+    hay que leer. Sirve para vivienda, salud, educación y pobreza a la vez. Al no haber CSV, la
+    versión de R se carga con <code>load(url(...))</code>.</p>
+</div>
+
+<p class="domain-head">Inteligencia artificial <span class="count">6 alumnos</span></p>
+
+<div class="source">
+    <h3>Epoch AI — Base de modelos de machine learning</h3>
+    <p class="who">Epoch AI, instituto de investigación sobre tendencias en IA.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> cada modelo relevante de machine learning de la historia, con su
+        organización, país, fecha, dominio, número de parámetros, cómputo usado para entrenarlo,
+        hardware y costo estimado de entrenamiento.</li>
+        <li><b>Cobertura:</b> <code>notable_ai_models.csv</code> trae <b>1.046 modelos</b> y 47
+        columnas; <code>all_ai_models.csv</code>, <b>3.574 modelos</b> y 57 columnas. Ambos van de
+        <b>1950 a 2026</b>.</li>
+        <li><b>Granularidad:</b> una fila por modelo.</li>
+        <li><b>Formato:</b> CSV que se carga directo por URL.</li>
+    </ul>
+<pre><code>modelos &lt;- read.csv("https://epoch.ai/data/notable_ai_models.csv")
+table(modelos$Domain)</code></pre>
+    <div class="asks">
+        <b>Preguntas que sí se pueden responder:</b>
+        <ul>
+            <li>¿Cuántos modelos relevantes de IA se publican por año, y desde cuándo se acelera?</li>
+            <li>¿Qué países concentran la producción de modelos de IA?</li>
+            <li>¿Qué tareas dominan: lenguaje, visión, juegos, biología?</li>
+        </ul>
+    </div>
+    <p class="limits"><b>Dos límites que son, además, hallazgos:</b></p>
+    <p class="limits">1. <b>Chile no aparece.</b> De los 1.046 modelos, los atribuidos a Chile son
+    <b>cero</b> (Estados Unidos tiene 442, China 113, Reino Unido 55). Un grupo que quiera hablar de
+    IA en Chile va a tener que explicar por qué su país no está en el mapa — y eso <b>es</b> un
+    resultado, no un fracaso.</p>
+    <p class="limits">2. <b>La base viene sucia.</b> 78 de los 1.046 registros tienen el país
+    escrito dos veces en la misma celda
+    (<code>"United States of America,United States of America"</code>). Si cuentan modelos por país
+    sin mirar la columna, les van a salir <b>dos Estados Unidos distintos</b> en la misma tabla.</p>
+</div>
+
+<div class="source">
+    <h3>ILIA — Índice Latinoamericano de Inteligencia Artificial</h3>
+    <p class="who">CENIA (Centro Nacional de Inteligencia Artificial, Chile) y CEPAL.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> madurez de los ecosistemas de IA en 19 países de América Latina y el
+        Caribe: infraestructura, talento, investigación, adopción y gobernanza. Ediciones 2023, 2024
+        y 2025.</li>
+        <li><b>Formato:</b> <b>informes en PDF y un visualizador web</b>.</li>
+        <li><b>Dónde:</b> <a href="https://indicelatam.cl/" target="_blank">indicelatam.cl</a></li>
+    </ul>
+    <p class="limits"><b>Límite:</b> no publica los datos crudos. Sirve como contexto y para citar
+    cifras sobre Chile y la región — que es justamente lo que Epoch AI no tiene —, pero no se puede
+    analizar por cuenta propia.</p>
+</div>
+
+<p class="domain-head">Educación <span class="count">4 alumnos</span></p>
+
+<div class="source">
+    <h3>Mineduc — Datos Abiertos</h3>
+    <p class="who">Centro de Estudios, Ministerio de Educación.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> matrícula por estudiante, asistencia mensual y anual, rendimiento
+        académico, directorio de establecimientos, dotación docente, evaluación docente,
+        subvenciones, y admisión y beneficios de educación superior.</li>
+        <li><b>Granularidad:</b> llega hasta el <b>estudiante y el establecimiento</b> — la más fina
+        de todo este catálogo. Se puede agregar por comuna, región, dependencia o tipo de colegio.</li>
+        <li><b>Periodicidad:</b> anual, con series largas.</li>
+        <li><b>Formato:</b> CSV.</li>
+        <li><b>Dónde:</b> <a href="https://datosabiertos.mineduc.cl/" target="_blank">datosabiertos.mineduc.cl</a></li>
+    </ul>
+    <div class="asks">
+        <b>Preguntas que sí se pueden responder:</b>
+        <ul>
+            <li>¿Cómo cambió la matrícula por tipo de dependencia (municipal, particular
+            subvencionado, particular pagado) en la última década?</li>
+            <li>¿Qué comunas tienen la mayor y la menor asistencia escolar?</li>
+            <li>¿Cuántos establecimientos abrieron y cerraron por región?</li>
+        </ul>
+    </div>
+    <p class="limits"><b>Límites:</b> los archivos son grandes y traen muchas variables codificadas
+    con números que hay que traducir con el diccionario. Es la mejor fuente del catálogo si están
+    dispuestos a leer documentación.</p>
+</div>
+
+<p class="domain-head">Cultura <span class="count">4 alumnos</span></p>
+
+<div class="source">
+    <h3>ENPCCL 2024 — Encuesta Nacional de Participación Cultural y Comportamiento Lector</h3>
+    <p class="who">Observatorio Cultural, Ministerio de las Culturas, las Artes y el Patrimonio.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> participación en prácticas artísticas, culturales y patrimoniales;
+        asistencia a museos, bibliotecas, cine, conciertos y teatro; y una sección ampliada sobre
+        prácticas de lectura.</li>
+        <li><b>Cobertura:</b> personas de <b>15 años y más</b> residentes en <b>zonas urbanas</b>.</li>
+        <li><b>Granularidad:</b> una fila por persona encuestada.</li>
+        <li><b>Formato:</b> R (<code>.RData</code>), Stata (<code>.dta</code>) y SPSS
+        (<code>.sav</code>). <b>No publica CSV</b>, pero la versión de R se carga en una línea.</li>
+        <li><b>Dónde:</b> <a href="https://observatorio.cultura.gob.cl/index.php/encuestas-de-participacion-cultural/" target="_blank">Observatorio Cultural — Encuestas de participación cultural</a></li>
+    </ul>
+<pre><code>load(url("https://www.cultura.gob.cl/wp-content/uploads/2025/08/enpccl_puf.RData"))
+ls()   # muestra el nombre del objeto que quedó cargado</code></pre>
+    <div class="asks">
+        <b>Preguntas que sí se pueden responder:</b>
+        <ul>
+            <li>¿Qué proporción de la población fue al cine, a un museo o a un concierto en el
+            último año?</li>
+            <li>¿Cuántos libros lee al año la gente, y cómo cambia según edad o escolaridad?</li>
+            <li>¿Se parece el consumo cultural de distintos grupos socioeconómicos?</li>
+        </ul>
+    </div>
+    <p class="limits"><b>Límites:</b> <b>sólo zonas urbanas</b> — el Chile rural no está en esta
+    fuente, y eso hay que decirlo si se habla de "los chilenos". Tampoco incluye a menores de 15
+    años. Además hay ediciones anteriores (2017, 2012) con preguntas parecidas pero no idénticas:
+    compararlas exige revisar si la pregunta cambió.</p>
+</div>
+
+<p class="domain-head">Vivienda, medio ambiente, política y transporte <span class="count">2 y 1 alumnos</span></p>
+
+<div class="source">
+    <h3>CASEN 2024 — para vivienda</h3>
+    <p class="who">Ver la ficha completa en la sección de Salud.</p>
+    <p class="limits">Trae materialidad de la vivienda, hacinamiento, allegamiento, tenencia y
+    acceso a servicios básicos, con desagregación comunal en una base aparte. Es la fuente estándar
+    para vivienda en Chile. Complementable con el <b>Censo</b> del INE.</p>
+</div>
+
+<div class="source">
+    <h3>SINCA — Sistema de Información Nacional de Calidad del Aire</h3>
+    <p class="who">Ministerio del Medio Ambiente.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> mediciones de material particulado (MP10 y MP2,5), ozono, dióxido de
+        nitrógeno, dióxido de azufre y monóxido de carbono.</li>
+        <li><b>Cobertura:</b> las 16 regiones, a través de estaciones de monitoreo. <b>Sólo donde
+        hay estación</b>: las comunas sin estación simplemente no tienen dato.</li>
+        <li><b>Granularidad:</b> estación de monitoreo, con registros horarios.</li>
+        <li><b>Dónde:</b> <a href="https://sinca.mma.gob.cl/" target="_blank">sinca.mma.gob.cl</a></li>
+    </ul>
+    <p class="limits"><b>Límites:</b> los datos recientes se publican como <b>preliminares</b>, sin
+    validación operacional. Y la descarga se hace estación por estación desde el portal: <b>no
+    confirmamos una URL única de CSV</b>, así que presupuesten tiempo para armar la base.</p>
+</div>
+
+<div class="source">
+    <h3>Servel — Resultados electorales</h3>
+    <p class="who">Servicio Electoral de Chile.</p>
+    <ul class="specs">
+        <li><b>Qué trae:</b> resultados de elecciones y plebiscitos desde 1989, padrón electoral,
+        participación, candidaturas, partidos y gasto electoral.</li>
+        <li><b>Granularidad:</b> hasta <b>mesa de votación</b>, agregable a comuna y circunscripción.</li>
+        <li><b>Formato:</b> CSV y Excel.</li>
+        <li><b>Dónde:</b> <a href="https://www.servel.cl/biblioteca-de-documentos/resultados-electorales-historicos/" target="_blank">Servel — Resultados electorales históricos</a>,
+        <a href="https://www.servel.cl/biblioteca-de-documentos/estadisticas/" target="_blank">Estadísticas</a>
+        y <a href="https://archivo.servel.cl/" target="_blank">Archivo Histórico</a>.</li>
+    </ul>
+    <p class="limits"><b>Límites:</b> cada elección viene en su propio archivo y con su propio
+    formato. Juntar varias elecciones en una sola tabla es trabajo real, y es exactamente el tipo de
+    trabajo que este curso enseña.</p>
+</div>
+
+<div class="source">
+    <h3>Transporte</h3>
+    <p class="who">Varias fuentes, según la pregunta.</p>
+    <p class="limits">La CEP permite ver la evolución de cuánta gente considera el transporte público
+    un problema del país (1994–2026). Para uso efectivo del sistema, la CASEN trae tiempos de
+    traslado, y el Directorio de Transporte Público Metropolitano publica estadísticas de la Red de
+    Santiago. <b>Ojo con la cobertura:</b> casi todo el dato bueno de transporte en Chile es de
+    Santiago; si la pregunta es nacional, hay que decir que no lo es.</p>
+</div>
+
+<h2>Tres trampas que ya nos encontramos</h2>
+
+<div class="warn">
+    <p><b>1. <code>CHI.csv</code> es China, no Chile.</b> En el sitio football-data.co.uk existe un
+    archivo llamado <code>CHI.csv</code>. Al abrirlo, la primera columna dice
+    <code>China</code>. Chile no está en ese sitio. Nunca usen un archivo por su nombre sin abrirlo
+    y mirar qué trae adentro.</p>
+    <p><b>2. "Oficial" no significa "usable".</b> El Ministerio del Deporte y CENIA publican
+    resultados sólo en PDF. La información existe y es pública, pero no se puede analizar. Verifiquen
+    que hay una <i>base de datos</i>, no sólo un informe, antes de comprometerse con una fuente.</p>
+    <p><b>3. Formato no es disponibilidad.</b> CASEN y ENPCCL publican sólo en
+    <code>.dta</code>, <code>.sav</code> y <code>.RData</code>. El dato es público, pero para leerlo
+    hay que saber cómo. En R, <code>load(url(...))</code> resuelve el caso de
+    <code>.RData</code>.</p>
+</div>
+
+<h2>Ficha de fuente — para llenar en el taller</h2>
+
+<p>Un grupo, una fuente, una hoja. Esto es lo que se entrega al final de la clase y lo que
+alimenta el Sprint 1.</p>
+
+<div class="scroll">
+<table>
+    <tr><th style="width:32%">Campo</th><th>Qué escribir</th></tr>
+    <tr><td><b>Dominio</b></td><td>El tema del grupo.</td></tr>
+    <tr><td><b>Fuente elegida</b></td><td>Nombre, institución que la produce y enlace.</td></tr>
+    <tr><td><b>Cobertura</b></td><td>A quiénes incluye. <b>Y a quiénes deja fuera</b>, explícitamente.</td></tr>
+    <tr><td><b>Granularidad</b></td><td>Unidad de observación: ¿persona, hogar, comuna, región, país, partido, modelo?</td></tr>
+    <tr><td><b>Periodicidad</b></td><td>Desde cuándo, hasta cuándo, cada cuánto. ¿Falta algún período?</td></tr>
+    <tr><td><b>Sesgos y límites</b></td><td>Quién la produce y para qué. Qué decidió no medir.</td></tr>
+    <tr><td><b>3 preguntas candidatas</b></td><td>Descriptivas, respondibles con esta fuente.</td></tr>
+    <tr><td><b>La pregunta elegida</b></td><td>Una sola, con unidad, período y territorio explícitos.</td></tr>
+    <tr><td><b>Audiencia</b></td><td>Quién específicamente necesita esta respuesta, y para qué la usaría.</td></tr>
+</table>
+</div>
+
+<h2>Cómo se ve una buena pregunta</h2>
+
+<p>Una pregunta descriptiva de este curso <b>se responde con datos que existen</b>, nombra la
+<b>unidad</b>, el <b>período</b> y el <b>territorio</b>, <b>no pregunta por causas</b>, y se puede
+contestar con una tabla o un gráfico.</p>
+
+<div class="scroll">
+<table>
+    <tr><th style="width:50%">No sirve</th><th>Sirve</th></tr>
+    <tr>
+        <td>¿Por qué aumentó la delincuencia en Chile?</td>
+        <td>¿Cómo cambió entre 1994 y 2026 la proporción de personas que menciona la delincuencia
+        como principal problema del país?</td>
+    </tr>
+    <tr>
+        <td>¿La educación en Chile es mala?</td>
+        <td>¿Cómo se distribuyó la matrícula escolar por tipo de dependencia en cada región entre
+        2015 y 2025?</td>
+    </tr>
+    <tr>
+        <td>¿La IA va a quitar empleos?</td>
+        <td>¿Cuántos modelos relevantes de IA se publicaron por año y por país entre 2010 y 2026?</td>
+    </tr>
+    <tr>
+        <td>¿A los chilenos les gusta el deporte?</td>
+        <td>¿Contra qué selecciones y en qué ciudades ha jugado Chile sus partidos internacionales
+        desde 1990?</td>
+    </tr>
+</table>
+</div>
+
+<p>La columna de la izquierda no está mal por ser ambiciosa: está mal porque <b>ninguna base de
+datos de este catálogo puede responderla</b>. La de la derecha se puede contestar hoy, y de ahí
+sale una plataforma.</p>
+
+<footer>
+    Descripción y Visualización de Datos · Doble título Sociología – Ingeniería Comercial ·
+    Universidad Adolfo Ibáñez, 2026<br>
+    Profesor Naim Bro · Clase 3, lunes 17 de agosto de 2026 ·
+    <a href="2026_descripcion_visualizacion_datos.html">volver al programa del curso</a>
+</footer>
+
+</body>
+</html>
