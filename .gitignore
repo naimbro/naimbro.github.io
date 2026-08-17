@@ -1,6 +1,7 @@
 CLAUDE.md
 drive_credentials.json
 create_slides*.py
+make_*_diagrams.py
 create_voting_form.py
 create_bitacora_ayudantes_form.py
 create_amendment_forms.py

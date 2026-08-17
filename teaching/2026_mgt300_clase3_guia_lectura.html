@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Guía de lectura concentrada, Clase 3 de MGT300 2026: identidad y vida social en plataformas. Byung-Chul Han, En el enjambre.">
+    <title>Guía de lectura concentrada — MGT300, Clase 3 (2026)</title>
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            max-width: 860px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 2.4em 0 0.3em; font-size: 1.4rem; }
+
+        h3 {
+            margin: 1.8em 0 0.2em;
+            color: var(--navy);
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .attrib {
+            margin: 0 0 1.2em;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin: 0 0 1.4em;
+            color: var(--muted);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .frame {
+            margin: 0 0 2em;
+            padding: 1em 1.2em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+        }
+
+        .frame p { margin: 0.5em 0; }
+        .frame p:first-child { margin-top: 0; }
+        .frame p:last-child { margin-bottom: 0; }
+
+        .rules { margin: 0.5em 0 0; padding-left: 1.2em; }
+        .rules li { margin-bottom: 0.3em; }
+
+        /* Sustained-reading blocks */
+        .text {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.04rem;
+            line-height: 1.7;
+        }
+
+        .text p { margin: 0.85em 0; }
+
+        .observe {
+            margin: 1.3em 0;
+            padding: 0.6em 1em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.95rem;
+        }
+
+        .observe strong { color: var(--navy); }
+
+        .clock {
+            float: right;
+            margin: 0.4em 0 0 1em;
+            padding: 0.12em 0.6em;
+            border-radius: 999px;
+            color: #6b3a17;
+            background: #fff3b0;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .data {
+            margin: 1.4em 0;
+            padding: 0.7em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.89rem;
+        }
+
+        .data p { margin: 0.3em 0; }
+
+        /* Compact glossary of the four terms the text uses without explaining */
+        .gloss {
+            margin: 0 0 2em;
+            padding: 0.7em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.88rem;
+        }
+
+        .gloss dl {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 0.15em 0.9em;
+            margin: 0.45em 0 0;
+        }
+
+        .gloss dt { color: var(--navy); font-weight: 700; }
+        .gloss dd { margin: 0; }
+        .gloss > p { margin: 0; font-weight: 700; color: var(--navy); }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        @media (max-width: 700px) {
+            body { margin: 0; padding: 1em; }
+            h1 { font-size: 1.65rem; }
+            .clock { float: none; display: inline-block; margin: 0 0 0.4em; }
+            .gloss dl { grid-template-columns: minmax(0, 1fr); gap: 0 0; }
+            .gloss dd { margin-bottom: 0.4em; }
+        }
+
+        @media print {
+            /* Zero page margins + body padding: keeps the browser/PDF engine from
+               stamping its own URL header and footer on a handout meant for photocopying. */
+            @page { size: A4; margin: 0; }
+            body { max-width: none; margin: 0; padding: 13mm 14mm 10mm; font-size: 10.2pt; line-height: 1.45; background: #ffffff; }
+
+            h1 { font-size: 17pt; margin-bottom: 0.12em; }
+            h2 { font-size: 12pt; margin: 0.95em 0 0.15em; break-after: avoid; }
+            h3 { font-size: 9.8pt; margin: 0.8em 0 0.1em; break-after: avoid; }
+            .eyebrow { font-size: 7.8pt; margin-bottom: 0.25em; }
+            .subtitle { font-size: 9.4pt; margin-bottom: 0.8em; }
+            .attrib { font-size: 8.8pt; margin-bottom: 0.55em; break-after: avoid; }
+
+            .frame { margin-bottom: 0.8em; padding: 0.6em 0.9em; }
+            .frame p { margin: 0.3em 0; }
+            .rules li { margin-bottom: 0.08em; }
+
+            .gloss { margin-bottom: 1em; padding: 0.45em 0.85em; font-size: 8.8pt; }
+            .gloss dl { gap: 0.05em 0.7em; }
+
+            .text { font-size: 10.3pt; line-height: 1.48; }
+            .text p { margin: 0.5em 0; orphans: 3; widows: 3; }
+
+            .observe { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9.3pt; }
+            .data { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9pt; }
+            .frame, .observe, .data, .gloss { break-inside: avoid; }
+
+            .clock { background: #f0f0f0; color: #333333; border: 1px solid #cccccc; font-size: 8pt; }
+
+            footer { margin-top: 1.4em; padding-top: 0.5em; font-size: 7.8pt; line-height: 1.35; }
+            footer p { margin: 0.25em 0; }
+        }
+    </style>
+</head>
+<body>
+
+<p class="eyebrow">MGT300 · Sociedad, Cultura y Política · Ingeniería Comercial UAI</p>
+<h1>Guía de lectura concentrada</h1>
+<p class="subtitle">Clase 3 — Identidad y vida social en plataformas · Martes 18 de agosto de 2026</p>
+
+<div class="frame">
+    <p><strong>Un solo libro, cuatro capítulos, veinte minutos, en silencio.</strong> La semana pasada Han explicaba por qué nos exigimos a nosotros mismos. Este libro es el capítulo siguiente de la misma historia: qué le pasa a ese individuo cuando su vida transcurre delante de una pantalla y ante un público. Su tesis es que perdimos algo muy concreto —la distancia— y que sin distancia no hay respeto, ni espacio público, ni siquiera deseo.</p>
+    <ul class="rules">
+        <li>Celulares y notebooks guardados. Solo esta guía y un lápiz.</li>
+        <li>Subraya. Han argumenta con palabras: sus definiciones, sus etimologías y sus ejemplos concretos son la evidencia.</li>
+        <li>Está bien no terminar. Es preferible leer bien dos capítulos que pasar los ojos por los cuatro.</li>
+        <li>Sin IA en este bloque. El ejercicio es exactamente sostener la atención sin asistencia.</li>
+    </ul>
+</div>
+
+<div class="gloss">
+    <p>Cuatro palabras que el texto usa sin explicar</p>
+    <dl>
+        <dt>Pathos de la distancia</dt><dd>expresión de Nietzsche: el sentido de separación que hace posible mirar a alguien sin invadirlo.</dd>
+        <dt>Shitstorm</dt><dd>literalmente «tormenta de mierda»; en alemán se usa para una tormenta de indignación en internet. (Nota del traductor.)</dd>
+        <dt>Hikikomori</dt><dd>japonés: persona que vive al margen de la sociedad, encerrada en su casa frente a una pantalla. (Nota del traductor.)</dd>
+        <dt>Negatividad</dt><dd>en Han, todo lo que resiste, interrumpe o dice que no: el otro, el límite, la muerte. Su contrario, la <i>positividad</i>, solo acumula.</dd>
+    </dl>
+</div>
+
+<h2>1 · Respeto es mirar dos veces</h2>
+<p class="attrib">Byung-Chul Han, <i>En el enjambre</i> (2013), capítulos «Sin respeto» y «Sociedad de la indignación».<span class="clock">6 min</span></p>
+
+<div class="text">
+    <p>«<b>“Respeto” significa, literalmente, “mirar hacia atrás”. Es un mirar de nuevo.</b> En el contacto respetuoso con los otros nos guardamos del mirar curioso. El respeto presupone una mirada distanciada, un <i>pathos</i> de la distancia. Hoy esa actitud deja paso a una mirada sin distancias, que es típica del espectáculo. El verbo latino <i>spectare</i>, del que toma su raíz la palabra “espectáculo”, es un alargar la vista a la manera de un mirón, actitud a la que le falta la consideración distanciada, el respeto (<i>respectare</i>). <b>La distancia distingue el <i>respectare</i> del <i>spectare</i>.</b> Una sociedad sin respeto, sin <i>pathos</i> de la distancia, conduce a la sociedad del escándalo.»</p>
+
+    <p>«El respeto constituye la pieza fundamental para lo público. Donde desaparece el respeto, decae lo público. […] Lo público presupone, entre otras cosas, apartar la vista de lo privado bajo la dirección del respeto. El distanciamiento es constitutivo para el espacio público. Hoy, en cambio, reina una total falta de distancia, en la que la intimidad es expuesta públicamente y lo privado se hace público. Sin distancia tampoco es posible ningún decoro.»</p>
+
+    <p>«Roland Barthes define la esfera privada como “<b>esa zona del espacio, del tiempo, en la que no soy una imagen, un objeto</b>”. Visto así, habríamos de decir que no tenemos hoy ninguna esfera privada, pues no hay ninguna esfera donde yo no sea ninguna imagen, donde no haya ninguna cámara. Las Google Glass transforman el ojo humano en una cámara. El ojo mismo hace imágenes. Así, ya no es posible ninguna esfera privada.»</p>
+</div>
+
+<h3>El nombre</h3>
+<div class="text">
+    <p>«<b>El respeto va unido al nombre. Anonimato y respeto se excluyen entre sí.</b> La comunicación anónima, que es fomentada por el medio digital, destruye masivamente el respeto. […] También la <i>shitstorm</i> es anónima. Ahí está su fuerza. Nombre y respeto están ligados entre sí. El nombre es la base del reconocimiento, que siempre se produce nominalmente. Al carácter nominal van unidas prácticas como <b>la responsabilidad, la confianza o la promesa</b>. La confianza puede definirse como una fe en el nombre. […] El medio digital, que separa el mensaje del mensajero, la noticia del emisor, destruye el nombre.»</p>
+
+    <p>Han compara la <i>shitstorm</i> con la carta al director de un diario: «Las cartas anónimas de los lectores terminan con rapidez en las papeleras de las redacciones de los periódicos. Y la carta del lector está caracterizada también por otra temporalidad. <b>Mientras la redactamos, de manera laboriosa, a mano o a máquina, la excitación inmediata se ha evaporado ya.</b> En cambio, la comunicación digital hace posible un transporte inmediato del afecto. En virtud de su temporalidad, transporta más afectos que la comunicación analógica. En este aspecto <b>el medio digital es un medio del afecto</b>.»</p>
+
+    <p>«El respeto como medio de comunicación ejerce un efecto semejante al del poder. El punto de vista de la persona respetable […] es con frecuencia aceptado y asumido sin contradicción ni réplica. […] <b>A una persona de respeto no la cubrimos con una <i>shitstorm</i>.</b> […] La decadencia general de los valores erosiona la cultura del respeto. <b>Los modelos actuales carecen de valores interiores. Se distinguen sobre todo por cualidades externas.</b>»</p>
+
+    <p>Y una reescritura de una frase famosa: «Según <b>Carl Schmitt</b>, es soberano el que decide sobre el estado de excepción. Esta frase sobre la soberanía puede traducirse a lo acústico. <b>Es soberano el que tiene la capacidad de engendrar un silencio absoluto</b>, de eliminar todo ruido, de hacer callar a todos de golpe. […] Después de la revolución digital, habremos de redactar de nuevo la frase de Schmitt: “<b>Es soberano el que dispone sobre las <i>shitstorms</i> de la red</b>”.»</p>
+</div>
+
+<h3>La indignación no es ira</h3>
+<div class="text">
+    <p>«Las olas de indignación son muy eficientes para movilizar y aglutinar la atención. Pero en virtud de su carácter fluido y de su volatilidad no son apropiadas para configurar el discurso público, el espacio público. […] <b>Crecen súbitamente y se dispersan con la misma rapidez.</b> […] Las olas de indignación surgen con frecuencia a la vista de aquellos sucesos que tienen una importancia social o política muy escasa. […] Tampoco la preocupación de los llamados “indignados” afecta a la sociedad en conjunto; en gran medida, <b>es una preocupación por sí mismo</b>.»</p>
+
+    <p>«La primera palabra de la <i>Ilíada</i> es <i>menin</i>, a saber, <b>la ira</b>. “Canta, oh diosa, la ira del Pelida Aquiles”, leemos al principio de la primera narración de la cultura occidental. La ira puede cantarse aquí porque soporta, estructura, anima, vivifica. […] <b>La indignación digital no puede cantarse.</b> No es capaz de acción ni de narración. […] La cólera, en sentido enfático, es más que un estado afectivo. Es una capacidad de interrumpir un estado existente y de hacer que comience un nuevo estado. La actual multitud indignada es muy fugaz y dispersa. Le falta toda masa, toda gravitación, que es necesaria para acciones. <b>No engendra ningún futuro.</b>»</p>
+</div>
+
+<div class="observe"><strong>Observa.</strong> Todo el capítulo se sostiene sobre una etimología: <i>respectare</i> contra <i>spectare</i>. Han pasa del origen latino de una palabra a un diagnóstico de la sociedad entera, sin una sola cifra ni un solo caso. Es exactamente el movimiento contrario al de Ehrenreich la semana pasada. Marca en el margen dónde te convence y dónde no.</div>
+
+<h2>2 · Un enjambre no es una masa</h2>
+<p class="attrib">Byung-Chul Han, <i>En el enjambre</i>, capítulo homónimo.<span class="clock">4 min</span></p>
+
+<div class="text">
+    <p>Han parte de un clásico: «En la <i>Psicología de las masas</i> (<b>1895</b>) <b>Gustave Le Bon</b> define la modernidad como la “época de las masas”. […] Y así constata, lacónicamente: “La era en la que entramos será, verdaderamente, la era de las masas”. […] Para Le Bon la rebelión de las masas conduce tanto a la crisis de la soberanía como a la decadencia de la cultura.»</p>
+
+    <p>«Sin duda hoy nos encontramos en una nueva crisis […] de la cual parece ser responsable otra transformación radical: la revolución digital. […] <b>La nueva masa es el enjambre digital.</b> Este muestra propiedades que lo distinguen radicalmente de las formaciones clásicas de los muchos.»</p>
+
+    <p>«<b>El enjambre digital no es ninguna masa porque no es inherente a ninguna alma, a ningún espíritu.</b> El alma es congregadora y unificante. El enjambre digital consta de individuos aislados. […] Los individuos que se unen en un enjambre digital no desarrollan ningún nosotros. […] El enjambre digital, por contraposición a la masa, no es coherente en sí. <b>No se manifiesta en una voz. Por eso es percibido como ruido.</b>»</p>
+
+    <p>Para <b>McLuhan</b>, el habitante de los medios electrónicos era todavía un hombre de masas: «Así como el espectador en un estadio deportivo es <b>un nadie</b>, de igual manera el ciudadano electrónico es un hombre cuya identidad privada está extinguida psíquicamente por una exigencia excesiva.» Han corrige: «<b>El <i>homo digitalis</i> es cualquier cosa menos nadie.</b> Él mantiene su identidad privada, aun cuando se presente como parte del enjambre. En efecto, se manifiesta de manera anónima, pero <b>por lo regular tiene un perfil y trabaja incesantemente para optimizarlo</b>. En lugar de ser nadie, es <b>un alguien penetrante, que se expone y solicita la atención</b>. […] No es ningún nadie, sino que es un alguien, a saber, <b>un alguien anónimo</b>.»</p>
+
+    <p>«Los habitantes digitales de la red no se congregan. Les falta la intimidad de la congregación, que produciría un nosotros. Constituyen <b>una concentración sin congregación</b>, una multitud sin interioridad, un conjunto sin interioridad, sin alma o espíritu. Son ante todo <i>hikikomoris</i> aislados, singularizados, que se sientan solitarios ante el <i>display</i>. <b>Medios electrónicos como la radio congregan a hombres, mientras que los medios digitales los aíslan.</b>»</p>
+
+    <p>«[La masa clásica] no es volátil, sino voluntaria, y no constituye masas fugaces, sino formaciones firmes. Con un alma, unida por una ideología, la masa marcha en una dirección. […] <b>Masa es poder.</b> A los enjambres digitales les falta esta decisión. <b>Ellos no marchan.</b> Se disuelven tan deprisa como han surgido. En virtud de esta fugacidad no desarrollan energías políticas. Las <i>shitstorms</i> tampoco son capaces de cuestionar las dominantes relaciones de poder. <b>Se precipitan solo sobre personas particulares</b>, por cuanto las comprometen o las convierten en motivo de escándalo.»</p>
+
+    <p>Contra Hardt y Negri, que esperaban de la red una «multitud» capaz de acción común, Han responde: «El imperio global no es ninguna clase dominante que explote a la multitud, pues <b>hoy cada uno se explota a sí mismo, y se figura que vive en la libertad</b>. […] La creciente tendencia al egoísmo y a la atomización de la sociedad hace que se encojan de forma radical los espacios para la acción común. <b>El socio deja paso al solo.</b> Lo que caracteriza la actual constitución social no es la multitud, sino más bien la soledad (<b><i>non multitudo, sed solitudo</i></b>).»</p>
+</div>
+
+<div class="observe"><strong>Observa.</strong> Aquí reaparece, sin aviso, el sujeto de la semana pasada: el que se explota a sí mismo creyéndose libre. Es el mismo personaje de <i>La sociedad del cansancio</i>, ahora con perfil. Y fíjate en la tensión interna del capítulo: dos páginas antes el anonimato destruía el respeto; ahora el <i>homo digitalis</i> resulta ser «un alguien anónimo» que optimiza su perfil sin descanso.</div>
+
+<h2>3 · La cara expuesta</h2>
+<p class="attrib">Byung-Chul Han, <i>En el enjambre</i>, capítulo «El Listo Hans».<span class="clock">5 min</span></p>
+
+<div class="text">
+    <p>«A principios del siglo <span style="font-variant: small-caps;">xx</span> adquirió fama mundial <b>un caballo alemán</b>. Se le atribuía capacidad de calcular. Fue conocido como <b>el Listo Hans</b>. A tareas sencillas de cálculo respondía correctamente con la pezuña o la cabeza. Así, <b>golpeaba ocho veces el suelo con la pezuña cuando se le planteaba la pregunta: ¿cuánto es tres más cinco?</b> Para esclarecer este suceso prodigioso se constituyó una comisión de científicos, en la que había también un filósofo. <b>La comisión llegó a la conclusión de que el caballo no sabía calcular</b>, pero estaba en condiciones de interpretar finos matices en la expresión facial y corporal de la persona que tenía ante sí. Registraba con sensibilidad delicada que el público presente adoptaba espontáneamente una actitud tensa ante el golpe decisivo de herradura. Frente a esta tensión perceptible, el caballo dejaba de golpear. Y así daba siempre la respuesta correcta.»</p>
+
+    <p>«<b>La parte verbal de la comunicación es muy escasa.</b> El núcleo de la comunicación está constituido por las formas no verbales, tales como los gestos, la expresión de la cara, el lenguaje corporal. […] <b>El medio digital despoja la comunicación de su carácter táctil y corporal.</b> […] El medio digital hace que desaparezca el enfrente real. Lo registra como resistencia. Así pues, la comunicación digital carece de cuerpo y de rostro.»</p>
+
+    <p>«<b>El <i>smartphone</i> hace las veces de un espejo digital</b> para la nueva edición posinfantil del estadio del espejo. Abre un estadio narcisista, una esfera de lo imaginario, en la que yo me incluyo. <b>A través del <i>smartphone</i> no habla el otro.</b> […] El <i>me gusta</i> sin lagunas engendra un espacio de positividad. La experiencia, como irrupción de lo otro, en virtud de su negatividad interrumpe el narcisismo imaginario. […] <b>La positividad continúa lo igual.</b>»</p>
+</div>
+
+<h3>La mirada que falta</h3>
+<div class="text">
+    <p>Han cita un ensayo escrito por el décimo aniversario de <b>Skype</b>: «El videoteléfono produce la ilusión de una presencia […]. Pero se nota siempre la distancia, que permanece, quizá con la mayor claridad en <b>una pequeña descentración</b>. Efectivamente, en Skype no es posible mirarse el uno al otro. <b>Cuando en la pantalla se mira a los ojos del otro, este cree que su interlocutor mira ligeramente hacia abajo, pues la cámara está instalada en el marco superior del ordenador.</b> La bella peculiaridad del encuentro inmediato, la de que ver a alguien es siempre equivalente a ser visto, ha dejado paso a la asimetría de la mirada. […] podemos estar cerca los unos de los otros las veinticuatro horas del día, pero <b>dejamos constantemente de mirarnos</b>.»</p>
+
+    <p>«El palpar con la punta de los dedos en la pantalla táctil es una acción que tiene una consecuencia en la relación con el otro. <b>Elimina aquella distancia que constituye al otro en su alteridad.</b> Se puede palpar la imagen, tocarla directamente, porque ha perdido ya la mirada, la faz. Al tocar con la yema de los dedos, yo dispongo del otro. <b>Alejamos al otro con la punta de los dedos para hacer aparecer allí nuestra imagen reflejada.</b>»</p>
+
+    <p>«<b>No hay un rostro transparente. La cara que apetecemos es siempre opaca.</b> Opaco significa, literalmente, sombreado. Esta negatividad del sombrear es constitutiva para el apetito. La pantalla transparente no admite ningún apetito, pues en el apetito apetecemos al otro. Justo allí donde está la sombra se da también el brillo. […] <b>Lo transparente no brilla.</b> El brillo surge donde se rompe la luz. Donde no hay ninguna refracción, ninguna fractura, no hay tampoco ningún Eros, ningún apetito. <b>La transparencia significa el final del apetito.</b>»</p>
+
+    <p>El capítulo cierra con una frase atribuida a <b>Leonardo da Vinci</b> sobre un retrato cubierto: «<i>Non scoprire se libertà t’è cara ché il volto mio è carcere d’amore</i>» —<b>«No descubras, si tienes en alta estima la libertad, pues mi rostro es la cárcel del amor»</b>. Y comenta: «Esta sentencia expresa una experiencia especial del rostro que hoy, <b>en la época de Facebook</b>, ya no es posible. <b>La cara, que se expone y solicita la atención, no es ningún semblante. En ella no mora ninguna mirada.</b> La intencionalidad de la exposición destruye toda interioridad, aquella reserva que constituye la mirada. […] Así, <b>la cárcel del amor cede el puesto a la caverna de la libertad</b>.»</p>
+
+    <p>En otro capítulo, la misma idea aplicada a la métrica: «También el amor se despliega en el arco de la tensión negativa del odio. […] <b>La negatividad lo distingue del <i>me gusta</i>, que es positivo y, por tanto, acumulable y aditivo.</b> Tanto a los <b>amigos de Facebook</b> como a los concurrentes les falta la negatividad, que distingue el “amigo” del “enemigo” en el sentido de Carl Schmitt.»</p>
+</div>
+
+<div class="observe"><strong>Observa.</strong> Repasa de qué está hecha la evidencia de este capítulo: un caballo de circo de hace cien años, la posición física de la cámara en un notebook, una frase de Leonardo y el estadio del espejo de Lacan. Ni una encuesta, ni un experimento, ni una cifra. Es una teoría construida enteramente con ejemplos elegidos. Anota cuál de ellos te parece que hace todo el trabajo del argumento.</div>
+
+<h2>4 · Huir hacia la imagen</h2>
+<p class="attrib">Byung-Chul Han, <i>En el enjambre</i>, capítulos «Huida a la imagen» y «Del sujeto al proyecto».<span class="clock">5 min</span></p>
+
+<div class="text">
+    <p>«<b>Hoy las imágenes no son solo copias, sino también modelos. Huimos hacia las imágenes para ser mejores, más bellos, más vivos.</b> […] El medio digital consuma aquella inversión icónica que hace aparecer las imágenes más vivas, más bellas, mejores que la realidad, percibida como defectuosa.» Y cita a Barthes: «Ante los clientes de un café, alguien me dijo justamente: “Mire qué mates son; <b>en nuestros días las imágenes son más vivientes que la gente</b>”.»</p>
+
+    <p>«El llamado <b>síndrome de París</b> designa una aguda perturbación psíquica que afecta sobre todo a los turistas de Japón. Los afectados sufren de alucinaciones, desrealización, despersonalización, angustia y síntomas psicosomáticos como mareo, sudor o sobresalto cardíaco. <b>Lo que dispara todo esto es la fuerte diferencia entre la imagen ideal de París, que los japoneses tienen antes del viaje, y la realidad de la ciudad</b>, que se desvía completamente de la imagen ideal. Se puede suponer que la inclinación coactiva, casi histérica, de los turistas japoneses a hacer fotos, representa una reacción inconsciente de protección […]. <b>Las fotos bonitas como imágenes ideales blindan a estos turistas frente a la sucia realidad.</b>»</p>
+
+    <p>«Esta producción masiva de imágenes puede interpretarse como una reacción de protección y de huida. <b>El delirio de optimación se apodera también de la producción de imágenes.</b> […] Aquello con cuya ayuda nos contraponemos a la facticidad, ya sea la de los cuerpos, el tiempo, la muerte, etcétera, <b>ya no son las religiones, sino técnicas de optimación</b>. El medio digital deshace la facticidad.»</p>
+
+    <p>«<b>El medio digital carece de edad, destino y muerte.</b> En él se ha congelado el tiempo mismo. Es un medio atemporal.» La fotografía analógica, en cambio, envejecía: «como un organismo viviente nace a partir de los granos de plata que germinan, alcanza su pleno desarrollo durante un momento, luego envejece. Atacada por la luz, por la humedad, empalidece, se extenúa, desaparece.» Por eso <b>«la imagen digital no florece o resplandece, porque el florecer lleva inscrito el marchitarse»</b>.</p>
+</div>
+
+<h3>El yo como proyecto</h3>
+<div class="text">
+    <p>«El labrador […] es un sujeto, lo cual significa originariamente <b>estar sujeto</b> (<i>subject to</i>, <i>sujét à</i>). El labrador se somete a la ley de la tierra. […] Hoy habrá que escribir de nuevo la ontología existenciaria de Heidegger, porque <b>ya no creemos que somos un sujeto sometido; creemos más bien que somos un proyecto que se esboza, que se optima</b>. […] Por primera vez el medio digital consuma el proceso dentro del cual el sujeto se acerca al proyecto. <b>Lo digital es un medio de proyecto.</b>»</p>
+
+    <p>Contra el entusiasmo de Vilém Flusser, que veía en la red «una técnica del amor al prójimo» y una comunidad de reconocimiento mutuo, Han objeta que la topología real de la conexión digital «<b>no consta de puntos y cruces carentes de mismidad, sino de islas narcisistas de yos</b>». Y sentencia: «Este mesianismo del encadenamiento no se ha acreditado. Más bien, la comunicación digital hace que se erosione fuertemente la comunidad, el nosotros. Destruye el espacio público y agudiza el aislamiento del hombre. <b>Lo que domina la comunicación digital no es el “amor al prójimo”, sino el narcisismo.</b> […] Se muestra como <b>una máquina narcisista del ego</b>.»</p>
+
+    <p>El cierre: «<b>El proyecto, para el que el sujeto se libera, se muestra él mismo como una figura coactiva.</b> Desarrolla coacciones en forma de rendimiento, optimación y explotación de sí mismo. Vivimos hoy en una fase histórica especial, en la que la libertad misma provoca coacciones. […] <b>Más libertad significa más coacción.</b> Eso sería el final de la libertad. […] El sujeto del rendimiento se explota a sí mismo, hasta que se derrumba. Y desarrolla una autoagresividad que no pocas veces desemboca en el suicidio. <b>El sí mismo como bello <i>proyecto</i> se muestra como <i>proyectil</i>, que se dirige contra sí mismo.</b>»</p>
+</div>
+
+<div class="observe"><strong>Observa.</strong> Los cuatro capítulos terminan en el mismo punto y por caminos distintos: <b>sin distancia no hay respeto; sin negatividad no hay deseo; sin congregación no hay nosotros; sin sujeto sometido no hay libertad, sino coacción.</b> El libro es de 2013 y no menciona algoritmos de recomendación, influencers ni IA generativa. Nada de eso existía como lo conocemos. Fíjate en cuáles de estas tesis envejecieron mal y cuáles se volvieron más literales de lo que Han imaginaba.</div>
+
+<div class="data">
+    <p><strong>Para situar esto acá.</strong> Según el informe de la OCDE difundido esta semana, los adolescentes chilenos de 15 años <b>encabezan el ranking de los países estudiados</b>: más de <b>45 horas semanales</b> en redes sociales, unas <b>6,4 horas diarias</b>, contra un promedio OCDE de unas 35 horas semanales y menos de 26 en Japón. Un <b>95%</b> de los jóvenes de 15 años usa redes sociales a diario. Y en Chile, cerca de <b>1 de cada 5</b> pasa más de cinco horas diarias solo comunicando o compartiendo contenido. En paralelo, desde el año escolar 2026 rige la <b>Ley 21.801</b>, publicada el 11 de febrero de 2026, que prohíbe como regla general el uso de celulares en la sala de clases en educación parvularia, básica y media.</p>
+    <p style="color:#555;font-size:0.93em;">Fuentes: informe OCDE sobre uso de redes sociales en adolescentes (agosto de 2026, cobertura de <i>El Mostrador</i> y <i>The Clinic</i>); Ley 21.801, Diario Oficial, 11 de febrero de 2026.</p>
+</div>
+
+<footer>
+    <p>MGT300 · Sociedad, Cultura y Política · Universidad Adolfo Ibáñez · Segundo semestre 2026 · Profesor Naim Bro.</p>
+    <p>Extractos reproducidos con fines exclusivamente docentes y de extensión mínima. Byung-Chul Han, <i>En el enjambre</i>, Herder, 2014, traducción de Raúl Gabás; el texto completo está en la carpeta de lecturas del curso. Los énfasis en negrita son del profesor. Las citas dentro de las citas corresponden a Roland Barthes (<i>La cámara lúcida</i>), Marshall McLuhan, Gustave Le Bon, Carl Schmitt, Michael Hardt y Antonio Negri, y Vilém Flusser, según las referencias del original.</p>
+</footer>
+
+</body>
+</html>
