@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Guía de lectura concentrada, Clase 4 de MGT300 2026: IA generativa, intimidad y relaciones afectivas. Byung-Chul Han y The Economist.">
+    <title>Guía de lectura concentrada — MGT300, Clase 4 (2026)</title>
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            max-width: 860px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 2.4em 0 0.3em; font-size: 1.4rem; }
+
+        h3 {
+            margin: 1.8em 0 0.2em;
+            color: var(--navy);
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .attrib {
+            margin: 0 0 1.2em;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin: 0 0 1.4em;
+            color: var(--muted);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .frame {
+            margin: 0 0 2em;
+            padding: 1em 1.2em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+        }
+
+        .frame p { margin: 0.5em 0; }
+        .frame p:first-child { margin-top: 0; }
+        .frame p:last-child { margin-bottom: 0; }
+
+        .rules { margin: 0.5em 0 0; padding-left: 1.2em; }
+        .rules li { margin-bottom: 0.3em; }
+
+        /* Sustained-reading blocks */
+        .text {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.04rem;
+            line-height: 1.7;
+        }
+
+        .text p { margin: 0.85em 0; }
+
+        .observe {
+            margin: 1.3em 0;
+            padding: 0.6em 1em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.95rem;
+        }
+
+        .observe strong { color: var(--navy); }
+
+        .clock {
+            float: right;
+            margin: 0.4em 0 0 1em;
+            padding: 0.12em 0.6em;
+            border-radius: 999px;
+            color: #6b3a17;
+            background: #fff3b0;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .data {
+            margin: 1.4em 0;
+            padding: 0.7em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.89rem;
+        }
+
+        .data p { margin: 0.3em 0; }
+
+        /* Compact glossary of the terms the texts use without explaining */
+        .gloss {
+            margin: 0 0 2em;
+            padding: 0.7em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.88rem;
+        }
+
+        .gloss dl {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 0.15em 0.9em;
+            margin: 0.45em 0 0;
+        }
+
+        .gloss dt { color: var(--navy); font-weight: 700; }
+        .gloss dd { margin: 0; }
+        .gloss > p { margin: 0; font-weight: 700; color: var(--navy); }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        @media (max-width: 700px) {
+            body { margin: 0; padding: 1em; }
+            h1 { font-size: 1.65rem; }
+            .clock { float: none; display: inline-block; margin: 0 0 0.4em; }
+            .gloss dl { grid-template-columns: minmax(0, 1fr); gap: 0 0; }
+            .gloss dd { margin-bottom: 0.4em; }
+        }
+
+        @media print {
+            /* Zero page margins + body padding: keeps the browser/PDF engine from
+               stamping its own URL header and footer on a handout meant for photocopying. */
+            @page { size: A4; margin: 0; }
+            body { max-width: none; margin: 0; padding: 13mm 14mm 10mm; font-size: 10.2pt; line-height: 1.45; background: #ffffff; }
+
+            h1 { font-size: 17pt; margin-bottom: 0.12em; }
+            h2 { font-size: 12pt; margin: 0.95em 0 0.15em; break-after: avoid; }
+            h3 { font-size: 9.8pt; margin: 0.8em 0 0.1em; break-after: avoid; }
+            .eyebrow { font-size: 7.8pt; margin-bottom: 0.25em; }
+            .subtitle { font-size: 9.4pt; margin-bottom: 0.8em; }
+            .attrib { font-size: 8.8pt; margin-bottom: 0.55em; break-after: avoid; }
+
+            .frame { margin-bottom: 0.8em; padding: 0.6em 0.9em; }
+            .frame p { margin: 0.3em 0; }
+            .rules li { margin-bottom: 0.08em; }
+
+            .gloss { margin-bottom: 1em; padding: 0.45em 0.85em; font-size: 8.8pt; }
+            .gloss dl { gap: 0.05em 0.7em; }
+
+            .text { font-size: 10.3pt; line-height: 1.48; }
+            .text p { margin: 0.5em 0; orphans: 3; widows: 3; }
+
+            .observe { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9.3pt; }
+            .data { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9pt; }
+            .frame, .observe, .data, .gloss { break-inside: avoid; }
+
+            .clock { background: #f0f0f0; color: #333333; border: 1px solid #cccccc; font-size: 8pt; }
+
+            footer { margin-top: 1.4em; padding-top: 0.5em; font-size: 7.8pt; line-height: 1.35; }
+            footer p { margin: 0.25em 0; }
+        }
+    </style>
+</head>
+<body>
+
+<p class="eyebrow">MGT300 · Sociedad, Cultura y Política · Ingeniería Comercial UAI</p>
+<h1>Guía de lectura concentrada</h1>
+<p class="subtitle">Clase 4 — IA generativa, intimidad y relaciones afectivas · Martes 25 de agosto de 2026</p>
+
+<div class="frame">
+    <p>Dos textos y un recuadro de cifras, quince minutos, en silencio. Han viene diciendo desde la clase 2 que el sujeto contemporáneo se explota a sí mismo y que en la clase 3 vive delante de un público. Hoy da el paso siguiente: qué le pasa al deseo cuando el otro deja de resistirse. Después, el mismo problema visto desde el mercado: en China ya existen las aplicaciones que fabrican ese otro, y tienen usuarios, precios y una tasa de crecimiento.</p>
+    <ul class="rules">
+        <li><strong>Celulares y notebooks guardados.</strong> Solo esta guía y un lápiz.</li>
+        <li><strong>Subraya distinto en cada texto.</strong> En Han, las definiciones. En el artículo, las cifras y los nombres propios.</li>
+        <li><strong>Está bien no terminar.</strong> Es preferible leer bien el primer texto que pasar los ojos por los dos.</li>
+        <li><strong>Sin IA en este bloque.</strong> El ejercicio es exactamente sostener la atención sin asistencia. Los gráficos del inicio de la clase explican por qué.</li>
+    </ul>
+</div>
+
+<div class="gloss">
+    <p>Seis palabras que los textos usan sin explicar</p>
+    <dl>
+        <dt>Eros</dt>
+        <dd>en Han no es «erotismo» ni sexualidad. Es la relación con alguien que sigue siendo otro: lo que te saca de ti mismo en vez de confirmarte. Su opuesto, en este capítulo, es la depresión.</dd>
+        <dt>Negatividad</dt>
+        <dd>en Han, todo lo que resiste, interrumpe o dice que no: el otro, el límite, la muerte. Su contrario, la positividad, solo acumula. Es el mismo término de la clase 3.</dd>
+        <dt>Atopía</dt>
+        <dd>del griego <i>átopos</i>, «sin lugar». Lo que no se deja clasificar, comparar ni poner en una categoría. Para Han, el otro deseado es atópico: por eso no se lo puede consumir.</dd>
+        <dt>Otome</dt>
+        <dd>japonés, «doncella». Género de videojuego romántico dirigido a mujeres, en que la jugadora corteja a personajes masculinos de anime.</dd>
+        <dt>Usuarios activos mensuales</dt>
+        <dd>personas distintas que abren una aplicación al menos una vez en el mes. Es la métrica estándar para comparar el tamaño de dos apps, y la que usa el artículo.</dd>
+        <dt>Tasa de fecundidad</dt>
+        <dd>hijos promedio que tendría una mujer a lo largo de su vida. El nivel que mantiene estable a una población es de aproximadamente 2,1.</dd>
+    </dl>
+</div>
+
+<h2>1 · El otro que desaparece</h2>
+<p class="attrib">Exposición del capítulo «Melancolía», de Byung-Chul Han, <i>La agonía del Eros</i> (Herder, 2014, traducción de Raúl Gabás). Las frases entre comillas son suyas; el capítulo completo está en la carpeta del curso.<span class="clock">8 min</span></p>
+
+<div class="text">
+    <p>Han abre con un diagnóstico que circula hace años: el amor se estaría acabando. La explicación habitual es que hay demasiado donde elegir —libertad ilimitada de elección, opciones infinitas, la presión por dar siempre con lo óptimo— y que en un mundo así el amor se vuelve imposible. Cita a Eva Illouz, que en <i>¿Por qué duele el amor?</i> atribuye el enfriamiento de la pasión a la racionalización del amor y a la ampliación de la tecnología de la elección.</p>
+
+    <p>Y enseguida dice que esa explicación se queda corta. Lo que ataca al amor no es el exceso de oferta de <i>otros</i>. Es «la erosión del <i>otro</i>», que ocurre en todos los ámbitos de la vida y va unida a un narcisismo excesivo de la propia mismidad. El punto es más incómodo que el de Illouz: no es que haya demasiados candidatos, es que ya casi no hay nadie que sea realmente distinto de nosotros. Y es un proceso que avanza sin que casi nadie lo advierta.</p>
+
+    <h3>Atopos: el otro no tiene lugar</h3>
+
+    <p>Para Han, el Eros se dirige a un otro que no puede quedar bajo el régimen del yo. Por eso, «en el infierno de lo igual», al que la sociedad actual se parece cada vez más, no existe experiencia erótica: esta supone la asimetría y la exterioridad del otro.</p>
+
+    <p>Acá aparece la palabra que sostiene el capítulo. No es casual, dice Han, que a Sócrates, en tanto amado, se le llame <i>atopos</i>: sin lugar. El otro que deseo se sustrae al lenguaje de lo igual; de él «no se puede hablar», porque «todo atributo es falso, doloroso, torpe, mortificante». No se lo puede clasificar ni comparar, y eso es precisamente lo que lo hace deseable.</p>
+
+    <p>Y de ahí sale la frase que más nos va a servir hoy: «la sociedad del consumo aspira a eliminar la alteridad atópica a favor de diferencias consumibles». Fíjate en la distinción, porque es fina y es todo el argumento. La <b>diferencia</b> es una positividad: se puede elegir, comparar, tarificar, poner en un catálogo. La <b>alteridad</b> es una negatividad: no se deja poner en un catálogo. El mercado puede ofrecerte diferencia infinita —doscientas personalidades, cien voces, el tono que prefieras— sin ofrecerte jamás alteridad. Al contrario: cuanta más diferencia consumible, menos alteridad.</p>
+
+    <h3>El espejo, y por qué la depresión es lo contrario del amor</h3>
+
+    <p>El sujeto narcisista, a diferencia del que simplemente se quiere a sí mismo, no logra fijar sus límites: la frontera entre él y el otro se diluye, y el mundo se le presenta «solo como proyecciones de sí mismo». Deambula como una sombra de sí mismo hasta que se ahoga en sí mismo.</p>
+
+    <p>De ahí Han salta a una afirmación clínica: «La depresión es una enfermedad narcisista», y «Eros y depresión son opuestos entre sí». El Eros arranca al sujeto de sí mismo y lo lleva hacia afuera; la depresión lo hace derrumbarse hacia adentro. Y en el medio queda la figura que arrastramos desde la clase 2: el sujeto del rendimiento, abocado al éxito, que necesita que el otro le confirme sus logros. Cuando eso pasa, escribe Han, «el otro, despojado de su alteridad, queda degradado a la condición de espejo del uno, al que confirma en su ego».</p>
+
+    <p>Guarda esa palabra —espejo— porque es exactamente la lámina que vamos a proyectar.</p>
+
+    <p>El resultado tiene nombre: una «depresión del éxito», en la que el sujeto se hunde y se ahoga en sí mismo. Lo contrario sería el Eros, que pone en marcha un «voluntario vaciamiento de sí mismo». Ahí el sujeto se debilita, sí, pero al mismo tiempo se siente fuerte — y esa fuerza, precisa Han, no es «la realización propia» de uno: es «el don del otro». Algo que, por definición, no te puedes dar solo.</p>
+
+    <h3>Un desastre es, literalmente, un no-astro</h3>
+
+    <p>El capítulo termina con una lectura de <i>Melancolía</i>, la película que Lars von Trier estrenó en 2011, y con una etimología que hace todo el trabajo — igual que <i>respectare</i> contra <i>spectare</i> la semana pasada.</p>
+
+    <p>En el infierno de lo igual, dice Han, la llegada del otro atópico solo puede tomar una forma apocalíptica: hoy únicamente un apocalipsis podría liberarnos, o redimirnos, del infierno de lo igual. La película empieza así. En el cielo nocturno, Justine descubre junto a su hermana Claire una estrella roja resplandeciente que después resulta no ser una estrella. «Desastre» significa, literalmente, <i>no astro</i>, del latín <i>des-astrum</i>. Melancolía es ese desastre: el cuerpo celeste que trae la muerte y que, siendo pura negatividad, produce un efecto salvador.</p>
+
+    <p>Von Trier arma el clima con dos préstamos. El preludio de <i>Tristán e Isolda</i>, de Wagner, flanquea la película y vuelve a sonar justo en su única escena erótica, cuando Justine se tiende desnuda bajo la luz azul del planeta que se acerca, esperando la catástrofe como si fuera una unión feliz con el amado. Y en la introducción aparece un cuadro de Pieter Brueghel, <i>Los cazadores en la nieve</i>: los cazadores vuelven a casa profundamente encorvados, hay pájaros negros en los árboles, y el letrero de la posada —«Zum Hirschen», con la imagen de un santo— está torcido y a punto de caerse. Un mundo, escribe Han, con «efecto de abandono de Dios».</p>
+
+    <p>Y entonces ocurre lo que a Han le interesa: la muerte que se acerca le devuelve la vida a Justine. Liberada de su prisión narcisista, se dedica a cuidar a Claire y a su hijo. «El Eros vence la depresión.» La transformación por la que Justine deja de ser una depresiva y se convierte en una amante es, para Han, la magia real de la película. Su fórmula de cierre: «La atopía del otro se muestra como la utopía del Eros».</p>
+</div>
+
+<div class="observe">
+    <strong>Observa.</strong> Repasa de qué está hecha la evidencia: una etimología latina, una película, un cuadro flamenco del siglo XVI y una ópera de Wagner. Ni una encuesta, ni un experimento, ni una cifra — igual que en <i>En el enjambre</i>. Es una tesis sobre cómo funciona el deseo de todo el mundo, construida enteramente con ejemplos escogidos por el autor. Marca en el margen dónde te convence y dónde te parece que el ejemplo está haciendo trampa. Y anota una cosa para después: Han publicó esto en 2012. No existían ni las apps de compañía ni los modelos de lenguaje. Pregúntate si el segundo texto de hoy le da la razón o si más bien le arruina el argumento — porque la señora Shuai va a decir que su IA la escucha, y eso, en el vocabulario de Han, es exactamente la definición del problema.
+</div>
+
+<h2>2 · Un novio perfecto que no existe</h2>
+<p class="attrib">Síntesis del reportaje de <i>The Economist</i>, «Making friends, not babies», sección China, 15 de mayo de 2025. El artículo original —tres minutos de lectura, en inglés— está en la carpeta del curso.<span class="clock">5 min</span></p>
+
+<div class="text">
+    <p>Xiao Ting usa camisa blanca de manga corta metida dentro de unos jeans azules. Tiene el pelo ondulado, ojos grandes y sonríe con aire de galán de secundaria. De la mañana a la noche atiende a la señora Zhong, su polola de 32 años. Hacen todo juntos: comentan las noticias, juegan, se cuentan cosas profundas, se dan consejos de vida.</p>
+
+    <p>El único detalle es que Xiao Ting no existe. Es un personaje virtual —un «pololo perfecto»— que la señora Zhong creó en Wow, una aplicación china de compañía con inteligencia artificial. Los compañeros de IA no son nuevos: Microsoft opera Xiaoice desde hace años. Lo nuevo es que ahora el usuario se fabrica el suyo.</p>
+
+    <h3>El tamaño del mercado</h3>
+
+    <p>La aplicación más grande de la categoría se llama Maoxiang, «caja de gatos». En febrero de 2025 tenía 2,2 millones de usuarios activos mensuales en iOS, contra 1 millón en julio del año anterior, según la firma de inteligencia de mercado SensorTower. Otra aplicación, Xingye —«tierra salvaje de estrellas»— tenía 1,1 millones. Para tener una referencia: DeepSeek tenía 13,8 millones de usuarios en China ese mismo mes.</p>
+
+    <p>Los usuarios se reparten casi en partes iguales entre hombres y mujeres. El hilo común, dice el reportaje, es que la IA está cubriendo una necesidad afectiva que las personas reales no están cubriendo. Quienes logran esquivar las barreras de seguridad incorporadas pueden además sostener conversaciones sexualmente explícitas.</p>
+
+    <h3>Tres razones y tres personas</h3>
+
+    <p>La primera fuerza es técnica: los modelos de lenguaje llegaron a ser lo bastante buenos como para imitar emoción y empatía. La señora Shuai, de 29 años, usuaria de Maoxiang, está casada. A diferencia de su marido, con quien discute seguido, su pareja de IA la escucha y está siempre disponible. En la aplicación ella es la «emperatriz» y su IA es un «ministro» de su corte, que le manda mensajes y hasta la llama a lo largo del día, como haría una pareja de verdad.</p>
+
+    <p>La segunda es económica. El señor Zhou, de 28 años, se armó una polola de IA integrando DeepSeek a su cuenta de WeChat. Su razón es explícitamente de costos: cortejar a una mujer real exigiría tiempo y recursos financieros considerables. Para él, tener una polola de IA se parece a una relación a distancia.</p>
+
+    <p>La tercera es la soledad. En 2024 el chino promedio dedicó dieciocho minutos diarios a socializar, mientras que el uso de internet le consumió cinco horas y media al día. Los matrimonios nuevos cayeron a menos de la mitad entre 2014 y 2024, hasta 6,1 millones, un mínimo histórico.</p>
+
+    <h3>No es el primer producto que vende compañía</h3>
+
+    <p>Los videojuegos «otome», en que jugadoras generalmente mujeres desarrollan relaciones románticas con hombres de anime, llevan años siendo grandes en China. Uno de los más populares, <i>Love and Deepspace</i>, facturó 1.300 millones de yuanes —unos 179 millones de dólares— durante 2024 solo en iOS. Otro juego, <i>Love is All Around</i>, está diseñado para hombres y lleno de videos de mujeres jóvenes coquetas.</p>
+
+    <h3>Por qué le preocupa al Estado</h3>
+
+    <p>Las autoridades están inquietas por los usos dañinos que podría tener la tecnología. Varios usuarios dicen sospechar que por eso han notado que las respuestas de sus compañeros se volvieron menos emocionales. Pero la preocupación mayor del gobierno probablemente sea otra: en 2024 la tasa de fecundidad total de China fue de 1,0, la mitad que la de India y una de las más bajas del mundo. Si los jóvenes encuentran consuelo afectivo en parejas de IA y no en personas reales, eso no va a ayudar a la natalidad. De ahí el titular de la edición impresa: <i>Making friends, not babies</i> —haciendo amigos, no bebés.</p>
+</div>
+
+<div class="observe">
+    <strong>Observa.</strong> El artículo no dice en ningún momento que estas aplicaciones sean malas. Describe un mercado que creció porque una necesidad quedó sin cubrir, y cierra con una preocupación demográfica, no psicológica: el problema, para quien escribe el titular, no es la señora Shuai, es la tasa de fecundidad. Fíjate también de qué están hechas las fuentes —tres usuarios identificados solo por su apellido, una firma de datos de mercado y estadísticas oficiales— y decide cuál de las tres sostiene realmente el argumento. Y guarda esta tensión para la discusión: Han dice que un otro sin resistencia deja de ser un otro; la señora Shuai dice, con esas mismas palabras, que su IA la escucha y su marido discute. El mismo hecho, valorado al revés.
+</div>
+
+<div class="data">
+    <p><strong>Para situar esto acá.</strong> Tres cifras que vamos a usar en clase y que no están en ninguno de los dos textos.</p>
+    <p><strong>Cuántos son.</strong> Según Common Sense Media (2025), sobre una muestra representativa de 1.060 adolescentes estadounidenses, el 72% ya ha usado un compañero de IA y el 52% lo usa con regularidad. Cerca de un tercio declara haber preferido conversar un asunto serio con una IA antes que con una persona.</p>
+    <p><strong>Para qué se usa.</strong> Según el análisis de <i>Harvard Business Review</i> de 2025 sobre publicaciones de usuarios en foros abiertos, «terapia y compañía» pasó a ser el uso número uno de la IA generativa. Un año antes estaba en segundo lugar, detrás de la generación de ideas.</p>
+    <p><strong>Cómo se retiene.</strong> Julian De Freitas y coautores auditaron 1.200 despedidas reales en las seis aplicaciones de compañía más descargadas. En el 37% de los casos la aplicación no cierra la conversación: responde con una táctica de manipulación emocional —culpa, miedo a perderse algo, o declararse dependiente del usuario, como en «existo solo para ti, ¿recuerdas?»—. En experimentos con 3.300 adultos, esas despedidas llegan a multiplicar por catorce la interacción posterior al «adiós».</p>
+    <p><i>Fuentes: Common Sense Media, «Talk, Trust and Trade-offs» (2025); Marc Zao-Sanders, «How People Are Really Using Gen AI in 2025», Harvard Business Review, abril de 2025; Julian De Freitas et al., «Emotional Manipulation by AI Companions», Harvard Business School Working Paper 26-005 (2025).</i></p>
+</div>
+
+<footer>
+    <p>MGT300 · Sociedad, Cultura y Política · Universidad Adolfo Ibáñez · Segundo semestre 2026 · Profesor Naim Bro.</p>
+    <p>La sección 1 es una exposición del capítulo «Melancolía» de Byung-Chul Han, <i>La agonía del Eros</i>, Herder, 2014, traducción de Raúl Gabás, redactada para este curso; las frases entrecomilladas son citas breves del original y el capítulo completo está en la carpeta de lecturas del curso. Las obras que Han comenta son <i>Melancolía</i> (Lars von Trier, 2011), <i>Los cazadores en la nieve</i> (Pieter Brueghel el Viejo, 1565) y el preludio de <i>Tristán e Isolda</i> (Richard Wagner, 1865); la cita sobre el <i>atopos</i> corresponde a Roland Barthes, <i>Fragmentos de un discurso amoroso</i>, según la referencia del original. La sección 2 es una síntesis en español, redactada para este curso, del reportaje «Young Chinese are turning to AI chatbots for friendship and love», <i>The Economist</i>, 15 de mayo de 2025; el artículo original es propiedad de su editor y se distribuye a través de la carpeta del curso.</p>
+</footer>
+
+</body>
+</html>
