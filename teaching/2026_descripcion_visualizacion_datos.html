@@ -218,14 +218,13 @@
 
     <li>
       <div class="class-block">
-        <b>Introducción a R para análisis de datos</b> (lunes 24-08-2026, 10:00-12:40)
+        <b>Introducción a dplyr (1): el pipe, filter(), select() y mutate()</b> (lunes 24-08-2026, 10:00-12:40)
         <ul>
-          <li>¿Qué es un lenguaje de programación y por qué usar R para análisis reproducible?</li>
-          <li>Tipos básicos de variables: <code>character</code>, <code>numeric</code>, <code>integer</code>, <code>logical</code>.</li>
-          <li>El <code>data frame</code> como contenedor de variables.</li>
-          <li>Importar archivos <code>.csv</code> y revisar estructura básica de una base.</li>
+          <li>El operador <code>%&gt;%</code>: encadenar operaciones y leer una consulta de arriba hacia abajo, como una receta.</li>
+          <li><code>filter()</code>: quedarse con las filas que cumplen una condición.</li>
+          <li><code>select()</code>: quedarse con las columnas que importan.</li>
+          <li><code>mutate()</code>: crear variables nuevas a partir de las que ya existen.</li>
           <li>Uso responsable de IA para explicar errores, sugerir código y documentar pasos.</li>
-          <li>Cuaderno de la clase: <a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase04_tipos_y_data_frames.ipynb" target="_blank">¿de qué está hecha una tabla?</a> &mdash; <code>class()</code>, vectores, el signo <code>$</code>, <code>as.numeric()</code> y <code>na.rm = TRUE</code>, sobre tres bases de tamaño creciente: la tabla del demo (7 filas), la encuesta del curso (33 filas) y la <a href="https://raw.githubusercontent.com/naimbro/naimbro.github.io/main/materiales/2026_descripcion_visualizacion_datos/datos/cep_consolidada_1994_2026.csv" target="_blank">CEP consolidada</a> (96.122 filas). Cierra con una clínica de tres celdas rotas y una regla para la IA: <em>que te explique el error, no que te escriba la línea</em>.</li>
           <li><strong>&iquest;La IA nos est&aacute; haciendo peores?</strong> Evidencia experimental sobre IA y aprendizaje (<a href="https://docs.google.com/presentation/d/17yl3FLp7oUI0828TEwADXsi5CdFhopI4il0EadDemuE/edit?usp=sharing" target="_blank">l&aacute;minas de la clase</a>): el experimento de Kenia con 640 emprendedores (<a href="https://doi.org/10.1287/mnsc.2024.06909" target="_blank">Otis, Clarke, Delecourt, Holtz y Koning, <i>Management Science</i> 2026</a>) y el panel chino de 26.811 estudiantes que public&oacute; <i>The Economist</i> el 18 de agosto (<a href="https://www.economist.com/graphic-detail/2026/08/18/does-ai-stop-children-from-learning" target="_blank">art&iacute;culo</a>, <a href="https://cepr.org/publications/dp21577" target="_blank">Str&ouml;mberg, Lei y Wu 2026</a>). Las figuras se reproducen con <a href="https://github.com/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/figuras/generar_figuras.py" target="_blank">generar_figuras.py</a>.</li>
           <li><strong>Demo del Sprint 1 en sala:</strong> el profesor presenta las cuatro decisiones del sprint en cuatro minutos cronometrados, en formato <a href="https://www.pechakucha.com/" target="_blank">Pecha Kucha</a> (12 l&aacute;minas de 20 segundos, sin control remoto) &mdash; <a href="2026_dvd_demo_sprint1.html" target="_blank">&iquest;La IA nivela o separa?</a>. Los datos vienen de una fuente construida a mano: <a href="https://raw.githubusercontent.com/naimbro/naimbro.github.io/main/materiales/2026_descripcion_visualizacion_datos/datos/experimentos_ia_desempeno.csv" target="_blank">experimentos_ia_desempeno.csv</a> (7 experimentos, 13 columnas).</li>
           <li class="deliverable">Bitácora individual, semana 2: se completa hasta el domingo 30 de agosto, 23:59 &mdash; <a href="https://docs.google.com/forms/d/e/1FAIpQLSeogbP-ku9ZksvEA_A3RKgoE_lTf174oy-dxqzsVYu4u7JNaw/viewform" target="_blank">formulario</a> (<a href="https://docs.google.com/forms/d/1sJeG3drj7udVytsGnW3n3hdi5wEXedpEnJgb506plyY/edit#responses" target="_blank">respuestas, acceso del profesor</a>).</li>
@@ -236,9 +235,10 @@
 
     <li>
       <div class="class-block">
-        <b>Introducción a dplyr (1): seleccionar, filtrar y transformar</b> (lunes 31-08-2026, 10:00-12:40)
+        <b>Introducción a dplyr (2): variables derivadas e indicadores</b> (lunes 31-08-2026, 10:00-12:40)
         <ul>
-          <li>Funciones <code>%&gt;%</code>, <code>filter()</code>, <code>select()</code> y <code>mutate()</code>.</li>
+          <li>Profundización de <code>%&gt;%</code>, <code>filter()</code>, <code>select()</code> y <code>mutate()</code> sobre bases más grandes que la encuesta del curso.</li>
+          <li>Condiciones múltiples en <code>filter()</code> y limpieza de columnas sucias con <code>mutate()</code>.</li>
           <li>Construcción de variables derivadas e indicadores simples.</li>
           <li>Ejercicios guiados con datos de ejemplo.</li>
           <li>Clínica de proyecto: primeros problemas de importación y limpieza.</li>
@@ -252,7 +252,7 @@
 
     <li>
       <div class="class-block">
-        <b>Introducción a dplyr (2): agrupar, resumir y comparar</b> (lunes 07-09-2026, 10:00-12:40)
+        <b>Introducción a dplyr (3): agrupar, resumir y comparar</b> (lunes 07-09-2026, 10:00-12:40)
         <ul>
           <li>Métodos <code>group_by()</code> y <code>summarise()</code>.</li>
           <li>Comparaciones por año, territorio, grupo, categoría o institución.</li>
