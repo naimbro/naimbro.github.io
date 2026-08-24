@@ -121,6 +121,26 @@
 
         .data p { margin: 0.3em 0; }
 
+        /* Verbatim excerpt, set apart from the exposition around it */
+        .excerpt {
+            margin: 1.2em 0;
+            padding: 0.9em 1.2em;
+            border-left: 4px solid var(--navy);
+            background: #f4f7fa;
+        }
+
+        .excerpt p { margin: 0.7em 0; }
+        .excerpt p:first-child { margin-top: 0; }
+        .excerpt p:last-child { margin-bottom: 0; }
+
+        .excerpt .src {
+            margin-top: 0.9em;
+            color: var(--muted);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.82rem;
+            font-style: italic;
+        }
+
         /* Compact glossary of the terms the texts use without explaining */
         .gloss {
             margin: 0 0 2em;
@@ -180,9 +200,12 @@
             .text { font-size: 10.3pt; line-height: 1.48; }
             .text p { margin: 0.5em 0; orphans: 3; widows: 3; }
 
+            .excerpt { margin: 0.75em 0; padding: 0.5em 0.9em; }
+            .excerpt p { margin: 0.42em 0; }
+            .excerpt .src { margin-top: 0.55em; font-size: 8.2pt; }
             .observe { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9.3pt; }
             .data { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9pt; }
-            .frame, .observe, .data, .gloss { break-inside: avoid; }
+            .frame, .observe, .data, .gloss, .excerpt { break-inside: avoid; }
 
             .clock { background: #f0f0f0; color: #333333; border: 1px solid #cccccc; font-size: 8pt; }
 
@@ -226,7 +249,7 @@
 </div>
 
 <h2>1 · El otro que desaparece</h2>
-<p class="attrib">Exposición del capítulo «Melancolía», de Byung-Chul Han, <i>La agonía del Eros</i> (Herder, 2014, traducción de Raúl Gabás). Las frases entre comillas son suyas; el capítulo completo está en la carpeta del curso.<span class="clock">8 min</span></p>
+<p class="attrib">Byung-Chul Han, «Melancolía», primer capítulo de <i>La agonía del Eros</i> (Herder, 2014, traducción de Raúl Gabás). El pasaje recuadrado es del original; el resto lo resume, con sus frases entrecomilladas. El capítulo completo está en la carpeta del curso.<span class="clock">7 min</span></p>
 
 <div class="text">
     <p>Han abre con un diagnóstico que circula hace años: el amor se estaría acabando. La explicación habitual es que hay demasiado donde elegir —libertad ilimitada de elección, opciones infinitas, la presión por dar siempre con lo óptimo— y que en un mundo así el amor se vuelve imposible. Cita a Eva Illouz, que en <i>¿Por qué duele el amor?</i> atribuye el enfriamiento de la pasión a la racionalización del amor y a la ampliación de la tecnología de la elección.</p>
@@ -235,11 +258,14 @@
 
     <h3>Atopos: el otro no tiene lugar</h3>
 
-    <p>Para Han, el Eros se dirige a un otro que no puede quedar bajo el régimen del yo. Por eso, «en el infierno de lo igual», al que la sociedad actual se parece cada vez más, no existe experiencia erótica: esta supone la asimetría y la exterioridad del otro.</p>
+    <p>Acá está el corazón del capítulo, y conviene leerlo en las palabras de Han y no en las mías. Son doce líneas. Léelas dos veces.</p>
 
-    <p>Acá aparece la palabra que sostiene el capítulo. No es casual, dice Han, que a Sócrates, en tanto amado, se le llame <i>atopos</i>: sin lugar. El otro que deseo se sustrae al lenguaje de lo igual; de él «no se puede hablar», porque «todo atributo es falso, doloroso, torpe, mortificante». No se lo puede clasificar ni comparar, y eso es precisamente lo que lo hace deseable.</p>
+    <div class="excerpt">
+        <p>«El Eros se dirige al <i>otro</i> en sentido amplio, otro que no puede alcanzarse bajo el régimen del yo. Por eso, en el infierno de lo igual, al que la sociedad actual se asemeja cada vez más, no hay ninguna experiencia erótica. Esta presupone la asimetría y la exterioridad del otro. No es casual que Sócrates, como amado, se llame <i>atopos</i>. El otro, que yo deseo y que me fascina, <i>carece de lugar</i>. Se sustrae al lenguaje de lo igual: “Atópico, el otro hace temblar el lenguaje: no se puede hablar <i>de</i> él, <i>sobre</i> él; todo atributo es falso, doloroso, torpe, mortificante”. La cultura actual del igualar constante no permite ninguna negatividad del <i>atopos</i>. Comparamos de manera continua todo con todo, y así lo nivelamos para hacerlo <i>igual</i>, puesto que hemos perdido precisamente la atopía del otro. La negatividad del otro atópico se sustrae al consumo. Así, la sociedad del consumo aspira a eliminar la alteridad atópica a favor de diferencias consumibles, <i>heterotópicas</i>. La diferencia es una positividad, en contraposición a la alteridad. Hoy la negatividad desaparece por todas partes. Todo es aplanado para convertirse en objeto de consumo.»</p>
+        <p class="src">La frase entre comillas dentro del pasaje es de Roland Barthes, <i>Fragmentos de un discurso amoroso</i>, citada por Han.</p>
+    </div>
 
-    <p>Y de ahí sale la frase que más nos va a servir hoy: «la sociedad del consumo aspira a eliminar la alteridad atópica a favor de diferencias consumibles». Fíjate en la distinción, porque es fina y es todo el argumento. La <b>diferencia</b> es una positividad: se puede elegir, comparar, tarificar, poner en un catálogo. La <b>alteridad</b> es una negatividad: no se deja poner en un catálogo. El mercado puede ofrecerte diferencia infinita —doscientas personalidades, cien voces, el tono que prefieras— sin ofrecerte jamás alteridad. Al contrario: cuanta más diferencia consumible, menos alteridad.</p>
+    <p>Fíjate en la distinción del final, porque es fina y es todo el argumento. La <b>diferencia</b> es una positividad: se elige, se compara, se tarifica, se pone en un catálogo. La <b>alteridad</b> es una negatividad: no se deja poner en un catálogo. Un mercado puede ofrecerte diferencia infinita —doscientas personalidades, cien voces, el tono que prefieras— sin ofrecerte jamás alteridad. Al contrario: cuanta más diferencia consumible, menos alteridad.</p>
 
     <h3>El espejo, y por qué la depresión es lo contrario del amor</h3>
 
@@ -311,7 +337,7 @@
 
 <footer>
     <p>MGT300 · Sociedad, Cultura y Política · Universidad Adolfo Ibáñez · Segundo semestre 2026 · Profesor Naim Bro.</p>
-    <p>La sección 1 es una exposición del capítulo «Melancolía» de Byung-Chul Han, <i>La agonía del Eros</i>, Herder, 2014, traducción de Raúl Gabás, redactada para este curso; las frases entrecomilladas son citas breves del original y el capítulo completo está en la carpeta de lecturas del curso. Las obras que Han comenta son <i>Melancolía</i> (Lars von Trier, 2011), <i>Los cazadores en la nieve</i> (Pieter Brueghel el Viejo, 1565) y el preludio de <i>Tristán e Isolda</i> (Richard Wagner, 1865); la cita sobre el <i>atopos</i> corresponde a Roland Barthes, <i>Fragmentos de un discurso amoroso</i>, según la referencia del original. La sección 2 es una síntesis en español, redactada para este curso, del reportaje «Young Chinese are turning to AI chatbots for friendship and love», <i>The Economist</i>, 15 de mayo de 2025; el artículo original es propiedad de su editor y se distribuye a través de la carpeta del curso.</p>
+    <p>La sección 1 reproduce un pasaje breve del capítulo «Melancolía» de Byung-Chul Han, <i>La agonía del Eros</i>, Herder, 2014, traducción de Raúl Gabás, con fines exclusivamente docentes; el resto de la sección es una exposición redactada para este curso, con citas breves. El capítulo completo está en la carpeta de lecturas del curso. Las obras que Han comenta son <i>Melancolía</i> (Lars von Trier, 2011), <i>Los cazadores en la nieve</i> (Pieter Brueghel el Viejo, 1565) y el preludio de <i>Tristán e Isolda</i> (Richard Wagner, 1865); la cita sobre el <i>atopos</i> corresponde a Roland Barthes, <i>Fragmentos de un discurso amoroso</i>, según la referencia del original. La sección 2 es una síntesis en español, redactada para este curso, del reportaje «Young Chinese are turning to AI chatbots for friendship and love», <i>The Economist</i>, 15 de mayo de 2025; el artículo original es propiedad de su editor y se distribuye a través de la carpeta del curso.</p>
 </footer>
 
 </body>
