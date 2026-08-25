@@ -29,3 +29,12 @@ avatar_congress/*.sqlite
 avatar_congress/*.db
 __pycache__/
 *.pyc
+
+# MGT300 clase 4: encuesta en vivo (usa drive_credentials.json)
+create_form_mgt300_clase4.py
+form_mgt300_clase4.json
+qr_mgt300_clase4_drive.json
+
+# Artefactos locales: renders, PDFs y pptx generados
+tmp/
+output/
