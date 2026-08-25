@@ -38,3 +38,7 @@ qr_mgt300_clase4_drive.json
 # Artefactos locales: renders, PDFs y pptx generados
 tmp/
 output/
+
+# MGT300 clase 4: pauta de Be Right Back (usa drive_credentials.json)
+create_doc_mgt300_clase4_brb.py
+doc_mgt300_clase4_brb.json
