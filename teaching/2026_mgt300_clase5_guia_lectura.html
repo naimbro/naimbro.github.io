@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Guía de lectura concentrada, Clase 5 de MGT300 2026: verdad, polarización y esfera pública algorítmica. Byung-Chul Han y Eli Pariser.">
+    <title>Guía de lectura concentrada — MGT300, Clase 5 (2026)</title>
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            max-width: 860px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 2.4em 0 0.3em; font-size: 1.4rem; }
+
+        h3 {
+            margin: 1.8em 0 0.2em;
+            color: var(--navy);
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .attrib {
+            margin: 0 0 1.2em;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin: 0 0 1.4em;
+            color: var(--muted);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .frame {
+            margin: 0 0 2em;
+            padding: 1em 1.2em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+        }
+
+        .frame p { margin: 0.5em 0; }
+        .frame p:first-child { margin-top: 0; }
+        .frame p:last-child { margin-bottom: 0; }
+
+        .rules { margin: 0.5em 0 0; padding-left: 1.2em; }
+        .rules li { margin-bottom: 0.3em; }
+
+        /* Sustained-reading blocks */
+        .text {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.04rem;
+            line-height: 1.7;
+        }
+
+        .text p { margin: 0.85em 0; }
+
+        .observe {
+            margin: 1.3em 0;
+            padding: 0.6em 1em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.95rem;
+        }
+
+        .observe strong { color: var(--navy); }
+
+        .clock {
+            float: right;
+            margin: 0.4em 0 0 1em;
+            padding: 0.12em 0.6em;
+            border-radius: 999px;
+            color: #6b3a17;
+            background: #fff3b0;
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .data {
+            margin: 1.4em 0;
+            padding: 0.7em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.89rem;
+        }
+
+        .data p { margin: 0.3em 0; }
+
+        /* Verbatim excerpt, set apart from the exposition around it */
+        .excerpt {
+            margin: 1.2em 0;
+            padding: 0.9em 1.2em;
+            border-left: 4px solid var(--navy);
+            background: #f4f7fa;
+        }
+
+        .excerpt p { margin: 0.7em 0; }
+        .excerpt p:first-child { margin-top: 0; }
+        .excerpt p:last-child { margin-bottom: 0; }
+
+        .excerpt .src {
+            margin-top: 0.9em;
+            color: var(--muted);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.82rem;
+            font-style: italic;
+        }
+
+        /* Compact glossary of the terms the texts use without explaining */
+        .gloss {
+            margin: 0 0 2em;
+            padding: 0.7em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.88rem;
+        }
+
+        .gloss dl {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 0.15em 0.9em;
+            margin: 0.45em 0 0;
+        }
+
+        .gloss dt { color: var(--navy); font-weight: 700; }
+        .gloss dd { margin: 0; }
+        .gloss > p { margin: 0; font-weight: 700; color: var(--navy); }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        @media (max-width: 700px) {
+            body { margin: 0; padding: 1em; }
+            h1 { font-size: 1.65rem; }
+            .clock { float: none; display: inline-block; margin: 0 0 0.4em; }
+            .gloss dl { grid-template-columns: minmax(0, 1fr); gap: 0 0; }
+            .gloss dd { margin-bottom: 0.4em; }
+        }
+
+        @media print {
+            /* Zero page margins + body padding: keeps the browser/PDF engine from
+               stamping its own URL header and footer on a handout meant for photocopying. */
+            @page { size: A4; margin: 0; }
+            body { max-width: none; margin: 0; padding: 13mm 14mm 10mm; font-size: 10.2pt; line-height: 1.45; background: #ffffff; }
+
+            h1 { font-size: 17pt; margin-bottom: 0.12em; }
+            h2 { font-size: 12pt; margin: 0.95em 0 0.15em; break-after: avoid; }
+            h3 { font-size: 9.8pt; margin: 0.8em 0 0.1em; break-after: avoid; }
+            .eyebrow { font-size: 7.8pt; margin-bottom: 0.25em; }
+            .subtitle { font-size: 9.4pt; margin-bottom: 0.8em; }
+            .attrib { font-size: 8.8pt; margin-bottom: 0.55em; break-after: avoid; }
+
+            .frame { margin-bottom: 0.8em; padding: 0.6em 0.9em; }
+            .frame p { margin: 0.3em 0; }
+            .rules li { margin-bottom: 0.08em; }
+
+            .gloss { margin-bottom: 1em; padding: 0.45em 0.85em; font-size: 8.8pt; }
+            .gloss dl { gap: 0.05em 0.7em; }
+
+            .text { font-size: 10.3pt; line-height: 1.48; }
+            .text p { margin: 0.5em 0; orphans: 3; widows: 3; }
+
+            .excerpt { margin: 0.75em 0; padding: 0.5em 0.9em; }
+            .excerpt p { margin: 0.42em 0; }
+            .excerpt .src { margin-top: 0.55em; font-size: 8.2pt; }
+            .observe { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9.3pt; }
+            .data { margin: 0.8em 0; padding: 0.45em 0.85em; font-size: 9pt; }
+            .frame, .observe, .data, .gloss, .excerpt { break-inside: avoid; }
+
+            .clock { background: #f0f0f0; color: #333333; border: 1px solid #cccccc; font-size: 8pt; }
+
+            footer { margin-top: 1.4em; padding-top: 0.5em; font-size: 7.8pt; line-height: 1.35; }
+            footer p { margin: 0.25em 0; }
+        }
+    </style>
+</head>
+<body>
+
+<p class="eyebrow">MGT300 · Sociedad, Cultura y Política · Ingeniería Comercial UAI</p>
+<h1>Guía de lectura concentrada</h1>
+<p class="subtitle">Clase 5 — Verdad, polarización y esfera pública algorítmica · Martes 1 de septiembre de 2026</p>
+
+<div class="frame">
+    <p>Dos textos y un recuadro de cifras, quince minutos, en silencio. Hasta ahora Han habló del sujeto: el que se explota, el que se exhibe, el que se vincula con algo que no le resiste. Hoy sale de la persona y entra en la política. Su tesis es que la democracia necesitaba un tipo de atención que la digitalización volvió imposible. Después, Pariser muestra la maquinaria concreta: quién decide, línea de código por medio, qué es lo que vemos. Los dos escriben con diez años de diferencia y llegan al mismo lugar por caminos opuestos — uno desde la filosofía alemana, el otro desde un blog corporativo de Google.</p>
+    <ul class="rules">
+        <li><strong>Celulares y notebooks guardados.</strong> Solo esta guía y un lápiz.</li>
+        <li><strong>Subraya distinto en cada texto.</strong> En Han, las afirmaciones que podrían ser falsas. En Pariser, las cifras y las fechas.</li>
+        <li><strong>Está bien no terminar.</strong> Es preferible leer bien el primer texto que pasar los ojos por los dos.</li>
+        <li><strong>Sin IA en este bloque</strong>, como siempre. Y hoy con una razón extra: la clase entera trata de qué pasa cuando otro elige por ti lo que vas a leer.</li>
+    </ul>
+</div>
+
+<div class="gloss">
+    <p>Seis palabras que los textos usan sin explicar</p>
+    <dl>
+        <dt>Esfera pública</dt>
+        <dd>el espacio donde una sociedad discute sus asuntos comunes y se observa a sí misma. En Habermas —a quien Han sigue y corrige— nace con la imprenta: existe porque hay un público que lee lo mismo y puede contradecirlo.</dd>
+        <dt>Mediocracia</dt>
+        <dd>el nombre que Han le da al período de la televisión: la política se somete a la lógica del entretenimiento. Su variante extrema es la <i>telecracia</i>, donde gana quien ofrece mejor espectáculo.</dd>
+        <dt>Infocracia</dt>
+        <dd>lo que viene después, y es el título del libro. Ya no se trata de espectáculo sino de guerra de información: la disputa no es por quién actúa mejor, sino por qué información circula y a qué velocidad.</dd>
+        <dt>Infodemia</dt>
+        <dd>por analogía con epidemia: la difusión viral de información, verdadera o falsa, a una velocidad que ningún proceso de verificación alcanza.</dd>
+        <dt>Microtargeting</dt>
+        <dd>publicidad —comercial o electoral— dirigida a grupos muy pequeños a partir de su perfil de datos. Cuando esos avisos son visibles solo para su destinatario se llaman <i>dark ads</i>: nadie más sabe qué le prometieron a quién.</dd>
+        <dt>Capital de acercamiento</dt>
+        <dd>en Robert Putnam, los lazos que conectan a personas distintas entre sí (<i>bridging</i>), a diferencia de los que unen a los que ya se parecen (<i>bonding</i>, aglutinante). Es el que produce sensación de «lo público».</dd>
+    </dl>
+</div>
+
+<h2>1 · La democracia era lenta</h2>
+<p class="attrib">Byung-Chul Han, capítulo 2 de <i>Infocracia. La digitalización y la crisis de la democracia</i> (Taurus, 2022, traducción de Joaquín Chamorro Mielke). El pasaje recuadrado es del original; el resto lo resume, con sus frases entrecomilladas. El capítulo completo está en la carpeta del curso.<span class="clock">8 min</span></p>
+
+<div class="text">
+    <p>Han empieza donde Habermas: en los primeros tiempos de la democracia el medio determinante era el libro, y la esfera pública discursiva «debía su existencia al público lector». La imprenta no solo distribuyó ideas; impuso una forma de discurso, con una «ordenación coherente y regulada de hechos e ideas». Sin ella, dice, no habría habido Ilustración.</p>
+
+    <h3>Siete horas de debate</h3>
+
+    <p>El ejemplo que usa para mostrarlo es de 1854. En uno de sus duelos públicos, el demócrata Stephen A. Douglas habló primero durante tres horas; el republicano Abraham Lincoln tuvo otras tres para responder; y Douglas volvió a hablar una hora más. Siete horas, sobre temas complejos, con formulaciones que Han describe como «en parte muy complicadas». Lo que le interesa no es la elocuencia de los dos hombres sino la tercera parte de la escena: la capacidad de concentración del público, que era «extraordinariamente grande» y para el cual participar del discurso público era parte normal de la vida social.</p>
+
+    <p>Guarda esa cifra —siete horas— porque es la unidad de medida contra la que se comparará todo lo demás.</p>
+
+    <h3>Una historia de pantallas</h3>
+
+    <p>Los medios electrónicos, dice Han, destruyen ese discurso. Tienen una arquitectura «anfiteatral»: el receptor está condenado a la pasividad. Con Postman y <i>Divertirse hasta morir</i> de fondo, la democracia se convierte en <b>telecracia</b>: el entretenimiento manda, en los debates televisados ya no cuentan los argumentos sino la <i>performance</i>, y en el apogeo de esa época un actor llega a presidente. La televisión fragmenta el discurso hasta que la noticia breve se vuelve la unidad básica de información — incluso en la prensa escrita, incluso en la radio.</p>
+
+    <p>Entonces Han cuenta la historia de la dominación como una sucesión de pantallas, y vale la pena seguirla porque es el mejor pasaje del capítulo. Primero la caverna de Platón, concebida como un teatro: prisioneros encadenados desde la infancia que miran sombras y creen que son la realidad. Después la <i>telescreen</i> de Orwell, que emite propaganda y a la vez vigila, y que no se puede apagar. Después la pantalla de televisión, donde el Gran Hermano ya no hace falta: «La gente no está vigilada, sino entretenida. No está reprimida, sino que se vuelve adicta». Y acá Han hace la distinción que sostiene todo el libro, citando a Postman sobre Orwell y Huxley: uno temía que nos destruyera lo que aborrecemos; el otro, que nos destruyera lo que nos gusta.</p>
+
+    <p>La cuarta pantalla es la <i>touchscreen</i>, y con ella cambia la posición del sujeto. Ya no somos espectadores. «Todas ellas son emisores activos», escribe: producimos y consumimos información sin parar, en una forma que él llama adictiva y compulsiva. Su fórmula para esta época es una variación del título de Postman: nos comunicamos hasta morir.</p>
+
+    <h3>Por qué la infocracia no es la telecracia</h3>
+
+    <p>Este es el punto que conviene tener claro para la discusión, porque es donde Han deja de repetir a Postman y dice algo propio. La mediocracia degradaba las campañas hasta convertirlas en una guerra de escenificaciones: el discurso se reemplazaba por un show. La infocracia hace otra cosa. Las campañas «degeneran en una guerra de información».</p>
+
+    <p>La diferencia es estructural y tiene que ver con costos. En la era de los medios de masas, producir información era caro y montar un canal de noticias, carísimo: «En la sociedad de los medios de comunicación de masas no existía una infraestructura para la producción masiva de noticias falsas». La televisión podía ser un reino de apariencias, pero todavía no era una fábrica. Cuando el costo marginal de producir y difundir información cae prácticamente a cero, aparece algo que antes no era posible.</p>
+
+    <p>De ahí salen las tres armas que Han describe. La <b>psicometría</b>, que permite construir un perfil de personalidad a partir de datos y predecir el comportamiento de alguien mejor de lo que podría hacerlo un amigo; el smartphone, dice, es un dispositivo de registro psicométrico que alimentamos todos los días. Sobre ella se monta el <b>microtargeting</b>: al votante no se le informa el programa de un partido, se le muestra publicidad ajustada a su psicograma, y se prueban decenas de miles de variantes de un mismo aviso. Como cada cual recibe un mensaje distinto y esos avisos son invisibles para los demás, socavan «un principio fundamental de la democracia: la autoobservación de la sociedad». Cambridge Analytica, que se jactaba de tener los psicogramas de todos los adultos de Estados Unidos, es su ejemplo. Después los <b>bots</b>: cuentas automatizadas que publican, comentan y dan «me gusta» hasta cambiar el clima de opinión; bastan pocas, dice Han citando estudios que no nombra, y no hace falta que cambien un voto — basta con que manipulen el ámbito en que se decide. Y por último los <b>memes</b>, que él describe casi biológicamente: un núcleo de información dentro de una envoltura visual infecciosa. Tras la elección de 2016 el <i>Chicago Tribune</i> citó a un usuario de 4chan diciendo que habían elegido presidente a un meme; la CNN llamó a 2020 «la elección meme».</p>
+
+    <h3>El argumento del tiempo</h3>
+
+    <p>Debajo de todo eso hay un argumento más abstracto y más interesante. La información, dice Han, tiene un intervalo de actualidad muy corto: vive del «atractivo de la sorpresa» y por eso atomiza el tiempo en una secuencia de presencias puntuales. El discurso, en cambio, «es una práctica que requiere mucho tiempo». Y la racionalidad también: las decisiones racionales se toman para largo plazo, precedidas de una reflexión que mira hacia atrás y hacia adelante. Bajo presión de tiempo no somos racionales; somos, con una distinción que toma de Luhmann, apenas <i>inteligentes</i> — orientados a soluciones y éxitos cortos.</p>
+
+    <p>A eso suma la velocidad de los afectos, que son más rápidos que la razón: en una comunicación afectiva no gana el mejor argumento sino la información con mayor potencial de excitación. Y ahí llega el remate del capítulo.</p>
+
+    <div class="excerpt">
+        <p>«La información tiene su propia lógica, su propia temporalidad, su propia dignidad, más allá de la verdad y la mentira. También las noticias falsas son, ante todo, información. Antes de que un proceso de verificación se ponga en marcha, ya ha tenido todo su efecto. La información corre más que la verdad, y no puede ser alcanzada por esta. El intento de combatir la infodemia con la verdad está, pues, condenado al fracaso. Es resistente a la verdad.»</p>
+        <p class="src">Cierre del capítulo. Es, literalmente, la última frase.</p>
+    </div>
+</div>
+
+<div class="observe">
+    <strong>Observa.</strong> La última frase es una afirmación empírica, no filosófica: dice que una intervención concreta —verificar— no funciona. Fíjate de qué está hecha la evidencia que la sostiene: Habermas, Postman, Platón, Orwell, Huxley, Luhmann, y un usuario anónimo de 4chan citado por un diario. Cero encuestas, cero experimentos. Es el mismo procedimiento que en <i>En el enjambre</i> y en «Melancolía», pero acá el costo es mayor, porque la afirmación es del tipo que sí se puede medir — y se ha medido. Marca esa frase en el margen y vuelve a ella cuando llegues al recuadro final de esta guía.
+</div>
+
+<h2>2 · Ya no existe un Google estándar</h2>
+<p class="attrib">Síntesis de la introducción de Eli Pariser, <i>El filtro burbuja. Cómo la red decide lo que leemos y lo que pensamos</i> (Taurus, 2017, traducción de Mercedes Vaquero; original de 2011). El pasaje recuadrado es del original. El texto completo está en la carpeta del curso.<span class="clock">7 min</span></p>
+
+<div class="text">
+    <p>El libro empieza con una fecha exacta y con algo que casi nadie leyó: una entrada en el blog corporativo de Google del 4 de diciembre de 2009, metida entre un resumen de términos de búsqueda y una actualización de software financiero. El título lo decía todo: búsquedas personalizadas para todos. Desde esa mañana Google usaría 57 indicadores —dónde te conectaste, qué navegador usas, qué buscaste antes— para conjeturar quién eres, incluso sin que hubieras iniciado sesión.</p>
+
+    <p>La consecuencia la resume en una frase que conviene subrayar: ya no existe un Google estándar. No es que el buscador se haya vuelto malo; es que dejó de ser el mismo objeto para dos personas distintas.</p>
+
+    <h3>El experimento de las dos amigas</h3>
+
+    <p>Para mostrarlo, Pariser hizo algo que cualquiera puede repetir. En la primavera de 2010, mientras la plataforma Deepwater Horizon vertía crudo en el golfo de México, le pidió a dos amigas que buscaran «BP». Las dos se parecen mucho: blancas, con educación universitaria, de izquierdas, del nordeste de Estados Unidos. Una recibió resultados sobre inversiones; la otra, noticias. En la primera página de una había enlaces sobre el derrame; en la de la otra no había nada, salvo un aviso promocional de BP. Hasta el número de resultados era distinto: 180 millones contra 139 millones.</p>
+
+    <p>Su segundo indicio fue personal. Pariser es de izquierda, pero se había hecho amigo de varios conservadores en Facebook a propósito, para leer lo que publicaban. Un día notó que habían desaparecido de su muro. Facebook había observado que él clicaba más los enlaces de sus amigos de izquierda —y los videos de Lady Gaga más que ninguno— y sacó la conclusión obvia.</p>
+
+    <h3>Tres cosas que ningún filtro anterior tenía</h3>
+
+    <p>Acá está el corazón del argumento, y es más preciso de lo que suele citarse. Pariser reconoce de entrada que siempre consumimos medios que se ajustan a nuestros intereses: elegir un diario ya era filtrar. Lo que sostiene es que este filtro tiene tres propiedades nuevas.</p>
+
+    <p><b>Primero, estás solo.</b> Un canal de cable dedicado al golf es igual de sesgado, pero tiene otros espectadores, y con ellos compartes un marco de referencia. En tu burbuja no hay nadie más. Es, dice, una fuerza centrífuga.</p>
+
+    <p><b>Segundo, es invisible.</b> Quien escucha una radio de derecha sabe que escucha una radio de derecha. Google no te dice quién cree que eres ni por qué te muestra lo que te muestra. Su amiga que recibió resultados sobre inversiones en BP —y que no es corredora de bolsa— sigue sin saber por qué. Desde adentro de la burbuja, escribe, es prácticamente imposible ver lo sesgada que es.</p>
+
+    <p><b>Tercero, no la elegiste.</b> Poner Fox News o leer <i>The Nation</i> es una decisión activa, como ponerse anteojos de sol: sabes que estás mirando a través de algo. Los filtros personalizados vienen a ti. Y como aumentan las ganancias de los sitios que los usan, cada vez será más difícil evitarlos.</p>
+
+    <p>La razón por la que aceptamos el trato no es la estupidez, es el volumen. Estamos frente a un torrente que nadie puede procesar, y el filtro se ofrece como ayuda. Pariser cita a la socióloga Danah Boyd: estamos biológicamente programados para prestar atención a lo que nos estimula —lo grosero, lo violento, lo sexual, el chisme humillante— igual que nuestro cuerpo está programado para buscar grasas y azúcares porque eran escasas. Si no tenemos cuidado, dice ella, vamos a desarrollar el equivalente psicológico de la obesidad.</p>
+
+    <div class="excerpt">
+        <p>«Abandonados a su suerte, los filtros personalizados presentan cierta clase de autopropaganda invisible, adoctrinándonos con nuestras propias ideas, amplificando nuestro deseo por cosas que nos son familiares y manteniéndonos ignorantes con respecto a los peligros que nos acechan en el territorio oscuro de lo desconocido. […] Por definición, un mundo construido sobre la base de lo que nos resulta familiar es un mundo en el que no hay nada que aprender.»</p>
+        <p class="src">Los dos pasajes son de párrafos contiguos; el corchete marca lo omitido.</p>
+    </div>
+
+    <h3>Lo que se pierde no es información, es un espacio</h3>
+
+    <p>El último tramo de la introducción cambia de escala: de lo que te pasa a ti, a lo que le pasa a una sociedad donde muchos viven así. Pariser toma de Robert Putnam la distinción entre dos tipos de capital social. El <b>aglutinante</b> se produce cuando te juntas con los que ya son como tú —una cena de exalumnos—. El de <b>acercamiento</b> se produce cuando te encuentras con quienes no lo son: el ejemplo de Putnam es la sesión de un concejo municipal. Todos esperaban que internet fuera una máquina de acercamiento; Tom Friedman llegó a decir que nos convertiría a todos en vecinos. Lo que ocurrió, escribe Pariser, es lo contrario: nuestros vecinos virtuales se parecen cada vez más a nuestros vecinos reales, y nuestros vecinos reales se parecen cada vez más a nosotros. Hay mucho aglutinante y poco acercamiento.</p>
+
+    <p>Y el acercamiento importa porque es lo que produce la sensación de que existe algo público: un lugar donde aparecen los problemas que están fuera de tu zona de confort. Un artículo sobre cómo terminar una maratón recibe «me gusta»; uno sobre el mes más sangriento en Darfur, no. En un mundo personalizado, los temas complejos o desagradables —la población penal, las personas sin hogar— simplemente tienen menos probabilidad de llegarte.</p>
+
+    <p>Su formulación final del problema es económica, no moral, y por eso funciona bien en este curso. Lo que me gusta no es necesariamente lo que quiero, y menos lo que necesito saber para ser miembro de una comunidad. El periodista Clive Thompson lo dice como virtud: estar abierto a lo que parece estar fuera de tus intereses. El crítico Lee Siegel lo dice más corto: los clientes siempre tienen la razón, pero la gente no.</p>
+</div>
+
+<div class="observe">
+    <strong>Observa.</strong> El texto es de 2011 y algunas de sus piezas envejecieron: el 60 % de las visualizaciones de Netflix, el margen de media estrella, la lista de los cinco gigantes. Antes de descartarlo por viejo, haz el ejercicio contrario: pregúntate qué parte del mecanismo sigue igual y qué parte se volvió más fuerte. Y anota la diferencia decisiva con 2026, porque es la que vamos a discutir en clase. El filtro de Pariser <i>selecciona</i>: elige, entre cosas que ya existen, cuáles te muestra. Un modelo generativo <i>fabrica</i>: produce el contenido que no existía, ajustado a ti, en el momento. Las tres propiedades de Pariser —estás solo, es invisible, no la elegiste— ¿se atenúan o se agravan cuando el filtro deja de elegir y empieza a escribir?
+</div>
+
+<div class="data">
+    <p><strong>Para situar esto acá.</strong> El experimento que Han da por perdido de antemano.</p>
+    <p><strong>El diseño.</strong> <i>America in One Room</i>, organizado en 2019 por James Fishkin y el Center for Deliberative Democracy de Stanford. Se reunió durante cuatro días en un hotel de Texas a 523 votantes seleccionados para ser representativos del electorado estadounidense. Leyeron materiales informativos balanceados, discutieron en grupos pequeños con moderador, interrogaron a expertos y políticos de ambos lados en plenarias, y respondieron la misma encuesta antes y después.</p>
+    <p><strong>El punto de partida.</strong> Los temas eran los más divisivos disponibles: inmigración, salud, medioambiente, economía. Antes de deliberar, muchas posiciones estaban en los extremos, con fuerte división entre demócratas y republicanos y una percepción muy negativa del otro lado.</p>
+    <p><strong>El resultado.</strong> En 22 de 26 propuestas polarizantes, la brecha entre demócratas y republicanos se redujo. Cayeron significativamente las posiciones de 100 % a favor o 100 % en contra. Y la opinión favorable hacia el otro bando subió 13 puntos entre los demócratas y 14 entre los republicanos.</p>
+    <p><strong>Por qué está en esta guía.</strong> Porque contradice de frente la última frase de Han, y porque la contradice con el tipo de evidencia que a él no le interesa producir. Pero fíjate en qué se necesitó: cuatro días, un hotel, materiales redactados por alguien, moderadores entrenados y 523 personas. La pregunta para la clase no es si la deliberación funciona —acá funcionó—, sino qué exige para funcionar, y si algo de eso es compatible con la escala y la velocidad que describen los dos textos de hoy.</p>
+    <p><i>Fuentes: Center for Deliberative Democracy, Stanford, «America in One Room» (2019). Volveremos a este experimento en la clase 9, cuando aparezca la propuesta de reemplazar la deliberación por avatares que predicen nuestras preferencias.</i></p>
+</div>
+
+<footer>
+    <p>MGT300 · Sociedad, Cultura y Política · Universidad Adolfo Ibáñez · Segundo semestre 2026 · Profesor Naim Bro.</p>
+    <p>La sección 1 reproduce un pasaje breve del capítulo 2 de Byung-Chul Han, <i>Infocracia. La digitalización y la crisis de la democracia</i>, Taurus, 2022, traducción de Joaquín Chamorro Mielke, con fines exclusivamente docentes; el resto de la sección es una exposición redactada para este curso, con citas breves. La sección 2 reproduce un pasaje breve de la introducción de Eli Pariser, <i>El filtro burbuja</i>, Taurus, traducción de Mercedes Vaquero, en las mismas condiciones. Ambos capítulos completos están en la carpeta de lecturas del curso y son propiedad de sus editores. Las obras y autores citados dentro de los textos —Habermas, Postman, Orwell, Huxley, Luhmann, Putnam, Boyd, Friedman, Thompson y Siegel— aparecen según las referencias de los originales.</p>
+</footer>
+
+</body>
+</html>
