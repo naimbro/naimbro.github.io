@@ -42,3 +42,8 @@ output/
 # MGT300 clase 4: pauta de Be Right Back (usa drive_credentials.json)
 create_doc_mgt300_clase4_brb.py
 doc_mgt300_clase4_brb.json
+still_mgt300_clase4_drive.json
+
+# DVD 2026: pauta de presentaciones del Sprint 1 (usa drive_credentials.json)
+create_form_pauta_sprint1.py
+form_pauta_sprint1.json
