@@ -71,28 +71,37 @@ Eso es lo que viene a arreglar `summarise()`.
 
 ## 4. Los seis encargos
 
-**Se trabaja con los mismos grupos del Sprint 1**, en el mismo orden en que presentaron el
-31 de agosto. La regla de reparto:
+**Se trabaja con los nueve grupos del Sprint 1.** El encargo de cada uno está elegido para
+que la trampa que le toca sea **la misma que amenaza su propio proyecto**: el grupo que
+compara años se topa con el año que falta, el que compara regiones con las regiones que no
+existían, el que trabaja nivel socioeconómico con el segmento de nueve casos.
 
-| Grupo del Sprint 1 | Encargo |
-|---|---|
-| 1 | 1 — La portada |
-| 2 | 2 — La página tres |
-| 3 | 3 — El mapa |
-| 4 | 4 — El gráfico de la aprobación |
-| 5 | 5 — El encargo imposible |
-| 6 | 6 — La corrección |
-| 7 | 1 (repetido) |
-| 8 | 2 (repetido) |
-| 9 | 3 (repetido) |
-| 10 | 4 (repetido) |
+| Grupo | Tema del Sprint 1 | Encargo | Ayudante |
+|---|---|---|---|
+| **G01** | Índice Gini | **2** — La página tres | Martín |
+| **G02** | El Estado, las políticas y sus sesgos | **4** — El gráfico de la aprobación | Matías |
+| **G03** | Música chilena en veinte años | **1** — La portada | Matías |
+| **G04** | Salud mental, depresión y suicidio | **6** — La corrección | Karina |
+| **G05** | Presupuesto de gobierno 2020 vs. 2021 | **1** — La portada | Karina |
+| **G06** | Nivel socioeconómico y deserción escolar | **2** — La página tres | Martín |
+| **G07** | Educación diferencial | **5** — El encargo imposible | Matías |
+| **G08** | Matrícula en educación superior por región | **3** — El mapa | Martín |
+| **G09** | Centralización en la salud | **3** — El mapa | Karina |
 
-Del séptimo grupo en adelante se repiten los cuatro primeros encargos, que son los
-analíticos. **Los encargos 5 y 6 no se repiten**: son los dos en que el equipo tiene que
-contradecir al editor en público, y esa escena pierde toda la fuerza la segunda vez.
+Tres razones para leer esta tabla con cuidado antes del lunes:
 
-Dos redacciones con el mismo dato, en cambio, es una buena escena: se exponen seguidas y se
-comparan los dos titulares que salieron de la misma tabla.
+- **G05 se va a llevar el golpe del día.** Su proyecto compara el presupuesto de 2020 con el
+  de 2021, y el encargo 1 los va a hacer descubrir, en otra base, que **2020 no existe en la
+  CEP**. No es una coincidencia que convenga suavizar: es la conversación más útil que van a
+  tener sobre su propio Sprint 2.
+- **Los encargos 5 y 6 no se repiten.** Son los dos en que el equipo tiene que contradecir al
+  editor en público, y esa escena pierde toda la fuerza la segunda vez. G07 trabaja educación
+  diferencial, donde el dato muchas veces no existe: aprender a decir «esto no se puede
+  responder, y aquí está la prueba» es exactamente su problema. Y G04 trabaja salud mental,
+  un tema donde las diferencias por sexo se afirman todo el tiempo sin mirar los números;
+  desmentir el titular del editor es su ejercicio.
+- **Los encargos 1, 2 y 3 los toman dos grupos cada uno.** Se exponen seguidos, para comparar
+  los dos titulares que salieron de la misma tabla.
 
 Cada encargo trae una **trampa** que el editor sabe y el equipo tiene que descubrir.
 
@@ -192,7 +201,23 @@ editor, en público, que su titular no se sostiene.
 
 ## 5. Pauta del editor (bloque 2)
 
-Tres minutos por grupo. El editor pregunta, en este orden, hasta que se acabe el tiempo:
+**Orden de exposición.** Nueve grupos, tres minutos cada uno: 27 minutos, con tres de
+holgura. El orden no es arbitrario —los pares van seguidos y la sesión cierra con los dos
+grupos que le llevan la contra al editor—:
+
+| # | Grupo | Encargo | Qué pasa |
+|---|---|---|---|
+| 1 | G03 | 1 — La portada | La serie completa |
+| 2 | G05 | 1 — La portada | Mismo dato, otro titular; y aparece el 2020 que falta |
+| 3 | G01 | 2 — La página tres | El nivel socioeconómico |
+| 4 | G06 | 2 — La página tres | Mismo dato, otro titular |
+| 5 | G08 | 3 — El mapa | El ranking de regiones |
+| 6 | G09 | 3 — El mapa | Mismo dato, otro titular |
+| 7 | G02 | 4 — La aprobación | El denominador |
+| 8 | G07 | 5 — El imposible | Le dicen al editor que no se puede |
+| 9 | G04 | 6 — La corrección | Desmienten el titular del editor |
+
+El editor pregunta, en este orden, hasta que se acabe el tiempo:
 
 1. **«Dame el titular en una frase.»** Si trae adjetivos y no números, se devuelve.
 2. **«¿Cuántos casos hay detrás de ese número?»** Si no aparece `n()` en la tabla, no se
@@ -210,9 +235,12 @@ Cierre del profesor, ya fuera del personaje —**la regla del día**:
 ## 6. Qué hay que tener listo antes del lunes
 
 - [x] Cuaderno `clase06_agrupar_y_resumir.ipynb` enlazado en el syllabus.
+- [x] Encargos repartidos entre los nueve grupos del Sprint 1 (tabla de la sección 4).
 - [ ] Los seis encargos impresos o en una lámina, uno por grupo.
-- [ ] **Confirmar el número exacto de grupos del Sprint 1** y ajustar la tabla de reparto si
-      son más de diez. El briefing de la clase 5 hablaba de «~10 grupos», pero la lista
-      definitiva no está en el repositorio.
 - [ ] Avisar a los tres ayudantes que esta semana circulan durante el bloque de trabajo y
-      que la bitácora del Sprint 1 se completa igual.
+      que la bitácora del Sprint 1 se completa igual. A cada uno le tocan sus mismos tres
+      grupos: Martín G01, G06 y G08; Matías G02, G03 y G07; Karina G04, G05 y G09.
+
+> La lista de integrantes vive en la planilla de grupos del Sprint 1, en Drive. **No se
+> copia acá**: este repositorio es público y son estudiantes de primer año. Los grupos se
+> identifican sólo por su código.

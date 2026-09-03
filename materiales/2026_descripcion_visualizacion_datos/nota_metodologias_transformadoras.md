@@ -54,6 +54,6 @@ Clase 6 de 15 · *Introducción a dplyr (3): agrupar, resumir y comparar* · 10:
 
 ## Pendiente antes del lunes
 
-- Confirmar cuántos grupos hay y repartir los seis encargos (si hay más de seis grupos, dos
-  toman el mismo).
+- Imprimir los encargos, uno por grupo. El reparto entre los nueve grupos del Sprint 1 ya
+  está hecho, en la sección 4 de `caso_clase06_sala_de_prensa.md`.
 - Avisar a los tres ayudantes que esta semana circulan durante el bloque de trabajo.
