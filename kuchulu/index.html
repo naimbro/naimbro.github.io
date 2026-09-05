@@ -222,6 +222,17 @@
     color: #e7d5ab;
     font-style: italic;
   }
+  /* La lamina de fauna: todos los animalitos escondidos del libro, juntos.
+     Funciona como indice secreto — el nino los ve al final y vuelve atras a buscarlos.
+     El PNG viene con transparencia (se pinto sobre magenta y se recorto por color),
+     asi que se apoya directo sobre el degradado verde sin caja ni marco. */
+  .back-cover .back-fauna {
+    display: block;
+    width: min(100%, 30rem);
+    height: auto;
+    margin: -0.4rem auto 0;
+  }
+
   .back-cover .colophon {
     font-family: 'Quicksand', sans-serif;
     font-size: clamp(0.72rem, 1.3vw, 0.86rem);
@@ -682,6 +693,9 @@
     que me dicen jun jun<br>
     y me esperan siempre.
   </div>
+  <img class="back-fauna" src="ilustraciones/24_contratapa_animalitos.png"
+       alt="Todos los animalitos escondidos del libro juntos: dos liebres, una lagartija, una codorniz con sus pollitos, un perro, tres queltehues, un gatito, una bandada de pajaritos, un sapito, un pececito saltando, dos ratoncitos, tres gorriones y un buho"
+       loading="eager">
   <div class="colophon">
     KUCHULÚ EN EL RECODO<br>
     Borrador &mdash; junio 2026<br><br>
