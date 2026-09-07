@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mapa del semestre de Descripción y Visualización de Datos (UAI 2026): los tres sprints, la plataforma final y lo que corre en paralelo.">
+<title>De la pregunta a la plataforma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+  html { color-scheme: light dark; }
+  body { margin: 0; padding: 0; }
+  img { max-width: 100%; }
+</style>
+
+<style>
+  :root {
+    --papel:      #eef2f6;
+    --tarjeta:    #ffffff;
+    --tinta:      #0a2c44;
+    --tinta-sec:  #506d84;
+    --linea:      #cfdae4;
+    --marca:      #0a3d62;
+    --arena:      #b3a37a;
+    --arena-txt:  #7d6b3c;
+    --arena-bg:   #f4efe2;
+    --sombra:     0 1px 2px rgba(10,44,68,.06), 0 6px 18px rgba(10,44,68,.07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --papel:     #0b1621;
+      --tarjeta:   #122333;
+      --tinta:     #e7eef4;
+      --tinta-sec: #9db2c3;
+      --linea:     #21384c;
+      --marca:     #8ab8dc;
+      --arena:     #c9b684;
+      --arena-txt: #d8c692;
+      --arena-bg:  #2b2a1e;
+      --sombra:    0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.28);
+    }
+  }
+  :root[data-theme="dark"] {
+    --papel:     #0b1621;
+    --tarjeta:   #122333;
+    --tinta:     #e7eef4;
+    --tinta-sec: #9db2c3;
+    --linea:     #21384c;
+    --marca:     #8ab8dc;
+    --arena:     #c9b684;
+    --arena-txt: #d8c692;
+    --arena-bg:  #2b2a1e;
+    --sombra:    0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.28);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .hoja {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 3.5vw, 3rem) clamp(1.1rem, 3vw, 2.5rem) 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.6rem, 3vw, 2.6rem);
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--tinta-sec);
+    margin: 0;
+  }
+
+  .cabecera { display: grid; gap: 1.05rem; }
+  .cabecera h1 {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.1rem, 5.2vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -.025em;
+    margin: 0;
+    text-wrap: balance;
+    color: var(--marca);
+  }
+  .cabecera h1 em { font-style: normal; color: var(--tinta); }
+  .guia {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    max-width: 64ch;
+    margin: 0;
+  }
+  .guia strong { font-weight: 600; }
+
+  .pesos { display: grid; gap: .5rem; }
+  .barra {
+    display: flex;
+    height: 30px;
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid var(--linea);
+    background: var(--tarjeta);
+  }
+  .barra span {
+    display: grid;
+    place-items: center;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .68rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: #ffffff;
+    background: var(--marca);
+    border-right: 1px solid var(--papel);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .barra span:last-child { border-right: 0; }
+  .barra .s1 { flex: 15; }
+  .barra .s2 { flex: 20; opacity: .88; }
+  .barra .s3 { flex: 20; opacity: .76; }
+  .barra .pf { flex: 20; opacity: .64; }
+  .barra .bi { flex: 15; background: var(--arena); color: #2b2413; }
+  .barra .vp { flex: 10; background: var(--arena); opacity: .6; color: #2b2413; }
+  .leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1.5rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .72rem;
+    color: var(--tinta-sec);
+  }
+  .leyenda b { color: var(--tinta); font-weight: 600; }
+
+  .riel {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .riel::before {
+    content: "";
+    position: absolute;
+    left: 12.5%;
+    right: 12.5%;
+    top: calc(2.7rem + 8px);
+    height: 2px;
+    background: var(--linea);
+  }
+  .hoy {
+    position: absolute;
+    left: 18.75%;
+    top: 1.5rem;
+    transform: translateX(-50%);
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    z-index: 2;
+  }
+  .hoy b {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--arena-txt);
+    background: var(--arena-bg);
+    border: 1px solid var(--arena);
+    border-radius: 2px;
+    padding: 1px 6px;
+    white-space: nowrap;
+  }
+  .hoy i { width: 2px; height: 28px; background: var(--arena); display: block; }
+
+  .hito {
+    display: grid;
+    grid-template-rows: 2.7rem 18px auto;
+    position: relative;
+  }
+  .fecha {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .fecha small {
+    display: block;
+    font-weight: 400;
+    font-size: .66rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--tinta-sec);
+  }
+  .nodo { display: grid; place-items: center; margin: 0; }
+  .nodo i {
+    width: 15px; height: 15px;
+    border-radius: 50%;
+    background: var(--papel);
+    border: 2px solid var(--marca);
+    display: block;
+  }
+  .hito--hecho .nodo i { background: var(--arena); border-color: var(--arena); }
+
+  .tarjeta {
+    background: var(--tarjeta);
+    border: 1px solid var(--linea);
+    border-top: 3px solid var(--marca);
+    box-shadow: var(--sombra);
+    padding: 1.05rem 1.1rem 1.15rem;
+    margin-top: .9rem;
+    display: grid;
+    gap: .6rem;
+    align-content: start;
+  }
+  .hito--hecho .tarjeta { border-top-color: var(--arena); }
+  .tarjeta h2 {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.28rem;
+    font-weight: 700;
+    letter-spacing: -.015em;
+    margin: 0;
+    line-height: 1.1;
+  }
+  .rotulo {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .5rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--tinta-sec);
+    margin: 0;
+  }
+  .rotulo b {
+    font-size: .95rem;
+    letter-spacing: 0;
+    color: var(--marca);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .sub { margin: 0; font-size: .92rem; color: var(--tinta-sec); }
+  .entregan {
+    margin: 0;
+    padding-left: 1.05rem;
+    font-size: .88rem;
+    display: grid;
+    gap: .3rem;
+  }
+  .entregan li::marker { color: var(--arena); }
+  .entregan code {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .82em;
+  }
+  .significa {
+    margin: 0;
+    font-size: .93rem;
+    border-top: 1px solid var(--linea);
+    padding-top: .6rem;
+  }
+  .significa b {
+    display: block;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--arena-txt);
+    margin-bottom: .18rem;
+  }
+  .retro {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .68rem;
+    color: var(--tinta-sec);
+    background: var(--papel);
+    border: 1px dashed var(--linea);
+    padding: .35rem .5rem;
+    margin: 0;
+  }
+
+  .paralelo {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1rem;
+  }
+  .franja {
+    background: var(--tarjeta);
+    border: 1px solid var(--linea);
+    border-left: 3px solid var(--arena);
+    padding: 1.05rem 1.15rem;
+    display: grid;
+    gap: .55rem;
+    align-content: start;
+  }
+  .franja h3 {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: .5rem;
+  }
+  .franja h3 span {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .82rem;
+    color: var(--arena-txt);
+    font-weight: 600;
+  }
+  .franja p { margin: 0; font-size: .9rem; color: var(--tinta-sec); }
+  .franja p strong { color: var(--tinta); font-weight: 600; }
+  .domingos {
+    list-style: none;
+    margin: .2rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+  }
+  .domingos li {
+    display: grid;
+    justify-items: center;
+    gap: .3rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .66rem;
+    color: var(--tinta-sec);
+    font-variant-numeric: tabular-nums;
+  }
+  .domingos i {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    border: 2px solid var(--arena);
+    display: block;
+  }
+  .domingos .ok i { background: var(--arena); }
+
+  .pie {
+    border-top: 2px solid var(--tinta);
+    padding-top: .8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem 2rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .72rem;
+    color: var(--tinta-sec);
+  }
+  .pie b { color: var(--tinta); font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .riel { grid-template-columns: 1fr; gap: 1.4rem; }
+    .riel::before, .hoy { display: none; }
+    .hito { grid-template-rows: auto; }
+    .nodo { display: none; }
+    .fecha { text-align: left; }
+    .tarjeta { margin-top: .5rem; }
+    .paralelo { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hoja">
+
+  <header class="cabecera">
+    <p class="eyebrow">Descripción y Visualización de Datos · Sociología &amp; Ingeniería Comercial · UAI 2026</p>
+    <h1>De la pregunta<br><em>a la plataforma</em></h1>
+    <p class="guia">Cada grupo se convierte en un pequeño observatorio de datos sobre su tema. La pregunta que ordena el semestre completo: <strong>¿cómo transformamos datos dispersos en una plataforma visual que ayude a entender un problema?</strong> Cuatro entregas la responden por partes, y cada una supone la anterior.</p>
+  </header>
+
+  <section class="pesos" aria-label="Ponderaciones del curso">
+    <div class="barra" role="img" aria-label="Sprint 1 15 por ciento, Sprint 2 20, Sprint 3 20, plataforma final 20, bitácora 15, visita profesional 10">
+      <span class="s1">S1 · 15</span>
+      <span class="s2">S2 · 20</span>
+      <span class="s3">S3 · 20</span>
+      <span class="pf">Final · 20</span>
+      <span class="bi">Bitácora · 15</span>
+      <span class="vp">Visita · 10</span>
+    </div>
+    <div class="leyenda">
+      <span><b>75%</b> en las cuatro entregas del proyecto</span>
+      <span><b>15%</b> bitácora individual, semana a semana</span>
+      <span><b>10%</b> visita profesional, en octubre</span>
+    </div>
+  </section>
+
+  <ol class="riel">
+    <li class="hito hito--hecho">
+      <p class="fecha">31 · agosto<small>clase 5 — entregado</small></p>
+      <p class="nodo"><i></i></p>
+      <article class="tarjeta">
+        <p class="rotulo"><span>Sprint 1</span><b>15%</b></p>
+        <h2>Propuesta</h2>
+        <p class="sub">Dominio, pregunta, fuentes y audiencia.</p>
+        <ul class="entregan">
+          <li>Una pregunta descriptiva y acotada, con unidad y período.</li>
+          <li>Una fuente real, evaluada en cobertura, granularidad, periodicidad y límites.</li>
+          <li>Una audiencia identificable, no «la ciudadanía».</li>
+          <li>Un Colab que carga los datos y produce una tabla.</li>
+        </ul>
+        <p class="significa"><b>Qué significa</b>Dejar de tener un tema y tener una pregunta que las fuentes disponibles pueden responder de verdad.</p>
+        <p class="retro">Retroalimentación · lunes 7 de septiembre</p>
+      </article>
+    </li>
+
+    <li class="hito">
+      <p class="fecha">28 · septiembre<small>clase 8</small></p>
+      <p class="nodo"><i></i></p>
+      <article class="tarjeta">
+        <p class="rotulo"><span>Sprint 2</span><b>20%</b></p>
+        <h2>Prototipo de datos</h2>
+        <p class="sub">La base ordenada y documentada.</p>
+        <ul class="entregan">
+          <li>Base limpia o sistematizada, lista para analizar.</li>
+          <li>Diccionario de variables: qué mide cada columna y en qué unidad.</li>
+          <li>Indicadores preliminares con <code>group_by()</code> y <code>summarise()</code>.</li>
+          <li>La justificación de cada decisión de limpieza.</li>
+        </ul>
+        <p class="significa"><b>Qué significa</b>Que otra persona pueda tomar su base, repetir sus pasos y llegar exactamente al mismo número.</p>
+        <p class="retro">Retroalimentación · lunes 5 de octubre</p>
+      </article>
+    </li>
+
+    <li class="hito">
+      <p class="fecha">26 · octubre<small>clase 11</small></p>
+      <p class="nodo"><i></i></p>
+      <article class="tarjeta">
+        <p class="rotulo"><span>Sprint 3</span><b>20%</b></p>
+        <h2>Prototipo visual</h2>
+        <p class="sub">Los gráficos y el orden en que se leen.</p>
+        <ul class="entregan">
+          <li>Un conjunto inicial de visualizaciones en ggplot2.</li>
+          <li>El criterio de por qué ese gráfico y no otro.</li>
+          <li>Narrativa preliminar y arquitectura del sitio.</li>
+          <li>Qué observaciones del Sprint 2 incorporaron, cuáles no y por qué.</li>
+        </ul>
+        <p class="significa"><b>Qué significa</b>Pasar del gráfico suelto a una historia visual: alguien que entra sin saber nada del tema sabe por dónde empezar.</p>
+        <p class="retro">Retroalimentación · lunes 2 de noviembre</p>
+      </article>
+    </li>
+
+    <li class="hito">
+      <p class="fecha">23 · noviembre<small>clase 15 — demo day</small></p>
+      <p class="nodo"><i></i></p>
+      <article class="tarjeta">
+        <p class="rotulo"><span>Plataforma final</span><b>20%</b></p>
+        <h2>El observatorio</h2>
+        <p class="sub">Publicado, con dirección propia.</p>
+        <ul class="entregan">
+          <li>Sitio publicado: portada, contexto, datos, visualizaciones, metodología.</li>
+          <li>Memoria metodológica breve, con fuentes y límites.</li>
+          <li>Prueba de comprensión con al menos un usuario externo.</li>
+          <li>Presentación de 10 minutos y 5 de preguntas.</li>
+        </ul>
+        <p class="significa"><b>Qué significa</b>El observatorio existe en una URL y se defiende solo frente a alguien que no estuvo en ninguna de las quince clases.</p>
+        <p class="retro">Cierra el semestre</p>
+      </article>
+    </li>
+
+    <div class="hoy" aria-hidden="true"><b>hoy · 7 sep</b><i></i></div>
+  </ol>
+
+  <section class="paralelo">
+    <div class="franja">
+      <h3>Bitácora individual <span>15%</span></h3>
+      <p>Nueve entradas, siempre un domingo hasta las 23:59, sobre la semana que termina. Tres minutos cada una. <strong>Se cuentan las ocho mejores de nueve</strong>, así que perder una no afecta la nota. Los ayudantes las leen antes de la clínica del lunes: es la vía más rápida para avisar que algo se está trabando. La síntesis final del 23 de noviembre vale 5% aparte.</p>
+      <ol class="domingos">
+        <li class="ok"><i></i>23 ago</li>
+        <li class="ok"><i></i>30 ago</li>
+        <li class="ok"><i></i>6 sep</li>
+        <li><i></i>27 sep</li>
+        <li><i></i>4 oct</li>
+        <li><i></i>25 oct</li>
+        <li><i></i>1 nov</li>
+        <li><i></i>15 nov</li>
+        <li><i></i>22 nov</li>
+      </ol>
+    </div>
+    <div class="franja">
+      <h3>Visita profesional <span>10%</span></h3>
+      <p>Durante octubre, una visita a una organización donde convergen lo social y los negocios. Después, cada estudiante entrega un cuestionario de cuatro preguntas. La fecha depende de la coordinación con la organización y se avisa por Webcursos.</p>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <span><b>Clases:</b> lunes 10:00–12:40</span>
+    <span><b>Sin clase:</b> 14 de septiembre y 12 de octubre</span>
+    <span><b>Después de cada entrega:</b> rúbrica y comentarios; la siguiente dice qué incorporó y qué no</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
