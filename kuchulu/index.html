@@ -243,8 +243,77 @@
   }
   .back-cover .colophon em { color: #c2a874; font-style: italic; }
 
+  /* ---- FOTOS REALES (album al final del libro) ----
+     Las fotos de verdad de las que salieron las laminas, con marco blanco y esquineros de album. */
+  .photos { gap: 1.6rem; }
+  .photos-title {
+    font-weight: 400;
+    font-size: clamp(1.3rem, 3.4vw, 1.75rem);
+    color: var(--gold);
+    text-align: center;
+  }
+  .photo-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem 1.3rem;
+    align-items: center;
+  }
+  .polaroid {
+    position: relative;
+    justify-self: center;
+    width: fit-content;
+    max-width: 100%;
+    background: #fff;
+    padding: 7px 7px 0;
+    box-shadow: 0 10px 22px -10px rgba(50,38,20,.5);
+    transform: rotate(var(--r, 0deg));
+  }
+  .polaroid img {
+    display: block;
+    max-width: 100%;
+    max-height: 30vh;
+    width: auto;
+    height: auto;
+  }
+  .polaroid figcaption {
+    padding: .45rem .3rem .55rem;
+    text-align: center;
+    font-style: italic;
+    font-size: clamp(.85rem, 1.9vw, 1.02rem);
+    color: var(--ink-soft);
+  }
+  /* esquineros de album */
+  .polaroid::before, .polaroid::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+  }
+  .polaroid::before { top: -3px; left: -3px; background: linear-gradient(135deg, #3a3028 50%, transparent 50%); }
+  .polaroid::after { bottom: -3px; right: -3px; background: linear-gradient(-45deg, #3a3028 50%, transparent 50%); }
+  .polaroid.portrait img { max-height: 50vh; }
+
+  .dedication {
+    text-align: center;
+    font-style: italic;
+    font-size: clamp(1.25rem, 3.2vw, 1.7rem);
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .dedication::before {
+    content: "\2767";
+    display: block;
+    color: var(--gold);
+    font-style: normal;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
   /* ---- RESPONSIVE ---- */
   @media (max-width: 480px) {
+    .photo-grid { gap: 1.3rem .8rem; }
+    .polaroid img { max-height: 24vh; }
     body { padding: 3vh 0 6vh; }
     .page { min-height: auto; margin-bottom: 3.5vh; }
     .spread-img { max-height: 52vh; }
@@ -484,7 +553,7 @@
         Desde aquí<br>
         El Recodo se ve enterito:<br><br>
         el camino, los pinos,<br>
-        el pasto que sube al cerro.
+        el pasto.
       </div>
     </div>
   </div>
@@ -596,7 +665,7 @@
     </div>
     <div class="spread-text-box">
       <div class="spread-text">
-        Yo hago otra casa.<br>
+        Yo hago una casa.<br>
         Con cojines.<br>
         Y frazadas.<br><br>
         Y Mastana<br>
@@ -682,6 +751,33 @@
   </div>
 </div>
 
+<!-- FOTOS REALES (1): la mañana -->
+<div class="page photos">
+  <h2 class="photos-title">Así es El Recodo de verdad</h2>
+  <div class="photo-grid">
+    <figure class="polaroid" style="--r:2deg"><img src="fotos/amanecer.jpeg" alt="Amanecer con niebla sobre la pradera de El Recodo" loading="eager"><figcaption>El amanecer.</figcaption></figure>
+    <figure class="polaroid" style="--r:-2deg"><img src="fotos/terraza.jpeg" alt="La terraza con maceteros, vista desde la entrada" loading="eager"><figcaption>La terraza.</figcaption></figure>
+    <figure class="polaroid" style="--r:-1.5deg"><img src="fotos/tractor.jpeg" alt="Masbaba en su tractor naranjo con Kuchulu" loading="eager"><figcaption>Masbaba y su tractor.</figcaption></figure>
+    <figure class="polaroid" style="--r:2.5deg"><img src="fotos/taller.jpeg" alt="Masbaba y Kuchulu en el taller, entre máquinas" loading="eager"><figcaption>En el taller.</figcaption></figure>
+  </div>
+</div>
+
+<!-- FOTOS REALES (2): la tarde y la noche -->
+<div class="page photos">
+  <div class="photo-grid">
+    <figure class="polaroid" style="--r:-2deg"><img src="fotos/rio.jpeg" alt="El río con el sauce dorado" loading="eager"><figcaption>El río.</figcaption></figure>
+    <figure class="polaroid" style="--r:2.5deg"><img src="fotos/casa_arbol.jpeg" alt="Kuchulu con gorro frente a la casa del árbol" loading="eager"><figcaption>La casa del árbol.</figcaption></figure>
+    <figure class="polaroid" style="--r:2deg"><img src="fotos/casa_frazadas.jpeg" alt="Kuchulu entre frazadas en el living; Mastana lo mira desde el sillón" loading="eager"><figcaption>Una casa de frazadas.</figcaption></figure>
+    <figure class="polaroid" style="--r:-2deg"><img src="fotos/cumpleanos.jpeg" alt="Cumpleaños en la cocina: la torta, Mastana y Kuchulu" loading="eager"><figcaption>Un cumpleaños.</figcaption></figure>
+  </div>
+</div>
+
+<!-- RETRATO + DEDICATORIA -->
+<div class="page photos">
+  <figure class="polaroid portrait" style="--r:-1.5deg"><img src="fotos/retrato.jpeg" alt="Masbaba, Mastana y Kuchulu bajo el árbol, riéndose" loading="eager"><figcaption>Masbaba, Mastana y Kuchulu.</figcaption></figure>
+  <p class="dedication">Para Saúl Ciro,<br>el chiquitito,<br>y para mis papis.</p>
+</div>
+
 <!-- BACK COVER -->
 <div class="page back-cover">
   <div class="back-text">
@@ -697,11 +793,15 @@
        alt="Todos los animalitos escondidos del libro juntos: dos liebres, una lagartija, una codorniz con sus pollitos, un perro, tres queltehues, un gatito, una bandada de pajaritos, un sapito, un pececito saltando, dos ratoncitos, tres gorriones y un buho"
        loading="eager">
   <div class="colophon">
-    KUCHULÚ EN EL RECODO<br>
-    Borrador &mdash; junio 2026<br><br>
+    KUCHULÚ EN EL RECODO<br><br>
     Texto: Naim Bro Khomasi<br>
-    Ilustraciones: borrador generado con IA<br><br>
-    <em>Para Saúl Ciro, el chiquitito, y para mis papis.</em>
+    Ilustraciones: creadas con inteligencia artificial<br>
+    a partir de fotografías de la familia,<br>
+    que modifican libremente lugares, personas y momentos<br>
+    Fotografías: archivo familiar<br><br>
+    El Recodo, Romeral<br>
+    Primera edición, septiembre de 2026<br>
+    Diez ejemplares impresos en Printech, Santiago de Chile
   </div>
 </div>
 
