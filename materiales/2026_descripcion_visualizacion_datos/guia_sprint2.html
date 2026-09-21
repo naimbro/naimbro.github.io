@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sprint 2: prototipo de datos — guía de entrega</title>
+<style>
+  body { font-family: Arial, sans-serif; font-size: 11pt; line-height: 1.4; color: #2C2C2C; }
+  h1 { font-size: 20pt; }
+  h2 { font-size: 14pt; margin-top: 18pt; }
+  h3 { font-size: 12pt; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #999; padding: 4pt 6pt; vertical-align: top; }
+  th { background: #EBD6D9; }
+  code { font-family: "Courier New", monospace; }
+  .note { color: #8C8C8C; font-style: italic; }
+</style>
+</head>
+<body>
+
+<h1>Sprint 2: prototipo de datos — guía de entrega</h1>
+<p><b>Descripción y Visualización de Datos · UAI 2026</b><br>
+Se entrega el <b>lunes 28 de septiembre</b>, antes de las 10:00. Vale el <b>20%</b> del curso.<br>
+<span class="note">Programa del curso: <a href="https://naimbro.github.io/teaching/2026_descripcion_visualizacion_datos.html">naimbro.github.io/teaching/2026_descripcion_visualizacion_datos.html</a></span></p>
+
+<h2>1. Qué es el Sprint 2</h2>
+<p>El Sprint 1 fue la pregunta. El Sprint 2 es <b>la base ordenada y documentada</b> que la va a responder: la base limpia, un diccionario que dice qué mide cada columna, los primeros indicadores con <code>group_by()</code> y <code>summarise()</code>, y la justificación de cada decisión de limpieza.</p>
+<p>La prueba que tiene que pasar: <b>que otra persona pueda tomar su base, repetir sus pasos y llegar exactamente al mismo número.</b> Si para llegar a un número hay que preguntarle algo al grupo, la entrega está incompleta.</p>
+
+<h2>2. Qué se entrega y cuándo</h2>
+<ul>
+  <li><b>Un Google Colab</b>: el mismo cuaderno del Sprint 1, extendido. No se parte uno nuevo, se corrige y se sigue.</li>
+  <li><b>Acceso abierto</b>: Compartir → Acceso general → <i>Cualquier persona con el enlace</i>. Un enlace restringido cuenta como no entregado.</li>
+  <li><b>El enlace en Webcursos</b>, en la carpeta del Sprint 2, antes de las <b>10:00 del lunes 28 de septiembre</b>.</li>
+  <li><b>Sin presentación oral</b> este sprint: la clase del 28 es de ggplot2. La retroalimentación llega por escrito, de los ayudantes, y en la clase del <b>lunes 5 de octubre</b>.</li>
+  <li><b>Bitácora individual</b>: semana 4 hasta el domingo 27 de septiembre y semana 5 hasta el domingo 4 de octubre (ésa cubre la entrega). Es el mismo <a href="https://docs.google.com/forms/d/e/1FAIpQLSeogbP-ku9ZksvEA_A3RKgoE_lTf174oy-dxqzsVYu4u7JNaw/viewform">formulario de siempre</a>, eligiendo la semana en el desplegable.</li>
+</ul>
+
+<h2>3. Las siete secciones del Colab</h2>
+<table>
+  <tr><th style="width:22%">Sección</th><th>Qué tiene que haber</th></tr>
+  <tr><td><b>1. Portada</b></td><td>Título del proyecto, integrantes y <b>los roles de este sprint</b> (coordinación, datos, narrativa y documentación). Los roles rotan: nadie repite el que tuvo en el Sprint 1.</td></tr>
+  <tr><td><b>2. Respuesta a la retroalimentación</b></td><td>Qué observaciones del Sprint 1 incorporaron, cuáles no y por qué. Cinco líneas bastan. Si cambiaron la pregunta o la fuente, se dice acá.</td></tr>
+  <tr><td><b>3. La base y su ficha de calidad</b></td><td>La base cargada con <code>read.csv()</code> desde una URL, más <code>nrow()</code>, <code>names()</code> y <code>glimpse()</code>. Después, la <b>ficha de calidad</b> de la sección 4, completa.</td></tr>
+  <tr><td><b>4. Limpieza, con cada decisión anotada</b></td><td>Cada <code>mutate()</code> y cada <code>filter()</code> de limpieza va precedido de una línea que dice <b>por qué</b>. Si borran filas, dicen cuántas y por qué. Lo que no pudieron arreglar se declara, no se esconde.</td></tr>
+  <tr><td><b>5. Diccionario de variables</b></td><td>Una tabla con una fila por cada columna que usan, con el formato de la sección 5. Incluye las columnas que crearon con <code>mutate()</code>.</td></tr>
+  <tr><td><b>6. Indicadores preliminares</b></td><td><b>Al menos dos tablas</b> hechas con <code>group_by()</code> y <code>summarise()</code>, las dos con <code>n()</code> adentro. Cada tabla lleva arriba un <b>titular de una frase, con un número y una comparación</b>, y abajo los tres controles de la sección 6.</td></tr>
+  <tr><td><b>7. Ética mínima y cierre</b></td><td>Las tres preguntas de la sección 7, respondidas en una o dos líneas cada una. Y un cierre: qué van a graficar en el Sprint 3 y qué les falta para poder hacerlo.</td></tr>
+</table>
+
+<h2>4. La ficha de calidad de datos</h2>
+<p>Es la actividad del taller del 21 de septiembre y va en la sección 3 del Colab. Cada celda se responde con un número o una lista, nunca con «sí» o «no».</p>
+<table>
+  <tr><th style="width:28%">Pregunta</th><th style="width:36%">Cómo se responde</th><th>Ejemplo (CEP consolidada)</th></tr>
+  <tr><td>¿Cuántas filas y cuántas columnas?</td><td><code>nrow()</code> y <code>names()</code></td><td>96.122 filas, 25 columnas</td></tr>
+  <tr><td>¿Qué es una fila?</td><td>La unidad de observación, en palabras</td><td>Una persona encuestada en un año</td></tr>
+  <tr><td>¿Qué período cubre y qué le falta?</td><td><code>count(anio)</code> y mirar la lista</td><td>1994 a 2026; no hay 2020</td></tr>
+  <tr><td>¿Qué columnas están vacías o dejaron de existir?</td><td><code>group_by(anio) %&gt;% summarise(con_dato = sum(!is.na(columna)))</code></td><td><code>posicion_politica</code> y <code>anios_escolaridad</code> están vacías desde 2021</td></tr>
+  <tr><td>¿Qué columnas llegaron sucias y cómo se arreglaron?</td><td><code>class()</code> en cada columna que van a comparar</td><td>En la encuesta del curso, <code>minutos_viaje</code> era texto por un «10 min»; se arregló con <code>as.numeric()</code></td></tr>
+  <tr><td>¿Cuál es el grupo más chico que van a comparar?</td><td>El <code>n()</code> de la tabla de indicadores</td><td>Segmento E en 2026: 9 personas</td></tr>
+  <tr><td>¿A quién no cubre la fuente?</td><td>En palabras, a partir de la ficha de fuente del Sprint 1</td><td>Sólo mayores de 18; 59% mujeres en toda la serie</td></tr>
+</table>
+
+<h2>5. El diccionario de variables</h2>
+<p>Una fila por columna que usan, originales y creadas. Si una columna no aparece en el diccionario, no puede aparecer en un indicador.</p>
+<table>
+  <tr><th>Columna</th><th>Qué mide</th><th>Unidad o categorías</th><th>Origen</th></tr>
+  <tr><td><code>anio</code></td><td>Año de la encuesta</td><td>1994 a 2026, sin 2020</td><td>Original</td></tr>
+  <tr><td><code>problema_1</code></td><td>Principal problema del país, según la persona</td><td>Texto: «Delincuencia, asaltos y robos», «Salud», «Pobreza»…</td><td>Original</td></tr>
+  <tr><td><code>delinc</code></td><td>Si la persona nombró la delincuencia como primer problema</td><td>TRUE / FALSE</td><td>Creada: <code>mutate(delinc = problema_1 == "Delincuencia, asaltos y robos")</code></td></tr>
+  <tr><td><code>minutos_num</code></td><td>Minutos de viaje a la universidad</td><td>Número; 1 NA por un «10 min»</td><td>Creada: <code>mutate(minutos_num = as.numeric(minutos_viaje))</code></td></tr>
+</table>
+
+<h2>6. Los tres controles antes de publicar un indicador</h2>
+<ol>
+  <li><b>¿Están todos los grupos?</b> <code>count()</code> de la columna del <code>group_by()</code> y mirar la lista completa: años que faltan, categorías escritas de dos formas, celdas vacías.</li>
+  <li><b>¿La columna estuvo siempre?</b> Casos válidos por año. Si dejó de preguntarse, el indicador se acota al período donde existe y se dice.</li>
+  <li><b>¿Cuántos son en cada grupo?</b> La columna <code>n()</code> de la tabla. <b>Un promedio sin <code>n()</code> es una opinión con decimales.</b> Si un grupo tiene menos de 30 casos, el titular no puede apoyarse en él.</li>
+</ol>
+
+<h2>7. Ética mínima de datos</h2>
+<ul>
+  <li><b>Privacidad</b>: ¿hay alguna fila que permita identificar a una persona? Si la hay, se agrega (por comuna, por año, por grupo) y no se publica la fila.</li>
+  <li><b>Representación</b>: ¿a quién representa la base y a quién deja fuera? Se responde con el <code>n()</code> por grupo, no con una impresión.</li>
+  <li><b>Límites de inferencia</b>: ¿qué no se puede concluir? Este curso describe. «Subió de 19,0% a 31,4%» sí; «subió porque…» no.</li>
+</ul>
+
+<h2>8. Cómo se corrige (20% del curso)</h2>
+<table>
+  <tr><th style="width:30%">Dimensión</th><th style="width:10%">Peso</th><th>Logrado se ve así</th></tr>
+  <tr><td>La base, limpia y cargada</td><td>25%</td><td>El Colab corre de arriba abajo sin intervención; cada columna que se compara tiene la clase correcta; la ficha de calidad está completa.</td></tr>
+  <tr><td>El diccionario de variables</td><td>20%</td><td>Toda columna usada en un indicador está en el diccionario, con qué mide, en qué unidad y de dónde salió.</td></tr>
+  <tr><td>Los indicadores preliminares</td><td>30%</td><td>Al menos dos tablas con <code>group_by()</code>, <code>summarise()</code> y <code>n()</code>; cada una con un titular con número y comparación, y con los tres controles hechos.</td></tr>
+  <tr><td>Las decisiones, justificadas</td><td>15%</td><td>Cada paso de limpieza dice por qué; las filas borradas están contadas; lo que no se pudo arreglar está declarado.</td></tr>
+  <tr><td>La respuesta a la retroalimentación</td><td>10%</td><td>Dice qué observaciones del Sprint 1 se incorporaron, cuáles no y por qué.</td></tr>
+</table>
+<p>Un Colab que muestra un error y explica qué intentaron vale más que uno que esconde el problema. Y una tabla con un grupo de nueve personas y un titular apoyado en ese grupo vale menos que la misma tabla con el titular apoyado en el grupo grande.</p>
+
+<h2>9. El código que ya tienen alcanza</h2>
+<p>Nada del Sprint 2 exige una función que no se haya visto en clases:</p>
+<table>
+  <tr><th>Para qué</th><th>Cómo se escribe</th><th>Cuaderno</th></tr>
+  <tr><td>Cargar y mirar la base</td><td><code>read.csv()</code>, <code>nrow()</code>, <code>names()</code>, <code>glimpse()</code></td><td><a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase03_contar_con_dplyr.ipynb">Clase 3</a></td></tr>
+  <tr><td>Quedarse con filas o columnas</td><td><code>filter()</code>, <code>select()</code>, <code>%&gt;%</code></td><td><a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase04_pipe_filter_select_mutate.ipynb">Clase 4</a></td></tr>
+  <tr><td>Arreglar una columna sucia</td><td><code>class()</code>, <code>mutate(x_num = as.numeric(x))</code></td><td><a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase05_mutate_limpiar_y_crear.ipynb">Clase 5</a></td></tr>
+  <tr><td>Convertir un número en categoría</td><td><code>mutate(tramo = ifelse(edad &lt; 30, "Menor de 30", "30 o más"))</code></td><td>Clase 5 y 7</td></tr>
+  <tr><td>Un porcentaje por grupo</td><td><code>mutate(x = col == "valor") %&gt;% group_by(g) %&gt;% summarise(personas = n(), pct = mean(x) * 100)</code></td><td><a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase06_agrupar_y_resumir.ipynb">Clase 6</a> y <a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase07_mutate_agrupar_resumir.ipynb">Clase 7</a></td></tr>
+  <tr><td>Un promedio ignorando los NA</td><td><code>mean(edad, na.rm = TRUE)</code>; los válidos: <code>sum(!is.na(edad))</code></td><td>Clase 6</td></tr>
+  <tr><td>Ordenar el resultado</td><td><code>arrange(desc(pct))</code></td><td>Clase 6</td></tr>
+</table>
+<p>Si su archivo no es <code>.csv</code>, o no logran cargarlo desde una URL, avisen <b>esta semana</b> por la bitácora o por correo. Media hora en la clínica lo resuelve; dos semanas de silencio, no.</p>
+
+<h2>10. Esta semana</h2>
+<ul>
+  <li><b>Hoy, 21 de septiembre</b>: resuelvan el <a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase07_mutate_agrupar_resumir.ipynb">cuaderno de la clase 7</a>; la última parte es sobre la base de su propio grupo.</li>
+  <li><b>Antes del domingo 27</b>: la base cargada en el Colab del proyecto, <code>class()</code> en cada columna que van a usar, y la ficha de calidad llena. Bitácora de la semana 4.</li>
+  <li><b>Feedback cruzado</b>: pásenle su diccionario y una de sus tablas a otro grupo, sin explicarles nada. Si no entienden qué mide el indicador, todavía no está listo.</li>
+  <li><b>Lunes 28, antes de las 10:00</b>: el enlace del Colab en Webcursos.</li>
+</ul>
+
+<h2>Recursos</h2>
+<ul>
+  <li><a href="https://naimbro.github.io/teaching/2026_descripcion_visualizacion_datos.html">Programa del curso</a> y <a href="https://naimbro.github.io/teaching/2026_dvd_mapa_semestre.html">mapa del semestre</a></li>
+  <li><a href="https://docs.google.com/presentation/d/1P1-ZefMgDfpgpX7hqhDjUZGbWTuDBQ6dxb7nkJtRg0c/edit?usp=sharing">Instrucciones del Sprint 1</a>, para releer la pregunta, la audiencia y la fuente que declararon</li>
+  <li><a href="https://naimbro.github.io/teaching/2026_dvd_clase3_catalogo_fuentes.html">Catálogo de fuentes de datos</a>, con la ficha de fuente</li>
+  <li><a href="https://rocarvaj-apuntes-rcd.share.connect.posit.cloud/">Tutorial de R</a></li>
+</ul>
+
+</body>
+</html>
