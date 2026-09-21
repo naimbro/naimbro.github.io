@@ -56,14 +56,13 @@ Todas salen del cuaderno de la clase 7 salvo donde se indica.
 |---|---|
 | `cep %>% mutate(mayor_60 = edad >= 60) %>% count(mayor_60)` | FALSE 67.457 · TRUE 24.103 · **NA 4.562** (personas sin edad) |
 | `mutate(econ_mala = sit_econ_pais == "Mala" \| sit_econ_pais == "Muy mala") %>% count(econ_mala)` | FALSE 55.824 · TRUE 40.298 · sin fila NA |
-| `mutate(tramo = ifelse(edad < 30, "Menor de 30", "30 o más")) %>% count(tramo)` | 30 o más 72.929 · Menor de 30 18.631 · NA 4.562 |
 | `summarise(personas = n(), edad_promedio = mean(edad, na.rm = TRUE), pct_econ_mala = mean(econ_mala) * 100)` | **96.122 · 46,7 · 41,9** |
 | `mean(edad)` sin `na.rm = TRUE` | devuelve `NA` (hay 4.562 edades vacías) |
 | `group_by(sexo)` con lo anterior | Hombre 39.527 · 46,1 · **36,9%** — Mujer 56.595 · 47,1 · **45,5%** |
-| `group_by(tramo)` con lo anterior | 30 o más 72.929 · 52,6 · 43,7% — Menor de 30 18.631 · 23,5 · 36,1% — **NA 4.562 · NaN · 37,0%** |
+| `group_by(mayor_60)` con lo anterior (un solo `mutate()` crea `econ_mala` y `mayor_60`) | FALSE 67.457 · 38,3 · 41,0% — TRUE 24.103 · 70,2 · 45,4% — **NA 4.562 · NaN · 37,0%** |
 | Receta completa: `pct_econ_mala` por `anio`, `arrange(desc())` | **1999 63,4%** · 2022 63,3% · 2023 61,7% · 2001 60,1% · … · mínimo 2010 27,1% |
 | Ej. 1: primeras seis filas de `edad` | 75, 63, 76, 38, 69, 38 → `joven` da seis `FALSE` |
-| Ej. 2: `ifelse(anios_escolaridad >= 12, "Media completa", "Menos que media")` | Media completa 39.436 · Menos que media 38.759 · NA 17.927 |
+| Ej. 2: `mutate(media_completa = anios_escolaridad >= 12) %>% count(media_completa)` | FALSE 38.759 · TRUE 39.436 · NA 17.927 |
 | Ej. 3: `mutate(mujer = sexo == "Mujer") %>% summarise(personas = n(), pct = mean(mujer) * 100)` | 96.122 · **58,9%** |
 | Ej. 4: `pct_mujeres` por año | máximo **2026 63,4%** (1.466 personas) · mínimo **1995 51,7%** (3.006) |
 | Ej. 5: `group_by(gse)` con `n()` y `mean(edad, na.rm = TRUE)` | fila sin nombre (`""`) **5 personas** 40,0 · ABC1 3.515 45,4 · C2 10.028 46,6 · C3 38.998 46,7 · D 39.902 46,8 · E 3.674 47,2 |
@@ -77,6 +76,9 @@ Todas salen del cuaderno de la clase 7 salvo donde se indica.
 | Clase 6: `cep %>% count(anio)` | de 2019 salta a 2021: **no hay 2020** |
 | Clase 6: `sum(posicion_politica != "")` por año | vacía desde 2021 |
 | Clase 6: `count()` vs. `summarise()` | `count()` tiene `sort = TRUE`; `summarise()` no, se ordena aparte con `arrange(desc())` |
+
+**`ifelse()` no se ha enseñado y no entra**, ni en una pregunta ni en un distractor,
+aunque aparezca en el cuaderno de la clase 5: en clase no se pasó.
 
 Regla dura de siempre: **toda pregunta sale de estos cuadernos.** No agregues un hecho
 que no esté ahí, ni siquiera en un distractor. Si un hecho falta, cambia la pregunta,
@@ -100,7 +102,7 @@ de párrafos.
   corre.
 - Las seis compiten y las seis pasan por los jueces.
 
-## Semillas (nueve para seis lugares: elige y proponme el orden)
+## Semillas (ocho para seis lugares: elige y proponme el orden)
 
 Una semilla por línea de la receta, más las trampas que la clase 7 repasó. Los
 valores exactos están en la tabla de arriba.
@@ -130,23 +132,20 @@ valores exactos están en la tabla de arriba.
    es el que menos teme a la delincuencia». (1) Por qué no se publica. (2) Qué harías
    en vez de eso (usar la serie completa, donde E tiene 3.674). Anclada en el
    cuaderno 6 y en el encargo 2 de la redacción.
-7. **De número a categoría** (código, 150 s). Escribe el `mutate()` con `ifelse()` que
-   crea `tramo` («Menor de 30» / «30 o más») y la línea que la cuenta. Caza: el orden
-   de los tres argumentos, comillas que faltan, filtrar por `tramo` antes de crearla.
-8. **El año que dio cero** (castellano, 120 s). El porcentaje que dice «Progresando»
+7. **El año que dio cero** (castellano, 120 s). El porcentaje que dice «Progresando»
    por año da **0,0% en 2005**. (1) ¿Se publica? Por qué no. (2) Qué línea corres para
    comprobarlo. Caza: creer el cero; decir que en 2005 nadie contestó eso sin mirar
    la columna.
-9. **Limpiar y comparar en la misma cadena** (código, 180 s). Sobre `curso`: las tres
+8. **Limpiar y comparar en la misma cadena** (código, 180 s). Sobre `curso`: las tres
    líneas que dan los minutos promedio de viaje por `transporte`. Caza: sin
    `as.numeric()` (no corre: `mean()` de texto); sin `na.rm = TRUE` (corre y deja a
    Auto en `NA`, que es «código que corre y contesta mal»); `filter()` por la columna
    nueva antes de crearla.
 
-Mi sugerencia de seis, en este orden: **1 → 4 → 3 → 5 → 7 → 9**, con la 3 al medio por
+Mi sugerencia de seis, en este orden: **1 → 4 → 3 → 5 → 7 → 8**, con la 3 al medio por
 la misma razón que en la clase 5 (si el bloque se estira, lo que se cae es la última,
-no la ronda que importa). La 6 y la 8 son buenas de repuesto si prefieres una de
-diagnóstico en vez de una de código. Dime qué opinas antes de escribir los archivos.
+no la ronda que importa). La 2 y la 6 son buenas de repuesto: la 2 si quieres otra de
+código puro, la 6 si prefieres una de diagnóstico. Dime qué opinas antes de escribir los archivos.
 
 ## Contexto del día para los jueces
 
