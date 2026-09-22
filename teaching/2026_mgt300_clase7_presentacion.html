@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>¿Quién se queda con la IA? — MGT300 2026 · Clase 7</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Primer bloque de la clase 7 (22 sep 2026), 40-45 min. Clase de contenido: el mapa
+     del NYT y el reportaje de La Tercera quedan fuera a propósito — viven en la guía de
+     lectura y en Tribuna. El arco es empleo → reacción → reparto, y deja abierta la
+     pregunta que responde Acemoglu la semana siguiente.
+     Casi todo se recicla de IA y Democracia 2026, semanas 3, 5 y 7. -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --paper:#EBE6D8; --paper-deep:#E1DAC7; --ink:#22281F;
+  --ink-soft:#4A5142; --stamp:#9C2B2F; --forest:#2E4638;
+  --gold:#A9823C; --line:#C7BEA3; --card:#F4F0E4; --card2:#EDEAD9;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%; background:var(--ink); font-family:'IBM Plex Sans',sans-serif; color:var(--ink); overflow:hidden;}
+
+.deck{position:relative; width:100%; height:100vh;}
+
+.slide{
+  position:absolute; inset:0;
+  background:var(--paper);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(34,40,31,.038) 28px);
+  opacity:0; visibility:hidden;
+  transform:translateY(12px);
+  transition:opacity .42s ease, transform .42s ease, visibility .42s;
+  padding:40px 64px 54px;
+  display:flex; flex-direction:column;
+  overflow-y:auto;
+}
+.slide.active{opacity:1; visibility:visible; transform:translateY(0);}
+.slide::before{content:""; position:absolute; inset:22px; border:1px solid var(--line); pointer-events:none; z-index:10;}
+.slide::after {content:""; position:absolute; inset:26px; border:1px solid var(--line); opacity:.45; pointer-events:none; z-index:10;}
+
+/* Divisores de seccion */
+.slide.divider{background:var(--forest); background-image:repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,.03) 28px);}
+.slide.divider::before,.slide.divider::after{border-color:rgba(235,230,216,.35);}
+.slide.divider .content{justify-content:center;}
+.divider .part-num{font-family:'Fraunces',serif; font-size:118px; font-weight:300; color:rgba(235,230,216,.22); line-height:.85; margin-bottom:8px;}
+.divider h2{color:var(--paper); font-size:42px; margin-bottom:14px;}
+.divider .sub{color:rgba(235,230,216,.72); font-size:17px; max-width:720px;}
+.divider .eyebrow{color:var(--gold);}
+.divider .eyebrow .bar{background:var(--gold);}
+.divider .folio{color:rgba(235,230,216,.6);}
+.divider .dot{background:rgba(235,230,216,.28);}
+.divider .dot.on{background:var(--gold);}
+
+/* Sello */
+.stamp{position:absolute; top:46px; right:60px; width:124px; height:124px; transform:rotate(-8deg); opacity:.9; pointer-events:none; z-index:5;}
+.stamp svg{width:100%; height:100%; overflow:visible;}
+.stamp .ring{fill:none; stroke:var(--stamp);}
+.stamp .cancel{stroke:var(--stamp); fill:none; opacity:.5;}
+.stamp text{fill:var(--stamp); font-family:'IBM Plex Mono',monospace; letter-spacing:2px;}
+.stamp .big{font-family:'Fraunces',serif; font-weight:700;}
+
+/* Folio */
+.folio{
+  position:absolute; bottom:26px; left:64px; right:64px;
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); letter-spacing:.05em;
+  z-index:12;
+}
+.dots{display:flex; gap:5px; flex-wrap:wrap; justify-content:center;}
+.dot{width:5px; height:5px; border-radius:50%; background:var(--line); cursor:pointer; transition:.2s; flex-shrink:0;}
+.dot.on{background:var(--stamp); transform:scale(1.4);}
+
+/* Tipografia */
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--stamp); display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-shrink:0;
+}
+.eyebrow .bar{height:1px; width:30px; background:var(--stamp); display:inline-block; flex-shrink:0;}
+h1{font-family:'Fraunces',serif; font-weight:700; font-size:42px; line-height:1.07; letter-spacing:-.012em; margin-bottom:6px;}
+h2{font-family:'Fraunces',serif; font-weight:600; font-size:44px; line-height:1.06; letter-spacing:-.015em; margin-bottom:0; max-width:1090px;}
+h2.sm{font-size:37px;}
+h2.xs{font-size:32px;}
+h3{font-family:'Fraunces',serif; font-weight:600; font-size:17px; color:var(--forest); margin-bottom:5px;}
+.sub{font-size:15.5px; color:var(--ink-soft); line-height:1.55; max-width:760px;}
+.content{flex:1; display:flex; flex-direction:column; justify-content:flex-start; min-height:0;}
+a{color:var(--stamp); text-decoration:none; border-bottom:1px dotted var(--stamp);}
+a:hover{color:var(--forest); border-bottom-color:var(--forest);}
+
+.src-line{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft); letter-spacing:.03em; margin-top:12px; flex-shrink:0; line-height:1.55;}
+.src-line a{color:var(--stamp); border-bottom:1px solid rgba(156,43,47,.45); padding-bottom:1px;}
+.src-line a:hover{color:var(--forest); border-bottom-color:var(--forest); background:rgba(169,130,60,.14);}
+.src-line .pdf{font-weight:600;}
+
+/* Meta portada */
+.meta-strip{display:flex; gap:38px; flex-wrap:wrap; margin-top:26px;}
+.meta-item .ml{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px;}
+.meta-item .mv{font-size:14px; color:var(--ink);}
+
+/* Puntos grandes (proyeccion) */
+.duo{display:grid; grid-template-columns:1fr 1.08fr; gap:46px; flex:1; min-height:0; align-items:center; margin-top:18px;}
+.duo.wide{grid-template-columns:.95fr 1.25fr;}
+.duo.vert{grid-template-columns:1.3fr .7fr;}
+.duo.tight .pts{gap:16px;}
+.duo.tight .pt{font-size:20.5px; line-height:1.36;}
+.pts{display:flex; flex-direction:column; gap:22px;}
+.pt{font-size:22px; line-height:1.42; color:var(--ink);}
+.pt.sm{font-size:19px; line-height:1.5;}
+.pt b{color:var(--stamp); font-weight:600;}
+.pt strong{font-weight:600;}
+.pt em{font-style:italic;}
+.blockhead{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--forest); margin-bottom:14px;}
+
+.textcols{display:grid; grid-template-columns:1fr 1fr; gap:52px; flex:1; min-height:0; align-content:center; margin-top:20px;}
+.textcols .pt{font-size:21px;}
+
+/* Imagen o grafico dentro de .duo */
+.duo .chart{height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:0;}
+.duo .chart img{max-width:100%; max-height:100%; object-fit:contain; display:block;}
+.duo .chart.framed img{border:1px solid var(--line); filter:sepia(14%) saturate(.9) contrast(1.03);}
+.duo .chart .cred{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink-soft); margin-top:9px; text-align:center; opacity:.85; line-height:1.45;}
+.chart svg{display:block; width:100%; height:auto;}
+.clip{border:1px solid var(--line); background:#fff; padding:10px; box-shadow:0 1px 0 rgba(34,40,31,.06);}
+.clip img{display:block; width:100%; height:auto;}
+
+/* Par de imagenes grandes, casi sin texto */
+.fullpair{flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; justify-items:center; margin-top:10px;}
+.fullpair figure{height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:0; gap:10px;}
+.fullpair img{flex:1 1 auto; min-height:0; max-width:100%; object-fit:contain; display:block; background:#fff; border:1px solid var(--line); box-shadow:0 2px 16px rgba(30,25,15,.12);}
+.fullpair figcaption{flex:0 0 auto; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.06em; color:var(--ink-soft); text-align:center; line-height:1.5;}
+.fullpair figcaption strong{color:var(--ink); font-weight:600;}
+
+/* Dos graficos lado a lado */
+.twochart{flex:1; min-height:0; display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:center; margin-top:14px;}
+.twochart figure{height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:0; gap:8px;}
+.twochart img{flex:1 1 auto; min-height:0; max-width:100%; object-fit:contain; display:block; border:1px solid var(--line); filter:sepia(14%) saturate(.9) contrast(1.03);}
+.twochart .cred{flex:0 0 auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:8px; text-align:center; opacity:.9; line-height:1.5;}
+.twochart .cred strong{color:var(--ink);}
+
+/* Lista de nombres propios */
+.names{list-style:none; display:flex; flex-direction:column; gap:11px;}
+.names li{display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--line); padding-bottom:9px;}
+.names li:last-child{border-bottom:none;}
+.names .nm{font-family:'Fraunces',serif; font-size:34px; font-weight:600; color:var(--stamp); line-height:1; min-width:132px;}
+.names .co{font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.04em; color:var(--ink-soft);}
+
+/* Cifra gigante */
+.fig-n{font-family:'Fraunces',serif; font-weight:600; font-size:150px; line-height:.84; color:var(--stamp); letter-spacing:-.03em; flex-shrink:0;}
+.fig-n.sm{font-size:96px;}
+.fig-n small{display:block; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:400; color:var(--ink-soft); letter-spacing:.14em; text-transform:uppercase; margin-top:18px; line-height:1.55;}
+
+/* Foto y pie grande */
+.photo-cap{font-size:19px; line-height:1.45; color:var(--ink-soft); margin-top:14px; max-width:1050px; flex-shrink:0;}
+.photo-cap strong{color:var(--ink);}
+
+/* Nota / pregunta */
+.note{background:var(--card2); border:1px solid var(--line); border-left:3px solid var(--forest); padding:15px 20px; margin-top:16px; flex-shrink:0;}
+.note .nl{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--forest); margin-bottom:7px;}
+.note p{font-size:15px; line-height:1.6; color:var(--ink-soft);}
+.note p strong{color:var(--ink);}
+.note.red{border-left-color:var(--stamp);} .note.red .nl{color:var(--stamp);}
+
+.ask{background:var(--forest); color:var(--paper); padding:20px 26px; margin-top:16px; border:1px solid var(--forest); flex-shrink:0;}
+.ask .al{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;}
+.ask p{font-family:'Fraunces',serif; font-size:21px; line-height:1.36; font-style:italic;}
+.ask p.plain{font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; font-style:normal; color:rgba(235,230,216,.84); margin-top:9px; line-height:1.55;}
+
+/* Graficos */
+.stage{flex:1; min-height:0; display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top:14px;}
+.stage svg{display:block; max-width:100%; max-height:100%; height:auto;}
+.stage img{display:block; max-width:100%; max-height:100%; object-fit:contain;}
+.stage .shot{height:100%; display:flex; align-items:center; justify-content:center; min-height:0;}
+.stage .shot img{max-height:100%; max-width:min(100%,880px); object-fit:contain; background:#fff; border:1px solid var(--line); box-shadow:0 2px 14px rgba(30,25,15,.10);}
+.cred{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:12px; text-align:center; opacity:.9; line-height:1.5;}
+.gx-lbl{font-family:'IBM Plex Mono',monospace; font-size:11px; fill:var(--ink-soft); letter-spacing:.08em;}
+.gx-sub{font-family:'IBM Plex Mono',monospace; font-size:9.5px; fill:var(--ink-soft); letter-spacing:.04em; opacity:.8;}
+.gx-num{font-family:'Fraunces',serif; font-size:21px; font-weight:600; fill:var(--ink);}
+.gx-num.hi{fill:var(--stamp);}
+
+/* Video */
+.videostage{flex:1; min-height:0; display:flex; align-items:center; justify-content:center; margin-top:16px; gap:38px;}
+.videostage .vbox{height:100%; aspect-ratio:16/9; border:1px solid var(--line); background:#000; flex-shrink:1; min-width:0; position:relative;}
+.videostage video{width:100%; height:100%; display:block; background:#000;}
+.videostage .vbox img{width:100%; height:100%; object-fit:cover; display:block;}
+.videostage .vbox .play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; text-decoration:none; border:none;}
+.videostage .vbox .play span{width:76px; height:76px; border-radius:50%; border:2px solid rgba(244,240,228,.92); background:rgba(18,18,18,.44); color:#F4F0E4; font-size:25px; display:flex; align-items:center; justify-content:center; padding-left:6px; transition:.2s;}
+.videostage .vbox .play:hover span{background:var(--stamp); border-color:var(--stamp);}
+.videostage .vside{max-width:330px;}
+.videostage .vside .qlead{font-family:'Fraunces',serif; font-size:24px; font-style:italic; line-height:1.32; color:var(--ink); border-left:3px solid var(--gold); padding-left:18px;}
+.videostage .vside .qwho{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.08em; color:var(--ink-soft); margin-top:12px; padding-left:21px;}
+.videostage .vside .tcode{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--stamp); margin-top:22px; padding-left:21px;}
+
+/* Comentarios */
+.cmts{background:#17170F; border:1px solid var(--line); padding:20px 20px 14px; display:flex; flex-direction:column; gap:15px;}
+.cmt{display:flex; gap:12px; align-items:flex-start;}
+.cmt .av{width:26px; height:26px; border-radius:50%; background:#3A3A2E; flex-shrink:0; margin-top:2px;}
+.cmt .bod{flex:1; min-width:0;}
+.cmt .usr{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:#8B8B7A;}
+.cmt .txt{font-size:16px; line-height:1.38; color:#E4E0D2; margin-top:3px;}
+.cmt .lk{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:#C2565A; flex-shrink:0; padding-top:16px;}
+.cmts .cap{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.1em; color:#6E6E5E; text-transform:uppercase; border-top:1px solid #33332A; padding-top:12px; line-height:1.5;}
+
+/* Navegacion */
+.nav-btn{position:fixed; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:rgba(244,240,228,.9); color:var(--ink); font-size:19px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:20; transition:.2s;}
+.nav-btn:hover{background:var(--stamp); color:var(--paper); border-color:var(--stamp);}
+#P{left:16px;} #N{right:16px;}
+.progress{position:fixed; top:0; left:0; height:2px; width:0; background:var(--stamp); z-index:30; transition:width .3s ease;}
+
+@media(max-width:900px){
+  /* En angosto el contenido fluye y el folio deja de flotar encima */
+  .slide{padding:34px 20px 24px;}
+  .folio{position:static; margin-top:20px; padding-top:12px; border-top:1px solid var(--line); flex-wrap:wrap;}
+  .divider .folio{border-top-color:rgba(235,230,216,.3);}
+  .dots{display:none;}
+  .content{min-height:0;}
+  .twochart,.fullpair{display:block;}
+  .twochart figure,.fullpair figure{margin-bottom:20px;}
+  h1{font-size:25px;} h2{font-size:22px;} h2.sm{font-size:20px;} h2.xs{font-size:19px;}
+  .divider h2{font-size:26px;} .divider .part-num{font-size:70px;}
+  .duo,.duo.wide,.duo.vert,.textcols,.twochart{display:block; flex:0 0 auto;}
+  .duo>*+*,.textcols>*+*{margin-top:22px;}
+  .stamp{display:none;}
+  /* Imagenes: a ancho completo en vez de encogerse a nada */
+  .duo .chart,.twochart figure,.fullpair figure{height:auto; width:100%;}
+  .duo .chart img,.twochart img,.fullpair img{width:100%; height:auto; max-height:62vh; object-fit:contain;}
+  .duo .chart .clip{width:100%;}
+  .stage,.fullpair{min-height:0;}
+  .stage .shot{height:auto;}
+  .stage img,.stage .shot img{width:100%; height:auto; max-height:62vh; max-width:100%;}
+  .videostage{flex-direction:column; gap:18px;}
+  .videostage .vbox{width:100%; height:auto;}
+  .videostage .vside{max-width:none;}
+  .stage svg{max-height:46vh;}
+  .stage .shot img{max-height:52vh;}
+  .fig-n{font-size:82px;} .fig-n.sm{font-size:62px;}
+  .pt,.duo.tight .pt{font-size:17px;} .textcols .pt{font-size:16px;}
+  .names .nm{font-size:24px; min-width:96px;}
+  .folio{left:20px; right:20px;}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="deck" id="deck">
+
+<!-- ══ 01 · PORTADA ══ -->
+<section class="slide active">
+  <div class="stamp"><svg viewBox="0 0 140 140">
+    <defs><clipPath id="c7"><circle cx="70" cy="70" r="63"/></clipPath>
+    <path id="t7" d="M18,72 A52,52 0 0 1 122,72" fill="none"/>
+    <path id="b7" d="M122,70 A52,52 0 0 1 18,70" fill="none"/></defs>
+    <circle class="ring" cx="70" cy="70" r="63" stroke-width="2.2"/>
+    <circle class="ring" cx="70" cy="70" r="51" stroke-width="1"/>
+    <g clip-path="url(#c7)"><g class="cancel" stroke-width="1.2">
+      <path d="M-5,50 Q35,60 70,50 T145,50"/><path d="M-5,68 Q35,78 70,68 T145,68"/><path d="M-5,86 Q35,96 70,86 T145,86"/>
+    </g></g>
+    <text font-size="10.5"><textPath href="#t7" startOffset="50%" text-anchor="middle">UAI · 22 SEP 2026</textPath></text>
+    <text class="big" font-size="27" x="70" y="79" text-anchor="middle">07</text>
+    <text font-size="10.5"><textPath href="#b7" startOffset="50%" text-anchor="middle">CLASE 7</textPath></text>
+  </svg></div>
+  <div class="content" style="justify-content:center;">
+    <div class="eyebrow"><span class="bar"></span>MGT300 · Sociedad, Cultura y Política · Unidad 2</div>
+    <h1 style="font-size:60px;">¿Quién se queda<br>con la IA?</h1>
+    <h1 style="color:var(--forest); font-size:30px; font-weight:600; margin-top:16px; max-width:940px;">Empleo, reparto y la reacción que ya está en la calle</h1>
+    <div class="meta-strip" style="margin-top:34px;">
+      <div class="meta-item"><div class="ml">La pregunta del bloque</div><div class="mv">Si la IA hace la torta más grande, ¿por qué hay gente en la calle?</div></div>
+      <div class="meta-item"><div class="ml">Después</div><div class="mv">Guía de lectura y Tribuna</div></div>
+      <div class="meta-item"><div class="ml">Imparte</div><div class="mv">Naim Bro</div></div>
+    </div>
+    <p class="src-line" style="margin-top:28px;">Lectura de la semana: Schneier y Sanders, <em>Rewiring Democracy</em>, caps. 33 y 40-42. · Todo el material: <a href="https://naimbro.github.io/ia-democracia-2026/" target="_blank">naimbro.github.io/ia-democracia-2026</a></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 01</span><span class="dots"></span><span>MGT300 · SOCIEDAD, CULTURA Y POLÍTICA</span></div>
+</section>
+
+<!-- ══ 02 · DIVISOR I ══ -->
+<section class="slide divider">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Parte I</div>
+    <div class="part-num">01</div>
+    <h2>El shock:<br>¿cuántos empleos?</h2>
+    <p class="sub">La discusión pública empieza acá, y es la que peor está planteada. Vamos a ver la predicción que la abrió y lo que los datos muestran hasta este mes. Al final, la pregunta va a haber cambiado.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 02</span><span class="dots"></span><span>EL SHOCK</span></div>
+</section>
+
+<!-- ══ 03 · LA VALLA Y LA PORTADA ══ (lámina para hablar, sin texto proyectado)
+
+     Notas para decir en voz, que a propósito NO están en la lámina:
+
+     · Artisan vende agentes de IA que reemplazan vendedores. Fíjense en lo que
+       eligieron decir: no «más productividad» ni «mejores herramientas», sino
+       «stop hiring humans». Es el eslogan que un crítico habría inventado para
+       acusarlos, y lo pagaron ellos.
+     · El ensayo del NYT es de Steinberger, el mismo de la lámina siguiente.
+       Su tesis: quienes lanzan las advertencias más ominosas son los que venden
+       la tecnología — salvo que asustar sea el producto.
+     · Toda la Parte III de hoy empieza con gente que vio cosas como estas dos.
+-->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Cómo se cuenta esto afuera</div>
+    <div class="fullpair">
+      <figure>
+        <img src="img/mgt300_clase7/artisan-stop-hiring-humans.png" alt="Valla publicitaria LED vertical en Bayfront Park, Miami. Muestra el rostro de una mujer generado por computador y el texto STOP HIRING HUMANS, y debajo, en un recuadro, The Era of AI Employees Is Here, con la marca Artisan">
+        <figcaption><strong>Artisan</strong> · Bayfront Park, Miami</figcaption>
+      </figure>
+      <figure>
+        <img src="img/mgt300_clase7/nyt-mass-hysteria.png" alt="Portada del ensayo de opinión de The New York Times del 5 de marzo de 2026, titulado Mass Hysteria. Thousands of Jobs Lost. Just How Bad Is It Going to Get?, con una ilustración de Erik Carter sobre fondo rojo: la silueta pixelada y desintegrándose de un oficinista con maletín">
+        <figcaption><strong>The New York Times</strong> · 5 de marzo de 2026 · ilustración de Erik Carter</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 03</span><span class="dots"></span><span>LA VALLA Y LA PORTADA</span></div>
+</section>
+
+<!-- ══ 04 · LA PREDICCIÓN ══ (IA y Democracia · Semana 3, diapo 02) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Cómo empezó la discusión</div>
+    <h2>La predicción que partió el debate</h2>
+    <div class="duo wide">
+      <div class="chart framed">
+        <img src="img/mgt300_clase7/amodei.jpg" alt="Retrato de Dario Amodei">
+        <p class="cred">Dario Amodei · foto TechCrunch, CC BY 2.0, vía Wikimedia Commons</p>
+      </div>
+      <div class="pts">
+        <p class="pt"><b>Dario Amodei (Anthropic):</b> desempleo de <strong>10–20%</strong> en cuello blanco en cinco años, y hasta la mitad de los empleos de entrada eliminados.</p>
+        <p class="pt"><b>Bill Gates:</b> «la gente no será necesaria para casi nada».</p>
+        <p class="pt"><b>Lo notable</b> — y es la observación de Steinberger en el NYT —: quienes lanzan las advertencias más ominosas son <strong>los que venden la tecnología</strong>. Cuesta ver cómo asustar al público sirve a sus intereses, <strong>salvo que asustar sea el producto</strong>.</p>
+      </div>
+    </div>
+    <p class="src-line">Fuentes: <a href="https://drive.google.com/file/d/1sjKbS_dY4sdbzIg3BXCl3J_mvioYjr_4/view?usp=sharing" target="_blank">The Economist, «The jobs apocalypse: a (very) short history»</a> (14 may 2026) · <a href="https://www.nytimes.com/2026/03/05/opinion/ai-jobs-white-collar-apocalpyse.html" target="_blank">Steinberger, NYT</a> · <a class="pdf" href="https://drive.google.com/file/d/1PD3jDr9hDh2oauZmQscwzXeuZWUsKvtR/view?usp=sharing" target="_blank">PDF</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 04</span><span class="dots"></span><span>LA PREDICCIÓN</span></div>
+</section>
+
+<!-- ══ 04 · MUSK · CLIP ══ (Semana 3, diapo 03) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Elon Musk con <em>The Economist</em> · 29 jul 2026 · clip de 18 segundos</div>
+    <h2 class="sm">«Cuesta imaginar que los chimpancés estén a cargo»</h2>
+    <div class="videostage">
+      <div class="vbox">
+        <video controls preload="metadata" playsinline poster="media/mgt300_clase7/musk-chimpances.jpg">
+          <source src="media/mgt300_clase7/musk-chimpances.mp4" type="video/mp4">
+          <a href="https://www.youtube.com/watch?v=XuoqKYxDHVc&amp;t=393s" target="_blank">Ver el fragmento en YouTube</a>
+        </video>
+      </div>
+      <div class="vside">
+        <p class="qlead">«Entonces, desglosemos eso. Usted está seguro de que los humanos ya no estarán en control dentro de diez años.»</p>
+        <p class="qwho">— La pregunta que antecede al clip</p>
+        <p class="tcode">▶ 06:33 – 06:51</p>
+      </div>
+    </div>
+    <p class="src-line">Respuesta de Musk: «Creo que es improbable [que lo estén]. De la misma manera que, si la diferencia de inteligencia entre la IA y los humanos es mucho mayor que la que hay entre la IA y los chimpancés, cuesta imaginar que los chimpancés estuvieran a cargo». · <a href="https://www.youtube.com/watch?v=XuoqKYxDHVc&amp;t=393s" target="_blank">Entrevista completa (85 min), The Economist</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 05</span><span class="dots"></span><span>MUSK · EL CLIP</span></div>
+</section>
+
+<!-- ══ 06 · CANARIES ══ (Semana 3, diapo 05) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Brynjolfsson, Chandar &amp; Chen · Stanford Digital Economy Lab</div>
+    <h2>Quién absorbe el shock: asimetría generacional</h2>
+    <div class="duo">
+      <div class="pts">
+        <p class="pt"><b>Datos:</b> registros de nómina de ADP, millones de trabajadores, hasta septiembre de 2025. No es una encuesta.</p>
+        <p class="pt"><b>Hallazgo:</b> los de 22 a 25 en oficios expuestos caen <strong>16% relativo</strong>; los mayores siguen estables o creciendo <strong>6–9%</strong>.</p>
+        <p class="pt"><b>Mecanismo:</b> la IA sustituye lo codificable (junior) y complementa lo tácito (senior).</p>
+      </div>
+      <div class="chart"><img src="img/mgt300_clase7/bry-devs.png" alt="Empleo normalizado por grupo etario en desarrollo de software: sólo el grupo de 22 a 25 años cae desde fines de 2022"></div>
+    </div>
+    <p class="src-line">Fuente: <a href="https://digitaleconomy.stanford.edu/publications/canaries-in-the-coal-mine/" target="_blank">«Canaries in the Coal Mine?»</a> (nov 2025). La línea punteada marca fines de 2022 — la irrupción de ChatGPT. <strong>Y a ustedes en particular:</strong> egresar en un mal año deja brecha salarial por <a href="https://www.nytimes.com/2026/06/05/business/college-graduates-job-market.html" target="_blank">quince años</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 06</span><span class="dots"></span><span>QUIÉN ABSORBE EL SHOCK</span></div>
+</section>
+
+<!-- ══ 07 · EL GIRO ══ (Semana 7, diapo 23) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El giro · el mismo diario, la misma sección, cuatro meses después</div>
+    <h2 class="xs">En mayo: «no tendría precedentes».<br>En septiembre: «se pospuso».</h2>
+    <div class="twochart">
+      <figure>
+        <img src="img/mgt300_clase7/eco-jobs-apocalypse-mayo.png" alt="Portada del artículo de The Economist del 14 de mayo de 2026, sección Finance and economics, titulado The jobs apocalypse: a (very) short history, con la bajada Mass unemployment induced by AI would be unprecedented y una ilustración de Katie Martin: una silla de oficina siendo tragada por una ola gigante azul sobre fondo amarillo">
+        <figcaption class="cred"><strong>14 de mayo de 2026.</strong> «El desempleo masivo inducido por la IA no tendría precedentes.»</figcaption>
+      </figure>
+      <figure>
+        <img src="img/mgt300_clase7/eco-jobs-boom-portada.png" alt="Portada del artículo de The Economist del 4 de septiembre de 2026, sección Finance and economics, titulado The jobs apocalypse is postponed. An AI jobs boom is here, con la bajada: los efectos iniciales de la tecnología sobre el empleo se ven positivos">
+        <figcaption class="cred"><strong>4 de septiembre de 2026.</strong> «Los efectos iniciales sobre el empleo se ven positivos.»</figcaption>
+      </figure>
+    </div>
+    <p class="src-line"><a href="https://drive.google.com/file/d/1sjKbS_dY4sdbzIg3BXCl3J_mvioYjr_4/view?usp=sharing" target="_blank">«The jobs apocalypse: a (very) short history»</a> y <a href="https://www.economist.com/finance-and-economics/2026/09/04/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here" target="_blank">«The jobs apocalypse is postponed»</a>, ilustraciones de Katie Martin. · <strong>No cambió la tecnología en esos cuatro meses: llegaron los datos.</strong> Y conviene anotar el verbo: <em>postponed</em>, no <em>cancelled</em>. · <strong>Lección de método:</strong> si su diagnóstico sobre la IA no ha cambiado en un año, probablemente no está mirando datos.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 07</span><span class="dots"></span><span>EL GIRO</span></div>
+</section>
+
+<!-- ══ 08 · EL APOCALIPSIS SE POSPUSO ══ (Semana 7, diapo 24) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Y mientras tanto · <em>The Economist</em>, 4 de septiembre de 2026</div>
+    <h2 class="xs">El trabajo cognitivo no fue el primero en caer.<br>Por ahora es el que más crece.</h2>
+    <div class="stage">
+      <div class="shot"><img src="img/mgt300_clase7/eco-g2-stem.png" alt="Gráfico de áreas apiladas de The Economist: empleos de cuello blanco relacionados con IA en Estados Unidos por sobre la tendencia, en miles, entre 2023 y 2026. Suman unos 730 mil e incluyen desarrolladores de software, matemáticas y ciencia de datos, analistas de seguridad informática, ingenieros y otras ocupaciones de computación. La banda de desarrolladores de software está bajo cero hasta 2025"></div>
+    </div>
+    <p class="src-line">La IA lleva creados <strong>cerca de un millón de empleos</strong> en EE.UU., contra unos <strong>200 mil despidos</strong> que se le atribuyen desde mediados de 2023. El gráfico muestra <strong>730 mil por sobre la tendencia</strong> en software, matemáticas y ciencia de datos. · <strong>Ojo con el eje:</strong> no es empleo total, es el efectivo <em>menos</em> el que habría habido si el sector seguía la tendencia general. Y miren la banda roja: los desarrolladores estuvieron <strong>bajo cero hasta 2025</strong>. · <a href="https://www.economist.com/finance-and-economics/2026/09/04/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here" target="_blank">«The jobs apocalypse is postponed»</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 08</span><span class="dots"></span><span>EL APOCALIPSIS SE POSPUSO</span></div>
+</section>
+
+<!-- ══ 08 · QUIÉN SUBE Y QUIÉN CAE ══ (Semana 7, diapo 25) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>La pregunta mal planteada · no es «cuántos empleos», es «cuáles»</div>
+    <h2 class="xs">No cae el trabajo cognitivo.<br>Cae la tarea rutinaria.</h2>
+    <div class="stage">
+      <div class="shot"><img src="img/mgt300_clase7/eco-g3-diferencial.png" alt="Gráfico de barras de The Economist: cambio porcentual del empleo en Estados Unidos entre mayo de 2023 y 2025 por ocupación. Suben científicos de datos cerca de 35 por ciento, analistas financieros, paralegales, analistas de seguridad informática, analistas de mercado y abogados. Bajan diseñadores gráficos, contadores, representantes de servicio al cliente y digitadores"></div>
+    </div>
+    <p class="src-line"><strong>Los paralegales suben 11% y los abogados suben</strong>, contra un promedio nacional de 2,5%. Los que caen son los de tareas rutinarias: digitadores, servicio al cliente, secretarias — <strong>y contadores y diseñadores gráficos</strong>. Fuente: BLS vía <em>The Economist</em>. · <strong>Retengan esto:</strong> el corte no pasa entre «profesionales» y «no profesionales». Pasa entre tareas que se pueden escribir como procedimiento y tareas que no.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 09</span><span class="dots"></span><span>QUIÉN SUBE</span></div>
+</section>
+
+<!-- ══ 11 · DIVISOR II ══ -->
+<section class="slide divider">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Parte II</div>
+    <div class="part-num">02</div>
+    <h2>La reacción:<br>del sondeo a la calle.</h2>
+    <p class="sub">Los datos todavía no deciden — pero la gente no está esperando a que decidan. El rechazo ya existe, ya se mide y ya bloquea proyectos. Vamos a verlo de lo más tibio a lo más violento: la encuesta, el veto municipal, el movimiento organizado — y la bomba molotov.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 10</span><span class="dots"></span><span>LA REACCIÓN</span></div>
+</section>
+
+<!-- ══ 18 · LA ENCUESTA ══ (Semana 3, diapos 06 y 07) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>La opinión pública · Pew Research Center y Blue Rose Research</div>
+    <h2 class="sm">Impopular, todavía no prioritaria — pero es la que más sube</h2>
+    <div class="duo vert">
+      <div class="pts">
+        <p class="pt"><b>Hoy:</b> <strong>52%</strong> está más preocupado que entusiasmado; sólo <strong>9%</strong> al revés.</p>
+        <p class="pt"><b>Tendencia:</b> de <strong>37% en 2021 a 52% en 2026</strong> — con el salto en <strong>2023</strong>, el año de ChatGPT. Desde ahí, meseta alta: 52, 51, 50, 52.</p>
+        <p class="pt"><b>Saliencia:</b> de 39 temas medidos, la IA va <strong>29ª en importancia</strong> — y <strong>1ª en cuánto subió</strong> en un año. Impopular pero todavía no decisiva en el voto.</p>
+        <p class="pt"><b>Brecha experto/público:</b> 56% de los expertos espera un impacto positivo, contra <strong>17% del público</strong>.</p>
+      </div>
+      <div class="chart"><img src="img/mgt300_clase7/pew-preocupacion.png" alt="Gráfico de barras apiladas de Pew Research Center, 2021 a 2026: el porcentaje de adultos estadounidenses más preocupados que entusiasmados por el uso creciente de la IA pasa de 37 a 52 por ciento, mientras los más entusiasmados bajan de 18 a 9 por ciento"></div>
+    </div>
+    <p class="src-line">Fuentes: <a href="https://www.pewresearch.org/chart/americans-have-grown-more-concerned-about-ai-over-time/" target="_blank">Pew Research Center</a>, encuesta del 22 al 28 de junio de 2026 y <a href="https://data.blueroseresearch.org/hubfs/%5BBRR%5D%20AI%20Is%20Colliding%20With%20America%E2%80%99s%20Affordability%20Crisis-1.pdf" target="_blank">Blue Rose Research</a> (2026). · Y el miedo es sobre los demás: <strong>79% teme por los jóvenes, sólo 56% por su propia familia</strong>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 11</span><span class="dots"></span><span>LA ENCUESTA</span></div>
+</section>
+
+<!-- ══ 12 · LO QUE PASÓ DESPUÉS ══
+
+     Para decir, no está en la lámina:
+     · Julio: un enjambre de unos 700 agentes de OpenAI escapó de su entorno de
+       prueba y entró a la infraestructura de Hugging Face; reconstruyeron unas
+       17.600 acciones del atacante entre el 9 y el 13 de julio, y hubo que
+       rehacer cerca de un tercio de la infraestructura. Los agentes llegaron a
+       montar tableros de mensajes para coordinar la fuga. OpenAI publicó un
+       informe de 37 páginas en agosto.
+     · Septiembre: Jacob Coxon, investigador de seguridad de Anthropic, renuncia
+       en X — «van directo a una superinteligencia que se mejora a sí misma,
+       apostando con nuestras vidas» — y lo entrevista Anderson Cooper en CNN.
+       Su post superó los 76 millones de vistas en menos de un día. Evan
+       Hubinger, que dirige el equipo de stress-testing de alineamiento en
+       Anthropic, le dio la razón en público y puso sobre 10% la probabilidad de
+       extinción humana por IA en la próxima década.
+     · Moraleja para la lámina anterior: esa encuesta hoy mediría más, no menos.
+-->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>La encuesta se tomó entre el 22 y el 28 de junio · esto pasó después</div>
+    <h2 class="xs">Junio fue hace tres meses.</h2>
+    <div class="fullpair">
+      <figure>
+        <img src="img/mgt300_clase7/openai-hack-nbc.jpg" alt="Pantalla con el logo de OpenAI, fotografía que ilustra la nota de NBC News sobre el informe del ataque de agentes de OpenAI a Hugging Face">
+        <figcaption><strong>Julio.</strong> «OpenAI agents hacked Hugging Face in 700-strong swarm, tried to cover tracks» · <em>NBC News</em></figcaption>
+      </figure>
+      <figure>
+        <img src="img/mgt300_clase7/coxon-nbc.jpg" alt="Jacob Coxon, investigador de seguridad de Anthropic, con audífonos durante una entrevista por videollamada">
+        <figcaption><strong>Septiembre.</strong> Jacob Coxon renuncia a Anthropic y va a CNN: «apostando con nuestras vidas» · <em>NBC News</em></figcaption>
+      </figure>
+    </div>
+    <p class="src-line">Unos <strong>700 agentes</strong> de OpenAI entraron a la infraestructura de Hugging Face y trataron de borrar sus huellas; un tercio hubo que reconstruirlo. Dos meses después renuncia un investigador de seguridad de Anthropic y <strong>su jefe de stress-testing le da la razón</strong>. · <strong>La flecha apunta a más preocupación, no a menos.</strong></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 12</span><span class="dots"></span><span>LO QUE PASÓ DESPUÉS</span></div>
+</section>
+
+<!-- ══ 19 · INSTITUCIONES ══ (Semana 3, diapo 08) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Por qué en unos países más que en otros · Paul Kedrosky (MIT), NYT</div>
+    <h2>En EE.UU. hay más malestar. ¿Por qué?</h2>
+    <div class="duo wide tight">
+      <div class="pts">
+        <p class="pt"><b>El hecho:</b> sólo <strong>33%</strong> de los estadounidenses dice que la IA lo entusiasma — contra <strong>77%</strong> en Tailandia, <strong>76%</strong> en Indonesia y <strong>63%</strong> en México.</p>
+        <p class="pt"><b>No es cultura ni desinformación:</b> el pesimismo no correlaciona con consumo de medios, educación ni polarización. <strong>Los atraviesa a todos.</strong></p>
+        <p class="pt"><b>Correlaciona con la caída:</b> el seguro de cesantía conserva <strong>67%</strong> del sueldo en Noruega, <strong>66%</strong> en Francia, <strong>60%</strong> en Alemania. <strong>Para EE.UU. no hay cifra equivalente, y ése es el punto:</strong> ahí no se conserva una fracción del sueldo — se pierde el ingreso y, con él, <strong>el seguro de salud</strong>, muchas veces para toda la familia.</p>
+        <p class="pt"><b>Y en Chile:</b> donde se trabaja sin contrato, la IA parece <strong>una escalera</strong>; donde el mercado es formal, <strong>una emboscada</strong>. ¿De qué lado estamos?</p>
+      </div>
+      <div class="chart"><div class="clip"><img src="img/mgt300_clase7/nyt-kedrosky-titular.png" alt="Titular del artículo de Paul Kedrosky en The New York Times"></div></div>
+    </div>
+    <p class="src-line">Fuentes: <a href="https://www.nytimes.com/2026/06/25/opinion/ai-americans-pessimism.html" target="_blank">NYT, «There's One Clear Reason Americans Are Gloomy About A.I.»</a> (25 jun 2026) y el <a href="https://www.ipsos.com/en/global-attitudes-ai-2026-wonder-vs-worry-divide-deepens" target="_blank">Ipsos AI Monitor 2026</a>: 23.532 adultos en 32 países, marzo-abril de 2026. Para el caso chileno: <a href="https://futurodeltrabajo.cenia.cl/" target="_blank">CENIA</a> y <a href="https://drive.google.com/file/d/1ZrmCOIUl5sb4e-NE19o4Fmx35TuR-Q5L/view?usp=sharing" target="_blank">Egaña (2026)</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 13</span><span class="dots"></span><span>INSTITUCIONES</span></div>
+</section>
+
+<!-- ══ 21 · DEL SONDEO AL VETO ══ (Semana 3, diapos 13 y 14) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Cuando la opinión pública se vuelve poder de bloqueo</div>
+    <h2>Del sondeo al veto</h2>
+    <div class="duo wide tight">
+      <div class="pts">
+        <p class="pt"><b>US$42 mil millones</b> en centros de datos cancelados por oposición local <strong>en el primer trimestre de 2026</strong> — al menos 20 proyectos, 3,5 GW. En tres años se han cancelado 85 mil millones: <strong>la mitad cayó en esos tres meses</strong>.</p>
+        <p class="pt"><b>Y no es «no en mi patio».</b> En Ohio se oponen <strong>75% de los demócratas y 67% de los republicanos</strong>; quienes sólo <em>han oído hablar</em> de un centro de datos se oponen tanto como quienes viven a cinco millas.</p>
+      </div>
+      <div class="chart framed">
+        <img src="img/mgt300_clase7/protesta-data-center.jpg" alt="Pancarta NO DATA CENTER per la difesa della terra, ambiente e salute, en una plaza italiana">
+        <p class="cred">Italia, no EE.UU.: el rechazo ya es internacional · foto Lapalmauz, CC BY-SA 4.0, vía Wikimedia Commons</p>
+      </div>
+    </div>
+    <p class="src-line">Un senador estatal de Ohio, Shane Wilkin: «les explico que no subirán las cuentas de luz y que no pueden contaminar el agua. Y me responden: <em>bueno, simplemente no lo quiero</em>». <strong>Si el dato correcto no mueve al vecino, lo que se está votando no es un centro de datos: es la tecnología entera.</strong> · <a href="https://www.economist.com/business/2026/06/23/americas-data-centre-backlash-puts-the-ai-boom-at-risk" target="_blank">The Economist, 23 jun 2026</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 14</span><span class="dots"></span><span>EL VETO</span></div>
+</section>
+
+<!-- ══ POPULISMO DE LA IA ══ (Semana 5, diapo 11)
+
+     Para decir, ya no está en la lámina:
+     · La coalición inesperada: gente de la seguridad de la IA en San Francisco
+       llega al mismo lugar que populistas de izquierda y de derecha, por caminos
+       completamente distintos. Las moratorias a los centros de datos son el
+       punto de encuentro.
+-->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El rechazo se organiza · Jasmine Sun</div>
+    <h2>Populismo de la IA</h2>
+    <div class="pts" style="flex:1; min-height:0; justify-content:center; gap:34px; max-width:1040px; margin-top:10px;">
+        <p class="pt" style="font-size:27px; line-height:1.4;">No una tecnología más: <strong>un proyecto político de las élites al que hay que resistir</strong>.</p>
+        <p class="pt" style="font-size:27px; line-height:1.4;">Lo que se rechaza no son los modelos. Es <strong>«la capacidad de un grupo pequeño de milmillonarios de imponer su visión del mundo a todos los demás, sin su consentimiento»</strong>.</p>
+      </div>
+    <p class="src-line">Fuente: <a href="https://www.nytimes.com/2026/08/04/opinion/ezra-klein-podcast-jasmine-sun.html" target="_blank">Ezra Klein conversa con Jasmine Sun, «The A.I. Giants Weren't Prepared for This»</a> (4 ago 2026) y su ensayo <a href="https://jasmi.news/p/warning-shots" target="_blank">«Warning Shots»</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 15</span><span class="dots"></span><span>POPULISMO DE IA</span></div>
+</section>
+
+<!-- ══ 23 · EL ATAQUE ══ (Semana 5, diapo 12) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El borde del backlash · <em>The Guardian</em>, 18 de abril de 2026</div>
+    <h2 class="sm">Lo inquietante no es el ataque. Es la sección de comentarios.</h2>
+    <div class="duo wide">
+      <div class="chart framed">
+        <img src="img/mgt300_clase7/altman-guardian.jpg" alt="Sam Altman, de traje oscuro y corbata granate, hablando en un escenario; la fotografía que encabeza el artículo de The Guardian sobre el ataque a su casa">
+        <p class="cred"><em>The Guardian</em>, 18 de abril de 2026 · «How a fiery attack on Sam Altman&rsquo;s home unfolded»</p>
+      </div>
+      <div class="cmts">
+        <div class="cmt">
+          <div class="av"></div>
+          <div class="bod"><div class="usr">mick.e.dz · 1d</div><div class="txt">I hope that Molotov is okay!</div></div>
+          <div class="lk">4.631</div>
+        </div>
+        <div class="cmt">
+          <div class="av"></div>
+          <div class="bod"><div class="usr">lupe__g · 1d</div><div class="txt">Where can we support their bail fund? ✨</div></div>
+          <div class="lk">3.357</div>
+        </div>
+        <div class="cmt">
+          <div class="av"></div>
+          <div class="bod"><div class="usr">holyhipbones · 1d</div><div class="txt">i love how collectively fed up the working class is</div></div>
+          <div class="lk">423</div>
+        </div>
+        <div class="cap">Comentarios en redes sociales bajo la nota del ataque. Se omite un cuarto comentario que señalaba cómo ubicar el domicilio.</div>
+      </div>
+    </div>
+    <p class="src-line"><strong>10 de abril, San Francisco:</strong> una bomba molotov contra la casa de Altman. Dos horas después lo detienen entrando a OpenAI con querósen y un manifiesto que llamaba a matar a los CEO del sector. Daniel Moreno-Gama, 20 años. · <a href="https://www.theguardian.com/technology/2026/apr/18/sam-altman-house-attack-ai" target="_blank">The Guardian</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 16</span><span class="dots"></span><span>EL ATAQUE</span></div>
+</section>
+
+<!-- ══ 25 · CIERRE · EL CHINA SHOCK ══ (Semana 3, diapo 16) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Para cerrar la Parte II · el precedente que dice cuánto basta</div>
+    <h2>Un shock chico puede ser un terremoto político</h2>
+    <div class="duo wide tight">
+      <div class="pts">
+        <p class="pt"><b>2 millones</b> de empleos manufactureros perdidos por el «China shock» entre 1999 y 2011. En términos agregados, <strong>el equivalente a un mes típico de despidos</strong> en EE.UU.</p>
+        <p class="pt"><b>Y sin embargo</b> contribuyó a llevar a <strong>Trump a la Casa Blanca</strong> y a los aranceles más altos desde los años treinta.</p>
+        <p class="pt"><b>Ahora sería mayor:</b> el cuello y corbata amenazado por la IA tiene <strong>más peso político</strong> que el obrero industrial de los noventa.</p>
+        <p class="pt" style="border-top:1px solid var(--line); padding-top:16px;">Es decir: <strong>la cuenta de empleos podía terminar empatada y todo esto ocurrir igual</strong>. No hace falta un apocalipsis del empleo para que la política cambie de forma.</p>
+      </div>
+      <div class="chart framed">
+        <img src="img/mgt300_clase7/trump-rally.jpg" alt="Donald Trump hablando en un acto de campaña ante una multitud con carteles">
+        <p class="cred">Foto: Gage Skidmore, CC BY-SA 2.0, vía Wikimedia Commons</p>
+      </div>
+    </div>
+    <div class="ask">
+      <div class="al">Y la pregunta que abre la última parte</div>
+      <p>Si lo que se rechaza no es la tecnología sino quién la controla, entonces hay que ir a ver quién la controla.</p>
+      <p class="plain">Esa acusación —un grupo muy pequeño decide por todos— es verificable. Vamos a verificarla.</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 17</span><span class="dots"></span><span>EL CHINA SHOCK</span></div>
+</section>
+
+<!-- ══ 20 · DIVISOR III ══ -->
+<section class="slide divider">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Parte III</div>
+    <div class="part-num">03</div>
+    <h2>El reparto:<br>¿de quién es la renta?</h2>
+    <p class="sub">La acusación que acabamos de escuchar en la calle no es «la tecnología es mala». Es que un grupo muy pequeño está decidiendo por todos los demás. Eso último no es una impresión: es una serie, tiene autor y tiene método. Vamos a verificarla.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 18</span><span class="dots"></span><span>EL REPARTO</span></div>
+</section>
+
+<!-- ══ 11 · LOS CINCO ══ (Semana 5, diapo 04) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Quiénes son · <em>The Economist</em> · 16 de abril de 2026</div>
+    <h2>Dario, Demis, Elon, Mark y Sam</h2>
+    <div class="duo wide">
+      <div class="pts" style="gap:16px;">
+        <ul class="names">
+          <li><span class="nm">Dario</span><span class="co">Amodei · Anthropic</span></li>
+          <li><span class="nm">Demis</span><span class="co">Hassabis · Google DeepMind</span></li>
+          <li><span class="nm">Elon</span><span class="co">Musk · xAI</span></li>
+          <li><span class="nm">Mark</span><span class="co">Zuckerberg · Meta</span></li>
+          <li><span class="nm">Sam</span><span class="co">Altman · OpenAI</span></li>
+        </ul>
+        <p class="pt sm" style="border-top:1px solid var(--line); padding-top:15px;">Cinco hombres <strong>tan conocidos que basta el nombre de pila</strong>. La tesis del artículo es que sostienen en sus manos <strong>el destino de Occidente</strong> — y la pregunta que abre es si llegarán a ser tan poderosos como Ford o Rockefeller.</p>
+      </div>
+      <div class="chart framed">
+        <img src="img/mgt300_clase7/eco-cinco-hombres-ia.jpg" alt="Fotomontaje en sepia al estilo de un retrato de estudio del siglo XIX: cinco hombres con sombrero de copa y levita posan juntos, y dos de ellos, sentados, sostienen computadores portátiles sobre las rodillas">
+        <p class="cred">Ilustración de <em>The Economist</em>: los cinco jefes de la IA retratados como barones ladrones de la Edad Dorada</p>
+      </div>
+    </div>
+    <p class="src-line">Fuente: <em>The Economist</em>, «Could AI&rsquo;s leading men become as powerful as Ford or Rockefeller?» (16 abril 2026). De la misma portada sale el editorial <a href="https://www.economist.com/leaders/2026/04/16/america-wakes-up-to-ais-dangerous-power" target="_blank">«America wakes up to AI&rsquo;s dangerous power»</a>, que abre preguntando si un puñado de hombres debe custodiar la tecnología más potente del mundo.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 19</span><span class="dots"></span><span>LOS CINCO</span></div>
+</section>
+
+<!-- ══ 12 · ZUCMAN ══ (Semana 5, diapo 05) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Gabriel Zucman · Observatorio Fiscal Internacional</div>
+    <h2>Un quinto del producto mundial, en unas 3.000 personas</h2>
+    <div class="duo wide">
+      <div class="pts">
+        <div class="fig-n sm">20,1<small>billones de US$ · riqueza total<br>de los milmillonarios del mundo</small></div>
+        <p class="pt" style="border-top:1px solid var(--line); padding-top:16px;"><b>Equivale a</b> casi <strong>un quinto de todo lo que produce el mundo en un año</strong>. A comienzos de los noventa era <strong>cerca del 3%</strong>. Subió 40% en dos años, y un tercio de esos milmillonarios vive en EE.UU.</p>
+      </div>
+      <div class="chart framed">
+        <img src="img/mgt300_clase7/nyt-riqueza-share-pib.png" alt="Gráfico del New York Times: la riqueza del 0,0001% más rico como proporción del PIB mundial sube de cerca de 3% a comienzos de los años noventa a cerca de 17% en 2026">
+        <p class="cred">Riqueza del 0,0001% más rico como proporción del PIB mundial · gráfico de <em>The New York Times</em> sobre la serie Blanchet, Mouillet, Saez y Zucman</p>
+      </div>
+    </div>
+    <p class="src-line">Fuente: <a href="https://www.nytimes.com/2026/06/09/business/economy/billionaires-musk-gabriel-zucman.html" target="_blank">The New York Times, «Billionaires' Billions Are Increasing Faster Than Ever»</a> (9 jun 2026) · <a class="pdf" href="https://drive.google.com/file/d/1hh1nvZpnk6PTFtBakAqUAcmpIFf2YmO_/view?usp=sharing" target="_blank">PDF</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 20</span><span class="dots"></span><span>ZUCMAN</span></div>
+</section>
+
+<!-- ══ 13 · EL CLIP DE MUSK Y BEDDOES ══ (Semana 5, diapo 02) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span><em>The Economist</em> entrevista a Elon Musk · 23 de julio de 2026</div>
+    <h2>«¿Y cuándo no fue así?»</h2>
+    <div class="videostage">
+      <div class="vbox">
+        <img src="img/mgt300_clase7/musk-beddoes-poder.jpg" alt="Zanny Minton Beddoes, directora de The Economist, sentada frente a un micrófono de la revista mientras formula una pregunta durante la entrevista a Elon Musk">
+        <a class="play" href="https://www.youtube.com/watch?v=XuoqKYxDHVc&amp;t=2464s" target="_blank" title="Reproducir el fragmento en YouTube (41:04)"><span>▶</span></a>
+      </div>
+      <div class="vside">
+        <p class="qlead">«La dirección del mundo la está definiendo un número muy pequeño de personas increíblemente poderosas. Y usted está justo en lo más alto de esa lista.»</p>
+        <p class="qwho">— Zanny Minton Beddoes, directora de <em>The Economist</em></p>
+        <p class="tcode">▶ 41:04 – 41:37</p>
+      </div>
+    </div>
+    <p class="src-line"><strong>Él responde:</strong> «¿Pero en qué se diferencia esto de…? Estoy de acuerdo. Creo que siempre fue así. <strong>¿Cuándo no lo fue?</strong>». <strong>Ella:</strong> «Siempre fue así — pero, como usted mismo lo ha descrito, es un cambio extraordinariamente rápido». <strong>Ese desacuerdo es el bloque de hoy.</strong> YouTube rotula el tramo como el capítulo <em>«¿Debería un solo hombre tener tanto poder?»</em> · <a href="https://www.youtube.com/watch?v=XuoqKYxDHVc&amp;t=2464s" target="_blank">Entrevista completa (85 min)</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 21</span><span class="dots"></span><span>EL CLIP</span></div>
+</section>
+
+<!-- ══ 14 · VÍA 1 · PAY-TO-PLAY ══ (Semana 5, diapo 08) -->
+<!-- ══ VÍA 1 · LA POLÍTICA ══
+
+     Para decir, ya no está en la lámina:
+     · Y no se corrige solo: como la mayor parte de esa riqueza escapa a los
+       impuestos, se perpetúa entre generaciones. Zucman y Saez la llaman
+       una aristocracia que se autoperpetúa.
+-->
+<section class="slide">
+  <div class="content" style="justify-content:center;">
+    <div class="eyebrow"><span class="bar"></span>Vía 1 · el dinero entra a la política</div>
+    <h2 class="xs">Tener plata no es tener poder.<br>Falta el mecanismo.</h2>
+    <div class="bigquote" style="flex:0 0 auto; margin:26px 0 8px;">
+      <p>«El problema no es cómo se ganan los miles de millones, sino <strong style="font-weight:600;">cómo ese dinero distorsiona la política</strong>.»</p>
+      <cite>David Autor, MIT — que concede, antes de eso, que muchos de estos empresarios crearon valor real</cite>
+    </div>
+    <p class="src-line">Fuente: <a href="https://www.nytimes.com/2026/06/09/business/economy/billionaires-musk-gabriel-zucman.html" target="_blank">NYT</a> (9 jun 2026).</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 22</span><span class="dots"></span><span>VÍA 1 · LA POLÍTICA</span></div>
+</section>
+
+<!-- ══ 15 · VÍA 2 · LA DONACIÓN ══ (Semana 5, diapo 09) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Vía 2 · la filantropía — <em>The Economist</em>, 13 ago 2026</div>
+    <h2 class="sm">430 mil millones para regalar, y nadie a quién rendirle cuentas</h2>
+    <div class="duo">
+      <div class="pts">
+        <p class="pt"><b>La cifra:</b> las salidas a bolsa de OpenAI y Anthropic podrían liberar <strong>430 mil millones de dólares</strong> en donaciones: <strong>dos Planes Marshall</strong>.</p>
+        <p class="pt"><b>Quién decide:</b> la Fundación OpenAI, que posee el 26% de las acciones de la empresa, controla <strong>más de la mitad</strong> de ese total. Los siete cofundadores de Anthropic prometieron dar el 80% de su patrimonio.</p>
+        <p class="pt"><b>Y el contexto:</b> llega <strong>mientras caen los presupuestos de ayuda oficial</strong> — y el propio Musk desmanteló USAID.</p>
+      </div>
+      <div class="chart">
+        <svg viewBox="0 0 420 312" role="img" aria-label="Olas de filantropía como porcentaje del PIB: industriales 1,9 por ciento, internet 0,8 por ciento, IA 1,3 por ciento proyectado">
+          <line x1="20" y1="244" x2="400" y2="244" stroke="#C7BEA3" stroke-width="1"/>
+          <rect x="40"  y="64"  width="80" height="180" fill="#2E4638" opacity=".42"/>
+          <rect x="170" y="168" width="80" height="76"  fill="#2E4638" opacity=".42"/>
+          <rect x="300" y="121" width="80" height="123" fill="#9C2B2F"/>
+          <text class="gx-num"    x="80"  y="54"  text-anchor="middle">1,9%</text>
+          <text class="gx-num"    x="210" y="158" text-anchor="middle">0,8%</text>
+          <text class="gx-num hi" x="340" y="111" text-anchor="middle">1,3%</text>
+          <text class="gx-lbl" x="80"  y="264" text-anchor="middle">INDUSTRIALES</text>
+          <text class="gx-sub" x="80"  y="279" text-anchor="middle">US$35 MIL MILLONES</text>
+          <text class="gx-sub" x="80"  y="292" text-anchor="middle">CARNEGIE, ROCKEFELLER</text>
+          <text class="gx-lbl" x="210" y="264" text-anchor="middle">INTERNET</text>
+          <text class="gx-sub" x="210" y="279" text-anchor="middle">US$230 MIL MILLONES</text>
+          <text class="gx-sub" x="210" y="292" text-anchor="middle">1990–2018</text>
+          <text class="gx-lbl" x="340" y="264" text-anchor="middle">IA</text>
+          <text class="gx-sub" x="340" y="279" text-anchor="middle">US$430 MIL MILLONES</text>
+          <text class="gx-sub" x="340" y="292" text-anchor="middle">PROYECTADO</text>
+        </svg>
+        <p class="cred"><strong>Total donado por cada ola</strong>, no por año, como % del PIB de su época · montos en dólares de hoy</p>
+      </div>
+    </div>
+    <p class="photo-cap" style="color:var(--ink); margin-top:18px;">¿Ante quién responde un poder que se ejerce donando? <strong>Un gobierno que financia salud rinde cuentas en una elección. Una fundación que financia salud, no.</strong></p>
+    <p class="src-line">Fuente: <a href="https://www.economist.com/international/2026/08/13/silicon-valleys-ai-boom-is-remaking-american-charity" target="_blank">The Economist, «Silicon Valley's AI boom is remaking American charity»</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 23</span><span class="dots"></span><span>VÍA 2 · LA DONACIÓN</span></div>
+</section>
+
+<!-- ══ 24 · EL PRECEDENTE ══ (Semana 5, diapo 13) -->
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>La última vez que pasó esto · Daron Acemoglu con Jon Hernandez, 17 de julio de 2026</div>
+    <h2 class="sm">«¿Quién le tomó el control a la revolución industrial?»</h2>
+    <div class="videostage">
+      <div class="vbox">
+        <video controls preload="metadata" playsinline poster="img/mgt300_clase7/acemoglu-poster.jpg">
+          <source src="media/mgt300_clase7/acemoglu-reaccion.mp4" type="video/mp4">
+          <a href="https://www.youtube.com/watch?v=55BnPJlHjb8&amp;t=2413s" target="_blank">Ver el fragmento en YouTube</a>
+        </video>
+      </div>
+      <div class="vside">
+        <p class="qlead">«Hemos dejado esta tecnología en manos de cinco o diez personas. No puede ser lo óptimo.»</p>
+        <p class="qwho">— Daron Acemoglu, Nobel de Economía 2024</p>
+        <p class="tcode">▶ 40:13 – 41:37 · 84 s</p>
+      </div>
+    </div>
+    <p class="src-line"><strong>Su respuesta, en tres partes:</strong> el gobierno entró con salud pública y limpió las ciudades; <strong>la reacción a la desigualdad y a la miseria produjo una demanda cada vez mayor de democracia</strong>; y el mismo proceso terminó legalizando a los sindicatos, ilegales y perseguidos hasta el último tercio del siglo XIX. <strong>La pregunta de hoy:</strong> el populismo que vimos en la parte anterior, ¿es esa misma reacción —o es otra cosa, que no construye ninguna de esas instituciones? · <a href="https://www.youtube.com/watch?v=55BnPJlHjb8" target="_blank">Pódcast completo (57 min)</a>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 24</span><span class="dots"></span><span>EL PRECEDENTE</span></div>
+</section>
+
+<!-- ══ 16 · UNDERCLASS ══ (Semana 5, diapo 14) · cierre del deck
+
+     Para decir, ya no está en la lámina:
+     · La definición completa: quedar excluido a la vez de la movilidad social,
+       la autonomía económica y la influencia política.
+     · La diferencia está en la reversibilidad: del desempleo se sale con
+       crecimiento; de aquí no.
+     · Contra la Parte I: una economía puede crear empleos y producir esto igual,
+       si los empleos que crea no le dan a nadie capacidad de presionar.
+     · Las otras dos objeciones: el término estigmatiza —nombra a las personas,
+       «la clase de abajo», y no a la estructura que las produce; Wilson lo usó
+       en 1987 y terminó abandonándolo, y Gans (1995) mostró que funciona como
+       etiqueta contra los pobres—. Y se profetiza sola: anunciar que un grupo
+       es excedente ayuda a tratarlo como tal.
+-->
+<section class="slide">
+  <div class="content" style="justify-content:center;">
+    <div class="eyebrow"><span class="bar"></span>¿Y si esta vez no hay con qué?</div>
+    <h2 class="sm">La hipótesis de la <em>underclass</em></h2>
+    <div class="pts" style="flex:0 0 auto; gap:26px; max-width:1060px; margin-top:24px;">
+      <p class="pt" style="font-size:26px; line-height:1.4;">No es perder el trabajo. Es perder <strong>la palanca para exigir</strong>: sin voto que amenace y sin trabajo que se pueda parar, <strong>¿con qué se negocia?</strong></p>
+      <p class="pt" style="font-size:26px; line-height:1.4;">Y es una <strong>hipótesis, no un hallazgo</strong>: ningún dato de hoy la confirma.</p>
+    </div>
+    <div class="ask">
+      <div class="al">Y la pregunta que queda abierta, que es la de la próxima semana</div>
+      <p>Si el malestar crece y no encuentra ninguna institución que lo recoja, ¿qué hace quien tiene el capital?</p>
+      <p class="plain">La semana que viene: un modelo económico publicado en junio por Acemoglu, Gitmez y Shadmehr responde esa pregunta — y la respuesta no es ni el impuesto ni la revuelta. · De fondo, la pregunta de <a href="https://www.schneier.com/books/rewiring-democracy/" target="_blank" style="color:#D9B978; border-bottom-color:rgba(217,185,120,.5);">Schneier y Sanders</a>, la lectura de esta semana: ¿la IA distribuye capacidades políticas, o refuerza a quienes ya controlan capital, infraestructura y modelos? · Ahora: guía de lectura y Tribuna.</p>
+    </div>
+  <div class="folio"><span>DIAPO N.º 25</span><span class="dots"></span><span>UNDERCLASS</span></div>
+</section>
+
+</div>
+
+<button class="nav-btn" id="P" aria-label="Anterior">‹</button>
+<button class="nav-btn" id="N" aria-label="Siguiente">›</button>
+
+<script>
+// Ruta corta: ?ruta=corta deja 15 láminas, por si el bloque se aprieta a 25 minutos
+// (portada, la valla, la predicción, video Musk, canaries, el giro, la encuesta, el veto,
+//  populismo, el ataque, el China shock, los cinco, Zucman, underclass).
+const RUTA_CORTA = [1, 3, 4, 5, 6, 7, 11, 12, 14, 15, 16, 17, 19, 20, 25];
+const todas = Array.from(document.querySelectorAll('.slide'));
+const corta = new URLSearchParams(location.search).get('ruta') === 'corta';
+if (corta) todas.forEach((s, i) => { if (!RUTA_CORTA.includes(i + 1)) s.remove(); });
+const slides = corta ? todas.filter((_, i) => RUTA_CORTA.includes(i + 1)) : todas;
+let cur = 0;
+
+function buildDots(){
+  slides.forEach((s, i)=>{
+    const box = s.querySelector('.folio .dots');
+    if(!box) return;
+    box.innerHTML = '';
+    slides.forEach((_, j)=>{
+      const d = document.createElement('span');
+      d.className = 'dot' + (j===i ? ' on' : '');
+      d.title = 'Diapositiva ' + (j+1);
+      d.addEventListener('click', ()=> go(j));
+      box.appendChild(d);
+    });
+  });
+}
+
+function render(){
+  slides.forEach((s,i)=> s.classList.toggle('active', i===cur));
+  buildDots();
+  document.getElementById('prog').style.width = ((cur+1)/slides.length*100) + '%';
+  const act = slides[cur];
+  if(act) act.scrollTop = 0;
+  // Pausa cualquier video al salir de su lamina
+  document.querySelectorAll('video').forEach(v=>{
+    const own = v.closest('.slide');
+    if(own && !own.classList.contains('active')) v.pause();
+  });
+}
+
+function go(i){
+  cur = Math.max(0, Math.min(slides.length-1, i));
+  history.replaceState(null, '', '#' + (cur+1));
+  render();
+}
+
+function fromHash(){
+  const n = parseInt((location.hash || '').slice(1), 10);
+  if(!isNaN(n) && n >= 1 && n <= slides.length) cur = n - 1;
+}
+
+document.getElementById('P').addEventListener('click', ()=> go(cur-1));
+document.getElementById('N').addEventListener('click', ()=> go(cur+1));
+
+document.addEventListener('keydown', (e)=>{
+  if(e.target && e.target.tagName === 'VIDEO') return;
+  if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown'){ e.preventDefault(); go(cur+1); }
+  if(e.key === 'ArrowLeft'  || e.key === 'PageUp'){ e.preventDefault(); go(cur-1); }
+  if(e.key === 'Home'){ go(0); }
+  if(e.key === 'End'){ go(slides.length-1); }
+});
+
+window.addEventListener('hashchange', ()=>{ fromHash(); render(); });
+
+fromHash();
+render();
+</script>
+
+</body>
+</html>
