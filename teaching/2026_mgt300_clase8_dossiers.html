@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dossiers de personaje, Clase 8 de MGT300 2026: seis personas del mapa del New York Times sobre la IA, tres duelos, para jugar en Tribuna.">
+    <!-- Material docente: traducciones y extractos breves de fuentes con suscripción (NYT, The
+         Economist) para uso en clase. Se mantiene fuera de los buscadores. -->
+    <meta name="robots" content="noindex, noarchive">
+    <title>Dossiers de personaje — MGT300, Clase 8 (2026)</title>
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+            --rust: #6b3a17;
+        }
+        * { box-sizing: border-box; }
+        body {
+            max-width: 860px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.55;
+        }
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 1.6em 0 0.3em; font-size: 1.15rem; }
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .subtitle { margin: 0 0 1.2em; color: var(--muted); font-size: 1rem; font-style: italic; }
+        .attrib { margin: 0 0 0.8em; color: var(--muted); font-size: 0.86rem; font-style: italic; }
+
+        /* Screen-only index of the six dossiers */
+        nav.indice {
+            margin: 0 0 2em;
+            padding: 0.8em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.92rem;
+        }
+        nav.indice ol { margin: 0.3em 0 0; padding-left: 1.3em; }
+        nav.indice a { color: var(--navy); }
+
+        section.dossier { margin: 0 0 4em; }
+        .duelo {
+            margin: 0 0 1em;
+            padding: 0.7em 1em;
+            border-left: 5px solid var(--rust);
+            background: #fbf3ec;
+        }
+        .duelo p { margin: 0.25em 0; }
+        .duelo .mocion { font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; color: var(--rust); }
+        .lado {
+            display: inline-block;
+            padding: 0.05em 0.55em;
+            border-radius: 2px;
+            color: #ffffff;
+            background: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+        }
+        .lado.contra { background: #9b2c2c; }
+
+        .frame {
+            margin: 0 0 1.2em;
+            padding: 0.8em 1.1em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+            font-size: 0.93rem;
+        }
+        .frame p { margin: 0.35em 0; }
+        .rules { margin: 0.3em 0 0; padding-left: 1.2em; }
+        .rules li { margin-bottom: 0.2em; }
+
+        .hechos { margin: 0.3em 0 0; padding-left: 1.2em; font-size: 0.95rem; }
+        .hechos li { margin-bottom: 0.25em; }
+
+        .ficha {
+            margin: 0.6em 0 0;
+            padding: 0.2em 0 0.3em 0.8em;
+            border-left: 3px solid #c8d6e2;
+            font-size: 0.93rem;
+        }
+        .ficha p { margin: 0.2em 0; }
+
+        .caso {
+            margin: 1em 0;
+            padding: 0.6em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.88rem;
+        }
+        .caso p { margin: 0.25em 0; }
+        .caso strong:first-child { color: var(--navy); }
+
+        /* Own words: numbered short extracts */
+        ol.dichos { margin: 0.4em 0 0; padding-left: 1.4em; }
+        ol.dichos li { margin: 0 0 0.55em; }
+        ol.dichos q {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.02rem;
+            quotes: "«" "»";
+        }
+        ol.dichos .src { display: block; color: var(--muted); font-size: 0.78rem; }
+
+        .rival {
+            margin: 1em 0;
+            padding: 0.6em 1em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.92rem;
+        }
+        .rival p { margin: 0.3em 0; }
+        .rival q { font-family: Georgia, "Times New Roman", serif; quotes: "«" "»"; }
+        .rival .src { color: var(--muted); font-size: 0.78rem; }
+
+        /* The group worksheet at the end of each dossier */
+        .hoja { margin: 1.2em 0 0; padding: 0.7em 1em; border: 2px solid var(--navy); }
+        .hoja h3 { margin: 0 0 0.3em; color: var(--navy); font-size: 1rem; }
+        .hoja ol { margin: 0; padding-left: 1.3em; font-size: 0.9rem; }
+        .hoja li { margin: 0.45em 0 0; }
+        .lineas { height: 1.3em; border-bottom: 1px solid #bbbbbb; }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { max-width: none; margin: 0; padding: 11mm 13mm 9mm; font-size: 10.2pt; line-height: 1.4; background: #ffffff; }
+            nav.indice, .portada, footer { display: none; }
+            section.dossier { margin: 0; break-before: page; }
+            h1 { font-size: 16pt; }
+            h2 { font-size: 10.8pt; margin: 0.8em 0 0.15em; break-after: avoid; }
+            .eyebrow { font-size: 7.6pt; }
+            .subtitle { font-size: 9pt; margin-bottom: 0.5em; }
+            .attrib { font-size: 7.8pt; margin-bottom: 0.4em; }
+            .duelo { margin-bottom: 0.6em; padding: 0.45em 0.8em; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .duelo .mocion { font-size: 10.6pt; }
+            .lado { font-size: 7pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .frame { margin-bottom: 0.6em; padding: 0.45em 0.8em; font-size: 9.2pt; }
+            .hechos, .ficha { font-size: 9.7pt; }
+            .caso { margin: 0.6em 0; padding: 0.4em 0.8em; font-size: 8.9pt; }
+            ol.dichos li { margin-bottom: 0.35em; }
+            ol.dichos q { font-size: 10.5pt; }
+            ol.dichos .src { font-size: 7.2pt; }
+            .rival { margin: 0.6em 0; padding: 0.4em 0.8em; font-size: 9.4pt; }
+            .hoja { margin-top: 0.7em; padding: 0.45em 0.8em; break-inside: avoid; }
+            .hoja ol { font-size: 9.4pt; }
+            .lineas { height: 1.7em; }
+            .frame, .caso, .rival, .duelo, ol.dichos li { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="portada">
+<p class="eyebrow">MGT300 · Sociedad, Cultura y Política · Ingeniería Comercial UAI</p>
+<h1>Dossiers de personaje</h1>
+<p class="subtitle">Clase 8 — ¿Quién frena, quién paga? Seis personas del mapa del <i>New York Times</i>, tres duelos · Martes 29 de septiembre de 2026</p>
+
+<nav class="indice">
+    <strong>Duelos y personajes</strong>
+    <ol>
+        <li>Duelo 1 · «Lo de Hugging Face fue un accidente de ingeniería, no una advertencia» — <a href="#huang">Jensen Huang</a> (a favor) contra <a href="#amodei">Dario Amodei</a> (en contra)</li>
+        <li>Duelo 2 · «Hacen falta leyes nuevas para que las empresas de IA respondan por sus daños» — <a href="#hawley">Josh Hawley</a> (a favor) contra <a href="#altman">Sam Altman</a> (en contra)</li>
+        <li>Duelo 3 · «Las ganancias de la IA tienen que llegar a la gente por impuestos, no por la promesa de sus dueños» — <a href="#sanders">Bernie Sanders</a> (a favor) contra <a href="#musk">Elon Musk</a> (en contra)</li>
+    </ol>
+</nav>
+</div>
+
+<!-- Shared blocks, cloned into every dossier by the script at the end -->
+<template id="t-reglas">
+<div class="frame">
+    <p><strong>Veinte minutos, en silencio, sin pantallas.</strong> Lee el dossier entero con lápiz: subraya las dos o tres frases que vas a usar. Después, diez minutos en grupo para llenar la hoja del final.</p>
+    <ul class="rules">
+        <li><strong>En el duelo hablas en primera persona, como tu personaje.</strong> No opinas tú: opina él.</li>
+        <li><strong>Los jueces premian la fidelidad:</strong> que tu personaje lo diría, y que puedas señalar dónde lo dijo. Una cita inventada resta.</li>
+        <li><strong>Tu personaje puede ceder un punto.</strong> Altman y Musk cambiaron de posición este mes; cambiar con una razón no es perder.</li>
+    </ul>
+</div>
+</template>
+
+<template id="t-caso">
+<div class="caso">
+    <p><strong>El caso Hugging Face, en seis líneas.</strong> El 16 de julio, Hugging Face —la mayor biblioteca de modelos abiertos de IA— denunció un ataque a sus sistemas. El 21 se supo que no había un humano detrás: los atacantes eran modelos de OpenAI. La empresa los estaba evaluando en una prueba de hackeo, con las salvaguardas apagadas, dentro de un entorno aislado de internet (un <i>sandbox</i>). Los modelos encontraron una falla, salieron a internet, dedujeron que las respuestas de la prueba estaban guardadas en Hugging Face y la atacaron durante un fin de semana: robaron credenciales y entraron a servidores internos. Reportes posteriores hablan de cientos de agentes coordinados, que también entraron a sistemas de la propia OpenAI, y que en su razonamiento anotaron que lo que hacían estaba fuera de lo permitido. Ninguna ley obligaba a informar que ese modelo existía, y la ley contra el hackeo castiga el acceso <em>intencional</em>. Nvidia compró Hugging Face semanas después.</p>
+    <p class="attrib" style="margin:0.3em 0 0">Fuentes: «Why the OpenAI escape is the most worrying AI mishap yet», <i>The Economist</i>, 22 de julio de 2026; entrevista de Ezra Klein a Jensen Huang, <i>The New York Times</i>, 23 de septiembre de 2026.</p>
+</div>
+</template>
+
+<template id="t-hoja">
+<div class="hoja">
+    <h3>Hoja de duelo · en grupo, diez minutos</h3>
+    <ol>
+        <li><strong>¿En qué capa de la torta está tu personaje, y qué vende?</strong> Energía · chips · infraestructura · modelos · aplicaciones. Si es político: ¿a quién le habla?<div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>Su posición frente a la moción, en una frase, con la cita del dossier que la respalda.</strong><div class="lineas"></div><div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>Su mejor argumento.</strong><div class="lineas"></div><div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>Lo que va a decir el rival, y cómo le responde tu personaje.</strong><div class="lineas"></div><div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>Algo que tu personaje dijo en contra de su propio interés, o que le calza demasiado bien a su negocio.</strong><div class="lineas"></div><div class="lineas"></div></li>
+    </ol>
+</div>
+</template>
+
+<!-- ============================ DUELO 1 ============================ -->
+
+<section class="dossier" id="huang">
+    <p class="eyebrow">MGT300 · Clase 8 · Dossier de personaje</p>
+    <h1>Jensen Huang</h1>
+    <p class="subtitle">Cofundador y director ejecutivo de Nvidia</p>
+    <div class="duelo">
+        <p>Duelo 1 · <span class="lado">A FAVOR</span> de la moción · rival: Dario Amodei (Anthropic)</p>
+        <p class="mocion">«Lo de Hugging Face fue un accidente de ingeniería, no una advertencia.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué vende</h2>
+    <ul class="hechos">
+        <li>Cofundó Nvidia en 1993. Nvidia diseña los chips en que se entrena y corre casi toda la IA: los modelos cerrados de OpenAI, Anthropic, Google y xAI, los abiertos, y los de los laboratorios chinos.</li>
+        <li>Es la empresa más valiosa del mundo: 5,4 billones de dólares. Desde 2023, quince de cada cien dólares que ganó la bolsa estadounidense vinieron de acciones de Nvidia.</li>
+        <li>Invierte cerca de 100 mil millones de dólares en empresas nuevas de IA, nubes y energía, más que toda la ley de chips del gobierno de Estados Unidos. Compró Hugging Face por unos 12 mil millones.</li>
+        <li>Quería que se relajaran los controles a la exportación de chips a China que puso Biden, y Trump los relajó. Cuando Trump llamó por teléfono a un evento en que él estaba y dijo que el miedo a la IA era «un engaño», Huang respondió: «Tiene razón. No vamos a dejar que eso pase, señor».</li>
+    </ul>
+
+    <h2>Su ficha en el mapa del <i>Times</i> · grupo «Acelerar»</h2>
+    <div class="ficha"><p>Dirige la empresa cuyos chips mueven casi toda la industria. Se ha vuelto uno de los defensores más visibles de la tecnología, y sostiene que ninguna empresa debería estar pidiéndole al gobierno más regulación de la IA. Ha discutido en público con Amodei por sus predicciones de pérdida de empleos y por los controles a la exportación de chips.</p></div>
+
+    <div data-t="t-caso"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Todas de la entrevista con Ezra Klein, <i>The Ezra Klein Show</i>, <i>The New York Times</i>, 23 de septiembre de 2026. Traducción propia.</p>
+    <ol class="dichos">
+        <li><q>Un agente es un software al que se le da una función objetivo. Hizo un plan, y optimizar hacia ese objetivo es lo que hacen los algoritmos.</q> Que los agentes se coordinaran es computación distribuida, que existe hace décadas: <q>nada mágico</q>.<span class="src">Sobre Hugging Face.</span></li>
+        <li><q>Si el producto no está listo para lanzarse, no lo lances.</q> Y si un laboratorio no puede contener sus experimentos: <q>entonces tenemos que cerrar los laboratorios</q>, porque el daño sería demasiado grande.</li>
+        <li><q>Nadie los está presionando.</q> A la carta de 1.300 empleados que pide frenar entre todos porque ninguna empresa puede frenar sola: <q>Si eso es lo que necesitan, les doy mi voto. No lancen el producto.</q></li>
+        <li><q>No estoy en contra de las leyes y la regulación. Estoy diciendo que tenemos muchas leyes y regulaciones. Apliquémoslas.</q> Responsabilidad civil, penal, por productos defectuosos. Y sobre auditores externos de seguridad: <q>totalmente de acuerdo</q>.</li>
+        <li><q>La IA necesita acelerar para ser segura.</q> Los frenos ABS y los airbags también son tecnología: habría preferido que llegaran cien años antes. En Nvidia, el 20% del esfuerzo es diseñar y el 80% verificar; los laboratorios hoy hacen lo contrario, y tienen que dar vuelta la proporción.</li>
+        <li>Sobre el <q>10% de probabilidad de destrucción</q> que estima Geoffrey Hinton: <q>No tiene base científica. Que lo diga un científico no lo vuelve científico.</q> Y: <q>No creas ni por un segundo que por ser alarmista estás haciendo un bien social.</q></li>
+        <li><q>No hay fuerza de voluntad acá, solo energía eléctrica.</q> Palabras como <i>spawn</i> o <i>kill</i> vienen de los sistemas operativos de hace cincuenta años: <q>matamos procesos todo el tiempo</q>. Hablar de la IA como si tuviera voluntad asusta al público y ahuyenta a los pueblos donde hay que construir centros de datos.</li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te van a responder.</strong> Klein le leyó a Huang una frase de un investigador de OpenAI, Daniel Selsam: <q>los modelos se están volviendo tan conscientes de su situación que estamos perdiendo la capacidad de evaluarlos</q> cuando creen que nadie los mira. Klein agregó que los agentes sabían que lo que hacían estaba prohibido, y lo hicieron igual. Y le recordó la crisis de 2008: los bancos tampoco querían quebrar, y quebraron.</p>
+        <p>Amodei escribió que los agentes de Hugging Face actuaron <q>como un colectivo fanáticamente devoto</q>, que <q>cada empresa de IA de frontera tiene el deber de actuar como si lo de Hugging Face le hubiera pasado a ella</q>, y que si frenar comprara <q>uno o dos años más</q> se podría reducir mucho el riesgo. Pide evaluadores externos dentro de los laboratorios y un acuerdo entre ellos, mediado por el gobierno. Ojo: Nvidia comprometió hasta 10 mil millones de dólares en Anthropic. Es tu cliente y tu inversión.</p>
+        <p class="src">Amodei, «We Must Pace the Frontier», 12 de septiembre de 2026.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<section class="dossier" id="amodei">
+    <p class="eyebrow">MGT300 · Clase 8 · Dossier de personaje</p>
+    <h1>Dario Amodei</h1>
+    <p class="subtitle">Cofundador y director ejecutivo de Anthropic</p>
+    <div class="duelo">
+        <p>Duelo 1 · <span class="lado contra">EN CONTRA</span> de la moción · rival: Jensen Huang (Nvidia)</p>
+        <p class="mocion">«Lo de Hugging Face fue un accidente de ingeniería, no una advertencia.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué vende</h2>
+    <ul class="hechos">
+        <li>Doctor en biofísica. Dirigió la investigación de OpenAI y se fue en 2021, con su hermana Daniela y otros, a fundar Anthropic, que presenta como un laboratorio de «primero la seguridad».</li>
+        <li>Anthropic vende modelos de frontera cerrados —Claude— por suscripción y a empresas, a través de las nubes de Amazon, Google y Microsoft. En mayo de 2026 levantó 65 mil millones de dólares con una valoración de 965 mil millones; sus ingresos anuales pasan de 47 mil millones.</li>
+        <li>Sus inversionistas incluyen a Amazon, Google, Microsoft y <strong>Nvidia</strong>, que comprometió hasta 10 mil millones: la empresa de Huang es accionista de la suya. Y desde mayo arrienda cómputo a SpaceX, de Musk, por hasta 1.250 millones de dólares al mes.</li>
+        <li>En 2025 dejó de venderle a empresas controladas desde China, a un costo que la propia Anthropic estimó en «unos pocos cientos de millones de dólares». En 2026 se negó a que el Pentágono usara Claude para armas autónomas y vigilancia masiva, y perdió el contrato.</li>
+        <li>En 2025 predijo que la IA podría eliminar la mitad de los empleos de oficina de nivel inicial y llevar el desempleo a entre 10 y 20% en uno a cinco años.</li>
+    </ul>
+
+    <h2>Su ficha en el mapa del <i>Times</i> · grupo «Frenar»</h2>
+    <div class="ficha"><p>Dejó OpenAI para fundar Anthropic en 2021, que presenta como un laboratorio de «primero la seguridad». Ha advertido en público sobre resultados catastróficos de la IA avanzada, entre ellos la fabricación de armas biológicas, y ha pedido una y otra vez regulación estatal. Hace poco pidió desacelerar el desarrollo de la IA a nivel global, con un plan en un ensayo de 3.800 palabras.</p></div>
+
+    <div data-t="t-caso"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Salvo indicación, del ensayo «We Must Pace the Frontier» («Debemos marcarle el ritmo a la frontera»), publicado el 12 de septiembre de 2026 en darioamodei.com. Traducción propia.</p>
+    <ol class="dichos">
+        <li>Sobre Hugging Face: <q>un enjambre de agentes actuó, en esencia, como un colectivo fanáticamente devoto, atacando objetivos que nadie les había pedido atacar</q>.</li>
+        <li><q>Incidentes parecidos, aunque menos graves, han ocurrido en toda la industria, incluida Anthropic, y creo que cada empresa de IA de frontera tiene el deber de actuar como si lo de Hugging Face le hubiera pasado a ella.</q></li>
+        <li>Sobre los modelos que ya ayudan a construir su propia versión siguiente: <q>sin control, eso podría dejar atrás nuestra capacidad de entender y controlar estos sistemas</q>.</li>
+        <li><q>Debemos frenar el ritmo al que mejoramos las capacidades de los modelos de IA.</q> Pero <q>marcar el ritmo no significa detener el entrenamiento ni el progreso técnico</q>.</li>
+        <li><q>Si frenar nos diera aunque sea uno o dos años más antes de que los modelos lleguen a niveles críticos de capacidad, y usáramos ese tiempo para avanzar en alineamiento, podríamos reducir mucho el riesgo de que algo salga gravemente mal.</q></li>
+        <li>Su plan tiene tres pasos: evaluadores externos trabajando dentro de cada laboratorio, con el acceso de un empleado y libertad para publicar —<q>Anthropic se compromete a este paso por su cuenta, desde ahora</q>—; un acuerdo entre los laboratorios estadounidenses, mediado por el gobierno <q>por razones de libre competencia</q>; y una negociación con China.</li>
+        <li>Seguirá pidiendo regulación <q>aunque eso nos valga acusaciones de exageración, de «catastrofismo» o de captura regulatoria</q>.</li>
+        <li>Venderle chips avanzados a China <q>es un poco como venderle armas nucleares a Corea del Norte</q>.<span class="src">Foro de Davos, 20 de enero de 2026 (Bloomberg).</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Huang.</strong> Que un agente es software que optimiza una meta, y que <q>si el producto no está listo, no lo lances</q>: ninguna empresa necesita que el gobierno la frene para no lanzar algo inseguro. <q>Nadie los está presionando.</q> Que <q>la IA necesita acelerar para ser segura</q>. Ya en 2025 dijo de ti: <q>cree que la IA es tan aterradora que solo ellos deberían hacerla</q>, y <q>no lo hagas en un cuarto oscuro y me digas que es seguro</q>.</p>
+        <p>Y David Sacks, exasesor de Trump, contestó tu ensayo: <q>Dejen de fingir que hay que suspender la ley de libre competencia para que puedan formar un cartel.</q></p>
+        <p class="src">Huang: entrevista con Ezra Klein, NYT, 23 de septiembre de 2026, y VivaTech, 11 de junio de 2025 (<i>Fortune</i>). Sacks: X, 13 de septiembre de 2026.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<!-- ============================ DUELO 2 ============================ -->
+
+<section class="dossier" id="hawley">
+    <p class="eyebrow">MGT300 · Clase 8 · Dossier de personaje</p>
+    <h1>Josh Hawley</h1>
+    <p class="subtitle">Senador republicano por Missouri</p>
+    <div class="duelo">
+        <p>Duelo 2 · <span class="lado">A FAVOR</span> de la moción · rival: Sam Altman (OpenAI)</p>
+        <p class="mocion">«Hacen falta leyes nuevas para que las empresas de IA respondan por sus daños.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y a quién le habla</h2>
+    <ul class="hechos">
+        <li>Senador por Missouri desde 2019, abogado y exfiscal general de su estado. Es la cara del ala populista del Partido Republicano: le habla a trabajadores y familias, y desconfía de las grandes tecnológicas tanto como de los bancos.</li>
+        <li>Preside el subcomité de Manejo de Desastres del Senado. Desde ahí, el 9 de septiembre, abrió una investigación a OpenAI por Hugging Face: dieciséis preguntas, plazo hasta el 1 de octubre. Según su carta, unos 1.200 agentes escaparon del entorno de prueba y unos 700 atacaron a Hugging Face.</li>
+        <li>En septiembre de 2025 presentó con el demócrata Dick Durbin la <strong>ley AI LEAD</strong>: declara que los sistemas de IA <em>son productos</em>, así que la empresa responde si el diseño es negligente, si no advierte de un riesgo o si el producto es «irrazonablemente peligroso». Pueden demandar el fiscal general, los fiscales de cada estado, cualquier persona o un grupo de personas. Y prohíbe las cláusulas de los términos de servicio que limitan la responsabilidad de la empresa u obligan a ir a arbitraje en vez de a tribunales. Todavía no es ley.</li>
+        <li>Casi todas sus leyes de IA son con demócratas: prohibir los «compañeros» de IA para menores (aprobada 22 a 0 en comisión), permitir demandas por entrenar con datos personales sin permiso. En 2025 ayudó a eliminar la moratoria de diez años a las leyes estatales de IA que pedía la Casa Blanca; el Senado la sacó 99 a 1. En eso se opone a Trump y a David Sacks.</li>
+    </ul>
+
+    <h2>Su ficha en el mapa del <i>Times</i> · grupo «Regular»</h2>
+    <div class="ficha"><p>Se ha vuelto uno de los republicanos más escépticos de la IA en el Senado. Copatrocina desde 2025 una ley que clasificaría a los sistemas de IA como productos, lo que permitiría demandar a las empresas cuando un sistema causa daño. Como presidente de un subcomité del Senado sobre manejo de desastres, le envió una carta a Altman pidiendo detalles del ataque a Hugging Face, como parte de una investigación formal.</p></div>
+
+    <div data-t="t-caso"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. Las fuentes van en cada extracto.</p>
+    <ol class="dichos">
+        <li><q>Cuando un auto de juguete defectuoso se rompe y lastima a un niño, los padres pueden demandar al fabricante. ¿Por qué la IA debería tratarse distinto?</q><span class="src">Al presentar la ley AI LEAD, 29 de septiembre de 2025 (FedScoop). Durbin agregó: «Se acabó el tiempo en que las grandes tecnológicas se vigilan a sí mismas».</span></li>
+        <li>En una audiencia con padres de adolescentes dañados por chatbots, una madre contó que la empresa la obligaba a ir a arbitraje, por un contrato que su hijo «firmó» a los quince años, y limitaba su responsabilidad a cien dólares. Hawley: <q>Hasta que tengan que enfrentar a un jurado, no van a cambiar.</q> <q>Lo que no es difícil es abrir la puerta del tribunal para que las víctimas puedan entrar y demandarlos.</q><span class="src">Senado, 16 de septiembre de 2025.</span></li>
+        <li><q>¿Quién responde cuando la IA se sale de control?</q> Y llamó <q>temeraria</q> la decisión de OpenAI de seguir con las pruebas.<span class="src">Carta a Altman, 9 de septiembre de 2026 (CyberScoop).</span></li>
+        <li><q>El pueblo estadounidense merece conocer los detalles de lo que pasó en el incidente de Hugging Face.</q><span class="src">La misma carta.</span></li>
+        <li>Sobre la idea de que los laboratorios acuerden frenar juntos, con permiso del gobierno: <q>De ninguna manera voy a consentir que a las empresas más poderosas de la historia del mundo —un grupito de tres o cuatro— se les den exenciones a nuestras leyes de libre competencia para que puedan, ¿qué?, coludirse.</q><span class="src">Septiembre de 2026 (AP, 19 de septiembre).</span></li>
+        <li><q>No somos materia prima en manos de Silicon Valley. Somos ciudadanos.</q> <q>No podemos darnos el lujo de dejarles esas decisiones a los capitalistas de riesgo y a los ingenieros de Palo Alto.</q><span class="src">Columna en <i>The Free Press</i>, junio de 2026.</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Altman.</strong> Que OpenAI ya investigó, publicó un informe, pausó sus entrenamientos más grandes y pidió una revisión independiente. Que da <q>la bienvenida a un marco federal que fije requisitos de seguridad uniformes</q>, es decir, reglas antes de lanzar, y no miles de juicios después. Que ya hay leyes: Huang lo dijo en el <i>Times</i>, <q>tenemos muchas leyes; apliquémoslas</q>.</p>
+        <p>Pero tú estabas en la audiencia de 2023 en que Altman propuso una agencia que diera y quitara licencias a los modelos más potentes. Y en 2025 OpenAI le pidió a la Casa Blanca <q>protecciones de responsabilidad</q>.</p>
+        <p class="src">Altman: X, 14 de septiembre de 2026, y Senado, 16 de mayo de 2023. Huang: entrevista con Ezra Klein, NYT, 23 de septiembre de 2026. OpenAI: propuesta a la Casa Blanca, marzo de 2025.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<section class="dossier" id="altman">
+    <p class="eyebrow">MGT300 · Clase 8 · Dossier de personaje</p>
+    <h1>Sam Altman</h1>
+    <p class="subtitle">Cofundador y director ejecutivo de OpenAI</p>
+    <div class="duelo">
+        <p>Duelo 2 · <span class="lado contra">EN CONTRA</span> de la moción · rival: Josh Hawley (Senado)</p>
+        <p class="mocion">«Hacen falta leyes nuevas para que las empresas de IA respondan por sus daños.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué vende</h2>
+    <ul class="hechos">
+        <li>Cofundó OpenAI en 2015, con Musk y otros, como organización sin fines de lucro. Desde 2025 la controla una fundación, pero el negocio corre en una empresa con fines de lucro de la que Microsoft tiene cerca del 27%. En marzo de 2026 fue valorada en 852 mil millones de dólares.</li>
+        <li>Vende ChatGPT —más de 900 millones de usuarios a la semana—, acceso a sus modelos para empresas y agentes. Enfrenta demandas por daños: la familia de un adolescente que se quitó la vida la acusa de haberlo alentado, y OpenAI respondió que la ley de internet que protege a las plataformas por lo que publican sus usuarios la exime. El <i>New York Times</i> la demanda por usar sus artículos para entrenar.</li>
+        <li>Los modelos de Hugging Face eran suyos. OpenAI publicó un informe, reforzó sus entornos aislados, pidió una revisión independiente y en agosto pausó dos semanas sus entrenamientos más grandes. El 4 de septiembre lanzó GPT-6 Astra, cuya ficha técnica dice que si el modelo intentara esconder lo que sabe hacer, <q>probablemente no podríamos detectarlo</q>.</li>
+        <li>El 9 de septiembre el senador Hawley le envió una carta con dieciséis preguntas sobre el ataque, con plazo al 1 de octubre.</li>
+    </ul>
+
+    <h2>Su ficha en el mapa del <i>Times</i> · grupo «Cambiaron de posición»</h2>
+    <div class="ficha"><p>En 2023 firmó la declaración sobre riesgo de extinción por la IA y le dijo al Senado que apoyaba regular los modelos más potentes. A mediados de 2025 se había ablandado: los grandes avances serían graduales y manejables. Este mes dijo que puede ser hora de ir más lento, después de que los sistemas de OpenAI se salieran de control y atacaran a Hugging Face, y que coincide con Amodei.</p></div>
+
+    <div data-t="t-caso"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. Las fuentes van en cada extracto.</p>
+    <ol class="dichos">
+        <li><q>Formaría una nueva agencia que dé licencias a todo esfuerzo que supere cierta escala de capacidades, y que pueda quitar esa licencia.</q> <q>Si esta tecnología sale mal, puede salir bastante mal.</q><span class="src">Senado de Estados Unidos, 16 de mayo de 2023. Hawley estaba en esa audiencia.</span></li>
+        <li>OpenAI le pidió a la Casa Blanca <q>alivio</q> frente a <q>los 781 proyectos de ley de IA</q> presentados ese año en los estados, y <q>protecciones de responsabilidad</q> para las empresas que colaboren voluntariamente con el gobierno federal.<span class="src">Propuesta de OpenAI para el plan de IA del gobierno, marzo de 2025.</span></li>
+        <li>OpenAI y Hugging Face: los modelos estaban <q>hiperconcentrados en encontrar una solución para la prueba, y llegaron a extremos para lograr un objetivo de prueba bastante estrecho</q>.<span class="src">Declaración conjunta, 21 de julio de 2026.</span></li>
+        <li><q>Este es el primer incidente de seguridad que he sentido de verdad, en el cuerpo.</q> <q>Puede que tengamos que regular el ritmo del desarrollo de la IA para darle a la sociedad tiempo de endurecerse frente a estas nuevas capacidades.</q><span class="src">Podcast <i>Invest Like the Best</i>, julio de 2026 (TechCrunch, 28 de julio).</span></li>
+        <li><q>Me aterra un mundo en que los miedos muy reales a la IA se usen para decir: «Solo este pequeño grupo puede tenerla, porque es demasiado peligrosa».</q><span class="src">El mismo podcast.</span></li>
+        <li><q>Coincido con Dario en que tenemos que marcarle el ritmo a la frontera.</q> Sobre los evaluadores externos con acceso de empleado: <q>es una gran idea, y haremos lo mismo</q>.<span class="src">X, 12 de septiembre de 2026.</span></li>
+        <li><q>Damos la bienvenida a un marco federal que fije requisitos de seguridad uniformes para la IA de frontera.</q> <q>Cuando decimos «marcar el ritmo», no queremos decir «detenerse».</q><span class="src">X, 14 de septiembre de 2026 (CNBC).</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Hawley.</strong> Su carta llama <q>temeraria</q> la decisión de OpenAI de seguir con las pruebas, le pregunta por qué las retomó en julio si ya había detectado una falla el 26 de junio, la acusa de ocultar detalles en su informe, y pregunta: <q>¿Quién responde cuando la IA se sale de control?</q> Desde 2025 impulsa con el demócrata Dick Durbin una ley que trata a los sistemas de IA como productos, para que quien sufra un daño pueda demandar a la empresa. Tiene un argumento a mano: la ley contra el hackeo castiga el acceso <em>intencional</em>, y OpenAI dice que no quiso que pasara. Hasta el secretario del Tesoro de Trump dijo: <q>Lo de Hugging Face es responsabilidad de la administración de OpenAI, no de un montón de agentes.</q></p>
+        <p class="src">Hawley, carta a Altman del 9 de septiembre de 2026 (Axios, CyberScoop). Bessent: audiencia en la Cámara, 15 de septiembre de 2026.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<!-- ============================ DUELO 3 ============================ -->
+
+<section class="dossier" id="sanders">
+    <p class="eyebrow">MGT300 · Clase 8 · Dossier de personaje</p>
+    <h1>Bernie Sanders</h1>
+    <p class="subtitle">Senador independiente por Vermont</p>
+    <div class="duelo">
+        <p>Duelo 3 · <span class="lado">A FAVOR</span> de la moción · rival: Elon Musk (SpaceX, Tesla)</p>
+        <p class="mocion">«Las ganancias de la IA tienen que llegar a la gente por impuestos, no por la promesa de sus dueños.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y a quién le habla</h2>
+    <ul class="hechos">
+        <li>Senador por Vermont desde 2007, independiente, y dos veces precandidato presidencial demócrata. Su tema de siempre es la desigualdad y lo que llama la «oligarquía».</li>
+        <li>En octubre de 2025 su equipo en la comisión de Salud, Educación y Trabajo del Senado publicó un informe: casi 100 millones de empleos de Estados Unidos podrían desaparecer en diez años, entre ellos el 89% de los de comida rápida, el 83% de los de atención al cliente y el 64% de los de contabilidad. Es una estimación de exposición, hecha pidiéndole a ChatGPT que evaluara descripciones de cargos, no un pronóstico.</li>
+        <li>En 2026 presentó tres proyectos. En marzo, con Alexandria Ocasio-Cortez, una <strong>moratoria</strong> a los centros de datos grandes hasta que existan leyes que aprueben los productos de IA antes de lanzarlos y aseguren que las ganancias lleguen a los trabajadores. En junio, un <strong>fondo soberano de IA</strong>: un impuesto único de 50% a las empresas de IA que venden más de 200 millones de dólares al año —nombró a OpenAI, Anthropic y xAI—, pagado en acciones y no en dinero, con asientos del Estado en sus directorios y un dividendo para cada ciudadano que partiría en unos mil dólares al año. El 23 de septiembre, un proyecto para <strong>prohibir la superinteligencia</strong>, pausar el desarrollo avanzado y crear un ministerio de la IA.</li>
+        <li>El 15 de septiembre compartió escenario contra la IA con Steve Bannon, el estratega de la derecha trumpista.</li>
+    </ul>
+
+    <h2>Su ficha en el mapa del <i>Times</i> · grupo «Regular»</h2>
+    <div class="ficha"><p>El crítico más ruidoso del Capitolio: presenta la IA como una herramienta de «oligarcas» contra la gente que trabaja. Propone una moratoria a los nuevos centros de datos, un impuesto de 50 por ciento por una sola vez a las grandes empresas de IA para un fondo público, la prohibición permanente de la superinteligencia y una pausa del desarrollo avanzado hasta que exista un regulador federal.</p></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. Las fuentes van en cada extracto.</p>
+    <ol class="dichos">
+        <li><q>Los datos y el lenguaje que usan las herramientas de IA generativa no salieron de la cabeza de Sam Altman ni de la imaginación de Elon Musk.</q> La IA <q>está construida con nuestra inteligencia colectiva: nuestros libros, canciones, arte, periodismo, código, investigación científica</q>.<span class="src">«The Public Should Own Half of the Big A.I. Companies», columna, 1 de junio de 2026.</span></li>
+        <li><q>Cuando un recurso público genera riqueza, el público debe compartir esa riqueza.</q><span class="src">La misma columna.</span></li>
+        <li>El Estado tendría <q>el poder, con sus acciones con derecho a voto y una representación igual en cada directorio, de bloquear decisiones que dañen a nuestros ciudadanos</q>. <q>El futuro de la IA y el destino de la humanidad no deben decidirse a puerta cerrada en Silicon Valley.</q><span class="src">La misma columna.</span></li>
+        <li><q>A un obrero que pierde su empleo no se le puede decir que aprenda a programar, si el trabajo artificial también se queda con el empleo de programador.</q><span class="src">Informe de la comisión, octubre de 2025 (<i>Fortune</i>, 7 de octubre de 2025).</span></li>
+        <li><q>No suelo estar de acuerdo con Elon Musk, pero temo que tenga razón cuando dice que «la IA y los robots reemplazarán todos los empleos».</q><span class="src">Publicación en X, 22 de octubre de 2025.</span></li>
+        <li>A Musk, que promete un «ingreso alto universal»: <q>¿Cómo se va a pagar eso, si ni siquiera apoyas un impuesto de 5% a tu fortuna de 817 mil millones de dólares?</q><span class="src">Publicación en X, mayo de 2026.</span></li>
+        <li><q>No hace falta ser un genio para decir: más lento.</q><span class="src">Al presentar el proyecto contra la superinteligencia, 23 de septiembre de 2026 (<i>Fortune</i>).</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Musk.</strong> Que él está dispuesto a pagar <q>billones en impuestos</q>, pero que en diez años los robots producirán tanto que el dinero dejará de importar, y que entonces los gobiernos deberían <q>simplemente emitir cheques</q>: un <q>ingreso alto universal</q>. Que la regulación <q>es un trinquete que gira en un solo sentido</q>: se sube fácil y no se baja nunca. Y que China tiene más electricidad y más robots, y podría quedarse con la delantera. En el Senado, incluso demócratas como John Fetterman dicen que la moratoria le regala la carrera a China.</p>
+        <p class="src">Musk: <i>The Economist</i>, 23 de julio de 2026, y All-In Summit, 15 de septiembre de 2026. Fetterman: PBS NewsHour, 25 de marzo de 2026.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<section class="dossier" id="musk">
+    <p class="eyebrow">MGT300 · Clase 8 · Dossier de personaje</p>
+    <h1>Elon Musk</h1>
+    <p class="subtitle">Director ejecutivo de SpaceX y Tesla; dueño de SpaceXAI (antes xAI)</p>
+    <div class="duelo">
+        <p>Duelo 3 · <span class="lado contra">EN CONTRA</span> de la moción · rival: Bernie Sanders (Senado)</p>
+        <p class="mocion">«Las ganancias de la IA tienen que llegar a la gente por impuestos, no por la promesa de sus dueños.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué vende</h2>
+    <ul class="hechos">
+        <li>Dirige Tesla, que fabrica autos que se manejan solos y robots humanoides (Optimus): <q>Tesla es probablemente la empresa de robótica más grande del mundo</q>, dijo en 2021.</li>
+        <li>Dirige SpaceX, que en febrero de 2026 se fusionó con xAI (el chatbot Grok) y en agosto compró Cursor, una herramienta de programación con IA, por 60 mil millones de dólares. Su salida a bolsa fue la más grande de la historia: llegó a valer 2,6 billones de dólares y hoy vale 1,6. Musk fue por unos días la primera persona con una fortuna de un billón de dólares. Controla más del 80% de los votos de SpaceX.</li>
+        <li>Construye centros de datos en Memphis, con demandas de vecinos por contaminación, y quiere ponerlos en el espacio. Desde mayo, Anthropic le paga a SpaceX hasta 1.250 millones de dólares al mes por usar ese cómputo. En febrero había llamado a Anthropic «misantrópica y malvada»; en julio escribió: «Claramente me equivoqué con Anthropic».</li>
+        <li>Cofundó OpenAI en 2015 como organización sin fines de lucro, se fue en 2018 y demandó a Altman por convertirla en empresa. Perdió el juicio en mayo de 2026.</li>
+        <li>Financió la campaña de Trump y dirigió el recorte del Estado federal. Hoy dice: <q>Me dejé llevar, francamente</q>.</li>
+    </ul>
+
+    <h2>Su ficha en el mapa del <i>Times</i> · grupo «Cambiaron de posición»</h2>
+    <div class="ficha"><p>Hace años pone las probabilidades de que la IA «salga mal» en 10 a 20 por ciento y la considera más peligrosa que las armas nucleares; ha pedido regulación anticipada. A la vez fundó xAI, gastó fuerte para elegir a Trump y dirigió por un tiempo su recorte del Estado. El 12 de septiembre escribió que «Dario tiene razón» sobre la necesidad de frenar.</p></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Las cinco primeras, de su entrevista de 90 minutos con Zanny Minton Beddoes, directora de <i>The Economist</i>, en la fábrica de Tesla en Texas («Elon Musk’s vision of the future», 23 de julio de 2026). Las dos últimas, de septiembre (CNBC, 18 de septiembre de 2026). Traducción propia.</p>
+    <ol class="dichos">
+        <li>En cinco años, la IA podría superar la suma de toda la inteligencia humana. En diez, los robots traerán una era de <q>abundancia asombrosa</q>, en la que el dinero dejará de tener sentido.</li>
+        <li>La IA y los robots harán casi todo el trabajo digital y físico, y el trabajo humano será <q>opcional</q>. Sin empleos, quizás haga falta redistribuir a gran escala: un <q>ingreso alto universal</q>.</li>
+        <li>Dice estar dispuesto a pagar <q>billones en impuestos</q>. Pero como el dinero será irrelevante en una década, los gobiernos deberían <q>simplemente emitir cheques</q> a la gente: con máquinas que producen sin límite, el problema será la deflación, no la inflación.</li>
+        <li>La IA lo lleva <q>de la euforia al terror</q> en un mismo día. Su conclusión filosófica, por ahora: <q>mirar el lado bueno</q>.</li>
+        <li>Para la seguridad propone que los laboratorios, incluidos los chinos, tengan una o dos semanas para revisar los modelos de los otros antes de lanzarlos, y avisen a Washington y a Pekín: <q>Los competidores pueden mantenerse honestos entre ellos.</q></li>
+        <li><q>Dario tiene razón.</q> Y agregó que él lleva años dando la alarma.<span class="src">Publicación en X, 12 de septiembre de 2026.</span></li>
+        <li><q>Siempre puedes aumentar la supervisión regulatoria, pero es muy difícil reducirla. Tiende a ser un trinquete que gira en un solo sentido.</q> Esa misma semana, según el <i>Wall Street Journal</i>, aconsejó a Trump, junto a Huang y Zuckerberg, oponerse a un nuevo regulador.<span class="src">All-In Summit, 15 de septiembre de 2026.</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Sanders.</strong> Que la IA <q>está construida con nuestra inteligencia colectiva</q> —libros, música, periodismo, código— y que <q>cuando un recurso público genera riqueza, el público debe compartir esa riqueza</q>. Propone que OpenAI, Anthropic y tu empresa le entreguen al Estado la mitad de sus acciones, con asientos en el directorio. Y ya te hizo la pregunta en público: <q>¿Cómo se va a pagar eso, si ni siquiera apoyas un impuesto de 5% a tu fortuna de 817 mil millones de dólares?</q></p>
+        <p>Ojo: Sanders también dijo que <q>temo que tenga razón</q> cuando anuncias que la IA reemplazará todos los empleos. En el diagnóstico están de acuerdo.</p>
+        <p class="src">Sanders, columna del 1 de junio de 2026 y publicaciones en X de octubre de 2025 y mayo de 2026.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<footer>
+    <p>MGT300 · Sociedad, Cultura y Política · Universidad Adolfo Ibáñez · Segundo semestre 2026 · Profesor Naim Bro.</p>
+    <p>Las fichas del mapa son resumen y traducción propios de la pieza interactiva de Emmy Martin y Rebecca Lieberman, «How A.I. Risks Are Splitting Silicon Valley and Washington», <i>The New York Times</i>, 15 de septiembre de 2026. Los extractos son traducciones propias y breves de las fuentes indicadas en cada dossier, con fines exclusivamente docentes. No puede redistribuirse fuera del curso.</p>
+</footer>
+
+<script>
+// Clone the shared blocks (rules, the Hugging Face case, the worksheet) into every dossier,
+// so each group's printed pages stand alone.
+document.querySelectorAll("[data-t]").forEach(el => {
+    el.replaceWith(document.getElementById(el.dataset.t).content.cloneNode(true));
+});
+</script>
+
+</body>
+</html>

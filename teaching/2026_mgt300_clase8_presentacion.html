@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Automatización y represión — MGT300 2026 · Clase 8</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Primer bloque de la clase 8: la ruta corta del deck de la Semana 7 de IA y Democracia
+     (ia-democracia-2026/semana7_automatizacion_represion.html), sin los tres gráficos de
+     The Economist que ya se vieron en la clase 7, y las láminas que lanzan los duelos. -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root{
+  --paper:#EBE6D8; --paper-deep:#E1DAC7; --ink:#22281F;
+  --ink-soft:#4A5142; --stamp:#9C2B2F; --forest:#2E4638;
+  --gold:#A9823C; --line:#C7BEA3; --card:#F4F0E4; --card2:#EDEAD9;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%; background:var(--ink); font-family:'IBM Plex Sans',sans-serif; color:var(--ink); overflow:hidden;}
+
+.deck{position:relative; width:100%; height:100vh;}
+
+.slide{
+  position:absolute; inset:0;
+  background:var(--paper);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(34,40,31,.038) 28px);
+  opacity:0; visibility:hidden;
+  transform:translateY(12px);
+  transition:opacity .42s ease, transform .42s ease, visibility .42s;
+  padding:40px 64px 54px;
+  display:flex; flex-direction:column;
+  overflow-y:auto;
+}
+.slide.active{opacity:1; visibility:visible; transform:translateY(0);}
+.slide::before{content:""; position:absolute; inset:22px; border:1px solid var(--line); pointer-events:none; z-index:10;}
+.slide::after {content:""; position:absolute; inset:26px; border:1px solid var(--line); opacity:.45; pointer-events:none; z-index:10;}
+
+/* Divisores de seccion */
+.slide.divider{background:var(--forest); background-image:repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,.03) 28px);}
+.slide.divider::before,.slide.divider::after{border-color:rgba(235,230,216,.35);}
+.slide.divider .content{justify-content:center;}
+.divider .part-num{font-family:'Fraunces',serif; font-size:118px; font-weight:300; color:rgba(235,230,216,.22); line-height:.85; margin-bottom:8px;}
+.divider h2{color:var(--paper); font-size:42px; margin-bottom:14px;}
+.divider .sub{color:rgba(235,230,216,.72); font-size:17px; max-width:720px;}
+.divider .eyebrow{color:var(--gold);}
+.divider .eyebrow .bar{background:var(--gold);}
+.divider .folio{color:rgba(235,230,216,.6);}
+.divider .dot{background:rgba(235,230,216,.28);}
+.divider .dot.on{background:var(--gold);}
+
+/* Sello */
+.stamp{position:absolute; top:46px; right:60px; width:124px; height:124px; transform:rotate(-8deg); opacity:.9; pointer-events:none; z-index:5;}
+.stamp svg{width:100%; height:100%; overflow:visible;}
+.stamp .ring{fill:none; stroke:var(--stamp);}
+.stamp .cancel{stroke:var(--stamp); fill:none; opacity:.5;}
+.stamp text{fill:var(--stamp); font-family:'IBM Plex Mono',monospace; letter-spacing:2px;}
+.stamp .big{font-family:'Fraunces',serif; font-weight:700;}
+
+/* Folio */
+.folio{
+  position:absolute; bottom:26px; left:64px; right:64px;
+  display:flex; justify-content:space-between; align-items:center; gap:20px;
+  font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); letter-spacing:.05em;
+  z-index:12;
+}
+.dots{display:flex; gap:5px; flex-wrap:wrap; justify-content:center;}
+.dot{width:5px; height:5px; border-radius:50%; background:var(--line); cursor:pointer; transition:.2s; flex-shrink:0;}
+.dot.on{background:var(--stamp); transform:scale(1.4);}
+
+/* Tipografia */
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--stamp); display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-shrink:0;
+}
+.eyebrow .bar{height:1px; width:30px; background:var(--stamp); display:inline-block; flex-shrink:0;}
+h1{font-family:'Fraunces',serif; font-weight:700; font-size:42px; line-height:1.07; letter-spacing:-.012em; margin-bottom:6px;}
+h2{font-family:'Fraunces',serif; font-weight:600; font-size:46px; line-height:1.06; letter-spacing:-.015em; margin-bottom:0; max-width:1090px;}
+h2.sm{font-size:38px;}
+h2.xs{font-size:32px;}
+h3{font-family:'Fraunces',serif; font-weight:600; font-size:17px; color:var(--forest); margin-bottom:5px;}
+.sub{font-size:15.5px; color:var(--ink-soft); line-height:1.55; max-width:760px;}
+.content{flex:1; display:flex; flex-direction:column; justify-content:flex-start; min-height:0;}
+a{color:var(--stamp); text-decoration:none; border-bottom:1px dotted var(--stamp);}
+a:hover{color:var(--forest); border-bottom-color:var(--forest);}
+
+.src-line{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--ink-soft); letter-spacing:.03em; margin-top:12px; flex-shrink:0; line-height:1.55;}
+.src-line a{color:var(--stamp); border-bottom:1px solid rgba(156,43,47,.45); padding-bottom:1px;}
+.src-line a:hover{color:var(--forest); border-bottom-color:var(--forest); background:rgba(169,130,60,.14);}
+
+/* Meta portada */
+.meta-strip{display:flex; gap:38px; flex-wrap:wrap; margin-top:26px;}
+.meta-item .ml{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:3px;}
+.meta-item .mv{font-size:14px; color:var(--ink);}
+
+/* Puntos grandes (proyeccion) */
+.duo{display:grid; grid-template-columns:1fr 1.08fr; gap:46px; flex:1; min-height:0; align-items:center; margin-top:18px;}
+.duo.wide{grid-template-columns:.9fr 1.3fr;}
+.duo.vert{grid-template-columns:1.3fr .7fr;}
+.pts{display:flex; flex-direction:column; gap:22px;}
+.pt{font-size:22px; line-height:1.42; color:var(--ink);}
+.pt.sm{font-size:19px; line-height:1.5;}
+.pt b{color:var(--stamp); font-weight:600;}
+.pt strong{font-weight:600;}
+.pt em{font-style:italic;}
+.blockhead{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--forest); margin-bottom:14px;}
+
+.textcols{display:grid; grid-template-columns:1fr 1fr; gap:52px; flex:1; min-height:0; align-content:center; margin-top:20px;}
+.textcols .pt{font-size:21px;}
+.textcols.c3{grid-template-columns:1fr 1fr 1fr; gap:38px;}
+.textcols.c3 .pt{font-size:18px; line-height:1.5;}
+
+/* Cita grande */
+.bigquote{flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center; border-left:4px solid var(--gold); padding-left:40px; margin-top:18px;}
+.bigquote p{font-family:'Fraunces',serif; font-size:34px; font-style:italic; line-height:1.28; color:var(--ink);}
+.bigquote p.sm2{font-size:27px;}
+.bigquote p + p{margin-top:22px;}
+.bigquote cite{display:block; font-family:'IBM Plex Mono',monospace; font-size:13px; font-style:normal; color:var(--ink-soft); letter-spacing:.06em; margin-top:14px;}
+.qrow{display:flex; gap:28px; align-items:center;}
+.qrow + .qrow{margin-top:34px;}
+.qrow .qph{width:min(212px,29vh); height:min(212px,29vh); flex-shrink:0; border:1px solid var(--line); background:var(--ink); overflow:hidden;}
+.qrow .qph img{width:100%; height:100%; object-fit:cover; object-position:50% 15%; display:block; filter:sepia(18%) saturate(.85) contrast(1.04) brightness(.99);}
+.qrow .qtx{flex:1; min-width:0;}
+
+/* Cifra gigante */
+.bignum{display:flex; align-items:center; gap:54px; flex:1; min-height:0; margin-top:10px;}
+.fig-n{font-family:'Fraunces',serif; font-weight:600; font-size:150px; line-height:.84; color:var(--stamp); letter-spacing:-.03em; flex-shrink:0;}
+.fig-n.sm{font-size:96px;}
+.fig-n small{display:block; font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:400; color:var(--ink-soft); letter-spacing:.14em; text-transform:uppercase; margin-top:18px; line-height:1.55;}
+.fig-t2{font-size:23px; line-height:1.44; color:var(--ink); max-width:700px;}
+.fig-t2 strong{color:var(--stamp); font-weight:600;}
+.fig-t2 .counter{display:block; margin-top:22px; padding-top:18px; border-top:1px solid var(--line); font-size:18px; color:var(--ink-soft);}
+.fig-t2 .counter strong{color:var(--ink);}
+
+/* Duelo */
+.faceoff{display:grid; grid-template-columns:1fr auto 1fr; gap:34px; flex:1; min-height:0; align-items:start; margin-top:22px;}
+.faceoff .side{border-top:3px solid var(--forest); padding-top:20px;}
+.faceoff .side.red{border-top-color:var(--stamp);}
+.faceoff .side .lbl{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--forest); margin-bottom:14px;}
+.faceoff .side.red .lbl{color:var(--stamp);}
+.faceoff .side p{font-size:19px; line-height:1.46; color:var(--ink); margin-bottom:14px;}
+.faceoff .side p:last-child{margin-bottom:0;}
+.faceoff .side p strong{color:var(--stamp); font-weight:600;}
+.faceoff .side.green p strong{color:var(--forest);}
+.faceoff .vs{display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:22px; color:var(--gold); font-weight:600; padding-top:60px;}
+
+/* Nota / pregunta */
+.note{background:var(--card2); border:1px solid var(--line); border-left:3px solid var(--forest); padding:15px 20px; margin-top:16px; flex-shrink:0;}
+.note .nl{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--forest); margin-bottom:7px;}
+.note p{font-size:15px; line-height:1.6; color:var(--ink-soft);}
+.note p strong{color:var(--ink);}
+.note.red{border-left-color:var(--stamp);} .note.red .nl{color:var(--stamp);}
+
+.ask{background:var(--forest); color:var(--paper); padding:20px 26px; margin-top:16px; border:1px solid var(--forest); flex-shrink:0;}
+.ask .al{font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;}
+.ask p{font-family:'Fraunces',serif; font-size:21px; line-height:1.36; font-style:italic;}
+.ask p.plain{font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; font-style:normal; color:rgba(235,230,216,.84); margin-top:9px; line-height:1.55;}
+
+/* Listas */
+.dash-list{list-style:none; margin-top:10px;}
+.dash-list li{font-size:17px; line-height:1.55; color:var(--ink-soft); margin-bottom:13px; padding-left:22px; position:relative;}
+.dash-list li::before{content:"—"; position:absolute; left:0; color:var(--stamp);}
+.dash-list li strong{color:var(--ink); font-weight:600;}
+.num-list{list-style:none; margin-top:12px; display:flex; flex-direction:column; gap:15px;}
+.num-list li{font-size:17.5px; line-height:1.5; color:var(--ink-soft); padding-left:44px; position:relative;}
+.num-list li::before{content:counter(li); counter-increment:li; position:absolute; left:0; top:-2px; font-family:'Fraunces',serif; font-size:26px; font-weight:600; color:var(--line);}
+.num-list{counter-reset:li;}
+.num-list li strong{color:var(--ink); font-weight:600;}
+
+.readings{list-style:none; margin-top:8px;}
+.readings li{font-size:14px; color:var(--ink-soft); padding:11px 0; border-bottom:1px solid var(--line); line-height:1.55;}
+.readings li:last-child{border-bottom:none;}
+.readings li b{color:var(--ink); font-family:'Fraunces',serif; font-weight:600; font-size:15.5px; display:block; margin-bottom:3px;}
+
+/* Matriz */
+table.matrix{width:100%; border-collapse:collapse; font-size:15px; margin-top:18px;}
+table.matrix th{background:var(--card2); color:var(--forest); text-align:left; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; padding:11px 14px; border:1px solid var(--line); font-weight:600;}
+table.matrix td{border:1px solid var(--line); padding:13px 14px; vertical-align:top; color:var(--ink-soft); line-height:1.5; background:var(--card);}
+table.matrix td strong{color:var(--ink);}
+table.matrix td.lead-c{background:var(--card2); color:var(--ink); font-weight:600; width:20%; font-size:14px;}
+table.matrix td.hit{background:#F2E6E2;}
+
+/* Tarjetas */
+.cards{display:grid; gap:16px; margin-top:16px;}
+.cards.c2{grid-template-columns:repeat(2,1fr);}
+.cards.c3{grid-template-columns:repeat(3,1fr);}
+.card{background:var(--card); border:1px solid var(--line); border-left:3px solid var(--forest); padding:17px 20px; display:flex; flex-direction:column; gap:8px;}
+.card.red{border-left-color:var(--stamp);}
+.card.gold{border-left-color:var(--gold);}
+.card .k{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--stamp);}
+.card.gold .k{color:var(--gold);}
+.card.green .k{color:var(--forest);}
+.card p{font-size:15px; line-height:1.55; color:var(--ink-soft);}
+.card p strong{color:var(--ink); font-weight:600;}
+
+/* Etiquetas */
+.tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px;}
+.tag{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); color:var(--ink-soft); padding:5px 10px; background:var(--card);}
+.tag.red{border-color:var(--stamp); color:var(--stamp);}
+.tag.gold{border-color:var(--gold); color:var(--gold);}
+
+/* Graficos SVG */
+.stage{flex:1; min-height:0; display:flex; flex-direction:column; align-items:center; justify-content:center; margin-top:14px;}
+.stage svg{display:block; max-width:100%; max-height:100%; height:auto;}
+.stage img{display:block; max-width:100%; max-height:100%; object-fit:contain;}
+.stage .shot{height:100%; display:flex; align-items:center; justify-content:center; min-height:0;}
+.stage .shot img{max-height:100%; max-width:min(100%,780px); object-fit:contain; background:#fff; border:1px solid var(--line); box-shadow:0 2px 14px rgba(30,25,15,.10);}
+.cred{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); margin-top:12px; text-align:center; opacity:.9; line-height:1.5;}
+.gx-lbl{font-family:'IBM Plex Mono',monospace; font-size:12px; fill:var(--ink-soft); letter-spacing:.06em;}
+.gx-cap{font-family:'IBM Plex Sans',sans-serif; font-size:14px; fill:var(--ink);}
+.gx-cap.b{font-weight:600;}
+.gx-key{font-family:'IBM Plex Mono',monospace; font-size:11px; fill:var(--stamp); letter-spacing:.1em; text-transform:uppercase;}
+.gx-key.g{fill:var(--forest);}
+.gx-axis{stroke:var(--ink-soft); stroke-width:1.2;}
+.gx-grid{stroke:var(--line); stroke-width:1; stroke-dasharray:4 4;}
+
+/* Navegacion */
+.nav-btn{position:fixed; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:rgba(244,240,228,.9); color:var(--ink); font-size:19px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:20; transition:.2s;}
+.nav-btn:hover{background:var(--stamp); color:var(--paper); border-color:var(--stamp);}
+#P{left:16px;} #N{right:16px;}
+.progress{position:fixed; top:0; left:0; height:2px; width:0; background:var(--stamp); z-index:30; transition:width .3s ease;}
+
+@media(max-width:900px){
+  .slide{padding:34px 20px 54px;}
+  h1{font-size:25px;} h2{font-size:22px;} h2.sm{font-size:20px;} h2.xs{font-size:19px;}
+  .divider h2{font-size:26px;} .divider .part-num{font-size:70px;}
+  .duo,.duo.wide,.duo.vert,.textcols,.textcols.c3,.faceoff,.cards.c2,.cards.c3{grid-template-columns:1fr; gap:22px;}
+  .faceoff .vs{display:none;}
+  .stamp{display:none;}
+  .stage svg{max-height:46vh;}
+  .stage .shot img{max-height:52vh;}
+  .bignum{flex-direction:column; align-items:flex-start; gap:20px;}
+  .fig-n{font-size:82px;} .fig-n.sm{font-size:62px;}
+  .pt{font-size:17px;} .textcols .pt,.textcols.c3 .pt{font-size:16px;}
+  .bigquote p{font-size:21px;} .bigquote p.sm2{font-size:18px;} .bigquote{padding-left:20px;}
+  .qrow{gap:18px;} .qrow .qph{width:116px; height:116px;} .qrow + .qrow{margin-top:24px;}
+  table.matrix{font-size:12.5px;} table.matrix td{padding:8px;}
+  .folio{left:20px; right:20px;}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="prog"></div>
+<div class="deck" id="deck">
+
+<section class="slide active">
+  <div class="stamp"><svg viewBox="0 0 140 140">
+    <defs><clipPath id="c7"><circle cx="70" cy="70" r="63"/></clipPath>
+    <path id="t7" d="M18,72 A52,52 0 0 1 122,72" fill="none"/>
+    <path id="b7" d="M122,70 A52,52 0 0 1 18,70" fill="none"/></defs>
+    <circle class="ring" cx="70" cy="70" r="63" stroke-width="2.2"/>
+    <circle class="ring" cx="70" cy="70" r="51" stroke-width="1"/>
+    <g clip-path="url(#c7)"><g class="cancel" stroke-width="1.2">
+      <path d="M-5,50 Q35,60 70,50 T145,50"/><path d="M-5,68 Q35,78 70,68 T145,68"/><path d="M-5,86 Q35,96 70,86 T145,86"/>
+    </g></g>
+    <text font-size="10.5"><textPath href="#t7" startOffset="50%" text-anchor="middle">UAI · 29 SEP 2026</textPath></text>
+    <text class="big" font-size="27" x="70" y="79" text-anchor="middle">08</text>
+    <text font-size="10.5"><textPath href="#b7" startOffset="50%" text-anchor="middle">CLASE 8</textPath></text>
+  </svg></div>
+  <div class="content" style="justify-content:center;">
+    <div class="eyebrow"><span class="bar"></span>MGT300 2026 — Clase 8 · Primer bloque</div>
+    <h1 style="font-size:62px;">Automatización<br>y represión</h1>
+    <h1 style="color:var(--forest); font-size:31px; font-weight:600; margin-top:16px; max-width:900px;">Por qué un modelo económico predice que el capital termina prefiriendo la fuerza antes que el impuesto</h1>
+    <div class="meta-strip" style="margin-top:34px;">
+      <div class="meta-item"><div class="ml">El paper</div><div class="mv">Acemoglu, Gitmez &amp; Shadmehr · NBER WP 35336 · junio 2026</div></div>
+      <div class="meta-item"><div class="ml">Clase</div><div class="mv">¿Quién frena, quién paga? · Unidad 2</div></div>
+      <div class="meta-item"><div class="ml">Preparó</div><div class="mv">Naim Bro</div></div>
+    </div>
+    <p class="src-line" style="margin-top:28px;">El artículo, traducido a lenguaje no matemático. Después: seis personajes, tres duelos. · <a href="https://www.nber.org/papers/w35336" target="_blank">nber.org/papers/w35336</a></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 01</span><span class="dots"></span><span>MGT300 · SOCIEDAD, CULTURA Y POLÍTICA</span></div>
+</section>
+
+<section class="slide">
+  <div class="content" style="justify-content:center;">
+    <div class="eyebrow"><span class="bar"></span>La pregunta con que cerramos la clase 7</div>
+    <h2 class="sm">Si el malestar crece y no encuentra<br>ninguna institución que lo recoja,<br>¿qué hace quien tiene el capital?</h2>
+    <div class="ask" style="margin-top:34px;">
+      <div class="al">Hoy</div>
+      <p>Un modelo económico publicado en junio responde esa pregunta. Y la respuesta no es ni el impuesto ni la revuelta.</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 02</span><span class="dots"></span><span>LA PREGUNTA</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Para abrir · La frase que el paper convierte en teorema</div>
+    <h2 class="sm">«Impuestos u horcas»</h2>
+    <div class="bigquote">
+      <div class="qrow">
+        <div class="qph"><img src="img/mgt300_clase8/hanauer.webp" alt="Retrato de Nick Hanauer, capitalista de riesgo estadounidense"></div>
+        <div class="qtx">
+          <p class="sm2">«¿Qué veo yo en nuestro futuro? Veo <em>horcas</em>… O un levantamiento.»</p>
+          <cite>Nick Hanauer, capitalista de riesgo, 2014</cite>
+        </div>
+      </div>
+      <div class="qrow">
+        <div class="qph"><img src="img/mgt300_clase8/gawdat.webp" alt="Retrato de Mo Gawdat, ex director de negocios de X (Google X)"></div>
+        <div class="qtx">
+          <p class="sm2">«…y así van a ver un mundo donde, lamentablemente, va a haber mucho control, mucha vigilancia, mucho cumplimiento forzado.»</p>
+          <cite>Mo Gawdat, ex director de negocios de X, 2025</cite>
+        </div>
+      </div>
+    </div>
+    <p class="src-line">En 2025, cien millonarios firmaron una carta abierta a Davos titulada, literalmente, <strong>«son impuestos u horcas»</strong>. Los tres autores toman en serio ese dilema y hacen algo que nadie había hecho: lo escriben como modelo económico y lo resuelven. <strong>La respuesta que sale no es ninguna de las dos.</strong></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 03</span><span class="dots"></span><span>LA FRASE</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El argumento completo, antes de desarmarlo</div>
+    <h2 class="sm">Cuanto más se automatiza,<br>más barata resulta la represión<br>frente al impuesto.</h2>
+    <div class="note red" style="margin-top:26px;">
+      <div class="nl">Por qué</div>
+      <p style="font-size:18px;">Comprar la paz social con <strong>redistribución</strong> cuesta más a medida que se automatiza: si los salarios caen, hay que transferir más para que al trabajador le siga conviniendo no rebelarse. Comprar la paz social con <strong>represión</strong> cuesta más o menos lo mismo se automatice poco o mucho. Son dos estructuras de costo distintas: una <strong>variable y creciente</strong>, otra <strong>fija</strong>. Con suficiente automatización, la fija gana.</p>
+    </div>
+    <div class="ask">
+      <div class="al">Y de ahí sale el resultado que interesa a esta semana</div>
+      <p>Si la sociedad parte siendo una democracia, llega un punto en que a los dueños del capital les sale más barato derrocarla que pagar sus impuestos.</p>
+      <p class="plain">No porque aparezca un demagogo. Por aritmética.</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 04</span><span class="dots"></span><span>LA TESIS</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Esto es lo que abren · La portada del paper</div>
+    <h2 class="xs">Así se ve el texto de hoy.</h2>
+    <div class="stage">
+      <div class="shot"><img src="img/mgt300_clase8/nber-portada.png" alt="Portada del working paper: título Automation and Repression, autores Daron Acemoglu, A. Arda Gitmez y Mehdi Shadmehr, NBER Working Paper 35336, DOI 10.3386/w35336, fecha de emisión junio de 2026, seguido del resumen del artículo"></div>
+    </div>
+    <p class="src-line">Título, tres autores, número de working paper y el resumen completo: <strong>todo el argumento cabe en ese párrafo</strong>. Vale la pena leerlo antes de entrar al modelo. · <a href="https://www.nber.org/papers/w35336" target="_blank">nber.org/papers/w35336</a></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 05</span><span class="dots"></span><span>LA PORTADA</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Sección 2 · La economía del modelo</div>
+    <h2 class="xs">Automatizar es mover una tarea<br>de la columna del trabajo a la del capital.</h2>
+    <div class="duo wide" style="margin-top:8px;">
+      <div class="pts" style="gap:18px;">
+        <p class="pt sm">La producción es un conjunto de <strong>tareas</strong>. Cada tarea puede hacerla una persona o una máquina, indistintamente.</p>
+        <p class="pt sm">«Automatizar» significa: <b>esta tarea ahora la hace capital.</b> Nada más.</p>
+        <p class="pt sm">Consecuencia mecánica: <strong>cada tarea automatizada baja la participación del trabajo en el ingreso nacional</strong> y sube la del capital.</p>
+      </div>
+      <div class="stage" style="margin-top:0;">
+        <svg viewBox="0 0 520 320" role="img" aria-label="Diagrama: una barra de tareas se va traspasando del trabajo al capital a medida que aumenta la automatizacion">
+          <text class="gx-lbl" x="10" y="20">POCA AUTOMATIZACIÓN</text>
+          <rect x="10" y="34" width="130" height="46" fill="#2E4638" opacity=".85"/>
+          <rect x="140" y="34" width="360" height="46" fill="#C7BEA3" opacity=".5"/>
+          <text class="gx-cap b" x="20" y="63" fill="#EBE6D8">capital</text>
+          <text class="gx-cap" x="152" y="63">trabajo</text>
+
+          <text class="gx-lbl" x="10" y="130">AUTOMATIZACIÓN MEDIA</text>
+          <rect x="10" y="144" width="270" height="46" fill="#2E4638" opacity=".85"/>
+          <rect x="280" y="144" width="220" height="46" fill="#C7BEA3" opacity=".5"/>
+          <text class="gx-cap b" x="20" y="173" fill="#EBE6D8">capital</text>
+          <text class="gx-cap" x="292" y="173">trabajo</text>
+
+          <text class="gx-lbl" x="10" y="240">AUTOMATIZACIÓN ALTA</text>
+          <rect x="10" y="254" width="420" height="46" fill="#9C2B2F" opacity=".88"/>
+          <rect x="430" y="254" width="70" height="46" fill="#C7BEA3" opacity=".5"/>
+          <text class="gx-cap b" x="20" y="283" fill="#EBE6D8">capital</text>
+          <text class="gx-lbl" x="436" y="283" style="font-size:10px;">trabajo</text>
+          <path class="gx-grid" d="M505,34 L505,300" stroke-dasharray="0"/>
+        </svg>
+        <p class="cred">La misma torta, repartida distinto. Ese reparto es toda la política del modelo.</p>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 06</span><span class="dots"></span><span>AUTOMATIZAR</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Sección 3 · La política del modelo</div>
+    <h2 class="xs">La revuelta es un problema de coordinación,<br>no de indignación.</h2>
+    <div class="textcols" style="margin-top:18px;">
+      <div>
+        <div class="blockhead">Cómo está modelada</div>
+        <p class="pt sm" style="margin-bottom:16px;">Cada trabajador decide <strong>en el mismo instante y sin hablar con los demás</strong> si sale a la calle. La revuelta triunfa sólo si sale una fracción suficiente.</p>
+        <p class="pt sm" style="margin-bottom:16px;">Nadie sabe cuán fuerte es el régimen. Cada uno recibe <strong>una señal borrosa</strong> —su lectura personal de si «esto va a prender»— y actúa sobre esa lectura.</p>
+        <p class="pt sm">Los economistas llaman a esto un <em>global game</em>. Su virtud técnica es que produce <strong>una única predicción</strong> en vez de la respuesta inútil «depende de lo que crea cada uno».</p>
+      </div>
+      <div>
+        <div class="blockhead">La cuenta que hace cada trabajador</div>
+        <p class="pt sm" style="margin-bottom:16px;"><b>Si salgo y pierdo:</b> pierdo el salario y los servicios públicos que recibía.</p>
+        <p class="pt sm" style="margin-bottom:16px;"><b>Si salgo y gano:</b> me reparto el capital expropiado.</p>
+        <div class="note red" style="margin-top:18px;">
+          <div class="nl">Y aquí está el nudo de todo el paper</div>
+          <p style="font-size:16px;">La probabilidad de que el régimen sobreviva depende de <strong>una sola cosa</strong>: la razón entre el ingreso del capital y el del trabajo. Más desigualdad entre ambos, más probable la revuelta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 07</span><span class="dots"></span><span>LA REVUELTA</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El mecanismo · Por qué automatizar es políticamente peligroso</div>
+    <h2 class="xs">Automatizar empuja el riesgo<br>por los dos lados a la vez.</h2>
+    <div class="faceoff">
+      <div class="side red">
+        <div class="lbl">Baja lo que arriesgo</div>
+        <p style="font-size:22px;">Automatizar <strong>baja el salario</strong>.</p>
+        <p>Y el salario es exactamente lo que el trabajador pone en juego cuando sale a la calle. Si vale menos, <strong>rebelarse sale más barato</strong>.</p>
+      </div>
+      <div class="vs">+</div>
+      <div class="side red">
+        <div class="lbl">Sube lo que gano</div>
+        <p style="font-size:22px;">Automatizar <strong>sube el retorno del capital</strong>.</p>
+        <p>Y el capital es exactamente el botín que se reparte si la revuelta triunfa. Si vale más, <strong>rebelarse paga más</strong>.</p>
+      </div>
+    </div>
+    <div class="note">
+      <div class="nl">Lo que hay que retener</div>
+      <p>Los dos efectos apuntan en la misma dirección. <strong>No hay compensación posible dentro de la economía</strong>: la salida tiene que ser política. Ese es el momento en que el modelo deja de ser economía y empieza a ser teoría del Estado.</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 08</span><span class="dots"></span><span>DOBLE EFECTO</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Hallazgo 1 · Secciones 4 y 5.1</div>
+    <h2 class="xs">El mercado automatiza más de lo que<br>a los propios capitalistas les conviene.</h2>
+    <div class="duo vert" style="margin-top:6px;">
+      <div class="pts">
+        <p class="pt">Cada empresa automatiza mirando su costo. <strong>Ninguna descuenta el riesgo político que su decisión agrega al conjunto.</strong></p>
+        <p class="pt">Es una <b>externalidad</b> — y, además, una externalidad política. La empresa se queda con la ganancia; el riesgo de revuelta lo paga toda la clase propietaria.</p>
+        <p class="pt">Como todo problema de acción colectiva, se resuelve con <strong>una autoridad central que obligue a lo que a nadie le conviene hacer solo</strong>. En el modelo, esa autoridad es el Estado capitalista.</p>
+      </div>
+      <div>
+        <div class="note red" style="margin-top:0;">
+          <div class="nl">La ironía que vale la pena subrayar en clase</div>
+          <p style="font-size:17px;">La primera función del Estado en este modelo no es proteger a los trabajadores.<br><br>Es <strong>proteger a los capitalistas de sí mismos</strong>: impedir que compitiendo entre ellos se automatice hasta provocar la revuelta que los liquida a todos.</p>
+        </div>
+        <div class="note" style="margin-top:14px;">
+          <div class="nl">Eco histórico que citan los autores</div>
+          <p style="font-size:15px;">Isabel I le negó la patente a William Lee y su máquina de tejer: «considerad qué haría vuestro invento a mis pobres súbditos». Vespasiano premió a un ingeniero y prohibió usar su invento: «dejadme alimentar a mi pueblo».</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 09</span><span class="dots"></span><span>EXTERNALIDAD</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Hallazgo 2 · Proposición 3</div>
+    <h2 class="xs">Un Estado que sólo puede regular<br>termina comportándose como<br>un defensor del salario.</h2>
+    <div class="bignum">
+      <div class="fig-n sm">3<small>Proposición</small></div>
+      <div class="fig-t2">
+        Si al Estado capitalista le quitan la redistribución y la represión, y le dejan <strong>un solo instrumento</strong> —fijar cuánto se automatiza—, la solución matemática coincide exactamente con <strong>maximizar la masa salarial</strong>.
+        <span class="counter">No por bondad. Porque el riesgo de revuelta depende de la <strong>razón</strong> entre lo que gana el capital y lo que gana el trabajo, y subir el numerador no ayuda si sube en la misma proporción el premio de la revuelta. Lo único que queda por hacer es <strong>subir el denominador</strong>.</span>
+      </div>
+    </div>
+    <div class="ask">
+      <div class="al">La pregunta institucional que abre</div>
+      <p>Si el instrumento disponible determina el resultado, ¿qué pasa si la ley simplemente <em>elimina</em> uno de los instrumentos?</p>
+      <p class="plain">El paper muestra que un Estado del capital sin poder represivo protege salarios por puro cálculo. Guarden esta lámina: vuelve en el duelo de Hawley y Altman.</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 10</span><span class="dots"></span><span>SÓLO REGULAR</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Hallazgo 3 · Lema 4 y Proposición 6 · El resultado principal del paper</div>
+    <h2 class="xs">Las dos curvas se cruzan una sola vez.<br>Y después del cruce no hay vuelta atrás.</h2>
+    <div class="stage">
+      <svg viewBox="0 0 900 400" role="img" aria-label="Grafico: el costo efectivo de la redistribucion crece mas rapido que el de la represion y ambas curvas se cruzan una sola vez a medida que crece el stock de capital">
+        <rect x="80" y="40" width="380" height="300" fill="#2E4638" opacity=".055"/>
+        <rect x="460" y="40" width="360" height="300" fill="#9C2B2F" opacity=".06"/>
+
+        <line class="gx-axis" x1="80" y1="340" x2="850" y2="340"/>
+        <line class="gx-axis" x1="80" y1="340" x2="80" y2="40"/>
+        <polygon points="850,340 838,335 838,345" fill="#4A5142"/>
+        <polygon points="80,40 75,52 85,52" fill="#4A5142"/>
+
+        <text class="gx-lbl" x="850" y="368" text-anchor="end">CAPITAL ACUMULADO EN LA ECONOMÍA →</text>
+        <text class="gx-lbl" x="66" y="340" transform="rotate(-90 66 340)">COSTO PARA EL CAPITAL →</text>
+
+        <line class="gx-grid" x1="460" y1="40" x2="460" y2="340"/>
+
+        <!-- redistribucion: convexa, crece rapido -->
+        <path d="M80,334 C260,322 380,285 460,231 C548,168 640,105 720,54" fill="none" stroke="#2E4638" stroke-width="3.2"/>
+        <!-- represion: casi plana -->
+        <path d="M80,254 Q400,236 800,214" fill="none" stroke="#9C2B2F" stroke-width="3.2"/>
+
+        <circle cx="460" cy="231" r="7" fill="#A9823C"/>
+        <circle cx="460" cy="231" r="13" fill="none" stroke="#A9823C" stroke-width="1.5"/>
+
+        <text class="gx-key g" x="700" y="76" text-anchor="end">redistribuir</text>
+        <text class="gx-key" x="806" y="205" text-anchor="end">reprimir</text>
+
+        <text class="gx-lbl" x="270" y="86" text-anchor="middle" style="font-size:12.5px; fill:#2E4638;">redistribuir es más barato</text>
+        <text class="gx-lbl" x="270" y="106" text-anchor="middle" style="font-size:12.5px; fill:#2E4638;">→ el Estado redistribuye</text>
+
+        <text class="gx-lbl" x="650" y="300" text-anchor="middle" style="font-size:12.5px; fill:#9C2B2F;">reprimir es más barato</text>
+        <text class="gx-lbl" x="650" y="320" text-anchor="middle" style="font-size:12.5px; fill:#9C2B2F;">→ el Estado reprime</text>
+
+        <text class="gx-cap b" x="460" y="26" text-anchor="middle" fill="#A9823C">el umbral</text>
+      </svg>
+    </div>
+    <div class="textcols" style="flex:none; margin-top:10px; gap:44px;">
+      <div>
+        <div class="blockhead" style="margin-bottom:8px;">Redistribuir</div>
+        <p class="pt" style="font-size:17px; line-height:1.45;">El Estado cobra impuestos y entrega bienes públicos: el trabajador <strong>pierde ese beneficio si se rebela</strong>. Cuesta más cuanto más se automatiza. En el límite, la mitad del ingreso se va sólo en comprar la paz.</p>
+      </div>
+      <div>
+        <div class="blockhead" style="color:var(--stamp); margin-bottom:8px;">Reprimir</div>
+        <p class="pt" style="font-size:17px; line-height:1.45;">El Estado paga ejército, policía y vigilancia, y lleva la probabilidad de revuelta exitosa <strong>casi a cero</strong>. Cuesta parecido con poca o con mucha automatización. En el límite, todas las tareas al capital y los trabajadores contenidos por la fuerza.</p>
+      </div>
+    </div>
+    <p class="src-line"><strong>«Cruce único»</strong> quiere decir algo fuerte: pasado el umbral, la economía <strong>nunca vuelve</strong> a la zona en que redistribuir convenía. · El Estado no combina los dos instrumentos: si reprime, redistribuir no aporta nada. · Y el riesgo de revuelta no llega a cero ni siquiera bajo represión — el modelo lo deja explícito a propósito.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 11</span><span class="dots"></span><span>EL CRUCE</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El nombre del hallazgo</div>
+    <h2 class="sm">Complementariedad<br>entre automatización y represión.</h2>
+    <div class="duo" style="margin-top:4px;">
+      <div class="pts">
+        <p class="pt">Dos cosas son <b>complementarias</b> cuando cada una hace más valiosa a la otra. Como el café y el azúcar.</p>
+        <p class="pt"><strong>Más automatización hace más atractiva la represión</strong>, porque encarece la alternativa redistributiva.</p>
+        <p class="pt"><strong>Más represión hace más atractiva la automatización</strong>, porque libera al Estado de tener que moderarla.</p>
+        <p class="pt" style="border-top:1px solid var(--line); padding-top:16px;">Y como el capital acumulado empuja la automatización, <b>acumular capital empuja también hacia la represión.</b> Los tres se refuerzan.</p>
+      </div>
+      <div>
+        <div class="bigquote" style="margin-top:0; flex:none;">
+          <p class="sm2">«Las horcas serán recibidas con <em>fusiles</em> por parte del Estado capitalista.»</p>
+          <cite>Acemoglu, Gitmez &amp; Shadmehr (2026), sección 1</cite>
+        </div>
+        <div class="note red">
+          <div class="nl">La condición, que hay que decir siempre</div>
+          <p>Todo esto vale <strong>salvo que la amenaza de revuelta sea muy débil</strong>. Si nadie se va a rebelar nunca, basta con una redistribución barata y no hace falta reprimir. La conclusión dura del paper <strong>necesita</strong> que la gente sí sea capaz de rebelarse.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 12</span><span class="dots"></span><span>COMPLEMENTARIEDAD</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Sección 8 · Proposición 12 · La lámina central</div>
+    <h2 class="xs">El golpe ocurre cuando el impuesto<br>supera el precio de la represión.</h2>
+    <div class="duo wide" style="margin-top:6px;">
+      <div class="pts">
+        <p class="pt"><strong>El montaje:</strong> la sociedad empieza como democracia. Los trabajadores son mayoría, así que fijan el impuesto <b>lo más alto que la Constitución y la capacidad fiscal permitan</b>.</p>
+        <p class="pt"><strong>La cuenta del capital:</strong> ¿me sale más caro pagar ese impuesto todos los años, o pagar de una vez el costo de derrocar la democracia y montar un régimen represivo?</p>
+        <p class="pt"><strong>El resultado:</strong> a medida que el capital se acumula, el costo del golpe se vuelve proporcionalmente menor. El umbral que lo desencadena <b>baja con cada año de acumulación</b>.</p>
+      </div>
+      <div>
+        <div class="note red" style="margin-top:0;">
+          <div class="nl">La paradoja que hay que discutir</div>
+          <p style="font-size:17px;">La democracia sobrevive <strong>si es fiscalmente débil</strong>.<br><br>Una democracia que no logra cobrar impuestos altos no le resulta cara a nadie, y por eso nadie la derriba. Una democracia con capacidad tributaria real cruza antes el umbral del golpe.<br><br>Es decir: <strong>en este modelo, la capacidad fiscal es a la vez la virtud de la democracia y su factor de riesgo.</strong></p>
+        </div>
+        <div class="note" style="margin-top:14px;">
+          <div class="nl">Y ojo con esto</div>
+          <p>El golpe aquí <strong>no requiere polarización, ni demagogo, ni erosión discursiva, ni desinformación</strong>. Requiere una hoja de cálculo.<br><br>Y <strong>el umbral no está señalizado</strong>: la sociedad no siente que esté cambiando de régimen. Sigue haciendo lo que venía haciendo —redistribuir— hasta que un día el cálculo se da vuelta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 13</span><span class="dots"></span><span>EL GOLPE</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Observación 8 · Lo que el modelo deja fuera y agravaría el resultado</div>
+    <h2 class="xs">La misma IA que automatiza el trabajo<br>abarata la vigilancia.</h2>
+    <div class="bignum">
+      <div class="fig-n sm">8<small>Observación</small></div>
+      <div class="fig-t2">
+        En el modelo, el costo de reprimir es un número <strong>dado desde afuera</strong>. Los autores señalan, en una nota, que la IA probablemente <strong>lo hace bajar</strong> — es el argumento del «Estado de vigilancia con IA».
+        <span class="counter">Y si baja el costo de reprimir, <strong>todo el resultado se agrava</strong>: el umbral se cruza antes, la represión se prefiere en más escenarios, y en la sección 8 el golpe se vuelve rentable con menos capital acumulado.</span>
+      </div>
+    </div>
+    <div class="note red">
+      <div class="nl">Y esto es el Estado algorítmico</div>
+      <p>Es el único lugar donde el paper toca la <strong>vigilancia</strong>, y lo hace para decir que su propia conclusión es <em>conservadora</em>: supone que reprimir cuesta mañana lo mismo que hoy. Si la IA lo abarata, <strong>regular la vigilancia no es sólo una política de privacidad: es mantener caro el reprimir</strong>.</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 14</span><span class="dots"></span><span>VIGILANCIA</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Lectura crítica · Dónde se ataca este paper</div>
+    <h2 class="xs">Todo el resultado cuelga de dos supuestos.</h2>
+    <div class="textcols" style="margin-top:22px;">
+      <div>
+        <div class="blockhead">Supuesto 1 · el mecanismo</div>
+        <p class="pt">Automatizar una tarea <b>mueve el ingreso de esa tarea del trabajo al capital</b>. Lo que dispara la revuelta no es el desempleo: es la <strong>razón</strong> entre lo que gana el capital y lo que gana el trabajo.</p>
+        <p class="pt" style="font-size:16.5px; line-height:1.5; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; margin-top:18px;"><b>Puesto en duda</b> por lo que vieron en la clase 7: según <em>The Economist</em>, la IA lleva creados cerca de un millón de empleos en EE.UU. contra unos 200 mil despidos, y lo que cae es la tarea rutinaria. Con un matiz: mide <strong>empleos</strong>, no reparto. Las dos cosas pueden ser ciertas a la vez.</p>
+      </div>
+      <div>
+        <div class="blockhead" style="color:var(--stamp);">Supuesto 2 · quién es el Estado</div>
+        <p class="pt">El Estado del modelo <b>sólo representa al capital</b>. Es un actor único: no hay tribunales, ni elecciones, ni prensa, ni captura regulatoria.</p>
+        <p class="pt" style="font-size:16.5px; line-height:1.5; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; margin-top:18px;"><b>Sin contraevidencia.</b> Métanle un juez, un votante o un diario y la aritmética del golpe cambia.</p>
+      </div>
+    </div>
+    <p class="src-line">Ninguno de los dos «refuta» el paper. Cada uno es una hipótesis sobre <strong>qué habría que agregarle al modelo para que la democracia sobreviva</strong>.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 15</span><span class="dots"></span><span>LOS LÍMITES</span></div>
+</section>
+
+<section class="slide divider">
+  <div class="content" style="justify-content:center;">
+    <div class="eyebrow"><span class="bar"></span>Parte II</div>
+    <div class="part-num">02</div>
+    <h2>Del modelo a los duelos</h2>
+    <p class="sub">Seis personas del mapa del <em>Times</em>, tres peleas. Cada una es una versión con nombre propio de algo que el modelo acaba de mostrar.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 16</span><span class="dots"></span><span>LOS DUELOS</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El puente · Tres hallazgos, tres duelos</div>
+    <h2 class="xs">Lo que el modelo dice en abstracto,<br>ellos lo discuten con nombre y apellido.</h2>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0;">
+    <table class="matrix" style="margin-top:0; font-size:19px;">
+      <tr><th>En el modelo</th><th>El duelo</th><th>La pregunta</th></tr>
+      <tr>
+        <td class="lead-c" style="font-size:17px; width:30%;">Cada empresa automatiza mirando su costo. Nadie descuenta el riesgo que agrega al conjunto.</td>
+        <td><strong>Huang contra Amodei</strong></td>
+        <td>¿Puede cada laboratorio frenar solo —«si no está listo, no lo lances»—, o hace falta que alguien obligue a todos a la vez?</td>
+      </tr>
+      <tr>
+        <td class="lead-c" style="font-size:17px; width:30%;">El instrumento disponible determina lo que hace el Estado.</td>
+        <td><strong>Hawley contra Altman</strong></td>
+        <td>Demandas después del daño, o reglas antes de lanzar: ¿qué instrumento produce qué conducta?</td>
+      </tr>
+      <tr>
+        <td class="lead-c" style="font-size:17px; width:30%;">El impuesto sube con la automatización; la represión, no. Pasado el umbral, al capital le conviene no pagar.</td>
+        <td><strong>Sanders contra Musk</strong></td>
+        <td>Un impuesto de 50% pagado en acciones, o cheques prometidos por los dueños de los robots: ¿quién paga la paz social?</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 17</span><span class="dots"></span><span>EL PUENTE</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Jensen Huang, con Ezra Klein · The New York Times, 23 de septiembre de 2026</div>
+    <h2 class="xs">«Una torta de cinco capas.»</h2>
+    <div class="stage">
+      <svg viewBox="0 0 920 350" role="img" aria-label="La industria de la IA en cinco capas, de abajo hacia arriba: energía, chips, infraestructura, modelos y aplicaciones">
+        <rect x="40" y="18" width="840" height="58" fill="#2E4638" opacity=".95"/><text class="gx-key" x="64" y="54" style="fill:#EBE6D8; font-size:13px;">5</text><text class="gx-cap b" x="98" y="54" style="fill:#EBE6D8; font-size:19px;">Aplicaciones</text><text class="gx-cap" x="300" y="54" style="fill:#EBE6D8; font-size:15px;">servicios legales, salud, manufactura: «la capa que más me importa»</text><rect x="40" y="84" width="840" height="58" fill="#2E4638" opacity=".8"/><text class="gx-key" x="64" y="120" style="fill:#EBE6D8; font-size:13px;">4</text><text class="gx-cap b" x="98" y="120" style="fill:#EBE6D8; font-size:19px;">Modelos</text><text class="gx-cap" x="300" y="120" style="fill:#EBE6D8; font-size:15px;">de lenguaje, pero también de química, biología, robótica, autos</text><rect x="40" y="150" width="840" height="58" fill="#2E4638" opacity=".65"/><text class="gx-key" x="64" y="186" style="fill:#EBE6D8; font-size:13px;">3</text><text class="gx-cap b" x="98" y="186" style="fill:#EBE6D8; font-size:19px;">Infraestructura</text><text class="gx-cap" x="300" y="186" style="fill:#EBE6D8; font-size:15px;">las «fábricas de IA»: centros de datos y nube</text><rect x="40" y="216" width="840" height="58" fill="#2E4638" opacity=".5"/><text class="gx-key" x="64" y="252" style="fill:#EBE6D8; font-size:13px;">2</text><text class="gx-cap b" x="98" y="252" style="fill:#EBE6D8; font-size:19px;">Chips</text><text class="gx-cap" x="300" y="252" style="fill:#EBE6D8; font-size:15px;">los procesadores que entrenan y corren los modelos</text><rect x="40" y="282" width="840" height="58" fill="#2E4638" opacity=".35"/><text class="gx-key" x="64" y="318" style="fill:#EBE6D8; font-size:13px;">1</text><text class="gx-cap b" x="98" y="318" style="fill:#EBE6D8; font-size:19px;">Energía</text><text class="gx-cap" x="300" y="318" style="fill:#EBE6D8; font-size:15px;">la electricidad que alimenta todo lo de arriba</text>
+      </svg>
+    </div>
+    <div class="ask">
+      <div class="al">Primera pregunta de la hoja de duelo</div>
+      <p>¿En qué capa está tu personaje, y qué vende? Si es político: ¿a quién le habla?</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 18</span><span class="dots"></span><span>LA TORTA</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Seis personajes · Tres duelos · Cada grupo debate una vez</div>
+    <h2 class="xs">Las tres mociones.</h2>
+    <div style="flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0;">
+    <table class="matrix" style="margin-top:0; font-size:18px;">
+      <tr><th>A favor</th><th>Moción</th><th>En contra</th></tr>
+      <tr><td class="lead-c" style="font-size:19px;">Jensen Huang<br><span style="font-weight:400; color:var(--ink-soft);">Nvidia</span></td>
+          <td style="font-family:'Fraunces',serif; font-size:23px; line-height:1.35; color:var(--ink);">«Lo de Hugging Face fue un accidente de ingeniería, no una advertencia.»</td>
+          <td class="lead-c" style="font-size:19px;">Dario Amodei<br><span style="font-weight:400; color:var(--ink-soft);">Anthropic</span></td></tr>
+      <tr><td class="lead-c" style="font-size:19px;">Josh Hawley<br><span style="font-weight:400; color:var(--ink-soft);">Senado, republicano</span></td>
+          <td style="font-family:'Fraunces',serif; font-size:23px; line-height:1.35; color:var(--ink);">«Hacen falta leyes nuevas para que las empresas de IA respondan por sus daños.»</td>
+          <td class="lead-c" style="font-size:19px;">Sam Altman<br><span style="font-weight:400; color:var(--ink-soft);">OpenAI</span></td></tr>
+      <tr><td class="lead-c" style="font-size:19px;">Bernie Sanders<br><span style="font-weight:400; color:var(--ink-soft);">Senado, independiente</span></td>
+          <td style="font-family:'Fraunces',serif; font-size:23px; line-height:1.35; color:var(--ink);">«Las ganancias de la IA tienen que llegar a la gente por impuestos, no por la promesa de sus dueños.»</td>
+          <td class="lead-c" style="font-size:19px;">Elon Musk<br><span style="font-weight:400; color:var(--ink-soft);">SpaceX, Tesla</span></td></tr>
+    </table>
+    </div>
+    <p class="src-line">Los seis salen del mapa de E. Martin y R. Lieberman, «How A.I. Risks Are Splitting Silicon Valley and Washington», <em>The New York Times</em>, 15 de septiembre de 2026, que leyeron en la clase 7.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 19</span><span class="dots"></span><span>LAS MOCIONES</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Cómo se juega</div>
+    <h2 class="xs">Ahora eliges personaje. Después del recreo, debates como él.</h2>
+    <div class="textcols" style="flex:none; margin-top:48px;">
+      <div>
+        <div class="blockhead">Ahora</div>
+        <ol class="num-list" style="gap:22px;">
+          <li style="font-size:20px;"><strong>Entra a Tribuna</strong> desde el teléfono, con tu cuenta Google y el código de sala: <a href="https://naimbro.github.io/tribuna/jugar.html" target="_blank">naimbro.github.io/tribuna/jugar.html</a></li>
+          <li style="font-size:20px;"><strong>Elige tu personaje.</strong> Cupo limitado, por orden de llegada. Si se llena, eliges otro.</li>
+          <li style="font-size:20px;"><strong>Dossier impreso, 20 minutos</strong> en silencio y sin pantallas. Después, <strong>10 minutos</strong> en grupo para la hoja de duelo.</li>
+        </ol>
+      </div>
+      <div>
+        <div class="blockhead" style="color:var(--stamp);">En el duelo</div>
+        <ul class="dash-list">
+          <li style="font-size:20px;">Hablas <strong>en primera persona</strong>, como tu personaje. No opinas tú: opina él.</li>
+          <li style="font-size:20px;">Los jueces premian la <strong>fidelidad</strong>: que tu personaje lo diría, y que puedas decir dónde lo dijo. <strong>Una cita inventada resta.</strong></li>
+          <li style="font-size:20px;">Tu personaje puede <strong>ceder un punto</strong>. Altman y Musk cambiaron de posición este mes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 20</span><span class="dots"></span><span>CÓMO SE JUEGA</span></div>
+</section>
+</div>
+
+<button class="nav-btn" id="P" aria-label="Anterior">‹</button>
+<button class="nav-btn" id="N" aria-label="Siguiente">›</button>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+let cur = 0;
+
+function buildDots(){
+  slides.forEach((s, i)=>{
+    const box = s.querySelector('.folio .dots');
+    if(!box) return;
+    box.innerHTML = '';
+    slides.forEach((_, j)=>{
+      const d = document.createElement('span');
+      d.className = 'dot' + (j===i ? ' on' : '');
+      d.title = 'Diapositiva ' + (j+1);
+      d.addEventListener('click', ()=> go(j));
+      box.appendChild(d);
+    });
+  });
+}
+
+function render(){
+  slides.forEach((s,i)=> s.classList.toggle('active', i===cur));
+  buildDots();
+  document.getElementById('prog').style.width = ((cur+1)/slides.length*100) + '%';
+  const act = slides[cur];
+  if(act) act.scrollTop = 0;
+}
+
+function go(i){
+  cur = Math.max(0, Math.min(slides.length-1, i));
+  history.replaceState(null, '', '#' + (cur+1));
+  render();
+}
+
+function fromHash(){
+  const n = parseInt((location.hash || '').slice(1), 10);
+  if(!isNaN(n) && n >= 1 && n <= slides.length) cur = n - 1;
+}
+
+document.getElementById('P').addEventListener('click', ()=> go(cur-1));
+document.getElementById('N').addEventListener('click', ()=> go(cur+1));
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown'){ e.preventDefault(); go(cur+1); }
+  if(e.key === 'ArrowLeft'  || e.key === 'PageUp'){ e.preventDefault(); go(cur-1); }
+  if(e.key === 'Home'){ go(0); }
+  if(e.key === 'End'){ go(slides.length-1); }
+});
+
+window.addEventListener('hashchange', ()=>{ fromHash(); render(); });
+
+fromHash();
+render();
+</script>
+
+</body>
+</html>
