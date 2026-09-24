@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Comité de lectura — Clase 2</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 760px;
+    margin: 2em auto;
+    padding: 1em;
+    color: #222;
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  h1 { color: #0a3d62; font-size: 1.5em; margin-bottom: 0.2em; }
+  h2 { color: #0a3d62; font-size: 1.15em; border-bottom: 2px solid #ddd; padding-bottom: 0.2em; margin-top: 0; }
+  h3 { color: #1e3799; font-size: 1em; margin-bottom: 0.3em; }
+  .sub { color: #666; font-size: 0.9em; margin-top: 0; }
+  .sheet { page-break-after: always; padding-top: 0.5em; }
+  .sheet:last-child { page-break-after: auto; }
+  .meta { background: #eaf2f8; border-left: 5px solid #0a3d62; padding: 0.7em 1em; margin: 1em 0; font-size: 0.92em; }
+  .box { border: 1px solid #bbb; border-radius: 4px; padding: 0.8em 1em; margin: 0.8em 0; }
+  .task { background: #fffaf0; border-left: 4px solid #e58e26; padding: 0.7em 1em; margin: 0.9em 0; }
+  .rule { background: #f4ecf7; border-left: 4px solid #8e44ad; padding: 0.7em 1em; margin: 0.9em 0; }
+  ol, ul { padding-left: 1.3em; }
+  li { margin-bottom: 0.35em; }
+  .lines { margin-top: 0.4em; }
+  .lines div { border-bottom: 1px solid #ccc; height: 1.7em; }
+  table { border-collapse: collapse; width: 100%; margin-top: 0.6em; font-size: 0.92em; }
+  th, td { border: 1px solid #bbb; padding: 0.45em 0.6em; text-align: left; vertical-align: top; }
+  th { background: #eaf2f8; }
+  .empty-row td { height: 2.4em; }
+  blockquote { border-left: 3px solid #999; margin: 0.7em 0; padding-left: 0.9em; color: #444; font-style: italic; }
+  .footer { font-size: 0.85em; color: #777; margin-top: 2em; text-align: center; }
+  @media print {
+    body { margin: 0; font-size: 12.5px; max-width: 100%; }
+    .meta, .task, .rule, .box { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PORTADA / INSTRUCCIONES GENERALES ============ -->
+<div class="sheet">
+  <h1>Comité de lectura</h1>
+  <p class="sub">Usos de la IA en Investigación Académica &mdash; Clase 2, jueves 24-09-2026</p>
+
+  <div class="meta">
+    <strong>La pregunta del día.</strong> Las cuatro lecturas describen máquinas que producen algo
+    que antes producía un investigador: hipótesis, código, demostraciones. Las cuatro tropiezan con
+    el mismo problema, y ninguna lo resuelve del todo:
+    <br><br>
+    <strong>¿Quién decide que el producto es bueno?</strong>
+  </div>
+
+  <h2>Cómo funciona la sesión</h2>
+  <ol>
+    <li><strong>Trabajo en comité (50 min).</strong> Cuatro grupos, una lectura cada uno. Cada
+    grupo trabaja con su hoja.</li>
+    <li><strong>Reportes (30 min).</strong> Cada grupo expone 3 minutos y entrega sus tres
+    criterios.</li>
+    <li><strong>Rúbrica del curso.</strong> Consolidamos los doce criterios en una rúbrica común.</li>
+    <li><strong>Torneo en vivo (35 min).</strong> Generamos hipótesis con la máquina sobre una
+    pregunta de investigación real de alguien de la sala, y las rankeamos con <em>nuestra</em>
+    rúbrica.</li>
+  </ol>
+
+  <div class="rule">
+    <strong>Regla del comité.</strong> Si no alcanzaste a leer en profundidad, di lo que alcanzaste
+    y trabaja desde ahí. Esta hoja está diseñada para funcionar con una lectura de 25 minutos hecha
+    ahora mismo. Nadie tiene que fingir.
+  </div>
+
+  <div class="task">
+    <strong>El producto de tu grupo son TRES CRITERIOS.</strong> Un criterio es una pregunta que
+    le harías a una hipótesis para decidir si vale la pena perseguirla. Tiene que ser lo bastante
+    concreto como para que dos personas distintas lo apliquen y lleguen al mismo veredicto.
+    <br><br>
+    <em>Malo:</em> &laquo;¿es interesante?&raquo; &mdash; <em>Bueno:</em> &laquo;¿especifica qué
+    observación la refutaría?&raquo;
+  </div>
+</div>
+
+<!-- ============ GRUPO A ============ -->
+<div class="sheet">
+  <h2>Grupo A &mdash; El juez es la propia máquina</h2>
+  <p class="sub">Lectura: <em>Towards an AI Co-Scientist</em> (Gottweis et al., arXiv 2502.18864 / Nature 2026)</p>
+
+  <p>Un sistema de seis agentes construido sobre Gemini genera hipótesis biomédicas. El agente
+  <strong>Generation</strong> propone, <strong>Reflection</strong> hace de revisor por pares,
+  <strong>Ranking</strong> corre un <strong>torneo Elo</strong> donde las hipótesis compiten en
+  debates de a pares, <strong>Evolution</strong> refina las ganadoras, y
+  <strong>Meta-review</strong> sintetiza. Mientras más cómputo se le da, mejores hipótesis produce.</p>
+
+  <h3>Lean buscando esto</h3>
+  <ul>
+    <li>Cómo funciona el torneo Elo: ¿qué compite exactamente contra qué?</li>
+    <li>La evidencia: GPQA diamond, top-1 accuracy <strong>78,4%</strong>; 11 de 15 objetivos de
+    investigación evaluados por expertos; novedad 3,64/5, impacto 3,09/5; 78 hipótesis de
+    reposicionamiento de fármacos evaluadas por 6 hematólogos-oncólogos.</li>
+    <li>El caso más fuerte: el sistema redescubrió solo un mecanismo de resistencia antimicrobiana
+    que el equipo <em>ya había validado pero no publicado</em>.</li>
+    <li>La sección de limitaciones. Léanla entera.</li>
+  </ul>
+
+  <div class="task">
+    <strong>Trabajo del grupo</strong>
+    <ol>
+      <li>El Elo mide qué hipótesis <em>gana un debate entre agentes</em>. Nombren una propiedad
+      de una buena hipótesis que ese mecanismo capture bien, y una que no capture en absoluto.</li>
+      <li>El caso de resistencia antimicrobiana: ¿es prueba de descubrimiento, o de que el problema
+      se lo plantearon personas que ya sabían la respuesta? <strong>Diseñen un test limpio</strong>
+      que distinguiría ambas cosas.</li>
+      <li>Los autores admiten que el sistema no tiene acceso a resultados negativos: aprende de
+      literatura publicada, sesgada hacia lo que funcionó. ¿Hacia qué tipo de hipótesis queda
+      sesgado? ¿Qué implica eso para una disciplina con problemas de replicación?</li>
+    </ol>
+  </div>
+
+  <h3>Nuestros tres criterios</h3>
+  <div class="lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<!-- ============ GRUPO B ============ -->
+<div class="sheet">
+  <h2>Grupo B &mdash; El mismo resultado, dos retóricas</h2>
+  <p class="sub">Lectura: blog de Google Research, <em>Accelerating scientific breakthroughs with an
+  AI co-scientist</em> &mdash; contra la sección de limitaciones del paper del Grupo A</p>
+
+  <p>Su lectura es corta y casi no tiene información nueva. Eso es intencional. Ustedes no están
+  estudiando el sistema: están estudiando <strong>la distancia entre el paper y el comunicado</strong>.</p>
+
+  <div class="meta">
+    El blog dice que el sistema &laquo;redescubrió de forma independiente&raquo; el mecanismo de
+    resistencia antimicrobiana.<br>
+    El paper dice que los evaluadores eran de un solo centro, que no hubo ensayos aleatorizados,
+    que faltan mejores métricas y que la validación es preliminar.<br><br>
+    <strong>Las dos cosas son ciertas. Solo una llegó a la prensa.</strong>
+  </div>
+
+  <h3>Lean buscando esto</h3>
+  <ul>
+    <li>Las seis limitaciones que el paper declara, y dónde quedaron en el blog.</li>
+    <li>Los verbos. Qué hace el sistema según el blog: ¿&laquo;sugiere&raquo;, &laquo;propone&raquo;,
+    &laquo;descubre&raquo;, &laquo;identifica&raquo;? Anoten los verbos exactos.</li>
+    <li>Quién es el sujeto de cada oración: ¿la máquina, el equipo, los científicos?</li>
+  </ul>
+
+  <div class="task">
+    <strong>Trabajo del grupo</strong>
+    <ol>
+      <li>Hagan la tabla de dos columnas: <em>lo que el blog deja entender</em> /
+      <em>lo que el paper efectivamente demostró</em>. Mínimo cuatro filas.</li>
+      <li>Los autores no mintieron: las limitaciones están publicadas. Entonces, ¿dónde está la
+      responsabilidad &mdash; en quien escribe el comunicado, en quien lo lee, o en el formato?</li>
+      <li>Ustedes van a escribir el abstract de su proyecto final en tres semanas.
+      <strong>¿Qué van a hacer distinto?</strong> Escriban una regla concreta que se van a aplicar
+      a ustedes mismos.</li>
+    </ol>
+  </div>
+
+  <table>
+    <tr><th style="width:50%">Lo que el blog deja entender</th><th>Lo que el paper demostró</th></tr>
+    <tr class="empty-row"><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td></tr>
+  </table>
+
+  <h3>Nuestros tres criterios</h3>
+  <div class="lines"><div></div><div></div><div></div><div></div></div>
+</div>
+
+<!-- ============ GRUPO C ============ -->
+<div class="sheet">
+  <h2>Grupo C &mdash; La tarea puntuable</h2>
+  <p class="sub">Lectura: <em>An AI system to help scientists write expert-level empirical
+  software</em> (Aygün et al., Nature 2026)</p>
+
+  <p>Presentan <strong>ERA</strong>: un LLM acoplado a búsqueda en árbol &mdash; el mismo linaje de
+  AlphaGo &mdash; que reescribe código una y otra vez para maximizar una métrica de calidad. El
+  argumento: si conviertes la creación de software en una <strong>&laquo;tarea puntuable&raquo;</strong>
+  (<em>scorable task</em>), la máquina la resuelve mejor que los expertos humanos.</p>
+
+  <h3>Lean buscando esto</h3>
+  <ul>
+    <li>Los resultados: <strong>40 métodos nuevos</strong> de integración de datos de célula única
+    que superan al mejor método humano de un leaderboard público. <strong>14 modelos</strong> que
+    superan al ensemble del CDC en predicción de hospitalizaciones por COVID-19. Además:
+    segmentación satelital, predicción de actividad de &gt;70.000 neuronas en pez cebra, integrales
+    difíciles.</li>
+    <li>Que el sistema lo desarrollaron <strong>compitiendo en Kaggle</strong>. Piensen en qué
+    significa eso sobre su hábitat natural.</li>
+    <li>La discusión. Sobre todo esta frase:</li>
+  </ul>
+
+  <blockquote>
+    Queremos enfatizar la distinción crítica entre optimizar modelos predictivos empíricos y
+    realizar descubrimiento científico genuino, este último de los cuales requiere razonar sobre
+    teorías subyacentes, mecanismos causales y marcos matemáticos.
+  </blockquote>
+
+  <p>Es decir: el paper de <em>Nature</em> que demuestra que la máquina le gana a los expertos
+  dice, en su propia discusión, que eso no es descubrimiento científico.</p>
+
+  <div class="task">
+    <strong>Trabajo del grupo</strong>
+    <ol>
+      <li>El requisito de entrada es duro: métrica numérica, automática, fijada de antemano, con
+      consenso. <strong>Cada uno dice en voz alta si alguna pregunta de su tesis cumple eso.</strong>
+      Cuenten cuántas sí. Si ninguna &mdash; ¿hay una sub-tarea puntuable escondida adentro?</li>
+      <li>ERA encontró 40 métodos que ganan en el leaderboard. ¿Aprendimos 40 cosas sobre biología,
+      o 40 cosas sobre el leaderboard? Propongan cómo distinguirlo.</li>
+      <li>Si convertimos una pregunta de ciencia política en tarea puntuable:
+      <strong>¿qué desaparece de la pregunta en esa traducción?</strong></li>
+    </ol>
+  </div>
+
+  <h3>Nuestros tres criterios</h3>
+  <div class="lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<!-- ============ GRUPO D ============ -->
+<div class="sheet">
+  <h2>Grupo D &mdash; Orquestación humana fuerte</h2>
+  <p class="sub">Lectura: <em>Accelerating Scientific Research with Gemini: Case Studies and Common
+  Techniques</em> (arXiv 2602.03837)</p>
+
+  <p>A diferencia de las otras lecturas, aquí <strong>no hay sistema autónomo</strong>. Hay
+  investigadores humanos trabajando con el modelo, y el paper documenta <em>cómo</em>: resuelven
+  problemas abiertos, refutan conjeturas, encuentran un bug en una demostración de criptografía.</p>
+
+  <h3>Lean buscando esto</h3>
+  <ul>
+    <li>La taxonomía de casos: revisión técnica y contraejemplos (SNARGs); polinización cruzada
+    (Max-Cut, árboles de Steiner); bucles neuro-simbólicos (cuerdas cósmicas); resolución de
+    conjeturas (Courtade-Kumar, <strong>diseño de mecanismos</strong>,
+    <strong>agregación de información en redes</strong>).</li>
+    <li>Las ocho técnicas comunes. Son lo más directamente utilizable del paper.</li>
+    <li>Cómo manejan autoría: cada sección lleva firma humana, y los autores de cada sección son
+    responsables <em>solo de la corrección de su sección</em>. La IA no aparece como autora.</li>
+    <li>Los modos de falla: el modelo alucina, genera ruido, y a veces <em>evita</em> maquinaria
+    matemática no trivial &mdash; lo resolvieron quitándole los papers fuente del contexto.</li>
+  </ul>
+
+  <div class="meta">
+    La frase que resume el paper: &laquo;las colaboraciones más exitosas comparten un denominador
+    común: <strong>orquestación humana fuerte</strong>&raquo;.
+  </div>
+
+  <div class="task">
+    <strong>Trabajo del grupo</strong>
+    <ol>
+      <li>Si el denominador común es la orquestación humana fuerte:
+      <strong>¿qué sabía el humano que el modelo no?</strong> Nombren la habilidad con precisión.
+      No vale decir &laquo;criterio&raquo; ni &laquo;experiencia&raquo; &mdash; queremos algo que
+      se pueda enseñar.</li>
+      <li>Son los casos que funcionaron, escritos por quienes los hicieron funcionar. No hay
+      denominador: no sabemos cuántos intentos fracasaron. ¿Qué paper habría que exigir que se
+      escriba también, y quién lo escribiría?</li>
+      <li>Cada sección lleva firma y responsabilidad individual. ¿Es ese el modelo de autoría
+      correcto para papers asistidos por IA? <strong>¿Qué firmarían ustedes y qué no?</strong></li>
+    </ol>
+  </div>
+
+  <h3>Nuestros tres criterios</h3>
+  <div class="lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+
+<!-- ============ RÚBRICA ============ -->
+<div class="sheet">
+  <h2>Rúbrica del curso</h2>
+  <p class="sub">Se completa en la pizarra con los doce criterios de los cuatro grupos, y se usa en
+  el torneo de la segunda mitad.</p>
+
+  <table>
+    <tr>
+      <th style="width:28%">Criterio</th>
+      <th style="width:42%">La pregunta que le hago a la hipótesis</th>
+      <th style="width:12%">Grupo</th>
+      <th style="width:18%">Peso</th>
+    </tr>
+    <tr class="empty-row"><td></td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td></td><td></td><td></td><td></td></tr>
+  </table>
+
+  <div class="rule">
+    <strong>Regla de consolidación.</strong> No pueden quedar más de <strong>seis</strong>
+    criterios. Si dos grupos propusieron lo mismo con otras palabras, se fusionan. Si un criterio
+    no se puede aplicar a una hipótesis concreta en menos de un minuto, se cae.
+  </div>
+
+  <h2>Torneo</h2>
+  <p>Seis hipótesis generadas en vivo sobre una pregunta de investigación real. Cada una se puntúa
+  con la rúbrica de arriba. Después comparamos <strong>nuestro ranking</strong> con
+  <strong>el ranking que la máquina se da a sí misma</strong>.</p>
+
+  <table>
+    <tr>
+      <th style="width:8%">#</th>
+      <th style="width:46%">Hipótesis (en una línea)</th>
+      <th style="width:23%">Puntaje del curso</th>
+      <th style="width:23%">Ranking de la máquina</th>
+    </tr>
+    <tr class="empty-row"><td>1</td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td>2</td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td>3</td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td>4</td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td>5</td><td></td><td></td><td></td></tr>
+    <tr class="empty-row"><td>6</td><td></td><td></td><td></td></tr>
+  </table>
+
+  <div class="task">
+    <strong>La pregunta de cierre.</strong> Donde nuestro ranking y el de la máquina difieren:
+    ¿quién tiene razón, y cómo lo sabríamos? Esa discrepancia es exactamente la limitación número
+    cinco del paper del co-scientist &mdash; &laquo;necesidad de mejores métricas&raquo;. Acabamos
+    de producirla nosotros.
+  </div>
+
+  <p class="footer">Escuela de Gobierno UAI &mdash; Doctorado en Procesos e Instituciones Políticas &mdash; 2026</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instalar un agente — Clase 2</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 820px;
+    margin: 2em auto;
+    padding: 1em;
+    color: #222;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  h1 { color: #0a3d62; font-size: 1.6em; margin-bottom: 0.1em; }
+  h2 { color: #0a3d62; font-size: 1.2em; border-bottom: 2px solid #ddd; padding-bottom: 0.2em; margin-top: 1.9em; }
+  h3 { color: #1e3799; font-size: 1.02em; margin-top: 1.4em; margin-bottom: 0.3em; }
+  .sub { color: #666; margin-top: 0; }
+  code {
+    background: #f1f3f5; padding: 0.12em 0.35em; border-radius: 3px;
+    font-family: Consolas, "Courier New", monospace; font-size: 0.9em;
+  }
+  pre {
+    background: #2b2b2b; color: #f0f0f0; padding: 0.9em 1em; border-radius: 5px;
+    overflow-x: auto; font-size: 0.86em; line-height: 1.45;
+  }
+  pre code { background: none; color: inherit; padding: 0; font-size: 1em; }
+  .meta { background: #eaf2f8; border-left: 5px solid #0a3d62; padding: 0.8em 1em; margin: 1.2em 0; }
+  .warn { background: #fff3b0; border-left: 5px solid #e58e26; padding: 0.8em 1em; margin: 1.2em 0; }
+  .ok { background: #eafaf1; border-left: 5px solid #27ae60; padding: 0.8em 1em; margin: 1.2em 0; }
+  .optional { background: #f4ecf7; border-left: 5px solid #8e44ad; padding: 0.8em 1em; margin: 1.2em 0; }
+  table { border-collapse: collapse; width: 100%; margin: 0.8em 0; font-size: 0.93em; }
+  th, td { border: 1px solid #bbb; padding: 0.5em 0.65em; text-align: left; vertical-align: top; }
+  th { background: #eaf2f8; }
+  ol > li { margin-bottom: 0.6em; }
+  .big-step { font-size: 1.05em; }
+  .footer { font-size: 0.85em; color: #777; margin-top: 3em; text-align: center; }
+  @media print { body { max-width: 100%; font-size: 12px; } pre { background: #f1f3f5; color: #000; border: 1px solid #ccc; } }
+</style>
+</head>
+<body>
+
+<h1>Instalar un agente</h1>
+<p class="sub">Usos de la IA en Investigación Académica &mdash; Clase 2, jueves 24-09-2026</p>
+
+<div class="meta">
+  <strong>Lo más probable es que ya lo tengas instalado.</strong><br><br>
+  Codex —el agente de OpenAI— <strong>ya no es un programa aparte</strong>. Desde julio de 2026
+  vive dentro de la <strong>aplicación de escritorio de ChatGPT</strong>. Si la tienes en tu
+  computador, no hay nada que instalar: hay que aprender a abrirla de otra manera.<br><br>
+  Funciona con la suscripción <strong>ChatGPT Plus</strong>. Si tu cuenta es gratuita, también
+  sirve, con un límite de uso bajo (más abajo).
+</div>
+
+<h2>Antes de nada: descarga la carpeta de práctica</h2>
+
+<p>La vamos a usar toda la clase. Descárgala y descomprímela en un lugar que encuentres fácil
+&mdash; el Escritorio sirve perfectamente:</p>
+
+<p><a href="https://naimbro.github.io/materiales/2026_ai_research/taller_agentes.zip"><strong>taller_agentes.zip</strong></a></p>
+
+<h2>Vía A &mdash; La aplicación de ChatGPT <span style="font-weight:normal; color:#27ae60;">(la que usamos hoy)</span></h2>
+
+<p>Sin terminal, sin comandos. Cuatro pasos.</p>
+
+<h3>1. Conseguir la aplicación</h3>
+
+<p>Si ya la tienes instalada, salta al paso 2.</p>
+
+<table>
+  <tr><th style="width:22%">Sistema</th><th>Dónde</th></tr>
+  <tr>
+    <td><strong>Windows</strong></td>
+    <td>Desde <a href="https://chatgpt.com/download" target="_blank">chatgpt.com/download</a>, o
+    búscala como <em>ChatGPT</em> en la Microsoft Store.</td>
+  </tr>
+  <tr>
+    <td><strong>Mac</strong></td>
+    <td>Desde <a href="https://chatgpt.com/download" target="_blank">chatgpt.com/download</a>.
+    La versión de Mac está hecha para equipos con chip Apple (M1 en adelante). Si tu Mac es Intel,
+    avísame en clase y usamos otra vía.</td>
+  </tr>
+</table>
+
+<h3>2. Entrar</h3>
+<p>Abre la aplicación y entra con la cuenta de ChatGPT que tiene el plan <strong>Plus</strong>.</p>
+
+<div class="meta">
+  <strong>¿Cuenta gratuita?</strong> El plan gratis de ChatGPT también incluye Codex, pero para
+  «tareas rápidas»: OpenAI no publica el límite y es bajo, así que puede cortarse a mitad de la
+  clase. Si te pasa, trabajas en pareja. El plan Go (US$8 al mes) también incluye Codex.
+</div>
+
+<h3>3. Abrir una carpeta <span style="color:#e58e26;">&larr; este es el paso que importa</span></h3>
+
+<p>En la aplicación, en vez de empezar a escribir un mensaje, elige <strong>abrir una
+carpeta</strong> y selecciona <code>taller_agentes</code>.</p>
+
+<div class="warn">
+  <strong>El agente trabaja sobre una carpeta.</strong> No sobre &laquo;el internet&raquo; ni sobre
+  una conversación suelta: sobre la carpeta que acabas de abrir. Ve esos archivos, los puede leer,
+  los puede modificar y puede ejecutar programas ahí. <strong>Nada de lo que esté fuera de esa
+  carpeta existe para él.</strong>
+  <br><br>
+  Esta es la diferencia entera entre un chatbot y un agente. Todo lo demás de hoy se apoya acá.
+</div>
+
+<h3>4. Cambiar a Codex</h3>
+<p>En el selector de modo de la aplicación &mdash;el desplegable que dice ChatGPT&mdash; elige
+<strong>Codex</strong>. Ese es el modo que trabaja con archivos y herramientas de verdad.</p>
+
+<div class="ok">
+  Listo. Ya tienes un agente mirando una carpeta. Prueba escribiéndole:<br><br>
+  <em>&laquo;Mira los archivos de esta carpeta y explícame en cinco líneas qué contiene cada
+  uno.&raquo;</em>
+</div>
+
+<h2>Vía B &mdash; La terminal <span style="font-weight:normal; color:#8e44ad;">(opcional)</span></h2>
+
+<div class="optional">
+  <strong>No necesitas esto para la clase de hoy.</strong> Está acá porque casi toda la
+  documentación, los tutoriales y los ejemplos que vas a encontrar dan por hecho que usas la
+  terminal, y porque a la larga es más rápida. Si terminas antes o tienes curiosidad, adelante.
+</div>
+
+<h3>Abrir la terminal</h3>
+<ul>
+  <li><strong>Windows:</strong> tecla Windows → escribir <code>PowerShell</code> → Enter. Verás
+  algo como <code>PS C:\Users\TuNombre&gt;</code>. Ese <code>PS</code> importa: significa que
+  estás en PowerShell y no en CMD.</li>
+  <li><strong>Mac:</strong> Cmd + Espacio → escribir <code>Terminal</code> → Enter.</li>
+</ul>
+
+<h3>Instalar Codex CLI</h3>
+<p><strong>Windows:</strong></p>
+<pre><code>powershell -ExecutionPolicy ByPass -c "irm https://chatgpt.com/codex/install.ps1 | iex"</code></pre>
+<p><strong>Mac:</strong></p>
+<pre><code>curl -fsSL https://chatgpt.com/codex/install.sh | sh</code></pre>
+
+<p><strong>Cierra la terminal y abre una nueva</strong> &mdash; el comando nuevo no existe en la
+ventana vieja. Después comprueba:</p>
+<pre><code>codex --version</code></pre>
+
+<h3>Abrirlo en tu carpeta</h3>
+<p>Acá la carpeta no se elige con el mouse: te mueves a ella con <code>cd</code>. El truco para no
+escribir la ruta a mano:</p>
+<ol>
+  <li>Escribe <code>cd</code> y un espacio &mdash; pero <strong>no</strong> presiones Enter.</li>
+  <li>Arrastra la carpeta desde el explorador de archivos y suéltala sobre la terminal. La ruta se
+  escribe sola.</li>
+  <li>Ahora sí, Enter. Después escribe <code>codex</code> y Enter.</li>
+</ol>
+
+<p>Para salir: <code>/exit</code>, o Ctrl + C dos veces.</p>
+
+<h2>Claude Code <span style="font-weight:normal; color:#8e44ad;">(opcional, requiere plan pago)</span></h2>
+
+<div class="optional">
+  Claude Code <strong>no funciona con cuenta gratis</strong>: exige plan Pro, Max o créditos de
+  API. Lo vamos a ver proyectado en clase. Si tienes plan pago y quieres instalarlo, también tiene
+  aplicación de escritorio con ventanas y botones:
+  <a href="https://claude.com/download" target="_blank">claude.com/download</a>.
+  <br><br>
+  Y en terminal, si prefieres:
+</div>
+
+<p><strong>Windows (PowerShell):</strong></p>
+<pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+<p><strong>Mac:</strong></p>
+<pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+
+<h2>Sin plan pago: Google Antigravity <span style="font-weight:normal; color:#8e44ad;">(para la semana)</span></h2>
+
+<div class="optional">
+  Si no pagas ChatGPT ni Claude, la opción gratuita más completa hoy es
+  <a href="https://antigravity.google" target="_blank"><strong>Google Antigravity</strong></a>:
+  el agente de Google, con aplicación de escritorio y versión de terminal. Se entra con una cuenta
+  de Google personal y no pide tarjeta. El plan gratuito tiene una cuota semanal de uso del agente,
+  y Google la ha recortado varias veces, así que no cuentes con que alcance para un día entero de
+  trabajo.
+  <br><br>
+  Funciona igual que Codex: abres una carpeta y le hablas. Todo lo de esta guía se aplica.
+  <br><br>
+  <strong>Ojo con los tutoriales viejos:</strong> muchos todavía recomiendan <em>Gemini CLI</em>
+  como la opción gratis. Desde el 18 de junio de 2026 ya no funciona para cuentas gratuitas; lo
+  reemplazó Antigravity.
+</div>
+
+<h2>Si nada funciona en tu máquina</h2>
+
+<p>Pasa, y no es tu culpa: computadores institucionales con restricciones, antivirus, discos
+llenos, un Mac con chip Intel. Dos salidas, en este orden:</p>
+
+<ol>
+  <li><strong>Trabajar en pareja.</strong> Somos tres. Dos personas en una máquina que funciona
+  aprenden más que una persona peleando sola con un instalador.</li>
+  <li><strong>Codex en el navegador</strong>, en <a href="https://chatgpt.com/codex"
+  target="_blank">chatgpt.com/codex</a>, sin instalar nada.</li>
+</ol>
+
+<h2>Errores típicos</h2>
+
+<table>
+  <tr><th style="width:38%">Lo que ves</th><th>Qué pasó</th></tr>
+  <tr>
+    <td>La app no ofrece el modo Codex</td>
+    <td>O entraste con otra cuenta, o la aplicación está desactualizada. Revisa qué cuenta
+    tienes activa arriba a la derecha y actualiza la app.</td>
+  </tr>
+  <tr>
+    <td>Abriste la carpeta pero dice que no encuentra los archivos</td>
+    <td>Casi siempre descomprimiste mal el zip y abriste la carpeta que contiene a la carpeta.
+    Debes ver <code>datos</code>, <code>scripts</code> y <code>notas</code> adentro.</td>
+  </tr>
+  <tr>
+    <td><code>command not found</code> / <code>no se reconoce como un comando</code> (vía B)</td>
+    <td>No cerraste y volviste a abrir la terminal después de instalar.</td>
+  </tr>
+  <tr>
+    <td><code>The token '&amp;&amp;' is not a valid statement separator</code></td>
+    <td>Estás en PowerShell y pegaste un comando de CMD. Usa la versión de PowerShell.</td>
+  </tr>
+  <tr>
+    <td><code>'irm' is not recognized</code></td>
+    <td>Al revés: estás en CMD y no en PowerShell.</td>
+  </tr>
+  <tr>
+    <td>Se queda pegado sin responder</td>
+    <td>Ctrl + C corta lo que esté corriendo y te devuelve el control.</td>
+  </tr>
+</table>
+
+<div class="warn">
+  <strong>Antes de apuntar un agente a material tuyo:</strong> haz una copia de la carpeta y
+  trabaja sobre la copia. Nadie le da acceso de escritura a la única versión de su tesis.
+</div>
+
+<p class="footer">Naim Bro &mdash; Escuela de Gobierno UAI &mdash; Verificado contra la
+documentación de OpenAI y Anthropic el 23 de septiembre de 2026</p>
+
+</body>
+</html>

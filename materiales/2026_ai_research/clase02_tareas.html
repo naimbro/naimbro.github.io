@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seis tareas cortas — Clase 2</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 820px;
+    margin: 2em auto;
+    padding: 1em;
+    color: #222;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  h1 { color: #0a3d62; font-size: 1.6em; margin-bottom: 0.1em; }
+  h2 {
+    color: #0a3d62; font-size: 1.22em; border-bottom: 2px solid #ddd;
+    padding-bottom: 0.2em; margin-top: 2.2em;
+  }
+  h3 { color: #1e3799; font-size: 1em; margin-top: 1.3em; margin-bottom: 0.3em; }
+  .sub { color: #666; margin-top: 0; }
+  .tag {
+    display: inline-block; font-size: 0.72em; font-weight: 700;
+    padding: 0.18em 0.6em; border-radius: 3px; vertical-align: middle;
+    margin-left: 0.5em; letter-spacing: 0.04em;
+  }
+  .en-clase { background: #d5f0e0; color: #1d6b40; }
+  .en-casa { background: #e8e0f5; color: #5b3d8c; }
+  code {
+    background: #f1f3f5; padding: 0.12em 0.35em; border-radius: 3px;
+    font-family: Consolas, "Courier New", monospace; font-size: 0.9em;
+  }
+  pre {
+    background: #2b2b2b; color: #f0f0f0; padding: 0.9em 1em; border-radius: 5px;
+    overflow-x: auto; font-size: 0.85em; line-height: 1.5; white-space: pre-wrap;
+  }
+  pre code { background: none; color: inherit; padding: 0; font-size: 1em; }
+  .meta { background: #eaf2f8; border-left: 5px solid #0a3d62; padding: 0.8em 1em; margin: 1.2em 0; }
+  .warn { background: #fff3b0; border-left: 5px solid #e58e26; padding: 0.8em 1em; margin: 1.2em 0; }
+  .lesson { background: #fdf0f1; border-left: 5px solid #c4878c; padding: 0.8em 1em; margin: 1.2em 0; }
+  .lesson strong:first-child { color: #a35c62; }
+  ol > li, ul > li { margin-bottom: 0.4em; }
+  .footer { font-size: 0.85em; color: #777; margin-top: 3em; text-align: center; }
+  @media print { body { max-width: 100%; font-size: 12px; } pre { background: #f1f3f5; color: #000; border: 1px solid #ccc; } }
+</style>
+</head>
+<body>
+
+<h1>Seis tareas cortas</h1>
+<p class="sub">Usos de la IA en Investigación Académica &mdash; Clase 2, jueves 24-09-2026</p>
+
+<div class="meta">
+  La primera la hacemos juntos en clase. Las otras cinco son el menú de la semana:
+  <strong>elige al menos dos</strong> y llega el 1 de octubre con un caso donde te sirvió y uno
+  donde falló.
+  <br><br>
+  Todos los prompts están para copiar y pegar. Cámbialos: son un punto de partida, no una receta.
+</div>
+
+<h2>1. La cita que no existe <span class="tag en-clase">EN CLASE</span></h2>
+
+<p>La tarea más corta y probablemente la más importante. La hacemos juntos, al final del primer bloque.</p>
+
+<h3>Primero, pídele las referencias</h3>
+<pre><code>Dame cinco artículos académicos revisados por pares sobre [TU TEMA DE TESIS].
+Para cada uno: autores, año, título, revista y DOI.</code></pre>
+
+<h3>Ahora, hazlo verificar</h3>
+<pre><code>Verifica uno por uno que cada DOI resuelve a un artículo real y que
+los metadatos coinciden con lo que me dijiste. Usa una fuente
+independiente, no tu memoria. Dime explícitamente cuáles no pudiste
+confirmar.</code></pre>
+
+<p>Contrasta tú mismo un par en <a href="https://doi.org" target="_blank">doi.org</a> o
+<a href="https://www.crossref.org/" target="_blank">Crossref</a>. Toma treinta segundos.</p>
+
+<div class="lesson">
+  <strong>Lo que enseña:</strong> el modo de falla más conocido, encontrado por ti en cinco
+  minutos. Fíjate sobre todo en el <em>tono</em>: las referencias inventadas vienen con la misma
+  seguridad que las reales. No hay ninguna señal en el texto que te avise. La señal tiene que
+  venir de afuera, y la tienes que pedir tú.
+</div>
+
+<h2>2. Diez eventos en tu calendario <span class="tag en-casa">EN CASA</span></h2>
+
+<p>Hasta ahora el agente miró una carpeta. Esto es lo primero que hace <strong>fuera</strong> de tu
+computador.</p>
+
+<h3>Antes: activar el conector</h3>
+<p>En la aplicación, en la configuración de conectores, autoriza <strong>Google Calendar</strong>
+con la cuenta que uses de verdad. Te va a pedir permiso en el navegador.</p>
+
+<h3>El prompt</h3>
+<pre><code>Lee el programa del curso en
+https://naimbro.github.io/teaching/2026_programa_ai_research.html
+
+Agenda en mi Google Calendar diez eventos:
+- las cinco sesiones del módulo, con su fecha, hora de inicio y término reales
+- cinco bloques de dos horas para leer, uno antes de cada sesión
+
+Ponle a cada evento un título que empiece con "[AI in Research]" para que
+pueda encontrarlos todos después. Antes de crear nada, muéstrame la lista
+completa y espera a que yo apruebe.</code></pre>
+
+<p><strong>Revisa la lista antes de aprobar.</strong> Compárala contra el programa: las cinco
+fechas están ahí y son verificables. Si inventó una, la acabas de atrapar.</p>
+
+<h3>Y ahora deshaz</h3>
+<pre><code>Borra todos los eventos cuyo título empiece con "[AI in Research]".
+Muéstrame cuáles vas a borrar antes de hacerlo.</code></pre>
+
+<div class="lesson">
+  <strong>Lo que enseña:</strong> que el agente actúa sobre servicios reales, y que por eso el
+  prefijo en el título no era un capricho. Marcar lo que un agente crea es lo que te permite
+  revertirlo después. En un calendario da lo mismo; en tus datos de tesis, no.
+</div>
+
+<h2>3. Mandar un correo <span class="tag en-casa">EN CASA</span></h2>
+
+<div class="warn">
+  <strong>Solo a ti mismo o al profesor.</strong> Nunca a un tercero en un ejercicio. Un
+  correo enviado no se puede deshacer, y el destinatario no sabe que fue una práctica.
+</div>
+
+<h3>El prompt</h3>
+<pre><code>Escríbeme un correo dirigido a mí mismo con el asunto
+"Prueba: resumen de la clase del 24 de septiembre".
+
+En el cuerpo, tres párrafos cortos: qué es un agente, en qué se diferencia
+de un chatbot, y una cosa que quiero probar esta semana con mi propia
+investigación.
+
+Muéstrame el borrador completo. No lo envíes hasta que yo te diga.</code></pre>
+
+<div class="lesson">
+  <strong>Lo que enseña:</strong> la frontera entre leer y actuar. Leer una carpeta es reversible;
+  enviar un correo, no. Fíjate en que el prompt separa explícitamente redactar de enviar &mdash;
+  esa separación la pones tú, y conviene que sea un reflejo.
+</div>
+
+<h2>4. Bajar artículos de Event Registry <span class="tag en-casa">EN CASA</span></h2>
+
+<p>Event Registry es una base global de eventos de prensa. Acá el agente tiene que leer
+documentación que no conoce, conseguir credenciales y escribir el código que las usa.</p>
+
+<div class="warn">
+  <strong>Necesitas una API key.</strong> Es gratis, pero hay que registrarse en
+  <a href="https://eventregistry.org" target="_blank">eventregistry.org</a>. El plan libre solo
+  cubre los últimos 30 días de contenido y tiene un tope de operaciones. Regístrate antes de
+  empezar.
+  <br><br>
+  <strong>Y no pegues tu key en el prompt.</strong> Guárdala en un archivo
+  <code>.env</code> y dile al agente que la lea de ahí. Una clave pegada en un chat queda en el
+  historial.
+</div>
+
+<h3>El prompt</h3>
+<pre><code>Quiero bajar artículos de prensa desde Event Registry sobre [TU TEMA],
+de los últimos 30 días.
+
+Mi API key está en un archivo .env de esta carpeta, en la variable
+EVENTREGISTRY_API_KEY. Léela de ahí y nunca la imprimas en pantalla.
+
+Antes de escribir código: lee la documentación de la API y explícame
+en cinco líneas cómo funciona una consulta, qué es un "concept URI"
+y qué límites tiene el plan gratuito.
+
+Después escribe un script que baje hasta 200 artículos y los guarde en
+un CSV con fecha, título, medio, país y URL. Córrelo y dime cuántas
+filas quedaron.</code></pre>
+
+<div class="lesson">
+  <strong>Lo que enseña:</strong> el agente maneja la cadena completa &mdash; documentación,
+  credenciales, código, ejecución, resultado. Y que pedirle la explicación <em>antes</em> del
+  código te deja en condiciones de juzgar si lo que hizo tiene sentido.
+</div>
+
+<h2>5. De PDFs a una tabla <span class="tag en-casa">EN CASA</span></h2>
+
+<p>Junta tres o cuatro papers que estés leyendo en una carpeta y ábrela con el agente.</p>
+
+<h3>El prompt</h3>
+<pre><code>Esta carpeta tiene varios papers en PDF. Hazme una tabla con una fila
+por paper y estas columnas: autores, año, pregunta de investigación,
+datos, método, hallazgo principal, y una limitación que los propios
+autores reconozcan.
+
+Regla estricta: si no puedes determinar algo leyendo el paper, escribe
+"?" en esa celda. No completes con lo que te parezca probable.
+
+Guarda la tabla como revision.md en esta carpeta.</code></pre>
+
+<p>Después, elige una fila y verifícala contra el PDF. Ojo especialmente con la columna de
+limitaciones: es la que más se inventa, porque suena plausible.</p>
+
+<div class="lesson">
+  <strong>Lo que enseña:</strong> la regla del <code>?</code>. Un agente al que no le das permiso
+  explícito para decir «no sé» va a rellenar el hueco. Dárselo cambia la calidad de todo lo que
+  entrega.
+</div>
+
+<h2>6. Que te escriba una herramienta, no una respuesta <span class="tag en-casa">EN CASA</span></h2>
+
+<p>Las cinco tareas anteriores piden un resultado. Esta pide un <strong>instrumento</strong>, y es
+la que más rinde a la larga.</p>
+
+<h3>El prompt</h3>
+<pre><code>Tengo una carpeta con PDFs de papers con nombres inútiles
+(1-s2.0-xxx.pdf, descarga(3).pdf).
+
+Escríbeme un script que lea cada PDF, extraiga autor y año, y lo renombre
+como apellido_año_palabraclave.pdf.
+
+Requisitos:
+- que no borre ni sobrescriba nada: si no puede determinar el autor,
+  deja el archivo como está y lo reporta al final
+- que primero me muestre qué cambios haría, sin hacerlos, y solo
+  renombre cuando yo se lo confirme
+- comentado en español, para que yo pueda modificarlo después
+
+Escríbelo, córrelo en modo de prueba y muéstrame el resultado.</code></pre>
+
+<div class="lesson">
+  <strong>Lo que enseña:</strong> la diferencia entre pedir un output y construir algo que
+  reutilizas. El script queda tuyo y funciona la semana que viene sin volver a pedir nada. Fíjate
+  además en los dos requisitos de seguridad &mdash; no destruir, y mostrar antes de hacer: esos
+  son tuyos, no del agente. Si no los pides, no aparecen.
+</div>
+
+<h2>Lo que se repite en las seis</h2>
+
+<ol>
+  <li><strong>Muéstrame antes de hacer.</strong> Está en casi todos los prompts. Es la costumbre
+  más barata y la que más problemas evita.</li>
+  <li><strong>Dale permiso para no saber.</strong> El <code>?</code>, el «dime cuáles no pudiste
+  confirmar». Sin eso, rellena.</li>
+  <li><strong>Pide la verificación por separado.</strong> Nunca viene sola.</li>
+  <li><strong>Marca lo que el agente crea</strong> &mdash; un prefijo, una carpeta aparte, un
+  commit &mdash; para poder revertirlo.</li>
+</ol>
+
+<div class="warn">
+  <strong>Para el 1 de octubre:</strong> haz al menos dos de las tareas 2 a 6 con material tuyo
+  de verdad, y llega con <strong>un caso donde te sirvió y uno donde falló</strong>. El que falló
+  es el que vamos a discutir.
+</div>
+
+<p class="footer">Naim Bro &mdash; Escuela de Gobierno UAI &mdash; Doctorado en Procesos e
+Instituciones Políticas &mdash; 2026</p>
+
+</body>
+</html>
