@@ -6,7 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Primer bloque de la clase 8: la ruta corta del deck de la Semana 7 de IA y Democracia
      (ia-democracia-2026/semana7_automatizacion_represion.html), sin los tres gráficos de
-     The Economist que ya se vieron en la clase 7, y las láminas que lanzan los duelos. -->
+     The Economist que ya se vieron en la clase 7, comprimida a nueve láminas; la Parte II, el caso de los
+     radiólogos (fuentes y timestamps en materiales/2026_mgt300/clase08_radiologos_fuentes.md); y las
+     láminas que lanzan los duelos. -->
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
@@ -213,6 +215,42 @@ table.matrix td.hit{background:#F2E6E2;}
 .gx-axis{stroke:var(--ink-soft); stroke-width:1.2;}
 .gx-grid{stroke:var(--line); stroke-width:1; stroke-dasharray:4 4;}
 
+/* Video embebido con respaldo QR (Parte II) */
+.vidwrap{flex:1; min-height:0; display:flex; gap:34px; align-items:center; margin-top:14px;}
+.vid{position:relative; flex:1 1 0; min-width:0; max-height:100%; aspect-ratio:16/9; background:var(--ink); border:1px solid var(--line); box-shadow:0 2px 14px rgba(30,25,15,.12);}
+.vid iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+.vid .poster{position:absolute; inset:0; display:none; align-items:center; gap:30px; padding:28px 34px; background:var(--forest); color:var(--paper);}
+.vid.off iframe{display:none;} .vid.off .poster{display:flex;}
+.poster .qr{width:min(190px,26vh); flex-shrink:0; background:#EBE6D8; padding:10px;}
+.poster .qr svg{display:block; width:100%; height:auto;}
+.poster .pt-t{font-family:'Fraunces',serif; font-size:24px; line-height:1.25;}
+.poster .pt-m{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.06em; color:rgba(235,230,216,.75); margin-top:12px; line-height:1.6; word-break:break-all;}
+.poster a{color:var(--gold); border-bottom-color:var(--gold);}
+.vid-toggle{align-self:flex-start; padding:0; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:var(--ink-soft); background:none; border:none; cursor:pointer; text-transform:uppercase;}
+.vid-toggle:hover{color:var(--stamp);}
+.subt{font-family:'Fraunces',serif; font-style:italic; font-size:22px; line-height:1.35; color:var(--ink); border-left:4px solid var(--gold); padding-left:20px; margin-top:34px; flex-shrink:0;}
+.subt span{display:block; font-family:'IBM Plex Mono',monospace; font-style:normal; font-size:12px; color:var(--ink-soft); letter-spacing:.05em; margin-top:6px;}
+.side-panel{width:300px; flex-shrink:0; display:flex; flex-direction:column; gap:16px;}
+.side-panel .bigquote p.sm2{font-size:22px;}
+
+/* Tarjetas de cifras */
+.tiles{display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:18px; flex-shrink:0;}
+.tile{background:var(--card); border:1px solid var(--line); border-top:3px solid var(--forest); padding:16px 16px 13px; display:flex; flex-direction:column; gap:6px;}
+.tile .n{font-family:'Fraunces',serif; font-weight:600; font-size:38px; white-space:nowrap; line-height:1; color:var(--stamp); letter-spacing:-.02em;}
+.tile .n small{font-size:20px;}
+.tile .l{font-size:14.5px; line-height:1.4; color:var(--ink);}
+.tile .s{font-family:'IBM Plex Mono',monospace; font-size:10px; line-height:1.45; color:var(--ink-soft); margin-top:auto; padding-top:6px;}
+
+/* Debate en tres columnas */
+.debate{display:grid; grid-template-columns:1fr 1fr 1fr; gap:26px; flex:1; min-height:0; margin-top:20px; align-content:start;}
+.debate .col{border-top:3px solid var(--forest); padding-top:14px;}
+.debate .col.red{border-top-color:var(--stamp);} .debate .col.gold{border-top-color:var(--gold);}
+.debate .lbl{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--forest); margin-bottom:12px;}
+.debate .col.red .lbl{color:var(--stamp);} .debate .col.gold .lbl{color:var(--gold);}
+.debate ul{list-style:none; display:flex; flex-direction:column; gap:13px;}
+.debate li{font-size:16.5px; line-height:1.4; color:var(--ink);}
+.debate li i{display:block; font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-soft); letter-spacing:.03em; margin-top:3px;}
+
 /* Navegacion */
 .nav-btn{position:fixed; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:rgba(244,240,228,.9); color:var(--ink); font-size:19px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:20; transition:.2s;}
 .nav-btn:hover{background:var(--stamp); color:var(--paper); border-color:var(--stamp);}
@@ -235,6 +273,10 @@ table.matrix td.hit{background:#F2E6E2;}
   .qrow{gap:18px;} .qrow .qph{width:116px; height:116px;} .qrow + .qrow{margin-top:24px;}
   table.matrix{font-size:12.5px;} table.matrix td{padding:8px;}
   .folio{left:20px; right:20px;}
+  .vidwrap{flex-direction:column; gap:30px;} .vid{width:100%; height:auto; flex:none;} .side-panel{width:100%;} .side-panel .bigquote p.sm2{font-size:17px;}
+  .tiles{grid-template-columns:repeat(2,1fr);} .tile .n{font-size:30px;}
+  .debate{grid-template-columns:1fr; gap:18px;}
+  .poster .pt-t{font-size:16px;} .vid .poster{padding:14px; gap:14px;}
 }
 </style>
 </head>
@@ -265,21 +307,9 @@ table.matrix td.hit{background:#F2E6E2;}
       <div class="meta-item"><div class="ml">Clase</div><div class="mv">¿Quién frena, quién paga? · Unidad 2</div></div>
       <div class="meta-item"><div class="ml">Preparó</div><div class="mv">Naim Bro</div></div>
     </div>
-    <p class="src-line" style="margin-top:28px;">El artículo, traducido a lenguaje no matemático. Después: seis personajes, tres duelos. · <a href="https://www.nber.org/papers/w35336" target="_blank">nber.org/papers/w35336</a></p>
+    <p class="src-line" style="margin-top:28px;">El artículo, traducido a lenguaje no matemático. Después: un caso, el de los radiólogos, y seis personajes en tres duelos. · <a href="https://www.nber.org/papers/w35336" target="_blank">nber.org/papers/w35336</a></p>
   </div>
   <div class="folio"><span>DIAPO N.º 01</span><span class="dots"></span><span>MGT300 · SOCIEDAD, CULTURA Y POLÍTICA</span></div>
-</section>
-
-<section class="slide">
-  <div class="content" style="justify-content:center;">
-    <div class="eyebrow"><span class="bar"></span>La pregunta con que cerramos la clase 7</div>
-    <h2 class="sm">Si el malestar crece y no encuentra<br>ninguna institución que lo recoja,<br>¿qué hace quien tiene el capital?</h2>
-    <div class="ask" style="margin-top:34px;">
-      <div class="al">Hoy</div>
-      <p>Un modelo económico publicado en junio responde esa pregunta. Y la respuesta no es ni el impuesto ni la revuelta.</p>
-    </div>
-  </div>
-  <div class="folio"><span>DIAPO N.º 02</span><span class="dots"></span><span>LA PREGUNTA</span></div>
 </section>
 
 <section class="slide">
@@ -304,7 +334,7 @@ table.matrix td.hit{background:#F2E6E2;}
     </div>
     <p class="src-line">En 2025, cien millonarios firmaron una carta abierta a Davos titulada, literalmente, <strong>«son impuestos u horcas»</strong>. Los tres autores toman en serio ese dilema y hacen algo que nadie había hecho: lo escriben como modelo económico y lo resuelven. <strong>La respuesta que sale no es ninguna de las dos.</strong></p>
   </div>
-  <div class="folio"><span>DIAPO N.º 03</span><span class="dots"></span><span>LA FRASE</span></div>
+  <div class="folio"><span>DIAPO N.º 02</span><span class="dots"></span><span>LA FRASE</span></div>
 </section>
 
 <section class="slide">
@@ -321,19 +351,7 @@ table.matrix td.hit{background:#F2E6E2;}
       <p class="plain">No porque aparezca un demagogo. Por aritmética.</p>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 04</span><span class="dots"></span><span>LA TESIS</span></div>
-</section>
-
-<section class="slide">
-  <div class="content">
-    <div class="eyebrow"><span class="bar"></span>Esto es lo que abren · La portada del paper</div>
-    <h2 class="xs">Así se ve el texto de hoy.</h2>
-    <div class="stage">
-      <div class="shot"><img src="img/mgt300_clase8/nber-portada.png" alt="Portada del working paper: título Automation and Repression, autores Daron Acemoglu, A. Arda Gitmez y Mehdi Shadmehr, NBER Working Paper 35336, DOI 10.3386/w35336, fecha de emisión junio de 2026, seguido del resumen del artículo"></div>
-    </div>
-    <p class="src-line">Título, tres autores, número de working paper y el resumen completo: <strong>todo el argumento cabe en ese párrafo</strong>. Vale la pena leerlo antes de entrar al modelo. · <a href="https://www.nber.org/papers/w35336" target="_blank">nber.org/papers/w35336</a></p>
-  </div>
-  <div class="folio"><span>DIAPO N.º 05</span><span class="dots"></span><span>LA PORTADA</span></div>
+  <div class="folio"><span>DIAPO N.º 03</span><span class="dots"></span><span>LA TESIS</span></div>
 </section>
 
 <section class="slide">
@@ -371,7 +389,7 @@ table.matrix td.hit{background:#F2E6E2;}
       </div>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 06</span><span class="dots"></span><span>AUTOMATIZAR</span></div>
+  <div class="folio"><span>DIAPO N.º 04</span><span class="dots"></span><span>AUTOMATIZAR</span></div>
 </section>
 
 <section class="slide">
@@ -396,32 +414,7 @@ table.matrix td.hit{background:#F2E6E2;}
       </div>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 07</span><span class="dots"></span><span>LA REVUELTA</span></div>
-</section>
-
-<section class="slide">
-  <div class="content">
-    <div class="eyebrow"><span class="bar"></span>El mecanismo · Por qué automatizar es políticamente peligroso</div>
-    <h2 class="xs">Automatizar empuja el riesgo<br>por los dos lados a la vez.</h2>
-    <div class="faceoff">
-      <div class="side red">
-        <div class="lbl">Baja lo que arriesgo</div>
-        <p style="font-size:22px;">Automatizar <strong>baja el salario</strong>.</p>
-        <p>Y el salario es exactamente lo que el trabajador pone en juego cuando sale a la calle. Si vale menos, <strong>rebelarse sale más barato</strong>.</p>
-      </div>
-      <div class="vs">+</div>
-      <div class="side red">
-        <div class="lbl">Sube lo que gano</div>
-        <p style="font-size:22px;">Automatizar <strong>sube el retorno del capital</strong>.</p>
-        <p>Y el capital es exactamente el botín que se reparte si la revuelta triunfa. Si vale más, <strong>rebelarse paga más</strong>.</p>
-      </div>
-    </div>
-    <div class="note">
-      <div class="nl">Lo que hay que retener</div>
-      <p>Los dos efectos apuntan en la misma dirección. <strong>No hay compensación posible dentro de la economía</strong>: la salida tiene que ser política. Ese es el momento en que el modelo deja de ser economía y empieza a ser teoría del Estado.</p>
-    </div>
-  </div>
-  <div class="folio"><span>DIAPO N.º 08</span><span class="dots"></span><span>DOBLE EFECTO</span></div>
+  <div class="folio"><span>DIAPO N.º 05</span><span class="dots"></span><span>LA REVUELTA</span></div>
 </section>
 
 <section class="slide">
@@ -446,7 +439,7 @@ table.matrix td.hit{background:#F2E6E2;}
       </div>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 09</span><span class="dots"></span><span>EXTERNALIDAD</span></div>
+  <div class="folio"><span>DIAPO N.º 06</span><span class="dots"></span><span>EXTERNALIDAD</span></div>
 </section>
 
 <section class="slide">
@@ -466,7 +459,7 @@ table.matrix td.hit{background:#F2E6E2;}
       <p class="plain">El paper muestra que un Estado del capital sin poder represivo protege salarios por puro cálculo. Guarden esta lámina: vuelve en el duelo de Hawley y Altman.</p>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 10</span><span class="dots"></span><span>SÓLO REGULAR</span></div>
+  <div class="folio"><span>DIAPO N.º 07</span><span class="dots"></span><span>SÓLO REGULAR</span></div>
 </section>
 
 <section class="slide">
@@ -520,33 +513,7 @@ table.matrix td.hit{background:#F2E6E2;}
     </div>
     <p class="src-line"><strong>«Cruce único»</strong> quiere decir algo fuerte: pasado el umbral, la economía <strong>nunca vuelve</strong> a la zona en que redistribuir convenía. · El Estado no combina los dos instrumentos: si reprime, redistribuir no aporta nada. · Y el riesgo de revuelta no llega a cero ni siquiera bajo represión — el modelo lo deja explícito a propósito.</p>
   </div>
-  <div class="folio"><span>DIAPO N.º 11</span><span class="dots"></span><span>EL CRUCE</span></div>
-</section>
-
-<section class="slide">
-  <div class="content">
-    <div class="eyebrow"><span class="bar"></span>El nombre del hallazgo</div>
-    <h2 class="sm">Complementariedad<br>entre automatización y represión.</h2>
-    <div class="duo" style="margin-top:4px;">
-      <div class="pts">
-        <p class="pt">Dos cosas son <b>complementarias</b> cuando cada una hace más valiosa a la otra. Como el café y el azúcar.</p>
-        <p class="pt"><strong>Más automatización hace más atractiva la represión</strong>, porque encarece la alternativa redistributiva.</p>
-        <p class="pt"><strong>Más represión hace más atractiva la automatización</strong>, porque libera al Estado de tener que moderarla.</p>
-        <p class="pt" style="border-top:1px solid var(--line); padding-top:16px;">Y como el capital acumulado empuja la automatización, <b>acumular capital empuja también hacia la represión.</b> Los tres se refuerzan.</p>
-      </div>
-      <div>
-        <div class="bigquote" style="margin-top:0; flex:none;">
-          <p class="sm2">«Las horcas serán recibidas con <em>fusiles</em> por parte del Estado capitalista.»</p>
-          <cite>Acemoglu, Gitmez &amp; Shadmehr (2026), sección 1</cite>
-        </div>
-        <div class="note red">
-          <div class="nl">La condición, que hay que decir siempre</div>
-          <p>Todo esto vale <strong>salvo que la amenaza de revuelta sea muy débil</strong>. Si nadie se va a rebelar nunca, basta con una redistribución barata y no hace falta reprimir. La conclusión dura del paper <strong>necesita</strong> que la gente sí sea capaz de rebelarse.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="folio"><span>DIAPO N.º 12</span><span class="dots"></span><span>COMPLEMENTARIEDAD</span></div>
+  <div class="folio"><span>DIAPO N.º 08</span><span class="dots"></span><span>EL CRUCE</span></div>
 </section>
 
 <section class="slide">
@@ -571,57 +538,263 @@ table.matrix td.hit{background:#F2E6E2;}
       </div>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 13</span><span class="dots"></span><span>EL GOLPE</span></div>
-</section>
-
-<section class="slide">
-  <div class="content">
-    <div class="eyebrow"><span class="bar"></span>Observación 8 · Lo que el modelo deja fuera y agravaría el resultado</div>
-    <h2 class="xs">La misma IA que automatiza el trabajo<br>abarata la vigilancia.</h2>
-    <div class="bignum">
-      <div class="fig-n sm">8<small>Observación</small></div>
-      <div class="fig-t2">
-        En el modelo, el costo de reprimir es un número <strong>dado desde afuera</strong>. Los autores señalan, en una nota, que la IA probablemente <strong>lo hace bajar</strong> — es el argumento del «Estado de vigilancia con IA».
-        <span class="counter">Y si baja el costo de reprimir, <strong>todo el resultado se agrava</strong>: el umbral se cruza antes, la represión se prefiere en más escenarios, y en la sección 8 el golpe se vuelve rentable con menos capital acumulado.</span>
-      </div>
-    </div>
-    <div class="note red">
-      <div class="nl">Y esto es el Estado algorítmico</div>
-      <p>Es el único lugar donde el paper toca la <strong>vigilancia</strong>, y lo hace para decir que su propia conclusión es <em>conservadora</em>: supone que reprimir cuesta mañana lo mismo que hoy. Si la IA lo abarata, <strong>regular la vigilancia no es sólo una política de privacidad: es mantener caro el reprimir</strong>.</p>
-    </div>
-  </div>
-  <div class="folio"><span>DIAPO N.º 14</span><span class="dots"></span><span>VIGILANCIA</span></div>
-</section>
-
-<section class="slide">
-  <div class="content">
-    <div class="eyebrow"><span class="bar"></span>Lectura crítica · Dónde se ataca este paper</div>
-    <h2 class="xs">Todo el resultado cuelga de dos supuestos.</h2>
-    <div class="textcols" style="margin-top:22px;">
-      <div>
-        <div class="blockhead">Supuesto 1 · el mecanismo</div>
-        <p class="pt">Automatizar una tarea <b>mueve el ingreso de esa tarea del trabajo al capital</b>. Lo que dispara la revuelta no es el desempleo: es la <strong>razón</strong> entre lo que gana el capital y lo que gana el trabajo.</p>
-        <p class="pt" style="font-size:16.5px; line-height:1.5; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; margin-top:18px;"><b>Puesto en duda</b> por lo que vieron en la clase 7: según <em>The Economist</em>, la IA lleva creados cerca de un millón de empleos en EE.UU. contra unos 200 mil despidos, y lo que cae es la tarea rutinaria. Con un matiz: mide <strong>empleos</strong>, no reparto. Las dos cosas pueden ser ciertas a la vez.</p>
-      </div>
-      <div>
-        <div class="blockhead" style="color:var(--stamp);">Supuesto 2 · quién es el Estado</div>
-        <p class="pt">El Estado del modelo <b>sólo representa al capital</b>. Es un actor único: no hay tribunales, ni elecciones, ni prensa, ni captura regulatoria.</p>
-        <p class="pt" style="font-size:16.5px; line-height:1.5; color:var(--ink-soft); border-top:1px solid var(--line); padding-top:14px; margin-top:18px;"><b>Sin contraevidencia.</b> Métanle un juez, un votante o un diario y la aritmética del golpe cambia.</p>
-      </div>
-    </div>
-    <p class="src-line">Ninguno de los dos «refuta» el paper. Cada uno es una hipótesis sobre <strong>qué habría que agregarle al modelo para que la democracia sobreviva</strong>.</p>
-  </div>
-  <div class="folio"><span>DIAPO N.º 15</span><span class="dots"></span><span>LOS LÍMITES</span></div>
+  <div class="folio"><span>DIAPO N.º 09</span><span class="dots"></span><span>EL GOLPE</span></div>
 </section>
 
 <section class="slide divider">
   <div class="content" style="justify-content:center;">
-    <div class="eyebrow"><span class="bar"></span>Parte II</div>
+    <div class="eyebrow"><span class="bar"></span>Parte II · Un test empírico</div>
     <div class="part-num">02</div>
+    <h2>Los radiólogos que no desaparecieron</h2>
+    <p class="sub">La predicción más citada sobre automatización con IA tenía nombre, oficio y plazo. El plazo venció.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 10</span><span class="dots"></span><span>PARTE II</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Geoffrey Hinton · Toronto, octubre de 2016</div>
+    <h2 class="xs">La predicción.</h2>
+    <div class="vidwrap">
+      <div class="vid">
+        <iframe data-src="https://www.youtube-nocookie.com/embed/2HMPRXstSvQ?rel=0" title="Geoff Hinton: On Radiology (Creative Destruction Lab, 2016)" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <div class="poster"><div class="qr"><svg viewBox="0 0 33 33" class="segno"><path class="qrline" stroke="#22281f" d="M0 0.5h7m4 0h1m1 0h1m3 0h5m1 0h1m2 0h7m-33 1h1m5 0h1m1 0h1m2 0h1m2 0h1m1 0h1m1 0h1m2 0h1m1 0h2m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h3m6 0h1m4 0h1m3 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h2m2 0h3m5 0h3m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h1m1 0h5m4 0h5m1 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m2 0h2m2 0h1m3 0h3m1 0h1m4 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h3m1 0h3m1 0h2m1 0h1m1 0h2m-23 1h3m1 0h2m5 0h1m1 0h1m1 0h4m1 0h1m2 0h1m5 0h2m-31 1h1m6 0h2m3 0h2m3 0h3m1 0h2m2 0h2m1 0h2m1 0h1m-33 1h2m2 0h1m1 0h6m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m1 0h5m1 0h2m-32 1h1m1 0h1m1 0h1m2 0h4m2 0h3m1 0h1m1 0h1m1 0h6m1 0h1m2 0h1m-33 1h3m1 0h1m1 0h1m1 0h4m1 0h1m4 0h2m2 0h2m4 0h2m1 0h1m-28 1h2m1 0h2m1 0h3m2 0h4m1 0h1m1 0h4m1 0h1m1 0h1m1 0h1m-31 1h1m3 0h2m1 0h1m2 0h2m2 0h1m2 0h3m3 0h1m1 0h2m1 0h1m-28 1h1m1 0h1m7 0h1m5 0h1m2 0h2m2 0h2m1 0h3m-30 1h1m4 0h1m2 0h1m3 0h3m2 0h1m1 0h3m2 0h2m1 0h1m1 0h1m-26 1h1m3 0h2m2 0h1m1 0h1m1 0h1m5 0h1m2 0h1m1 0h2m2 0h1m-33 1h4m2 0h2m2 0h1m1 0h1m1 0h5m1 0h1m4 0h4m1 0h2m-29 1h2m4 0h7m1 0h1m4 0h1m1 0h3m1 0h1m2 0h1m-30 1h6m1 0h3m3 0h2m1 0h4m3 0h1m1 0h1m1 0h2m1 0h1m-33 1h4m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m2 0h1m1 0h3m2 0h3m1 0h2m1 0h1m-31 1h1m3 0h1m1 0h8m4 0h1m1 0h2m1 0h2m2 0h1m1 0h2m-32 1h1m2 0h1m2 0h4m1 0h2m1 0h1m1 0h2m1 0h1m1 0h1m3 0h1m2 0h1m2 0h1m-33 1h1m2 0h1m1 0h2m5 0h1m3 0h1m1 0h1m3 0h7m3 0h1m-25 1h2m1 0h1m1 0h1m1 0h1m2 0h2m2 0h1m1 0h1m3 0h2m-30 1h7m5 0h1m1 0h1m2 0h1m1 0h1m3 0h2m1 0h1m1 0h1m2 0h1m-32 1h1m5 0h1m1 0h2m2 0h2m1 0h3m1 0h1m1 0h1m1 0h2m3 0h4m-32 1h1m1 0h3m1 0h1m4 0h2m3 0h3m3 0h7m1 0h2m-32 1h1m1 0h3m1 0h1m1 0h2m1 0h4m1 0h1m3 0h1m2 0h2m2 0h1m3 0h2m-33 1h1m1 0h3m1 0h1m1 0h2m3 0h2m1 0h1m3 0h8m1 0h1m-30 1h1m5 0h1m1 0h3m1 0h2m2 0h2m1 0h2m1 0h2m2 0h3m3 0h1m-33 1h7m3 0h1m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1"/></svg></div><div><p class="pt-t">«Geoff Hinton: On Radiology»<br>Creative Destruction Lab · 1 min 24 s</p><p class="pt-m"><a href="https://www.youtube.com/watch?v=2HMPRXstSvQ" target="_blank">youtube.com/watch?v=2HMPRXstSvQ</a></p></div></div>
+        </div>
+      <div class="side-panel">
+        <div class="ask" style="margin-top:0;">
+          <div class="al">Mano alzada</div>
+          <p>¿Tenía razón?</p>
+          <p class="plain">Sí · todavía no · no</p>
+        </div>
+        <button class="vid-toggle">Sin conexión: mostrar QR ⇄</button>
+      </div>
+    </div>
+    <p class="subt">«People should stop training radiologists now.»<span>«Hay que dejar de formar radiólogos ya»: Hinton, en el minuto 0:29. Plazo que dio: 5 años, «quizás 10».</span></p>
+    <p class="src-line">Machine Learning and the Market for Intelligence, Rotman School, 27 oct 2016; video publicado el 24 nov 2016. · <a href="https://www.youtube.com/watch?v=2HMPRXstSvQ" target="_blank">youtube.com/watch?v=2HMPRXstSvQ</a></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 11</span><span class="dots"></span><span>LA PREDICCIÓN</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>2016 → 2026 · Estados Unidos</div>
+    <h2 class="xs">El plazo se cumplió. Los radiólogos siguen ahí.</h2>
+    <div class="stage" style="flex:none; margin-top:18px;">
+      <svg viewBox="0 0 1000 130" role="img" aria-label="Línea de tiempo de 2016 a 2026: la predicción de Hinton en 2016 y la ventana de 5 a 10 años que dio, entre 2021 y 2026, ya cumplida">
+        <rect x="500" y="58" width="440" height="24" fill="#9C2B2F" opacity=".14"/>
+        <line class="gx-axis" x1="40" y1="70" x2="960" y2="70"/>
+        <circle cx="60" cy="70" r="8" fill="#9C2B2F"/>
+        <circle cx="500" cy="70" r="6" fill="#EBE6D8" stroke="#9C2B2F" stroke-width="2"/>
+        <circle cx="940" cy="70" r="6" fill="#EBE6D8" stroke="#9C2B2F" stroke-width="2"/>
+        <circle cx="852" cy="70" r="6" fill="#2E4638"/>
+        <text class="gx-lbl" x="60" y="42" text-anchor="middle">2016</text>
+        <text class="gx-lbl" x="500" y="42" text-anchor="middle">2021</text>
+        <text class="gx-lbl" x="852" y="42" text-anchor="middle">2025</text>
+        <text class="gx-lbl" x="940" y="42" text-anchor="middle">2026</text>
+        <text class="gx-cap b" x="60" y="108">Hinton: «dejen de formarlos»</text>
+        <text class="gx-cap" x="720" y="108" text-anchor="middle" fill="#9C2B2F">la ventana que predijo: de 5 a 10 años</text>
+      </svg>
+    </div>
+    <div class="tiles">
+      <div class="tile"><div class="n">1.208</div><div class="l">plazas de residencia en radiología diagnóstica: récord, +4%</div><div class="s">NRMP, Match 2025</div></div>
+      <div class="tile"><div class="n"><small>US$</small>520<small>&nbsp;mil</small></div><div class="l">ingreso promedio, +48% sobre 2015; 2.ª especialidad mejor pagada</div><div class="s">Medscape 2025 (ingresos de 2024), vía D. Mousa</div></div>
+      <div class="tile"><div class="n">+55%</div><div class="l">radiólogos en Mayo Clinic desde 2016: más de 400</div><div class="s">S. Lohr, <i>NYT</i>, 14 may 2025</div></div>
+      <div class="tile"><div class="n">250+</div><div class="l">modelos de IA en uso en Mayo Clinic; radiología, entre los que más los usa</div><div class="s">S. Lohr, <i>NYT</i>, 14 may 2025</div></div>
+      <div class="tile" style="border-top-color:var(--gold);"><div class="n" style="color:var(--gold);">+3,4%</div><div class="l">empleo proyectado al 2035: lo mismo que el promedio de ocupaciones</div><div class="s">BLS, proyecciones 2025–35</div></div>
+    </div>
+    <p class="src-line">Fuentes: <a href="https://www.nrmp.org/wp-content/uploads/2025/03/Advance_Data_Tables_2025.pdf" target="_blank">NRMP 2025</a> · <a href="https://www.understandingai.org/p/ai-isnt-replacing-radiologists" target="_blank">D. Mousa, <i>Works in Progress</i>, 2025</a> · <a href="https://www.nytimes.com/2025/05/14/technology/ai-jobs-radiologists-mayo-clinic.html" target="_blank">NYT</a> · <a href="https://www.bls.gov/emp/tables/occupational-projections-and-characteristics.htm" target="_blank">BLS</a></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 12</span><span class="dots"></span><span>EL PLAZO</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Jensen Huang, con Ezra Klein · The New York Times, 23 de septiembre de 2026</div>
+    <h2 class="xs">«El propósito no cambia. La tarea […] se automatizó.»</h2>
+    <div class="vidwrap">
+      <div class="vid">
+        <iframe data-src="https://www.youtube-nocookie.com/embed/HjurAWAr_nY?start=330&amp;end=422&amp;rel=0" title="The Ezra Klein Show: Jensen Huang sobre radiología (5:30–7:02)" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <div class="poster"><div class="qr"><svg viewBox="0 0 33 33" class="segno"><path class="qrline" stroke="#22281f" d="M0 0.5h7m2 0h2m1 0h2m1 0h5m2 0h2m2 0h7m-33 1h1m5 0h1m2 0h1m3 0h4m1 0h1m1 0h2m1 0h2m1 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m4 0h3m2 0h1m1 0h2m2 0h3m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m2 0h2m1 0h3m1 0h5m3 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m3 0h2m2 0h1m2 0h7m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h2m5 0h5m2 0h1m3 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-24 1h1m1 0h1m2 0h5m2 0h1m2 0h1m-25 1h1m2 0h1m1 0h2m1 0h4m1 0h2m1 0h1m4 0h1m1 0h1m1 0h1m1 0h1m-28 1h1m1 0h4m1 0h8m1 0h2m2 0h1m1 0h1m1 0h4m3 0h2m-32 1h2m2 0h3m1 0h2m1 0h3m1 0h1m1 0h3m1 0h1m1 0h5m1 0h1m1 0h1m-32 1h1m1 0h2m3 0h6m4 0h1m2 0h4m1 0h1m1 0h2m1 0h2m-29 1h4m6 0h1m1 0h1m1 0h9m1 0h2m-29 1h1m2 0h1m2 0h1m1 0h2m3 0h2m2 0h1m1 0h2m3 0h2m1 0h5m-31 1h1m3 0h2m1 0h1m1 0h1m3 0h3m1 0h1m3 0h1m1 0h3m1 0h1m1 0h1m-32 1h2m7 0h1m2 0h3m1 0h3m1 0h4m2 0h1m4 0h1m-32 1h2m1 0h2m1 0h6m3 0h1m1 0h2m1 0h5m1 0h1m1 0h2m1 0h1m-32 1h3m1 0h2m3 0h3m1 0h2m1 0h2m2 0h4m3 0h1m1 0h1m1 0h2m-32 1h1m2 0h4m2 0h1m2 0h1m2 0h2m3 0h2m3 0h1m3 0h3m-33 1h1m2 0h2m3 0h1m2 0h1m3 0h1m4 0h2m2 0h1m1 0h2m3 0h1m-31 1h1m1 0h1m2 0h1m1 0h1m1 0h5m2 0h1m3 0h3m1 0h1m1 0h2m2 0h2m-32 1h1m5 0h1m1 0h1m2 0h1m2 0h1m3 0h1m1 0h4m6 0h2m-33 1h2m1 0h1m1 0h3m1 0h1m1 0h3m2 0h2m1 0h2m1 0h1m1 0h1m1 0h2m1 0h2m1 0h1m-32 1h3m1 0h1m2 0h1m1 0h2m3 0h1m2 0h4m1 0h2m2 0h1m1 0h1m2 0h1m-33 1h1m4 0h2m2 0h1m1 0h2m4 0h1m2 0h2m1 0h7m2 0h1m-25 1h2m1 0h4m2 0h5m2 0h1m3 0h2m1 0h2m-33 1h7m2 0h1m1 0h2m1 0h1m2 0h2m2 0h2m1 0h1m1 0h1m1 0h3m-31 1h1m5 0h1m1 0h1m2 0h1m2 0h2m1 0h2m2 0h2m1 0h1m3 0h1m2 0h2m-33 1h1m1 0h3m1 0h1m2 0h2m1 0h2m4 0h4m2 0h6m2 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m1 0h1m3 0h2m1 0h7m1 0h1m1 0h1m-29 1h1m1 0h3m1 0h1m4 0h2m1 0h4m2 0h1m2 0h3m2 0h1m3 0h1m-33 1h1m5 0h1m2 0h1m2 0h1m4 0h2m2 0h1m1 0h4m-27 1h7m1 0h3m4 0h2m4 0h1m2 0h3m1 0h4"/></svg></div><div><p class="pt-t">The Ezra Klein Show · Jensen Huang<br>minuto 5:30 a 7:02</p><p class="pt-m"><a href="https://www.youtube.com/watch?v=HjurAWAr_nY&amp;t=330" target="_blank">youtube.com/watch?v=HjurAWAr_nY&amp;t=330</a></p></div></div>
+        </div>
+      <div class="side-panel">
+        <div class="bigquote" style="margin-top:0; flex:none; padding-left:22px;">
+          <p class="sm2">«En todo trabajo está su propósito, y está la tarea que haces.» El propósito: diagnosticar.</p>
+          <cite>Huang, 6:00 y 6:23 · traducción propia</cite>
+        </div>
+        <div class="note" style="margin-top:6px;">
+          <div class="nl">Su mecanismo</div>
+          <p>Más casos por radiólogo → más ingresos del hospital → <strong>más radiólogos</strong>.</p>
+        </div>
+        <button class="vid-toggle">Sin conexión: mostrar QR ⇄</button>
+      </div>
+    </div>
+    <p class="src-line">«Jensen Huang Thinks A.I. Alarmism Has Gone Too Far», <i>The Ezra Klein Show</i>, 23 sep 2026, 5:30–7:02. · <a href="https://www.youtube.com/watch?v=HjurAWAr_nY&amp;t=330" target="_blank">youtube.com/watch?v=HjurAWAr_nY</a></p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 13</span><span class="dots"></span><span>HUANG</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El giro · 167 centros de imágenes, 2018 → 2024</div>
+    <h2 class="xs">Más radiólogos. El radiólogo promedio lee lo mismo.</h2>
+    <div class="stage">
+      <svg viewBox="0 0 900 250" role="img" aria-label="Cambio porcentual entre la línea base de 2018 y el primer trimestre de 2024: radiólogos que trabajan, más 23,6 por ciento; exámenes por día del radiólogo promedio, más 0,6 por ciento, de 49,1 a 49,4; exámenes por día del cuartil más productivo, más 30,6 por ciento">
+        <line class="gx-grid" x1="480" y1="20" x2="480" y2="220"/><line class="gx-grid" x1="660" y1="20" x2="660" y2="220"/><line class="gx-grid" x1="840" y1="20" x2="840" y2="220"/>
+        <text class="gx-lbl" x="480" y="242" text-anchor="middle">+10%</text><text class="gx-lbl" x="660" y="242" text-anchor="middle">+20%</text><text class="gx-lbl" x="840" y="242" text-anchor="middle">+30%</text>
+        <text class="gx-cap" x="286" y="58" text-anchor="end">Radiólogos que trabajan</text>
+        <rect x="300" y="36" width="424.8" height="36" rx="3" fill="#4A5142" opacity=".75"><title>Radiólogos que trabajan: +23,6% (885 → 1.094)</title></rect>
+        <text class="gx-cap b" x="734" y="60">+23,6%</text>
+        <text class="gx-cap b" x="286" y="122" text-anchor="end">Exámenes al día, radiólogo promedio</text>
+        <rect x="300" y="100" width="10.8" height="36" rx="3" fill="#9C2B2F"><title>Exámenes por día, radiólogo promedio: 49,1 → 49,4 (+0,6%)</title></rect>
+        <text class="gx-cap b" x="322" y="124" fill="#9C2B2F">+0,6% · de 49,1 a 49,4</text>
+        <text class="gx-cap" x="286" y="186" text-anchor="end">Exámenes al día, cuartil más productivo</text>
+        <rect x="300" y="164" width="550.8" height="36" rx="3" fill="#4A5142" opacity=".75"><title>Exámenes por día, cuartil superior: 56,6 → 73,9 (+30,6%)</title></rect>
+        <text class="gx-cap b" x="838" y="188" text-anchor="end" fill="#EBE6D8">+30,6%</text>
+        <line class="gx-axis" x1="300" y1="20" x2="300" y2="220"/>
+      </svg>
+    </div>
+    <div class="ask">
+      <div class="al">Entonces</div>
+      <p>Si la productividad del radiólogo promedio no subió, ¿qué explica la demanda?</p>
+    </div>
+    <p class="src-line">Zamani et al., «US Radiology Imaging and Workforce Volumes 2017–2024», <i>JACR</i> 2026, <a href="https://doi.org/10.1016/j.jacr.2025.12.026" target="_blank">doi:10.1016/j.jacr.2025.12.026</a>. Registro del ACR, 19 estados: no es una muestra nacional, ni un estudio sobre IA.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 14</span><span class="dots"></span><span>EL GIRO</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Explicaciones alternativas</div>
+    <h2 class="xs">La escasez tiene causas que no son la IA.</h2>
+    <div class="duo" style="margin-top:10px;">
+      <div class="stage" style="margin-top:0;">
+        <svg viewBox="0 0 520 210" role="img" aria-label="Crecimiento de plazas de residencia entre 2010 y 2025: todas las especialidades, más 69 por ciento; radiología diagnóstica e intervencional, más 29 por ciento">
+          <text class="gx-lbl" x="0" y="16">PLAZAS DE RESIDENCIA, 2010 → 2025</text>
+          <text class="gx-cap" x="0" y="62">Todas las especialidades</text>
+          <rect x="0" y="72" width="486" height="34" rx="3" fill="#4A5142" opacity=".75"><title>Todas: 25.520 → 43.237 (+69%)</title></rect>
+          <text class="gx-cap b" x="474" y="95" text-anchor="end" fill="#EBE6D8">+69%</text>
+          <text class="gx-cap b" x="0" y="146">Radiología</text>
+          <rect x="0" y="156" width="204" height="34" rx="3" fill="#9C2B2F"><title>Radiología diagnóstica e intervencional: 1.090 → 1.410 (+29%)</title></rect>
+          <text class="gx-cap b" x="214" y="179" fill="#9C2B2F">+29%</text>
+        </svg>
+        <p class="cred">Radiología = diagnóstica + intervencional. Fuente: NRMP, 2010 y 2025.</p>
+      </div>
+      <div class="cards" style="margin-top:0; grid-template-columns:1fr;">
+        <div class="card red"><div class="k">Tope de 1997</div><p>Medicare congeló las residencias que financia. <strong>Las primeras mil plazas nuevas se aprobaron en 2021.</strong></p></div>
+        <div class="card green"><div class="k">Población</div><p>Más viejos, <strong>más exámenes de imágenes</strong>.</p></div>
+        <div class="card gold"><div class="k">Abandono</div><p>Los que dejan la profesión: <strong>de 1,1% a 2,5% al año</strong>, 2014–2022.</p></div>
+      </div>
+    </div>
+    <p class="src-line">NRMP · Balanced Budget Act de 1997 y Consolidated Appropriations Act de 2021, §126 (plazas usadas desde 2023) · E. Rula, <a href="https://www.acr.org/Clinical-Resources/Publications-and-Research/ACR-Bulletin/2026/radiologist-shortage-work-force-update" target="_blank">«The Radiologist Shortage»</a>, <i>ACR Bulletin</i>, feb 2026.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 15</span><span class="dots"></span><span>LAS CAUSAS</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Huang sobre Hinton · The Ezra Klein Show, 23 de septiembre de 2026</div>
+    <h2 class="xs">¿«Todavía no» es lo mismo que «estaba equivocado»?</h2>
+    <div class="vidwrap">
+      <div class="vid">
+        <iframe data-src="https://www.youtube-nocookie.com/embed/HjurAWAr_nY?start=3477&amp;end=3573&amp;rel=0" title="The Ezra Klein Show: Huang sobre el 10% de Hinton (57:57–59:33)" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <div class="poster"><div class="qr"><svg viewBox="0 0 33 33" class="segno"><path class="qrline" stroke="#22281f" d="M0 0.5h7m3 0h1m3 0h1m3 0h4m1 0h1m2 0h7m-33 1h1m5 0h1m2 0h4m2 0h1m2 0h1m1 0h3m3 0h1m5 0h1m-33 1h1m1 0h3m1 0h1m1 0h2m2 0h1m1 0h2m3 0h1m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m2 0h2m5 0h1m4 0h1m2 0h1m1 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h10m2 0h1m1 0h2m2 0h1m1 0h3m1 0h1m-33 1h1m5 0h1m1 0h1m2 0h4m2 0h1m1 0h1m2 0h1m1 0h1m1 0h1m5 0h1m-33 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-25 1h2m4 0h1m1 0h1m2 0h5m-24 1h1m1 0h5m2 0h3m1 0h2m2 0h1m1 0h1m2 0h1m3 0h5m-30 1h1m5 0h3m1 0h4m1 0h5m1 0h2m2 0h2m1 0h2m1 0h1m-32 1h2m3 0h2m2 0h2m1 0h5m3 0h2m1 0h1m3 0h1m1 0h2m-30 1h1m2 0h1m2 0h1m2 0h3m3 0h7m1 0h1m2 0h3m-30 1h1m4 0h3m2 0h1m2 0h3m2 0h1m3 0h3m1 0h1m1 0h1m2 0h1m-33 1h1m1 0h1m1 0h2m1 0h4m1 0h1m2 0h1m1 0h2m2 0h6m4 0h2m-32 1h4m1 0h1m5 0h2m1 0h2m4 0h2m2 0h2m1 0h1m2 0h1m-29 1h2m3 0h1m1 0h1m4 0h1m5 0h2m1 0h3m2 0h2m-27 1h3m2 0h3m2 0h2m1 0h2m3 0h4m1 0h3m2 0h1m-33 1h1m1 0h1m2 0h1m10 0h1m1 0h2m1 0h7m1 0h2m-31 1h1m4 0h2m1 0h2m1 0h1m3 0h1m2 0h1m1 0h1m6 0h2m1 0h2m-29 1h1m1 0h1m2 0h1m1 0h1m2 0h1m1 0h2m3 0h4m2 0h6m-31 1h1m2 0h6m4 0h2m2 0h1m6 0h1m3 0h1m1 0h2m-33 1h2m5 0h2m3 0h2m1 0h3m3 0h2m2 0h1m3 0h2m1 0h1m-33 1h1m2 0h1m2 0h2m2 0h1m1 0h1m1 0h1m2 0h1m2 0h3m1 0h2m3 0h3m-32 1h1m1 0h2m1 0h1m1 0h2m1 0h2m4 0h1m2 0h3m1 0h1m1 0h3m1 0h2m1 0h1m-33 1h1m2 0h6m3 0h3m1 0h2m4 0h8m-22 1h2m1 0h1m1 0h1m2 0h2m1 0h6m3 0h1m1 0h3m-33 1h7m3 0h2m2 0h4m3 0h4m1 0h1m1 0h1m1 0h1m-31 1h1m5 0h1m1 0h1m1 0h3m2 0h1m1 0h3m1 0h1m1 0h2m3 0h3m1 0h1m-33 1h1m1 0h3m1 0h1m1 0h1m1 0h7m3 0h1m3 0h6m1 0h1m-32 1h1m1 0h3m1 0h1m1 0h2m2 0h2m1 0h1m2 0h2m1 0h3m1 0h1m2 0h1m1 0h3m-33 1h1m1 0h3m1 0h1m1 0h10m2 0h8m-28 1h1m5 0h1m2 0h1m1 0h1m3 0h1m3 0h4m2 0h2m1 0h3m-31 1h7m1 0h3m1 0h4m1 0h1m4 0h6m2 0h2"/></svg></div><div><p class="pt-t">The Ezra Klein Show · Jensen Huang<br>minuto 57:57 a 59:33</p><p class="pt-m"><a href="https://www.youtube.com/watch?v=HjurAWAr_nY&amp;t=3477" target="_blank">youtube.com/watch?v=HjurAWAr_nY&amp;t=3477</a></p></div></div>
+        </div>
+      <div class="side-panel">
+        <div class="bigquote" style="margin-top:0; flex:none; padding-left:22px;">
+          <p class="sm2">«Todas sus predicciones han estado equivocadas.»</p>
+          <cite>Huang, 58:09 · traducción propia</cite>
+        </div>
+        <div class="note red" style="margin-top:6px;">
+          <div class="nl">Hinton, al NYT (2025)</div>
+          <p>Hablaba sólo del análisis de imágenes. <strong>Se equivocó en los plazos, no en la dirección.</strong></p>
+        </div>
+        <div class="note" style="margin-top:0;">
+          <div class="nl">Todavía no</div>
+          <p>En datos de otro hospital, un modelo cayó <strong>hasta 12 puntos</strong> de AUC.</p>
+        </div>
+        <button class="vid-toggle">Sin conexión: mostrar QR ⇄</button>
+      </div>
+    </div>
+    <p class="src-line">Lo de Hinton es paráfrasis del periodista a partir de un correo: S. Lohr, <a href="https://www.nytimes.com/2025/05/14/technology/ai-jobs-radiologists-mayo-clinic.html" target="_blank"><i>NYT</i>, 14 may 2025</a>. · Zech et al., <a href="https://doi.org/10.1371/journal.pmed.1002683" target="_blank"><i>PLoS Medicine</i>, 2018</a>. · El clip reproduce el video de 2016 en 58:36.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 16</span><span class="dots"></span><span>¿TODAVÍA NO?</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El puente · Cuatro ideas del paper, aplicadas al caso</div>
+    <h2 class="xs">Lo que el modelo obliga a preguntar.</h2>
+    <div class="cards c2" style="flex:1; align-content:center; gap:20px;">
+      <div class="card"><div class="k">Sección 2 · Tareas, no oficios</div><p style="font-size:19px;">Se automatiza una tarea. <strong>¿Qué más hace un radiólogo, además de leer imágenes?</strong></p></div>
+      <div class="card"><div class="k">Sección 7 · Nuevas tareas</div><p style="font-size:19px;">El mercado invierte de menos en tareas nuevas para el trabajo. <strong>¿Apareció alguna aquí?</strong></p></div>
+      <div class="card red"><div class="k">Sección 3 · El reparto</div><p style="font-size:19px;">La revuelta depende de cuánto se lleva el capital frente al trabajo, no del número de empleos. <strong>¿Quién se queda con lo que rinden los modelos?</strong></p></div>
+      <div class="card red"><div class="k">Secciones 4 y 5 · Una decisión</div><p style="font-size:19px;">Cuánto se automatiza se puede regular. <strong>¿Quién lo decide en un hospital?</strong></p></div>
+    </div>
+    <p class="src-line">El paper no habla de radiología: <strong>la aplicación es nuestra</strong>. Acemoglu, Gitmez &amp; Shadmehr (2026), secciones 2 a 7.</p>
+  </div>
+  <div class="folio"><span>DIAPO N.º 17</span><span class="dots"></span><span>CON EL PAPER</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>El debate · Tres bandos</div>
+    <h2 class="xs">¿Quién leyó mejor el caso?</h2>
+    <div class="debate">
+      <div class="col">
+        <div class="lbl">A favor de Huang</div>
+        <ul>
+          <li>La demanda de radiólogos subió, no bajó.<i>1.208 plazas, récord · Mayo +55%</i></li>
+          <li>Se adoptó la IA y el empleo igual creció.<i>Mayo usa más de 250 modelos</i></li>
+          <li>Diagnosticar no es leer imágenes.<i>Huang con Klein, 2026</i></li>
+        </ul>
+      </div>
+      <div class="col red">
+        <div class="lbl">A favor de Hinton</div>
+        <ul>
+          <li>La productividad no se movió: la IA aún no llega a la sala.<i>49,1 → 49,4 exámenes al día · JACR</i></li>
+          <li>La escasez es institucional; no prueba complementariedad.<i>Tope de 1997 · +29% contra +69%</i></li>
+          <li>Falló el plazo; la dirección está por verse.<i>Hinton al NYT, 2025</i></li>
+        </ul>
+      </div>
+      <div class="col gold">
+        <div class="lbl">Ambos preguntan mal</div>
+        <ul>
+          <li>Discuten empleos; el paper mira el reparto entre capital y trabajo.<i>Sección 3</i></li>
+          <li>Tratan la automatización como destino; el paper, como decisión.<i>Secciones 4 y 5</i></li>
+          <li>Las tareas nuevas no aparecen solas.<i>Sección 7</i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 18</span><span class="dots"></span><span>EL DEBATE</span></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <div class="eyebrow"><span class="bar"></span>Para discutir</div>
+    <h2 class="xs">Cuatro preguntas.</h2>
+    <ol class="num-list" style="gap:18px; margin-top:22px;">
+      <li style="font-size:20px;">Leer imágenes es <strong>una</strong> tarea del radiólogo. ¿Vale el caso para un call center, un traductor o un programador junior?</li>
+      <li style="font-size:20px;">Si la productividad no subió, ¿el caso prueba <strong>complementariedad</strong>, o sólo que la IA <strong>todavía no llega</strong>?</li>
+      <li style="font-size:20px;">Huang vende los chips. <strong>¿Cambia eso cuánto vale su argumento?</strong></li>
+      <li style="font-size:20px;">¿Que Hinton fallara en radiología dice algo sobre su <strong>10% de riesgo</strong>?</li>
+    </ol>
+    <div class="ask">
+      <div class="al">Exit ticket · en un papel, antes de seguir</div>
+      <p>¿Huang, Hinton o ninguno? Una frase, con el dato que te convenció.</p>
+    </div>
+  </div>
+  <div class="folio"><span>DIAPO N.º 19</span><span class="dots"></span><span>PREGUNTAS</span></div>
+</section>
+
+<section class="slide divider">
+  <div class="content" style="justify-content:center;">
+    <div class="eyebrow"><span class="bar"></span>Parte III</div>
+    <div class="part-num">03</div>
     <h2>Del modelo a los duelos</h2>
     <p class="sub">Seis personas del mapa del <em>Times</em>, tres peleas. Cada una es una versión con nombre propio de algo que el modelo acaba de mostrar.</p>
   </div>
-  <div class="folio"><span>DIAPO N.º 16</span><span class="dots"></span><span>LOS DUELOS</span></div>
+  <div class="folio"><span>DIAPO N.º 20</span><span class="dots"></span><span>LOS DUELOS</span></div>
 </section>
 
 <section class="slide">
@@ -649,7 +822,7 @@ table.matrix td.hit{background:#F2E6E2;}
     </table>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 17</span><span class="dots"></span><span>EL PUENTE</span></div>
+  <div class="folio"><span>DIAPO N.º 21</span><span class="dots"></span><span>EL PUENTE</span></div>
 </section>
 
 <section class="slide">
@@ -666,7 +839,7 @@ table.matrix td.hit{background:#F2E6E2;}
       <p>¿En qué capa está tu personaje, y qué vende? Si es político: ¿a quién le habla?</p>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 18</span><span class="dots"></span><span>LA TORTA</span></div>
+  <div class="folio"><span>DIAPO N.º 22</span><span class="dots"></span><span>LA TORTA</span></div>
 </section>
 
 <section class="slide">
@@ -689,7 +862,7 @@ table.matrix td.hit{background:#F2E6E2;}
     </div>
     <p class="src-line">Los seis salen del mapa de E. Martin y R. Lieberman, «How A.I. Risks Are Splitting Silicon Valley and Washington», <em>The New York Times</em>, 15 de septiembre de 2026, que leyeron en la clase 7.</p>
   </div>
-  <div class="folio"><span>DIAPO N.º 19</span><span class="dots"></span><span>LAS MOCIONES</span></div>
+  <div class="folio"><span>DIAPO N.º 23</span><span class="dots"></span><span>LAS MOCIONES</span></div>
 </section>
 
 <section class="slide">
@@ -715,7 +888,7 @@ table.matrix td.hit{background:#F2E6E2;}
       </div>
     </div>
   </div>
-  <div class="folio"><span>DIAPO N.º 20</span><span class="dots"></span><span>CÓMO SE JUEGA</span></div>
+  <div class="folio"><span>DIAPO N.º 24</span><span class="dots"></span><span>CÓMO SE JUEGA</span></div>
 </section>
 </div>
 
@@ -741,8 +914,25 @@ function buildDots(){
   });
 }
 
+// Videos: the iframe loads only on its own slide, and leaving the slide unloads it (stops playback).
+// Without a connection, the poster with the QR shows instead.
+function syncVideos(){
+  slides.forEach((s,i)=>{
+    s.querySelectorAll('.vid').forEach(v=>{
+      const f = v.querySelector('iframe');
+      if(!navigator.onLine) v.classList.add('off');
+      if(i===cur && !v.classList.contains('off')){ if(!f.getAttribute('src')) f.setAttribute('src', f.dataset.src); }
+      else if(f.getAttribute('src')){ f.removeAttribute('src'); }
+    });
+  });
+}
+document.querySelectorAll('.vid-toggle').forEach(b=> b.addEventListener('click', ()=>{
+  b.closest('.vidwrap').querySelector('.vid').classList.toggle('off'); syncVideos();
+}));
+
 function render(){
   slides.forEach((s,i)=> s.classList.toggle('active', i===cur));
+  syncVideos();
   buildDots();
   document.getElementById('prog').style.width = ((cur+1)/slides.length*100) + '%';
   const act = slides[cur];

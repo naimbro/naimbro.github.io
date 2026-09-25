@@ -5,13 +5,15 @@
 
 | Bloque | Horario | Lógica |
 |---|---|---|
-| **1 · Modelo y preparación** | 11:30–12:40 | Acemoglu en 30 minutos; inscripción; dossier y hoja de duelo |
+| **1 · Modelo y preparación** | 11:30–12:40 | Acemoglu y el caso de los radiólogos en 30 minutos; inscripción; dossier y hoja de duelo |
 | Recreo | 12:40–13:00 | La sala de Tribuna queda abierta en portada |
 | **2 · Presentaciones y duelos** | 13:00–14:10 | Presentaciones orales primero, porque se evalúan; después los tres duelos, que pueden achicarse |
 
 Materiales: [deck](../../teaching/2026_mgt300_clase8_presentacion.html) ·
 [dossiers](../../teaching/2026_mgt300_clase8_dossiers.html) ·
-[prompt de Tribuna](prompt_tribuna_clase08.md).
+[prompt de Tribuna](prompt_tribuna_clase08.md) ·
+[guía del caso radiólogos](clase08_radiologos_guia.md) ·
+[fuentes y timestamps](clase08_radiologos_fuentes.md).
 
 ---
 
@@ -41,31 +43,42 @@ Materiales: [deck](../../teaching/2026_mgt300_clase8_presentacion.html) ·
 
 # Bloque 1 · Modelo y preparación (11:30–12:40)
 
-## 11:30–12:00 · Acemoglu (láminas 1–15, 30 min)
+## 11:30–11:44 · Acemoglu (láminas 1–9, 14 min)
 
-Es tu ruta corta de IA y Democracia, sin los tres gráficos de *The Economist*, porque ya los vieron
-en la clase 7, y con la Proposición 3 (lámina 10), que el duelo de Hawley y Altman necesita.
+Tu ruta corta de IA y Democracia, comprimida a nueve láminas para que quepa el caso de los
+radiólogos. Salieron la pregunta de la clase 7, la portada del paper, el doble efecto, la
+complementariedad, la vigilancia y los dos supuestos: el caso de los radiólogos es el test
+empírico del primer supuesto.
 
 | Láminas | Min | Qué tiene que quedar |
 |---|---|---|
-| 1–5 | 5 | La pregunta con que cerró la clase 7, «impuestos u horcas», y la tesis entera antes de desarmarla |
-| 6–8 | 8 | El mecanismo. Automatizar baja lo que el trabajador arriesga y sube lo que gana si se rebela |
-| 9–12 | 10 | Los hallazgos. **Detente en la 9, la externalidad, y en la 10, el instrumento**: vuelven en la 17 |
-| 13 | 4 | El golpe. La paradoja de la democracia fiscalmente fuerte |
-| 14–15 | 3 | La vigilancia (lo que queda del Estado algorítmico) y los dos supuestos de los que cuelga todo |
+| 1–3 | 3 | «Impuestos u horcas» y la tesis entera antes de desarmarla |
+| 4–5 | 4 | Automatizar es mover una tarea al capital; la revuelta depende de la razón capital/trabajo |
+| 6–7 | 4 | **Detente en la 6, la externalidad, y en la 7, el instrumento**: vuelven en la 21 |
+| 8–9 | 3 | El cruce y el golpe. La paradoja de la democracia fiscalmente fuerte |
 
-La lámina 9 es la bisagra de toda la clase:
+La lámina 6 es la bisagra de toda la clase:
 > «Cada empresa automatiza mirando su costo. Ninguna descuenta el riesgo que agrega al conjunto.
-> Guarden esa frase: en veinte minutos la van a oír en boca de Dario Amodei.»
+> Guarden esa frase: en media hora la van a oír en boca de Dario Amodei.»
 
-## 12:00–12:05 · Encuadre de los duelos (láminas 16–20, 5 min)
+## 11:44–11:59 · El caso de los radiólogos (láminas 10–19, 15 min)
 
-- **Lámina 17, el puente.** Una frase por fila, no más. Es la única conexión explícita entre
+La lámina a lámina está en la [guía del caso](clase08_radiologos_guia.md). Tres videos embebidos
+(1:24, 1:32 y 1:36); si la red falla, «sin conexión: mostrar QR» en cada lámina. **Recoge los
+exit tickets en la inscripción**, no antes.
+
+Huang es personaje del duelo 1, y el caso le da material a quien lo interprete. No se pisa con la
+moción, que es sobre Hugging Face y no sobre empleo, pero si alguien lo cita en el duelo, vale:
+es la misma entrevista de su dossier.
+
+## 12:00–12:05 · Encuadre de los duelos (láminas 20–24, 5 min)
+
+- **Lámina 21, el puente.** Una frase por fila, no más. Es la única conexión explícita entre
   Acemoglu y los personajes; el resto lo tienen que encontrar ellos.
-- **Lámina 18, la torta.** **No ubiques a nadie en una capa.** Es la primera pregunta de la hoja
+- **Lámina 22, la torta.** **No ubiques a nadie en una capa.** Es la primera pregunta de la hoja
   de duelo y la respuesta no es obvia: Musk está en varias a la vez (centros de datos, Grok, robots); Hawley y
   Sanders, en ninguna.
-- **Lámina 20**, que queda proyectada durante la inscripción.
+- **Lámina 24**, que queda proyectada durante la inscripción.
 
 ## 12:05–12:10 · Inscripción (5 min)
 
@@ -115,14 +128,14 @@ tuya en voz alta**, en especial si el jurado y el público eligieron a lados dis
 **Duelo 1 · Huang contra Amodei.** Huang va a ganar al público con «si no está listo, no lo
 lances»: suena a sentido común. Amodei tiene la carta más fuerte en su propio dossier y es fácil
 que no la juegue: *incidentes parecidos han pasado en toda la industria, incluida Anthropic*.
-- **Para cerrar:** *«Huang dice que nadie los presiona. La lámina 9 dice que cada empresa ignora
+- **Para cerrar:** *«Huang dice que nadie los presiona. La lámina 6 dice que cada empresa ignora
   el riesgo que agrega al conjunto. ¿Cuál de los dos describe mejor a un laboratorio que compite
   con otros cuatro?»*
 
 **Duelo 2 · Hawley contra Altman.** Hawley tiene el ejemplo más fácil de entender, el auto de
 juguete, y el más duro, el arbitraje de cien dólares. El punto débil de Altman es su propia
 audiencia de 2023, y está en el dossier de Hawley.
-- **Para cerrar:** *«Demandas después del daño o reglas antes de lanzar. La lámina 10 dice que el
+- **Para cerrar:** *«Demandas después del daño o reglas antes de lanzar. La lámina 7 dice que el
   instrumento determina lo que hace el Estado. ¿Qué conducta produce cada uno en una empresa?»*
 
 **Duelo 3 · Sanders contra Musk.** Es el que más directamente es Acemoglu.
