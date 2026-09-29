@@ -1,15 +1,15 @@
 # Clase 8 · Fuentes y timestamps del caso radiólogos
 
-Verificado el 25-09-2026. Cada cifra del deck (láminas 10–19) se contrastó con la fuente citada en
+Verificado el 25-09-2026. Cada cifra del deck (láminas 12–18 desde el 29-09; antes 10–19) se contrastó con la fuente citada en
 el encargo y, cuando se pudo, con la fuente primaria; el deck cita la primaria.
 
 ## Videos (sólo embed, nada descargado)
 
 | Lámina | Video | Tramo | Qué contiene |
 |---|---|---|---|
-| 11 | [«Geoff Hinton: On Radiology»](https://www.youtube.com/watch?v=2HMPRXstSvQ), canal oficial Creative Destruction Lab, 1:24 | completo (0:00–1:24) | 0:18 el coyote que ya pasó el borde del precipicio · **0:29.6 «people should stop training radiologists now»** · 0:32–0:43 «within 5 years… it might be 10 years». Desde 0:47 cambia de tema: se puede cortar ahí |
-| 13 | [*The Ezra Klein Show*, «Jensen Huang Thinks A.I. Alarmism Has Gone Too Far»](https://www.youtube.com/watch?v=HjurAWAr_nY), canal oficial, 23-09-2026, 1:47:21 | **5:30–7:02** (1:32) | Klein: «radiology is an example I know you like to use». 6:00 tarea contra propósito; 6:23 «to diagnose disease»; 6:31 «the fundamental purpose doesn't change»; 6:37–7:02 el mecanismo: más casos, más ingresos, más radiólogos. Entrada más larga posible desde 5:09 |
-| 16 | mismo episodio | **57:57–59:33** (1:36) | Klein sobre el 10% de Hinton · 58:05 «it's irresponsible» · 58:09 «all of his predictions have been wrong» · 58:14 «not grounded on science» · **58:36–59:01 se inserta el video de 2016** · 59:10 asustar a los jóvenes · 59:33 «It is not true» |
+| 13 | [«Geoff Hinton: On Radiology»](https://www.youtube.com/watch?v=2HMPRXstSvQ), canal oficial Creative Destruction Lab, 1:24 | completo (0:00–1:24) | 0:18 el coyote que ya pasó el borde del precipicio · **0:29.6 «people should stop training radiologists now»** · 0:32–0:43 «within 5 years… it might be 10 years». Desde 0:47 cambia de tema: se puede cortar ahí |
+| — (salió el 29-09) | [*The Ezra Klein Show*, «Jensen Huang Thinks A.I. Alarmism Has Gone Too Far»](https://www.youtube.com/watch?v=HjurAWAr_nY), canal oficial, 23-09-2026, 1:47:21 | **5:30–7:02** (1:32) | Klein: «radiology is an example I know you like to use». 6:00 tarea contra propósito; 6:23 «to diagnose disease»; 6:31 «the fundamental purpose doesn't change»; 6:37–7:02 el mecanismo: más casos, más ingresos, más radiólogos. Entrada más larga posible desde 5:09 |
+| 17 | mismo episodio | **57:57–59:33** (1:36) | Klein sobre el 10% de Hinton · 58:05 «it's irresponsible» · 58:09 «all of his predictions have been wrong» · 58:14 «not grounded on science» · **58:36–59:01 se inserta el video de 2016** · 59:10 asustar a los jóvenes · 59:33 «It is not true» |
 
 - Los timestamps salen de los subtítulos automáticos de YouTube (±0,5 s). **Escucha los cortes una
   vez antes de clase.**
@@ -20,6 +20,20 @@ el encargo y, cuando se pudo, con la fuente primaria; el deck cita la primaria.
   resubida de un canal personal, sin fuente, y Huang cita mal a Hinton en él.
 
 ## Cifras usadas en el deck
+
+**Lámina 14 (desde el 29-09): serie del NRMP.** Plazas ofrecidas en radiología diagnóstica, PGY-1 +
+PGY-2, sin las R: 2010 1.090 · 2011 1.123 · 2012 1.111 · 2013 1.126 · 2014 1.145 · 2015 1.132 ·
+2016 1.133 · 2017 1.053 · 2018 1.069 · 2019 1.088 · 2020 1.113 · 2021 1.108 · 2022 1.129 · 2023 1.149 ·
+2024 1.162 · 2025 1.208 · **2026 1.239** (156 + 1.083). Fuente: NRMP, *Results and Data: Main
+Residency Match* de cada año, tabla 3 (la de 2026:
+[Main_Match_Results_and_Data-2026.pdf](https://www.nrmp.org/wp-content/uploads/2026/05/Main_Match_Results_and_Data-2026.pdf)).
+Para 2011–2013 se usan las cifras revisadas del informe 2014, que sacó las plazas R de PGY-1. La
+caída de 2017 es definicional: radiología intervencional integrada entra al Match en 2016 (14
+plazas) y crece en 2017 (124). Datos, URLs y tablas año por año en [clase08_nrmp_radiologia.csv](clase08_nrmp_radiologia.csv) (sin 2026).
+
+Las cinco tarjetas de la tabla siguiente salieron de la pantalla el 29-09; quedan para decirlas.
+Los números de lámina de la tabla son los anteriores al 29-09 (12 → 14, 14 → 15, 15 → 16, 16 → 17).
+
 
 | Lámina | Cifra | Fuente primaria |
 |---|---|---|
