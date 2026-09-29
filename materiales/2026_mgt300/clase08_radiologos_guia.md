@@ -12,7 +12,7 @@ entre Acemoglu (1–11) y los duelos (19–23). Fuentes y timestamps en
 | 15 | 1,5 | El giro. Deja la pregunta en el aire | «¿Qué explica la demanda?» | «La IA los hizo más productivos.» **No:** el radiólogo promedio pasó de 49,1 a 49,4 exámenes al día. El volumen creció porque hay 23,6% más radiólogos. El cuartil de arriba sí subió 30,6%: ¿IA, o más turnos? |
 | 16 | 1,5 | Tres causas que no son la IA | «¿Cuál pesa más?» | La oferta: las residencias de radiología crecieron 29% contra 69% del total; el tope de 1997. **Empuja:** entonces la escasez no prueba complementariedad |
 | 17 | 2,5 | Clip de Huang sobre el 10% (57:57–59:33; incluye el video de 2016) | «¿"Todavía no" es lo mismo que "estaba equivocado"?» | Vuelve a los de «todavía no» de la 13. Hinton dice que falló el plazo, no la dirección. **Contraargumento:** una predicción sin plazo no se puede refutar |
-| 18 | 2,5 | Tres bandos; mano alzada. El exit ticket queda abajo, en la misma lámina | «¿En qué columna estás?» | La tercera es la del paper: ambos discuten empleos; el paper mira capital contra trabajo y trata la automatización como decisión, no como destino. **Aclara:** el paper no habla de radiología; la aplicación es nuestra |
+| 18 | 2,5 | Tres bandos; mano alzada | «¿En qué columna estás?» | La tercera es la del paper: ambos discuten empleos; el paper mira capital contra trabajo y trata la automatización como decisión, no como destino. **Aclara:** el paper no habla de radiología; la aplicación es nuestra |
 
 Salieron del deck el clip de Huang de 5:30–7:02 (tarea contra propósito), el puente con cuatro
 ideas del paper y la lámina de cuatro preguntas. Si sobra tiempo, el mecanismo de Huang (más

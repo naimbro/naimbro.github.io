@@ -70,7 +70,6 @@ pobreza: *¿se rebela alguien que vive mejor que nunca, si otros viven infinitam
 
 La lámina a lámina está en la [guía del caso](clase08_radiologos_guia.md). Quedan dos videos: Hinton
 en la 13 (1:24) y Huang sobre Hinton en la 17 (1:36). Si la red falla, «sin conexión: mostrar QR».
-**El exit ticket está en la 18**, junto al debate; lo recoges durante la inscripción.
 
 ## 11:59–12:05 · Encuadre de los duelos (láminas 19–23, 6 min)
 
