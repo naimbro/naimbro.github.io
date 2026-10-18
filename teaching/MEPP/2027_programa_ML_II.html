@@ -103,7 +103,7 @@
 </head>
 
 <body>
-<h1>Machine Learning II: IA Generativa y Procesos Públicos</h1>
+<h1>Machine Learning II: IA Generativa y Gobernanza en Organizaciones</h1>
 <div class="meta">
   Profesor: Naim Bro (naim.bro.k [at] uai.cl)<br>
   Ayudante: Benjamín Palacios (bpalacios [at] alumnos.uai.cl)<br>
@@ -111,9 +111,12 @@
   Escuela de Gobierno, Universidad Adolfo Ibáñez, 2027
 </div>
 
+<div class="syllabus-warning">Borrador: fechas y contenidos por confirmar</div>
+
 <div class="description">
   <p><strong>Descripción general del curso:</strong> Machine Learning II es un curso aplicado cuyo objetivo central es
-  <strong>integrar inteligencia artificial —en particular IA generativa— en procesos del sector público</strong>.
+  <strong>integrar inteligencia artificial —en particular IA generativa— en procesos del sector público</strong>
+  y de las organizaciones que trabajan con él, y <strong>gobernar</strong> esos sistemas una vez en uso.
   El foco está en aprender a:</p>
 
   <ul>
@@ -121,14 +124,16 @@
     <li>Formular soluciones basadas en ML e IA generativa con un <strong>nivel de madurez tecnológica (TRL) ≥ 4</strong>.</li>
     <li>Diseñar sistemas socio-técnicos donde humanos, datos y modelos interactúan de forma responsable.</li>
     <li>Usar LLMs como herramientas para análisis, documentación, prototipado y evaluación.</li>
+    <li>Diseñar el gobierno de la IA en una organización: quién decide, con qué controles y quién responde.</li>
     <li>Producir proyectos presentables a desafíos públicos (p. ej. Laboratorio de Gobierno).</li>
   </ul>
 
-  <p>El curso combina tres dimensiones:</p>
+  <p>El curso combina cuatro dimensiones:</p>
   <ul>
     <li><strong>Fundamentos:</strong> historia, límites y supuestos de la IA generativa.</li>
     <li><strong>Herramientas:</strong> APIs de LLMs, embeddings, prompting estructurado y evaluación.</li>
     <li><strong>Aplicación:</strong> proyectos que integran IA en procesos concretos del Estado.</li>
+    <li><strong>Gobernanza:</strong> derechos de decisión, clasificación de riesgo, regulación y ciclo de vida de sistemas de IA.</li>
   </ul>
   </div>
 
@@ -155,7 +160,7 @@
 
   <li>
     <div class="class-block">
-      <h2>IA, procesos y sector público: marco del curso (06-03-2027)</h2>
+      <h2>IA, procesos y sector público: marco del curso (05-03-2027)</h2>
       <p>
         Introducción al curso y a su lógica central: pasar de “modelos” a <strong>sistemas de decisión y gestión</strong>.
       </p>
@@ -180,7 +185,7 @@
 
   <li>
     <div class="class-block">
-      <h2>LLMs vía API: del texto al sistema (13-03-2027)</h2>
+      <h2>LLMs vía API: del texto al sistema (12-03-2027)</h2>
       <p>Uso práctico de APIs de LLMs (Gemini) para tareas estructuradas: clasificación, extracción, resumen, scoring y generación controlada.</p>
       <ul>
         <li>Charla de María Paz Hermosilla, directora de GobLab UAI: "IA en el sector público"</li>
@@ -205,37 +210,26 @@
 
   <li>
     <div class="class-block">
-      <h2>RAG 1 (20-03-2027)</h2>
+      <h2>RAG (19-03-2027)</h2>
       <p>
         Cómo aumentar el contexto con documentos locales.
+      </p>
+      <p>
+        La idea central: un reporte con IA no es "preguntarle cosas a un LLM", sino diseñar una arquitectura de búsqueda → reducción → síntesis que sea trazable y escalable.
       </p>
       <ul>
         <li>Embeddings como representación semántica</li>
         <li>RAG clásico</li>
         <li>Presentación módulo 1: Del corpus a documentos consultables: <a href="https://docs.google.com/presentation/d/1hI3MMk6RYqDlRA5MFb4H7OFQYakQFPubXyhpMcCOmAM/edit?usp=sharing" target="_blank">link</a></li>
         <li>Presentación módulo 2: Chunking, embeddings y retrieval: <a href="https://docs.google.com/presentation/d/14ahTO424A1cpYGNsLdaWMg2V-D9zqGJ4Su-4VHsPhnM/edit?usp=sharing" target="_blank">link</a></li>
+        <li>Presentación módulo 3: Del retrieval a RAG clásico: <a href="https://docs.google.com/presentation/d/1lV8hJ1K8yg7DnaJWQFDWnxNCB53npOByHKkEbv4qaZc/edit?usp=sharing" target="_blank">link</a></li>
         <li>Notebook 1: Del corpus a documentos consultables (Colab): <a href="https://colab.research.google.com/drive/15Grj8J5PfQeMuut8HMljwgI6k4GZgY39" target="_blank">link</a></li>
         <li>Notebook 2: De documentos a retrieval semántico (Colab): <a href="https://colab.research.google.com/drive/1N4iLPVtYb4qvNfh-H3wHmyfL8_SQJK_p" target="_blank">link</a></li>
+        <li>Notebook 3: Del retrieval a RAG (Colab): <a href="https://colab.research.google.com/drive/1bsE7LRlalmmRvptGFX2F0LWO3q3yZSyi" target="_blank">link</a></li>
         <li>Lecturas:</li>
         <ul>
           <li>Enhancing Function-Calling Capabilities in LLMs: <a href="https://arxiv.org/html/2412.01130v2" target="_blank">link</a></li>
           <li>Survey de técnicas en RAG: <a href="https://arxiv.org/html/2506.00054v1" target="_blank">link</a></li>
-        </ul>
-      </ul>
-    </div>
-  </li>
-
-  <li>
-    <div class="class-block">
-      <h2>RAG 2 (27-03-2027)</h2>
-      <p>
-        La idea central: un reporte con IA no es "preguntarle cosas a un LLM", sino diseñar una arquitectura de búsqueda → reducción → síntesis que sea trazable y escalable.
-      </p>
-      <ul>
-        <li>Presentación módulo 3: Del retrieval a RAG clásico: <a href="https://docs.google.com/presentation/d/1lV8hJ1K8yg7DnaJWQFDWnxNCB53npOByHKkEbv4qaZc/edit?usp=sharing" target="_blank">link</a></li>
-        <li>Notebook 3: Del retrieval a RAG (Colab): <a href="https://colab.research.google.com/drive/1bsE7LRlalmmRvptGFX2F0LWO3q3yZSyi" target="_blank">link</a></li>
-        <li>Lecturas:</li>
-        <ul>
           <li><a href="https://arxiv.org/abs/2401.18059" target="_blank">RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval</a> (<a href="https://arxiv.org/abs/2410.01736" target="_blank">con corpus dinámica</a>)</li>
           <li><a href="https://arxiv.org/abs/2506.05939" target="_blank">Entity-Event Knowledge Graphs for Retrieval-Augmented Generation</a> (<a href="https://aclanthology.org/2025.knowledgenlp-1.1.pdf" target="_blank">Entity Retrieval for Answering Entity-Centric Questions</a>)</li>
         </ul>
@@ -245,30 +239,21 @@
 
   <li>
     <div class="class-block">
-      <h2>Feriado (03-04-2027)</h2>
+      <h2>Feriado (26-03-2027)</h2>
       <p>no hay clases</p>
     </div>
   </li>
 
   <li>
     <div class="class-block">
-      <h2>Presentaciones de avance (14-04-2027)</h2>
-      <p>
-        Presentaciones parciales de los proyectos: <a href="https://docs.google.com/document/d/1VjoNHHZeqRJ5HrATtXRbOql1v6wa3xNPKfuWS6UohoI/edit?usp=sharing" target="_blank">guía</a>
-      </p>
-    </div>
-  </li>
-
-  <li>
-    <div class="class-block">
-      <h2>Crear un chatbot con IA (17-04-2027)</h2>
+      <h2>Crear un chatbot con IA y presentaciones de avance (02-04-2027)</h2>
       <p>
         En esta clase, combinaremos las técnicas utilizadas en clases anteriores para crear un chatbot.
       </p>
       <ul>
         <li>Charla de Klaus Lehmann, director de Data Science en INE: "Ciencia de datos en IA para la producción de estadísticas oficiales"</li>
         <li>Notebook 4: De RAG a chatbot (Colab): <a href="https://colab.research.google.com/drive/1mRwJMLl6CIxI89UOU-FHDdWBLR1xbjr5" target="_blank">link</a></li>
-        <li>Presentaciones de avance de proyectos</li>
+        <li>Presentaciones de avance de proyectos: <a href="https://docs.google.com/document/d/1VjoNHHZeqRJ5HrATtXRbOql1v6wa3xNPKfuWS6UohoI/edit?usp=sharing" target="_blank">guía</a></li>
         <li>Lecturas:</li>
         <ul>
           <li>Engineering Retrieval Augmented Generation-based Virtual Assistants in Practice: <a href="https://www.arxiv.org/pdf/2502.14930" target="_blank">link</a></li>
@@ -280,10 +265,65 @@
 
   <li>
     <div class="class-block">
-      <h2>Presentaciones finales de proyectos (24-04-2027)</h2>
+      <h2>Gobernanza de IA I: ¿quién decide? (09-04-2027)</h2>
+      <p>Derechos de decisión entre personas e IA dentro de una organización.</p>
+      <ul>
+        <li>Presentación: por publicar</li>
+        <li><strong>ML2 master game:</strong> basado en lecturas de la semana pasada.</li>
+        <li><strong>Ejercicio:</strong> cada equipo lista las decisiones que toca su proyecto, las ubica en la matriz ambigüedad × riesgo y asigna quién encuadra, quién actúa y quién aprende.</li>
+        <li><strong>Entregable próxima semana:</strong> ficha de gobierno del proyecto, versión 1.</li>
+        <li>Lecturas:</li>
+        <ul>
+          <li><a href="https://cisr.mit.edu/publication/2026_0601_AIDecisionMatrix_SebastianWeillHaskampVomBrocke" target="_blank">Designing Decision Rights for AI (Sebastian, Weill, Haskamp &amp; vom Brocke, MIT CISR, 2026)</a></li>
+          <li><a href="https://mitsloan.mit.edu/ideas-made-to-matter/a-framework-determining-when-ai-can-make-decisions" target="_blank">A framework for determining when AI can make decisions (MIT Sloan, 2026)</a> &mdash; resumen del anterior.</li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Gobernanza de IA II: riesgo, datos y regulación (16-04-2027)</h2>
+      <p>Clasificación de riesgo de casos de uso y obligaciones legales en Chile.</p>
+      <ul>
+        <li>Presentación: por publicar</li>
+        <li>Herramientas GobLab UAI: <a href="https://herramienta-evaluacion-impacto.vercel.app/" target="_blank">Evaluación de Impacto Algorítmico</a>, <a href="https://herramienta-sesgos-equidad.vercel.app/" target="_blank">Medición de Sesgo y Equidad</a></li>
+        <li><strong>Ejercicio:</strong> clasificar el nivel de riesgo del proyecto y completar su evaluación de impacto algorítmico.</li>
+        <li>Lecturas:</li>
+        <ul>
+          <li><a href="https://www.bcn.cl/leychile/navegar?i=1209272&amp;f=2026-12-01&amp;p=10527471" target="_blank">Ley 21.719 de protección de datos personales</a> &mdash; leer lo referido a decisiones automatizadas y evaluación de impacto.</li>
+          <li><a href="https://artificialintelligenceact.eu/annex/3/" target="_blank">Reglamento europeo de IA, Anexo III</a> &mdash; usos de alto riesgo, incluida la evaluación de solvencia.</li>
+          <li><a href="https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10" target="_blank">NIST AI Risk Management Framework 1.0</a></li>
+          <li><a href="https://www.camara.cl/cms/2025/08/04/camara-apoyo-en-general-regulacion-de-inteligencia-artificial-ia/" target="_blank">Proyecto de ley de IA en Chile (Cámara de Diputados, 2025)</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Gobernanza de IA III: ciclo de vida y caso aplicado (23-04-2027)</h2>
+      <p>Cómo una organización aprueba, opera, monitorea y retira sistemas de IA.</p>
+      <ul>
+        <li>Presentación: por publicar</li>
+        <li>Caso: gobierno de IA en una institución de microfinanzas</li>
+        <li><strong>Ejercicio:</strong> para el caso, diseñar el comité de IA, las compuertas del ciclo de vida y el protocolo ante incidentes.</li>
+        <li><strong>Entregable:</strong> ficha de gobierno, versión 2, integrada a la presentación final.</li>
+        <li>Lecturas:</li>
+        <ul>
+          <li><a href="https://arxiv.org/abs/2001.00973" target="_blank">Closing the AI Accountability Gap: Defining an End-to-End Framework for Internal Algorithmic Auditing (Raji et al., 2020)</a></li>
+          <li><a href="https://arxiv.org/abs/1810.03993" target="_blank">Model Cards for Model Reporting (Mitchell et al., 2019)</a></li>
+        </ul>
+      </ul>
+    </div>
+  </li>
+
+  <li>
+    <div class="class-block">
+      <h2>Presentaciones finales de proyectos (30-04-2027)</h2>
       <p>
         Presentación final de proyectos como propuestas de innovación pública:
-        problema, solución, arquitectura, evaluación y escalabilidad.
+        problema, solución, arquitectura, evaluación, gobierno y escalabilidad.
         Guía: <a href="https://docs.google.com/document/d/1FkmvhBuQnS1ySKGMsXnQy8XTkolewsseUCWJaXhorYo/edit?usp=sharing" target="_blank">link</a>
       </p>
     </div>
@@ -294,7 +334,7 @@
 <h2>Evaluación</h2>
 <ul>
   <li>Entrega intermedia de proyecto (40%)</li>
-  <li>Proyecto final grupal (60%)</li>
+  <li>Proyecto final grupal (60%), incluida la ficha de gobierno</li>
   <li>Además, habrá incentivos en décimas según performance en juego ml2 master game</li>
 </ul>
 
