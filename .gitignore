@@ -47,3 +47,6 @@ still_mgt300_clase4_drive.json
 # DVD 2026: pauta de presentaciones del Sprint 1 (usa drive_credentials.json)
 create_form_pauta_sprint1.py
 form_pauta_sprint1.json
+
+# Pantallazos con derechos de terceros: sólo viven en los decks
+materiales/2026_descripcion_visualizacion_datos/figuras/clase10/lexis_economist*.png

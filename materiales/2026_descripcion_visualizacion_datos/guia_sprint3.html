@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sprint 3: prototipo visual — guía de entrega y presentación</title>
+<style>
+  body { font-family: Arial, sans-serif; font-size: 11pt; line-height: 1.4; color: #2C2C2C; }
+  h1 { font-size: 20pt; }
+  h2 { font-size: 14pt; margin-top: 18pt; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #999; padding: 4pt 6pt; vertical-align: top; }
+  th { background: #EBD6D9; }
+  code { font-family: "Courier New", monospace; }
+</style>
+</head>
+<body>
+
+<h1>Sprint 3: prototipo visual — guía de entrega y presentación</h1>
+<p>Descripción y Visualización de Datos · UAI 2026<br>
+Se presenta el <b>lunes 26 de octubre</b>, en clase. Vale el 20% del curso.</p>
+
+<h2>1. Qué es el Sprint 3</h2>
+<p>El Sprint 2 fue la base. El Sprint 3 son los gráficos que la cuentan: tres gráficos hechos con <code>ggplot()</code>, cada uno con un titular, ordenados para contar una historia. Esta vez se presenta.</p>
+
+<h2>2. Qué se entrega y cuándo</h2>
+<ul>
+  <li><b>El mismo Colab</b> de los sprints anteriores, extendido con las secciones de abajo.</li>
+  <li><b>Los gráficos ya corridos y guardados.</b> En la sala no se ejecuta nada: se proyecta el Colab tal como lo dejaron.</li>
+  <li><b>Antes del domingo 25 de octubre, 23:59:</b> el enlace, con acceso abierto, en Webcursos y por correo a Karina Villagra (kavillagra@alumnos.uai.cl), que deja los nueve Colabs cargados en el computador de la sala.</li>
+  <li><b>Bitácora individual</b>, semana 7: hasta el domingo 1 de noviembre (cubre esta entrega).</li>
+</ul>
+
+<h2>3. Lo que se agrega al Colab</h2>
+<table>
+  <tr><th>Sección</th><th>Qué tiene que haber</th></tr>
+  <tr><td>Respuesta a la retroalimentación</td><td>Qué observaciones del Sprint 2 y del panel de la clase 9 incorporaron, cuáles no y por qué. Cinco líneas.</td></tr>
+  <tr><td>Tres gráficos</td><td>Hechos con <code>ggplot()</code>, con ejes y título en castellano (<code>labs()</code>). Al menos uno con tres variables: <code>color =</code> o <code>facet_wrap()</code>.</td></tr>
+  <tr><td>Un titular por gráfico</td><td>Una frase con un número y una comparación, encima del gráfico. Abajo, el <code>n()</code> que lo sostiene.</td></tr>
+  <tr><td>Por qué ese gráfico</td><td>Para cada uno: qué tarea cumple (ranking, tendencia, distribución, composición, relación, lugar o cambio) y por qué ese <code>geom</code>. Para uno de los tres, el que descartaron, con los mismos datos.</td></tr>
+  <tr><td>La historia</td><td>Los tres en el orden en que se presentan, y tres a cinco líneas que digan qué cuentan juntos y a quién (la audiencia del Sprint 1).</td></tr>
+</table>
+
+<h2>4. La presentación</h2>
+<ul>
+  <li><b>4 minutos por grupo, cronometrados</b>, con el Colab proyectado. A los 4:00 se corta.</li>
+  <li><b>Un minuto de comentarios</b> del curso y de los ayudantes.</li>
+  <li><b>Una forma que funciona:</b> 30 segundos para la pregunta y la audiencia; un minuto por gráfico, con su titular; 30 segundos para la historia.</li>
+  <li><b>Todos hablan.</b></li>
+</ul>
+
+<h2>5. Logística del día</h2>
+<ul>
+  <li><b>Orden:</b> G01 a G09, desde las 10:00. El grupo que sigue espera adelante, listo.</li>
+  <li><b>Proyección:</b> Karina abre los Colabs en ese orden antes de las 10:00. Un enlace que no llegó a tiempo o que está restringido presenta al final, desde su propio computador.</li>
+  <li><b>Pauta:</b> los tres ayudantes completan la pauta durante el minuto de comentarios, una vez por grupo.</li>
+</ul>
+
+<h2>6. Cómo se corrige (20% del curso)</h2>
+<table>
+  <tr><th>Dimensión</th><th>Peso</th><th>Logrado se ve así</th></tr>
+  <tr><td>Los gráficos</td><td>30%</td><td>Tres gráficos que se entienden sin explicación; ejes y título en castellano; al menos uno con tres variables.</td></tr>
+  <tr><td>Por qué ese gráfico</td><td>20%</td><td>Cada gráfico dice qué tarea cumple y por qué ese <code>geom</code>; uno muestra el descartado.</td></tr>
+  <tr><td>La narrativa</td><td>20%</td><td>Cada titular tiene un número y una comparación, y los tres, en ese orden, cuentan una historia para la audiencia.</td></tr>
+  <tr><td>La presentación</td><td>20%</td><td>Cabe en 4 minutos, todos hablan y el curso entiende qué encontraron.</td></tr>
+  <tr><td>La respuesta a la retroalimentación</td><td>10%</td><td>Dice qué se incorporó del Sprint 2 y de la clase 9, qué no y por qué.</td></tr>
+</table>
+
+<h2>7. El código que ya tienen alcanza</h2>
+<table>
+  <tr><th>Para qué</th><th>Cómo se escribe</th><th>Cuaderno</th></tr>
+  <tr><td>El gráfico base</td><td><code>ggplot(datos, aes(x = ..., y = ...)) + geom_col()</code></td><td>Clase 8</td></tr>
+  <tr><td>Ordenar las barras</td><td><code>aes(x = reorder(categoria, valor), ...)</code></td><td>Clase 9</td></tr>
+  <tr><td>Elegir el geom según la tarea</td><td><code>geom_line()</code>, <code>geom_point()</code>, <code>geom_boxplot()</code>…</td><td>Clase 9</td></tr>
+  <tr><td>Una tercera variable</td><td><code>aes(..., color = grupo)</code> o <code>+ facet_wrap(~ grupo)</code></td><td>Clase 10</td></tr>
+  <tr><td>Títulos y ejes</td><td><code>labs(title = ..., x = ..., y = ...)</code></td><td>Clase 8</td></tr>
+</table>
+
+</body>
+</html>
