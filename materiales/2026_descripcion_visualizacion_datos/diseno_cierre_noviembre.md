@@ -84,7 +84,8 @@ vez, en la clase 9. Nada de `ifelse()`, `pivot_longer()` ni `theme()` en el cód
 - **Caso:** una fundación (Naim) va a financiar observatorios de datos. Cada grupo recibe una carta
   con una fundación ficticia de su tema y lo que quiere saber.
 - **Producción:** un Google Site con una portada (el hallazgo n.º 1 como titular, un gráfico, dos
-  líneas) y una sección (con `facet_grid()` si la base tiene dos variables que cruzar).
+  líneas) y una sección con un gráfico hecho con `facet_grid()` (obligatorio desde el 2-nov, para que el
+  desafío exija la función nueva).
 - **Bloque 2:** se proyecta cada sitio; un ayudante que no es el del grupo lo navega en silencio
   60–90 segundos y dice en una frase cuál es el hallazgo. Naim compara la frase con el titular y
   declara "se entendió" o "no se entendió".

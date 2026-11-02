@@ -16,7 +16,7 @@ Descripción y Visualización de Datos (UAI 2026) · lunes 2 de noviembre · 10:
 |---|---|---|
 | 10:00–10:25 | Mapa y código en vivo | Ayudar a quien no encuentre el PNG en el panel de archivos |
 | 10:25–10:45 | Los cinco candidatos | Aprobar el hallazgo n.º 1 de sus tres grupos |
-| 10:45–11:10 | Google Sites: portada y una sección | Destrabar Sites y `ggsave()` (con Gmail personal: las cuentas @alumnos.uai.cl no sirven; el tutorial está en el QR); recordar el corte |
+| 10:45–11:10 | Google Sites: portada y una sección con `facet_grid()` (obligatorio) | Ayudar a elegir las dos variables del `facet_grid()`; destrabar Sites y `ggsave()` (con Gmail personal: las cuentas @alumnos.uai.cl no sirven; el tutorial está en el QR); recordar el corte |
 | 11:10 | Corte: enlace y titular en el form | Confirmar que sus tres grupos enviaron |
 | 11:10–11:30 | Recreo | — |
 | 11:30–12:10 | La licitación: nueve sitios, una nota cada uno | Uno de ustedes cronometra: unos 4 minutos por sitio (90 segundos de navegación, una pregunta de la fundación, 30 segundos para la nota) |
