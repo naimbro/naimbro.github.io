@@ -90,6 +90,10 @@ vez, en la clase 9. Nada de `ifelse()`, `pivot_longer()` ni `theme()` en el cód
   declara "se entendió" o "no se entendió".
 - **Competencia:** votación por Form, "¿a qué observatorio le darías los fondos?". Solo compiten
   los sitios que se entendieron; no se vota por el propio grupo.
+- **Cambio del 2-nov, antes de la clase:** sin navegación del ayudante ni filtro. Naim proyecta
+  cada sitio 90 segundos, hace una pregunta como la fundación y el curso le pone nota de 1 a 5 en
+  un form que muestra sólo los otros ocho grupos. Podio: los tres mejores promedios. El corte pasa
+  a las 11:10. La clase paso a paso está en `clase12_hoja_de_ruta.html`.
 
 Horario detallado:
 

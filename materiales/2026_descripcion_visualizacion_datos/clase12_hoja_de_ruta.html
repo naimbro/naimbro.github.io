@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clase 12: hoja de ruta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Libre Franklin", "Segoe UI", sans-serif;
+      background-color: #F9F7F4;
+      color: #2C2C2C;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 0 16px;
+      line-height: 1.5;
+    }
+    h1 {
+      margin-bottom: 0.2em;
+    }
+    .bajada {
+      color: #6b6b6b;
+      margin-top: 0;
+    }
+    .paso {
+      display: grid;
+      grid-template-columns: 7.5em 1fr;
+      gap: 0 1.2em;
+      background-color: #fff;
+      border-left: 6px solid #E5DED6;
+      border-radius: 6px;
+      padding: 0.9em 1.2em;
+      margin: 0.9em 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .paso.clave {
+      border-left-color: #C4878C;
+    }
+    .hora {
+      color: #C4878C;
+      font-weight: 700;
+      font-size: 1.05em;
+    }
+    .paso h2 {
+      margin: 0 0 0.25em;
+      font-size: 1.15em;
+    }
+    .paso p {
+      margin: 0.3em 0;
+    }
+    .laminas {
+      color: #6b6b6b;
+      font-size: 0.92em;
+    }
+    .botones {
+      margin-top: 0.5em;
+    }
+    .botones a {
+      display: inline-block;
+      background-color: #C4878C;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92em;
+      padding: 0.35em 0.8em;
+      border-radius: 4px;
+      margin: 0.2em 0.3em 0.2em 0;
+    }
+    .botones a.secundario {
+      background-color: #fff;
+      color: #A0656A;
+      border: 1px solid #C4878C;
+    }
+    .recreo {
+      color: #6b6b6b;
+      text-align: center;
+      margin: 0.9em 0;
+    }
+    h3 {
+      margin-top: 2em;
+    }
+    ul {
+      padding-left: 1.2em;
+    }
+    li {
+      margin: 0.35em 0;
+    }
+    @media (max-width: 560px) {
+      .paso {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Clase 12 · La licitación</h1>
+  <p class="bajada">Hoja de ruta del profesor y los ayudantes · lunes 2 de noviembre, 10:00–12:40. Se sigue de arriba abajo: cada paso tiene la hora, las láminas y el botón que hay que abrir.</p>
+
+  <div class="paso">
+    <div class="hora">Antes de las 10:00</div>
+    <div>
+      <h2>Abrir dos pestañas</h2>
+      <p>El deck, en modo presentación, y esta hoja.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/presentation/d/18P2pILlJyUiUBx1gY4Ho3bowXnEzS0_vSoaEgcN2U8I/present" target="_blank">Deck (presentar)</a>
+        <a class="secundario" href="https://naimbro.github.io/teaching/2026_descripcion_visualizacion_datos.html" target="_blank">Programa</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:00–10:10</div>
+    <div>
+      <h2>Mapa: de dónde venimos y la ruta</h2>
+      <p class="laminas">Láminas 1–4</p>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:10–10:25</div>
+    <div>
+      <h2>Código en vivo: <code>ggsave()</code>, <code>facet_grid()</code> y el título</h2>
+      <p class="laminas">Láminas 5–8</p>
+      <p>Correr el cuaderno y bajar el PNG desde el panel de archivos.</p>
+      <div class="botones">
+        <a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase12_ggsave_y_facet_grid.ipynb" target="_blank">Cuaderno</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:25–10:45</div>
+    <div>
+      <h2>Los cinco candidatos</h2>
+      <p class="laminas">Lámina 9</p>
+      <p>Cada ayudante aprueba el hallazgo n.º 1 de sus grupos: Matías G02, G03 y G07 · Karina G04, G05 y G09 · Martín G01, G06 y G08.</p>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">10:45–11:10</div>
+    <div>
+      <h2>Construyen el sitio</h2>
+      <p class="laminas">Láminas 10–12 · dejar proyectada la 12, la de los QR</p>
+      <p>Cada grupo lee su carta y arma una portada y una sección. El tutorial resuelve las dudas de Sites.</p>
+      <div class="botones">
+        <a href="clase12_cartas_fundacion.html" target="_blank">Cartas</a>
+        <a href="https://docs.google.com/presentation/d/1NEBnRZasgLn_Vvj-CG0GQ1B87K8LQn5a2D2GX1O7DqQ/present" target="_blank">Tutorial de Sites</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">11:10</div>
+    <div>
+      <h2>Corte: cada grupo envía su sitio</h2>
+      <p>Un envío por grupo en el form del corte. Los enlaces llegan solos a la planilla: ahí se ve quién falta.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/spreadsheets/d/16slijHXfz-F9i5VRX12X2LkAsn1iS6DO7cxfc1VijPc/edit" target="_blank">Planilla de sitios</a>
+        <a class="secundario" href="https://docs.google.com/forms/d/e/1FAIpQLSerOQ1YK37w6kfe2O8Vh51_w3wWS3-xp_t9aWgyTLCog8Gp-Q/viewform" target="_blank">Form del corte</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="recreo">11:10–11:30 · recreo</p>
+
+  <div class="paso clave">
+    <div class="hora">11:30–12:10</div>
+    <div>
+      <h2>La licitación: nueve sitios, una nota cada uno</h2>
+      <p class="laminas">Láminas 13–14 · dejar la 14 hasta que todos tengan el form abierto</p>
+      <p>Abrir la planilla y recorrer los sitios en orden, de G01 a G09. Cada uno, unos 4 minutos: 90 segundos navegándolo frente al curso, sin que el grupo explique; después, como la fundación, una pregunta al grupo; al final, 30 segundos para que pongan la nota. Un ayudante cronometra.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/spreadsheets/d/16slijHXfz-F9i5VRX12X2LkAsn1iS6DO7cxfc1VijPc/edit" target="_blank">Planilla de sitios</a>
+        <a class="secundario" href="https://docs.google.com/forms/d/e/1FAIpQLScWUcyA2LcTQnk7TDAR3VTsLb97xBCLFWF2uD6rff83hQys9Q/viewform" target="_blank">Form de notas</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">12:10</div>
+    <div>
+      <h2>Envían el form</h2>
+      <p>«Aprieten Enviar ahora». En las respuestas se ve cuántos llegaron.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/forms/d/1KKvgucSNLRJI-QQSbtd53l3_jAQLD2nhJPKDwnFyN6k/edit#responses" target="_blank">Respuestas del form de notas</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">12:15–12:35</div>
+    <div>
+      <h2>Plan del Sprint 3</h2>
+      <p>En la página «Cómo lo hicimos» del sitio: qué observaciones del Sprint 3 incorporan, cuáles no y por qué. Los ayudantes lo revisan con sus grupos.</p>
+      <p>Mientras, el podio: pedirle a Claude «podio de la clase 12», o correr <code>python create_form_dvd_clase12.py --resultados --desde 11:30</code>.</p>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">12:35–12:40</div>
+    <div>
+      <h2>Podio y cierre</h2>
+      <p class="laminas">Láminas 15–16</p>
+      <p>Los tres mejores promedios ganan una décima al Sprint 4. Si hay empate en el tercer lugar, suben todos los empatados.</p>
+    </div>
+  </div>
+
+  <h3>Si algo falla</h3>
+  <ul>
+    <li><strong>Alguien no puede entrar a Sites:</strong> las cuentas @alumnos.uai.cl no sirven; con un Gmail personal sí.</li>
+    <li><strong>Un grupo no logró publicar:</strong> que comparta el sitio como editor con la cuenta del computador de la sala y se proyecta la vista previa.</li>
+    <li><strong>Un grupo no envió el corte:</strong> que dicte el enlace o lo abra desde su computador; entra igual a la ronda.</li>
+    <li><strong>Un alumno cerró el form a mitad de la ronda:</strong> si tenía sesión de Google, el borrador se guardó; si no, que lo abra de nuevo y ponga las notas que recuerde.</li>
+  </ul>
+</body>
+</html>

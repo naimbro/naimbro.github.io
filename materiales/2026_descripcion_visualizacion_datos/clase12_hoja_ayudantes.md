@@ -5,8 +5,10 @@ Descripción y Visualización de Datos (UAI 2026) · lunes 2 de noviembre · 10:
 - **Láminas:** <https://docs.google.com/presentation/d/18P2pILlJyUiUBx1gY4Ho3bowXnEzS0_vSoaEgcN2U8I/edit>
 - **Cuaderno:** <https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase12_ggsave_y_facet_grid.ipynb>
 - **Cartas de la fundación:** <https://naimbro.github.io/materiales/2026_descripcion_visualizacion_datos/clase12_cartas_fundacion.html>
-- **Form del corte (11:20):** <https://docs.google.com/forms/d/e/1FAIpQLSerOQ1YK37w6kfe2O8Vh51_w3wWS3-xp_t9aWgyTLCog8Gp-Q/viewform>
-- **Form de la votación (12:10):** <https://docs.google.com/forms/d/e/1FAIpQLScWUcyA2LcTQnk7TDAR3VTsLb97xBCLFWF2uD6rff83hQys9Q/viewform>
+- **Hoja de ruta (la clase paso a paso, con todos los enlaces):** <https://naimbro.github.io/materiales/2026_descripcion_visualizacion_datos/clase12_hoja_de_ruta.html>
+- **Tutorial de Google Sites:** <https://docs.google.com/presentation/d/1NEBnRZasgLn_Vvj-CG0GQ1B87K8LQn5a2D2GX1O7DqQ/edit?usp=sharing>
+- **Form del corte (11:10):** <https://docs.google.com/forms/d/e/1FAIpQLSerOQ1YK37w6kfe2O8Vh51_w3wWS3-xp_t9aWgyTLCog8Gp-Q/viewform>
+- **Form de notas (11:30–12:10):** <https://docs.google.com/forms/d/e/1FAIpQLScWUcyA2LcTQnk7TDAR3VTsLb97xBCLFWF2uD6rff83hQys9Q/viewform>
 
 ## Horario
 
@@ -14,11 +16,13 @@ Descripción y Visualización de Datos (UAI 2026) · lunes 2 de noviembre · 10:
 |---|---|---|
 | 10:00–10:25 | Mapa y código en vivo | Ayudar a quien no encuentre el PNG en el panel de archivos |
 | 10:25–10:45 | Los cinco candidatos | Aprobar el hallazgo n.º 1 de sus tres grupos |
-| 10:45–11:20 | Google Sites: portada y una sección | Destrabar Sites y `ggsave()` (con Gmail personal: las cuentas @alumnos.uai.cl no sirven); recordar el corte |
-| 11:20 | Corte: enlace y titular en el form | Confirmar que sus tres grupos enviaron |
-| 11:30–12:10 | La licitación | Navegar en silencio los sitios que les tocan |
-| 12:10–12:20 | Votación | — |
-| 12:20–12:35 | Plan del Sprint 3 en la página «Cómo lo hicimos» | Revisarlo con sus grupos |
+| 10:45–11:10 | Google Sites: portada y una sección | Destrabar Sites y `ggsave()` (con Gmail personal: las cuentas @alumnos.uai.cl no sirven; el tutorial está en el QR); recordar el corte |
+| 11:10 | Corte: enlace y titular en el form | Confirmar que sus tres grupos enviaron |
+| 11:10–11:30 | Recreo | — |
+| 11:30–12:10 | La licitación: nueve sitios, una nota cada uno | Uno de ustedes cronometra: unos 4 minutos por sitio (90 segundos de navegación, una pregunta de la fundación, 30 segundos para la nota) |
+| 12:10 | Envían el form de notas | Recordar que lo envíen |
+| 12:15–12:35 | Plan del Sprint 3 en la página «Cómo lo hicimos» | Revisarlo con sus grupos |
+| 12:35 | Podio | — |
 
 ## Cómo aprobar el hallazgo n.º 1
 
@@ -28,33 +32,31 @@ Descripción y Visualización de Datos (UAI 2026) · lunes 2 de noviembre · 10:
 
 Si no cumple, que suban el n.º 2 de su lista.
 
-**G04 (suicidio), Karina antes de las 11:20:** titular sin sensacionalismo (nada de «epidemia» ni verbos dramáticos), ningún detalle de métodos y la línea *4141 en la portada.
+**G04 (suicidio), Karina antes de las 11:10:** titular sin sensacionalismo (nada de «epidemia» ni verbos dramáticos), ningún detalle de métodos y la línea *4141 en la portada.
 
-## La navegación muda
+## El segundo bloque
 
-Cada sitio lo navega un ayudante que **no** es el del grupo: 90 segundos, sin hablar y sin
-que el grupo explique. Al final dicen en una frase: «el hallazgo es…». Naim la compara con
-el titular del form y declara «se entendió» o «no se entendió». **El ayudante del grupo anota
-el veredicto**; antes de la votación se proyecta la lista de sitios que se entendieron.
+Naim proyecta cada sitio en orden, de G01 a G09, y lo navega 90 segundos sin que el grupo
+explique; después, como la fundación, le hace una pregunta al grupo. Al final, el curso le pone nota de 1 a 5 en el form de notas, que tienen
+abierto desde el principio y envían una sola vez, a las 12:10. El form pregunta primero el
+grupo y muestra sólo los otros ocho, así que nadie puede poner nota a su propio sitio.
 
-| Grupo | Su ayudante | Fundación | Lo navega |
-|---|---|---|---|
-| G01 | Martín | Mesa Larga | Karina |
-| G02 | Matías | Cancha Abierta | Martín |
-| G03 | Matías | Dial Propio | Martín |
-| G04 | Karina | Hablemos Claro | Matías |
-| G05 | Karina | Peso a Peso | Matías |
-| G06 | Martín | Pupitre | Karina |
-| G07 | Matías | Letra Viva | Martín |
-| G08 | Martín | Código Joven | Karina |
-| G09 | Karina | Red Sur | Matías |
+Los tres mejores promedios ganan una décima al Sprint 4; si hay empate en el tercer lugar,
+suben todos los empatados.
 
-## La votación
+| Grupo | Su ayudante | Fundación |
+|---|---|---|
+| G01 | Martín | Mesa Larga |
+| G02 | Matías | Cancha Abierta |
+| G03 | Matías | Dial Propio |
+| G04 | Karina | Hablemos Claro |
+| G05 | Karina | Peso a Peso |
+| G06 | Martín | Pupitre |
+| G07 | Matías | Letra Viva |
+| G08 | Martín | Código Joven |
+| G09 | Karina | Red Sur |
 
-Sólo compiten los sitios que se entendieron. Los votos por el propio grupo no cuentan. El
-podio suma una décima a la nota del Sprint 4.
-
-## Plan del Sprint 3 (12:20)
+## Plan del Sprint 3 (12:15)
 
 En la página «Cómo lo hicimos» del sitio: qué observaciones del feedback del Sprint 3
 incorporan, cuáles no y por qué. Tres líneas bastan.
