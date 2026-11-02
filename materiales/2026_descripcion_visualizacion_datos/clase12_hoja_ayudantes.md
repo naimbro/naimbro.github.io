@@ -24,6 +24,25 @@ Descripción y Visualización de Datos (UAI 2026) · lunes 2 de noviembre · 10:
 | 12:15–12:35 | Plan del Sprint 3 en la página «Cómo lo hicimos» | Revisarlo con sus grupos |
 | 12:35 | Podio | — |
 
+## El `facet_grid()` de cada grupo
+
+Es obligatorio en la sección del sitio. Lo ideal es cruzar dos variables
+(`facet_grid(filas ~ columnas)`); si la base del grupo tiene una sola variable categórica,
+vale `facet_grid(. ~ variable)`, que pone los paneles en una fila. La columna del cruce es una
+pista, no una receta: verifiquen primero que la base tenga esas variables.
+
+| Grupo | Ayudante | Cruce sugerido | Si no se puede |
+|---|---|---|---|
+| G01 | Martín | `indicador ~ pais` (Gini y Palma por país, años en el eje) | `. ~ pais` |
+| G02 | Matías | Chile e Irlanda contra la categoría del proyecto, si la base la trae | `. ~ pais` |
+| G03 | Matías | `origen ~ radio` (música chilena o extranjera, por radio) | `. ~ radio` |
+| G04 | Karina | `sexo ~ region` (OWID trae país, año y sexo) | `. ~ sexo` |
+| G05 | Karina | `. ~ anio` con dos años lado a lado, ministerios en el eje | `. ~ anio` |
+| G06 | Martín | `dependencia ~ nivel`, si la base las trae | `. ~ nivel` o `. ~ dependencia` |
+| G07 | Matías | La base está en formato ancho (un año por columna) y `pivot_longer()` no se ha visto: elegir una columna de año y cruzar otra variable que traiga, como sexo o región | `. ~ region` |
+| G08 | Martín | `tipo_institucion ~ region` (ojo: la base anual está truncada en 1.048.575 filas) | `. ~ tipo_institucion` |
+| G09 | Karina | `complejidad ~ zona` (Región Metropolitana contra el resto) | `. ~ complejidad` |
+
 ## Cómo aprobar el hallazgo n.º 1
 
 1. Tiene un número y una comparación.
