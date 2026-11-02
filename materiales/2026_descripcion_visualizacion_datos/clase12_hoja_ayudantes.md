@@ -21,8 +21,7 @@ Descripción y Visualización de Datos (UAI 2026) · lunes 2 de noviembre · 10:
 | 11:10–11:30 | Recreo | — |
 | 11:30–12:10 | La licitación: nueve sitios, una nota cada uno | Uno de ustedes cronometra: unos 4 minutos por sitio (90 segundos de navegación, una pregunta de la fundación, 30 segundos para la nota) |
 | 12:10 | Envían el form de notas | Recordar que lo envíen |
-| 12:15–12:35 | Plan del Sprint 3 en la página «Cómo lo hicimos» | Revisarlo con sus grupos |
-| 12:35 | Podio | — |
+| 12:15–12:40 | Podio y cierre | Si sobra tiempo, seguir con sus grupos en el sitio |
 
 ## El `facet_grid()` de cada grupo
 
@@ -75,7 +74,7 @@ suben todos los empatados.
 | G08 | Martín | Código Joven |
 | G09 | Karina | Red Sur |
 
-## Plan del Sprint 3 (12:15)
+## Retroalimentación del Sprint 3
 
-En la página «Cómo lo hicimos» del sitio: qué observaciones del feedback del Sprint 3
-incorporan, cuáles no y por qué. Tres líneas bastan.
+Pasa al lunes 9: en la página «Cómo lo hicimos» del sitio, qué observaciones incorporan,
+cuáles no y por qué.
