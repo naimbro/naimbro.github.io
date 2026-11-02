@@ -105,13 +105,15 @@
         .casillas { margin: 0.3em 0 0; }
         .casillas span { margin-right: 1.6em; }
 
-        /* Prediction slips: two per printed page */
-        .papeleta { padding: 0.4em 0 1em; }
-        .papeleta + .papeleta { border-top: 2px dashed #999999; padding-top: 1.2em; }
-        .papeleta h2 { margin-top: 0; }
-        .papeleta ol { padding-left: 1.3em; font-size: 0.95rem; }
-        .papeleta li { margin: 0.5em 0 0; }
-        .ref { color: var(--muted); font-size: 0.85rem; }
+        /* Prediction slips: four per printed page, cut along the dashed lines */
+        .papeletas { display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; }
+        .papeleta { padding: 0.8em 1em; border: 1px dashed #999999; }
+        .papeleta h2 { margin-top: 0; font-size: 1rem; }
+        .papeleta p { margin: 0.4em 0; font-size: 0.9rem; }
+        .papeleta .blanco { min-width: 0; width: 100%; }
+        .papeleta ol { margin: 0.4em 0 0; padding-left: 1.2em; font-size: 0.9rem; }
+        .papeleta li { margin: 0.7em 0 0; }
+        .ref { color: var(--muted); font-size: 0.8rem; }
 
         footer {
             margin-top: 3em;
@@ -136,7 +138,13 @@
             .caso { margin: 0.6em 0; padding: 0.4em 0.8em; font-size: 8.9pt; }
             .fuente { font-size: 7.4pt; }
             table.ficha { font-size: 9pt; }
-            .papeleta { height: 136mm; }
+            .papeletas { grid-template-rows: 138mm 138mm; grid-auto-rows: 0; }
+            .papeleta { padding: 6mm 7mm; overflow: hidden; }
+            .papeleta h2 { font-size: 10.5pt; }
+            .papeleta p, .papeleta ol { font-size: 9pt; }
+            .papeleta li { margin-top: 0.55em; }
+            .papeleta .ref { font-size: 7.8pt; }
+            .papeleta .lineas { height: 1.5em; }
             .frame, .cifras, .caso, ol.riesgos li, table.ficha tr { break-inside: avoid; }
             .frame, .cifras, table.ficha th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         }
@@ -306,19 +314,23 @@
 <!-- ============================ PREDICCIÓN ============================ -->
 
 <section class="hoja-impresa" id="prediccion">
+    <div class="papeletas">
     <div class="papeleta" data-papeleta>
-        <p class="eyebrow">MGT300 · Clase 11 · Se contrasta el 17 de noviembre</p>
-        <h2>Mi predicción: la salida a bolsa de Anthropic</h2>
-        <p>Nombre <span class="blanco largo" style="min-width:24em"></span> &nbsp; Grupo n.º <span class="blanco" style="min-width:3em"></span></p>
+        <p class="eyebrow">MGT300 · Clase 11 · Se revisa el 17 nov</p>
+        <h2>Mi predicción: Anthropic sale a bolsa</h2>
+        <p>Nombre</p><div class="lineas"></div>
+        <p>Grupo n.º <span class="blanco" style="width:3em"></span></p>
         <ol>
             <li><strong>¿Comprarías acciones de Anthropic en su salida a bolsa?</strong>
                 <p class="casillas"><span>☐ Sí</span><span>☐ No</span></p></li>
-            <li><strong>¿Cuánto valdrá Anthropic en bolsa al cierre de su primer día?</strong> &nbsp; US$ <span class="blanco" style="min-width:5em"></span>&nbsp;mil&nbsp;millones
-                <p class="ref">Referencia: en el tercer trimestre de 2026 facturó 17 mil millones de dólares, unos 68 mil millones al año a ese ritmo.</p></li>
-            <li><strong>Ese primer día, ¿la acción cerrará sobre o bajo su precio de colocación?</strong>
+            <li><strong>¿Cuánto valdrá en bolsa al cierre de su primer día?</strong>
+                <p>US$ <span class="blanco" style="width:6em"></span>&nbsp;mil&nbsp;millones</p>
+                <p class="ref">En el tercer trimestre de 2026 facturó 17 mil millones de dólares, unos 68 mil millones al año a ese ritmo.</p></li>
+            <li><strong>Ese día, ¿la acción cerrará sobre o bajo su precio de colocación?</strong>
                 <p class="casillas"><span>☐ Sobre</span><span>☐ Bajo</span></p></li>
             <li><strong>El riesgo que más pesa en tu predicción, en una línea.</strong><div class="lineas"></div></li>
         </ol>
+    </div>
     </div>
 </section>
 
@@ -329,12 +341,12 @@
 
 <script>
 // Clone the shared blocks (task, key figures, source line) into every family sheet,
-// and duplicate the prediction slip so each printed page carries two.
+// and repeat the prediction slip so each printed page carries four.
 document.querySelectorAll("[data-t]").forEach(el => {
     el.replaceWith(document.getElementById(el.dataset.t).content.cloneNode(true));
 });
 const slip = document.querySelector("[data-papeleta]");
-slip.after(slip.cloneNode(true));
+for (let i = 0; i < 3; i++) slip.after(slip.cloneNode(true));
 </script>
 
 </body>
