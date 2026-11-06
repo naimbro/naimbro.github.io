@@ -48,5 +48,15 @@ still_mgt300_clase4_drive.json
 create_form_pauta_sprint1.py
 form_pauta_sprint1.json
 
+# MGT300 clase 9: guía y guion para Felipe (usa drive_credentials.json)
+create_doc_mgt300_clase9.py
+doc_mgt300_clase9.json
+
 # Pantallazos con derechos de terceros: sólo viven en los decks
 materiales/2026_descripcion_visualizacion_datos/figuras/clase10/lexis_economist*.png
+create_form_dvd_clase12.py
+create_form_dvd_clase12_state.json
+create_form_dvd_clase13.py
+create_form_dvd_clase13_state.json
+create_form_dvd_clase14.py
+create_form_dvd_clase14_state.json

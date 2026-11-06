@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clase 13: hoja de ruta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Libre Franklin", "Segoe UI", sans-serif;
+      background-color: #F9F7F4;
+      color: #2C2C2C;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 0 16px;
+      line-height: 1.5;
+    }
+    h1 {
+      margin-bottom: 0.2em;
+    }
+    .bajada {
+      color: #6b6b6b;
+      margin-top: 0;
+    }
+    .paso {
+      display: grid;
+      grid-template-columns: 7.5em 1fr;
+      gap: 0 1.2em;
+      background-color: #fff;
+      border-left: 6px solid #E5DED6;
+      border-radius: 6px;
+      padding: 0.9em 1.2em;
+      margin: 0.9em 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .paso.clave {
+      border-left-color: #C4878C;
+    }
+    .hora {
+      color: #C4878C;
+      font-weight: 700;
+      font-size: 1.05em;
+    }
+    .paso h2 {
+      margin: 0 0 0.25em;
+      font-size: 1.15em;
+    }
+    .paso p {
+      margin: 0.3em 0;
+    }
+    .laminas {
+      color: #6b6b6b;
+      font-size: 0.92em;
+    }
+    .botones {
+      margin-top: 0.5em;
+    }
+    .botones a {
+      display: inline-block;
+      background-color: #C4878C;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92em;
+      padding: 0.35em 0.8em;
+      border-radius: 4px;
+      margin: 0.2em 0.3em 0.2em 0;
+    }
+    .botones a.secundario {
+      background-color: #fff;
+      color: #A0656A;
+      border: 1px solid #C4878C;
+    }
+    .recreo {
+      color: #6b6b6b;
+      text-align: center;
+      margin: 0.9em 0;
+    }
+    h3 {
+      margin-top: 2em;
+    }
+    ul {
+      padding-left: 1.2em;
+    }
+    li {
+      margin: 0.35em 0;
+    }
+    @media (max-width: 560px) {
+      .paso {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Clase 13 · Al aire</h1>
+  <p class="bajada">Hoja de ruta del profesor y los ayudantes · lunes 9 de noviembre, 10:00–12:40. Se sigue de arriba abajo: cada paso tiene la hora, las láminas y el botón que hay que abrir.</p>
+
+  <div class="paso">
+    <div class="hora">Antes de las 10:00</div>
+    <div>
+      <h2>Abrir dos pestañas</h2>
+      <p>El deck, en modo presentación, y esta hoja.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/presentation/d/1eu0iHp8uY4qRZjTA3dfuzqdIq-LCTlE1A1EKDnsUPrY/present" target="_blank">Deck (presentar)</a>
+        <a class="secundario" href="https://naimbro.github.io/teaching/2026_descripcion_visualizacion_datos.html" target="_blank">Programa</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:00–10:10</div>
+    <div>
+      <h2>Mapa: el podio de la licitación y la ruta</h2>
+      <p class="laminas">Láminas 1–3</p>
+      <p>Podio del 2 de noviembre: G03, G06 y G01.</p>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:10–10:25</div>
+    <div>
+      <h2>Código en vivo: el gráfico por etapas</h2>
+      <p class="laminas">Láminas 4–8</p>
+      <p>Correr el cuaderno: <code>p &lt;-</code>, <code>p + geom_line()</code>, <code>geom_hline()</code>, <code>annotate()</code> y un <code>ggsave()</code> por etapa.</p>
+      <div class="botones">
+        <a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase13_al_aire_por_etapas.ipynb" target="_blank">Cuaderno</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">10:25–10:50</div>
+    <div>
+      <h2>Carta, guion y etapas</h2>
+      <p class="laminas">Láminas 9–10</p>
+      <p>Cada grupo lee su carta, escribe el guion de una página y hace las etapas de su gráfico con su base del Sprint 3. Sin la firma del ayudante no se graba: Matías G02, G03 y G07 · Karina G04, G05 y G09 · Martín G01, G06 y G08.</p>
+      <div class="botones">
+        <a href="clase13_cartas_al_aire.html" target="_blank">Cartas y guion</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">10:50–11:20</div>
+    <div>
+      <h2>Graban: una toma de tres minutos</h2>
+      <p class="laminas">Láminas 11–12 · dejar proyectada la 12, la de los QR</p>
+      <p>Meet con su Gmail, láminas compartidas, y la pantalla grabada con Recortes (Windows) o Cmd+Shift+5 (Mac). Pueden salir al pasillo. Suben el video a Drive, con enlace para cualquier persona.</p>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">11:20</div>
+    <div>
+      <h2>Corte: cada grupo envía su video</h2>
+      <p>Un envío por grupo. En las respuestas se ve quién falta, con el enlace y la primera frase.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/forms/d/1pJENNMWebP5CFlBBSY8L_XIAP5p8_hpclTI5bk10bvM/edit#responses" target="_blank">Respuestas del corte</a>
+        <a class="secundario" href="https://docs.google.com/forms/d/e/1FAIpQLSdX1nzyXedQG3EfUVn-SRDEdNZLqOt-ll5yaTlPjEO7WQhjxA/viewform" target="_blank">Form del corte</a>
+      </div>
+      <p>Durante el recreo, abrir los nueve videos en pestañas, de G01 a G09, para que no haya esperas. O pedirle a Claude «videos de la clase 13», o correr <code>python create_form_dvd_clase13.py --videos</code>.</p>
+    </div>
+  </div>
+
+  <p class="recreo">11:20–11:30 · recreo</p>
+
+  <div class="paso clave">
+    <div class="hora">11:30–12:15</div>
+    <div>
+      <h2>Al aire: nueve videos</h2>
+      <p class="laminas">Lámina 13</p>
+      <p>En orden, de G01 a G09: el video completo, sin pausa (3 minutos), y después, como el productor, una pregunta al grupo; la sala puede hacer otra (2 minutos). Un ayudante cronometra.</p>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">12:15</div>
+    <div>
+      <h2>Votan: ¿cuál verían completo?</h2>
+      <p class="laminas">Lámina 14 · dejarla hasta que todos hayan votado</p>
+      <p>Un voto por persona. El form no deja votar por el propio grupo.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/forms/d/1DHqaT9qAR46NDyXF2f0zlYITomnbLtgR3sTLTme8Hvk/edit#responses" target="_blank">Respuestas de la votación</a>
+        <a class="secundario" href="https://docs.google.com/forms/d/e/1FAIpQLSf9kJO0LXc9yk3zc9kC07bPIMhDchKUwpFD_CAtdxdfo7CbcQ/viewform" target="_blank">Form de votación</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">12:20–12:40</div>
+    <div>
+      <h2>Podio y cierre</h2>
+      <p class="laminas">Láminas 15–16</p>
+      <p>Para el podio, pedirle a Claude «podio de la clase 13», o correr <code>python create_form_dvd_clase13.py --resultados --desde 12:00</code>. Los tres más votados ganan una décima al Sprint 4; si hay empate en el tercer lugar, suben todos los empatados.</p>
+      <p>Para el lunes 16: «Cómo lo hicimos» con el feedback del Sprint 3 y la bitácora de la semana 8, ambos hasta el domingo 15.</p>
+    </div>
+  </div>
+
+  <h3>Si algo falla</h3>
+  <ul>
+    <li><strong>No pueden grabar en Meet:</strong> es lo esperado con cuentas gratuitas; se graba la pantalla con la llamada abierta.</li>
+    <li><strong>No tienen grabador de pantalla:</strong> el celular, grabando la pantalla del computador.</li>
+    <li><strong>El video dice «procesando» en Drive:</strong> se proyecta al final, o desde el computador del grupo.</li>
+    <li><strong>El enlace pide acceso:</strong> el grupo cambia el uso compartido a «cualquier persona con el enlace».</li>
+    <li><strong>Un grupo no envió el corte:</strong> proyecta desde su computador, al final de la ronda.</li>
+  </ul>
+</body>
+</html>

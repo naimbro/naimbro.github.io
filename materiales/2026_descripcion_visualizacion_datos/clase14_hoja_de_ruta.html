@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clase 14: hoja de ruta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Libre Franklin", "Segoe UI", sans-serif;
+      background-color: #F9F7F4;
+      color: #2C2C2C;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 0 16px;
+      line-height: 1.5;
+    }
+    h1 {
+      margin-bottom: 0.2em;
+    }
+    .bajada {
+      color: #6b6b6b;
+      margin-top: 0;
+    }
+    .paso {
+      display: grid;
+      grid-template-columns: 7.5em 1fr;
+      gap: 0 1.2em;
+      background-color: #fff;
+      border-left: 6px solid #E5DED6;
+      border-radius: 6px;
+      padding: 0.9em 1.2em;
+      margin: 0.9em 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .paso.clave {
+      border-left-color: #C4878C;
+    }
+    .hora {
+      color: #C4878C;
+      font-weight: 700;
+      font-size: 1.05em;
+    }
+    .paso h2 {
+      margin: 0 0 0.25em;
+      font-size: 1.15em;
+    }
+    .paso p {
+      margin: 0.3em 0;
+    }
+    .laminas {
+      color: #6b6b6b;
+      font-size: 0.92em;
+    }
+    .botones {
+      margin-top: 0.5em;
+    }
+    .botones a {
+      display: inline-block;
+      background-color: #C4878C;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92em;
+      padding: 0.35em 0.8em;
+      border-radius: 4px;
+      margin: 0.2em 0.3em 0.2em 0;
+    }
+    .botones a.secundario {
+      background-color: #fff;
+      color: #A0656A;
+      border: 1px solid #C4878C;
+    }
+    .recreo {
+      color: #6b6b6b;
+      text-align: center;
+      margin: 0.9em 0;
+    }
+    h3 {
+      margin-top: 2em;
+    }
+    ul {
+      padding-left: 1.2em;
+    }
+    li {
+      margin: 0.35em 0;
+    }
+    @media (max-width: 560px) {
+      .paso {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Clase 14 · Community manager</h1>
+  <p class="bajada">Hoja de ruta del profesor y los ayudantes · lunes 16 de noviembre, 10:00–12:40. Se sigue de arriba abajo: cada paso tiene la hora, las láminas y el botón que hay que abrir.</p>
+
+  <div class="paso">
+    <div class="hora">Antes de las 10:00</div>
+    <div>
+      <h2>Abrir dos pestañas y completar el podio</h2>
+      <p>El deck, en modo presentación, y esta hoja. En la lámina 2, escribir a mano los tres grupos del podio del 9 de noviembre.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/presentation/d/1wSfEGLTtGPcrrnP33teZ0LyhXyojPzFPj9teuEenpFM/present" target="_blank">Deck (presentar)</a>
+        <a class="secundario" href="https://docs.google.com/presentation/d/1wSfEGLTtGPcrrnP33teZ0LyhXyojPzFPj9teuEenpFM/edit" target="_blank">Deck (editar)</a>
+        <a class="secundario" href="https://naimbro.github.io/teaching/2026_descripcion_visualizacion_datos.html" target="_blank">Programa</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:00–10:10</div>
+    <div>
+      <h2>Mapa: el podio del 9 y la ruta</h2>
+      <p class="laminas">Láminas 1–3</p>
+      <p>Hoy es el último desafío: al cierre, cada grupo elige su formato para el demo day.</p>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:10–10:25</div>
+    <div>
+      <h2>Código en vivo: <code>slice_max()</code>, <code>geom_text()</code> y la lámina cuadrada</h2>
+      <p class="laminas">Láminas 4–9</p>
+      <p>Correr el cuaderno y mostrar cómo se configura un Slides cuadrado (Archivo → Configurar página → Personalizado, 20 × 20 cm).</p>
+      <div class="botones">
+        <a href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase14_carrusel.ipynb" target="_blank">Cuaderno</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">10:25–10:35</div>
+    <div>
+      <h2>El encargo: la carta de la ONG y la secuencia</h2>
+      <p class="laminas">Láminas 10–11</p>
+      <p>Cada grupo lee su carta y ordena sus candidatos: portada con el gancho, cuatro láminas, una de cierre.</p>
+      <div class="botones">
+        <a href="clase14_cartas_ong.html" target="_blank">Cartas</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">10:35–11:20</div>
+    <div>
+      <h2>Construyen el carrusel; el algoritmo mira</h2>
+      <p class="laminas">Láminas 12–14 · dejar proyectada la 14, la de los QR</p>
+      <p>Seis láminas cuadradas en Google Slides. Cada ayudante pasa el carrusel de sus grupos como en el celular, hacia las 10:55 y otra vez hacia las 11:10, y les dice en qué lámina dejaría de mirar: Matías G02, G03 y G07 · Karina G04, G05 y G09 · Martín G01, G06 y G08.</p>
+      <div class="botones">
+        <a href="clase14_cartas_ong.html" target="_blank">Cartas</a>
+        <a class="secundario" href="https://colab.research.google.com/github/naimbro/naimbro.github.io/blob/main/materiales/2026_descripcion_visualizacion_datos/clase14_carrusel.ipynb" target="_blank">Cuaderno</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">11:20</div>
+    <div>
+      <h2>Corte: un enlace y tres frases</h2>
+      <p>Un envío por grupo: el enlace al Slides, el hallazgo y dos falsos creíbles. En las respuestas se ve quién falta.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/forms/d/1_sTzm1Dt5QSQUwvhsnvGYqP4chCwfPY5uMwN_v-Nl0Q/edit#responses" target="_blank">Respuestas del corte</a>
+        <a class="secundario" href="https://docs.google.com/forms/d/e/1FAIpQLSf80L9DDT08poJ5LDaVJhdRXyt7l0I4GFaY8L5JQFsN7rUL-A/viewform" target="_blank">Form del corte</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="recreo">11:20–11:30 · recreo</p>
+
+  <div class="paso clave">
+    <div class="hora">Durante el recreo</div>
+    <div>
+      <h2>Armar la prueba del scroll</h2>
+      <p>Pedirle a Claude «armar la prueba de la clase 14», o correr <code>python create_form_dvd_clase14.py --armar-prueba</code>. El form toma una pregunta por cada carrusel del corte, con sus tres frases barajadas. El enlace no cambia.</p>
+      <p>Para la lista de carruseles en orden: <code>python create_form_dvd_clase14.py --carruseles</code>.</p>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">11:30–11:50</div>
+    <div>
+      <h2>La prueba del scroll</h2>
+      <p class="laminas">Láminas 15–16 · dejar la 16 hasta que todos tengan el form abierto</p>
+      <p>Abrir cada carrusel en orden, de G01 a G09, en modo presentación, y avanzar una lámina cada tres segundos; un ayudante cronometra. Después, 20 segundos para marcar cuál de las tres frases dice. En el carrusel del propio grupo no se marca nada. Si alguien abrió el form antes de las 11:30, que recargue.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/forms/d/1_sTzm1Dt5QSQUwvhsnvGYqP4chCwfPY5uMwN_v-Nl0Q/edit#responses" target="_blank">Respuestas del corte</a>
+        <a class="secundario" href="https://docs.google.com/forms/d/e/1FAIpQLSeMTIPflRUwz2vlV6bIKdMgXrR5yiHTMGYnkn6koy4ijnj7bg/viewform" target="_blank">Form de la prueba</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">11:50–12:10</div>
+    <div>
+      <h2>Qué lámina perdió a la sala</h2>
+      <p>Unos 2 minutos por grupo: el ayudante dice en qué lámina dejó de mirar el algoritmo y Naim, como la ONG, hace una pregunta.</p>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">12:10</div>
+    <div>
+      <h2>Envían el form y el podio</h2>
+      <p>«Aprieten Enviar ahora». Para el podio, pedirle a Claude «podio de la clase 14», o correr <code>python create_form_dvd_clase14.py --resultados --desde 11:30</code>. Gana el porcentaje más alto de aciertos; los tres primeros (y los empatados con el tercero) suman una décima al Sprint 4.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/forms/d/18ApM99kwbXOD1OqIQJ1LDMMiwyR2qP2U959oZrrt5fA/edit#responses" target="_blank">Respuestas de la prueba</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso clave">
+    <div class="hora">12:15–12:35</div>
+    <div>
+      <h2>Eligen su formato</h2>
+      <p class="laminas">Láminas 17–18</p>
+      <p>Cada grupo, con su ayudante al lado, envía su formato para el 23: observatorio, video-podcast o carrusel. Después no se cambia. Revisar que estén los nueve: <code>python create_form_dvd_clase14.py --formatos</code>.</p>
+      <div class="botones">
+        <a href="https://docs.google.com/forms/d/1cRTc_mlhzA_6feaMzVql2lqKFPp-FrozXRnvI2_gL-A/edit#responses" target="_blank">Respuestas del formato</a>
+        <a class="secundario" href="https://docs.google.com/forms/d/e/1FAIpQLSdOgzxUDRNBfFU3cgYeRjnQ0uY5e1gSn8x8R3dgpS8Tq12i1w/viewform" target="_blank">Form del formato</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="paso">
+    <div class="hora">12:35–12:40</div>
+    <div>
+      <h2>Cierre: el demo day</h2>
+      <p class="laminas">Láminas 19–20</p>
+      <p>El sitio, antes de las 10:00 del 23, en Webcursos y a Karina. Bitácora: semana 9, hasta el domingo 22.</p>
+    </div>
+  </div>
+
+  <h3>Si algo falla</h3>
+  <ul>
+    <li><strong>Un carrusel no abre:</strong> el Slides tiene que estar compartido como «Cualquier persona con el enlace: lector». Si no alcanza a arreglarse, se proyecta desde el computador del grupo.</li>
+    <li><strong>Un grupo no envió el corte:</strong> queda fuera de la prueba (no tiene sus tres frases), pero su carrusel se proyecta igual en la ronda de las 11:50.</li>
+    <li><strong>Las preguntas de la prueba no aparecen:</strong> recargar el form; si siguen sin aparecer, volver a correr <code>--armar-prueba</code>.</li>
+    <li><strong>Las tres frases de un grupo son casi iguales:</strong> la prueba igual corre; Naim lo comenta en la ronda de las 11:50.</li>
+    <li><strong>Un alumno cerró el form a mitad de la prueba:</strong> que lo abra de nuevo y responda los carruseles que recuerde.</li>
+  </ul>
+</body>
+</html>

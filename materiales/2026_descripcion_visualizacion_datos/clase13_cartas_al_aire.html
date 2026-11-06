@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Al aire: cartas del productor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Libre Franklin", "Segoe UI", sans-serif;
+      background-color: #F9F7F4;
+      color: #2C2C2C;
+      max-width: 900px;
+      margin: 2em auto;
+      padding: 0 16px;
+      line-height: 1.5;
+    }
+    h1 {
+      margin-bottom: 0.2em;
+    }
+    .bajada {
+      color: #6b6b6b;
+      margin-top: 0;
+    }
+    .reglas {
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 0.8em 1.4em;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .reglas li {
+      margin: 0.3em 0;
+    }
+    .carta {
+      background-color: #fff;
+      border-left: 6px solid #C4878C;
+      border-radius: 6px;
+      padding: 1.1em 1.4em;
+      margin: 1.4em 0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    .grupo {
+      color: #C4878C;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 0.9em;
+    }
+    .carta h2 {
+      margin: 0.15em 0 0.6em;
+      font-size: 1.5em;
+    }
+    .carta dl {
+      margin: 0;
+    }
+    .carta dt {
+      font-weight: 600;
+      margin-top: 0.6em;
+    }
+    .carta dd {
+      margin: 0.1em 0 0;
+    }
+    .regla {
+      background-color: #f6eeee;
+      padding: 0.5em 0.8em;
+      border-radius: 4px;
+      margin-top: 0.8em;
+    }
+    .pie {
+      margin-top: 0.9em;
+      font-size: 0.9em;
+      color: #6b6b6b;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0.8em 0;
+      background-color: #fff;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.45em 0.6em;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #EFEAE4;
+    }
+    td.linea {
+      height: 3.2em;
+    }
+    .firma {
+      margin-top: 1.2em;
+    }
+    @media print {
+      body { background-color: #fff; margin: 0; max-width: none; }
+      .intro { display: none; }
+      .carta, .guion { page-break-after: always; box-shadow: none; border: 1px solid #ddd; border-left: 6px solid #C4878C; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="intro">
+    <h1>Al aire: cartas del productor</h1>
+    <p class="bajada">Descripción y Visualización de Datos · UAI 2026 · Clase 13 (lunes 9 de noviembre)</p>
+    <p>Un medio digital le da a cada grupo tres minutos al aire, en una sección con un invitado que se adapta a su tema. Las secciones y los invitados son ficticios; el invitado lo interpreta alguien del grupo. El productor es el profesor, y su ayudante aprueba el guion antes de grabar.</p>
+    <div class="reglas">
+      <ul>
+        <li><b>Tres minutos, una sola toma,</b> sin editar.</li>
+        <li><b>El hallazgo en los primeros 15 segundos,</b> con un número y una comparación.</li>
+        <li><b>El gráfico se arma en pantalla:</b> tres o cuatro etapas, un PNG por lámina, compartidas en Meet.</li>
+        <li><b>En cámara, conductor e invitado.</b> El resto del grupo pasa las láminas y graba.</li>
+        <li><b>Antes de cerrar, lo que los datos no dicen:</b> un hallazgo descriptivo no prueba una causa.</li>
+        <li><b>Guion de una página</b> (al final de esta página), firmado por su ayudante antes de grabar.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G01</div>
+    <h2>Sección «La brecha»</h2>
+    <dl>
+      <dt>El invitado</dt><dd>Una economista que estudia la desigualdad.</dd>
+      <dt>La audiencia</dt><dd>Gente que nunca ha oído hablar del Gini.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Es Chile más desigual que Brasil y los otros países, y desde cuándo?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G02</div>
+    <h2>Sección «Cancha y presupuesto»</h2>
+    <dl>
+      <dt>El invitado</dt><dd>El dirigente de un club deportivo de barrio.</dd>
+      <dt>La audiencia</dt><dd>Deportistas aficionados de la Región Metropolitana.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Cuánto pone el Estado en deporte, comparado con Irlanda?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G03</div>
+    <h2>Sección «Suena chileno»</h2>
+    <dl>
+      <dt>El invitado</dt><dd>Un músico independiente que busca que lo programen en radio.</dd>
+      <dt>La audiencia</dt><dd>Auditores jóvenes de radio y de plataformas.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Cuánta música chilena suena en las radios, y en cuáles?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G04</div>
+    <h2>Sección «Hablemos de salud mental»</h2>
+    <dl>
+      <dt>La invitada</dt><dd>Una psicóloga escolar.</dd>
+      <dt>La audiencia</dt><dd>Apoderados y profesores.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Cuánto difieren las cifras de hombres y mujeres, y cómo han cambiado?</dd>
+    </dl>
+    <p class="regla"><b>Reglas del medio:</b> tono sereno, sin palabras como «epidemia» ni verbos dramáticos; ningún detalle sobre métodos; y al cierre, dicha en voz alta y en pantalla, la línea de prevención del suicidio del Minsal: <b>*4141</b>, gratuita, las 24 horas.</p>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G05</div>
+    <h2>Sección «La billetera fiscal»</h2>
+    <dl>
+      <dt>El invitado</dt><dd>Un periodista de datos que cubre el presupuesto.</dd>
+      <dt>La audiencia</dt><dd>Contribuyentes que nunca han leído una Ley de Presupuestos.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Qué ministerios ganaron presupuesto y cuáles perdieron?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G06</div>
+    <h2>Sección «Pupitres vacíos»</h2>
+    <dl>
+      <dt>La invitada</dt><dd>La directora de un liceo municipal.</dd>
+      <dt>La audiencia</dt><dd>Apoderados.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿En qué comunas se deserta más?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G07</div>
+    <h2>Sección «Leer a los quince»</h2>
+    <dl>
+      <dt>La invitada</dt><dd>Una profesora de lenguaje.</dd>
+      <dt>La audiencia</dt><dd>Estudiantes de pedagogía.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Cómo está la alfabetización juvenil en América Latina, y qué países van más atrás?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G08</div>
+    <h2>Sección «Carrera tech»</h2>
+    <dl>
+      <dt>El invitado</dt><dd>El orientador de un liceo técnico.</dd>
+      <dt>La audiencia</dt><dd>Estudiantes de cuarto medio que eligen carrera.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Cuánto creció la matrícula en carreras tecnológicas, y dónde?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta">
+    <div class="grupo">GRUPO G09</div>
+    <h2>Sección «Todo pasa por Santiago»</h2>
+    <dl>
+      <dt>La invitada</dt><dd>Una médica de un hospital regional.</dd>
+      <dt>La audiencia</dt><dd>Personas que viven fuera de la Región Metropolitana.</dd>
+      <dt>Lo que el productor quiere oír en los primeros 15 segundos</dt><dd>¿Cuánto de la atención de salud se concentra en Santiago?</dd>
+    </dl>
+    <p class="pie">Tres minutos, una toma. El guion lo firma su ayudante antes de grabar.</p>
+  </div>
+
+  <div class="carta guion">
+    <div class="grupo">EL GUION · UNA PÁGINA</div>
+    <h2>Grupo ____ · Sección «______________________»</h2>
+    <p>Conductor: ______________________ · Invitado: ______________________ · Láminas y grabación: ______________________</p>
+    <table>
+      <tr><th style="width: 18%">Tiempo</th><th style="width: 17%">Lámina</th><th>Qué se dice</th></tr>
+      <tr><td>0:00–0:15</td><td>etapa 1</td><td class="linea"><b>El hallazgo</b>, palabra por palabra, con un número y una comparación:</td></tr>
+      <tr><td>0:15–0:45</td><td>etapa 1</td><td class="linea">El conductor presenta al invitado y dice qué se mide y de dónde salen los datos.</td></tr>
+      <tr><td>0:45–2:15</td><td>etapas 2 a 4</td><td class="linea">El invitado lee el gráfico mientras crece. Qué dice cada etapa:</td></tr>
+      <tr><td>2:15–2:45</td><td>etapa 4</td><td class="linea">Lo que los datos no dicen:</td></tr>
+      <tr><td>2:45–3:00</td><td>etapa 4</td><td class="linea">Cierre: el hallazgo otra vez, en una frase, y la fuente.</td></tr>
+    </table>
+    <p class="firma">Aprobado por el productor (ayudante): ______________________ · Hora: ________</p>
+  </div>
+
+</body>
+</html>
