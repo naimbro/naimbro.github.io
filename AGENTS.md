@@ -37,6 +37,12 @@ Academic personal website for **Naim Bro**, Assistant Professor at the School of
 
 ## Teaching syllabi
 
+### Active courses (2027)
+
+| File | Course |
+|------|--------|
+| `teaching/2027_ai_research.html` | AI in Research (PhD, UAI) &mdash; based on the 2026 version |
+
 ### Active courses (2026)
 
 | File | Course |
