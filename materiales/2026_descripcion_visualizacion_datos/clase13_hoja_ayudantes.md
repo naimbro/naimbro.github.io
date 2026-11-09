@@ -9,7 +9,7 @@ Hoy ustedes son **productores**: ningún grupo graba sin un guion firmado por su
 - **Cartas del productor y plantilla del guion:** <https://naimbro.github.io/materiales/2026_descripcion_visualizacion_datos/clase13_cartas_al_aire.html>
 - **Hoja de ruta (la clase paso a paso, con todos los enlaces):** <https://naimbro.github.io/materiales/2026_descripcion_visualizacion_datos/clase13_hoja_de_ruta.html>
 - **Form del corte (11:20):** <https://docs.google.com/forms/d/e/1FAIpQLSdX1nzyXedQG3EfUVn-SRDEdNZLqOt-ll5yaTlPjEO7WQhjxA/viewform>
-- **Form de votación (12:15):** <https://docs.google.com/forms/d/e/1FAIpQLSf9kJO0LXc9yk3zc9kC07bPIMhDchKUwpFD_CAtdxdfo7CbcQ/viewform>
+- **Form de notas (11:30–12:15, una nota por video):** <https://docs.google.com/forms/d/e/1FAIpQLSf9kJO0LXc9yk3zc9kC07bPIMhDchKUwpFD_CAtdxdfo7CbcQ/viewform>
 
 ## Horario
 
@@ -20,8 +20,8 @@ Hoy ustedes son **productores**: ningún grupo graba sin un guion firmado por su
 | 10:50–11:20 | Grabación, una toma de 3 minutos | Destrabar Meet, la grabación de pantalla y la subida a Drive; recordar el corte |
 | 11:20 | Corte: enlace del video y primera frase | Confirmar que sus tres grupos enviaron y que el enlace abre sin pedir acceso |
 | 11:20–11:30 | Recreo | — |
-| 11:30–12:15 | Al aire: 3 minutos de video y 2 de preguntas por grupo | Uno cronometra; otro abre los videos en orden |
-| 12:15 | Votación: «¿cuál verías completo?» | Recordar que voten |
+| 11:30–12:15 | Al aire: 3 minutos de video y 2 de preguntas por grupo; nota de 1 a 5 a cada video | Uno cronometra; otro abre los videos en orden |
+| 12:15 | Envían el form de notas | Recordar que lo envíen |
 | 12:20–12:40 | Podio y cierre | — |
 
 Grupos: Matías G02, G03 y G07 · Karina G04, G05 y G09 · Martín G01, G06 y G08.
