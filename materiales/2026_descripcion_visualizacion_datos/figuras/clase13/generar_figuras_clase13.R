@@ -156,6 +156,39 @@ for (i in seq_along(FIGURAS)) {
   cat("  ", path, "\n")
 }
 
+# ── Otros tipos de annotate(): label, segment, curve y rect ──
+# Se evalúa sobre el p de la etapa 4, con p + y sin p <-: se prueba sin
+# cambiar el gráfico del video.
+TIPOS <- 'p +
+  annotate("rect", xmin = 2019, xmax = 2021,
+           ymin = 0, ymax = 40, alpha = 0.2) +
+  annotate("label", x = 2007, y = 37,
+           label = "2015: 29%") +
+  annotate("segment", x = 2009, y = 35,
+           xend = 2015, yend = 30,
+           arrow = arrow()) +
+  annotate("label", x = 2019, y = 37,
+           label = "2025: 32%") +
+  annotate("curve", x = 2022, y = 37,
+           xend = 2025, yend = 33,
+           arrow = arrow())'
+
+p <- suppressMessages(eval(parse(text = TIPOS), envir = env))
+p <- p + theme_minimal() + slide_theme
+path <- file.path(OUT, "f4b_tipos.png")
+open_canvas(path)
+header("ANOTAR · annotate()", "annotate(): el primer argumento es el geom",
+       "Además de \"text\": recuadro, flecha, curva y zona.")
+code_panel(character(0), TIPOS, 'annotate("label" / "segment" / "curve" / "rect")')
+suppressWarnings(suppressMessages(
+  print(p, vp = viewport(x = 0.46, y = 0.19, width = 0.50, height = 0.64,
+                         just = c("left", "bottom")))))
+grid.text("p + sin p <- : se prueba sin cambiar el gráfico del video",
+          x = 0.47, y = 0.15, just = c("left", "center"),
+          gp = gpar(fontfamily = MONO, fontsize = 12, col = MUTED))
+invisible(dev.off())
+cat("  ", path, "\n")
+
 # ── Las cuatro etapas, en fila: así se ven las láminas del video ──
 etapas <- list()
 e2 <- new.env()
