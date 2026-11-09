@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dossiers de personaje, Clase 12 de MGT300 2026: seis personas, tres duelos sobre si la IA es una revolución o una burbuja, para jugar en Tribuna.">
+    <!-- Material docente: traducciones y extractos breves de fuentes con suscripción para uso en
+         clase. Se mantiene fuera de los buscadores. -->
+    <meta name="robots" content="noindex, noarchive">
+    <title>Dossiers de personaje — MGT300, Clase 12 (2026)</title>
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+            --rust: #6b3a17;
+        }
+        * { box-sizing: border-box; }
+        body {
+            max-width: 860px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.55;
+        }
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 1.6em 0 0.3em; font-size: 1.15rem; }
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .subtitle { margin: 0 0 1.2em; color: var(--muted); font-size: 1rem; font-style: italic; }
+        .attrib { margin: 0 0 0.8em; color: var(--muted); font-size: 0.86rem; font-style: italic; }
+
+        /* Screen-only index of the six dossiers */
+        nav.indice {
+            margin: 0 0 2em;
+            padding: 0.8em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.92rem;
+        }
+        nav.indice ol { margin: 0.3em 0 0; padding-left: 1.3em; }
+        nav.indice a { color: var(--navy); }
+
+        section.dossier { margin: 0 0 4em; }
+        .duelo {
+            margin: 0 0 1em;
+            padding: 0.7em 1em;
+            border-left: 5px solid var(--rust);
+            background: #fbf3ec;
+        }
+        .duelo p { margin: 0.25em 0; }
+        .duelo .mocion { font-family: Georgia, "Times New Roman", serif; font-size: 1.08rem; color: var(--rust); }
+        .lado {
+            display: inline-block;
+            padding: 0.05em 0.55em;
+            border-radius: 2px;
+            color: #ffffff;
+            background: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+        }
+        .lado.contra { background: #9b2c2c; }
+
+        .frame {
+            margin: 0 0 1.2em;
+            padding: 0.8em 1.1em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+            font-size: 0.93rem;
+        }
+        .frame p { margin: 0.35em 0; }
+        .rules { margin: 0.3em 0 0; padding-left: 1.2em; }
+        .rules li { margin-bottom: 0.2em; }
+
+        .hechos { margin: 0.3em 0 0; padding-left: 1.2em; font-size: 0.95rem; }
+        .hechos li { margin-bottom: 0.25em; }
+
+        .ficha {
+            margin: 0.6em 0 0;
+            padding: 0.2em 0 0.3em 0.8em;
+            border-left: 3px solid #c8d6e2;
+            font-size: 0.93rem;
+        }
+        .ficha p { margin: 0.2em 0; }
+
+        .caso {
+            margin: 1em 0;
+            padding: 0.6em 1em;
+            border: 1px solid #d6dee6;
+            background: #ffffff;
+            font-size: 0.88rem;
+        }
+        .caso p { margin: 0.25em 0; }
+        .caso strong:first-child { color: var(--navy); }
+
+        /* Own words: numbered short extracts */
+        ol.dichos { margin: 0.4em 0 0; padding-left: 1.4em; }
+        ol.dichos li { margin: 0 0 0.55em; }
+        ol.dichos q {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.02rem;
+            quotes: "«" "»";
+        }
+        ol.dichos .src { display: block; color: var(--muted); font-size: 0.78rem; }
+
+        .rival {
+            margin: 1em 0;
+            padding: 0.6em 1em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.92rem;
+        }
+        .rival p { margin: 0.3em 0; }
+        .rival q { font-family: Georgia, "Times New Roman", serif; quotes: "«" "»"; }
+        .rival .src { color: var(--muted); font-size: 0.78rem; }
+
+        /* The group worksheet at the end of each dossier */
+        .hoja { margin: 1.2em 0 0; padding: 0.7em 1em; border: 2px solid var(--navy); }
+        .hoja h3 { margin: 0 0 0.3em; color: var(--navy); font-size: 1rem; }
+        .hoja ol { margin: 0; padding-left: 1.3em; font-size: 0.9rem; }
+        .hoja li { margin: 0.45em 0 0; }
+        .lineas { height: 1.3em; border-bottom: 1px solid #bbbbbb; }
+
+        footer {
+            margin-top: 3em;
+            padding-top: 1em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { max-width: none; margin: 0; padding: 11mm 13mm 9mm; font-size: 10.2pt; line-height: 1.4; background: #ffffff; }
+            nav.indice, .portada, footer { display: none; }
+            section.dossier { margin: 0; break-before: page; }
+            h1 { font-size: 16pt; }
+            h2 { font-size: 10.8pt; margin: 0.8em 0 0.15em; break-after: avoid; }
+            .eyebrow { font-size: 7.6pt; }
+            .subtitle { font-size: 9pt; margin-bottom: 0.5em; }
+            .attrib { font-size: 7.8pt; margin-bottom: 0.4em; }
+            .duelo { margin-bottom: 0.6em; padding: 0.45em 0.8em; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .duelo .mocion { font-size: 10.6pt; }
+            .lado { font-size: 7pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .frame { margin-bottom: 0.6em; padding: 0.45em 0.8em; font-size: 9.2pt; }
+            .hechos, .ficha { font-size: 9.7pt; }
+            .caso { margin: 0.6em 0; padding: 0.4em 0.8em; font-size: 8.9pt; }
+            ol.dichos li { margin-bottom: 0.35em; }
+            ol.dichos q { font-size: 10.5pt; }
+            ol.dichos .src { font-size: 7.2pt; }
+            .rival { margin: 0.6em 0; padding: 0.4em 0.8em; font-size: 9.4pt; }
+            .hoja { margin-top: 0.7em; padding: 0.45em 0.8em; break-inside: avoid; }
+            .hoja ol { font-size: 9.4pt; }
+            .lineas { height: 1.7em; }
+            .frame, .caso, .rival, .duelo, ol.dichos li { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="portada">
+<p class="eyebrow">MGT300 · Sociedad, Cultura y Política · Ingeniería Comercial UAI</p>
+<h1>Dossiers de personaje</h1>
+<p class="subtitle">Clase 12 — ¿Revolución o burbuja? Seis personajes, tres duelos · Martes 10 de noviembre de 2026</p>
+
+<nav class="indice">
+    <strong>Duelos y personajes</strong>
+    <ol>
+        <li>Duelo 1 · «La IA es una revolución de la productividad, como lo fue la electricidad» — <a href="#aghion">Philippe Aghion</a> (a favor) contra <a href="#acemoglu">Daron Acemoglu</a> (en contra)</li>
+        <li>Duelo 2 · «Las ganancias extraordinarias de las empresas de IA son el premio a la innovación, no una renta que haya que romper» — <a href="#thiel">Peter Thiel</a> (a favor) contra <a href="#khan">Lina Khan</a> (en contra)</li>
+        <li>Duelo 3 · «La IA no es una burbuja» — <a href="#huang">Jensen Huang</a> (a favor) contra <a href="#burry">Michael Burry</a> (en contra)</li>
+    </ol>
+</nav>
+</div>
+
+<!-- Shared blocks, cloned into every dossier by the script at the end -->
+<template id="t-reglas">
+<div class="frame">
+    <p><strong>Veinte minutos, en silencio, sin pantallas.</strong> Lee el dossier entero con lápiz: subraya las dos o tres frases que vas a usar. Después, quince minutos con los compañeros de tu personaje para llenar la hoja del final.</p>
+    <ul class="rules">
+        <li><strong>En el duelo hablas en primera persona, como tu personaje.</strong> No opinas tú: opina él o ella.</li>
+        <li><strong>Los jueces premian la fidelidad:</strong> que tu personaje lo diría, y que puedas señalar dónde lo dijo. Una cita o una cifra inventada resta.</li>
+        <li><strong>Los jueces premian usar la clase:</strong> las GPT, el desfase, la paradoja de Solow, las rentas, el carro de la productividad. Están en el recuadro de abajo.</li>
+        <li><strong>Tu personaje puede ceder un punto.</strong> Conceder con una razón suma; negar lo evidente resta.</li>
+    </ul>
+</div>
+</template>
+
+<template id="t-clase">
+<div class="caso">
+    <p><strong>Lo que viste en la exposición, en seis líneas.</strong> <b>GPT</b>: una tecnología de propósito general se difunde por toda la economía, mejora con el tiempo y engendra innovaciones derivadas (vapor, electricidad, microprocesador). <b>Desfase</b>: su efecto en la productividad tarda décadas, porque hay que reorganizar la producción a su alrededor (Edison, 1879; fábricas rediseñadas, años 20). <b>Paradoja de Solow</b>: «se ve la era de los computadores en todas partes, menos en las estadísticas de productividad» (Solow, 1987); en EE. UU. la productividad creció 1,4% al año entre 1973 y 1995 y 3,1% entre 1995 y 2004. <b>Rentas</b>: la renta <i>productiva</i> premia al que innova y dura hasta que otro lo supera; la <i>rentista</i> protege al que ya está, con lobby, licencias o barreras de entrada (Aghion, cap. 5). <b>Carro de la productividad</b>: más productividad sólo sube los salarios si la tecnología crea tareas nuevas y los trabajadores pueden negociar su parte (Acemoglu y Johnson, cap. 1). <b>La apuesta</b>: las grandes tecnológicas gastan cerca de US$400 mil millones al año en infraestructura de IA; el gasto mundial en centros de datos pasaría de US$3 billones hacia 2028; las burbujas ferroviaria y puntocom dejaron vías y fibra, pero esta vez más de la mitad se gasta en chips que quedan obsoletos en pocos años.</p>
+    <p class="attrib" style="margin:0.3em 0 0">Fuentes: láminas de la exposición; Aghion, Antonin y Bunel, <i>The Power of Creative Destruction</i>, caps. 3 y 5; Acemoglu y Johnson, <i>Poder y progreso</i>, cap. 1; «What if the $3trn AI investment boom goes wrong?», <i>The Economist</i>, 11 de septiembre de 2025.</p>
+</div>
+</template>
+
+<template id="t-hoja">
+<div class="hoja">
+    <h3>Hoja de duelo · con los compañeros de tu personaje, quince minutos</h3>
+    <ol>
+        <li><strong>Su posición frente a la moción, en una frase, con la cita del dossier que la respalda.</strong><div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>¿Qué concepto de la clase le sirve a tu personaje, y cómo lo usa?</strong> GPT · desfase · paradoja de Solow · rentas productivas o rentistas · carro de la productividad.<div class="lineas"></div><div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>Su mejor argumento, con una cifra.</strong><div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>Lo que va a decir el rival, y cómo le responde tu personaje.</strong><div class="lineas"></div><div class="lineas"></div><div class="lineas"></div></li>
+        <li><strong>Qué gana tu personaje si gana la moción, o algo que dijo que le calza demasiado bien a su negocio.</strong><div class="lineas"></div><div class="lineas"></div></li>
+    </ol>
+</div>
+</template>
+
+<!-- ============================ DUELO 1 ============================ -->
+
+<section class="dossier" id="aghion">
+    <p class="eyebrow">MGT300 · Clase 12 · Dossier de personaje</p>
+    <h1>Philippe Aghion</h1>
+    <p class="subtitle">Economista; Nobel de Economía 2025</p>
+    <div class="duelo">
+        <p>Duelo 1 · <span class="lado">A FAVOR</span> de la moción · rival: Daron Acemoglu (MIT)</p>
+        <p class="mocion">«La IA es una revolución de la productividad, como lo fue la electricidad.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué defiende</h2>
+    <ul class="hechos">
+        <li>Economista francés, profesor del Collège de France, de INSEAD y de la London School of Economics. Nobel de Economía 2025, con Peter Howitt, <q>por la teoría del crecimiento sostenido mediante destrucción creativa</q>.</li>
+        <li>Coautor, con Antonin y Bunel, de <i>The Power of Creative Destruction</i> (2021), la lectura de hoy. Copresidió la Comisión de Inteligencia Artificial de Francia, que en 2024 le entregó a Macron un informe con 25 recomendaciones.</li>
+        <li>En 2024 publicó con Simon Bunel una respuesta directa a Acemoglu: con la misma fórmula, pero otros supuestos, la IA crece diez veces más.</li>
+        <li>Un dato a su favor: la productividad de EE. UU. creció 3,6% anualizado en el tercer trimestre de 2026, y 2,3% en 2025. Son cifras preliminares, y la oficina de estadísticas no atribuye nada a la IA.</li>
+    </ul>
+
+    <div data-t="t-clase"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. Salvo indicación, de Aghion y Bunel, «AI and Growth: Where Do We Stand?», junio de 2024.</p>
+    <ol class="dichos">
+        <li><q>Estimamos que la revolución de la IA debería aumentar el crecimiento de la productividad agregada entre 0,8 y 1,3 puntos porcentuales por año durante la próxima década.</q> El 1,3 si la IA se parece a la electricidad en la Europa de los años 20; el 0,8 si se parece a la ola digital de EE. UU. a fines de los 90.</li>
+        <li>El enfoque por tareas <q>lleva a Acemoglu a una estimación de crecimiento extra mucho menor, de 0,07 puntos por año</q>. <q>Con la misma fórmula, pero con nuestra propia lectura de la literatura empírica reciente</q>, les da 0,68. La diferencia está en los supuestos: 60% de las tareas expuestas a la IA (Acemoglu supone 20%), la mitad rentable de automatizar (él, 23%) y 40% de ahorro de costo (él, 27%).</li>
+        <li><q>Esta estimación puede verse como un piso, en la medida en que no considera que la IA también automatiza la producción de ideas.</q></li>
+        <li><q>Un desfase de treinta años</q>, como el de la electricidad, <q>sugeriría que el impacto de la IA en la productividad probablemente se sienta en los próximos años</q>.</li>
+        <li>A quienes dicen que la IA tendrá efectos moderados en la productividad y que destruirá empleo: <q>No estamos de acuerdo en ninguno de los dos puntos.</q> El riesgo para un trabajador es <q>ser desplazado por trabajadores de otras empresas que usan IA</q>.<span class="src">Aghion, Bunel y Jaravel, «What AI Means for Growth and Jobs», Project Syndicate, 14 de enero de 2025.</span></li>
+        <li>Su advertencia: <q>La diferencia entre la revolución de las TIC y la de la IA es que esta vez los GAFAM son dominantes desde el comienzo y pueden impedir de inmediato la entrada de nuevas empresas innovadoras.</q> GAFAM: Google, Apple, Facebook, Amazon, Microsoft.</li>
+        <li><q>En el corazón de este paradigma hay una contradicción: necesitamos rentas de monopolio para recompensar a los innovadores</q>, y esos mismos innovadores se ven tentados a usarlas para bloquear la entrada de otros.<span class="src">Cercle d'Economia, Barcelona, 17 de junio de 2026 (<i>The New Barcelona Post</i>).</span></li>
+        <li><q>Si no crees en la innovación, te vuelves malthusiano.</q><span class="src">HEC París, septiembre de 2026.</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Acemoglu.</strong> Que sus cuentas dan <q>no más de un 0,66% de aumento de la productividad total</q> en diez años, porque sólo el 4,6% de las tareas se puede automatizar con ganancia en ese plazo, y que tu 0,68 sale de suponer el triple de tareas expuestas. Que <q>simplemente no tenemos medidas objetivas que muestren grandes ganancias de la IA por ahora</q>. Y que aunque la productividad suba, el carro no está repartiendo: en el último año la productividad de EE. UU. creció 2,1% y el salario real 1,0%, y la parte del ingreso que se lleva el trabajo (53%) es la más baja desde 1947.</p>
+        <p>Ojo: tú mismo escribiste que los GAFAM <q>pueden impedir de inmediato la entrada</q> de innovadores. Si la renta se vuelve rentista, tu destrucción creativa se frena.</p>
+        <p class="src">Acemoglu, «The Simple Macroeconomics of AI», NBER, 2024; MIT Sloan Management Review, 24 de febrero de 2026. Datos: BLS, Productivity and Costs, 5 de noviembre de 2026.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<section class="dossier" id="acemoglu">
+    <p class="eyebrow">MGT300 · Clase 12 · Dossier de personaje</p>
+    <h1>Daron Acemoglu</h1>
+    <p class="subtitle">Economista del MIT; Nobel de Economía 2024</p>
+    <div class="duelo">
+        <p>Duelo 1 · <span class="lado contra">EN CONTRA</span> de la moción · rival: Philippe Aghion (Collège de France)</p>
+        <p class="mocion">«La IA es una revolución de la productividad, como lo fue la electricidad.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué defiende</h2>
+    <ul class="hechos">
+        <li>Economista turco-estadounidense, profesor del MIT. Nobel de Economía 2024, con Simon Johnson y James Robinson, por sus estudios sobre cómo las instituciones afectan la prosperidad.</li>
+        <li>Coautor, con Johnson, de <i>Poder y progreso</i> (2023), la lectura de hoy, y con Robinson de <i>Por qué fracasan los países</i> (2012).</li>
+        <li>En 2024 publicó «The Simple Macroeconomics of AI», el cálculo más citado de los escépticos, que suma tarea por tarea cuánto puede aportar la IA.</li>
+        <li>Un dato a su favor: en el último año la productividad de EE. UU. creció 2,1% y el salario real 1,0%. La parte del ingreso que se lleva el trabajo bajó a 53%, la más baja desde 1947, cuando empieza la serie.</li>
+    </ul>
+
+    <div data-t="t-clase"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. La fuente va en cada frase.</p>
+    <ol class="dichos">
+        <li>Los efectos de la IA son <q>no triviales pero modestos: no más de un 0,66% de aumento de la productividad total de los factores en 10 años</q>; contando las tareas difíciles, menos de 0,53%. El PIB subiría entre 0,9% y 1,6% en diez años, en total.<span class="src">«The Simple Macroeconomics of AI», NBER, mayo de 2024; <i>Economic Policy</i>, 2025.</span></li>
+        <li>Sólo el 4,6% de las tareas será afectado con ganancia por la IA en diez años: un 20% de las tareas está expuesto, y en un 23% de ellas conviene usarla. Y lo que se ha medido hasta ahora son tareas <q>fáciles de aprender</q>; las que vienen son <q>difíciles de aprender</q>.<span class="src">Mismo trabajo.</span></li>
+        <li><q>No creo que debamos menospreciar un 0,5% en 10 años. Es mejor que cero. Pero es decepcionante comparado con las promesas que hacen la industria y el periodismo tecnológico.</q><span class="src">MIT News, 6 de diciembre de 2024.</span></li>
+        <li><q>Estamos usando la IA demasiado para automatizar y no lo suficiente para dar experticia e información a los trabajadores.</q> Y: <q>Hoy la IA va en la dirección equivocada.</q><span class="src">Misma entrevista.</span></li>
+        <li>La automatización <q>más o menos</q>: <q>Si introduces cajas de autoservicio, no va a cambiar mucho la productividad.</q> <q>Es un dispositivo que traslada trabajo, no uno que aumenta la productividad.</q><span class="src">MIT News, 21 de noviembre de 2022.</span></li>
+        <li><q>Se va a desperdiciar mucho dinero.</q> Su escenario: una <q>primavera de la IA seguida de un invierno de la IA</q>.<span class="src">Bloomberg, octubre de 2024.</span></li>
+        <li><q>Simplemente no tenemos medidas objetivas que muestren grandes ganancias de la IA por ahora.</q> Y la IA <q>no tiene un destino predeterminado</q>.<span class="src">MIT Sloan Management Review, 24 de febrero de 2026.</span></li>
+        <li><q>Estamos todos tan ciegamente encandilados con lo que ofrecen OpenAI, Anthropic y unos pocos hiperescaladores, porque no hemos articulado una alternativa razonable.</q><span class="src"><i>Fortune</i>, 21 de junio de 2026.</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Aghion.</strong> Que con tu misma fórmula, pero con lo que muestran los estudios recientes, el aporte es de 0,68 puntos por año, diez veces tu 0,07; y que su estimación es <q>un piso</q>, porque <q>la IA también automatiza la producción de ideas</q>. Que es la paradoja de Solow otra vez: la electricidad tardó unos treinta años, y <q>el impacto de la IA en la productividad probablemente se sienta en los próximos años</q>. Que la productividad de EE. UU. ya creció 3,6% anualizado en el último trimestre. Y que el riesgo para un trabajador no es la IA, sino <q>ser desplazado por trabajadores de otras empresas que usan IA</q>.</p>
+        <p>Ojo: tú mismo dijiste que <q>no debemos menospreciar un 0,5% en 10 años</q>. Y Aghion comparte tu preocupación por la concentración: escribió que los GAFAM <q>pueden impedir de inmediato la entrada</q>. Pregúntale qué hace contra eso.</p>
+        <p class="src">Aghion y Bunel, junio de 2024; Aghion, Bunel y Jaravel, Project Syndicate, 14 de enero de 2025. Datos: BLS, 5 de noviembre de 2026 (preliminares).</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<!-- ============================ DUELO 2 ============================ -->
+
+<section class="dossier" id="thiel">
+    <p class="eyebrow">MGT300 · Clase 12 · Dossier de personaje</p>
+    <h1>Peter Thiel</h1>
+    <p class="subtitle">Inversionista; cofundador de PayPal y de Palantir</p>
+    <div class="duelo">
+        <p>Duelo 2 · <span class="lado">A FAVOR</span> de la moción · rival: Lina Khan (expresidenta de la FTC)</p>
+        <p class="mocion">«Las ganancias extraordinarias de las empresas de IA son el premio a la innovación, no una renta que haya que romper.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué vende</h2>
+    <ul class="hechos">
+        <li>Cofundó PayPal en 1998, fue el primer inversionista externo de Facebook en 2004 y cofundó Palantir en 2003. Autor de <i>Zero to One</i> (<i>De cero a uno</i>, 2014): el progreso viene de los «monopolios creativos».</li>
+        <li>Palantir vende software de análisis de datos e IA. En 2025, el 54% de sus ingresos (US$2.400 de 4.475 millones) vino de gobiernos; ese año el Ejército de EE. UU. le adjudicó un acuerdo de hasta US$10 mil millones a diez años.</li>
+        <li>Su fondo de capital de riesgo, Founders Fund, co-lideró en febrero de 2026 la ronda de US$30 mil millones de Anthropic, que la valoró en 380 mil millones. En 2015 estuvo entre quienes financiaron la fundación de OpenAI.</li>
+        <li>Su fondo personal vendió toda su posición en Nvidia en el tercer trimestre de 2025, unos US$100 millones, y compró Apple y Microsoft.</li>
+        <li>Mentor político de JD Vance, el vicepresidente: aportó US$15 millones a su campaña al Senado de 2022.</li>
+    </ul>
+
+    <div data-t="t-clase"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. Salvo indicación, de su columna «Competition Is for Losers» («La competencia es para perdedores»), <i>The Wall Street Journal</i>, 12 de septiembre de 2014, adelanto de <i>Zero to One</i>.</p>
+    <ol class="dichos">
+        <li><q>Todas las empresas felices son diferentes: cada una gana un monopolio resolviendo un problema único. Todas las empresas fracasadas son iguales: no lograron escapar de la competencia.</q></li>
+        <li><q>Solo una cosa permite a una empresa trascender la brutal lucha diaria por la supervivencia: las ganancias de monopolio.</q> Y: <q>Los monopolistas pueden pensar en otras cosas además de ganar dinero; los no monopolistas, no.</q></li>
+        <li><q>En un mundo estático, un monopolista es solo un cobrador de rentas.</q> Pero <q>el mundo en que vivimos es dinámico: es posible inventar cosas nuevas y mejores.</q></li>
+        <li><q>Los monopolios creativos no solo son buenos para el resto de la sociedad; son motores poderosos para mejorarla.</q> Y <q>la historia del progreso es una historia de mejores negocios monopólicos reemplazando a los incumbentes</q>: el celular, por ejemplo, <q>redujo drásticamente el dominio de décadas de Microsoft</q>.<span class="src">Columna del WSJ y <i>Zero to One</i>.</span></li>
+        <li><q>Google es un buen ejemplo de una empresa que pasó de 0 a 1.</q></li>
+        <li><q>Los monopolios son buenos cuando crean cosas nuevas, malos cuando se convierten en una especie de cobradores de rentas.</q><span class="src">Charla en Harvard Business School, 19 de septiembre de 2014 (<i>Harvard Magazine</i>).</span></li>
+        <li><q>Salvo por la IA, estamos en un estancamiento casi total.</q> La IA está <q>aproximadamente en la escala de internet a fines de los 90</q> y <q>podría bastar para crear algunas grandes empresas</q>.<span class="src">Entrevista con Ross Douthat, <i>Interesting Times</i>, <i>The New York Times</i>, 26 de junio de 2025.</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Khan.</strong> Que <q>no hay excepción para la IA en las leyes vigentes</q> y que <q>las proclamas de innovación no deben servir de cobertura para infringir la ley</q>. Que su agencia estudió las alianzas entre las nubes y los laboratorios: Microsoft con OpenAI, Amazon y Google con Anthropic. Encontró que las nubes compraron participaciones en los laboratorios y los obligaron a gastar buena parte de esa inversión en su propia nube, lo que encarece cambiarse a otra. Eso, dirá, es una renta que protege al que ya está, no un premio.</p>
+        <p>Ojo con tres cosas. Tú mismo dijiste que tu idea de monopolio no incluye a los «favoritos del gobierno», y más de la mitad de los ingresos de Palantir vienen del Estado. En 2024 dijiste que una sola empresa, Nvidia, se lleva entre el 80 y el 85% del dinero que se gana en IA, que eso es <q>muy extraño</q>, y después tu fondo vendió todas sus acciones de Nvidia. Y tu protegido político, JD Vance, dijo en 2024 que Khan es <q>una de las pocas personas en la administración Biden</q> que hacía bien su trabajo.</p>
+        <p class="src">Khan: FTC, 25 de abril de 2023; informe de la FTC, 17 de enero de 2025. Thiel: Aspen Ideas Festival, junio de 2024 (Benzinga). Vance: febrero de 2024 (<i>Washington Examiner</i>).</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<section class="dossier" id="khan">
+    <p class="eyebrow">MGT300 · Clase 12 · Dossier de personaje</p>
+    <h1>Lina Khan</h1>
+    <p class="subtitle">Expresidenta de la Comisión Federal de Comercio de EE. UU. (FTC)</p>
+    <div class="duelo">
+        <p>Duelo 2 · <span class="lado contra">EN CONTRA</span> de la moción · rival: Peter Thiel (inversionista)</p>
+        <p class="mocion">«Las ganancias extraordinarias de las empresas de IA son el premio a la innovación, no una renta que haya que romper.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué hace</h2>
+    <ul class="hechos">
+        <li>Nació en Londres en 1989 y llegó a EE. UU. a los 11 años. Abogada de Yale. En 2017, todavía estudiante, publicó «Amazon's Antitrust Paradox»: si la libre competencia sólo mira si los precios bajan en el corto plazo, no ve cómo una empresa como Amazon pierde plata y baja precios mientras construye un dominio.</li>
+        <li>Presidió la FTC, la agencia de libre competencia de EE. UU., de 2021 a enero de 2025. Llegó a los 32 años, la presidenta más joven de su historia.</li>
+        <li>En enero de 2024 obligó a Alphabet, Amazon, Anthropic, Microsoft y OpenAI a entregar sus contratos. El informe (17 de enero de 2025) encontró que las nubes recibieron participaciones y derechos sobre los ingresos de los laboratorios, y que estos quedaron obligados a gastar buena parte de esa plata en la nube del propio inversionista. Advirtió por los costos de cambiarse de nube, el acceso al cómputo y a los ingenieros, y el acceso a información sensible.</li>
+        <li>También investigó a Microsoft por llevarse a casi todo el equipo de la empresa de IA Inflection (unos US$650 millones). Su FTC demandó para frenar la compra de Arm por Nvidia, y Nvidia la abandonó en 2022.</li>
+        <li>Hoy es profesora en Columbia. Desde julio de 2026 preside el directorio de la Corporación de Desarrollo Económico de Nueva York, nombrada por el alcalde Zohran Mamdani.</li>
+    </ul>
+
+    <div data-t="t-clase"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. La fuente va en cada frase.</p>
+    <ol class="dichos">
+        <li><q>No hay excepción para la IA en las leyes vigentes.</q> Y: <q>Las proclamas de innovación no deben servir de cobertura para infringir la ley.</q><span class="src">Declaración en la FTC, 25 de abril de 2023.</span></li>
+        <li><q>¿O un puñado de empresas dominantes concentrará el control sobre estas herramientas clave, encerrándonos en un futuro elegido por ellas?</q> Y: <q>Cuál de estas trayectorias tomará la IA no es inevitable.</q><span class="src">Discurso en la FTC, 25 de enero de 2024.</span></li>
+        <li>La lección de internet: <q>Mediante estrategias agresivas para adquirir o dejar fuera a las empresas que amenazaban su posición, un puñado de firmas consolidó su dominio.</q><span class="src">Mismo discurso.</span></li>
+        <li>Quien controla <q>insumos clave, como la infraestructura de nube y el acceso a GPUs</q>, puede <q>imponer términos coercitivos, cobrar tarifas extractivas o profundizar sus fosos existentes</q>. Y: <q>Cuando concentras la producción, concentras el riesgo.</q><span class="src">Mismo discurso.</span></li>
+        <li><q>La historia muestra que las nuevas tecnologías pueden crear nuevos mercados y competencia sana. Mientras las empresas compiten por desarrollar y monetizar la IA, debemos protegernos de tácticas que cierren esa oportunidad.</q><span class="src">Comunicado de la FTC, 25 de enero de 2024.</span></li>
+        <li><q>DeepSeek es el canario en la mina de carbón.</q> Las grandes tecnológicas <q>mantuvieron su dominio principalmente comprando rivales y construyendo fosos anticompetitivos</q>.<span class="src">Columna «Stop Worshiping the American Tech Giants», <i>The New York Times</i>, 4 de febrero de 2025.</span></li>
+        <li><q>Tenemos que desconfiar mucho de estos argumentos de «campeones nacionales».</q><span class="src">Conferencia StrictlyVC, junio de 2024 (<i>Fortune</i>).</span></li>
+        <li>Sobre el pacto voluntario de IA firmado en la Casa Blanca: <q>Los esfuerzos de autorregulación de las grandes tecnológicas han sido un fracaso comprobado.</q><span class="src">ABC, <i>This Week</i>, 4 de octubre de 2026.</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Thiel.</strong> Que <q>todas las empresas felices son diferentes</q>: cada una gana un monopolio resolviendo un problema único, y sólo <q>las ganancias de monopolio</q> le permiten salir de la lucha diaria por sobrevivir y pensar en el largo plazo. Que el monopolio dura poco: <q>la historia del progreso es una historia de mejores negocios monopólicos reemplazando a los incumbentes</q>. Si DeepSeek y Anthropic pudieron entrar, el mercado está abierto.</p>
+        <p>Y tu récord: perdiste en tribunales contra la compra de Activision por Microsoft (2023, y en apelación en 2025) y contra Meta por Instagram y WhatsApp (fallo de noviembre de 2025). Tu informe sobre la IA no probó un daño: habló de riesgos a vigilar. Tu sucesor, Andrew Ferguson, pidió leer esa parte <q>con tremendo escepticismo</q> y advirtió que regular la IA a la carrera podría <q>estrangular esta tecnología naciente en la cuna</q>. Ojo: Thiel también distingue. Dijo que <q>en un mundo estático, un monopolista es solo un cobrador de rentas</q>; úsalo en su contra.</p>
+        <p class="src">Thiel: <i>The Wall Street Journal</i>, 12 de septiembre de 2014. Ferguson: voto en la FTC, 17 de enero de 2025. Fallos: Noveno Circuito, 7 de mayo de 2025; juez Boasberg, 18 de noviembre de 2025.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<!-- ============================ DUELO 3 ============================ -->
+
+<section class="dossier" id="huang">
+    <p class="eyebrow">MGT300 · Clase 12 · Dossier de personaje</p>
+    <h1>Jensen Huang</h1>
+    <p class="subtitle">Cofundador y director ejecutivo de Nvidia</p>
+    <div class="duelo">
+        <p>Duelo 3 · <span class="lado">A FAVOR</span> de la moción · rival: Michael Burry (inversionista)</p>
+        <p class="mocion">«La IA no es una burbuja.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué vende</h2>
+    <ul class="hechos">
+        <li>Cofundó Nvidia en 1993 y la dirige desde entonces. Nvidia vende los chips (GPU) y el software (CUDA) con que se entrena y corre casi toda la IA: es quien vende las palas en la fiebre del oro.</li>
+        <li>En octubre de 2025 fue la primera empresa del mundo en valer más de US$5 billones. En su último trimestre informado (mayo a julio de 2026) vendió US$96 mil millones, el doble que un año antes, con un margen bruto de 75%.</li>
+        <li>Invierte en sus propios clientes: US$30 mil millones en OpenAI (la carta de intención de 2025 hablaba de hasta 100 mil millones), hasta 10 mil millones en Anthropic y 2 mil millones en CoreWeave, una nube que le arrienda sus chips a los laboratorios y de la que Nvidia tiene cerca de 12%.</li>
+        <li>Este mes: la acción vale 22% menos que en su récord del 6 de octubre, unos US$1,27 billones menos, después de cinco semanas a la baja. El 5 de noviembre cayó 9%, su peor día desde enero de 2025. Publica resultados el 17 de noviembre.</li>
+    </ul>
+
+    <div data-t="t-clase"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. La fuente va en cada frase.</p>
+    <ol class="dichos">
+        <li><q>Se ha hablado mucho de una burbuja de IA. Desde nuestro punto de observación, vemos algo muy distinto.</q><span class="src">Llamada de resultados con analistas, 19 de noviembre de 2025.</span></li>
+        <li><q>Las ventas de Blackwell están por las nubes, y las GPU en la nube están agotadas.</q> Blackwell es su generación de chips de 2025.<span class="src">Comunicado de resultados, 19 de noviembre de 2025.</span></li>
+        <li><q>El mundo está viviendo tres cambios de plataforma masivos a la vez, por primera vez desde los albores de la Ley de Moore</q>: del procesador común al chip gráfico, la IA generativa y la IA agéntica y física, que <q>será revolucionaria</q>.<span class="src">Llamada de resultados, 19 de noviembre de 2025.</span></li>
+        <li><q>No creo que estemos en una burbuja de IA.</q> Ese día habló de unos US$500 mil millones en pedidos hasta fines de 2026. En marzo de 2026 subió la cifra a <q>al menos un billón de dólares</q> hasta 2027.<span class="src">Conferencia GTC, Washington, 28 de octubre de 2025 (Bloomberg Línea), y GTC, 16 de marzo de 2026.</span></li>
+        <li><q>La IA ha llegado a su punto de inflexión. Está haciendo trabajo útil.</q> Y: <q>Ahora, el cómputo es ingreso.</q><span class="src">Comunicado de resultados, 26 de agosto de 2026.</span></li>
+        <li><q>Estos agentes de programación son increíblemente rentables.</q><span class="src">Entrevista con Axios, agosto de 2026.</span></li>
+        <li>Sobre su inversión en OpenAI: <q>En vez de entregar una parte de nuestra compañía, recibimos una parte de la suya.</q><span class="src">Llamada de resultados, 19 de noviembre de 2025.</span></li>
+        <li>Sobre CoreWeave, después del desplome de octubre: <q>Su costo de capital en realidad está bajando.</q> Nvidia no ve necesidad de rescatarla.<span class="src">Estocolmo, 15 de octubre de 2026 (CNBC).</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Burry.</strong> Que <q>una vez más hay un Cisco en el centro de todo</q>, y que <q>su nombre es Nvidia</q>: Cisco vendía los equipos de internet en 1999 y su acción cayó cerca de 80% después de 2000. Que los clientes de la IA están <q>financiados por sus propios vendedores</q>: Nvidia pone la plata y OpenAI, Anthropic y CoreWeave se la devuelven comprando chips. Que las grandes nubes reparten el costo de tus chips en cinco o seis años cuando quedan obsoletos antes, y así inflan sus utilidades en unos US$176 mil millones entre 2026 y 2028. Y que la deuda de CoreWeave, de la que eres accionista, rendía casi 16% en octubre.</p>
+        <p>Ojo con dos frases. En febrero de 2026 dijiste de los 100 mil millones para OpenAI: <q>Nunca fue un compromiso.</q> Y en agosto el propio Burry escribió que Nvidia <q>cobra rentas monopólicas</q>: ¿es el premio por haber innovado o un peaje?</p>
+        <p class="src">Burry: Substack «Cassandra Unchained», 24 de noviembre de 2025; respuesta a Nvidia, TechCrunch, 27 de noviembre de 2025; X, 10 de noviembre de 2025 (CNBC); agosto de 2026 (IBTimes). Huang: <i>Fortune</i>, 2 de febrero de 2026. CoreWeave: CNBC, 15 de octubre de 2026.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<section class="dossier" id="burry">
+    <p class="eyebrow">MGT300 · Clase 12 · Dossier de personaje</p>
+    <h1>Michael Burry</h1>
+    <p class="subtitle">Inversionista, el de <i>The Big Short</i></p>
+    <div class="duelo">
+        <p>Duelo 3 · <span class="lado contra">EN CONTRA</span> de la moción · rival: Jensen Huang (Nvidia)</p>
+        <p class="mocion">«La IA no es una burbuja.»</p>
+    </div>
+    <div data-t="t-reglas"></div>
+
+    <h2>Quién es y qué vende</h2>
+    <ul class="hechos">
+        <li>Médico convertido en inversionista. Apostó contra las hipotecas <i>subprime</i> entre 2005 y 2007 y ganó cuando estalló la crisis de 2008. Es el protagonista de <i>The Big Short</i>, el libro de Michael Lewis y la película de 2015.</li>
+        <li>En noviembre de 2025 se supo que su fondo tenía opciones de venta (<i>puts</i>: apuestas a que el precio baja) sobre acciones de Nvidia y Palantir por unos US$1.100 millones. Días después cerró su fondo a terceros y abrió un boletín de pago, «Cassandra Unchained» (unos US$379 al año), que pasó los 90 mil suscriptores en una semana.</li>
+        <li>En 2026 la apuesta le fue mal un tiempo: Nvidia llegó a su récord en octubre. En agosto compró opciones de compra para cubrirse y en septiembre vendió sus <i>puts</i> de Nvidia a diciembre. El 5 de noviembre vendió un cuarto de sus apuestas contra los fabricantes de chips y se declaró <q>todavía muy bajista</q>; las que le quedan vencen en junio de 2027.</li>
+        <li>Lo que vende: la tesis de que se está construyendo infraestructura para una demanda que no existe, y que la contabilidad lo disimula.</li>
+    </ul>
+
+    <div data-t="t-clase"></div>
+
+    <h2>En sus propias palabras</h2>
+    <p class="attrib">Traducción propia. La fuente va en cada frase.</p>
+    <ol class="dichos">
+        <li><q>A veces vemos burbujas. A veces hay algo que hacer al respecto. A veces, la única jugada ganadora es no jugar.</q><span class="src">X, 31 de octubre de 2025 (Bloomberg).</span></li>
+        <li><q>Subestimar la depreciación alargando la vida útil de los activos infla artificialmente las utilidades: uno de los fraudes más comunes de la era moderna.</q> Estima que las grandes nubes subestimarán su depreciación en unos US$176 mil millones entre 2026 y 2028: reparten el costo de cada chip en cinco o seis años, cuando queda obsoleto antes.<span class="src">X, 10 de noviembre de 2025 (CNBC).</span></li>
+        <li><q>Una vez más hay un Cisco en el centro de todo […] Su nombre es Nvidia.</q><span class="src">«The Cardinal Sign of a Bubble: Supply-Side Gluttony», Cassandra Unchained, 24 de noviembre de 2025.</span></li>
+        <li>El problema de las puntocom fue una oferta <q>catastróficamente sobreconstruida y ni de cerca suficiente demanda</q>, y esto <q>no es tan distinto esta vez</q>.<span class="src">Mismo texto (Sherwood News).</span></li>
+        <li>A Nvidia, que le respondió con un memo a los analistas: <q>Mantengo mi análisis. No comparé a Nvidia con Enron. Estoy comparando a Nvidia con Cisco a fines de los 90.</q> Los clientes de la IA están <q>financiados por sus propios vendedores</q>.<span class="src">TechCrunch, 27 de noviembre de 2025.</span></li>
+        <li>Sobre cómo podría terminar: una <q>caída tipo 1987</q>.<span class="src">Septiembre de 2026 (The Motley Fool).</span></li>
+        <li>En agosto, cuando compró opciones de compra: Nvidia tiene una relación precio-utilidad <q>baja para una empresa de gran crecimiento que hoy cobra rentas monopólicas</q>, y <q>no estoy jugando a ganar aquí</q>.<span class="src">Agosto de 2026 (IBTimes).</span></li>
+        <li>Al cumplir un año su boletín: <q>Un año es una medida inútil de la habilidad de un inversionista.</q><span class="src">4 de noviembre de 2026 (Yahoo Finance).</span></li>
+    </ol>
+
+    <div class="rival">
+        <p><strong>Lo que te va a responder Huang.</strong> Que <q>desde nuestro punto de observación, vemos algo muy distinto</q>: las ventas de Nvidia se duplicaron en un año, con margen de 75%, y se cobran en efectivo; <q>ahora, el cómputo es ingreso</q>. Que el mundo vive <q>tres cambios de plataforma</q> a la vez y que los agentes de programación ya son <q>increíblemente rentables</q>. El memo de Nvidia te corrigió una cifra: recompró US$91 mil millones en acciones desde 2018, no 112,5.</p>
+        <p>Y tu historial: en enero de 2023 publicaste «Vendan», y en marzo, <q>Me equivoqué al decir vende</q>. Te desregistraste, así que nadie puede ver tus posiciones, y ahora vendes un boletín pesimista. Ojo: tú mismo escribiste que Nvidia <q>cobra rentas monopólicas</q>. Si gana tanto, ¿dónde está la burbuja?</p>
+        <p class="src">Huang: llamada del 19 de noviembre de 2025 y comunicado del 26 de agosto de 2026. Memo de Nvidia: <i>Business Insider</i>, 25 de noviembre de 2025. Burry 2023: Kitco, 31 de marzo de 2023.</p>
+    </div>
+
+    <div data-t="t-hoja"></div>
+</section>
+
+<footer>
+    <p>MGT300 · Sociedad, Cultura y Política · Universidad Adolfo Ibáñez · Segundo semestre 2026 · Profesor Naim Bro.</p>
+    <p>Los extractos son traducciones propias y breves de las fuentes indicadas en cada dossier, con fines exclusivamente docentes. Las cifras de mercado son las disponibles al 9 de noviembre de 2026. No puede redistribuirse fuera del curso.</p>
+</footer>
+
+<script>
+// Clone the shared blocks (rules, the class recap, the worksheet) into every dossier,
+// so each group's printed pages stand alone.
+document.querySelectorAll("[data-t]").forEach(el => {
+    el.replaceWith(document.getElementById(el.dataset.t).content.cloneNode(true));
+});
+</script>
+
+</body>
+</html>
