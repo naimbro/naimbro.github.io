@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#070b14">
+<title>La burbuja</title>
+<style>
+  :root {
+    --fondo: #070b14; --panel: #101827; --borde: #1f2b40; --texto: #e8edf5; --tenue: #8a97ad;
+    --verde: #22c55e; --rojo: #ef4444; --amarillo: #f59e0b; --azul: #38bdf8;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--fondo); color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    overscroll-behavior: none; touch-action: manipulation; user-select: none; -webkit-user-select: none;
+  }
+  section { display: none; min-height: 100dvh; padding: 16px; flex-direction: column; gap: 12px; }
+  section.activa { display: flex; }
+  h1 { font-size: 34px; letter-spacing: 2px; margin: 0; }
+  h2 { font-size: 22px; margin: 0; }
+  p { margin: 0; line-height: 1.4; }
+  .tenue { color: var(--tenue); }
+  .centro { justify-content: center; text-align: center; }
+  input {
+    width: 100%; font-size: 22px; padding: 14px; border-radius: 12px; border: 2px solid var(--borde);
+    background: var(--panel); color: var(--texto); text-align: center; user-select: text; -webkit-user-select: text;
+  }
+  button { font: inherit; color: inherit; border: 0; border-radius: 14px; cursor: pointer; }
+  .btn { background: var(--azul); color: #04121d; font-weight: 800; font-size: 20px; padding: 16px; }
+  .btn:disabled { opacity: .5; }
+  .reglas { text-align: left; background: var(--panel); border: 1px solid var(--borde); border-radius: 14px; padding: 14px 16px; }
+  .reglas li { margin: 8px 0; line-height: 1.35; }
+
+  /* --- juego --- */
+  #s-juego { padding: 12px; gap: 10px; }
+  .cabecera { display: flex; justify-content: space-between; align-items: baseline; }
+  .cabecera .nombre { color: var(--tenue); font-size: 15px; max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .plata { font-size: 44px; font-weight: 900; font-variant-numeric: tabular-nums; line-height: 1; }
+  .plata small { font-size: 16px; color: var(--tenue); font-weight: 600; margin-right: 4px; }
+  .estado { font-size: 13px; font-weight: 800; letter-spacing: 1px; padding: 3px 9px; border-radius: 99px; background: #1f2937; color: var(--tenue); }
+  body.dentro .estado { background: rgba(34,197,94,.18); color: var(--verde); }
+  #chispa { width: 100%; height: 64px; display: block; background: var(--panel); border-radius: 10px; }
+  .precio { display: flex; justify-content: space-between; font-size: 14px; color: var(--tenue); }
+  .precio b { color: var(--texto); font-variant-numeric: tabular-nums; }
+
+  .medidor { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+  .medidor .barra { height: 12px; border-radius: 99px; background: #1f2937; overflow: hidden; margin-top: 7px; }
+  .medidor .barra i { display: block; height: 100%; width: 0; border-radius: 99px; transition: width .8s linear, background .5s; }
+  .medidor.verde i { background: var(--verde); } .medidor.amarilla i { background: var(--amarillo); } .medidor.roja i { background: var(--rojo); }
+  .medidor.roja { border-color: var(--rojo); animation: late 0.6s infinite alternate; }
+  .medidor.cerrado { color: var(--tenue); }
+  @keyframes late { from { box-shadow: 0 0 0 rgba(239,68,68,0); } to { box-shadow: 0 0 16px rgba(239,68,68,.6); } }
+
+  .voz { flex: 1; background: var(--panel); border: 1px solid var(--borde); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 9px; min-height: 190px; }
+  .voz .pregunta { font-size: 12px; letter-spacing: 1.5px; color: var(--azul); font-weight: 800; }
+  .voz .frase { font-size: 18px; line-height: 1.3; font-weight: 600; }
+  .voz .opciones { display: grid; gap: 8px; margin-top: auto; }
+  .voz .opciones button { background: #1b2740; border: 2px solid #2c3d5e; font-size: 18px; font-weight: 700; padding: 13px; }
+  .voz .opciones button:active { background: #27406b; }
+  .voz .reloj { height: 5px; background: #1f2937; border-radius: 99px; overflow: hidden; }
+  .voz .reloj i { display: block; height: 100%; background: var(--azul); width: 100%; transform-origin: left; animation: correr linear forwards; }
+  @keyframes correr { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+  .voz .autor { font-size: 17px; font-weight: 800; }
+  .voz .autor small { display: block; font-weight: 500; color: var(--tenue); font-size: 13px; }
+  .voz .veredicto { font-weight: 800; font-size: 16px; margin-top: auto; }
+  .voz .veredicto.ok { color: var(--verde); } .voz .veredicto.mal { color: var(--rojo); } .voz .veredicto.nada { color: var(--tenue); }
+
+  #palanca { font-size: 30px; font-weight: 900; letter-spacing: 2px; padding: 22px; background: var(--verde); color: #04140a; box-shadow: 0 6px 0 #15803d; }
+  #palanca:active { transform: translateY(4px); box-shadow: 0 2px 0 #15803d; }
+  body.dentro #palanca { background: var(--rojo); color: #fff; box-shadow: 0 6px 0 #991b1b; }
+  body.dentro #s-juego { box-shadow: inset 0 0 0 3px var(--verde); }
+  #palanca small { display: block; font-size: 12px; letter-spacing: 0; font-weight: 600; opacity: .85; }
+
+  /* --- reventón, epílogo, podio --- */
+  #s-reventon.quemado { background: #450a0a; }
+  #s-reventon.salvado { background: #052e16; }
+  .gigante { font-size: 54px; font-weight: 900; letter-spacing: 2px; line-height: 1; }
+  .cifra { font-size: 60px; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .mundo { background: var(--panel); border: 1px solid var(--borde); border-left: 5px solid var(--azul); border-radius: 12px; padding: 10px 12px; text-align: left; font-size: 15px; }
+  .mundo b { display: block; font-size: 13px; letter-spacing: .5px; margin-bottom: 3px; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dos button { font-size: 18px; font-weight: 900; padding: 20px 8px; background: #1b2740; border: 3px solid #2c3d5e; }
+  .dos button.elegido.si { background: var(--verde); border-color: var(--verde); color: #04140a; }
+  .dos button.elegido.no { background: #475569; border-color: #94a3b8; }
+  .cuenta { font-size: 40px; font-weight: 900; font-variant-numeric: tabular-nums; color: var(--amarillo); }
+  .repaso { text-align: left; display: grid; gap: 8px; }
+  .repaso div { background: var(--panel); border-radius: 10px; padding: 9px 11px; font-size: 14px; line-height: 1.3; border-left: 4px solid var(--borde); }
+  .repaso div.ok { border-left-color: var(--verde); } .repaso div.mal { border-left-color: var(--rojo); }
+  .repaso b { display: block; margin-top: 3px; }
+  #aviso { position: fixed; left: 12px; right: 12px; bottom: 12px; background: #7f1d1d; color: #fff; padding: 10px 12px; border-radius: 10px; font-size: 14px; display: none; z-index: 9; }
+</style>
+</head>
+<body>
+
+<section id="s-entrar" class="activa centro">
+  <h1>LA BURBUJA</h1>
+  <p class="tenue">MGT300 · Clase 12</p>
+  <input id="codigo" placeholder="Código de la sala" autocapitalize="characters" autocomplete="off" maxlength="8" style="display:none">
+  <input id="nombre" placeholder="Tu nombre" autocomplete="off" maxlength="24" enterkeyhint="go">
+  <button id="entrar" class="btn">ENTRAR</button>
+</section>
+
+<section id="s-espera" class="centro">
+  <h1>LA BURBUJA</h1>
+  <h2 id="saludo"></h2>
+  <ul class="reglas">
+    <li>Partes con <b>$100</b>. Un solo botón: <b>ENTRAR</b> o <b>SALIR</b> de la burbuja.</li>
+    <li>Dentro, tu plata sube con el precio. Si revienta contigo dentro, <b>pierdes 80%</b>.</li>
+    <li>Cada 15 segundos habla una voz. Si sabes <b>de quién es</b>, ganas $5 y ves el <b>riesgo</b>.</li>
+  </ul>
+  <p class="tenue" id="esperando">Mira el proyector. Parte en un momento.</p>
+</section>
+
+<section id="s-juego">
+  <div class="cabecera">
+    <span class="nombre" id="j-nombre"></span>
+    <span class="estado" id="j-estado">FUERA</span>
+  </div>
+  <div class="plata"><small>$</small><span id="j-plata">100</span></div>
+  <canvas id="chispa" width="600" height="128"></canvas>
+  <div class="precio"><span>Precio <b id="j-precio">100</b></span><span>Dentro <b id="j-dentro">0</b></span></div>
+  <div class="medidor cerrado" id="medidor"></div>
+  <div class="voz" id="voz"></div>
+  <button id="palanca">ENTRAR</button>
+</section>
+
+<section id="s-reventon" class="centro">
+  <div class="gigante">REVENTÓ</div>
+  <h2 id="r-texto"></h2>
+  <div class="cifra" id="r-plata"></div>
+  <p class="tenue">Mira el proyector.</p>
+</section>
+
+<section id="s-decision" class="centro">
+  <h2>Diez años después</h2>
+  <p class="tenue">El precio quedó en el suelo. Nadie sabe en cuál de los dos mundos estamos.</p>
+  <div class="mundo" id="d-aghion"></div>
+  <div class="mundo" id="d-acemoglu"></div>
+  <p>Tienes <b id="d-plata"></b>. ¿Vuelves a entrar?</p>
+  <div class="dos">
+    <button id="d-si" class="si">VUELVO A ENTRAR</button>
+    <button id="d-no" class="no">ME QUEDO FUERA</button>
+  </div>
+  <div class="cuenta" id="d-cuenta"></div>
+</section>
+
+<section id="s-futuro" class="centro">
+  <h2>Diez años en doce segundos</h2>
+  <p class="tenue" id="f-texto"></p>
+  <div class="cifra"><span id="f-plata"></span></div>
+  <canvas id="chispa2" width="600" height="200" style="width:100%;height:100px;background:var(--panel);border-radius:10px"></canvas>
+</section>
+
+<section id="s-podio">
+  <h2 id="p-mundo"></h2>
+  <p class="tenue" id="p-desenlace"></p>
+  <div class="cifra" id="p-plata" style="text-align:center"></div>
+  <p id="p-lugar" style="text-align:center;font-weight:700"></p>
+  <p class="tenue" id="p-otro" style="text-align:center"></p>
+  <h2 id="p-voces" style="margin-top:8px"></h2>
+  <div class="repaso" id="p-repaso"></div>
+</section>
+
+<div id="aviso"></div>
+<script type="module" src="jugador.js?v=1"></script>
+</body>
+</html>

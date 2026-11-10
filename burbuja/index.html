@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La burbuja — proyector</title>
+<style>
+  :root {
+    --fondo: #070b14; --panel: #101827; --borde: #1f2b40; --texto: #e8edf5; --tenue: #8a97ad;
+    --verde: #22c55e; --rojo: #ef4444; --amarillo: #f59e0b; --azul: #38bdf8;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; overflow: hidden; }
+  body { background: var(--fondo); color: var(--texto); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  section { display: none; position: fixed; inset: 0; padding: 3vh 3vw; }
+  section.activa { display: flex; }
+  h1 { font-size: 9vh; letter-spacing: .6vw; margin: 0; line-height: 1; }
+  .tenue { color: var(--tenue); }
+  button { font: inherit; color: inherit; border: 0; border-radius: 1.2vh; cursor: pointer; }
+  .btn { background: var(--verde); color: #04140a; font-weight: 900; font-size: 4vh; padding: 1.6vh 4vw; letter-spacing: .2vw; }
+  .btn.gris { background: #1f2937; color: var(--texto); font-size: 2.2vh; font-weight: 600; padding: 1vh 1.6vw; letter-spacing: 0; }
+  .chip { display: inline-block; background: #17223a; border: 1px solid #2c3d5e; border-radius: 99px; padding: .5vh 1.2vw; margin: .4vh .3vw; font-size: 2.6vh; }
+
+  /* --- lobby --- */
+  #lobby { gap: 4vw; align-items: center; }
+  #lobby .izq { flex: 0 0 auto; text-align: center; }
+  #qr { background: #fff; padding: 2vh; border-radius: 2vh; width: 50vh; height: 50vh; display: flex; align-items: center; justify-content: center; }
+  #qr img, #qr canvas { width: 100% !important; height: 100% !important; }
+  #url { font-size: 2.6vh; margin-top: 1.5vh; }
+  #url b { font-size: 4.4vh; letter-spacing: .4vw; color: var(--azul); }
+  #lobby .der { flex: 1; display: flex; flex-direction: column; gap: 2.2vh; min-width: 0; }
+  #lobby ol { margin: 0; padding-left: 3vw; font-size: 3.3vh; line-height: 1.35; }
+  #lobby ol li { margin: 1vh 0; }
+  #lobby ol b { color: var(--amarillo); }
+  #sala-nombres { flex: 1; overflow: hidden; }
+  #sala-cuenta { font-size: 3vh; font-weight: 800; }
+
+  /* --- juego --- */
+  #juego { padding: 0; }
+  #escena { flex: 1; position: relative; min-width: 0; }
+  #lienzo { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #marcador { position: absolute; left: 2.5vw; top: 2.5vh; }
+  #marcador .rot { font-size: 2.2vh; letter-spacing: .3vw; color: var(--tenue); font-weight: 700; }
+  #precio { font-size: 13vh; font-weight: 900; line-height: 1; font-variant-numeric: tabular-nums; }
+  #cuantos { font-size: 3vh; font-weight: 700; margin-top: .5vh; }
+  #cuantos b { color: var(--verde); }
+  #cartel { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: rgba(69,10,10,.82); gap: 2vh; }
+  #cartel.visible { display: flex; }
+  #cartel .g { font-size: 20vh; font-weight: 900; letter-spacing: 1vw; line-height: 1; }
+  #cartel .s { font-size: 4.5vh; font-weight: 700; max-width: 60vw; }
+  #lado { flex: 0 0 34vw; background: var(--panel); border-left: 1px solid var(--borde); padding: 2.5vh 2vw; display: flex; flex-direction: column; gap: 1.6vh; min-width: 0; }
+  #grafico { width: 100%; height: 14vh; background: #0b1220; border-radius: 1.2vh; }
+  #voz { background: #0b1220; border: 2px solid var(--borde); border-radius: 1.6vh; padding: 2vh 1.6vw; min-height: 38vh; display: flex; flex-direction: column; gap: 1.4vh; }
+  #voz .pregunta { font-size: 2.2vh; letter-spacing: .25vw; font-weight: 900; color: var(--azul); }
+  #voz .frase { font-size: 3.7vh; line-height: 1.25; font-weight: 650; }
+  #voz .reloj { height: 1vh; background: #1f2937; border-radius: 99px; overflow: hidden; }
+  #voz .reloj i { display: block; height: 100%; width: 100%; background: var(--azul); transform-origin: left; animation: correr linear forwards; }
+  @keyframes correr { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+  #voz .ops { display: flex; gap: 1vw; margin-top: auto; }
+  #voz .ops span { flex: 1; text-align: center; background: #1b2740; border: 2px solid #2c3d5e; border-radius: 1.2vh; padding: 1.2vh .5vw; font-size: 2.8vh; font-weight: 800; }
+  #voz .autor { font-size: 4.6vh; font-weight: 900; line-height: 1.05; margin-top: auto; }
+  #voz .autor small { display: block; font-size: 2.3vh; font-weight: 500; color: var(--tenue); margin-top: .5vh; }
+  #voz .pie { font-size: 2.4vh; font-weight: 700; color: var(--tenue); }
+  #historial { flex: 1; overflow: hidden; display: flex; flex-direction: column; gap: .8vh; font-size: 1.95vh; line-height: 1.25; }
+  #historial div { border-left: .4vw solid var(--borde); padding-left: .8vw; color: var(--tenue); }
+  #historial b { color: var(--texto); }
+  #mandos { display: flex; gap: .6vw; justify-content: flex-end; }
+
+  /* --- epílogo --- */
+  #epilogo { flex-direction: column; align-items: center; gap: 2.2vh; text-align: center; }
+  #epilogo h2 { font-size: 6.5vh; margin: 0; letter-spacing: .3vw; }
+  #epilogo .sub { font-size: 3vh; }
+  .mundos { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2vw; width: 100%; align-items: stretch; }
+  .mundo { background: var(--panel); border: 2px solid var(--borde); border-top: 1vh solid var(--azul); border-radius: 1.6vh; padding: 2.2vh 2vw; text-align: left; display: flex; flex-direction: column; gap: 1.2vh; transition: opacity .8s, transform .8s; }
+  .mundo .quien { font-size: 3.4vh; font-weight: 900; }
+  .mundo .cita { font-size: 3.3vh; font-weight: 650; line-height: 1.25; }
+  .mundo .pista { font-size: 2.4vh; color: var(--tenue); line-height: 1.3; }
+  .mundo .mult { font-size: 2.8vh; font-weight: 800; margin-top: auto; }
+  .mundo.apagado { opacity: .22; transform: scale(.96); }
+  .mundo.gano { box-shadow: 0 0 6vh rgba(255,255,255,.18); }
+  .medio { display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 16vw; }
+  #cuenta { font-size: 16vh; font-weight: 900; color: var(--amarillo); line-height: 1; font-variant-numeric: tabular-nums; }
+  #vuelven { font-size: 2.8vh; font-weight: 700; }
+  #futuro-lienzo { width: 100%; flex: 1; min-height: 0; background: #0b1220; border-radius: 1.6vh; }
+
+  /* --- podio --- */
+  #podio { gap: 2.5vw; }
+  #podio .col { flex: 1; display: flex; flex-direction: column; gap: 1.4vh; min-width: 0; }
+  #podio h2 { font-size: 5vh; margin: 0; }
+  #podio h3 { font-size: 2.4vh; letter-spacing: .25vw; color: var(--tenue); margin: 1vh 0 0; }
+  #desenlace { font-size: 2.5vh; line-height: 1.3; }
+  .lugar { display: flex; align-items: baseline; gap: 1vw; font-size: 3.6vh; font-weight: 800; background: var(--panel); border-radius: 1.2vh; padding: 1vh 1.2vw; }
+  .lugar:first-child { font-size: 5vh; background: linear-gradient(90deg, #7c5a0a, #1b2740); }
+  .lugar .n { color: var(--tenue); width: 2.4vw; } .lugar .p { margin-left: auto; font-variant-numeric: tabular-nums; }
+  .premio { background: var(--panel); border-left: .5vw solid var(--amarillo); border-radius: 1vh; padding: 1vh 1vw; font-size: 2.4vh; line-height: 1.3; }
+  .premio b { display: block; font-size: 2vh; letter-spacing: .15vw; color: var(--amarillo); }
+  #tabla { display: flex; flex-direction: column; gap: .7vh; overflow: hidden; }
+  #tabla div { display: flex; gap: 1vw; align-items: baseline; font-size: 1.95vh; line-height: 1.25; background: var(--panel); border-radius: .8vh; padding: .7vh .8vw; }
+  #tabla .pc { flex: 0 0 4.2vw; font-weight: 900; font-size: 2.6vh; text-align: right; font-variant-numeric: tabular-nums; }
+  #tabla .fr { flex: 1; min-width: 0; } #tabla .fr b { display: block; }
+
+  #ocupada { flex-direction: column; align-items: center; justify-content: center; gap: 3vh; text-align: center; font-size: 3.4vh; }
+</style>
+</head>
+<body>
+
+<section id="cargando" class="activa" style="align-items:center;justify-content:center"><h1>LA BURBUJA</h1></section>
+
+<section id="ocupada">
+  <h1>LA BURBUJA</h1>
+  <p>La sala <b id="ocupada-codigo"></b> la abrió otro navegador, y sólo ese puede dirigirla.</p>
+  <button class="btn" id="otra-sala">ABRIR UNA SALA NUEVA</button>
+</section>
+
+<section id="lobby">
+  <div class="izq">
+    <div id="qr"></div>
+    <div id="url">naimbro.github.io/burbuja/jugar.html<br>sala <b id="url-codigo"></b></div>
+  </div>
+  <div class="der">
+    <h1>LA BURBUJA</h1>
+    <ol>
+      <li>Partes con <b>$100</b>. Un solo botón: <b>ENTRAR</b> o <b>SALIR</b> de la burbuja.</li>
+      <li>Dentro, tu plata sube con el precio. El precio lo sube la sala. Si revienta contigo dentro, <b>pierdes 80%</b>.</li>
+      <li>Cada 15 segundos habla una voz. Si sabes <b>de quién es</b>, ganas $5 y tu teléfono te muestra el <b>riesgo</b>.</li>
+    </ol>
+    <div id="sala-cuenta">Nadie todavía</div>
+    <div id="sala-nombres"></div>
+    <div style="display:flex;gap:1vw;align-items:center">
+      <button class="btn" id="empezar">EMPEZAR</button>
+      <span class="tenue" style="font-size:2.2vh">o la barra espaciadora</span>
+    </div>
+  </div>
+</section>
+
+<section id="juego">
+  <div id="escena">
+    <canvas id="lienzo"></canvas>
+    <div id="marcador">
+      <div class="rot">PRECIO</div>
+      <div id="precio">100</div>
+      <div id="cuantos"></div>
+    </div>
+    <div id="cartel"><div class="g">REVENTÓ</div><div class="s" id="cartel-texto"></div></div>
+  </div>
+  <div id="lado">
+    <canvas id="grafico"></canvas>
+    <div id="voz"></div>
+    <div id="historial"></div>
+    <div id="mandos">
+      <button class="btn gris" id="sonido">🔊 Sonido</button>
+      <button class="btn gris" id="saltar">Terminar aquí</button>
+    </div>
+  </div>
+</section>
+
+<section id="epilogo">
+  <h2 id="ep-titulo">DIEZ AÑOS DESPUÉS</h2>
+  <div class="sub tenue" id="ep-sub">El precio quedó en el suelo. Nadie sabe en cuál de los dos mundos estamos. ¿Vuelves a entrar?</div>
+  <div class="mundos">
+    <div class="mundo" id="m-aghion"></div>
+    <div class="medio"><div id="cuenta"></div><div id="vuelven"></div></div>
+    <div class="mundo" id="m-acemoglu"></div>
+  </div>
+  <canvas id="futuro-lienzo"></canvas>
+</section>
+
+<section id="podio">
+  <div class="col">
+    <h2 id="po-mundo"></h2>
+    <div id="desenlace" class="tenue"></div>
+    <div id="po-lugares" style="display:flex;flex-direction:column;gap:1vh"></div>
+    <div id="po-premios" style="display:flex;flex-direction:column;gap:1vh"></div>
+    <div style="margin-top:auto"><button class="btn gris" id="nueva">Nueva partida</button></div>
+  </div>
+  <div class="col">
+    <h3>¿QUIÉN LO DIJO? · % DE LA SALA QUE ACERTÓ</h3>
+    <div id="tabla"></div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="module" src="anfitrion.js?v=1"></script>
+</body>
+</html>
