@@ -258,7 +258,10 @@ function pintarPodio(mia) {
     if (r === true) ok++;
     html += `<div class="${r === true ? "ok" : r === false ? "mal" : ""}">«${V.frase}»<b style="color:${per.color}">${r === true ? "✓" : r === false ? "✗" : "·"} ${per.nombre}, ${per.rol}</b></div>`;
   }
-  $("p-voces").textContent = vistas ? `Reconociste ${ok} de ${vistas} voces` : "";
+  // la otra competencia: mi lugar entre los que reconocieron más voces
+  const ac = e.aciertos || {}, mios = ac[uid] || 0;
+  const lugarVoces = 1 + Object.keys(ac).filter((u) => ac[u] > mios).length;
+  $("p-voces").textContent = vistas ? `Reconociste ${ok} de ${vistas} voces · lugar ${lugarVoces} en voces` : "";
   $("p-repaso").innerHTML = html;
   mostrar("s-podio");
   window.scrollTo(0, 0);

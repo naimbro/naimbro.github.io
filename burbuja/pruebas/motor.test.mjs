@@ -158,6 +158,24 @@ test("epílogo: los que vuelven siguen al precio; el otro mundo queda calculado"
   }
 });
 
+test("podio de voces: los tres que más reconocieron, en orden, y el bono pesa", () => {
+  const e = M.nuevaPartida("x");
+  const J = {
+    a: { nombre: "A", dentro: false, resp: { 0: true, 1: true, 2: true } },
+    b: { nombre: "B", dentro: false, resp: { 0: true, 1: false, 2: true } },
+    c: { nombre: "C", dentro: false, resp: { 0: false, 1: false, 2: true } },
+    d: { nombre: "D", dentro: false, resp: { 0: false } },
+    f: { nombre: "F", dentro: false, resp: {} }
+  };
+  M.tick(e, J); e.fase = "burbuja";
+  for (let k = 0; k < 50; k++) M.tick(e, J, () => 0.5);
+  M.terminar(e);
+  assert.deepEqual(e.premios.voces, [{ uid: "a", n: 3 }, { uid: "b", n: 2 }, { uid: "c", n: 1 }]);
+  assert.equal(e.riqueza.a, P.inicio + 3 * P.bono);
+  assert.ok(C.VOCES.length * P.bono >= 150, "acertar todas las voces vale tanto como una buena burbuja");
+  assert.deepEqual(e.rank.slice(0, 3), ["a", "b", "c"], "sin burbuja, gana quien más voces reconoció");
+});
+
 test("300 partidas simuladas con 25 alumnos: la partida tiene la forma buscada", () => {
   const N = 300;
   let pops = 0, suaves = 0, sumaT = 0, sumaRatio = 0, sumaAtr = 0, sumaGana = 0, tMin = 1e9, tMax = 0;

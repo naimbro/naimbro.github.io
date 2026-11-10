@@ -94,6 +94,9 @@
   .lugar .n { color: var(--tenue); width: 2.4vw; } .lugar .p { margin-left: auto; font-variant-numeric: tabular-nums; }
   .premio { background: var(--panel); border-left: .5vw solid var(--amarillo); border-radius: 1vh; padding: .7vh 1vw; font-size: 2.2vh; line-height: 1.25; }
   .premio b { display: block; font-size: 2vh; letter-spacing: .15vw; color: var(--amarillo); }
+  #po-voces { display: flex; gap: 1vw; flex-wrap: wrap; }
+  .oido { background: var(--panel); border: 2px solid #2c3d5e; border-radius: 1.2vh; padding: .8vh 1.2vw; font-size: 3vh; font-weight: 800; }
+  .oido b { color: var(--amarillo); margin-left: .4vw; }
   #tabla { display: flex; flex-direction: column; gap: .7vh; overflow: hidden; }
   #tabla div { display: flex; gap: 1vw; align-items: baseline; font-size: 1.95vh; line-height: 1.25; background: var(--panel); border-radius: .8vh; padding: .7vh .8vw; }
   #tabla .pc { flex: 0 0 4.2vw; font-weight: 900; font-size: 2.6vh; text-align: right; font-variant-numeric: tabular-nums; }
@@ -122,7 +125,7 @@
     <ol>
       <li>Partes con <b>$100</b>. Un solo botón: <b>ENTRAR</b> o <b>SALIR</b> de la burbuja.</li>
       <li>Dentro, tu plata sube con el precio. El precio lo sube la sala. Si revienta contigo dentro, <b>pierdes 80%</b>.</li>
-      <li>Cada 15 segundos habla una voz. Si sabes <b>de quién es</b>, ganas $5 y tu teléfono te muestra el <b>riesgo</b>.</li>
+      <li>Cada 15 segundos habla una voz. Si sabes <b>de quién es</b>, ganas $20 y tu teléfono te muestra el <b>riesgo</b>.</li>
     </ol>
     <div id="sala-cuenta">Nadie todavía</div>
     <div id="sala-nombres"></div>
@@ -174,12 +177,14 @@
     <button class="btn gris" id="nueva" style="position:fixed;right:3vw;bottom:2.5vh">Nueva partida</button>
   </div>
   <div class="col">
+    <h3>QUIÉNES RECONOCIERON MÁS VOCES</h3>
+    <div id="po-voces"></div>
     <h3>¿QUIÉN LO DIJO? · % DE LA SALA QUE ACERTÓ</h3>
     <div id="tabla"></div>
   </div>
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script type="module" src="anfitrion.js?v=1"></script>
+<script type="module" src="anfitrion.js?v=2"></script>
 </body>
 </html>

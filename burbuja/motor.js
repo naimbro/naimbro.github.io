@@ -21,7 +21,7 @@ export const P = {
   vozPrimera: 5,        // segundo en que se abre la primera voz
   vozCada: 15,          // una voz cada 15 s
   vozVentana: 7,        // segundos para responder
-  bono: 5,              // plata por acertar de quién es la frase
+  bono: 20,             // plata por acertar de quién es la frase: once voces pesan tanto como la burbuja
   sacudida: 0.05,       // salto del precio cuando se revela una voz
   // precio
   base: 0.002,          // crecimiento por segundo con la sala vacía
@@ -233,9 +233,10 @@ export function premios(e, uids) {
   const quemados = e.atrapados.slice().sort((a, b) => e.st[b].antes - e.st[a].antes);
   // «La única jugada ganadora es no jugar»: nunca entraron a la burbuja.
   const fuera = uids.filter((u) => !e.st[u].entro);
-  // Oído fino: quien más voces reconoció.
-  const oido = uids.slice().sort((a, b) => e.aciertos[b] - e.aciertos[a]);
+  // La otra competencia: quién reconoció más voces (si empatan, el que terminó con más plata).
+  const oido = uids.slice().sort((a, b) => e.aciertos[b] - e.aciertos[a] || e.riqueza[b] - e.riqueza[a]);
   return {
+    voces: oido.filter((u) => e.aciertos[u] > 0).slice(0, 3).map((u) => ({ uid: u, n: e.aciertos[u] })),
     casandra: libres.length ? { uid: libres[0], seg: e.st[libres[0]].sale } : null,
     cisco: quemados.length ? { uid: quemados[0], perdio: Math.round(e.st[quemados[0]].antes * P.caida) } : null,
     noJugar: fuera,

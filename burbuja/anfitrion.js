@@ -263,10 +263,13 @@ function pintarPodio() {
   if (pr.cisco) cajas.push(`<div class="premio"><b>PREMIO CISCO</b>${nom(pr.cisco.uid)} perdió $${plata(pr.cisco.perdio)} en un segundo.</div>`);
   if (pr.noJugar && pr.noJugar.length) {
     const lista = pr.noJugar.slice(0, 4).map(nom).join(", ") + (pr.noJugar.length > 4 ? ` y ${pr.noJugar.length - 4} más` : "");
-    cajas.push(`<div class="premio"><b>«LA ÚNICA JUGADA GANADORA ES NO JUGAR»</b>${lista}: nunca ${pr.noJugar.length > 1 ? "entraron" : "entró"}.</div>`);
+    cajas.push(`<div class="premio"><b>«LA ÚNICA JUGADA GANADORA ES NO JUGAR»</b>${lista}: nunca ${pr.noJugar.length > 1 ? "entraron" : "entró"} a la burbuja.</div>`);
   }
-  if (pr.oido) cajas.push(`<div class="premio"><b>OÍDO FINO</b>${nom(pr.oido.uid)} reconoció ${pr.oido.n} ${pr.oido.n === 1 ? "voz" : "voces"}.</div>`);
   $("po-premios").innerHTML = cajas.join("");
+  // el otro podio: quién reconoció más voces
+  const medallas = ["🥇", "🥈", "🥉"];
+  $("po-voces").innerHTML = (pr.voces || []).map((v, k) =>
+    `<span class="oido">${medallas[k]} ${nom(v.uid)} <b>${v.n}</b></span>`).join("") || `<span class="tenue">Nadie reconoció una voz.</span>`;
   const vistas = Math.min(VOCES.length, (e.puntuada ?? -1) + 1);
   let html = "";
   for (let i = 0; i < vistas; i++) {
