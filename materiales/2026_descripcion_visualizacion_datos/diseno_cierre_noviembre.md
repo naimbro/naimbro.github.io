@@ -165,6 +165,18 @@ pauta en sala. Premio del público por Form, "¿cuál te enganchó más?", sin n
 | Claridad visual | 20% | Gráficos legibles, título con el hallazgo, una idea por gráfico |
 | Defensa oral | 25% | Todos explican el proyecto, no sobrerreclaman causalidad y responden preguntas sobre su código |
 
+**Cambio del 12-nov (la guía no había llegado a los estudiantes):** el demo day pasa a ser un
+estreno. 5 minutos y 3 de preguntas en turnos de 10 minutos, con corte duro y café a las 12:05
+(las cuentas: con 6+3 no quedaba holgura para el café que Naim quiere invitar); cada grupo abre con una apuesta a la sala
+(pregunta con tres opciones, mano alzada) y muestra la pieza en vivo; se proyecta sólo el sitio;
+orden G01 a G09, como en los sprints anteriores; la primera pregunta la hace el grupo que presentó
+antes. El curso pone nota de 1 a 5 tras cada grupo y el podio del público suma una décima al
+Sprint 4; es el único premio (Naim descartó los del jurado para no desordenar). Jurado: Naim, los
+ayudantes e invitados. Matías Albornoz lleva la logística y recibe los enlaces. Sin juego ML2. Los pesos de la
+rúbrica no cambian; «Defensa oral» pasa a llamarse «Presentación y defensa oral». El formato elegido
+el 16 ya no queda fijo: se puede cambiar avisando al ayudante. La versión
+vigente es `guia_sprint4.html` y su Doc.
+
 ## Materiales de la clase 12, en orden de prioridad
 
 1. Deck de la clase (plantilla de siempre): mapa, ruta, código, cinco candidatos, Sites en tres

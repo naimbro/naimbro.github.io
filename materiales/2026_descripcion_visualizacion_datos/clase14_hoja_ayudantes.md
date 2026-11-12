@@ -46,5 +46,5 @@ en la portada y en la última lámina. Los falsos tampoco pueden ser sensacional
 ## La elección de formato
 
 Observatorio, video-podcast o carrusel: el que mejor cuente el hallazgo del grupo, no el más
-fácil. Pregúntenles con qué piensan enganchar en los primeros 30 segundos del demo day. Después
-de enviado, no se cambia.
+fácil. Pregúntenles con qué piensan enganchar en los primeros 30 segundos del demo day. Si
+después de enviarlo cambian de idea, les avisan a ustedes.
