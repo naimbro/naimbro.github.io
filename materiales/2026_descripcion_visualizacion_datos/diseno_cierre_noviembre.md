@@ -174,7 +174,9 @@ antes. El curso pone nota de 1 a 5 tras cada grupo y el podio del público suma 
 Sprint 4; es el único premio (Naim descartó los del jurado para no desordenar). Jurado: Naim, los
 ayudantes e invitados. Matías Albornoz lleva la logística y recibe los enlaces. Sin juego ML2. Los pesos de la
 rúbrica no cambian; «Defensa oral» pasa a llamarse «Presentación y defensa oral». El formato elegido
-el 16 ya no queda fijo: se puede cambiar avisando al ayudante. La versión
+el 16 ya no queda fijo: se puede cambiar avisando al ayudante. El café no
+es para los 36: es el premio del podio, con el profesor y el jurado; por eso la nota de 1 a 5 del
+form pregunta por el enganche («¿cuánto te enganchó?»), no por la calidad. La versión
 vigente es `guia_sprint4.html` y su Doc.
 
 ## Materiales de la clase 12, en orden de prioridad
