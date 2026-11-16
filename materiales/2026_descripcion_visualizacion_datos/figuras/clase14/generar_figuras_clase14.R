@@ -278,7 +278,10 @@ hitos <- data.frame(
   nombre = c("Observatorio", "Video-podcast", "Carrusel", "Demo day"),
   verbo  = c("estructurar", "narrar", "sintetizar", "su formato, publicado"),
   r      = c("ggsave() · facet_grid()", "p + capas · annotate()",
-             "geom_text() · slice_max()", "el Google Site del grupo")
+             "geom_text() · slice_max()", "el Google Site del grupo"),
+  # Podios de cada desafío, para felicitarlos al abrir la clase 14.
+  podio  = c("Podio: G03 · G06 · G01", "Podio: G05 · G07 · G09",
+             "Podio: hoy, 12:30", "")
 )
 
 path <- file.path(OUT, "hoja_de_ruta_clase14.png")
@@ -301,6 +304,9 @@ for (i in 1:4) {
             gp = gpar(fontfamily = BOLD, fontsize = 24, col = tinta))
   grid.text(hitos$verbo[i], x = 0.08, y = 0.48, just = c("left", "center"),
             gp = gpar(fontfamily = SANS, fontsize = 16, col = tinta))
+  grid.text(hitos$podio[i], x = 0.08, y = 0.32, just = c("left", "center"),
+            gp = gpar(fontfamily = BOLD, fontsize = 15,
+                      col = if (hoy) BG else ROSE))
   grid.text(hitos$r[i], x = 0.08, y = 0.16, just = c("left", "center"),
             gp = gpar(fontfamily = if (final) SANS else MONO, fontsize = 12, col = tinta))
   popViewport()

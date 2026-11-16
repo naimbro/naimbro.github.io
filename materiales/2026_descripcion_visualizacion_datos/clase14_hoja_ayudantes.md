@@ -8,27 +8,28 @@ Descripción y Visualización de Datos (UAI 2026) · lunes 16 de noviembre · 10
 - **Hoja de ruta (la clase paso a paso, con todos los enlaces):** <https://naimbro.github.io/materiales/2026_descripcion_visualizacion_datos/clase14_hoja_de_ruta.html>
 - **Form del corte (11:20):** <https://docs.google.com/forms/d/e/1FAIpQLSf80L9DDT08poJ5LDaVJhdRXyt7l0I4GFaY8L5JQFsN7rUL-A/viewform>
 - **Form de la prueba del scroll (11:30):** <https://docs.google.com/forms/d/e/1FAIpQLSeMTIPflRUwz2vlV6bIKdMgXrR5yiHTMGYnkn6koy4ijnj7bg/viewform>
-- **Form del formato (12:15):** <https://docs.google.com/forms/d/e/1FAIpQLSdOgzxUDRNBfFU3cgYeRjnQ0uY5e1gSn8x8R3dgpS8Tq12i1w/viewform>
+- **Form del formato (12:30):** <https://docs.google.com/forms/d/e/1FAIpQLSdOgzxUDRNBfFU3cgYeRjnQ0uY5e1gSn8x8R3dgpS8Tq12i1w/viewform>
 
 ## Horario
 
 | Hora | Qué pasa | Qué hacen ustedes |
 |---|---|---|
-| 10:00–10:25 | Mapa, podio del 9 y código en vivo | Ayudar con el Slides cuadrado y `ggsave(width = 4, height = 4)` |
-| 10:25–10:35 | La carta y la secuencia de seis láminas | Revisar que el gancho de la portada tenga un número |
+| 10:00–10:15 | Mapa, podios del 2 y del 9, guía del demo day | — |
+| 10:15–10:28 | Código en vivo | Ayudar con el Slides cuadrado y `ggsave(width = 4, height = 4)` |
+| 10:28–10:35 | La carta y la secuencia de seis láminas | Revisar que el gancho de la portada tenga un número |
 | 10:35–11:20 | Construcción del carrusel | Ser **el algoritmo** (abajo), dos pasadas por grupo |
 | 11:20 | Corte: enlace y tres frases | Confirmar que sus tres grupos enviaron y que el Slides abre sin iniciar sesión |
 | 11:20–11:30 | Recreo | — |
-| 11:30–11:50 | La prueba del scroll | Uno de ustedes cronometra: tres segundos por lámina, 20 para marcar |
-| 11:50–12:10 | Qué lámina perdió a la sala | Decir, por cada uno de sus grupos, en qué lámina dejó de mirar el algoritmo |
-| 12:15–12:35 | Elección de formato | Validar la elección de sus grupos y quedar al lado mientras envían el form |
+| 11:30–11:45 | La prueba del scroll | Uno de ustedes cronometra: tres segundos por lámina, 20 para marcar |
+| 11:45–12:30 | Juego: repaso del semestre | Ayudar a entrar desde el celular |
+| 12:30–12:38 | Podio del carrusel y elección de formato | Validar la elección de sus grupos y quedar al lado mientras envían el form |
 
 ## Ustedes son el algoritmo
 
 Hacia las 10:55 y otra vez hacia las 11:10, pasen el carrusel de cada uno de sus grupos como
 en el celular: tres segundos por lámina, sin que nadie explique. Díganles en qué lámina
 dejarían de mirar y por qué en una frase («no vi el número», «dos ideas en una lámina»).
-Esa lámina se arregla antes del corte. Anoten el número de la lámina: lo dicen a las 11:50.
+Esa lámina se arregla antes del corte.
 
 | Matías | Karina | Martín |
 |---|---|---|
