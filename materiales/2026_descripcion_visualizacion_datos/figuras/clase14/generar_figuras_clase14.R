@@ -236,7 +236,7 @@ for (i in seq_along(laminas)) {
 }
 # Las reglas, a la derecha de las láminas.
 reglas <- c("1 · La portada es el gancho",
-            "2 a 5 · Sus cinco candidatos,\nuno por lámina",
+            "2 a 5 · Otros cuatro hallazgos,\nun gráfico por lámina",
             "6 · Qué no dicen los datos\ny la fuente")
 for (i in seq_along(reglas))
   grid.text(reglas[i], x = 0.70, y = 0.68 - (i - 1) * 0.16, just = c("left", "top"),
