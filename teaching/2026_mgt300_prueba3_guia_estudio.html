@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Guía de estudio de la Prueba 3 de MGT300 2026: qué entra de las clases 11, 12 y 13 (Unidad 3, el riesgo de la IA a tres escalas), concepto por concepto.">
+    <title>Guía de estudio, Prueba 3 — MGT300 (2026)</title>
+    <!-- Organizada por conceptos, no por láminas: cada bloque dice de qué lectura y de qué
+         presentación sale, sin números de lámina, para que los decks puedan cambiar sin
+         descuadrar la guía. Alcance decidido por Naim el 16-nov-2026. -->
+    <style>
+        :root {
+            --navy: #0a3d62;
+            --ink: #333333;
+            --muted: #555555;
+            --line: #dddddd;
+            --info: #eaf2f8;
+            --sand: #f7f7f2;
+            --sand-edge: #b3a37a;
+            --rust: #6b3a17;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            max-width: 860px;
+            margin: 2em auto;
+            padding: 1em;
+            color: var(--ink);
+            background: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.55;
+        }
+
+        h1, h2 {
+            color: var(--navy);
+            line-height: 1.2;
+            border-bottom: 2px solid var(--line);
+            padding-bottom: 0.2em;
+        }
+
+        h1 { margin: 0 0 0.25em; font-size: 2rem; }
+        h2 { margin: 2.2em 0 0.3em; font-size: 1.35rem; }
+
+        h3 {
+            margin: 1.5em 0 0.15em;
+            color: var(--navy);
+            font-size: 1.05rem;
+        }
+
+        .eyebrow {
+            margin: 0 0 0.35em;
+            color: var(--muted);
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            margin: 0 0 1.4em;
+            color: var(--muted);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .scale {
+            margin: 0 0 0.6em;
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .frame {
+            margin: 0 0 1.6em;
+            padding: 0.9em 1.2em;
+            border-left: 5px solid var(--navy);
+            background: var(--info);
+        }
+
+        .frame p { margin: 0.45em 0; }
+        .frame p:first-child { margin-top: 0; }
+        .frame p:last-child { margin-bottom: 0; }
+
+        table.scope {
+            width: 100%;
+            margin: 0.6em 0 0;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        table.scope th, table.scope td {
+            padding: 0.35em 0.6em;
+            border-bottom: 1px solid #c8d6e2;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        table.scope th { color: var(--navy); font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; }
+        table.scope td:first-child { white-space: nowrap; font-weight: 700; color: var(--navy); }
+        table.scope td.apoyo { color: var(--muted); }
+
+        .concept { margin: 0 0 0.4em; }
+
+        .from {
+            margin: 0 0 0.45em;
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .from strong { color: var(--rust); font-weight: 600; }
+
+        .concept p { margin: 0.4em 0; }
+
+        .anchors {
+            margin: 0.5em 0 0;
+            padding: 0.5em 1em 0.5em 1.9em;
+            border-left: 4px solid var(--sand-edge);
+            background: var(--sand);
+            font-size: 0.92rem;
+        }
+
+        .anchors li { margin: 0.2em 0; }
+
+        dl.terms {
+            display: grid;
+            grid-template-columns: max-content minmax(0, 1fr);
+            gap: 0.25em 0.9em;
+            margin: 0.5em 0;
+        }
+
+        dl.terms dt { color: var(--navy); font-weight: 700; }
+        dl.terms dd { margin: 0; }
+
+        blockquote {
+            margin: 0.6em 0;
+            padding: 0 0 0 1em;
+            border-left: 3px solid #c8d6e2;
+            font-family: Georgia, "Times New Roman", serif;
+            font-style: italic;
+        }
+
+        .support {
+            margin: 0.6em 0 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .support strong { color: var(--muted); }
+
+        footer {
+            margin-top: 2.5em;
+            padding-top: 0.6em;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 0.8em 16px; }
+            h1 { font-size: 1.6rem; }
+            dl.terms { grid-template-columns: 1fr; }
+            table.scope td:first-child { white-space: normal; }
+        }
+
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { max-width: none; margin: 0; padding: 12mm 14mm 10mm; font-size: 9.8pt; line-height: 1.4; background: #ffffff; }
+
+            h1 { font-size: 17pt; margin-bottom: 0.1em; }
+            h2 { font-size: 12.5pt; margin: 1em 0 0.15em; break-after: avoid; }
+            h3 { font-size: 10.3pt; margin: 0.85em 0 0.05em; break-after: avoid; }
+            .eyebrow { font-size: 7.8pt; margin-bottom: 0.2em; }
+            .subtitle { font-size: 9.4pt; margin-bottom: 0.7em; }
+            .scale { font-size: 9pt; margin-bottom: 0.3em; }
+
+            .frame { margin-bottom: 0.8em; padding: 0.55em 0.9em; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .frame p { margin: 0.25em 0; }
+            table.scope { font-size: 8.6pt; }
+            table.scope th, table.scope td { padding: 0.18em 0.45em; }
+
+            .concept { break-inside: avoid; }
+            .from { font-size: 8.4pt; margin-bottom: 0.25em; }
+            .concept p { margin: 0.25em 0; orphans: 3; widows: 3; }
+            .anchors { margin-top: 0.3em; padding: 0.3em 0.8em 0.3em 1.6em; font-size: 8.9pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .anchors li { margin: 0.08em 0; }
+            dl.terms { gap: 0.1em 0.7em; margin: 0.3em 0; }
+            blockquote { margin: 0.35em 0; }
+            .support { font-size: 8.5pt; margin-top: 0.3em; }
+            footer { margin-top: 1em; font-size: 7.8pt; }
+
+            a { color: inherit; text-decoration: none; }
+        }
+    </style>
+</head>
+<body>
+
+<p class="eyebrow">MGT300 · Sociedad, Cultura y Política · Ingeniería Comercial UAI · 2026</p>
+<h1>Guía de estudio · Prueba 3</h1>
+<p class="subtitle">Unidad 3: el riesgo de la IA a tres escalas — la empresa, la economía y el planeta. Martes 24 de noviembre.</p>
+
+<div class="frame">
+    <p><strong>Qué entra.</strong> La prueba sólo pregunta por lo que fue lectura <em>y</em> se proyectó en clase. Esta guía lo ordena concepto por concepto: de dónde sale, la idea central y los datos que conviene tener a mano. No es un resumen de las lecturas: estúdialas.</p>
+    <table class="scope">
+        <thead>
+            <tr><th>Clase</th><th>Entra</th><th>No hay preguntas, pero si lo usas, suma</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>11 · Empresa</td>
+                <td>Las cuatro familias de riesgo del S-1 de Anthropic. Las capas de la IA y el triángulo Anthropic–Google–Amazon.</td>
+                <td class="apoyo">Las cuentas trimestrales y el gráfico «Token profit»; Rice y Zegart; «estar en el precio»; el simulador.</td>
+            </tr>
+            <tr>
+                <td>12 · Economía</td>
+                <td>Los tres rasgos de una tecnología de propósito general (GPT). La paradoja de Solow.</td>
+                <td class="apoyo">El desfase de las GPT; rentas productivas y rentistas; el carro de la productividad; Goldman frente a Acemoglu; las burbujas; los dossiers de Tribuna.</td>
+            </tr>
+            <tr>
+                <td>13 · Planeta</td>
+                <td>La Gran Aceleración (Steffen). La innovación verde (Aghion, cap. 9). Los data centers (AIE). Beck y el caso Black October. Carney. La declaración sobre el riesgo de extinción por IA.</td>
+                <td class="apoyo">Los datos de desacoplamiento de Our World in Data; los incidentes reportados a la ANCI; Ord.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>Lo que más pesa en la corrección es el <strong>mecanismo</strong>: no basta con nombrar el concepto, hay que decir por qué se sigue. No se exige recordar cifras exactas; sí la dirección de los datos.</p>
+</div>
+
+<!-- ═══════════════════════════ CLASE 11 ═══════════════════════════ -->
+
+<h2>Clase 11 · La empresa: Anthropic sale a bolsa</h2>
+<p class="scale">¿Qué riesgos corre una empresa de IA, leídos en su propio prospecto?</p>
+
+<div class="concept">
+    <h3>Las cuatro familias de riesgo del S-1</h3>
+    <p class="from"><strong>De dónde sale:</strong> Anthropic, prospecto de salida a bolsa (S-1/A, 2-nov-2026), selección de «Risk Factors» impresa en clase · presentación «Anthropic sale a bolsa».</p>
+    <p>Quien sale a bolsa en EE. UU. debe advertir por escrito lo que puede salir mal. Como responde legalmente si omite un riesgo que conocía, el prospecto tiende a exagerar más de lo que omite. El de Anthropic trae 94 riesgos en unas 95 páginas, que en clase agrupamos en cuatro familias:</p>
+    <dl class="terms">
+        <dt>Financiera</dt>
+        <dd>Compromisos de cómputo por unos US$895 mil millones hasta 2045, que se pagan se usen o no, mientras los ingresos dependen del uso. Pérdidas todos los años. Pocos clientes y pocos canales: el 44% de las ventas pasa por las nubes de Amazon, Google y Microsoft.</dd>
+        <dt>Seguridad</dt>
+        <dd>Salvaguardas que se pueden burlar; el primer ciberataque a gran escala casi sin humanos, hecho con Claude Code (2025); agentes que actúan por su cuenta; robo de los pesos del modelo.</dd>
+        <dt>Legal y política</dt>
+        <dd>Derechos de autor (acordó pagar US$1.500 millones a autores de libros); quién responde por el daño de un agente; libre competencia; regulación en movimiento; el choque con el gobierno de EE. UU.</dd>
+        <dt>Reputación y gobierno</dt>
+        <dd>Su marca es la seguridad, así que una falla le pega más que a otros; sus advertencias se usan en su contra; como corporación de beneficio público, puede renunciar a ingresos por su misión; un fideicomiso elige a la mayoría del directorio y los fundadores controlan los votos.</dd>
+    </dl>
+</div>
+
+<div class="concept">
+    <h3>Las capas de la IA y el triángulo con Google y Amazon</h3>
+    <p class="from"><strong>De dónde sale:</strong> S-1 de Anthropic · presentación «Anthropic sale a bolsa» (láminas de las capas y del triángulo).</p>
+    <p>Detrás de una pregunta a Claude hay una pila: <strong>tú</strong> (usuario o empresa) → <strong>modelo</strong> (Anthropic, OpenAI, Google) → <strong>nube</strong> (Amazon, Google, Microsoft) → <strong>chips</strong> (Nvidia, Google, Amazon) → <strong>fábrica</strong> (TSMC, en Taiwán). La plata baja por la pila y cada capa cobra su parte. La renta se queda donde hay menos competencia: hoy, abajo, en los chips y la nube. Anthropic está arriba: compra cómputo caro y por adelantado, y cobra por uso.</p>
+    <p>El triángulo: Google y Amazon invierten en Anthropic, y Anthropic se compromete a gastar en sus nubes. Son a la vez accionistas, proveedores, canal de venta y, en el caso de Google, competidor.</p>
+    <ul class="anchors">
+        <li>Compromisos mínimos de nube, se usen o no: unos US$114.500 millones con Google (2026–2033) y US$110.000 millones con Amazon (2026–2036).</li>
+        <li>Tras la salida a bolsa, Google y Amazon quedan cada uno con más del 5% de Anthropic.</li>
+        <li>Google aparece en tres capas (modelo, nube, chips) y Amazon en dos (nube, chips).</li>
+    </ul>
+</div>
+
+<!-- ═══════════════════════════ CLASE 12 ═══════════════════════════ -->
+
+<h2>Clase 12 · La economía: ¿revolución o burbuja?</h2>
+<p class="scale">¿Es la IA una revolución tecnológica, y por qué no se ve todavía en los datos?</p>
+
+<div class="concept">
+    <h3>Tecnologías de propósito general (GPT)</h3>
+    <p class="from"><strong>De dónde sale:</strong> Aghion, Antonin y Bunel (2021), <i>The Power of Creative Destruction</i>, cap. 3 · presentación «¿Revolución o burbuja?».</p>
+    <p>Una revolución tecnológica empieza con una tecnología de propósito general. Tiene tres rasgos:</p>
+    <dl class="terms">
+        <dt>Se difunde</dt><dd>llega a casi todos los sectores de la economía.</dd>
+        <dt>Mejora</dt><dd>se abarata y se perfecciona con el uso.</dd>
+        <dt>Engendra</dt><dd>da origen a una ola de innovaciones derivadas.</dd>
+    </dl>
+    <ul class="anchors">
+        <li>Las tres GPT de la historia económica: la máquina de vapor, la electricidad y las tecnologías de la información (el microprocesador).</li>
+        <li>Ojo con la sigla: aquí GPT es <i>general purpose technology</i>, no el GPT de ChatGPT (<i>generative pre-trained transformer</i>).</li>
+    </ul>
+</div>
+
+<div class="concept">
+    <h3>La paradoja de Solow</h3>
+    <p class="from"><strong>De dónde sale:</strong> Aghion, Antonin y Bunel (2021), cap. 3 · presentación «¿Revolución o burbuja?».</p>
+    <blockquote>«Se ve la era de los computadores en todas partes, menos en las estadísticas de productividad.» — Robert Solow, Nobel de Economía, 1987.</blockquote>
+    <p>Una GPT no sube la productividad el día que se inventa: primero hay que reorganizar la producción a su alrededor. La inversión se ve antes que el rendimiento.</p>
+    <ul class="anchors">
+        <li>Productividad laboral de EE. UU., crecimiento anual: 1,4% entre 1973 y 1995, pese a los computadores; 3,1% entre 1995 y 2004, cuando llegan internet y la reorganización de las empresas; 1,5% entre 2004 y 2019.</li>
+        <li>2019–2025: 2,3%, pero mezcla la pandemia y quizás la IA. Todavía no se sabe cuánto es de la IA.</li>
+    </ul>
+</div>
+
+<!-- ═══════════════════════════ CLASE 13 ═══════════════════════════ -->
+
+<h2>Clase 13 · El planeta y la especie: clima y extinción</h2>
+<p class="scale">¿Cuánto cambió el planeta, se puede crecer sin destruirlo, y quién carga con el riesgo?</p>
+
+<div class="concept">
+    <h3>La Gran Aceleración</h3>
+    <p class="from"><strong>De dónde sale:</strong> Steffen et al. (2015), «The Trajectory of the Anthropocene: The Great Acceleration» · presentación «Clima y extinción».</p>
+    <p>Steffen y sus coautores siguen 24 indicadores desde 1750: doce de la sociedad (población, PIB, energía, agua, fertilizantes, transporte…) y doce del sistema Tierra (CO₂, metano, temperatura, acidificación del océano, pérdida de bosque tropical…). Hacia 1950, todas las curvas se disparan a la vez. Ahí sitúan el comienzo del Antropoceno: la época en que la actividad humana es la principal fuerza que cambia el planeta.</p>
+    <ul class="anchors">
+        <li>Quién acelera: en 2010, los países de la OCDE tenían el 18% de la población mundial y el 74% del PIB. La presión sigue al consumo, así que la mayor parte viene de los países ricos.</li>
+        <li>Desde 2000, la producción se desplaza hacia los BRICS, sobre todo China.</li>
+        <li>Con datos actuales: unos 8.200 millones de personas (2024); el CO₂ en la atmósfera pasó de unas 280 a unas 426 partes por millón.</li>
+    </ul>
+</div>
+
+<div class="concept">
+    <h3>Aghion: crecer sin destruir</h3>
+    <p class="from"><strong>De dónde sale:</strong> Aghion, Antonin y Bunel (2021), cap. 9, «Green Innovation and Sustainable Growth» · presentación «Clima y extinción».</p>
+    <p>Frente al decrecimiento (frenar la economía para salvar el planeta), Aghion sostiene que la salida es redirigir la innovación, no detenerla: es la destrucción creativa aplicada al clima. Pero el mercado solo no lo hace, porque la innovación tiene memoria: las empresas siguen innovando en lo que ya saben hacer, y lo que saben hacer es sucio.</p>
+    <ul class="anchors">
+        <li>La evidencia: en la industria automotriz, las empresas que patentaban motores a combustión siguieron patentándolos; cuando el combustible se encarece con impuestos, la innovación se mueve hacia lo limpio (eléctrico, híbrido).</li>
+        <li>Los dos instrumentos: un impuesto al carbono, que encarece lo sucio, y subsidios a la investigación verde, temporales, hasta que lo limpio compita solo.</li>
+    </ul>
+</div>
+
+<div class="concept">
+    <h3>El costo eléctrico de la IA</h3>
+    <p class="from"><strong>De dónde sale:</strong> Agencia Internacional de Energía (2025), <i>Energy and AI</i>, resumen ejecutivo · presentación «Clima y extinción».</p>
+    <ul class="anchors">
+        <li>Los data centers consumieron unos 415 TWh en 2024, cerca de 1,5% de la electricidad del mundo. En 2030 serían unos 945 TWh: algo más que todo el consumo de Japón hoy. La IA es el principal motor del alza.</li>
+        <li>En 2024, EE. UU. tenía el 45% del consumo y China el 25%; EE. UU. se lleva la mayor parte del aumento. Las renovables cubren la mitad del aumento.</li>
+        <li>El costo: las emisiones de los data centers pasarían de unos 180 a 300 millones de toneladas de CO₂ en 2035.</li>
+        <li>La promesa: aplicada a gran escala, la IA podría recortar cerca de 5% de las emisiones de la energía en 2035. El matiz: «no es una bala de plata», y el efecto rebote puede comerse la ganancia.</li>
+    </ul>
+</div>
+
+<div class="concept">
+    <h3>Beck: la sociedad del riesgo</h3>
+    <p class="from"><strong>De dónde sale:</strong> Beck, U. (1986), <i>La sociedad del riesgo</i>, cap. 1 · presentación de la Unidad 3 (clase 11) y presentación «Clima y extinción».</p>
+    <p>La modernidad fabrica riesgos que no controla. Tres ideas:</p>
+    <dl class="terms">
+        <dt>Reparto de riesgos</dt><dd>la sociedad ya no sólo reparte riqueza; también reparte los riesgos que ella misma fabrica, y no los reparte igual.</dd>
+        <dt>Efecto bumerán</dt><dd>tarde o temprano, el riesgo alcanza a quienes lo producen y se benefician de él.</dd>
+        <dt>El riesgo como negocio</dt><dd>cada amenaza abre un mercado para quien vende la protección, y la demanda de protección no tiene fondo.</dd>
+    </dl>
+    <p><strong>El caso: Black October</strong> (<i>The Economist</i>, «The world must act to stop a cyber-disaster», 5-nov-2026). En octubre de 2026 la IA destapó en días fallas informáticas escondidas por años; el editorial pide que los defensores tengan mejores modelos que los atacantes. Leído con Beck:</p>
+    <ul class="anchors">
+        <li>Reparto: Anthropic abrió su modelo Mythos sólo a un club por invitación (Project Glasswing), y sumar miembros exige el visto bueno de Washington. Quien queda fuera, como una empresa chilena, se defiende con los mismos modelos abiertos que usan los atacantes.</li>
+        <li>Bumerán: los modelos abiertos sirven a cualquiera, y una empresa chica sin defensas abre la puerta a la grande.</li>
+        <li>Negocio: el S-1 de Anthropic dice que la ciberseguridad es «one of our most important near-term opportunities».</li>
+    </ul>
+</div>
+
+<div class="concept">
+    <h3>Carney: la tragedia del horizonte</h3>
+    <p class="from"><strong>De dónde sale:</strong> Carney, M. (2015), «Breaking the tragedy of the horizon: climate change and financial stability», discurso en Lloyd's of London · presentación «Clima y extinción».</p>
+    <p>Mark Carney, entonces gobernador del Banco de Inglaterra, llama al cambio climático la <strong>tragedia del horizonte</strong>: sus peores costos llegan más allá del horizonte de quienes deciden hoy. Nombra tres horizontes: el ciclo de los negocios, el ciclo político y el mandato de las autoridades técnicas, como los bancos centrales. Cuando el costo se vuelve visible, ya es tarde. Su remedio es la información: medir y revelar el riesgo para que entre en los precios a tiempo.</p>
+    <dl class="terms">
+        <dt>Riesgo físico</dt><dd>el daño de los eventos climáticos sobre los activos y los seguros.</dd>
+        <dt>De responsabilidad</dt><dd>quienes sufren el daño buscan compensación de quienes consideran responsables.</dd>
+        <dt>De transición</dt><dd>activos que pierden valor cuando cambian la política, la tecnología o los propios riesgos físicos, en el paso a una economía baja en carbono.</dd>
+    </dl>
+    <p class="support"><strong>Aplicado a la IA</strong> (lo vimos en clase): físico, data centers que dependen de agua y energía; responsabilidad, el acuerdo de US$1.500 millones por derechos de autor; transición, una ley de IA, el rechazo a los data centers o chips que quedan obsoletos en pocos años. La tragedia del horizonte también calza.</p>
+</div>
+
+<div class="concept">
+    <h3>El riesgo de extinción por IA</h3>
+    <p class="from"><strong>De dónde sale:</strong> Center for AI Safety (2023), «Statement on AI Risk» · presentación «Clima y extinción».</p>
+    <blockquote>«Mitigar el riesgo de extinción por la IA debería ser una prioridad global, junto a otros riesgos a escala de la sociedad, como las pandemias y la guerra nuclear.»</blockquote>
+    <ul class="anchors">
+        <li>Una sola frase, del 30 de mayo de 2023, firmada por cientos de investigadores y ejecutivos: Geoffrey Hinton, Yoshua Bengio, Demis Hassabis (Google DeepMind), Sam Altman (OpenAI), y Dario y Daniela Amodei (Anthropic).</li>
+        <li>Lo inusual: quienes construyen la tecnología advierten que puede extinguir a la especie.</li>
+    </ul>
+    <p class="support"><strong>La discusión de cierre:</strong> ¿advertencia seria o distracción? Para unos, si el daño posible es la extinción, vale la pena prevenir aunque sea improbable. Para otros, mirar el fin del mundo distrae de daños que ya se miden: emisiones, agua, ciberataques. Y con Beck: la misma empresa que firma la advertencia vende la protección.</p>
+</div>
+
+<footer>
+    MGT300 · Sociedad, Cultura y Política · Profesor Naim Bro · Guía de estudio de la Prueba 3, noviembre de 2026. El juego ML2 de la clase 13 repasa las tres clases. El formato y las reglas de sala van en las instrucciones de la prueba.
+</footer>
+
+</body>
+</html>
