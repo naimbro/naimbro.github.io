@@ -3,11 +3,11 @@
 # Mismo molde que las clases 10 y 12: código a la izquierda, gráfico a la
 # derecha, y el gráfico se obtiene evaluando el texto que se proyecta. La
 # función nueva protagonista es slice_max(); la acompaña geom_text(aes(label = )).
-# Se reutilizan reorder() (clase 9), scale_fill_manual() (clase 9), paste0() y
-# round() (clase 2) y ggsave() (clase 12), ahora con width = 4, height = 4.
+# Se reutilizan reorder() y geom_col(fill = ) (clase 9), paste0() y round()
+# (clase 2) y ggsave() (clase 12), ahora con width = 4, height = 4.
 #
-# Para destacar una barra se usa mutate(destacado = problema == "...") y
-# scale_fill_manual(..., guide = "none"): sin ifelse() ni theme(), que no se han
+# Sin scale_fill_manual() ni barra destacada: Naim la sacó el 16-nov (en la
+# clase 9 sólo apareció de pasada). Tampoco ifelse() ni theme(), que no se han
 # visto o son ruido en la lámina. theme_minimal() y el estilo de la lámina se
 # suman por fuera del código proyectado, como en las clases 10 y 12.
 #
@@ -89,25 +89,6 @@ ggplot(top5, aes(x = porcentaje,
             nudge_x = 2)'),
 
   list(
-    file = "f3_destacado.png", kicker = "YA LO CONOCEN",
-    titulo = "Una barra en rosa: el hallazgo",
-    sub = "mutate() marca el hallazgo; scale_fill_manual() le da su color.",
-    geom = "scale_fill_manual(values = c(...))",
-    code = '
-top5 <- top5 %>%
-  mutate(destacado = problema ==
-           "Delincuencia, asaltos y robos")
-
-ggplot(top5, aes(x = porcentaje,
-                 y = reorder(problema, porcentaje),
-                 fill = destacado)) +
-  geom_col() +
-  geom_text(aes(label = paste0(round(porcentaje), "%")),
-            nudge_x = 2) +
-  scale_fill_manual(values = c("grey75", "#C4878C"),
-                    guide = "none")'),
-
-  list(
     file = "f4_cuadrado.png", kicker = "LA LÁMINA DEL CARRUSEL",
     titulo = "ggsave() cuadrado: 4 × 4",
     sub = "Una idea por lámina, el hallazgo en el título y la letra grande.",
@@ -115,13 +96,10 @@ ggplot(top5, aes(x = porcentaje,
     cuadrado = TRUE,
     code = '
 ggplot(top5, aes(x = porcentaje,
-                 y = reorder(problema, porcentaje),
-                 fill = destacado)) +
-  geom_col() +
+                 y = reorder(problema, porcentaje))) +
+  geom_col(fill = "#C4878C") +
   geom_text(aes(label = paste0(round(porcentaje), "%")),
             nudge_x = 4) +
-  scale_fill_manual(values = c("grey75", "#C4878C"),
-                    guide = "none") +
   scale_x_continuous(limits = c(0, 40)) +
   labs(title = "1 de cada 3: la delincuencia",
        x = NULL, y = NULL,
@@ -130,13 +108,10 @@ ggplot(top5, aes(x = porcentaje,
 ggsave("lamina2.png", width = 4, height = 4)',
     eval = '
 ggplot(top5, aes(x = porcentaje,
-                 y = reorder(problema, porcentaje),
-                 fill = destacado)) +
-  geom_col() +
+                 y = reorder(problema, porcentaje))) +
+  geom_col(fill = "#C4878C") +
   geom_text(aes(label = paste0(round(porcentaje), "%")),
             nudge_x = 4) +
-  scale_fill_manual(values = c("grey75", "#C4878C"),
-                    guide = "none") +
   scale_x_continuous(limits = c(0, 40)) +
   labs(title = "1 de cada 3: la delincuencia",
        x = NULL, y = NULL,
@@ -173,7 +148,7 @@ code_panel <- function(code, geom) {
   popViewport()
 }
 
-# El top 5 existe para todas las figuras; f3 agrega la columna destacado.
+# El top 5 existe para todas las figuras.
 eval(parse(text = TOP5))
 for (f in FIGURAS) {
   src <- if (is.null(f$eval)) f$code else f$eval
@@ -208,12 +183,10 @@ lamina_tema <- theme_minimal() + slide_theme +
         axis.text = element_text(size = 7, colour = INK),
         plot.margin = margin(8, 10, 6, 8))
 
-barras <- ggplot(top5, aes(x = porcentaje, y = reorder(problema, porcentaje),
-                           fill = destacado)) +
-  geom_col() +
+barras <- ggplot(top5, aes(x = porcentaje, y = reorder(problema, porcentaje))) +
+  geom_col(fill = ROSE) +
   geom_text(aes(label = paste0(round(porcentaje), "%")), nudge_x = 7,
             family = BOLD, size = 2.6) +
-  scale_fill_manual(values = c("grey75", ROSE), guide = "none") +
   scale_x_continuous(limits = c(0, 45)) +
   labs(title = "Ninguna otra pasa del 15%", x = NULL, y = NULL) +
   lamina_tema + theme(panel.grid = element_blank(), axis.text.x = element_blank())
