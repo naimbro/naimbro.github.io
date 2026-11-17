@@ -65,8 +65,9 @@ function vacio(root, msg) {
 function resumenSala(ag) {
   const n = num(ag.n);
   const d = num(ag.descartadas);
-  if (!n && !d) return "";
-  return plural(n, "entrevista", "entrevistas") + (d ? ` · descartadas: ${d}` : "");
+  const c = num(ag.cortas);
+  if (!n && !d && !c) return "";
+  return plural(n, "entrevista", "entrevistas") + (d ? ` · descartadas: ${d}` : "") + (c ? ` · casi vacías: ${c}` : "");
 }
 /* corta un texto en líneas de a lo más `maxc` caracteres y `maxl` líneas (para SVG) */
 function partir(texto, maxc, maxl) {

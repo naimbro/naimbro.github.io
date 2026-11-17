@@ -64,6 +64,7 @@ function pintar() {
   $("abrir-proyector").href = `index.html?s=${s.codigo}`;
   const fase = s.fase === "abierta" ? "abierta" : "cerrada";
   $("resumen-sala").textContent = `${fase}${s.inicio && s.fase === "abierta" ? ` · ${mmss(s.ahora - s.inicio)}` : ""}${s.avisoEn ? " · aviso enviado" : ""}${s.anonima ? " · sin nombres" : ""}`;
+  $("via-llegada").classList.toggle("activo", s.modoVia === "llegada" || !s.modoVia);
   $("via-grupo").classList.toggle("activo", s.modoVia === "grupo");
   $("via-elige").classList.toggle("activo", s.modoVia === "elige");
   if (document.activeElement !== $("duracion")) $("duracion").value = s.duracionMin;
@@ -141,6 +142,7 @@ $("dlg").addEventListener("click", (e) => { if (e.target === $("dlg")) $("dlg").
 
 /* ---------- controles ---------- */
 
+$("via-llegada").addEventListener("click", () => accion("config", { modoVia: "llegada" }));
 $("via-grupo").addEventListener("click", () => accion("config", { modoVia: "grupo" }));
 $("via-elige").addEventListener("click", () => accion("config", { modoVia: "elige" }));
 $("duracion").addEventListener("change", (e) => accion("config", { duracionMin: +e.target.value }));
