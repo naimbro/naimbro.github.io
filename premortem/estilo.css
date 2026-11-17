@@ -1,0 +1,45 @@
+/* PRE-MORTEM 2031 — base común a las tres pantallas (proyector, teléfono, profesor).
+   Estética del curso MGT300: fondo crema, texto casi negro, acento rosa, Libre Franklin. */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap');
+
+:root {
+  --fondo: #F9F7F4;
+  --texto: #2C2C2C;
+  --rosa: #C4878C;
+  --rosa-osc: #A4636A;
+  --rosa-claro: #F1E1E2;
+  --gris: #7D7873;
+  --linea: #E2DCD4;
+  --tarjeta: #FFFFFF;
+  /* una por vía del riesgo: 1 se sale de control · 2 gente mala la usa · 3 nadie lo quiere, pero pasa */
+  --via1: #C4878C;
+  --via2: #4F7A8C;
+  --via3: #C49A3F;
+  --ok: #5E8C6A;
+  --alerta: #B5533C;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--fondo); color: var(--texto);
+  font-family: 'Libre Franklin', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased; line-height: 1.35;
+}
+h1, h2, h3 { margin: 0; font-weight: 800; letter-spacing: -0.01em; }
+button { font: inherit; color: inherit; cursor: pointer; }
+input, textarea, select { font: inherit; color: inherit; }
+
+.btn {
+  border: 0; border-radius: 12px; padding: 12px 18px; font-weight: 700;
+  background: var(--rosa); color: #fff;
+}
+.btn:disabled { opacity: .45; cursor: default; }
+.btn.sec { background: transparent; color: var(--texto); border: 1.5px solid var(--linea); }
+.btn.sec.activo { border-color: var(--rosa); background: var(--rosa-claro); }
+.btn.peligro { background: var(--alerta); }
+.tarjeta { background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 16px; padding: 16px; }
+.suave { color: var(--gris); }
+.oculto { display: none !important; }
+.via1 { --via: var(--via1); } .via2 { --via: var(--via2); } .via3 { --via: var(--via3); }
+.chip { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: .8em; font-weight: 700; color: #fff; background: var(--via, var(--gris)); }

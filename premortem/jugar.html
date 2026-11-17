@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<title>Pre-mortem 2031</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; height: 100dvh; font-size: 17px; }
+  .pantalla { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  .centro { padding: 24px 20px; max-width: 520px; width: 100%; margin: 0 auto; overflow-y: auto; }
+  .marca { font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--rosa-osc); }
+  h1 { font-size: 27px; line-height: 1.15; margin: 8px 0 14px; }
+  label { display: block; font-weight: 700; font-size: 14px; margin: 18px 0 6px; }
+  .campo { width: 100%; border: 1.5px solid var(--linea); border-radius: 12px; padding: 13px 14px; background: #fff; font-size: 18px; }
+  .campo:focus { outline: 2px solid var(--rosa); border-color: var(--rosa); }
+  #codigo { text-transform: uppercase; letter-spacing: .3em; font-weight: 800; text-align: center; }
+  .ancho { width: 100%; margin-top: 20px; font-size: 18px; padding: 14px; }
+  .error { color: var(--alerta); font-weight: 600; margin-top: 12px; min-height: 1.3em; }
+  .vias button { display: block; width: 100%; text-align: left; margin-top: 10px; border: 2px solid var(--via); border-radius: 14px; padding: 14px; background: #fff; font-weight: 700; }
+  .vias small { display: block; font-weight: 500; color: var(--gris); }
+
+  /* chat */
+  .barra { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--linea); background: var(--fondo); }
+  .barra .chip { flex: none; }
+  .puntos { display: flex; gap: 5px; flex: 1; }
+  .puntos i { width: 100%; max-width: 30px; height: 7px; border-radius: 4px; background: var(--linea); }
+  .puntos i.ok { background: var(--via, var(--rosa)); }
+  .reloj { font-variant-numeric: tabular-nums; font-weight: 800; font-size: 15px; }
+  .reloj.poco { color: var(--alerta); }
+  #aviso { background: var(--alerta); color: #fff; padding: 10px 14px; font-weight: 700; font-size: 15px; display: flex; gap: 10px; align-items: center; }
+  #aviso button { margin-left: auto; flex: none; border: 1.5px solid #fff; background: transparent; color: #fff; border-radius: 10px; padding: 6px 10px; font-weight: 700; }
+  #hilo { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 12px 6px; display: flex; flex-direction: column; gap: 9px; }
+  .msg { max-width: 86%; padding: 10px 13px; border-radius: 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .msg.a { align-self: flex-start; background: #fff; border: 1px solid var(--linea); border-bottom-left-radius: 5px; }
+  .msg.u { align-self: flex-end; background: var(--rosa-claro); border-bottom-right-radius: 5px; }
+  .msg.espera { color: var(--gris); letter-spacing: .2em; }
+  .caja { border-top: 1px solid var(--linea); padding: 8px 10px calc(8px + env(safe-area-inset-bottom)); background: var(--fondo); }
+  #pegar { border: 1.5px solid var(--linea); background: #fff; border-radius: 999px; padding: 6px 13px; font-size: 14px; font-weight: 700; margin-bottom: 7px; }
+  #pegar.pide { border-color: var(--rosa); background: var(--rosa); color: #fff; }
+  .fila { display: flex; gap: 8px; align-items: flex-end; }
+  #texto { flex: 1; resize: none; max-height: 34vh; min-height: 46px; border: 1.5px solid var(--linea); border-radius: 14px; padding: 11px 12px; background: #fff; font-size: 17px; line-height: 1.3; }
+  #enviar { flex: none; height: 46px; padding: 0 16px; }
+  .nota { font-size: 13px; color: var(--gris); margin-top: 6px; min-height: 1.2em; }
+
+  /* resumen, deslizadores, voto */
+  .lineas { list-style: none; padding: 0; margin: 0 0 6px; counter-reset: n; }
+  .lineas li { counter-increment: n; position: relative; padding: 10px 0 10px 34px; border-bottom: 1px solid var(--linea); }
+  .lineas li::before { content: counter(n); position: absolute; left: 0; top: 9px; width: 24px; height: 24px; border-radius: 50%; background: var(--rosa); color: #fff; font-weight: 800; font-size: 14px; display: grid; place-items: center; }
+  .dos { display: flex; gap: 10px; margin-top: 16px; }
+  .dos .btn { flex: 1; padding: 14px 8px; }
+  .valor { font-size: 34px; font-weight: 800; color: var(--rosa-osc); }
+  input[type=range] { width: 100%; accent-color: var(--rosa); height: 34px; }
+  .escala { display: flex; justify-content: space-between; font-size: 13px; color: var(--gris); }
+  .opc { display: flex; gap: 10px; align-items: flex-start; padding: 11px 12px; border: 1.5px solid var(--linea); border-left: 6px solid var(--via); border-radius: 12px; background: #fff; margin-top: 8px; font-weight: 600; }
+  .opc input { margin-top: 3px; width: 20px; height: 20px; accent-color: var(--rosa); flex: none; }
+  .opc.sel { border-color: var(--rosa); background: var(--rosa-claro); }
+  h2 { font-size: 20px; margin: 22px 0 4px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Entrada -->
+<section id="p-entrada" class="pantalla oculto">
+  <div class="centro">
+    <div class="marca">Pre-mortem · MGT300</div>
+    <h1>Es 2031 y la IA causó un desastre en Chile. ¿Qué pasó?</h1>
+    <p class="suave">Vas a reconstruirlo conversando con un entrevistador. Lo que escribes lo escribes tú: sin pedirle a otra IA que lo redacte.</p>
+    <label for="codigo">Código de la sala</label>
+    <input id="codigo" class="campo" maxlength="4" autocomplete="off" autocapitalize="characters" placeholder="ABCD">
+    <label for="nombre">Tu grupo y tu nombre</label>
+    <input id="nombre" class="campo" maxlength="30" autocomplete="off" placeholder="G3 Ana">
+    <div id="vias" class="vias oculto">
+      <label>Elige tu vía</label>
+      <button class="via1" data-via="1">1 · La IA se sale de control<small>Hace lo que nadie quería.</small></button>
+      <button class="via2" data-via="2">2 · Gente mala la usa<small>Alguien la ocupa a propósito para dañar.</small></button>
+      <button class="via3" data-via="3">3 · Nadie lo quiere, pero pasa<small>Riesgos sistémicos, sin villano.</small></button>
+    </div>
+    <button id="entrar" class="btn ancho">Entrar</button>
+    <div id="error-entrada" class="error"></div>
+  </div>
+</section>
+
+<!-- 2. Entrevista -->
+<section id="p-chat" class="pantalla oculto">
+  <div class="barra">
+    <span id="chip-via" class="chip"></span>
+    <span id="puntos" class="puntos" title="Casillas completas"></span>
+    <span id="reloj" class="reloj"></span>
+  </div>
+  <div id="aviso" class="oculto"><span id="aviso-texto"></span><button id="cerrar-ya">Ir al cierre</button></div>
+  <div id="hilo"></div>
+  <div class="caja">
+    <button id="pegar" type="button">🔗 Pegar enlace</button>
+    <div class="fila">
+      <textarea id="texto" rows="1" placeholder="Escribe tu respuesta…" maxlength="1200"></textarea>
+      <button id="enviar" class="btn">Enviar</button>
+    </div>
+    <div id="nota" class="nota"></div>
+  </div>
+</section>
+
+<!-- 3. Resumen -->
+<section id="p-resumen" class="pantalla oculto">
+  <div class="centro">
+    <div class="marca">Tu escenario</div>
+    <h1>¿Está bien así?</h1>
+    <ol id="lineas" class="lineas"></ol>
+    <div id="corregir-caja" class="oculto">
+      <label for="correccion">¿Qué hay que corregir?</label>
+      <textarea id="correccion" class="campo" rows="3" maxlength="600" placeholder="Por ejemplo: en la línea 3 falta…"></textarea>
+    </div>
+    <div class="dos">
+      <button id="corregir" class="btn sec">Corregir</button>
+      <button id="confirmar" class="btn">Está bien</button>
+    </div>
+    <div id="error-resumen" class="error"></div>
+  </div>
+</section>
+
+<!-- 4. Deslizadores -->
+<section id="p-desliza" class="pantalla oculto">
+  <div class="centro">
+    <div class="marca">Tu escenario</div>
+    <h1>Dos números para cerrar</h1>
+    <p id="cerrada-nota" class="suave oculto">El profesor cerró la sala: tu entrevista queda hasta donde llegaste.</p>
+    <h2>¿Qué tan probable es que pase?</h2>
+    <div class="valor"><span id="v-prob">50</span> %</div>
+    <input id="prob" type="range" min="0" max="100" step="5" value="50">
+    <div class="escala"><span>0 % imposible</span><span>100 % seguro</span></div>
+    <h2>Si pasa, ¿qué tan grave es?</h2>
+    <div class="valor"><span id="v-grav">3</span> de 5</div>
+    <input id="grav" type="range" min="1" max="5" step="1" value="3">
+    <div class="escala"><span>1 molestia</span><span>5 catástrofe</span></div>
+    <button id="mandar-desliza" class="btn ancho">Enviar</button>
+    <div id="error-desliza" class="error"></div>
+  </div>
+</section>
+
+<!-- 5. Listo / votación -->
+<section id="p-listo" class="pantalla oculto">
+  <div class="centro">
+    <div class="marca">Pre-mortem · MGT300</div>
+    <div id="espera">
+      <h1>Listo. Ahora mira el proyector.</h1>
+      <p class="suave">Tu escenario ya está con los del resto de la sala. Cuando se abra la votación, aparece aquí.</p>
+    </div>
+    <div id="voto" class="oculto">
+      <h1>Vota sobre los escenarios de la sala</h1>
+      <h2>¿Cuál es el más probable?</h2>
+      <div id="opc-probable"></div>
+      <h2>¿Cuál nos estamos tomando menos en serio?</h2>
+      <div id="opc-serio"></div>
+      <button id="mandar-voto" class="btn ancho">Votar</button>
+      <div id="error-voto" class="error"></div>
+    </div>
+  </div>
+</section>
+
+<script type="module" src="jugador.js"></script>
+</body>
+</html>

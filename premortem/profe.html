@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-mortem 2031 · profesor</title>
+<link rel="stylesheet" href="estilo.css">
+<style>
+  body { font-size: 15px; padding: 14px; max-width: 1280px; margin: 0 auto; }
+  header { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 12px; }
+  header .marca { font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--rosa-osc); }
+  header .codigo { font-size: 28px; font-weight: 800; letter-spacing: .16em; }
+  header .der { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .rejilla { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: 12px; align-items: start; }
+  @media (max-width: 860px) { .rejilla { grid-template-columns: 1fr; } }
+  .tarjeta { margin-bottom: 12px; padding: 14px; }
+  .tarjeta h3 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--gris); margin-bottom: 10px; }
+  .fila { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .btn { padding: 9px 13px; border-radius: 10px; font-size: 14px; }
+  .mini { padding: 6px 10px; font-size: 13px; }
+  input.num { width: 64px; padding: 7px; border: 1.5px solid var(--linea); border-radius: 8px; background: #fff; }
+  #msg { min-height: 1.4em; font-weight: 600; margin: 4px 0 10px; }
+  #msg.mal { color: var(--alerta); } #msg.bien { color: var(--ok); }
+  .pasos { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pasos .btn { padding: 7px 10px; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 12px; color: var(--gris); text-transform: uppercase; letter-spacing: .06em; padding: 4px 6px; }
+  td { padding: 7px 6px; border-top: 1px solid var(--linea); vertical-align: middle; }
+  tbody tr { cursor: pointer; } tbody tr:hover { background: var(--rosa-claro); }
+  .cas { display: inline-flex; gap: 3px; }
+  .cas i { width: 15px; height: 15px; border-radius: 4px; background: var(--linea); display: inline-block; }
+  .cas i.ok { background: var(--via, var(--rosa)); }
+  .tit { color: var(--gris); font-size: 13px; max-width: 420px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  dialog { border: 0; border-radius: 16px; padding: 0; width: min(760px, 94vw); max-height: 90vh; }
+  dialog::backdrop { background: rgba(44, 44, 44, .45); }
+  .dlg { padding: 18px; overflow-y: auto; max-height: 90vh; }
+  .dlg h2 { font-size: 20px; margin-bottom: 4px; }
+  .dlg h4 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--gris); }
+  .m { padding: 7px 10px; border-radius: 10px; margin: 5px 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .m.a { background: #fff; border: 1px solid var(--linea); margin-right: 12%; }
+  .m.u { background: var(--rosa-claro); margin-left: 12%; }
+  .m small { color: var(--gris); font-weight: 700; margin-right: 6px; }
+  .kv { display: grid; grid-template-columns: 150px 1fr; gap: 4px 10px; font-size: 14px; }
+  .kv b { color: var(--gris); font-weight: 600; }
+  #entrada-clave { max-width: 380px; margin: 14vh auto; }
+  #entrada-clave input { width: 100%; padding: 12px; border: 1.5px solid var(--linea); border-radius: 12px; font-size: 17px; background: #fff; margin: 10px 0; }
+  code { background: #fff; border: 1px solid var(--linea); border-radius: 6px; padding: 1px 6px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<section id="entrada-clave" class="tarjeta oculto">
+  <div class="marca" style="font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--rosa-osc)">PRE-MORTEM · PROFESOR</div>
+  <h2 style="margin:8px 0">Clave del profesor</h2>
+  <input id="clave" type="password" autocomplete="off" placeholder="clave">
+  <button id="guardar-clave" class="btn" style="width:100%">Entrar</button>
+  <p class="suave" style="font-size:13px">Se guarda en este navegador. Esta página no se proyecta.</p>
+</section>
+
+<div id="panel" class="oculto">
+  <header>
+    <span class="marca">Pre-mortem · profesor</span>
+    <span id="codigo" class="codigo">—</span>
+    <span id="resumen-sala" class="suave"></span>
+    <span class="der">
+      <a id="abrir-proyector" class="btn sec mini" target="_blank" rel="noopener">Proyector ↗</a>
+      <button id="copiar-url" class="btn sec mini">Copiar enlace de alumnos</button>
+      <button id="nueva" class="btn sec mini">Abrir sala nueva</button>
+    </span>
+  </header>
+  <div id="msg"></div>
+
+  <div class="rejilla">
+    <div>
+      <div class="tarjeta">
+        <h3>1 · Entrevista</h3>
+        <div class="fila">
+          <span>Vía:</span>
+          <button id="via-grupo" class="btn sec mini">por grupo</button>
+          <button id="via-elige" class="btn sec mini">cada uno elige</button>
+        </div>
+        <div class="fila">
+          <label>Duración <input id="duracion" class="num" type="number" min="4" max="30"> min</label>
+          <button id="fijo" class="btn sec mini" title="Salida de emergencia: las mismas casillas como preguntas fijas, sin modelo">Preguntas fijas: no</button>
+        </div>
+        <div class="fila">
+          <button id="aviso" class="btn">Aviso: quedan 2 minutos</button>
+          <button id="cerrar" class="btn peligro">Cerrar sala</button>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h3>2 · Agregación</h3>
+        <div class="fila">
+          <button id="agregar" class="btn">Agregar con IA</button>
+          <button id="sin-ia" class="btn sec">Salida sin IA</button>
+        </div>
+        <div id="estado-agregado" class="suave">Todavía no se agrega.</div>
+      </div>
+
+      <div class="tarjeta">
+        <h3>3 · Proyector</h3>
+        <div class="fila">
+          <button id="ant" class="btn sec">← Anterior</button>
+          <button id="sig" class="btn">Siguiente →</button>
+          <span id="donde" class="suave"></span>
+        </div>
+        <div id="pasos" class="pasos"></div>
+        <div class="fila" style="margin-top:10px">
+          <button id="votacion" class="btn sec">Abrir votación</button>
+          <span id="n-votos" class="suave"></span>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Ensayo con bots</h3>
+        <div class="fila">
+          <input id="n-bots" class="num" type="number" min="1" max="40" value="20">
+          <button id="bots" class="btn sec">Sumar bots</button>
+          <span id="estado-bots" class="suave"></span>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Costo de la sala</h3>
+        <div id="gasto" class="suave">—</div>
+      </div>
+
+      <div class="tarjeta">
+        <h3>Después de la clase</h3>
+        <div class="fila">
+          <button id="descargar" class="btn sec mini">Descargar respuestas anónimas</button>
+          <button id="anonimizar" class="btn sec mini">Borrar nombres</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <h3>Entrevistas <span id="n-entrevistas"></span></h3>
+      <table>
+        <thead><tr><th>Quién</th><th>Vía</th><th>Casillas</th><th>Turnos</th><th>Estado</th><th>P / G</th><th>Titular</th></tr></thead>
+        <tbody id="tabla"></tbody>
+      </table>
+      <p id="vacio" class="suave">Aún no entra nadie.</p>
+    </div>
+  </div>
+</div>
+
+<dialog id="dlg"><div id="dlg-cuerpo" class="dlg"></div></dialog>
+
+<script type="module" src="profe.js"></script>
+</body>
+</html>

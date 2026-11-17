@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pre-mortem 2031 · proyector</title>
+<link rel="stylesheet" href="estilo.css">
+<link rel="stylesheet" href="viz.css">
+<style>
+  html, body { height: 100%; }
+  body { height: 100vh; overflow: hidden; display: flex; flex-direction: column; }
+  #cab { flex: none; height: 9vh; display: flex; align-items: center; gap: 2vw; padding: 0 3vw; border-bottom: 1px solid var(--linea); }
+  #cab .marca { font-size: 2.6vh; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--rosa-osc); }
+  #cab .der { margin-left: auto; display: flex; align-items: baseline; gap: 1.6vw; font-size: 2.6vh; color: var(--gris); }
+  #cab .codigo { font-size: 4.4vh; font-weight: 800; letter-spacing: .18em; color: var(--texto); }
+  #lienzo { flex: 1; min-height: 0; padding: 2.4vh 3vw 2vh; }
+
+  /* sala: QR + avance (también es lo que se ve durante la entrevista) */
+  .sala { height: 100%; display: grid; grid-template-columns: 34vw 1fr; gap: 4vw; align-items: center; }
+  .sala .izq { text-align: center; }
+  .sala .izq h2 { font-size: 3.4vh; margin-bottom: 1.6vh; }
+  #qr { background: #fff; padding: 1.6vh; border-radius: 2vh; width: 46vh; height: 46vh; margin: 0 auto; border: 1px solid var(--linea); display: flex; align-items: center; justify-content: center; }
+  #qr img, #qr canvas { width: 100% !important; height: 100% !important; }
+  .url { font-size: 2.5vh; margin-top: 1.6vh; font-weight: 600; overflow-wrap: anywhere; }
+  .url b { color: var(--rosa-osc); }
+  .formato { font-size: 2.4vh; color: var(--gris); margin-top: .8vh; }
+  .sala h1 { font-size: 5.4vh; line-height: 1.08; margin-bottom: 3vh; }
+  .via-fila { display: grid; grid-template-columns: 6vh 1fr; gap: 1.6vw; align-items: center; padding: 1.5vh 0; border-top: 1px solid var(--linea); }
+  .via-n { font-size: 5vh; font-weight: 800; color: var(--via); text-align: center; font-variant-numeric: tabular-nums; }
+  .via-nombre { font-size: 3vh; font-weight: 700; }
+  .via-nombre small { font-weight: 500; color: var(--gris); font-size: 2.2vh; margin-left: .8vw; }
+  .pastillas { display: flex; flex-wrap: wrap; gap: .7vh; margin-top: 1vh; min-height: 2vh; }
+  .pastilla { width: 5.4vh; height: 1.8vh; border-radius: 1vh; background: var(--linea); overflow: hidden; }
+  .pastilla i { display: block; height: 100%; background: var(--via); transition: width .6s ease; }
+  .pastilla.listo { outline: .35vh solid var(--via); outline-offset: .15vh; }
+  .avance { margin-top: 3vh; }
+  .avance .rotulo { display: flex; justify-content: space-between; font-size: 2.6vh; font-weight: 700; margin-bottom: 1vh; }
+  .avance .riel { height: 3.4vh; border-radius: 2vh; background: var(--linea); overflow: hidden; }
+  .avance .riel i { display: block; height: 100%; background: var(--rosa); transition: width .6s ease; }
+  .estado-linea { font-size: 2.5vh; color: var(--gris); margin-top: 1.6vh; }
+  #cinta { flex: none; background: var(--alerta); color: #fff; font-size: 3.4vh; font-weight: 800; text-align: center; padding: 1.2vh; }
+  .grande { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 2vh; }
+  .grande h1 { font-size: 6vh; }
+  .grande p { font-size: 3vh; color: var(--gris); max-width: 60vw; }
+  .grande input { font-size: 5vh; width: 30vh; text-align: center; text-transform: uppercase; letter-spacing: .3em; font-weight: 800; padding: 1vh; border: 2px solid var(--linea); border-radius: 1.6vh; }
+  .pulso { animation: pulso 1.4s ease-in-out infinite; }
+  @keyframes pulso { 50% { opacity: .45; } }
+</style>
+</head>
+<body>
+<header id="cab">
+  <span class="marca">Pre-mortem 2031</span>
+  <span id="cab-seccion" class="suave" style="font-size:2.4vh"></span>
+  <span class="der"><span id="cab-n"></span><span id="cab-reloj"></span><span>sala <span id="cab-codigo" class="codigo"></span></span></span>
+</header>
+<div id="cinta" class="oculto">Quedan 2 minutos: vayan cerrando</div>
+<main id="lienzo"></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script type="module" src="proyector.js"></script>
+</body>
+</html>
