@@ -170,8 +170,8 @@ estreno. 5 minutos y 3 de preguntas en turnos de 10 minutos, con corte duro y ca
 (las cuentas: con 6+3 no quedaba holgura para el café que Naim quiere invitar); cada grupo abre con una apuesta a la sala
 (pregunta con tres opciones, mano alzada) y muestra la pieza en vivo; se proyecta sólo el sitio;
 orden G01 a G09, como en los sprints anteriores; la primera pregunta la hace el grupo que presentó
-antes. El curso pone nota de 1 a 5 tras cada grupo y el podio del público suma una décima al
-Sprint 4; es el único premio (Naim descartó los del jurado para no desordenar). Jurado: Naim, los
+antes. El curso pone nota de 1 a 5 tras cada grupo y el podio del público se gana el café, sin
+décima (corregido por Naim el 23-nov); es el único premio (Naim descartó los del jurado para no desordenar). Jurado: Naim, los
 ayudantes e invitados. Matías Albornoz lleva la logística y recibe los enlaces. Sin juego ML2. Los pesos de la
 rúbrica no cambian; «Defensa oral» pasa a llamarse «Presentación y defensa oral». El formato elegido
 el 16 ya no queda fijo: se puede cambiar avisando al ayudante. El café no
