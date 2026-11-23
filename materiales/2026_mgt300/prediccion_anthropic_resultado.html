@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Anthropic sale a bolsa: el resultado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Libre+Franklin:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tinta: #10213A;      /* stage background */
+    --fondo: #0A1629;      /* letterbox and bands */
+    --papel: #F3EDE2;      /* text */
+    --rosa: #E79AA1;       /* live marker (UAI rose, lifted for a dark surface) */
+    --ambar: #F2B544;      /* live number and winner */
+    --pizarra: #8494AE;    /* axis, notes */
+    --display: 'Big Shoulders Display', 'Arial Narrow', 'Helvetica Neue', sans-serif;
+    --texto: 'Libre Franklin', 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--fondo); overflow: hidden; }
+  body { font-family: var(--texto); color: var(--papel); cursor: default; }
+
+  /* Fixed 1600x900 stage, scaled to the window by script */
+  #stage {
+    position: absolute; left: 0; top: 0; width: 1600px; height: 900px;
+    transform-origin: 0 0; overflow: hidden;
+    background: radial-gradient(1200px 800px at 68% 45%, #17305A 0%, var(--tinta) 55%, #0C1A30 100%);
+  }
+  #stage > * { position: absolute; }
+
+  /* ---------- Cover ---------- */
+  #cover { inset: 0; transition: opacity .6s; }
+  #cover h1 {
+    position: absolute; left: 90px; top: 150px; margin: 0;
+    font: 800 190px/0.92 var(--display); letter-spacing: -1px;
+  }
+  #cover .fecha { position: absolute; left: 96px; top: 540px; font-size: 30px; color: var(--pizarra); }
+  #cover .bajada { position: absolute; left: 96px; top: 596px; font-size: 38px; font-weight: 500; max-width: 1100px; }
+  #cinta {
+    position: absolute; left: 0; right: 0; top: 742px; height: 78px; overflow: hidden;
+    background: var(--fondo); border-top: 1px solid #24406E; border-bottom: 1px solid #24406E;
+  }
+  #cinta div {
+    position: absolute; top: 0; left: 0; white-space: nowrap;
+    font: 600 50px/78px var(--display); color: var(--ambar); letter-spacing: 1px;
+    animation: correr 38s linear infinite;
+  }
+  #cinta span { margin: 0 34px; }
+  @keyframes correr { to { transform: translateX(-50%); } }
+
+  /* ---------- Left panel ---------- */
+  #panel { left: 90px; top: 120px; width: 600px; transition: opacity .5s; }
+  #titular { margin: 0; font-size: 46px; line-height: 1.15; font-weight: 600; min-height: 106px; }
+  #cifra {
+    font: 800 250px/0.9 var(--display); color: var(--ambar); margin-top: 26px;
+    font-variant-numeric: tabular-nums; letter-spacing: -2px;
+  }
+  #unidad { font-size: 26px; color: var(--pizarra); margin-top: 8px; }
+  #precio { font: 600 44px/1 var(--display); margin-top: 26px; letter-spacing: .5px; }
+  #bajada { font-size: 30px; line-height: 1.32; margin-top: 30px; max-width: 580px; }
+  #bajada p { margin: 0 0 14px; }
+  #ganador { display: none; }
+  #ganador .nombre { font: 800 170px/0.9 var(--display); color: var(--ambar); margin: 20px 0 22px; letter-spacing: -1px; }
+  #ganador .como { font-size: 31px; line-height: 1.32; }
+  #ganador .podio { margin-top: 30px; font-size: 25px; line-height: 1.5; color: var(--pizarra); }
+  #ganador .podio b { color: var(--papel); font-weight: 500; }
+  #cita { display: none; margin-top: 26px; }
+  #cita blockquote {
+    margin: 0; padding-left: 26px; border-left: 4px solid var(--ambar);
+    font-size: 36px; line-height: 1.28; font-weight: 500;
+  }
+  #cita .firma { margin: 16px 0 0 30px; font-size: 23px; color: var(--pizarra); }
+  #cita .despues { margin-top: 34px; font-size: 30px; line-height: 1.32; }
+  .entra { animation: entra .55s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes entra { from { opacity: 0; transform: translateY(14px); } }
+
+  /* ---------- Scale ---------- */
+  #escala { left: 0; top: 0; width: 1600px; height: 900px; transition: opacity .6s; }
+  .grilla line { stroke: #2A446F; stroke-width: 1; }
+  .grilla text { fill: var(--pizarra); font: 600 20px var(--display); letter-spacing: .5px; }
+  .eje { stroke: #4A638F; stroke-width: 2; }
+  .chip { transition: opacity .45s; }
+  .chip .guia { fill: none; stroke: #5C7199; stroke-width: 1; }
+  .chip circle { fill: var(--papel); stroke: var(--tinta); stroke-width: 2; }
+  .chip .nom { fill: var(--papel); font: 500 20px var(--texto); }
+  .chip .val { fill: var(--papel); font: 600 26px var(--display); letter-spacing: .5px; }
+  .chip.corta { opacity: .34; }
+  .chip.corta.podio { opacity: .8; }
+  .unidad-eje { fill: var(--pizarra); font: 400 17px var(--texto); }
+  .chip.gana .nom, .chip.gana .val { fill: var(--ambar); }
+  .chip.gana .nom { font-weight: 600; }
+  .chip.gana circle { fill: var(--ambar); r: 9; }
+  .chip.cae { animation: cae .6s cubic-bezier(.2,.8,.3,1.2) both; }
+  @keyframes cae { from { opacity: 0; transform: translateY(-46px); } }
+  #halo { fill: none; stroke: var(--ambar); stroke-width: 2; opacity: 0; }
+  #halo.late { animation: late 1.6s ease-out infinite; }
+  @keyframes late { from { r: 9; opacity: .9; } to { r: 44; opacity: 0; } }
+  #distancia { fill: var(--ambar); font: 600 19px var(--texto); opacity: 0; transition: opacity .5s; }
+  #haz { transition: opacity .4s; }
+  #haz .fina { stroke: var(--rosa); stroke-width: 1; opacity: .38; }
+  #haz .viva { stroke: var(--rosa); stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 9px rgba(231,154,161,.9)); }
+  #haz rect { fill: var(--rosa); }
+  .hito { transition: opacity .5s; }
+  .hito line { stroke: var(--pizarra); stroke-width: 1; stroke-dasharray: 3 6; opacity: .5; }
+  .hito text { fill: var(--pizarra); font: 400 17px var(--texto); }
+  .hito text b, .hito tspan.p { fill: var(--papel); font-weight: 500; }
+
+  /* ---------- Chrome ---------- */
+  #ayuda { left: 90px; top: 858px; font-size: 16px; color: var(--pizarra); transition: opacity .6s; }
+  #nota { right: 24px; top: 866px; width: 760px; text-align: right; font-size: 13px; color: #6C7E9C; transition: opacity .6s; }
+  #pasos { left: 90px; top: 62px; display: flex; gap: 8px; }
+  #pasos i { width: 34px; height: 4px; border-radius: 2px; background: #2A446F; transition: background .4s; }
+  #pasos i.ya { background: var(--pizarra); }
+  #pasos i.aqui { background: var(--ambar); }
+  #confeti { left: 0; top: 0; pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    #cinta div, .chip.cae, .entra, #halo.late { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <svg id="escala" viewBox="0 0 1600 900" style="opacity:0">
+    <g class="grilla" id="grilla"></g>
+    <line class="eje" x1="1070" y1="52" x2="1070" y2="840"></line>
+    <path d="M1062 62 L1070 46 L1078 62" fill="none" stroke="#4A638F" stroke-width="2"></path>
+    <text class="unidad-eje" x="1048" y="58" text-anchor="end">miles de millones de dólares</text>
+    <g id="hitos"></g>
+    <g id="haz" style="opacity:0">
+      <line class="fina" x1="750" x2="1585" y1="0" y2="0"></line>
+      <line class="viva" x1="1024" x2="1116" y1="0" y2="0"></line>
+      <rect x="1063" y="-7" width="14" height="14" transform="rotate(45 1070 0)"></rect>
+    </g>
+    <g id="chips"></g>
+    <circle id="halo" cx="1070" cy="0" r="9"></circle>
+    <text id="distancia" text-anchor="end"></text>
+  </svg>
+
+  <div id="panel" style="opacity:0">
+    <h2 id="titular"></h2>
+    <div id="cifra"></div>
+    <div id="unidad">miles de millones de dólares</div>
+    <div id="precio"></div>
+    <div id="bajada"></div>
+    <div id="ganador">
+      <div class="nombre">Lucas Leay</div>
+      <div class="como">Predijo 1.800. Anthropic cerró en 1.770:<br>quedó a 30 mil millones de dólares.</div>
+      <div class="podio">
+        <b>Matilde Guzmán</b>, a 220<br>
+        <b>Marco Ruiz, Benjamín Riquelme y Vicente Marchini</b>, a 270
+      </div>
+    </div>
+    <div id="cita">
+      <blockquote>«El FOMO. La acción se va a sobrecomprar los primeros días; su precio caerá días después».</blockquote>
+      <div class="firma">Lo que Lucas Leay anotó como riesgo principal</div>
+      <div class="despues" id="despues"></div>
+    </div>
+  </div>
+
+  <div id="cover">
+    <h1>Anthropic<br>sale a bolsa</h1>
+    <div class="fecha">Jueves 19 de noviembre de 2026, Nasdaq: ANT</div>
+    <div class="bajada">Veinte predicciones del curso sobre cuánto valdría al cierre. Una sola quedó cerca.</div>
+    <div id="cinta"><div></div></div>
+  </div>
+
+  <div id="pasos"></div>
+  <div id="ayuda">Espacio o clic para avanzar. Flecha izquierda para volver. F: pantalla completa. R: reiniciar.</div>
+  <div id="nota" style="opacity:0">Valorización totalmente diluida. Cierre según Reuters y CNN; los demás puntos, proporcionales al precio de la acción. El trayecto dentro del día es ilustrativo.</div>
+  <canvas id="confeti" width="1600" height="900"></canvas>
+</div>
+
+<script>
+// ---------------------------------------------------------------- data
+// Predictions for question 2, in thousands of millions of USD.
+const PRED = [
+  ['Consuelo Vera', 55], ['Isabel Chang', 67], ['Alejandro Gouhaneh', 68],
+  ['Javiera Castillo', 120], ['Giuliana Páez', 240], ['Emilio López', 300],
+  ['Lucas Youlton', 620], ['Pablo Concha', 782], ['Pablo Sandoval', 800],
+  ['Emilia Schuffeneger', 1100], ['Martín Jodorkovsky', 1100], ['Jorge Vergara', 1300],
+  ['Magdalena Sepúlveda', 1350], ['Felipe Ferrada', 1400], ['Marco Ruiz', 1500],
+  ['Benjamín Riquelme', 1500], ['Vicente Marchini', 1500], ['Matilde Guzmán', 1550],
+  ['Lucas Leay', 1800]
+];
+const FUERA = ['Vicente Felmer', 120000];          // off the scale
+const GANADOR = 'Lucas Leay';
+
+// Fully diluted valuation at the close, and the share prices of the day.
+const CIERRE = 1770, P_CIERRE = 97.17;
+const val = p => CIERRE * p / P_CIERRE;            // valuation at a given share price
+const V_COLOC = val(83), V_APERT = val(111.5), V_MAX = val(115.1), V_VIERNES = CIERRE * 0.92;
+const PODIO = ['Matilde Guzmán', 'Marco Ruiz', 'Benjamín Riquelme', 'Vicente Marchini'];
+const HITOS = {
+  coloc:   { v: V_COLOC,   t: 'Colocación',  p: 'US$83' },
+  apert:   { v: V_APERT,   t: 'Apertura',    p: 'US$111,50' },
+  max:     { v: V_MAX,     t: 'Máximo',      p: 'US$115,10' },
+  cierre:  { v: CIERRE,    t: 'Cierre',      p: 'US$97,17' },
+  viernes: { v: V_VIERNES, t: 'Viernes',     p: 'cerca de −8%' }
+};
+
+// ---------------------------------------------------------------- helpers
+const $ = id => document.getElementById(id);
+const NS = 'http://www.w3.org/2000/svg';
+const svg = (tag, attrs, parent) => {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(e);
+  return e;
+};
+const miles = n => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const X = 1070, Y0 = 840, PX = 0.35;               // axis x, y of zero, px per unit
+const y = v => Y0 - PX * v;
+const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------------------------------------------------------------- build the scale
+for (let g = 0; g <= 2000; g += 500) {
+  svg('line', { x1: 750, x2: 1585, y1: y(g), y2: y(g) }, $('grilla'));
+  svg('text', { x: 738, y: y(g) + 7, 'text-anchor': 'end' }, $('grilla')).textContent = miles(g);
+}
+
+// Alternate sides in sorted order, then push labels apart on each side.
+const chips = PRED.map(([nombre, v], i) => ({ nombre, v, lado: i % 2 ? 1 : -1, yl: y(v) }));
+for (const lado of [-1, 1]) {
+  let previo = Infinity;
+  for (const c of chips.filter(c => c.lado === lado)) {     // already bottom to top
+    c.yl = Math.min(c.yl, previo - 31);
+    previo = c.yl;
+  }
+}
+chips.push({ nombre: FUERA[0], v: FUERA[1], lado: 1, yl: 44, fuera: true });
+
+chips.forEach((c, i) => {
+  const g = svg('g', { class: 'chip' }, $('chips'));
+  const yv = c.fuera ? 52 : y(c.v), s = c.lado;
+  svg('polyline', { class: 'guia', points: `${X},${yv} ${X + 20 * s},${yv} ${X + 52 * s},${c.yl} ${X + 62 * s},${c.yl}` }, g);
+  if (!c.fuera) svg('circle', { cx: X, cy: yv, r: 6 }, g);
+  const t = svg('text', { x: X + 72 * s, y: c.yl + 8, 'text-anchor': s < 0 ? 'end' : 'start' }, g);
+  const nom = document.createElementNS(NS, 'tspan'); nom.setAttribute('class', 'nom');
+  const num = document.createElementNS(NS, 'tspan'); num.setAttribute('class', 'val');
+  nom.textContent = c.nombre;
+  num.textContent = miles(c.v) + (c.fuera ? ' ↑' : '');
+  if (s < 0) { t.append(nom, num); num.setAttribute('dx', 12); }
+  else { t.append(num, nom); nom.setAttribute('dx', 12); }
+  g.style.animationDelay = (i * 120) + 'ms';
+  c.el = g;
+  if (c.nombre === GANADOR) {
+    $('halo').setAttribute('cy', yv);
+    $('distancia').setAttribute('x', X + 72 * s);
+    $('distancia').setAttribute('y', c.yl - 22);
+    $('distancia').textContent = 'a 30 del cierre';
+  }
+});
+
+for (const k in HITOS) {
+  const h = HITOS[k], g = svg('g', { class: 'hito', style: 'opacity:0' }, $('hitos'));
+  svg('line', { x1: 1420, x2: 1585, y1: y(h.v), y2: y(h.v) }, g);
+  const t = svg('text', { x: 1585, y: y(h.v) - 8, 'text-anchor': 'end' }, g);
+  t.textContent = h.t + ' ';
+  const p = document.createElementNS(NS, 'tspan'); p.setAttribute('class', 'p'); p.textContent = h.p;
+  t.appendChild(p);
+  h.el = g;
+}
+
+// Ticker tape on the cover: the predictions, unnamed, in the order they were handed in.
+(() => {
+  const orden = [1550, 800, 1100, 120, 67, 1500, 300, 1100, 782, 1500, 240, 55, 1300, 120000, 1400, 68, 1350, 1800, 1500, 620];
+  const tira = orden.map(n => `<span>${miles(n)}</span>`).join('');
+  $('cinta').firstElementChild.innerHTML = tira + tira;
+})();
+
+$('pasos').innerHTML = '<i></i>'.repeat(7);
+
+// ---------------------------------------------------------------- live state
+let V = 0, hazOn = false;
+function setV(v) {
+  V = v;
+  $('haz').setAttribute('transform', `translate(0 ${y(v)})`);
+  $('cifra').textContent = miles(Math.round(v / 10) * 10);
+  $('precio').textContent = 'US$' + (P_CIERRE * v / CIERRE).toFixed(2).replace('.', ',') + ' por acción';
+  for (const c of chips) c.el.classList.toggle('corta', hazOn && c.v < v - 1);
+}
+function hitos(...keys) { for (const k in HITOS) HITOS[k].el.style.opacity = keys.includes(k) ? 1 : 0; }
+function titular(txt) {
+  const h = $('titular');
+  if (h.textContent === txt) return;
+  h.textContent = txt; h.classList.remove('entra'); void h.offsetWidth; h.classList.add('entra');
+}
+function bajada(html) {
+  const b = $('bajada');
+  b.innerHTML = html; b.classList.remove('entra'); void b.offsetWidth; if (html) b.classList.add('entra');
+}
+function modo(m) {  // which blocks of the left panel are showing
+  const num = m === 'cifra';
+  $('cifra').style.display = $('unidad').style.display = $('precio').style.display = num ? '' : 'none';
+  $('bajada').style.display = (m === 'cifra' || m === 'texto') ? '' : 'none';
+  $('ganador').style.display = m === 'ganador' ? 'block' : 'none';
+  $('cita').style.display = m === 'cita' ? 'block' : 'none';
+}
+function ganador(on) {
+  for (const c of chips) {
+    c.el.classList.toggle('gana', on && c.nombre === GANADOR);
+    c.el.classList.toggle('podio', on && PODIO.includes(c.nombre));
+  }
+  $('halo').classList.toggle('late', on && !quieto);
+  $('distancia').style.opacity = on ? 1 : 0;
+}
+
+// ---------------------------------------------------------------- animation engine
+let raf = 0, timers = [], animando = false;
+const EASE = {
+  io: p => p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2,
+  out: p => 1 - Math.pow(1 - p, 3),
+  salto: p => { const c = 1.9; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2); },
+  lin: p => p
+};
+let rafConfeti = 0;
+function parar() {
+  cancelAnimationFrame(raf); timers.forEach(clearTimeout); timers = []; animando = false;
+  cancelAnimationFrame(rafConfeti); $('confeti').getContext('2d').clearRect(0, 0, 1600, 900);
+}
+function luego(fn, ms) { timers.push(setTimeout(fn, ms)); }
+// keys: [{ to, ms, ease, ruido, al }] run in order from the current value.
+function mover(keys, fin) {
+  let i = 0, desde = V, t0 = performance.now();
+  animando = true;
+  (function cuadro(ahora) {
+    const k = keys[i], p = Math.min(1, (ahora - t0) / k.ms);
+    let v = desde + (k.to - desde) * EASE[k.ease || 'io'](p);
+    if (k.ruido) v += k.ruido * Math.sin(ahora / 83) * Math.sin(ahora / 31) * Math.sin(Math.PI * p);
+    setV(v);
+    if (p < 1) { raf = requestAnimationFrame(cuadro); return; }
+    desde = k.to; i++; t0 = ahora;
+    if (k.al) k.al();
+    if (i < keys.length) raf = requestAnimationFrame(cuadro);
+    else { animando = false; if (fin) fin(); }
+  })(t0);
+}
+
+// ---------------------------------------------------------------- stages
+// Each stage has fin() (its resting state) and optionally anim() (how it gets there).
+const TXT = {
+  corto: '<p>Dos billones de dólares.</p><p>Casi todo el curso se quedó corto.</p>',
+  cierre: '<p>17% sobre el precio de colocación.</p><p>16 de 20 acertaron que cerraría sobre.</p>'
+};
+const ETAPAS = [
+  { // 0 cover
+    fin() { base(false); }
+  },
+  { // 1 the predictions
+    fin() {
+      base(true); hazOn = false; setV(0); $('haz').style.opacity = 0; hitos(); ganador(false);
+      modo('texto'); titular('Veinte predicciones para el cierre del primer día');
+      bajada('<p>13 comprarían acciones; 7 no.</p><p>16 apostaron a que cerraría sobre el precio de colocación; 3, bajo.</p><p>La mediana: 1.100 miles de millones de dólares.</p>');
+    },
+    anim() {
+      this.fin();
+      if (quieto) return;
+      for (const c of chips) { c.el.classList.remove('cae'); void c.el.getBBox(); c.el.classList.add('cae'); }
+      animando = true; luego(() => { animando = false; }, chips.length * 120 + 600);
+    }
+  },
+  { // 2 pricing
+    fin() { marcha(); modo('cifra'); setV(V_COLOC); hitos('coloc'); titular('La acción se coloca a US$83'); bajada('<p>Antes de la primera transacción, Anthropic ya vale 1,5 billones de dólares.</p>'); },
+    anim() {
+      marcha(); modo('cifra'); setV(0); hitos(); titular('La acción se coloca a US$83'); bajada('');
+      mover([{ to: V_COLOC, ms: 3400, ease: 'out' }], () => this.fin());
+    }
+  },
+  { // 3 the open and the high
+    fin() { marcha(); modo('cifra'); setV(V_MAX); hitos('coloc', 'apert', 'max'); titular('Primera transacción: US$111,50'); bajada(TXT.corto); },
+    anim() {
+      marcha(); modo('cifra'); setV(V_COLOC); hitos('coloc'); titular('Primera transacción: US$111,50'); bajada('');
+      mover([
+        { to: V_COLOC, ms: 700 },
+        { to: V_APERT, ms: 1100, ease: 'salto', al: () => hitos('coloc', 'apert') },
+        { to: V_APERT, ms: 1300, ruido: 14 },
+        { to: V_MAX, ms: 2200, ruido: 10 }
+      ], () => this.fin());
+    }
+  },
+  { // 4 the slide down to the close
+    fin() { marcha(); modo('cifra'); setV(CIERRE); hitos('coloc', 'apert', 'max', 'cierre'); titular('Cierre: US$97,17'); bajada(TXT.cierre); },
+    anim() {
+      marcha(); modo('cifra'); setV(V_MAX); hitos('coloc', 'apert', 'max'); titular('Pero el día es largo'); bajada('');
+      mover([
+        { to: V_MAX, ms: 900 },
+        { to: 1930, ms: 2600, ruido: 16 },
+        { to: 1985, ms: 1300, ruido: 10 },
+        { to: 1850, ms: 2400, ruido: 14 },
+        { to: 1822, ms: 2000, ruido: 12 },     // hovering just above 1.800
+        { to: 1838, ms: 1200, ruido: 8 },
+        { to: CIERRE, ms: 2600, ease: 'io', ruido: 6 }
+      ], () => this.fin());
+    }
+  },
+  { // 5 the winner
+    fin() { marcha(); setV(CIERRE); hitos('coloc', 'apert', 'max', 'cierre'); ganador(true); titular('La predicción más cercana'); modo('ganador'); },
+    anim() { this.fin(); $('ganador').classList.remove('entra'); void $('ganador').offsetWidth; $('ganador').classList.add('entra'); confeti(); }
+  },
+  { // 6 epilogue: he would not have bought, and Friday proved his risk right
+    fin() {
+      marcha(); setV(V_VIERNES); hitos('coloc', 'apert', 'max', 'cierre', 'viernes'); ganador(true);
+      titular('Y él no habría comprado'); modo('cita');
+      $('despues').textContent = 'El viernes en la mañana, la acción cayó cerca de 8%.';
+    },
+    anim() {
+      marcha(); setV(CIERRE); hitos('coloc', 'apert', 'max', 'cierre'); ganador(true);
+      titular('Y él no habría comprado'); modo('cita'); $('despues').textContent = '';
+      $('cita').classList.remove('entra'); void $('cita').offsetWidth; $('cita').classList.add('entra');
+      mover([{ to: CIERRE, ms: 2600 }, { to: V_VIERNES, ms: 2400, ruido: 10 }], () => this.fin());
+    }
+  }
+];
+function base(conEscala) {       // cover versus scale
+  $('cover').style.opacity = conEscala ? 0 : 1;
+  $('cover').style.pointerEvents = conEscala ? 'none' : '';
+  $('escala').style.opacity = $('panel').style.opacity = conEscala ? 1 : 0;
+  $('nota').style.opacity = 0;
+  for (const c of chips) c.el.classList.remove('cae', 'corta');
+}
+function marcha() {              // scale with the live marker on
+  base(true); hazOn = true; $('haz').style.opacity = 1; $('nota').style.opacity = 1; ganador(false);
+}
+
+let etapa = 0;
+function ir(n, animar) {
+  parar();
+  etapa = Math.max(0, Math.min(ETAPAS.length - 1, n));
+  const e = ETAPAS[etapa];
+  if (animar && e.anim && !quieto) e.anim(); else e.fin();
+  $('ayuda').style.opacity = etapa === 0 ? 1 : 0;
+  [...$('pasos').children].forEach((d, i) => { d.className = i === etapa ? 'aqui' : i < etapa ? 'ya' : ''; });
+}
+function avanzar() {
+  if (animando) { ir(etapa, false); return; }      // a press mid-animation finishes it
+  if (etapa < ETAPAS.length - 1) ir(etapa + 1, true);
+}
+function volver() { ir(etapa - 1, false); }
+
+// ---------------------------------------------------------------- confetti (one burst, for the winner)
+function confeti() {
+  if (quieto) return;
+  const cv = $('confeti'), ctx = cv.getContext('2d');
+  const tonos = ['#F2B544', '#E79AA1', '#F3EDE2', '#8494AE'];
+  const ps = Array.from({ length: 170 }, () => {
+    const a = -Math.PI / 2 + (Math.random() - .5) * 2.2, f = 7 + Math.random() * 13;
+    return { x: 380, y: 430, vx: Math.cos(a) * f, vy: Math.sin(a) * f, w: 6 + Math.random() * 8, h: 4 + Math.random() * 6,
+             r: Math.random() * 6, vr: (Math.random() - .5) * .4, c: tonos[Math.random() * 4 | 0] };
+  });
+  const t0 = performance.now();
+  (function cuadro(t) {
+    const edad = t - t0;
+    ctx.clearRect(0, 0, 1600, 900);
+    if (edad > 4200) return;
+    ctx.globalAlpha = Math.max(0, 1 - Math.max(0, edad - 2800) / 1400);
+    for (const p of ps) {
+      p.vy += .32; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore();
+    }
+    rafConfeti = requestAnimationFrame(cuadro);
+  })(t0);
+}
+
+// ---------------------------------------------------------------- controls and fit
+addEventListener('keydown', e => {
+  if (['Space', 'ArrowRight', 'PageDown', 'Enter'].includes(e.code)) { e.preventDefault(); avanzar(); }
+  else if (['ArrowLeft', 'PageUp'].includes(e.code)) { e.preventDefault(); volver(); }
+  else if (e.code === 'KeyR') ir(0, false);
+  else if (e.code === 'KeyF') document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+});
+addEventListener('click', avanzar);
+function ajustar() {
+  const s = Math.min(innerWidth / 1600, innerHeight / 900);
+  $('stage').style.transform = `translate(${(innerWidth - 1600 * s) / 2}px, ${(innerHeight - 900 * s) / 2}px) scale(${s})`;
+}
+addEventListener('resize', ajustar);
+ajustar();
+window.ir = ir;                 // for checking a stage from the console: ir(4, false)
+ir(Number(new URLSearchParams(location.search).get('etapa')) || 0, false);
+</script>
+</body>
+</html>
