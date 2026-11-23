@@ -60,3 +60,9 @@ create_form_dvd_clase13.py
 create_form_dvd_clase13_state.json
 create_form_dvd_clase14.py
 create_form_dvd_clase14_state.json
+
+# DVD 2026: demo day (usa drive_credentials.json)
+create_form_dvd_clase15.py
+create_form_dvd_clase15_state.json
+create_pauta_sprint4_dvd.py
+pauta_sprint4_dvd_state.json
